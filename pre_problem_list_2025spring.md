@@ -1,4 +1,4 @@
-## cs201数算（计算机基础2）pre编程题目
+**cs201数算（计算机基础2）2025pre每日选做**
 
 Updated 1827 GMT+8 Jan 10 2025.
 2024 spring, Complied by Hongfei Yan
@@ -8,9 +8,6 @@ Updated 1827 GMT+8 Jan 10 2025.
 题解在：
 [2024fall_LeetCode_problems.md](https://github.com/GMyhf/2024fall-cs101/blob/main/2024fall_LeetCode_problems.md),
 [2024spring_dsa_problems.md](https://github.com/GMyhf/2024spring-cs201/blob/main/2024spring_dsa_problems.md)
-
-
-**数算2025pre每日选做**
 
 | 日期 | 问题编号与名称  | 标签          | 难度 | 链接                                                 |
 | ---- | --------------- | ------------- | ---- | ---------------------------------------------------- |
