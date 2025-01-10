@@ -22,6 +22,8 @@ Updated 1827 GMT+8 Jan 10 2025
 
 | 日期 | 问题编号与名称  | 标签          | 难度 | 链接                                                 |
 | ---- | --------------- | ------------- | ---- | ---------------------------------------------------- |
+| 0114 | 234.回文链表   | linked-list            | Easy | https://leetcode.cn/problems/palindrome-linked-list/       |
+| 0114 | 206.反转链表   | linked-list            | Easy | https://leetcode.cn/problems/reverse-linked-list/       |
 | 0113 | 118.杨辉三角    | dp            | Easy | https://leetcode.cn/problems/pascals-triangle/       |
 | 0113 | 35.搜索插入位置 | binary search | Easy | https://leetcode.cn/problems/search-insert-position/ |
 | 0113 | 20.有效的括号   | stack         | Easy | https://leetcode.cn/problems/valid-parentheses/      |
