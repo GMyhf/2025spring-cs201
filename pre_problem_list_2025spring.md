@@ -1,0 +1,28 @@
+# cs201数算（计算机基础2）pre编程题目
+
+Updated 1827 GMT+8 Jan 10 2025
+
+2024 spring, Complied by Hongfei Yan
+
+
+
+说明：为了助力大家在下学期的数算课程中取得满分成绩，“数算2025pre每日选做”，预计从1月13日持续至2月16日，涵盖北京大学的整个寒假时段，每天3道选练题目。将优先选择来自“LeetCode 热题 100”的练习题。因为，鼓励有兴趣的同学现在就可以开始提前预热。
+
+
+
+题解在：
+
+[2024fall_LeetCode_problems.md](https://github.com/GMyhf/2024fall-cs101/blob/main/2024fall_LeetCode_problems.md)
+
+[2024spring_dsa_problems.md](https://github.com/GMyhf/2024spring-cs201/blob/main/2024spring_dsa_problems.md)
+
+
+
+## 2024fall 每日选做
+
+| 日期 | 问题编号与名称  | 标签          | 难度 | 链接                                                 |
+| ---- | --------------- | ------------- | ---- | ---------------------------------------------------- |
+| 0113 | 118.杨辉三角    | dp            | Easy | https://leetcode.cn/problems/pascals-triangle/       |
+| 0113 | 35.搜索插入位置 | binary search | Easy | https://leetcode.cn/problems/search-insert-position/ |
+| 0113 | 20.有效的括号   | stack         | Easy | https://leetcode.cn/problems/valid-parentheses/      |
+
