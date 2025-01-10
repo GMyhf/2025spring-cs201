@@ -11,6 +11,7 @@ Updated 2319 GMT+8 Jan 10 2025.
 
 | 日期 | 问题编号与名称  | 标签          | 难度 | 链接                                                 |
 | ---- | --------------- | ------------- | ---- | ---------------------------------------------------- |
+| 0115 | 27653:Fraction类  | OOP        | - | http://cs101.openjudge.cn/practice/27653       |
 | 0115 | 118.杨辉三角    | dp            | Easy | https://leetcode.cn/problems/pascals-triangle/       |
 | 0114 | 01321: 棋盘问题 | backtracking  | - | http://cs101.openjudge.cn/practice/01321/       |
 | 0114 | 234.回文链表   | linked-list            | Easy | https://leetcode.cn/problems/palindrome-linked-list/       |
