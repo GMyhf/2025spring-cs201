@@ -13,7 +13,8 @@ Updated 1816 GMT+8 Jan 14 2025.
 
 | 日期 | 问题编号与名称  | 标签          | 难度 | 链接                                                 |
 | ---- | --------------- | ------------- | ---- | ---------------------------------------------------- |
-| 0117 | 20.删除链表元素   | linked-list  | - | http://dsbpython.openjudge.cn/dspythonbook/P0020/       |
+| 0118 | 20.删除链表元素   | linked-list  | - | http://dsbpython.openjudge.cn/dspythonbook/P0020/       |
+| 0117 | 02734: 十进制到八进制   | stack  | - | http://cs101.openjudge.cn/practice/02734/       |
 | 0117 | 4.插入链表元素   | linked-list  | - | http://dsbpython.openjudge.cn/2024allhw/004/       |
 | 0117 | sy296: 后缀表达式 | stack    | Easy | https://sunnywhy.com/sfbj/7/1/296       |
 | 0116 | 03704: 括号匹配问题   | stack  | - | http://cs101.openjudge.cn/practice/03704       |
