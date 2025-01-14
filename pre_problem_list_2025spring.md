@@ -14,7 +14,7 @@ Updated 1816 GMT+8 Jan 14 2025.
 | 日期 | 问题编号与名称  | 标签          | 难度 | 链接                                                 |
 | ---- | --------------- | ------------- | ---- | ---------------------------------------------------- |
 | 0117 | sy296: 后缀表达式 | stack    | Easy | https://sunnywhy.com/sfbj/7/1/296       |
-| 0117 | 4.插入链表元素   | linked-list  | - | http://dsbpython.openjudge.cn/dspythonbook/P004/       |
+| 0117 | 4.插入链表元素   | linked-list  | - | http://dsbpython.openjudge.cn/2024allhw/004/       |
 | 0116 | 20.删除链表元素   | linked-list  | - | http://dsbpython.openjudge.cn/dspythonbook/P0020/       |
 | 0116 | sy295: 可能的出栈序列 | stack    | Medium | https://sunnywhy.com/sfbj/7/1/295       |
 | 0116 | sy294: 合法的出栈序列 | stack    | Easy | https://sunnywhy.com/sfbj/7/1/294       |
