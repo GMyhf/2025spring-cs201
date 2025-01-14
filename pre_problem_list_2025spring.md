@@ -2,9 +2,9 @@
 <mark>https://github.com/GMyhf/2025spring-cs201/blob/main/pre_problem_list_2025spring.md</mark>
 
 Updated 0002 GMT+8 Jan 15 2025.
-2024 spring, Complied by Hongfei Yan
+2025 winter, Complied by Hongfei Yan
 
-说明：为了助力大家在下学期的数算课程中取得满分成绩，预计从1月13日至2月16日，涵盖整个寒假时段，每天3个题目。
+说明：助力大家在下学期的数算课程中取得满分成绩，从1月13日至2月16日，涵盖整个寒假时段，每天3个题目。
 
 题解在：
 [2024fall_LeetCode_problems.md](https://github.com/GMyhf/2024fall-cs101/blob/main/2024fall_LeetCode_problems.md),
