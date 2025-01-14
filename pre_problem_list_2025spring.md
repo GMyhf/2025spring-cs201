@@ -13,6 +13,9 @@ Updated 1816 GMT+8 Jan 14 2025.
 
 | 日期 | 问题编号与名称  | 标签          | 难度 | 链接                                                 |
 | ---- | --------------- | ------------- | ---- | ---------------------------------------------------- |
+| 0119 | 04067: 回文数字   | queue  | - | http://cs101.openjudge.cn/practice/04067/       |
+| 0119 | 05902: 双端队列   | queue  | - | http://cs101.openjudge.cn/practice/05902/       |
+| 0119 | 02746: 约瑟夫问题   | queue  | - | http://cs101.openjudge.cn/practice/02746/       |
 | 0118 | 24591:中序表达式转后序表达式   | stack  | - | http://cs101.openjudge.cn/practice/24591/       |
 | 0118 | 24588: 后序表达式求值   | stack  | - | http://cs101.openjudge.cn/practice/24588/       |
 | 0118 | 20.删除链表元素   | linked-list  | - | http://dsbpython.openjudge.cn/dspythonbook/P0020/       |
