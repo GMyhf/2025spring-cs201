@@ -4,7 +4,7 @@
 Updated 1816 GMT+8 Jan 14 2025.
 2024 spring, Complied by Hongfei Yan
 
-说明：为了助力大家在下学期的数算课程中取得满分成绩，预计从1月13日持续至2月16日，涵盖北京大学的整个寒假时段，每天3道选练题目。将优先选择来自“LeetCode 热题 100”的练习题。
+说明：为了助力大家在下学期的数算课程中取得满分成绩，预计从1月13日持续至2月16日，涵盖北京大学的整个寒假时段，每天3道选练题目。
 
 题解在：
 [2024fall_LeetCode_problems.md](https://github.com/GMyhf/2024fall-cs101/blob/main/2024fall_LeetCode_problems.md),
