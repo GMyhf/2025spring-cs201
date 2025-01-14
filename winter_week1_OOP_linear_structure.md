@@ -2593,6 +2593,120 @@ class Solution:
 
 http://dsbpython.openjudge.cn/dspythonbook/P0020/
 
+程序填空，删除链表元素
+
+```python
+class Node:
+	def __init__(self, data, next=None):
+		self.data, self.next = data, next
+class LinkList:  #循环链表
+	def __init__(self):
+		self.tail = None
+		self.size = 0
+	def isEmpty(self):
+		return self.size == 0
+	def pushFront(self,data):
+		nd = Node(data)
+		if self.tail == None:
+			self.tail = nd
+			nd.next = self.tail
+		else:
+			nd.next = self.tail.next
+			self.tail.next = nd
+		self.size += 1
+	def pushBack(self,data):
+		self.pushFront(data)
+		self.tail = self.tail.next
+	def popFront(self):
+		if self.size == 0:
+			return None
+		else:
+			nd = self.tail.next
+			self.size -= 1
+			if self.size == 0:
+				self.tail = None
+			else:
+				self.tail.next = nd.next
+		return nd.data
+	def printList(self):
+		if self.size > 0:
+			ptr = self.tail.next
+			while True:
+				print(ptr.data,end = " ")
+				if ptr == self.tail:
+					break
+				ptr = ptr.next
+			print("")
+
+	def remove(self,data):
+// 在此处补充你的代码
+t = int(input())
+for i in range(t):
+	lst = list(map(int,input().split()))
+	lkList = LinkList()
+	for x in lst:
+		lkList.pushBack(x)
+	lst = list(map(int,input().split()))
+	for a in lst:
+		result = lkList.remove(a)
+		if result == True:
+			lkList.printList()
+		elif result == False:
+			print("NOT FOUND")
+		else:
+			print("EMPTY")
+	print("----------------")
+```
+
+输入
+
+第一行为整数t，表示有t组数据。
+每组数据2行
+第一行是若干个整数，构成了一张链表
+第二行是若干整数，是要从链表中删除的数。
+
+输出
+
+对每组数据第二行中的每个整数x:
+
+1) 如果链表已经为空，则输出 "EMPTY"
+2) 如果x在链表中，则将其删除，并且输出删除后的链表。如果删除后链表为空，则没输出。如果有重复元素，则删前面的。
+
+3）如果链表不为空且x不在链表中，则输出"NOT FOUND"
+
+样例输入
+
+```
+2
+1 2 3
+3 2 2 9 5 1 1 4
+1
+9 88 1 23
+```
+
+样例输出
+
+```
+1 2 
+1 
+NOT FOUND
+NOT FOUND
+NOT FOUND
+EMPTY
+EMPTY
+----------------
+NOT FOUND
+NOT FOUND
+EMPTY
+----------------
+```
+
+来源
+
+郭炜
+
+
+
 程序填空题目，需要掌握“补充代码”题型，例如写出某个函数的实现代码，如 def remove(self,data):
 
 ```python
@@ -2707,6 +2821,78 @@ EMPTY
 ### 示例4.插入链表元素
 
 http://dsbpython.openjudge.cn/2024allhw/004/
+
+很遗憾，一意孤行的Y君没有理会你告诉他的饮食计划并很快吃完了他的粮食储备。
+但好在他捡到了一张校园卡，凭这个他可以偷偷混入领取物资的队伍。
+为了不被志愿者察觉自己是只猫，他想要插到队伍的最中央。（插入后若有偶数个元素则选取靠后的位置）
+于是他又找到了你，希望你能帮他修改志愿者写好的代码，在发放顺序的中间加上他的学号6。
+你虽然不理解志愿者为什么要用链表来写这份代码，但为了不被发现只得在此基础上进行修改：
+
+```python
+class Node:
+	def __init__(self, data, next=None):
+		self.data, self.next = data, next
+
+class LinkList:
+	def __init__(self):
+		self.head = None
+
+	def initList(self, data):
+		self.head = Node(data[0])
+		p = self.head
+		for i in data[1:]:
+			node = Node(i)
+			p.next = node
+			p = p.next
+
+	def insertCat(self):
+// 在此处补充你的代码
+########            
+	def printLk(self):
+		p = self.head
+		while p:
+			print(p.data, end=" ")
+			p = p.next
+		print()
+
+lst = list(map(int,input().split()))
+lkList = LinkList()
+lkList.initList(lst)
+lkList.insertCat()
+lkList.printLk()
+```
+
+输入
+
+一行，若干个整数，组成一个链表。
+
+输出
+
+一行，在链表中间位置插入数字6后得到的新链表
+
+样例输入
+
+```
+### 样例输入1
+8 1 0 9 7 5
+### 样例输入2
+1 2 3
+```
+
+样例输出
+
+```
+### 样例输出1
+8 1 0 6 9 7 5
+### 样例输出2
+1 2 6 3
+```
+
+来源
+
+Lou Yuke
+
+
 
 程序填空题目，需要掌握“补充代码”题型，例如写出某个函数的实现代码，如 def insertCat(self):
 
