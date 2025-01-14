@@ -1,10 +1,10 @@
 ## cs201数算（计算机基础2）2025pre每日选做
 <mark>https://github.com/GMyhf/2025spring-cs201/blob/main/pre_problem_list_2025spring.md</mark>
 
-Updated 1816 GMT+8 Jan 14 2025.
+Updated 0002 GMT+8 Jan 15 2025.
 2024 spring, Complied by Hongfei Yan
 
-说明：为了助力大家在下学期的数算课程中取得满分成绩，预计从1月13日持续至2月16日，涵盖北京大学的整个寒假时段，每天3个题目。
+说明：为了助力大家在下学期的数算课程中取得满分成绩，预计从1月13日至2月16日，涵盖整个寒假时段，每天3个题目。
 
 题解在：
 [2024fall_LeetCode_problems.md](https://github.com/GMyhf/2024fall-cs101/blob/main/2024fall_LeetCode_problems.md),
@@ -25,7 +25,7 @@ Updated 1816 GMT+8 Jan 14 2025.
 | 0116 | 03704: 括号匹配问题   | stack  | - | http://cs101.openjudge.cn/practice/03704       |
 | 0116 | sy295: 可能的出栈序列 | stack    | Medium | https://sunnywhy.com/sfbj/7/1/295       |
 | 0116 | sy294: 合法的出栈序列 | stack    | Easy | https://sunnywhy.com/sfbj/7/1/294       |
-| 0115 | 27653:Fraction类  | OOP        | - | http://cs101.openjudge.cn/practice/27653       |
+| 0115 | 27653:Fraction类  | OOP        | - | http://cs101.openjudge.cn/25dsapre/27653       |
 | 0115 | sy293: 栈的操作序列 | stack    | Easy | https://sunnywhy.com/sfbj/7/1/293       |
 | 0115 | 118.杨辉三角    | dp            | Easy | https://leetcode.cn/problems/pascals-triangle/       |
 | 0114 | 01321: 棋盘问题 | backtracking  | - | http://cs101.openjudge.cn/25dsapre/01321/       |
