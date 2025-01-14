@@ -1,7 +1,7 @@
 ## cs201数算（计算机基础2）2025pre每日选做
 <mark>https://github.com/GMyhf/2025spring-cs201/blob/main/pre_problem_list_2025spring.md</mark>
 
-Updated 1301 GMT+8 Jan 14 2025.
+Updated 1816 GMT+8 Jan 14 2025.
 2024 spring, Complied by Hongfei Yan
 
 说明：为了助力大家在下学期的数算课程中取得满分成绩，预计从1月13日持续至2月16日，涵盖北京大学的整个寒假时段，每天3道选练题目。将优先选择来自“LeetCode 热题 100”的练习题。
@@ -13,7 +13,9 @@ Updated 1301 GMT+8 Jan 14 2025.
 
 | 日期 | 问题编号与名称  | 标签          | 难度 | 链接                                                 |
 | ---- | --------------- | ------------- | ---- | ---------------------------------------------------- |
-| 0116 | sy296: 后缀表达式 | stack    | Easy | https://sunnywhy.com/sfbj/7/1/296       |
+| 0117 | sy296: 后缀表达式 | stack    | Easy | https://sunnywhy.com/sfbj/7/1/296       |
+| 0117 | 4.插入链表元素   | linked-list  | - | http://dsbpython.openjudge.cn/dspythonbook/P004/       |
+| 0116 | 20.删除链表元素   | linked-list  | - | http://dsbpython.openjudge.cn/dspythonbook/P0020/       |
 | 0116 | sy295: 可能的出栈序列 | stack    | Medium | https://sunnywhy.com/sfbj/7/1/295       |
 | 0116 | sy294: 合法的出栈序列 | stack    | Easy | https://sunnywhy.com/sfbj/7/1/294       |
 | 0115 | sy293: 栈的操作序列 | stack    | Easy | https://sunnywhy.com/sfbj/7/1/293       |
