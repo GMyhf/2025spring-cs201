@@ -29,7 +29,7 @@ Updated 0038 GMT+8 Jan 16 2025.
 | 0115 | sy293: 栈的操作序列 | stack    | Easy | https://sunnywhy.com/sfbj/7/1/293       |
 | 0115 | 118.杨辉三角    | dp            | Easy | https://leetcode.cn/problems/pascals-triangle/       |
 | 0114 | 01321: 棋盘问题 | backtracking  | - | http://cs101.openjudge.cn/25dsapre/01321/       |
-| 0114 | 234.回文链表   | linked-list            | Easy | https://leetcode.cn/problems/palindrome-linked-list/       |
+| 0114 | 234.回文链表   | linked-list,快慢指针 | Easy | https://leetcode.cn/problems/palindrome-linked-list/       |
 | 0114 | 206.反转链表   | linked-list            | Easy | https://leetcode.cn/problems/reverse-linked-list/       |
 | 0113 | 05345: 位查询 | implementation | - | http://cs101.openjudge.cn/25dsapre/05345/ |
 | 0113 | 35.搜索插入位置 | binary search | Easy | https://leetcode.cn/problems/search-insert-position/ |
