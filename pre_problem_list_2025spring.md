@@ -13,6 +13,7 @@ Updated 2041 GMT+8 Jan 16 2025.
 
 | 日期 | 问题编号与名称  | 标签          | 难度 | 链接                                                 |
 | ---- | --------------- | ------------- | ---- | ---------------------------------------------------- |
+| 0121 | 02299: Ultra-QuickSort   | merge sort  | Tough | http://cs101.openjudge.cn/practice/02299/       |
 | 0121 | sy322: 跨步迷宫 | bfs    | Medium | https://sunnywhy.com/sfbj/8/2/322    |
 | 0121 | sy323: 字符迷宫 | bfs    | Medium | https://sunnywhy.com/sfbj/8/2/323    |
 | 0120 | 03151: Pots   | bfs  | - | http://cs101.openjudge.cn/practice/03151/       |
