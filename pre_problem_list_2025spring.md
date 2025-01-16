@@ -13,7 +13,10 @@ Updated 2041 GMT+8 Jan 16 2025.
 
 | 日期 | 问题编号与名称  | 标签          | 难度 | 链接                                                 |
 | ---- | --------------- | ------------- | ---- | ---------------------------------------------------- |
+| 0121 | sy322: 跨步迷宫 | bfs    | Medium | https://sunnywhy.com/sfbj/8/2/322    |
+| 0121 | sy323: 字符迷宫 | bfs    | Medium | https://sunnywhy.com/sfbj/8/2/323    |
 | 0120 | 03151: Pots   | bfs  | - | http://cs101.openjudge.cn/practice/03151/       |
+| 0120 | sy320: 迷宫问题 | bfs    | Medium | https://sunnywhy.com/sfbj/8/2/320    |
 | 0120 | 05902: 双端队列   | queue  | - | http://cs101.openjudge.cn/practice/05902/       |
 | 0119 | 04067: 回文数字   | queue  | - | http://cs101.openjudge.cn/practice/04067/       |
 | 0119 | 02746: 约瑟夫问题   | queue  | - | http://cs101.openjudge.cn/practice/02746/       |
