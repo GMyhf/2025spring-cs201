@@ -1,7 +1,7 @@
 ## cs201数算（计算机基础2）2025pre每日选做
 <mark>https://github.com/GMyhf/2025spring-cs201/blob/main/pre_problem_list_2025spring.md</mark>
 
-Updated 1922 GMT+8 Jan 16 2025.
+Updated 2041 GMT+8 Jan 16 2025.
 2025 winter, Complied by Hongfei Yan
 
 说明：助力大家在下学期的数算课程中取得满分成绩，从1月13日至2月16日，涵盖整个寒假时段，每天3个题目。
@@ -13,6 +13,7 @@ Updated 1922 GMT+8 Jan 16 2025.
 
 | 日期 | 问题编号与名称  | 标签          | 难度 | 链接                                                 |
 | ---- | --------------- | ------------- | ---- | ---------------------------------------------------- |
+| 0120 | 03151: Pots   | bfs  | - | http://cs101.openjudge.cn/practice/03151/       |
 | 0120 | 05902: 双端队列   | queue  | - | http://cs101.openjudge.cn/practice/05902/       |
 | 0119 | 04067: 回文数字   | queue  | - | http://cs101.openjudge.cn/practice/04067/       |
 | 0119 | 02746: 约瑟夫问题   | queue  | - | http://cs101.openjudge.cn/practice/02746/       |
