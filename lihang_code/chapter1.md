@@ -153,7 +153,7 @@ Logs:
 
 
 
-chapter1.py代码
+# chapter1.py代码
 
 ```python
 import numpy as np
