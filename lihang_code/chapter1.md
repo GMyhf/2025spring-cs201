@@ -251,3 +251,8 @@ plt.show()
 > - `fit_func(p_lsq_regularization[0], x_points)` returns the corresponding y-values based on the fitted polynomial parameters `p_lsq_regularization[0]`.
 >
 > So, when you plot `x_points` against `fit_func(p_lsq_regularization[0], x_points)`, each x-value in `x_points` has a corresponding y-value in the output of `fit_func`.
+
+
+
+<img src="https://raw.githubusercontent.com/GMyhf/img/main/img/image-20250117221513978.png" alt="image-20250117221513978" style="zoom: 67%;" />
+
