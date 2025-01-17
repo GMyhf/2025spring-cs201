@@ -1,7 +1,7 @@
 ## cs201数算（计算机基础2）2025pre每日选做
 <mark>https://github.com/GMyhf/2025spring-cs201/blob/main/pre_problem_list_2025spring.md</mark>
 
-Updated 0756 GMT+8 Jan 17 2025.
+Updated 0040 GMT+8 Jan 18 2025.
 2025 winter, Complied by Hongfei Yan
 
 题解在：
@@ -22,9 +22,9 @@ Updated 0756 GMT+8 Jan 17 2025.
 | 0120 | sy320: 迷宫问题 | bfs    | Medium | https://sunnywhy.com/sfbj/8/2/320    |
 | 0120 | 05902: 双端队列   | queue  | - | http://cs101.openjudge.cn/practice/05902/       |
 | 0119 | 04067: 回文数字   | queue  | - | http://cs101.openjudge.cn/practice/04067/       |
-| 0119 | 02746: 约瑟夫问题   | queue  | - | http://cs101.openjudge.cn/practice/02746/       |
 | 0119 | 19.删除链表的倒数第N个结点   | 快慢指针 | Easy | https://leetcode.cn/problems/remove-nth-node-from-end-of-list/       |
-| 0118 | 24591:中序表达式转后序表达式   | stack  | 必须会 | http://cs101.openjudge.cn/practice/24591/       |
+| 0119 | 24591:中序表达式转后序表达式   | stack  | 必须会 | http://cs101.openjudge.cn/practice/24591/       |
+| 0118 | 02746: 约瑟夫问题   | queue  | - | http://cs101.openjudge.cn/25dsapre/02746/       |
 | 0118 | 24588: 后序表达式求值   | stack  | - | http://cs101.openjudge.cn/practice/24588/       |
 | 0118 | 20.删除链表元素   | linked-list  | - | http://dsbpython.openjudge.cn/dspythonbook/P0020/       |
 | 0117 | 02734: 十进制到八进制   | stack  | - | http://cs101.openjudge.cn/25dsapre/02734/       |
