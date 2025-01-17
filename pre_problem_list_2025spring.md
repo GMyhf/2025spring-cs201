@@ -13,8 +13,9 @@ Updated 0756 GMT+8 Jan 17 2025.
 
 | 日期 | 问题编号与名称  | 标签          | 难度 | 链接                                                 |
 | ---- | --------------- | ------------- | ---- | ---------------------------------------------------- |
-| 0122 | 04137: 最小新整数   | monotonous-stack  |  | http://cs101.openjudge.cn/practice/04137/       |
-| 0122 | 27925: 小组队列   | queue  |  | http://cs101.openjudge.cn/practice/27925/       |
+| 0123 | 3095.或值至少K的最短子数组I   | 滑动窗口 | - | https://leetcode.cn/problems/shortest-subarray-with-or-at-least-k-i/       |
+| 0122 | 04137: 最小新整数   | monotonous-stack  | - | http://cs101.openjudge.cn/practice/04137/       |
+| 0122 | 27925: 小组队列   | queue  | - | http://cs101.openjudge.cn/practice/27925/       |
 | 0122 | 155.最小栈   | 辅助栈 | Medium | https://leetcode.cn/problems/min-stack/       |
 | 0121 | 02299: Ultra-QuickSort   | merge sort  | Tough | http://cs101.openjudge.cn/practice/02299/       |
 | 0121 | sy322: 跨步迷宫 | bfs    | Medium | https://sunnywhy.com/sfbj/8/2/322    |
