@@ -54,20 +54,18 @@ https://github.com/GMyhf/2025spring-cs201/blob/main/pre_problem_list_2025spring.
 
 # 2 Logs
 
-《算法笔记》是 晴问算法 http://sunnywhy.com/ 的配套书。还有部分内容计概没有覆盖到，数算继续。
-
-stack, queue, linked-list，属于基本数据结构，容易理解，但是用途非常广泛。
-
-
-
-OJ24591: 中序表达式转后序表达式。是经典算法，必须会。其他熟悉了线性结构后，多数是水题。
-
-OJ02299: Ultra-QuickSort。是典中典，必须掌握。
-
-我们二进制练习的少，这个题目不容易写对。3097.或值至少为K的最短子数组II
+2025/01/17: 我们二进制练习的少，这个题目不容易写对。3097.或值至少为K的最短子数组II
 https://leetcode.cn/problems/shortest-subarray-with-or-at-least-k-ii/
 
+2025/01/16:《算法笔记》是 晴问算法 http://sunnywhy.com/ 的配套书。还有部分内容计概没有覆盖到，数算继续。
 
+2025/01/16: stack, queue, linked-list，属于基本数据结构，容易理解，但是用途非常广泛。
+
+2025/01/15: OJ02299: Ultra-QuickSort。是典中典，必须掌握。
+
+2025/01/14: OJ24591: 中序表达式转后序表达式。是经典算法，必须会。其他熟悉了线性结构后，多数是水题。
+
+2025/01/14: 
 
 1）理教201有180座位，说明教务调整选课人数上限是180。
 
