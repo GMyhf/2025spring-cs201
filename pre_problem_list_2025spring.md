@@ -4,8 +4,6 @@
 Updated 0756 GMT+8 Jan 17 2025.
 2025 winter, Complied by Hongfei Yan
 
-说明：助力大家在下学期的数算课程中取得满分成绩，从1月13日至2月16日，涵盖整个寒假时段，每天3个题目。
-
 题解在：
 [2024fall_LeetCode_problems.md](https://github.com/GMyhf/2024fall-cs101/blob/main/2024fall_LeetCode_problems.md),
 [2024spring_dsa_problems.md](https://github.com/GMyhf/2024spring-cs201/blob/main/2024spring_dsa_problems.md),
