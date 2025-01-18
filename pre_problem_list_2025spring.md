@@ -1,7 +1,7 @@
 ## cs201数算（计算机基础2）2025pre每日选做
 <mark>https://github.com/GMyhf/2025spring-cs201/blob/main/pre_problem_list_2025spring.md</mark>
 
-Updated 0040 GMT+8 Jan 18 2025.
+Updated 0001 GMT+8 Jan 19 2025.
 2025 winter, Complied by Hongfei Yan
 
 题解在：
@@ -21,7 +21,7 @@ Updated 0040 GMT+8 Jan 18 2025.
 | 0120 | 03151: Pots   | bfs  | - | http://cs101.openjudge.cn/practice/03151/       |
 | 0120 | sy320: 迷宫问题 | bfs    | Medium | https://sunnywhy.com/sfbj/8/2/320    |
 | 0120 | 05902: 双端队列   | queue  | - | http://cs101.openjudge.cn/practice/05902/       |
-| 0119 | 04067: 回文数字   | queue  | - | http://cs101.openjudge.cn/practice/04067/       |
+| 0119 | 04067: 回文数字   | queue  | - | http://cs101.openjudge.cn/25dsapre/04067/       |
 | 0119 | 19.删除链表的倒数第N个结点   | 快慢指针 | Easy | https://leetcode.cn/problems/remove-nth-node-from-end-of-list/       |
 | 0119 | 24591:中序表达式转后序表达式   | stack  | 必须会 | http://cs101.openjudge.cn/practice/24591/       |
 | 0118 | 02746: 约瑟夫问题   | queue  | - | http://cs101.openjudge.cn/25dsapre/02746/       |
