@@ -7,7 +7,8 @@ Updated 1436 GMT+8 Jan 19 2025.
 
 Logs:
 
-结合AI把程序每一句都看懂。
+> 结合AI把程序每一句都看懂。算法的收敛性证明，感知机学习算法的对偶形式，两块跳过了。
+>
 
 
 
@@ -219,6 +220,65 @@ plt.show()
 
 
 
-也可以直接用scikit-learn包中的 Perceptron.
+也可以直接用scikit-learn包中的 Perceptron，代码 scikit-learn_perceptron.py
 
-这个链接有代码，https://github.com/fengdu78/lihang-code/
+```python
+import sklearn
+from sklearn.linear_model import Perceptron
+
+print(sklearn.__version__)
+
+import pandas as pd
+import numpy as np
+from sklearn.datasets import load_iris
+import matplotlib.pyplot as plt
+
+# Load the iris dataset
+iris = load_iris()
+df = pd.DataFrame(iris.data, columns=iris.feature_names)
+df['label'] = iris.target
+
+df.columns = [
+    'sepal length', 'sepal width', 'petal length', 'petal width', 'label'
+]
+
+data = np.array(df.iloc[:100, [0, 1, -1]])  # 取前100行，第0、1、-1列
+X, y = data[:, :2], data[:, -1]  # X为前两列，y为最后一列
+y = np.array([1 if i == 1 else -1 for i in y])  # 将标签转换为1和-1
+
+
+clf = Perceptron(fit_intercept=True,
+                 max_iter=1000,
+                 shuffle=True)
+clf.fit(X, y)
+
+# Weights assigned to the features.
+print(clf.coef_)
+
+# 画布大小
+plt.figure(figsize=(10,10))
+
+# 中文标题
+#plt.rcParams['font.sans-serif']=['SimHei']
+#plt.rcParams['axes.unicode_minus'] = False
+plt.rcParams['font.sans-serif'] = ['Arial Unicode MS']  # 使用系统自带的中文字体
+plt.rcParams['axes.unicode_minus'] = False  # 正常显示负号
+plt.title('鸢尾花线性数据示例')
+
+plt.scatter(data[:50, 0], data[:50, 1], c='b', label='Iris-setosa',)
+plt.scatter(data[50:100, 0], data[50:100, 1], c='orange', label='Iris-versicolor')
+
+# 画感知机的线
+x_ponits = np.arange(4, 8)
+y_ = -(clf.coef_[0][0]*x_ponits + clf.intercept_)/clf.coef_[0][1]
+plt.plot(x_ponits, y_)
+
+# 其他部分
+plt.legend()  # 显示图例
+plt.grid(False)  # 不显示网格
+plt.xlabel('sepal length')
+plt.ylabel('sepal width')
+plt.legend()
+plt.show()
+```
+
