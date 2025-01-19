@@ -1,7 +1,7 @@
 ## cs201数算（计算机基础2）2025pre每日选做
 <mark>https://github.com/GMyhf/2025spring-cs201/blob/main/pre_problem_list_2025spring.md</mark>
 
-Updated 0001 GMT+8 Jan 19 2025.
+Updated 0009 GMT+8 Jan 20 2025.
 2025 winter, Complied by Hongfei Yan
 
 题解在：
@@ -18,7 +18,7 @@ Updated 0001 GMT+8 Jan 19 2025.
 | 0121 | 02299: Ultra-QuickSort   | merge sort  | Tough | http://cs101.openjudge.cn/practice/02299/       |
 | 0121 | sy322: 跨步迷宫 | bfs    | Medium | https://sunnywhy.com/sfbj/8/2/322    |
 | 0121 | sy323: 字符迷宫 | bfs    | Medium | https://sunnywhy.com/sfbj/8/2/323    |
-| 0120 | 03151: Pots   | bfs  | - | http://cs101.openjudge.cn/practice/03151/       |
+| 0120 | 03151: Pots   | bfs  | - | http://cs101.openjudge.cn/25dsapre/03151/       |
 | 0120 | sy320: 迷宫问题 | bfs    | Medium | https://sunnywhy.com/sfbj/8/2/320    |
 | 0120 | 05902: 双端队列   | queue  | - | http://cs101.openjudge.cn/practice/05902/       |
 | 0119 | 04067: 回文数字   | queue  | - | http://cs101.openjudge.cn/25dsapre/04067/       |
