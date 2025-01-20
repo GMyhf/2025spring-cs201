@@ -1,6 +1,6 @@
 # DSA-假期Week2 树算
 
-Updated 2256 GMT+8 Apr 19, 2025
+Updated 2256 GMT+8 Apr 20, 2025
 
 2025 winter, Complied by Hongfei Yan
 
@@ -10,7 +10,7 @@ Updated 2256 GMT+8 Apr 19, 2025
 >
 > 1）一包括树的相关概念、表示方法，二讲树的构建/解析、遍历、哈夫曼算法，三讲堆实现、AVL实现、并查集。
 >
-> 2）此md文件有目录，思路是原理学习+编程题目实际
+> 2）md文件有目录，思路是原理学习+编程题目实际
 
 
 
@@ -107,17 +107,17 @@ class TreeNode:
 
 
 
-> Python数据结构与算法分析 这本书，树这一章没有讲generic tree，直接就到binary tree了。我把课件重构一下，捋清楚。之前感觉它的 算法分析 那章不好，现在感觉树这章也差强人意。
->
-> 写的比较随意，树有个重要的应用，文本压缩——哈夫曼编码。在该书中，搜不到“哈夫曼”，也搜不到"Huffman"
+> 《Python数据结构与算法分析》 这本书，树这一章没有讲generic tree，直接就到binary tree了。我把课件重构一下，捋清楚。之前感觉它的 算法分析 那章不好，现在感觉树这章也差强人意，写的比较随意。树有个重要的应用，文本压缩——哈夫曼编码。在该书中，搜不到“哈夫曼”，也搜不到"Huffman"
 >
 > 
 >
-> 有没有直接的理解，就是比如给我一棵树，我可以直接用遍历方法给出中序和后序?
+> Q: 有没有直接的理解，就是比如给我一棵树，我可以直接用遍历方法给出中序和后序?
 >
 > 前序遍历就是dfs序列，后序的反序是不是就是原树优先走右边的dfs。
 >
 > 
+>
+> 【同学作业总结】：
 >
 > 树状数组惨遭内存超出，现学分治依旧遥遥领先。
 > 合法出栈序列简单模拟，树节无树求二叉树深度。
@@ -6547,9 +6547,286 @@ Our discussion so far has led us to the conclusion that the Trie data structure 
 
 
 
-## C KD树（K Dimensional tree）
+## C $kd$ 树（K Dimensional tree）
 
-to do
+$k$近邻法的实现：$kd$树
+
+$k$ 近邻算法：给定一个训练数据集，对新的输入实例，在训练数据集中找到与该实例最邻近的 $k$ 个实例，这 $k$ 个实例的多数属于某个类，就把该输入实例分为这个类。
+
+> **sklearn.neighbors.KNeighborsClassifier**
+>
+> - n_neighbors: 临近点个数
+>
+> - p: 距离度量
+>
+> - algorithm: 近邻算法，可选{'auto', 'ball_tree', 'kd_tree', 'brute'}
+>
+> - weights: 确定近邻的权重
+>
+>   
+
+$kd$ 树是一种对k维空间中的实例点进行存储以便对其进行快速检索的树形数据结构。
+
+$kd$ 树是二叉树，表示对 $k$ 维空间的一个划分（partition）。构造 $kd$ 树相当于不断地用垂直于坐标轴的超平面将 $k$ 维空间切分，构成一系列的k维超矩形区域。$kd$ 树的每个结点对应于一个$k$维超矩形区域。
+
+构造$kd$树的方法如下：
+
+构造根结点，使根结点对应于$k$维空间中包含所有实例点的超矩形区域；通过下面的递归方法，不断地对$k$维空间进行切分，生成子结点。在超矩形区域（结点）上选择一个坐标轴和在此坐标轴上的一个切分点，确定一个超平面，这个超平面通过选定的切分点并垂直于选定的坐标轴，将当前超矩形区域切分为左右两个子区域 （子结点）；这时，实例被分到两个子区域。这个过程直到子区域内没有实例时终止（终止时的结点为叶结点）。在此过程中，将实例保存在相应的结点上。
+
+通常，依次选择坐标轴对空间切分，选择训练实例点在选定坐标轴上的中位数 （median）为切分点，这样得到的$kd$树是平衡的。注意，平衡的$kd$树搜索时的效率未必是最优的。
+
+
+
+### C.1 构造平衡$kd$树算法
+
+输入：$k$维空间数据集$T＝\{x1，x2,…,xN\}$，
+
+其中$x_{i}=\left(x_{i}^{(1)}, x_{i}^{(2)}, \cdots, x_{i}^{(k)}\right)^{\mathrm{T}}$
+
+输出：$kd$树。
+
+（1）开始：构造根结点，根结点对应于包含T的k维空间的超矩形区域。
+
+选择 $x^{(1)}$ 为坐标轴，以T中所有实例的 $x^{(1)}$ 坐标的中位数为切分点，将根结点对应的超矩形区域切分为两个子区域。切分由通过切分点并与坐标轴 $x^{(1)}$ 垂直的超平面实现。
+
+由根结点生成深度为1的左、右子结点：左子结点对应坐标 $x^{(1)}$ 小于切分点的子区域， 右子结点对应于坐标 $x^{(1)}$ 大于切分点的子区域。
+
+将落在切分超平面上的实例点保存在根结点。
+
+（2）重复：对深度为j的结点，选择 $x^{(1)}$ 为切分的坐标轴，$l＝j(modk)+1$，以该结点的区域中所有实例的$x^{(1)}$坐标的中位数为切分点，将该结点对应的超矩形区域切分为两个子区域。切分由通过切分点并与坐标轴x(1)垂直的超平面实现。
+
+由该结点生成深度为 $j+1$ 的左、右子结点：左子结点对应坐标 $x^{(1)}$ 小于切分点的子区域，右子结点对应坐标 $x^{(1)}$ 大于切分点的子区域。
+
+将落在切分超平面上的实例点保存在该结点。
+
+（3）直到两个子区域没有实例存在时停止。从而形成 $kd$ 树的区域划分。
+
+
+
+> 【$kd$ 树是如何构造的？-哔哩哔哩】 https://b23.tv/KdKiJUb
+
+
+
+### C.2 搜索$kd$树
+
+**最近邻搜索**
+
+`find_nearest` 函数：
+
+- 递归搜索 $kd$ 树，寻找与目标点最近的样本点。
+- 核心逻辑：
+  1. **递归到叶节点**：确定目标点所在的子空间。
+  2. **更新最近邻信息**：从叶节点向上回溯，更新最近邻点和距离。
+  3. 剪枝优化：判断超球体（目标点为球心，当前最近距离为半径）是否与分割超平面相交。
+     - 如果不相交，则无需访问另一子空间。
+  4. **检查另一子空间**：如果超球体与分割超平面相交，递归检查另一子空间，更新最近邻信息。
+
+
+
+> 【$kd$ 树的搜索过程-哔哩哔哩】 https://b23.tv/xzctdn1
+
+
+
+### 示例代码 sklearn_kd_tree_demo.py
+
+```python
+#!/usr/bin/env python
+# encoding: utf-8
+"""
+@author: HuRuiFeng
+@file: kd_tree_demo.py
+@time: 2021/8/3 17:08
+@project: statistical-learning-method-solutions-manual
+@desc: 习题3.2 kd树的构建与求最近邻点
+"""
+
+import numpy as np
+from sklearn.neighbors import KDTree
+
+# 构造例题3.2的数据集
+train_data = np.array([[2, 3],
+                       [5, 4],
+                       [9, 6],
+                       [4, 7],
+                       [8, 1],
+                       [7, 2]])
+# （1）使用sklearn的KDTree类，构建平衡kd树
+# 设置leaf_size为2，表示平衡树
+tree = KDTree(train_data, leaf_size=2)
+
+# （2）使用tree.query方法，设置k=1，查找(3, 4.5)的最近邻点
+# dist表示与最近邻点的距离，ind表示最近邻点在train_data的位置
+dist, ind = tree.query(np.array([[3, 4.5]]), k=1)
+node_index = ind[0]
+
+# 得到最近邻点
+x1 = train_data[node_index][0][0]
+x2 = train_data[node_index][0][1]
+print("x点的最近邻点是({0}, {1})".format(x1, x2))
+# 输出结果为：x点的最近邻点是(2, 3)
+```
+
+
+
+### 示例代码 my_kd_tree.py
+
+```python
+from math import sqrt
+from collections import namedtuple
+import time
+from random import random
+
+# 定义一个namedtuple,分别存放最近坐标点、最近距离和访问过的节点数
+result = namedtuple("Result_tuple",
+                    "nearest_point  nearest_dist  nodes_visited")
+
+
+# kd-tree每个结点中主要包含的数据结构如下
+class KdNode:
+    def __init__(self, dom_elt, split, left, right):
+        self.dom_elt = dom_elt  # k维向量节点(k维空间中的一个样本点)
+        self.split = split  # 整数（进行分割维度的序号）
+        self.left = left  # 该结点分割超平面左子空间构成的kd-tree
+        self.right = right  # 该结点分割超平面右子空间构成的kd-tree
+
+
+class KdTree:
+    def __init__(self, data):
+        k = len(data[0])  # 数据维度
+
+        def create_node(split, data_set):  # 按第split维划分数据集,创建KdNode
+            if not data_set:  # 数据集为空
+                return None
+
+            data_set.sort(key=lambda x: x[split])  # 按要进行分割的那一维数据排序
+            split_pos = len(data_set) // 2  # 整数除法得到中间位置
+            median = data_set[split_pos]  # 中位数分割点
+            split_next = (split + 1) % k  # cycle coordinates
+
+            # 递归的创建kd树
+            return KdNode(
+                median,
+                split,
+                create_node(split_next, data_set[:split_pos]),  # 创建左子树
+                create_node(split_next, data_set[split_pos + 1:]))  # 创建右子树
+
+        self.root = create_node(0, data)  # 从第0维分量开始构建kd树,返回根节点
+
+
+# KDTree的前序遍历
+def preorder(root):
+    print(root.dom_elt)
+    if root.left:  # 节点不为空
+        preorder(root.left)
+    if root.right:
+        preorder(root.right)
+
+
+# 对构建好的kd树进行搜索，寻找与目标点最近的样本点：
+
+
+def find_nearest(tree, point):
+    k = len(point)  # 数据维度
+
+    def travel(kd_node, target, max_dist):
+        if kd_node is None:
+            return result([0] * k, float("inf"), 0)
+
+        nodes_visited = 1
+
+        s = kd_node.split  # 进行分割的维度
+        pivot = kd_node.dom_elt  # 进行分割的“轴”
+
+        if target[s] <= pivot[s]:  # 如果目标点第s维小于分割轴的对应值(目标离左子树更近)
+            nearer_node = kd_node.left  # 下一个访问节点为左子树根节点
+            further_node = kd_node.right  # 同时记录下右子树
+        else:  # 目标离右子树更近
+            nearer_node = kd_node.right  # 下一个访问节点为右子树根节点
+            further_node = kd_node.left
+
+        temp1 = travel(nearer_node, target, max_dist)  # 进行遍历找到包含目标点的区域
+
+        nearest = temp1.nearest_point  # 以此叶结点作为“当前最近点”
+        dist = temp1.nearest_dist  # 更新最近距离
+
+        nodes_visited += temp1.nodes_visited
+
+        if dist < max_dist:
+            max_dist = dist  # 最近点将在以目标点为球心，max_dist为半径的超球体内
+
+        temp_dist = abs(pivot[s] - target[s])  # 第s维上目标点与分割超平面的距离
+        if max_dist < temp_dist:  # 判断超球体是否与超平面相交
+            return result(nearest, dist, nodes_visited)  # 不相交则可以直接返回，不用继续判断
+
+        # ----------------------------------------------------------------------
+        # 计算目标点与分割点的欧氏距离
+        temp_dist = sqrt(sum((p1 - p2) ** 2 for p1, p2 in zip(pivot, target)))
+
+        if temp_dist < dist:  # 如果“更近”
+            nearest = pivot  # 更新最近点
+            dist = temp_dist  # 更新最近距离
+            max_dist = dist  # 更新超球体半径
+
+        # 检查另一个子结点对应的区域是否有更近的点
+        temp2 = travel(further_node, target, max_dist)
+
+        nodes_visited += temp2.nodes_visited
+        if temp2.nearest_dist < dist:  # 如果另一个子结点内存在更近距离
+            nearest = temp2.nearest_point  # 更新最近点
+            dist = temp2.nearest_dist  # 更新最近距离
+
+        return result(nearest, dist, nodes_visited)
+
+    return travel(tree.root, point, float("inf"))  # 从根节点开始递归
+
+
+data = [[2, 3], [5, 4], [9, 6], [4, 7], [8, 1], [7, 2]]
+kd = KdTree(data)
+preorder(kd.root)
+"""
+[7, 2]
+[5, 4]
+[2, 3]
+[4, 7]
+[9, 6]
+[8, 1]
+"""
+
+ret = find_nearest(kd, [3, 4.5])
+print(ret)
+# Result_tuple(nearest_point=[2, 3], nearest_dist=1.8027756377319946, nodes_visited=4)
+
+# 产生一个k维随机向量，每维分量值在0~1之间
+def random_point(k):
+    return [random() for _ in range(k)]
+
+
+# 产生n个k维随机向量
+def random_points(k, n):
+    return [random_point(k) for _ in range(n)]
+
+
+N = 400000
+# 在开始时记录进程时间
+start_cpu_time = time.process_time()
+
+kd2 = KdTree(random_points(3, N))  # 构建包含四十万个3维空间样本点的kd树
+ret2 = find_nearest(kd2, [0.1, 0.5, 0.8])  # 四十万个样本点中寻找离目标最近的点
+
+# 在结束时再次记录进程时间
+end_cpu_time = time.process_time()
+
+# 计算并打印所用的CPU时间
+elapsed_cpu_time = end_cpu_time - start_cpu_time
+print(f"Elapsed CPU time: {elapsed_cpu_time:0.4f} seconds")
+
+print(ret2)
+# Elapsed CPU time: 3.9399 seconds
+# Result_tuple(nearest_point=[0.09951475212182137, 0.4971758210372218, 0.8019299872473542], nearest_dist=0.0034548955254863362, nodes_visited=46)
+
+```
+
+
 
 
 
