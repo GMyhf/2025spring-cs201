@@ -24,7 +24,7 @@ Logs:
 
 
 
-# KNearestNeighbors.py
+# k_neighbors_classifier.py
 
 ```python
 import math
@@ -178,6 +178,18 @@ print('sklearn model score: {}'.format(clf_sk.score(X_test, y_test)))
 
 # kd树
 
+### sklearn.neighbors.KNeighborsClassifier
+
+- n_neighbors: 临近点个数
+
+- p: 距离度量
+
+- algorithm: 近邻算法，可选{'auto', 'ball_tree', 'kd_tree', 'brute'}
+
+- weights: 确定近邻的权重
+
+  
+
 **kd**树是一种对k维空间中的实例点进行存储以便对其进行快速检索的树形数据结构。
 
 **kd**树是二叉树，表示对k维空间的一个划分（partition）。构造**kd**树相当于不断地用垂直于坐标轴的超平面将k维空间切分，构成一系列的k维超矩形区域。kd树的每个结点对应于一个k维超矩形区域。
@@ -192,7 +204,7 @@ print('sklearn model score: {}'.format(clf_sk.score(X_test, y_test)))
 
 通常，依次选择坐标轴对空间切分，选择训练实例点在选定坐标轴上的中位数 （median）为切分点，这样得到的**kd**树是平衡的。注意，平衡的**kd**树搜索时的效率未必是最优的。
 
-### 构造平衡kd树算法
+## 构造平衡kd树算法
 
 输入：k维空间数据集$T＝\{x1，x2,…,xN\}$，
 
@@ -218,9 +230,42 @@ print('sklearn model score: {}'.format(clf_sk.score(X_test, y_test)))
 
 
 
-
+## kd_tree_demo.py
 
 ```python
+#!/usr/bin/env python
+# encoding: utf-8
+"""
+@author: HuRuiFeng
+@file: kd_tree_demo.py
+@time: 2021/8/3 17:08
+@project: statistical-learning-method-solutions-manual
+@desc: 习题3.2 kd树的构建与求最近邻点
+"""
 
+import numpy as np
+from sklearn.neighbors import KDTree
+
+# 构造例题3.2的数据集
+train_data = np.array([[2, 3],
+                       [5, 4],
+                       [9, 6],
+                       [4, 7],
+                       [8, 1],
+                       [7, 2]])
+# （1）使用sklearn的KDTree类，构建平衡kd树
+# 设置leaf_size为2，表示平衡树
+tree = KDTree(train_data, leaf_size=2)
+
+# （2）使用tree.query方法，设置k=1，查找(3, 4.5)的最近邻点
+# dist表示与最近邻点的距离，ind表示最近邻点在train_data的位置
+dist, ind = tree.query(np.array([[3, 4.5]]), k=1)
+node_index = ind[0]
+
+# 得到最近邻点
+x1 = train_data[node_index][0][0]
+x2 = train_data[node_index][0][1]
+print("x点的最近邻点是({0}, {1})".format(x1, x2))
+# 输出结果为：x点的最近邻点是(2, 3)
 ```
 
