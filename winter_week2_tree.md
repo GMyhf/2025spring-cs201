@@ -6547,11 +6547,15 @@ Our discussion so far has led us to the conclusion that the Trie data structure 
 
 
 
+## C KD树（K Dimensional tree）
+
+to do
 
 
-## C 树这章程序对应类图
 
-### C.1 生成类图
+## D 树这章程序对应类图
+
+### D.1 生成类图
 
 https://github.com/Yuqiu-Yang/problem_solving_with_algorithms_and_data_structures_using_python
 
@@ -6607,7 +6611,7 @@ brew install Graphviz
 
 
 
-### C.2 在UML类图中，常见的连线和符号
+### D.2 在UML类图中，常见的连线和符号
 
 
 
