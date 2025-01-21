@@ -1,6 +1,6 @@
 # DSA-假期Week2 树算
 
-Updated 2256 GMT+8 Apr 20, 2025
+Updated 2239 GMT+8 Apr 21, 2025
 
 2025 winter, Complied by Hongfei Yan
 
@@ -244,7 +244,7 @@ mindmap
       Node-Based
       Indented Tree
       Adjacency List
-      	*Disjoint Set
+      	Disjoint Set
       	*Trie
       
     Binary Tree{{**Binary Tree**}}
@@ -256,6 +256,7 @@ mindmap
       Binary Search Tree
       AVL Tree
       *Segment Tree
+      *KD Tree
 ```
 
 <center>树的知识图谱</center>
