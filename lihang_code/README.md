@@ -1,9 +1,13 @@
-第一学期计概课程结束，有同学想学习机器学习。可以一起来学习《机器学习方法》李航 著 2022年。  
+第一学期计概课程结束，有同学想对机器学习感兴趣。可以一起来看《机器学习方法》李航 著 2022年。  
 代码参考：https://github.com/fengdu78/lihang-code/
 
 统计学习方法习题解答：https://github.com/datawhalechina/statistical-learning-method-solutions-manual
 
 
+2025/01/21
+李航 的《机器学习方法》这一版，增加了第三篇 深度学习。
+看李沐的深度学习课，https://www.zhihu.com/education/video-course/1647604835598092705
+共132节，现在看到第8节。
 
 2025/01/20 
 
