@@ -21,7 +21,7 @@ Updated 2231 GMT+8 Jan 21 2025.
 | 0123 | 94.二叉树的中序遍历   | - | Easy | https://leetcode.cn/problems/binary-tree-inorder-traversal/       |
 |      |                 | -             | - | tree begin       |
 | 0123 | 3095.或值至少K的最短子数组I   | 滑动窗口 | - | https://leetcode.cn/problems/shortest-subarray-with-or-at-least-k-i/       |
-| 0122 | 04137: 最小新整数   | monotonous-stack  | - | http://cs101.openjudge.cn/practice/04137/       |
+| 0122 | 04137: 最小新整数   | monotonous-stack  | - | http://cs101.openjudge.cn/25dsapre/04137/       |
 | 0122 | 27925: 小组队列   | queue  | - | http://cs101.openjudge.cn/practice/27925/       |
 | 0122 | 155.最小栈   | 辅助栈 | Medium | https://leetcode.cn/problems/min-stack/       |
 | 0121 | 02299: Ultra-QuickSort   | merge sort  | Tough | http://cs101.openjudge.cn/25dsapre/02299/       |
