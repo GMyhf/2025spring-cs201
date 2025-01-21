@@ -12,6 +12,7 @@ Updated 2231 GMT+8 Jan 21 2025.
 | 日期 | 问题编号与名称  | 标签          | 难度 | 链接                                                 |
 | ---- | --------------- | ------------- | ---- | ---------------------------------------------------- |
 | 0125 | 08581: 扩展二叉树   | -  | - | http://cs101.openjudge.cn/practice/08581/       |
+| 0125 | 543.二叉树的直径  | - | Easy | https://leetcode.cn/problems/diameter-of-binary-tree/    |
 | 0125 | 101.对称二叉树  | - | Easy | https://leetcode.cn/problems/symmetric-tree/    |
 | 0124 | 24729: 括号嵌套树   | -  | - | http://cs101.openjudge.cn/practice/24729/       |
 | 0124 | 226.翻转二叉树  | - | Easy | https://leetcode.cn/problems/invert-binary-tree/    |
