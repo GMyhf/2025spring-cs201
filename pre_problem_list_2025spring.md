@@ -1,7 +1,7 @@
 ## cs201数算（计算机基础2）2025pre每日选做
 <mark>https://github.com/GMyhf/2025spring-cs201/blob/main/pre_problem_list_2025spring.md</mark>
 
-Updated 2231 GMT+8 Jan 21 2025.
+Updated 0002 GMT+8 Jan 22 2025.
 2025 winter, Complied by Hongfei Yan
 
 题解在：
@@ -17,7 +17,7 @@ Updated 2231 GMT+8 Jan 21 2025.
 | 0124 | 24729: 括号嵌套树   | -  | - | http://cs101.openjudge.cn/practice/24729/       |
 | 0124 | 226.翻转二叉树  | - | Easy | https://leetcode.cn/problems/invert-binary-tree/    |
 | 0124 | 104.二叉树的最大深度  | - | Easy | https://leetcode.cn/problems/maximum-depth-of-binary-tree/    |
-| 0123 | 27638: 求二叉树的高度和叶子数目   | - | - | http://cs101.openjudge.cn/practice/27638/       |
+| 0123 | 27638: 求二叉树的高度和叶子数目   | - | - | http://cs101.openjudge.cn/25dsapre/27638/       |
 | 0123 | 94.二叉树的中序遍历   | - | Easy | https://leetcode.cn/problems/binary-tree-inorder-traversal/       |
 |      |                 | -             | - | tree begin       |
 | 0123 | 3095.或值至少K的最短子数组I   | 滑动窗口 | - | https://leetcode.cn/problems/shortest-subarray-with-or-at-least-k-i/       |
