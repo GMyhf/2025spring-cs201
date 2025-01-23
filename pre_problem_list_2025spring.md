@@ -1,7 +1,7 @@
 ## cs201数算（计算机基础2）2025pre每日选做
 <mark>https://github.com/GMyhf/2025spring-cs201/blob/main/pre_problem_list_2025spring.md</mark>
 
-Updated 0002 GMT+8 Jan 22 2025.
+Updated 0046 GMT+8 Jan 24 2025.
 2025 winter, Complied by Hongfei Yan
 
 题解在：
@@ -18,8 +18,8 @@ Updated 0002 GMT+8 Jan 22 2025.
 | 0130 | 04078: 实现堆结构 | -  | - | http://cs101.openjudge.cn/practice/04078/      |
 | 0130 | 晴问9.7: 向下调整构建大顶堆 | -  | - | https://sunnywhy.com/sfbj/9/7      |
 | 0129 | 22161: 哈夫曼编码树 | -  | - | http://cs101.openjudge.cn/practice/22161/      |
-| 0129 | 27637: 括号嵌套二叉树 | -  | - | http://cs101.openjudge.cn/practice/27637/      |
 | 0129 | 25145: 猜二叉树（按层次遍历） | -  | - | http://cs101.openjudge.cn/practice/25145/      |
+| 0129 | 24729: 括号嵌套树   | -  | - | http://cs101.openjudge.cn/practice/24729/       |
 | 0128 | 02775: 文件结构“图”  | -  | tough | http://cs101.openjudge.cn/practice/02775/      |
 | 0128 | 22158: 根据二叉树前中序序列建树  | - | - | http://cs101.openjudge.cn/practice/22158/   |
 | 0128 | 24750: 根据二叉树中后序序列建树  | - | - | http://cs101.openjudge.cn/practice/24750/   |
@@ -32,7 +32,7 @@ Updated 0002 GMT+8 Jan 22 2025.
 | 0125 | 08581: 扩展二叉树   | -  | - | http://cs101.openjudge.cn/practice/08581/       |
 | 0125 | 543.二叉树的直径  | - | Easy | https://leetcode.cn/problems/diameter-of-binary-tree/    |
 | 0125 | 101.对称二叉树  | - | Easy | https://leetcode.cn/problems/symmetric-tree/    |
-| 0124 | 24729: 括号嵌套树   | -  | - | http://cs101.openjudge.cn/practice/24729/       |
+| 0124 | 27637: 括号嵌套二叉树 | -  | - | http://cs101.openjudge.cn/25dsapre/27637/      |
 | 0124 | 226.翻转二叉树  | - | Easy | https://leetcode.cn/problems/invert-binary-tree/    |
 | 0124 | 104.二叉树的最大深度  | - | Easy | https://leetcode.cn/problems/maximum-depth-of-binary-tree/    |
 | 0123 | 27638: 求二叉树的高度和叶子数目   | - | - | http://cs101.openjudge.cn/25dsapre/27638/       |
