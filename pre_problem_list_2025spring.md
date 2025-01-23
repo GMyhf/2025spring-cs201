@@ -11,6 +11,24 @@ Updated 0002 GMT+8 Jan 22 2025.
 
 | 日期 | 问题编号与名称  | 标签          | 难度 | 链接                                                 |
 | ---- | --------------- | ------------- | ---- | ---------------------------------------------------- |
+| 0131 | 27625: AVL树至少有几个结点 | -  | - | http://cs101.openjudge.cn/practice/27625/   |
+| 0131 | 05455: 二叉搜索树的层次遍历 | -  | - | http://cs101.openjudge.cn/practice/05455/      |
+| 0131 | 275: 二叉搜索树的遍历 | -  | - | http://cs101.openjudge.cn/practice/22275/      |
+| 0130 | 18164: 剪绳子 | -  | - | http://cs101.openjudge.cn/practice/18164/     |
+| 0130 | 04078: 实现堆结构 | -  | - | http://cs101.openjudge.cn/practice/04078/      |
+| 0130 | 晴问9.7: 向下调整构建大顶堆 | -  | - | https://sunnywhy.com/sfbj/9/7      |
+| 0129 | 22161: 哈夫曼编码树 | -  | - | http://cs101.openjudge.cn/practice/22161/      |
+| 0129 | 27637: 括号嵌套二叉树 | -  | - | http://cs101.openjudge.cn/practice/27637/      |
+| 0129 | 25145: 猜二叉树（按层次遍历） | -  | - | http://cs101.openjudge.cn/practice/25145/      |
+| 0128 | 02775: 文件结构“图”  | -  | tough | http://cs101.openjudge.cn/practice/02775/      |
+| 0128 | 22158: 根据二叉树前中序序列建树  | - | - | http://cs101.openjudge.cn/practice/22158/   |
+| 0128 | 24750: 根据二叉树中后序序列建树  | - | - | http://cs101.openjudge.cn/practice/24750/   |
+| 0127 | 27638: 求二叉树的高度和叶子数目   | -  | - | http://cs101.openjudge.cn/practice/27638/     |
+| 0127 | 25140: 根据后序表达式建立队列表达式  | - |  | http://cs101.openjudge.cn/practice/25140/   |
+| 0127 | 102.二叉树的层序遍历  | - | Easy | https://leetcode.cn/problems/binary-tree-level-order-traversal/   |
+| 0126 | 06646:二叉树的深度   | -  | - | http://cs101.openjudge.cn/practice/06646/     |
+| 0126 | 108.将有序数组转换为二叉搜索树  | - | Easy | https://leetcode.cn/problems/convert-sorted-array-to-binary-search-tree/   |
+| 0126 | 100.相同的树  | - | Easy | https://leetcode.cn/problems/same-tree/  |
 | 0125 | 08581: 扩展二叉树   | -  | - | http://cs101.openjudge.cn/practice/08581/       |
 | 0125 | 543.二叉树的直径  | - | Easy | https://leetcode.cn/problems/diameter-of-binary-tree/    |
 | 0125 | 101.对称二叉树  | - | Easy | https://leetcode.cn/problems/symmetric-tree/    |
