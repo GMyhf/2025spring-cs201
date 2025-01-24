@@ -20,7 +20,7 @@ Updated 0046 GMT+8 Jan 24 2025.
 | 0129 | 22161: 哈夫曼编码树 | -  | - | http://cs101.openjudge.cn/practice/22161/      |
 | 0129 | 25145: 猜二叉树（按层次遍历） | -  | - | http://cs101.openjudge.cn/practice/25145/      |
 | 0129 | 24729: 括号嵌套树   | -  | - | http://cs101.openjudge.cn/practice/24729/       |
-| 0128 | 02775: 文件结构“图”  | -  | tough | http://cs101.openjudge.cn/practice/02775/      |
+| 0128 | 02775: 文件结构“图”  | -  | Tough | http://cs101.openjudge.cn/practice/02775/      |
 | 0128 | 22158: 根据二叉树前中序序列建树  | - | - | http://cs101.openjudge.cn/practice/22158/   |
 | 0128 | 24750: 根据二叉树中后序序列建树  | - | - | http://cs101.openjudge.cn/practice/24750/   |
 | 0127 | 27638: 求二叉树的高度和叶子数目   | -  | - | http://cs101.openjudge.cn/practice/27638/     |
@@ -49,7 +49,7 @@ Updated 0046 GMT+8 Jan 24 2025.
 | 0120 | sy320: 迷宫问题 | bfs    | Medium | https://sunnywhy.com/sfbj/8/2/320    |
 | 0120 | 05902: 双端队列   | queue  | - | http://cs101.openjudge.cn/practice/05902/       |
 | 0119 | 04067: 回文数字   | queue  | - | http://cs101.openjudge.cn/25dsapre/04067/       |
-| 0119 | 19.删除链表的倒数第N个结点   | 快慢指针 | Easy | https://leetcode.cn/problems/remove-nth-node-from-end-of-list/       |
+| 0119 | 19.删除链表的倒数第N个结点   | 快慢指针 | Medium | https://leetcode.cn/problems/remove-nth-node-from-end-of-list/       |
 | 0119 | 24591:中序表达式转后序表达式   | stack  | 必须会 | http://cs101.openjudge.cn/practice/24591/       |
 | 0118 | 02746: 约瑟夫问题   | queue  | - | http://cs101.openjudge.cn/25dsapre/02746/       |
 | 0118 | 24588: 后序表达式求值   | stack  | - | http://cs101.openjudge.cn/practice/24588/       |
