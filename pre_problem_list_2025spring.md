@@ -1,7 +1,7 @@
 ## cs201数算（计算机基础2）2025pre每日选做
 <mark>https://github.com/GMyhf/2025spring-cs201/blob/main/pre_problem_list_2025spring.md</mark>
 
-Updated 0030 GMT+8 Jan 25 2025.
+Updated 0005 GMT+8 Jan 26 2025.
 2025 winter, Complied by Hongfei Yan
 
 题解在：
@@ -26,7 +26,7 @@ Updated 0030 GMT+8 Jan 25 2025.
 | 0127 | 27638: 求二叉树的高度和叶子数目   | -  | - | http://cs101.openjudge.cn/practice/27638/     |
 | 0127 | 25140: 根据后序表达式建立队列表达式  | - |  | http://cs101.openjudge.cn/practice/25140/   |
 | 0127 | 102.二叉树的层序遍历  | - | Easy | https://leetcode.cn/problems/binary-tree-level-order-traversal/   |
-| 0126 | 06646:二叉树的深度   | -  | - | http://cs101.openjudge.cn/practice/06646/     |
+| 0126 | 06646:二叉树的深度   | -  | - | http://cs101.openjudge.cn/25dsapre/06646/     |
 | 0126 | 108.将有序数组转换为二叉搜索树  | - | Easy | https://leetcode.cn/problems/convert-sorted-array-to-binary-search-tree/   |
 | 0126 | 100.相同的树  | - | Easy | https://leetcode.cn/problems/same-tree/  |
 | 0125 | 08581: 扩展二叉树   | -  | - | http://cs101.openjudge.cn/25dsapre/08581/       |
