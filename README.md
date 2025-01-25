@@ -13,8 +13,8 @@ https://github.com/GMyhf/2024fall-cs101/blob/main/2024fall_LeetCode_problems.md
 https://github.com/GMyhf/2024spring-cs201/blob/main/sunnywhy_problems.md
 
 Python数据结构与算法分析 第3版 (米勒 拉努姆 罗曼)   
-算法笔记.胡凡  
-算法导论 第三版  (Thmos.H.Cormen ,Charles E. Leiserson etc.)
+算法笔记.胡凡 曾磊  
+算法导论 第3版  (Thmos.H.Cormen ,Charles E. Leiserson etc.)
 
 
 
