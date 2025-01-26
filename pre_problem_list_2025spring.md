@@ -13,14 +13,14 @@ Updated 0015 GMT+8 Jan 27 2025.
 | ---- | --------------- | ------------- | ---- | ---------------------------------------------------- |
 | 0131 | 27625: AVL树至少有几个结点 | -  | - | http://cs101.openjudge.cn/practice/27625/   |
 | 0131 | 05455: 二叉搜索树的层次遍历 | -  | - | http://cs101.openjudge.cn/practice/05455/      |
-| 0131 | 275: 二叉搜索树的遍历 | -  | - | http://cs101.openjudge.cn/practice/22275/      |
+| 0131 | 22275: 二叉搜索树的遍历 | -  | - | http://cs101.openjudge.cn/practice/22275/      |
 | 0130 | 18164: 剪绳子 | -  | - | http://cs101.openjudge.cn/practice/18164/     |
 | 0130 | 04078: 实现堆结构 | -  | - | http://cs101.openjudge.cn/practice/04078/      |
 | 0130 | 晴问9.7: 向下调整构建大顶堆 | -  | - | https://sunnywhy.com/sfbj/9/7      |
 | 0129 | 22161: 哈夫曼编码树 | -  | - | http://cs101.openjudge.cn/practice/22161/      |
 | 0129 | 25145: 猜二叉树（按层次遍历） | -  | - | http://cs101.openjudge.cn/practice/25145/      |
 | 0129 | 24729: 括号嵌套树   | -  | - | http://cs101.openjudge.cn/practice/24729/       |
-| 012- | -   | -  | - | -     |
+| 0128 | 01577: Falling Leaves   | -  | - | http://cs101.openjudge.cn/practice/01577/     |
 | 0128 | 22158: 根据二叉树前中序序列建树  | - | - | http://cs101.openjudge.cn/practice/22158/   |
 | 0128 | 24750: 根据二叉树中后序序列建树  | - | - | http://cs101.openjudge.cn/practice/24750/   |
 | 0127 | 02775: 文件结构“图”  | -  | Tough | http://cs101.openjudge.cn/practice/02775/      |
