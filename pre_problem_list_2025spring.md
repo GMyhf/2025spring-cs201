@@ -1,7 +1,7 @@
 ## cs201数算（计算机基础2）2025pre每日选做
 <mark>https://github.com/GMyhf/2025spring-cs201/blob/main/pre_problem_list_2025spring.md</mark>
 
-Updated 0005 GMT+8 Jan 26 2025.
+Updated 0015 GMT+8 Jan 27 2025.
 2025 winter, Complied by Hongfei Yan
 
 题解在：
@@ -20,10 +20,10 @@ Updated 0005 GMT+8 Jan 26 2025.
 | 0129 | 22161: 哈夫曼编码树 | -  | - | http://cs101.openjudge.cn/practice/22161/      |
 | 0129 | 25145: 猜二叉树（按层次遍历） | -  | - | http://cs101.openjudge.cn/practice/25145/      |
 | 0129 | 24729: 括号嵌套树   | -  | - | http://cs101.openjudge.cn/practice/24729/       |
-| 0128 | 02775: 文件结构“图”  | -  | Tough | http://cs101.openjudge.cn/practice/02775/      |
+| 012- | -   | -  | - | -     |
 | 0128 | 22158: 根据二叉树前中序序列建树  | - | - | http://cs101.openjudge.cn/practice/22158/   |
 | 0128 | 24750: 根据二叉树中后序序列建树  | - | - | http://cs101.openjudge.cn/practice/24750/   |
-| 0127 | 27638: 求二叉树的高度和叶子数目   | -  | - | http://cs101.openjudge.cn/practice/27638/     |
+| 0127 | 02775: 文件结构“图”  | -  | Tough | http://cs101.openjudge.cn/practice/02775/      |
 | 0127 | 25140: 根据后序表达式建立队列表达式  | - |  | http://cs101.openjudge.cn/practice/25140/   |
 | 0127 | 102.二叉树的层序遍历  | - | Easy | https://leetcode.cn/problems/binary-tree-level-order-traversal/   |
 | 0126 | 06646:二叉树的深度   | -  | - | http://cs101.openjudge.cn/25dsapre/06646/     |
