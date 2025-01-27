@@ -1,6 +1,6 @@
 # 2025spring-cs201: DS Alog （数据结构与算法）
 
-Updated 1402 GMT+8 Jan 17 2025. 2024 winter, Complied by Hongfei Yan  
+Updated 2223 GMT+8 Jan 27 2025. 2025 winter, Complied by Hongfei Yan  
 https://github.com/GMyhf/2025spring-cs201/
 
 
@@ -39,6 +39,10 @@ https://github.com/GMyhf/2025spring-cs201/blob/main/pre_problem_list_2025spring.
 
 
 # 2 Logs
+
+2025/01/26：第434场（2025.01.26）力扣周赛，1小时30分钟，4个题目，1简单+2中等+1困难  
+Q1-简单，Q2-中等-模拟，Q3-中等-Kadane算法，Q4-困难-枚举，拓扑排序  
+力扣题目难度分数，https://zerotrac.github.io/leetcode_problem_rating/#/
 
 2025/01/17: 我们二进制练习的少，这个题目不容易写对。3097.或值至少为K的最短子数组II
 https://leetcode.cn/problems/shortest-subarray-with-or-at-least-k-ii/
