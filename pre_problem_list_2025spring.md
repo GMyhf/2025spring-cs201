@@ -37,7 +37,7 @@ Updated 0001 GMT+8 Jan 28 2025.
 | 0128 | 01577: Falling Leaves   | -  | - | http://cs101.openjudge.cn/25dsapre/01577/     |
 | 0128 | 22158: 根据二叉树前中序序列建树  | - | - | http://cs101.openjudge.cn/practice/22158/   |
 | 0128 | 24750: 根据二叉树中后序序列建树  | - | - | http://cs101.openjudge.cn/practice/24750/   |
-| 0127 | 02775: 文件结构“图”  | -  | Tough | http://cs101.openjudge.cn/practice/02775/      |
+| 0127 | 02775: 文件结构“图”  | -  | Tough | http://cs101.openjudge.cn/25dsapre/02775/      |
 | 0127 | 25140: 根据后序表达式建立队列表达式  | - |  | http://cs101.openjudge.cn/practice/25140/   |
 | 0127 | 102.二叉树的层序遍历  | - | Easy | https://leetcode.cn/problems/binary-tree-level-order-traversal/   |
 | 0126 | 06646:二叉树的深度   | -  | - | http://cs101.openjudge.cn/25dsapre/06646/     |
