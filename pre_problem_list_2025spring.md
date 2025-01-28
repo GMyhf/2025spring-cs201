@@ -1,7 +1,7 @@
 ## cs201数算（计算机基础2）2025pre每日选做
 <mark>https://github.com/GMyhf/2025spring-cs201/blob/main/pre_problem_list_2025spring.md</mark>
 
-Updated 0001 GMT+8 Jan 28 2025.
+Updated 0006 GMT+8 Jan 29 2025.
 2025 winter, Complied by Hongfei Yan
 
 题解在：
@@ -29,9 +29,9 @@ Updated 0001 GMT+8 Jan 28 2025.
 | 0131 | 05455: 二叉搜索树的层次遍历 | -  | - | http://cs101.openjudge.cn/practice/05455/      |
 | 0131 | 22275: 二叉搜索树的遍历 | -  | - | http://cs101.openjudge.cn/practice/22275/      |
 | 0130 | 18164: 剪绳子 | -  | - | http://cs101.openjudge.cn/practice/18164/     |
-| 0130 | 04078: 实现堆结构 | -  | - | http://cs101.openjudge.cn/practice/04078/      |
+| 0130 | 22161: 哈夫曼编码树 | -  | - | http://cs101.openjudge.cn/practice/22161/      |
 | 0130 | 晴问9.7: 向下调整构建大顶堆 | -  | - | https://sunnywhy.com/sfbj/9/7      |
-| 0129 | 22161: 哈夫曼编码树 | -  | - | http://cs101.openjudge.cn/practice/22161/      |
+| 0129 | 04078: 实现堆结构 | -  | - | http://cs101.openjudge.cn/25dsapre/04078/      |
 | 0129 | 25145: 猜二叉树（按层次遍历） | -  | - | http://cs101.openjudge.cn/practice/25145/      |
 | 0129 | 24729: 括号嵌套树   | -  | - | http://cs101.openjudge.cn/practice/24729/       |
 | 0128 | 01577: Falling Leaves   | -  | - | http://cs101.openjudge.cn/25dsapre/01577/     |
