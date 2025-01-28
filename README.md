@@ -1,6 +1,6 @@
 # 2025spring-cs201: DS Alog （数据结构与算法）
 
-Updated 2223 GMT+8 Jan 27 2025. 2025 winter, Complied by Hongfei Yan  
+Updated 2324 GMT+8 Jan 28 2025. 2025 winter, Complied by Hongfei Yan  
 https://github.com/GMyhf/2025spring-cs201/
 
 
@@ -39,6 +39,7 @@ https://github.com/GMyhf/2025spring-cs201/blob/main/pre_problem_list_2025spring.
 
 
 # 2 Logs
+2025/01/28: LeetCode热题100，强烈推荐。秋季学期我们把其中计概题目刷了，新学期数算刚好把其余的刷好。数算机考前，争取绝大多数同学完成热题100， https://leetcode.cn/studyplan/top-100-liked/
 
 2025/01/26：第434场（2025.01.26）力扣周赛，1小时30分钟，4个题目，1简单+2中等+1困难  
 Q1-简单，Q2-中等-模拟，Q3-中等-Kadane算法，Q4-困难-枚举，拓扑排序  
@@ -51,7 +52,7 @@ https://leetcode.cn/problems/shortest-subarray-with-or-at-least-k-ii/
 
 2025/01/16: stack, queue, linked-list，属于基本数据结构，容易理解，但是用途非常广泛。
 
-2025/01/15: OJ02299: Ultra-QuickSort。是典中典，必须掌握。
+2025/01/15: OJ02299: Ultra-QuickSort。归并排序是典中典，必须掌握。
 
 2025/01/14: OJ24591: 中序表达式转后序表达式。是经典算法，必须会。其他熟悉了线性结构后，多数是水题。
 
