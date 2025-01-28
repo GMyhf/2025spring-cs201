@@ -4,10 +4,7 @@ Updated 2324 GMT+8 Jan 28 2025. 2025 winter, Complied by Hongfei Yan
 https://github.com/GMyhf/2025spring-cs201/
 
 
-
-# 1 课程资料
-
-## 1.1 题解 & 教材
+## 1 题解 & 教材
 https://github.com/GMyhf/2024spring-cs201/blob/main/2024spring_dsa_problems.md  
 https://github.com/GMyhf/2024fall-cs101/blob/main/2024fall_LeetCode_problems.md  
 https://github.com/GMyhf/2024spring-cs201/blob/main/sunnywhy_problems.md
@@ -18,13 +15,13 @@ Python数据结构与算法分析 第3版 (米勒 拉努姆 罗曼)
 
 
 
-## 1.2 机考和笔试
+## 2 机考和笔试
 数算（B）14班。机考时间：第16周周三上机，2025年6月4日 15:08-17:00  
 笔试时间：周二，2025年6月17日 14:00-16:00
 
 
 
-## 1.3 数算pre每日选做
+## 3 数算pre每日选做
 助力大家在下学期的数算课程中取得满分成绩，从1月13日至2月16日，涵盖整个寒假时段，每天3个题目。  
 https://github.com/GMyhf/2025spring-cs201/blob/main/pre_problem_list_2025spring.md
 
@@ -38,7 +35,7 @@ https://github.com/GMyhf/2025spring-cs201/blob/main/pre_problem_list_2025spring.
 
 
 
-# 2 Logs
+## 4 Logs
 2025/01/28: LeetCode热题100，强烈推荐。秋季学期我们把其中计概题目刷了，新学期数算刚好把其余的刷好。数算机考前，争取绝大多数同学完成热题100， https://leetcode.cn/studyplan/top-100-liked/
 
 2025/01/26：第434场（2025.01.26）力扣周赛，1小时30分钟，4个题目，1简单+2中等+1困难  
