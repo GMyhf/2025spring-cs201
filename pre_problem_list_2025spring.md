@@ -18,7 +18,7 @@ Updated 0007 GMT+8 Jan 30 2025.
 | 0204 | 01760: Disk Tree | -  | - | http://cs101.openjudge.cn/practice/01760/    |
 | 0203 | 01703: 发现它，抓住它 | disjoint set  | - | http://cs101.openjudge.cn/practice/01703/    |
 | 0203 | 01611: The Suspects | disjoint set  | - | http://cs101.openjudge.cn/practice/01611/    |
-| 0203 | 01182: 食物链  | disjoint set  | tought | http://cs101.openjudge.cn/practice/01182    |
+| 0203 | 01182: 食物链  | disjoint set  | Tough | http://cs101.openjudge.cn/practice/01182    |
 | 0202 | 01145: Tree Summing | -  | - | http://cs101.openjudge.cn/practice/01145/    |
 | 0202 | 02788: 二叉树（2） | -  | - | http://cs101.openjudge.cn/practice/02788/    |
 | 0202 | 02756: 二叉树（1） | -  | - | http://cs101.openjudge.cn/practice/02756/    |
@@ -29,7 +29,7 @@ Updated 0007 GMT+8 Jan 30 2025.
 | 0131 | 05455: 二叉搜索树的层次遍历 | -  | - | http://cs101.openjudge.cn/practice/05455/      |
 | 0131 | 22275: 二叉搜索树的遍历 | -  | - | http://cs101.openjudge.cn/practice/22275/      |
 | 0130 | 18164: 剪绳子 | -  | - | http://cs101.openjudge.cn/25dsapre/18164/     |
-| 0130 | 22161: 哈夫曼编码树 | -  | - | http://cs101.openjudge.cn/practice/22161/      |
+| 0130 | 22161: 哈夫曼编码树 | -  | Tough | http://cs101.openjudge.cn/practice/22161/      |
 | 0130 | 晴问9.7: 向下调整构建大顶堆 | -  | - | https://sunnywhy.com/sfbj/9/7      |
 | 0129 | 04078: 实现堆结构 | -  | - | http://cs101.openjudge.cn/25dsapre/04078/      |
 | 0129 | 25145: 猜二叉树（按层次遍历） | -  | - | http://cs101.openjudge.cn/practice/25145/      |
