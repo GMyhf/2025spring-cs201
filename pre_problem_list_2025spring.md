@@ -14,6 +14,7 @@ Updated 0007 GMT+8 Jan 30 2025.
 
 | 日期 | 问题编号与名称  | 标签          | 难度 | 链接                                                 |
 | ---- | --------------- | ------------- | ---- | ---------------------------------------------------- |
+|  |  | -  | - | graph begin   |
 | 0204 | 02524: 宗教信仰  | disjoint  | - | http://cs101.openjudge.cn/practice/02524/    |
 | 0204 | 01760: Disk Tree | -  | - | http://cs101.openjudge.cn/practice/01760/    |
 | 0204 | 199.二叉树的右视图 | bfs  | Medium | https://leetcode.cn/problems/binary-tree-right-side-view/    |
