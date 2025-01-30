@@ -1,7 +1,7 @@
 ## cs201数算（计算机基础2）2025pre每日选做
 <mark>https://github.com/GMyhf/2025spring-cs201/blob/main/pre_problem_list_2025spring.md</mark>
 
-Updated 0007 GMT+8 Jan 30 2025.
+Updated 0004 GMT+8 Jan 31 2025.
 2025 winter, Complied by Hongfei Yan
 
 题解在：
@@ -27,7 +27,7 @@ Updated 0007 GMT+8 Jan 30 2025.
 | 0201 | 02524: 宗教信仰 | disjoint set  | - | http://cs101.openjudge.cn/dsapre/02524/   |
 | 0201 | 02499: Binary Tree | -  | - | http://cs101.openjudge.cn/practice/02499/    |
 | 0201 | 02255: 重建二叉树 | -  | - | http://cs101.openjudge.cn/practice/02255/     |
-| 0131 | 27625: AVL树至少有几个结点 | -  | - | http://cs101.openjudge.cn/practice/27625/   |
+| 0131 | 27625: AVL树至少有几个结点 | -  | - | http://cs101.openjudge.cn/25dsapre/27625/   |
 | 0131 | 05455: 二叉搜索树的层次遍历 | -  | - | http://cs101.openjudge.cn/practice/05455/      |
 | 0131 | 22275: 二叉搜索树的遍历 | -  | - | http://cs101.openjudge.cn/practice/22275/      |
 | 0130 | 18164: 剪绳子 | -  | - | http://cs101.openjudge.cn/25dsapre/18164/     |
