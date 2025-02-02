@@ -48,6 +48,7 @@ mindmap
     	Topological Sorting
     		Depth First Forest
     		Karn / BFS
+    	Critical Path Method
     	MST(Minimum Spanning Tree)
     		Prim
     		Kruskal
