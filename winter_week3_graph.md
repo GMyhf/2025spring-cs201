@@ -1,6 +1,6 @@
 # DSA-假期Week3 图论
 
-Updated 2244 GMT+8 Jan 23, 2025
+Updated 2259 GMT+8 Feb 2, 2025
 
 2025 winter, Complied by Hongfei Yan
 
@@ -4958,39 +4958,125 @@ D -> E Weight:6
 
 
 
-### *关键路径
+### 4.7关键路径
 
-在数据结构中，关键路径算法通常与有向加权图（有向图中每条边都有一个权重）相关。一种常用的关键路径算法是**AOV 网络关键路径算法**（Activity On Vertex Network Critical Path Algorithm），它适用于没有环路的有向加权图。
+在数据结构中，关键路径算法通常与有向加权图（有向图中每条边都有一个权重）相关。一种常见的关键路径算法是基于 AOE 网络（Activity On Edge Network）的关键路径分析，其中活动被表示为边而不是顶点。
 
-以下是 AOV 网络关键路径算法的基本步骤：
+以下是基于 AOE 网络的关键路径算法的基本步骤：
 
-1. 根据项目的活动和依赖关系，构建有向加权图。图的顶点表示活动，边表示活动之间的依赖关系，边的权重表示活动的持续时间。
+#### 1. 构建图模型
+首先，构建一个有向无环图（DAG），其中：
+- **节点**代表事件或里程碑。
+- **边**代表活动，并且每条边有一个权重，表示完成该活动所需的时间。
 
-2. 对图进行拓扑排序，以确定活动的执行顺序。拓扑排序可以使用 Kahn 算法来实现。
+#### 2. 计算最早开始时间 (Earliest Start Time, EST)
+使用拓扑排序遍历图，计算每个节点的最早开始时间（EST）。EST 表示从起点到达该节点的最长路径长度。具体步骤如下：
+- 初始化所有节点的 EST 为 0。
+- 对于图中的每一个节点 `u`，更新其所有邻接节点 `v` 的 EST 值：如果 `EST[u] + weight(u, v)` 大于 `EST[v]`，则更新 `EST[v] = EST[u] + weight(u, v)`。
 
-3. 初始化两个数组：`earliest_start_time` 和 `latest_finish_time`，分别用于存储每个顶点的最早开始时间和最晚完成时间。
+#### 3. 计算最晚开始时间 (Latest Start Time, LST)
+反向遍历拓扑排序后的图，计算每个节点的最晚开始时间（LST）。LST 表示为了不延迟整个项目的完成时间，节点 `u` 必须的最晚开始时间。具体步骤如下：
+- 初始化终点的 LST 为其 EST 值。
+- 对于图中的每一个节点 `u`，更新其所有前置节点 `v` 的 LST 值：如果 `LST[u] - weight(v, u)` 小于 `LST[v]`，则更新 `LST[v] = LST[u] - weight(v, u)`。
 
-4. 从拓扑排序的第一个顶点开始，按照拓扑排序的顺序遍历每个顶点。
+#### 4. 确定关键路径
+- 关键活动是指那些最早开始时间和最晚开始时间相等的活动。即对于边 `(u, v)`，如果 `EST[u] + weight(u, v) == LST[v]`，则 `(u, v)` 是关键活动。
+- 通过检查所有边来确定哪些是关键活动，并根据这些关键活动构建关键路径。
 
-   - 对于当前顶点 u，计算其最早开始时间 `earliest_start_time[u]`，即前面所有依赖顶点的最晚完成时间中的最大值加上 u 的持续时间。
+#### 示例代码实现
 
-5. 从拓扑排序的最后一个顶点开始，按照逆拓扑排序的顺序遍历每个顶点。
+以下是一个简化的 Python 实现，用于展示如何执行上述步骤：
 
-   - 对于当前顶点 v，计算其最晚完成时间 `latest_finish_time[v]`，即后面所有依赖顶点的最早开始时间中的最小值减去 v 的持续时间。
+```python
+from collections import defaultdict, deque
 
-6. 对于每条边 (u, v)，计算其总时差（Total Float）：
+class Edge:
+    def __init__(self, v, w):
+        self.v = v
+        self.w = w
 
-   - 总时差等于 `latest_finish_time[v] - earliest_start_time[u] - edge_weight(u, v)`。
+def topo_sort(n, G, in_degree):
+    q = deque([i for i in range(n) if in_degree[i] == 0])
+    ve = [0] * n
+    topo_order = []
 
-7. 找到总时差为 0 的边，这些边构成了关键路径。关键路径上的活动是项目的关键活动，任何关键活动的延迟都会导致项目延迟。
+    while q:
+        u = q.popleft()
+        topo_order.append(u)
+        for edge in G[u]:
+            v = edge.v
+            in_degree[v] -= 1
+            if in_degree[v] == 0:
+                q.append(v)
+            if ve[u] + edge.w > ve[v]:
+                ve[v] = ve[u] + edge.w
 
-关键路径算法可以使用图的邻接表或邻接矩阵来表示有向加权图，并以此作为输入进行计算。通过计算关键路径，可以确定项目的关键活动和项目的最长完成时间，有助于项目管理和资源分配。
+    if len(topo_order) == n:
+        return ve, topo_order
+    else:
+        return None, None
 
-请注意，这里介绍的是一种常见的关键路径算法，其他算法和技术也可用于求解关键路径问题，具体选择取决于实际情况和需求。
+def get_critical_path(n, G, in_degree):
+    ve, topo_order = topo_sort(n, G, in_degree.copy())
+    if ve is None:
+        return -1, []
+
+    maxLength = max(ve)
+    vl = [maxLength] * n
+
+    for u in reversed(topo_order):
+        for edge in G[u]:
+            v = edge.v
+            if vl[v] - edge.w < vl[u]:
+                vl[u] = vl[v] - edge.w
+
+    activity = defaultdict(list)
+    for u in G:
+        for edge in G[u]:
+            v = edge.v
+            e, l = ve[u], vl[v] - edge.w
+            if e == l:
+                activity[u].append(v)
+
+    return maxLength, activity
+
+# Main
+n, m = map(int, input().split())
+G = defaultdict(list)
+in_degree = [0] * n
+for _ in range(m):
+    u, v, w = map(int, input().split())
+    G[u].append(Edge(v, w))
+    in_degree[v] += 1
+
+maxLength, activity = get_critical_path(n, G, in_degree)
+if maxLength == -1:
+    print("No")
+else:
+    print("Yes")
+    print(f"Critical Path Length: {maxLength}")
+    # 打印所有关键路径
+    def print_critical_path(u, activity, path=[]):
+        path.append(u)
+        if u not in activity or not activity[u]:
+            print("->".join(map(str, path)))
+        else:
+            for v in sorted(activity[u]):
+                print_critical_path(v, activity, path.copy())
+        path.pop()
+
+    for i in range(n):
+        if in_degree[i] == 0:
+            print_critical_path(i, activity)
+```
+
+此代码实现了关键路径算法的主要步骤，包括拓扑排序、计算最早和最晚开始时间以及找出关键活动和路径。通过输入图的节点数、边数及各边的信息，可以输出关键路径的长度以及所有可能的关键路径。
 
 
 
-### 4.7 编程题目
+
+
+### 4.8 编程题目
 
 
 
@@ -5510,6 +5596,24 @@ bfs, http://cs101.openjudge.cn/practice/02802/
 #### 19930: 寻宝
 
 bfs, http://cs101.openjudge.cn/practice/19930
+
+
+
+#### sy404: 关键路径长度 中等
+
+关键路径，https://sunnywhy.com/sfbj/10/7/404
+
+
+
+#### sy405: 关键活动 中等
+
+关键路径，https://sunnywhy.com/sfbj/10/7/405
+
+
+
+#### sy406: 关键路径 中等
+
+关键路径，https://sunnywhy.com/sfbj/10/7/406
 
 
 
