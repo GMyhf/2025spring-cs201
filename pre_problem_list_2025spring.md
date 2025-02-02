@@ -1,7 +1,7 @@
 ## cs201数算（计算机基础2）2025pre每日选做
 <mark>https://github.com/GMyhf/2025spring-cs201/blob/main/pre_problem_list_2025spring.md</mark>
 
-Updated 0043 GMT+8 Feb 2 2025.
+Updated 0040 GMT+8 Feb 3 2025.
 2025 winter, Complied by Hongfei Yan
 
 题解在：
@@ -18,7 +18,7 @@ Updated 0043 GMT+8 Feb 2 2025.
 | 0204 | 02524: 宗教信仰  | disjoint  | - | http://cs101.openjudge.cn/practice/02524/    |
 | 0204 | 01760: Disk Tree | -  | - | http://cs101.openjudge.cn/practice/01760/    |
 | 0204 | 199.二叉树的右视图 | bfs  | Medium | https://leetcode.cn/problems/binary-tree-right-side-view/    |
-| 0203 | 01703: 发现它，抓住它 | disjoint set  | - | http://cs101.openjudge.cn/practice/01703/    |
+| 0203 | 01703: 发现它，抓住它 | disjoint set  | - | http://cs101.openjudge.cn/25dsapre/01703/    |
 | 0203 | 01611: The Suspects | disjoint set  | - | http://cs101.openjudge.cn/practice/01611/    |
 | 0203 | 01182: 食物链  | disjoint set  | Tough | http://cs101.openjudge.cn/practice/01182    |
 | 0202 | 01145: Tree Summing | -  | - | http://cs101.openjudge.cn/25dsapre/01145/    |
