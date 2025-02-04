@@ -14,6 +14,9 @@ Updated 2131 GMT+8 Feb 4 2025.
 
 | 日期 | 问题编号与名称  | 标签          | 难度 | 链接                                                 |
 | ---- | --------------- | ------------- | ---- | ---------------------------------------------------- |
+| 0205 | 19943: 图的拉普拉斯矩阵 | OOP  | - | http://cs101.openjudge.cn/practice/19943/    |
+| 0205 | sy377: 有向图的邻接矩阵 | -  | Easy | https://sunnywhy.com/sfbj/10/2/377    |
+| 0205 | sy376: 无向图的邻接矩阵 | -  | Easy | https://sunnywhy.com/sfbj/10/2/376    |
 |  |  | -  | - | graph begin   |
 | 0204 | 01760: Disk Tree | Trie  | - | http://cs101.openjudge.cn/25dsapre/01760/    |
 | 0204 | 124.二叉树中的最大路径和 | dfs  | Tough | https://leetcode.cn/problems/binary-tree-maximum-path-sum/    |
