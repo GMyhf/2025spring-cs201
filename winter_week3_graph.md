@@ -1,6 +1,6 @@
 # DSA-假期Week3 图论
 
-Updated 2259 GMT+8 Feb 2, 2025
+Updated 2353 GMT+8 Feb 4, 2025
 
 2025 winter, Complied by Hongfei Yan
 
@@ -977,24 +977,31 @@ Vertex使用字典connectedTo来记录与其相连的顶点，以及每一条边
 
 ```python
 class Vertex:
-    def __init__(self,key):
-        self.id = key
-        self.connectedTo = {}
+    def __init__(self, key):
+        self.key = key
+        self.neighbors = {}
 
-    def addNeighbor(self,nbr,weight=0):
-        self.connectedTo[nbr] = weight
+    def get_neighbor(self, other):
+        return self.neighbors.get(other, None)
 
-    def __str__(self):
-        return str(self.id) + ' connectedTo: ' + str([x.id for x in self.connectedTo])
+    def set_neighbor(self, other, weight=0):
+        self.neighbors[other] = weight
 
-    def getConnections(self):
-        return self.connectedTo.keys()
+    def __repr__(self):  # 为开发者提供调试信息
+        return f"Vertex({self.key})"
 
-    def getId(self):
-        return self.id
+    def __str__(self):  # 面向用户的输出
+        return (
+                str(self.key)
+                + " connected to: "
+                + str([x.key for x in self.neighbors])
+        )
 
-    def getWeight(self,nbr):
-        return self.connectedTo[nbr]
+    def get_neighbors(self):
+        return self.neighbors.keys()
+
+    def get_key(self):
+        return self.key
 ```
 
 
@@ -1014,75 +1021,66 @@ Figure 6: An Adjacency List Representation of a Graph
 ```python
 class Graph:
     def __init__(self):
-        self.vertList = {}
-        self.numVertices = 0
+        self.vertices = {}
 
-    def addVertex(self,key):
-        self.numVertices = self.numVertices + 1
-        newVertex = Vertex(key)
-        self.vertList[key] = newVertex
-        return newVertex
+    def set_vertex(self, key):
+        self.vertices[key] = Vertex(key)
 
-    def getVertex(self,n):
-        if n in self.vertList:
-            return self.vertList[n]
-        else:
-            return None
+    def get_vertex(self, key):
+        return self.vertices.get(key, None)
 
-    def __contains__(self,n):
-        return n in self.vertList
+    def __contains__(self, key):
+        return key in self.vertices
 
-    def addEdge(self,f,t,weight=0):
-        if f not in self.vertList:
-            nv = self.addVertex(f)
-        if t not in self.vertList:
-            nv = self.addVertex(t)
-        self.vertList[f].addNeighbor(self.vertList[t], weight)
+    def add_edge(self, from_vert, to_vert, weight=0):
+        if from_vert not in self.vertices:
+            self.set_vertex(from_vert)
+        if to_vert not in self.vertices:
+            self.set_vertex(to_vert)
+        self.vertices[from_vert].set_neighbor(self.vertices[to_vert], weight)
 
-    def getVertices(self):
-        return self.vertList.keys()
+    def get_vertices(self):
+        return self.vertices.keys()
 
     def __iter__(self):
-        return iter(self.vertList.values())
+        return iter(self.vertices.values())
 ```
 
 下面的Python会话使用Graph类和Vertex类创建了如图6所示的图。首先创建6个顶点，依次编号为0～5。然后打印顶点字典。注意，对每一个键，我们都创建了一个Vertex实例。接着，添加将顶点连接起来的边。最后，用一个嵌套循环验证图中的每一条边都已被正确存储。请按照图6的内容检查会话的最终结果。
 
 
 
-```
->>> g = Graph()
->>> for i in range(6):
-...    g.addVertex(i)
->>> g.vertList
-{0: <adjGraph.Vertex instance at 0x41e18>,
- 1: <adjGraph.Vertex instance at 0x7f2b0>,
- 2: <adjGraph.Vertex instance at 0x7f288>,
- 3: <adjGraph.Vertex instance at 0x7f350>,
- 4: <adjGraph.Vertex instance at 0x7f328>,
- 5: <adjGraph.Vertex instance at 0x7f300>}
->>> g.addEdge(0,1,5)
->>> g.addEdge(0,5,2)
->>> g.addEdge(1,2,4)
->>> g.addEdge(2,3,9)
->>> g.addEdge(3,4,7)
->>> g.addEdge(3,5,3)
->>> g.addEdge(4,0,1)
->>> g.addEdge(5,4,8)
->>> g.addEdge(5,2,1)
->>> for v in g:
-...    for w in v.getConnections():
-...        print("( %s , %s )" % (v.getId(), w.getId()))
-...
-( 0 , 5 )
-( 0 , 1 )
-( 1 , 2 )
-( 2 , 3 )
-( 3 , 4 )
-( 3 , 5 )
-( 4 , 0 )
-( 5 , 4 )
-( 5 , 2 )
+```python
+if __name__ == "__main__":
+    g = Graph()
+    for i in range(6):
+        g.set_vertex(i)
+    print(g.vertices)
+
+    g.add_edge(0, 1, 5)
+    g.add_edge(0, 5, 2)
+    g.add_edge(1, 2, 4)
+    g.add_edge(2, 3, 9)
+    g.add_edge(3, 4, 7)
+    g.add_edge(3, 5, 3)
+    g.add_edge(4, 0, 1)
+    g.add_edge(5, 4, 8)
+    g.add_edge(5, 2, 1)
+    for v in g:
+        for w in v.get_neighbors():
+            print(f"({v.get_key()}, {w.get_key()})")
+"""
+{0: Vertex(0), 1: Vertex(1), 2: Vertex(2), 3: Vertex(3), 4: Vertex(4), 5: Vertex(5)}
+(0, 1)
+(0, 5)
+(1, 2)
+(2, 3)
+(3, 4)
+(3, 5)
+(4, 0)
+(5, 4)
+(5, 2)
+"""
 ```
 
 
@@ -1141,75 +1139,76 @@ cs101 2019 Final Exam
 
 
 ```python
-class Vertex:	
+class Vertex:
     def __init__(self, key):
-        self.id = key
-        self.connectedTo = {}
+        self.key = key
+        self.neighbors = {}
 
-    def addNeighbor(self, nbr, weight=0):
-        self.connectedTo[nbr] = weight
+    def get_neighbor(self, other):
+        return self.neighbors.get(other, None)
 
-    def __str__(self):
-        return str(self.id) + ' connectedTo: ' + str([x.id for x in self.connectedTo])
+    def set_neighbor(self, other, weight=0):
+        self.neighbors[other] = weight
 
-    def getConnections(self):
-        return self.connectedTo.keys()
+    def __repr__(self):  # 为开发者提供调试信息
+        return f"Vertex({self.key})"
 
-    def getId(self):
-        return self.id
+    def __str__(self):  # 面向用户的输出
+        return (
+                str(self.key)
+                + " connected to: "
+                + str([x.key for x in self.neighbors])
+        )
 
-    def getWeight(self, nbr):
-        return self.connectedTo[nbr]
+    def get_neighbors(self):
+        return self.neighbors.keys()
+
+    def get_key(self):
+        return self.key
+
 
 class Graph:
     def __init__(self):
-        self.vertList = {}
-        self.numVertices = 0
+        self.vertices = {}
 
-    def addVertex(self, key):
-        self.numVertices = self.numVertices + 1
-        newVertex = Vertex(key)
-        self.vertList[key] = newVertex
-        return newVertex
+    def set_vertex(self, key):
+        self.vertices[key] = Vertex(key)
 
-    def getVertex(self, n):
-        if n in self.vertList:
-            return self.vertList[n]
-        else:
-            return None
+    def get_vertex(self, key):
+        return self.vertices.get(key, None)
 
-    def __contains__(self, n):
-        return n in self.vertList
+    def __contains__(self, key):
+        return key in self.vertices
 
-    def addEdge(self, f, t, weight=0):
-        if f not in self.vertList:
-            nv = self.addVertex(f)
-        if t not in self.vertList:
-            nv = self.addVertex(t)
-        self.vertList[f].addNeighbor(self.vertList[t], weight)
+    def add_edge(self, from_vert, to_vert, weight=0):
+        if from_vert not in self.vertices:
+            self.set_vertex(from_vert)
+        if to_vert not in self.vertices:
+            self.set_vertex(to_vert)
+        self.vertices[from_vert].set_neighbor(self.vertices[to_vert], weight)
 
-    def getVertices(self):
-        return self.vertList.keys()
+    def get_vertices(self):
+        return self.vertices.keys()
 
     def __iter__(self):
-        return iter(self.vertList.values())
+        return iter(self.vertices.values())
 
 def constructLaplacianMatrix(n, edges):
     graph = Graph()
     for i in range(n):	# 添加顶点
-        graph.addVertex(i)
+        graph.set_vertex(i)
     
     for edge in edges:	# 添加边
         a, b = edge
-        graph.addEdge(a, b)
-        graph.addEdge(b, a)
+        graph.add_edge(a, b)
+        graph.add_edge(b, a)
     
     laplacianMatrix = []	# 构建拉普拉斯矩阵
     for vertex in graph:
         row = [0] * n
-        row[vertex.getId()] = len(vertex.getConnections())
-        for neighbor in vertex.getConnections():
-            row[neighbor.getId()] = -1
+        row[vertex.get_key()] = len(vertex.get_neighbors())
+        for neighbor in vertex.get_neighbors():
+            row[neighbor.get_key()] = -1
         laplacianMatrix.append(row)
 
     return laplacianMatrix
