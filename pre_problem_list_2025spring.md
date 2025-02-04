@@ -14,6 +14,9 @@ Updated 0002 GMT+8 Feb 5 2025.
 
 | 日期 | 问题编号与名称  | 标签          | 难度 | 链接                                                 |
 | ---- | --------------- | ------------- | ---- | ---------------------------------------------------- |
+| 0206 | 04123: 马走日 | -  | - | http://cs101.openjudge.cn/practice/04123   |
+| 0206 | sy379: 有向图的邻接表 | -  | - | https://sunnywhy.com/sfbj/10/2/379    |
+| 0206 | sy378: 无向图的邻接表 | -  | - | https://sunnywhy.com/sfbj/10/2/378   |
 | 0205 | 19943: 图的拉普拉斯矩阵 | OOP  | - | http://cs101.openjudge.cn/25dsapre/19943/    |
 | 0205 | sy377: 有向图的邻接矩阵 | -  | Easy | https://sunnywhy.com/sfbj/10/2/377    |
 | 0205 | sy376: 无向图的邻接矩阵 | -  | Easy | https://sunnywhy.com/sfbj/10/2/376    |
