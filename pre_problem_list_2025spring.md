@@ -1,7 +1,7 @@
 ## cs201数算（计算机基础2）2025pre每日选做
 <mark>https://github.com/GMyhf/2025spring-cs201/blob/main/pre_problem_list_2025spring.md</mark>
 
-Updated 2212 GMT+8 Feb 5 2025.
+Updated 0008 GMT+8 Feb 6 2025.
 2025 winter, Complied by Hongfei Yan
 
 题解在：
@@ -14,19 +14,20 @@ Updated 2212 GMT+8 Feb 5 2025.
 
 | 日期 | 问题编号与名称  | 标签          | 难度 | 链接                                                 |
 | ---- | --------------- | ------------- | ---- | ---------------------------------------------------- |
+| 0211 | 1843D. Apple Tree | combinatorics, dfs and similar, dp, math, trees  | 1200 | https://codeforces.com/problemset/problem/1843/D    |
 | 0210 |  | -  | - |    |
 | 0210 | 20C. Dijkstra? | graphs, shortest paths | 1900 | https://codeforces.com/problemset/problem/20/C   |
 | 0210 | 580C. Kefa and Park  | dfs and similar, graphs, trees | 1500 | https://codeforces.com/problemset/problem/580/C    |
 | 0209 |  | -  | - |    |
-| 0209 |  | OOP  | Miedium |    |
+| 0209 | 208.实现Trie（前缀树） | OOP,dict  | Medium | https://leetcode.cn/problems/implement-trie-prefix-tree/    |
 | 0209 | 295.数据流的中位数  | OOP,heap  | Medium | https://leetcode.cn/problems/find-median-from-data-stream/   |
 | 0208 |  | -  | - |    |
 | 0208 | 2241.设计一个ATM机器  | OOP  | Medium | https://leetcode.cn/problems/design-an-atm-machine/    |
 | 0208 | 146.LRU缓存 | OOP,双向链表  | Medium | https://leetcode.cn/problems/lru-cache/   |
 | 0207 |  | -  | - |    |
-| 0207 | 208.实现Trie（前缀树） | OOP,dict  | Medium | https://leetcode.cn/problems/implement-trie-prefix-tree/    |
+| 0207 | 1829E. The Lakes | dfs and silar, dsu, graphs, implementation  | 1100 | https://codeforces.com/problemset/problem/1829/E    |
 | 0207 | 380.O(1)时间插入、删除和获取随机元素| OOP  | Medium | https://leetcode.cn/problems/insert-delete-getrandom-o1/    |
-| 0206 | 04123: 马走日 | -  | - | http://cs101.openjudge.cn/practice/04123   |
+| 0206 | 04123: 马走日 | -  | - | http://cs101.openjudge.cn/25dsapre/04123   |
 | 0206 | sy379: 有向图的邻接表 | -  | - | https://sunnywhy.com/sfbj/10/2/379    |
 | 0206 | sy378: 无向图的邻接表 | -  | - | https://sunnywhy.com/sfbj/10/2/378   |
 | 0205 | 19943: 图的拉普拉斯矩阵 | OOP  | - | http://cs101.openjudge.cn/25dsapre/19943/    |
