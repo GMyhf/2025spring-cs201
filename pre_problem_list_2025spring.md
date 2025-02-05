@@ -15,7 +15,8 @@ Updated 1449 GMT+8 Feb 5 2025.
 | 日期 | 问题编号与名称  | 标签          | 难度 | 链接                                                 |
 | ---- | --------------- | ------------- | ---- | ---------------------------------------------------- |
 | 0209 |  | -  | - |    |
-| 0209 |  | -  | - |    |
+| 0209 |  | Medium  | OOP |    |
+| 0209 | 295.数据流的中位数  | Medium  | OOP,heap | https://leetcode.cn/problems/find-median-from-data-stream/   |
 | 0208 |  | -  | - |    |
 | 0208 | 2241.设计一个ATM机器  | OOP  | Medium | https://leetcode.cn/problems/design-an-atm-machine/    |
 | 0208 | 146.LRU缓存 | OOP  | Medium | https://leetcode.cn/problems/lru-cache/   |
