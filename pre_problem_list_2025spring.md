@@ -14,6 +14,8 @@ Updated 1449 GMT+8 Feb 5 2025.
 
 | 日期 | 问题编号与名称  | 标签          | 难度 | 链接                                                 |
 | ---- | --------------- | ------------- | ---- | ---------------------------------------------------- |
+| 0208 | 146.LRU缓存 | OOP  | Medium | https://leetcode.cn/problems/lru-cache/   |
+| 0207 |  | -  | - |    |
 | 0207 | 208.实现Trie（前缀树） | OOP  | Medium | https://leetcode.cn/problems/implement-trie-prefix-tree/    |
 | 0207 | 380.O(1)时间插入、删除和获取随机元素| OOP  | Medium | https://leetcode.cn/problems/insert-delete-getrandom-o1/    |
 | 0206 | 04123: 马走日 | -  | - | http://cs101.openjudge.cn/practice/04123   |
