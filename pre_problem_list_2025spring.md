@@ -14,6 +14,10 @@ Updated 1449 GMT+8 Feb 5 2025.
 
 | 日期 | 问题编号与名称  | 标签          | 难度 | 链接                                                 |
 | ---- | --------------- | ------------- | ---- | ---------------------------------------------------- |
+| 0209 |  | -  | - |    |
+| 0209 |  | -  | - |    |
+| 0208 |  | -  | - |    |
+| 0208 | 2241.设计一个ATM机器  | OOP  | Medium | https://leetcode.cn/problems/design-an-atm-machine/    |
 | 0208 | 146.LRU缓存 | OOP  | Medium | https://leetcode.cn/problems/lru-cache/   |
 | 0207 |  | -  | - |    |
 | 0207 | 208.实现Trie（前缀树） | OOP  | Medium | https://leetcode.cn/problems/implement-trie-prefix-tree/    |
