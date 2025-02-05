@@ -1,7 +1,7 @@
 ## cs201数算（计算机基础2）2025pre每日选做
 <mark>https://github.com/GMyhf/2025spring-cs201/blob/main/pre_problem_list_2025spring.md</mark>
 
-Updated 0002 GMT+8 Feb 5 2025.
+Updated 1449 GMT+8 Feb 5 2025.
 2025 winter, Complied by Hongfei Yan
 
 题解在：
@@ -14,6 +14,8 @@ Updated 0002 GMT+8 Feb 5 2025.
 
 | 日期 | 问题编号与名称  | 标签          | 难度 | 链接                                                 |
 | ---- | --------------- | ------------- | ---- | ---------------------------------------------------- |
+| 0207 | 208.实现Trie（前缀树） | OOP  | Medium | https://leetcode.cn/problems/implement-trie-prefix-tree/    |
+| 0207 | 380.O(1)时间插入、删除和获取随机元素| OOP  | Medium | https://leetcode.cn/problems/insert-delete-getrandom-o1/    |
 | 0206 | 04123: 马走日 | -  | - | http://cs101.openjudge.cn/practice/04123   |
 | 0206 | sy379: 有向图的邻接表 | -  | - | https://sunnywhy.com/sfbj/10/2/379    |
 | 0206 | sy378: 无向图的邻接表 | -  | - | https://sunnywhy.com/sfbj/10/2/378   |
