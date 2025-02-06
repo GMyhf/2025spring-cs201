@@ -1,7 +1,7 @@
 ## cs201数算（计算机基础2）2025pre每日选做
 <mark>https://github.com/GMyhf/2025spring-cs201/blob/main/pre_problem_list_2025spring.md</mark>
 
-Updated 0008 GMT+8 Feb 6 2025.
+Updated 2300 GMT+8 Feb 6 2025.
 2025 winter, Complied by Hongfei Yan
 
 题解在：
@@ -14,7 +14,8 @@ Updated 0008 GMT+8 Feb 6 2025.
 
 | 日期 | 问题编号与名称  | 标签          | 难度 | 链接                                                 |
 | ---- | --------------- | ------------- | ---- | ---------------------------------------------------- |
-| 0212 |  | -  | - |    |
+| 0213 | 04130: Saving Tang Monk | -  | Tough | http://cs101.openjudge.cn/practice/04130/    |
+| 0212 | 03447: 银河贸易问题 | bfs  | - | http://cs101.openjudge.cn/practice/03447/    |
 | 0212 | 09202: 舰队、海域出击！ | Topological Order  | - | http://cs101.openjudge.cn/practice/09202/    |
 | 0212 | 05443: 兔子与樱花 | dijkstra  | - | http://cs101.openjudge.cn/practice/05443/   |
 | 0211 | 05442: 兔子与星空 | prim, kruskal  | - | http://cs101.openjudge.cn/practice/05442/   |
@@ -23,7 +24,7 @@ Updated 0008 GMT+8 Feb 6 2025.
 | 0210 | P1260: 火星大工程| AOE，拓扑排序，关键路径  | Tough | http://dsbpython.openjudge.cn/dspythonbook/P1260/    |
 | 0210 | 20C. Dijkstra? | graphs, shortest paths | 1900 | https://codeforces.com/problemset/problem/20/C   |
 | 0210 | 580C. Kefa and Park  | dfs and similar, graphs, trees | 1500 | https://codeforces.com/problemset/problem/580/C    |
-| 0209 | 27880: 繁忙的厦门 | MST  | - | http://cs101.openjudge.cn/practice/27880/    |
+| 0209 | 27880: 繁忙的厦门 | MST,kruskal  | - | http://cs101.openjudge.cn/practice/27880/    |
 | 0209 | 208.实现Trie（前缀树） | OOP,dict  | Medium | https://leetcode.cn/problems/implement-trie-prefix-tree/    |
 | 0209 | 295.数据流的中位数  | OOP,heap  | Medium | https://leetcode.cn/problems/find-median-from-data-stream/   |
 | 0208 | 28046: 词梯 | bfs  | - | http://cs101.openjudge.cn/practice/28046/   |
