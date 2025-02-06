@@ -14,17 +14,22 @@ Updated 0008 GMT+8 Feb 6 2025.
 
 | 日期 | 问题编号与名称  | 标签          | 难度 | 链接                                                 |
 | ---- | --------------- | ------------- | ---- | ---------------------------------------------------- |
+| 0212 |  | -  | - |    |
+| 0212 | 09202: 舰队、海域出击！ | Topological Order  | - | http://cs101.openjudge.cn/practice/09202/    |
+| 0212 | 05443: 兔子与樱花 | dijkstra  | - | http://cs101.openjudge.cn/practice/05443/   |
+| 0211 | 05442: 兔子与星空 | prim, kruskal  | - | http://cs101.openjudge.cn/practice/05442/   |
+| 0211 | 27635:判断无向图是否连通有无回路  | -  | - | http://cs101.openjudge.cn/practice/27635/    |
 | 0211 | 1843D. Apple Tree | combinatorics, dfs and similar, dp, math, trees  | 1200 | https://codeforces.com/problemset/problem/1843/D    |
-| 0210 |  | -  | - |    |
+| 0210 | P1260: 火星大工程| AOE，拓扑排序，关键路径  | Tough | http://dsbpython.openjudge.cn/dspythonbook/P1260/    |
 | 0210 | 20C. Dijkstra? | graphs, shortest paths | 1900 | https://codeforces.com/problemset/problem/20/C   |
 | 0210 | 580C. Kefa and Park  | dfs and similar, graphs, trees | 1500 | https://codeforces.com/problemset/problem/580/C    |
-| 0209 |  | -  | - |    |
+| 0209 | 27880: 繁忙的厦门 | MST  | - | http://cs101.openjudge.cn/practice/27880/    |
 | 0209 | 208.实现Trie（前缀树） | OOP,dict  | Medium | https://leetcode.cn/problems/implement-trie-prefix-tree/    |
 | 0209 | 295.数据流的中位数  | OOP,heap  | Medium | https://leetcode.cn/problems/find-median-from-data-stream/   |
-| 0208 |  | -  | - |    |
+| 0208 | 28046: 词梯 | bfs  | - | http://cs101.openjudge.cn/practice/28046/   |
 | 0208 | 2241.设计一个ATM机器  | OOP  | Medium | https://leetcode.cn/problems/design-an-atm-machine/    |
 | 0208 | 146.LRU缓存 | OOP,双向链表  | Medium | https://leetcode.cn/problems/lru-cache/   |
-| 0207 |  | -  | - |    |
+| 0207 | 28050: 骑士周游 | dfs, Warnsdorff  | Tough | http://cs101.openjudge.cn/practice/28050/    |
 | 0207 | 1829E. The Lakes | dfs and silar, dsu, graphs, implementation  | 1100 | https://codeforces.com/problemset/problem/1829/E    |
 | 0207 | 380.O(1)时间插入、删除和获取随机元素| OOP  | Medium | https://leetcode.cn/problems/insert-delete-getrandom-o1/    |
 | 0206 | 04123: 马走日 | -  | - | http://cs101.openjudge.cn/25dsapre/04123   |
