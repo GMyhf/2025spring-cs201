@@ -1,8 +1,8 @@
-# 20250123 计算概论B笔试资料
+# 20250123 数据结构与算法B笔试资料
 
 Updated 1836 GMT+8 Jan 23, 2025
 
-2025 winter, Complied by Hongfei Yan
+2024 spring, Complied by Hongfei Yan
 
 
 
