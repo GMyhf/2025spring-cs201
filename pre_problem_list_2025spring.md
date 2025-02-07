@@ -30,7 +30,7 @@ Updated 2300 GMT+8 Feb 6 2025.
 | 0208 | 28046: 词梯 | bfs  | - | http://cs101.openjudge.cn/practice/28046/   |
 | 0208 | 2241.设计一个ATM机器  | OOP  | Medium | https://leetcode.cn/problems/design-an-atm-machine/    |
 | 0208 | 146.LRU缓存 | OOP,双向链表  | Medium | https://leetcode.cn/problems/lru-cache/   |
-| 0207 | 28050: 骑士周游 | dfs, Warnsdorff  | Tough | http://cs101.openjudge.cn/practice/28050/    |
+| 0207 | 28050: 骑士周游 | Warnsdorff, backtracking  | Tough | http://cs101.openjudge.cn/practice/28050/    |
 | 0207 | 1829E. The Lakes | dfs and silar, dsu, graphs, implementation  | 1100 | https://codeforces.com/problemset/problem/1829/E    |
 | 0207 | 380.O(1)时间插入、删除和获取随机元素| OOP  | Medium | https://leetcode.cn/problems/insert-delete-getrandom-o1/    |
 | 0206 | 04123: 马走日 | -  | - | http://cs101.openjudge.cn/25dsapre/04123   |
