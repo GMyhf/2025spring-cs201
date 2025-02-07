@@ -1,7 +1,7 @@
 ## cs201数算（计算机基础2）2025pre每日选做
 <mark>https://github.com/GMyhf/2025spring-cs201/blob/main/pre_problem_list_2025spring.md</mark>
 
-Updated 2300 GMT+8 Feb 6 2025.
+Updated 1603 GMT+8 Feb 7 2025.
 2025 winter, Complied by Hongfei Yan
 
 题解在：
@@ -14,7 +14,16 @@ Updated 2300 GMT+8 Feb 6 2025.
 
 | 日期 | 问题编号与名称  | 标签          | 难度 | 链接                                                 |
 | ---- | --------------- | ------------- | ---- | ---------------------------------------------------- |
+| 0216 |  | -  | - |    |
+| 0215 |  | -  | - |    |
+| 0215 | 909.蛇梯棋 | bfs  | Medium | https://leetcode.cn/problems/snakes-and-ladders/    |
+| 0215 | 994.腐烂的橘子  | bfs  | Medium | https://leetcode.cn/problems/rotting-oranges/    |
+| 0214 | 20106:走山路 | Dijkstra  | - | http://cs101.openjudge.cn/practice/20106/    |
+| 0214 | 2920.收集所有金币可获得的最大积分 | tree dp  | Tough | https://leetcode.cn/problems/maximum-points-after-collecting-coins-from-all-nodes/    |
+| 0214 | 37.解数独 | backtracking  | Tough | https://leetcode.cn/problems/sudoku-solver/    |
 | 0213 | 04130: Saving Tang Monk | -  | Tough | http://cs101.openjudge.cn/practice/04130/    |
+| 0213 | 4.寻找两个正序数组的中位数 | 分治,二分查找  | Tough | https://leetcode.cn/problems/median-of-two-sorted-arrays/    |
+| 0213 | 23.合并K个升序链表 | 分治,归并排序  | Tough | https://leetcode.cn/problems/merge-k-sorted-lists/   |
 | 0212 | 03447: 银河贸易问题 | bfs  | - | http://cs101.openjudge.cn/practice/03447/    |
 | 0212 | 09202: 舰队、海域出击！ | Topological Order  | - | http://cs101.openjudge.cn/practice/09202/    |
 | 0212 | 05443: 兔子与樱花 | dijkstra  | - | http://cs101.openjudge.cn/practice/05443/   |
