@@ -1,7 +1,7 @@
 ## cs201数算（计算机基础2）2025pre每日选做
 <mark>https://github.com/GMyhf/2025spring-cs201/blob/main/pre_problem_list_2025spring.md</mark>
 
-Updated 0319 GMT+8 Feb 8 2025.
+Updated 0539 GMT+8 Feb 8 2025.
 2025 winter, Complied by Hongfei Yan
 
 题解在：
@@ -15,6 +15,7 @@ Updated 0319 GMT+8 Feb 8 2025.
 | 日期 | 问题编号与名称  | 标签          | 难度 | 链接                                                 |
 | ---- | --------------- | ------------- | ---- | ---------------------------------------------------- |
 | 0216 |  | -  | - |    |
+| 0216 | 14.最长公共前缀 | Trie  | 必须会 | https://leetcode.cn/problems/longest-common-prefix/    |
 | 0215 |  | -  | - |    |
 | 0215 | 909.蛇梯棋 | bfs  | Medium | https://leetcode.cn/problems/snakes-and-ladders/    |
 | 0215 | 994.腐烂的橘子  | bfs  | Medium | https://leetcode.cn/problems/rotting-oranges/    |
