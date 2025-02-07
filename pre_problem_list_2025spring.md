@@ -37,13 +37,13 @@ Updated 0539 GMT+8 Feb 8 2025.
 | 0209 | 27880: 繁忙的厦门 | MST,kruskal  | - | http://cs101.openjudge.cn/practice/27880/    |
 | 0209 | 208.实现Trie（前缀树） | OOP,dict  | Medium | https://leetcode.cn/problems/implement-trie-prefix-tree/    |
 | 0209 | 295.数据流的中位数  | OOP,heap  | Medium | https://leetcode.cn/problems/find-median-from-data-stream/   |
-| 0208 | 28046: 词梯 | bfs  | - | http://cs101.openjudge.cn/25dsapre/28046/   |
+| 0208 | 28046: 词梯 | bfs  | 必须会 | http://cs101.openjudge.cn/25dsapre/28046/   |
 | 0208 | 2241.设计一个ATM机器  | OOP  | Medium | https://leetcode.cn/problems/design-an-atm-machine/    |
 | 0208 | 146.LRU缓存 | OOP,双向链表  | Medium | https://leetcode.cn/problems/lru-cache/   |
 | 0207 | 28050: 骑士周游 | Warnsdorff, backtracking  | Tough | http://cs101.openjudge.cn/25dsapre/28050/    |
 | 0207 | 1829E. The Lakes | dfs and silar, dsu, graphs, implementation  | 1100 | https://codeforces.com/problemset/problem/1829/E    |
 | 0207 | 380.O(1)时间插入、删除和获取随机元素| OOP  | Medium | https://leetcode.cn/problems/insert-delete-getrandom-o1/    |
-| 0206 | 04123: 马走日 | -  | 必须会 | http://cs101.openjudge.cn/25dsapre/04123   |
+| 0206 | 04123: 马走日 | backtracking  | 必须会 | http://cs101.openjudge.cn/25dsapre/04123   |
 | 0206 | sy379: 有向图的邻接表 | -  | - | https://sunnywhy.com/sfbj/10/2/379    |
 | 0206 | sy378: 无向图的邻接表 | -  | - | https://sunnywhy.com/sfbj/10/2/378   |
 | 0205 | 19943: 图的拉普拉斯矩阵 | OOP  | - | http://cs101.openjudge.cn/25dsapre/19943/    |
@@ -108,7 +108,7 @@ Updated 0539 GMT+8 Feb 8 2025.
 | 0117 | 02734: 十进制到八进制   | stack  | - | http://cs101.openjudge.cn/25dsapre/02734/       |
 | 0117 | 4.插入链表元素   | linked-list  | - | http://dsbpython.openjudge.cn/2024allhw/004/       |
 | 0117 | sy296: 后缀表达式 | stack    | Easy | https://sunnywhy.com/sfbj/7/1/296       |
-| 0116 | 03704: 括号匹配问题   | stack  | - | http://cs101.openjudge.cn/25dsapre/03704       |
+| 0116 | 03704: 括号匹配问题   | stack  | 必须会 | http://cs101.openjudge.cn/25dsapre/03704       |
 | 0116 | sy295: 可能的出栈序列 | stack    | Medium | https://sunnywhy.com/sfbj/7/1/295       |
 | 0116 | sy294: 合法的出栈序列 | stack    | Easy | https://sunnywhy.com/sfbj/7/1/294       |
 | 0115 | 27653:Fraction类  | OOP        | - | http://cs101.openjudge.cn/25dsapre/27653       |
