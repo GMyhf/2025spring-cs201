@@ -43,7 +43,7 @@ Updated 0539 GMT+8 Feb 8 2025.
 | 0207 | 28050: 骑士周游 | Warnsdorff, backtracking  | Tough | http://cs101.openjudge.cn/25dsapre/28050/    |
 | 0207 | 1829E. The Lakes | dfs and silar, dsu, graphs, implementation  | 1100 | https://codeforces.com/problemset/problem/1829/E    |
 | 0207 | 380.O(1)时间插入、删除和获取随机元素| OOP  | Medium | https://leetcode.cn/problems/insert-delete-getrandom-o1/    |
-| 0206 | 04123: 马走日 | -  | - | http://cs101.openjudge.cn/25dsapre/04123   |
+| 0206 | 04123: 马走日 | -  | 必须会 | http://cs101.openjudge.cn/25dsapre/04123   |
 | 0206 | sy379: 有向图的邻接表 | -  | - | https://sunnywhy.com/sfbj/10/2/379    |
 | 0206 | sy378: 无向图的邻接表 | -  | - | https://sunnywhy.com/sfbj/10/2/378   |
 | 0205 | 19943: 图的拉普拉斯矩阵 | OOP  | - | http://cs101.openjudge.cn/25dsapre/19943/    |
@@ -59,21 +59,21 @@ Updated 0539 GMT+8 Feb 8 2025.
 | 0202 | 01145: Tree Summing | -  | - | http://cs101.openjudge.cn/25dsapre/01145/    |
 | 0202 | 02788: 二叉树（2） | -  | - | http://cs101.openjudge.cn/practice/02788/    |
 | 0202 | 02756: 二叉树（1） | -  | - | http://cs101.openjudge.cn/practice/02756/    |
-| 0201 | 02524: 宗教信仰 | disjoint set  | - | http://cs101.openjudge.cn/dsapre/02524/   |
+| 0201 | 02524: 宗教信仰 | disjoint set  | 必须会 | http://cs101.openjudge.cn/dsapre/02524/   |
 | 0201 | 02499: Binary Tree | -  | - | http://cs101.openjudge.cn/25dsapre/02499/    |
 | 0201 | 02255: 重建二叉树 | -  | - | http://cs101.openjudge.cn/practice/02255/     |
 | 0131 | 27625: AVL树至少有几个结点 | -  | - | http://cs101.openjudge.cn/25dsapre/27625/   |
 | 0131 | 05455: 二叉搜索树的层次遍历 | -  | - | http://cs101.openjudge.cn/practice/05455/      |
 | 0131 | 22275: 二叉搜索树的遍历 | -  | - | http://cs101.openjudge.cn/practice/22275/      |
-| 0130 | 18164: 剪绳子 | -  | - | http://cs101.openjudge.cn/25dsapre/18164/     |
+| 0130 | 18164: 剪绳子 | -  | 必须会 | http://cs101.openjudge.cn/25dsapre/18164/     |
 | 0130 | 22161: 哈夫曼编码树 | -  | Tough | http://cs101.openjudge.cn/practice/22161/      |
 | 0130 | 晴问9.7: 向下调整构建大顶堆 | -  | - | https://sunnywhy.com/sfbj/9/7      |
-| 0129 | 04078: 实现堆结构 | -  | - | http://cs101.openjudge.cn/25dsapre/04078/      |
+| 0129 | 04078: 实现堆结构 | -  | 必须会 | http://cs101.openjudge.cn/25dsapre/04078/      |
 | 0129 | 25145: 猜二叉树（按层次遍历） | -  | - | http://cs101.openjudge.cn/practice/25145/      |
 | 0129 | 24729: 括号嵌套树   | -  | - | http://cs101.openjudge.cn/practice/24729/       |
 | 0128 | 01577: Falling Leaves   | -  | - | http://cs101.openjudge.cn/25dsapre/01577/     |
-| 0128 | 22158: 根据二叉树前中序序列建树  | - | - | http://cs101.openjudge.cn/practice/22158/   |
-| 0128 | 24750: 根据二叉树中后序序列建树  | - | - | http://cs101.openjudge.cn/practice/24750/   |
+| 0128 | 22158: 根据二叉树前中序序列建树  | - | 必须会 | http://cs101.openjudge.cn/practice/22158/   |
+| 0128 | 24750: 根据二叉树中后序序列建树  | - | 必须会 | http://cs101.openjudge.cn/practice/24750/   |
 | 0127 | 02775: 文件结构“图”  | -  | Tough | http://cs101.openjudge.cn/25dsapre/02775/      |
 | 0127 | 25140: 根据后序表达式建立队列表达式  | - |  | http://cs101.openjudge.cn/practice/25140/   |
 | 0127 | 102.二叉树的层序遍历  | - | Easy | https://leetcode.cn/problems/binary-tree-level-order-traversal/   |
