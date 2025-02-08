@@ -1,7 +1,152 @@
 # Coding Exam 上机考试
 
-Updated 2246 GMT+8 Feb 8 2025  
+Updated 2323 GMT+8 Feb 8 2025  
 2025 winter, Complied by Hongfei Yan
+
+
+
+# cs201 2024 Final Exam
+
+http://cs101.openjudge.cn/cs2012024feclass12/
+
+
+
+E27933:Okabe and Boxes
+
+http://cs101.openjudge.cn/practice/27933/
+
+E28186:分糖果
+
+http://cs101.openjudge.cn/practice/28186/
+
+M28012:受限条件下可到达节点的数目
+
+http://cs101.openjudge.cn/practice/28012/
+
+M28013:堆路径
+
+http://cs101.openjudge.cn/practice/28013/
+
+M28193:谣言
+
+http://cs101.openjudge.cn/practice/28193/
+
+M28276:判断等价关系是否成立
+
+http://cs101.openjudge.cn/practice/28276/
+
+
+
+
+
+# 20240508 cs201 2024 Mock Exam
+
+http://cs101.openjudge.cn/20240508mockexam/
+
+
+
+E02808:校门外的树
+
+http://cs101.openjudge.cn/practice/02808/
+
+E20449:是否被5整除
+
+http://cs101.openjudge.cn/practice/20449/
+
+M01258:Agri-Net
+
+http://cs101.openjudge.cn/practice/01258/
+
+M27635:判断无向图是否连通有无回路
+
+http://cs101.openjudge.cn/practice/27635/
+
+T27947:动态中位数
+
+http://cs101.openjudge.cn/practice/27947/
+
+T28190:奶牛排队
+
+http://cs101.openjudge.cn/practice/28190/
+
+
+
+
+
+# 20240403 cs201 2024 Mock Exam
+
+http://cs101.openjudge.cn/20240403mockexam/
+
+
+
+E27706:逐词倒放
+
+http://cs101.openjudge.cn/practice/27706/
+
+E27951:机器翻译
+
+http://cs101.openjudge.cn/practice/27951/
+
+M27932:Less or Equal
+
+http://cs101.openjudge.cn/practice/27932/
+
+M27948:FBI树
+
+http://cs101.openjudge.cn/practice/27948/
+
+T27925:小组队列
+
+http://cs101.openjudge.cn/practice/27925/
+
+T27928:遍历树
+
+http://cs101.openjudge.cn/practice/27928/
+
+
+
+
+
+
+
+# 20240306 cs201 2024 Mock Exam
+
+http://cs101.openjudge.cn/20240306mockexam/
+
+
+
+E02945:拦截导弹
+
+http://cs101.openjudge.cn/practice/02945/
+
+E04147:汉诺塔问题(Tower of Hanoi)
+
+http://cs101.openjudge.cn/practice/04147/
+
+M03253:约瑟夫问题No.2
+
+http://cs101.openjudge.cn/practice/03253/
+
+M21554:排队做实验(greedy)v0.2
+
+http://cs101.openjudge.cn/practice/21554/
+
+T19963:买学区房
+
+http://cs101.openjudge.cn/practice/19963/
+
+T27300:模型整理
+http://cs101.openjudge.cn/practice/27300/
+
+
+
+
+
+
+
+
+
+http://cs101.openjudge.cn/practice//
 
 
 
@@ -5559,7 +5704,7 @@ if __name__ == "__main__":
     main()
 ```
 
-### Explanation
+Explanation
 
 1. **Function `count_squares(points)`**:
    - It takes a list of points and returns the number of squares that can be formed by these points.
