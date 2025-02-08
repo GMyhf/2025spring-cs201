@@ -1,7 +1,7 @@
 ## 《数据结构与算法（B）》课程简介
 
-Updated 2221 GMT+8 Jan 25, 2025  
-2025 winter, Complied by Hongfei Yan
+Updated 1319 GMT+8 Feb 8, 2025  
+2024 winter, Complied by Hongfei Yan
 
 课程编号：04831420，学分：3，总 学 时：51学时理论课（每周3学时）+ 34学时上机实习课（每周2学时）  
 前置课程要求：学过计算概论A/B/C（简记为 计概/cs101，是计算机基础课程的上篇）的同学。
@@ -16,7 +16,7 @@ CF https://codeforces.com
 洛谷 https://www.luogu.com.cn
 
 
-### 二．课程安排
+### 二．教学安排
 
 全面介绍在经典计算机科学问题中出现的数据结构与算法。尽管在学习顺序上并无严格要求，但是许多话题之间都存在一定的依赖关系，所以建议顺序学习。开课前和开课中都有每日选做编程题目。  
 数算2025pre每日选做，  
@@ -38,7 +38,7 @@ http://cs101.openjudge.cn/2024sp_routine/
 | 13. 算法拓展                            | 14. 笔试内容（1/2）        |
 | 15. 笔试内容（2/2）                     | 16. 课程总结、期末机考     |
 
-### 三．题解和参考教材
+### 三．题解解析和推荐教材
 
 为了更好地满足本课程的教学需要，我们自主编写了题解。  
 https://github.com/GMyhf/2024spring-cs201/blob/main/2024spring_dsa_problems.md  
