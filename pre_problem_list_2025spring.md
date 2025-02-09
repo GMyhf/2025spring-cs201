@@ -1,7 +1,7 @@
 ## cs201数算（计算机基础2）2025pre每日选做
 <mark>https://github.com/GMyhf/2025spring-cs201/blob/main/pre_problem_list_2025spring.md</mark>
 
-Updated 0539 GMT+8 Feb 8 2025.
+Updated 0914 GMT+8 Feb 9 2025.
 2025 winter, Complied by Hongfei Yan
 
 题解在：
@@ -34,7 +34,7 @@ Updated 0539 GMT+8 Feb 8 2025.
 | 0210 | P1260: 火星大工程| AOE，拓扑排序，关键路径  | Tough | http://dsbpython.openjudge.cn/dspythonbook/P1260/    |
 | 0210 | 20C. Dijkstra? | graphs, shortest paths | 1900 | https://codeforces.com/problemset/problem/20/C   |
 | 0210 | 580C. Kefa and Park  | dfs and similar, graphs, trees | 1500 | https://codeforces.com/problemset/problem/580/C    |
-| 0209 | 27880: 繁忙的厦门 | MST,kruskal  | - | http://cs101.openjudge.cn/practice/27880/    |
+| 0209 | 27880: 繁忙的厦门 | MST,kruskal  | - | http://cs101.openjudge.cn/25dsapre/27880/    |
 | 0209 | 208.实现Trie（前缀树） | OOP,dict  | Medium | https://leetcode.cn/problems/implement-trie-prefix-tree/    |
 | 0209 | 295.数据流的中位数  | OOP,heap  | Medium | https://leetcode.cn/problems/find-median-from-data-stream/   |
 | 0208 | 28046: 词梯 | bfs  | 必须会 | http://cs101.openjudge.cn/25dsapre/28046/   |
