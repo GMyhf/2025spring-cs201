@@ -1,6 +1,6 @@
 # Coding Exam 上机考试
 
-Updated 2323 GMT+8 Feb 8 2025  
+Updated 1742 GMT+8 Feb 10 2025  
 2025 winter, Complied by Hongfei Yan
 
 
@@ -6262,3 +6262,118 @@ http://xzmdsa.openjudge.cn/2024final/9/
 
 同 28413
 
+
+
+# Xzm2023期末机考
+
+02774: 木材加工
+
+http://cs101.openjudge.cn/practice/02774/
+
+02766: 最大子矩阵
+
+http://cs101.openjudge.cn/practice/02766/
+
+26573: 康托集的图像表示
+
+http://cs101.openjudge.cn/practice/26573/
+
+26572: 多余的括号
+
+http://cs101.openjudge.cn/practice/26572/
+
+06364: 牛的选举
+
+http://cs101.openjudge.cn/practice/06364
+
+03720: 文本二叉树
+
+http://cs101.openjudge.cn/practice/03720/
+
+05907: 二叉树的操作
+
+http://cs101.openjudge.cn/practice/05907/
+
+
+
+# Xzm2022期末机考
+
+24684: 直播计票
+
+http://cs101.openjudge.cn/practice/24684/
+
+24677: 安全位置
+
+http://cs101.openjudge.cn/practice/24677/
+
+24676: 共同富裕
+
+http://cs101.openjudge.cn/practice/24676/
+
+24678: 任性买房
+
+http://cs101.openjudge.cn/practice/24678/
+
+24686: 树的重量
+
+http://cs101.openjudge.cn/dsapre/24686/
+
+24687: 封锁管控
+
+http://cs101.openjudge.cn/practice/24687/
+
+
+
+# xzm2020期末机考
+
+20742: 泰波拿契數
+
+http://cs101.openjudge.cn/practice/20742/
+
+20743: 整人的提词本
+
+http://cs101.openjudge.cn/practice/20743/
+
+20741: 两座孤岛最短距离
+
+http://cs101.openjudge.cn/practice/20741
+
+20746: 满足合法工时的最少人数
+
+http://cs101.openjudge.cn/practice/20746/
+
+20626: 对子数列做XOR运算
+
+http://cs101.openjudge.cn/practice/20626/
+
+20744: 土豪购物
+
+http://cs101.openjudge.cn/practice/20744/
+
+
+
+# Xzm2020模拟上机
+
+20449: 是否被5整除
+
+http://cs101.openjudge.cn/practice/20449/
+
+20453: 和为k的子数组个数
+
+http://cs101.openjudge.cn/practice/20453/
+
+20456: 统计封闭岛屿的数目
+
+http://cs101.openjudge.cn/practice/20456/
+
+20472: 死循环的机器人
+
+http://cs101.openjudge.cn/practice/20472/
+
+20625: 1跟0数量相等的子字串
+
+http://cs101.openjudge.cn/practice/20625/
+
+20644: 统计全为 1 的正方形子矩阵
+
+http://cs101.openjudge.cn/practice/20644/
