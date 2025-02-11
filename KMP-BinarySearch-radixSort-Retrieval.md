@@ -1,6 +1,6 @@
-# KMP-BinarySearch-radixSort-Retrieval
+# KMP-SegmentTree-BIT-BinarySearch-radixSort-Retrieval
 
-Updated 2028 GMT+8 Feb 11, 2025
+Updated 2359 GMT+8 Feb 11, 2025
 
 2024 spring, Complied by Hongfei Yan
 
@@ -355,7 +355,1091 @@ if __name__ == "__main__":
 
 
 
-# 二、二分法
+# 二、线段树、树状数组
+
+> 2025/2/11 线段树、树状数组在计概课程中放在附录部分，数算可以加深理解。
+
+理解时间复杂度 $O(1)$ 和 $O(n)$ 权衡处理方法，有的题目 $O(n^2)$ 算法超时，需要把时间复杂度降到$O(nLogn)$才能AC。
+
+例如：27018:康托展开，http://cs101.openjudge.cn/practice/27018/
+
+
+
+线段树（Segment Tree）和树状数组（Binary Indexed Tree）的区别和联系：
+
+1）时间复杂度相同, 但是树状数组的常数优于线段树。
+
+2）树状数组的作用被线段树完全涵盖, 凡是可以使用树状数组解决的问题, 使用线段树一定可以解决, 但是线段树能够解决的问题树状数组未必能够解决。
+
+3）树状数组的代码量比线段树小很多。
+
+
+
+Segment Tree and Its Applications
+
+https://www.baeldung.com/cs/segment-trees#:~:text=The%20segment%20tree%20is%20a,structure%20such%20as%20an%20array.
+
+The segment tree is a type of data structure from computational geometry. [Bentley](https://en.wikipedia.org/wiki/Bentley–Ottmann_algorithm) proposed this well-known technique in 1977. A segment tree is essentially a binary tree in whose nodes we store the information about the segments of a linear data structure such as an array.
+
+> 区间树是一种来自计算几何的数据结构。Bentley 在 1977 年提出了这一著名的技术。区间树本质上是一棵二叉树，在其节点中存储了关于线性数据结构（如数组）的区段信息。
+
+Fenwick tree
+
+https://en.wikipedia.org/wiki/Fenwick_tree#:~:text=A%20Fenwick%20tree%20or%20binary,in%20an%20array%20of%20values.&text=This%20structure%20was%20proposed%20by,further%20modification%20published%20in%201992.
+
+A **Fenwick tree** or **binary indexed tree** **(BIT)** is a data structure that can efficiently update values and calculate [prefix sums](https://en.wikipedia.org/wiki/Prefix_sum) in an array of values.
+
+This structure was proposed by Boris Ryabko in 1989 with a further modification published in 1992. It has subsequently become known under the name Fenwick tree after Peter Fenwick, who described this structure in his 1994 article.
+
+> Fenwick 树 或 二叉索引树 (BIT) 是一种数据结构，可以高效地更新数组中的值并计算前缀和。
+>
+> 这种结构由 Boris Ryabko 于 1989 年提出，并在 1992 年进行了进一步的修改。此后，这种结构以其在 1994 年的文章中描述它的 Peter Fenwick 的名字而广为人知，被称为 Fenwick 树。
+
+
+
+## 2.1 Segment tree | Efficient implementation
+
+https://www.geeksforgeeks.org/segment-tree-efficient-implementation/
+
+Let us consider the following problem to understand Segment Trees without recursion.
+We have an array $arr[0 . . . n-1]$. We should be able to, 
+
+1. Find the sum of elements from index `l` to `r` where $0 \leq l \leq r \leq n-1$
+2. Change the value of a specified element of the array to a new value `x`. We need to do $arr[i] = x$ where $0 \leq i \leq n-1$. 
+
+A **simple solution** is to run a loop from `l` to `r` and calculate the sum of elements in the given range. To update a value, simply do $arr[i] = x$. The first operation takes **O(n)** time and the second operation takes **O(1)** time.
+
+> **简单解决方案** 是从 `l` 到 `r` 运行一个循环，计算给定范围内的元素之和。要更新一个值，只需执行 `arr[i] = x`。第一个操作（查询）的时间复杂度为 **O(n)**，第二个操作（更新）的时间复杂度为 **O(1)**。
+
+**Another solution** is to create another array and store the sum from start to `i` at the ith index in this array. The sum of a given range can now be calculated in O(1) time, but the update operation takes O(n) time now. This works well if the number of query operations is large and there are very few updates.
+
+> **另一种解决方案** 是创建另一个数组，并在该数组的第 `i` 个索引处存储从起始位置到 `i` 的元素之和。现在可以在 O(1) 时间内计算给定范围的和，但更新操作现在需要 O(n) 时间。如果查询操作的数量很大而更新操作很少，这种方法效果很好。
+
+What if the number of queries and updates are equal? Can we perform both the operations in O(log n) time once given the array? We can use a [Segment Tree](https://www.geeksforgeeks.org/segment-tree-set-1-sum-of-given-range/) to do both operations in O(logn) time. We have discussed the complete implementation of segment trees in our [previous](https://www.geeksforgeeks.org/segment-tree-set-1-sum-of-given-range/) post. In this post, we will discuss the easier and yet efficient implementation of segment trees than in the previous post.
+
+> 但如果查询和更新操作的数量相等呢？我们能否在给定数组的情况下，使两个操作都在 O(log n) 时间内完成？我们可以使用 线段树 来在 O(log n) 时间内完成这两个操作。我们在之前的帖子中详细讨论了线段树的完整实现。在这篇文章中，我们将讨论比之前更简单且高效的线段树实现方法。
+
+Consider the array and segment tree as shown below:  叶子是数组值，非叶是和
+
+![img](https://media.geeksforgeeks.org/wp-content/uploads/excl.png)
+
+
+
+You can see from the above image that the original array is at the bottom and is 0-indexed with 16 elements. The tree contains a total of 31 nodes where the leaf nodes or the elements of the original array start from node 16. So, we can easily construct a segment tree for this array using a `2*N` sized array where N is the number of elements in the original array. The leaf nodes will start from index N in this array and will go up to index `(2 * N – 1)`. Therefore, the element at index `i` in the original array will be at index `(i + N)` in the segment tree array. Now to calculate the parents, we will start from the index `(N – 1)` and move upward. For index `i` , the left child will be at `(2 * i)` and the right child will be at `(2*i + 1)` index. So the values at nodes at `(2 * i)` and `(2*i + 1)` are combined at i-th node to construct the tree. 
+
+> 从上图可以看出，原始数组位于底部，是 0 索引的，包含 16 个元素。树总共有 31 个节点，其中叶节点或原始数组的元素从节点 16 开始。因此，我们可以使用一个大小为 2*N 的数组轻松构建这个数组的线段树，其中 N 是原始数组中的元素数量。叶节点将从该数组的索引 N 开始，一直到索引 (2 * N - 1)。因此，原始数组中索引 i 处的元素将在线段树数组中的索引 (i + N) 处。现在，为了计算父节点，我们将从索引 (N - 1) 开始向上移动。对于索引 i，左孩子将位于 (2 * i) 索引处，右孩子将位于 (2 * i + 1) 索引处。因此，节点 (2 * i) 和 (2 * i + 1) 处的值将在 i 索引处组合以构建树。
+
+As you can see in the above figure, we can query in this tree in an interval `[L,R)` with left index (L) included and right (R) excluded.
+We will implement all of these multiplication and addition operations using bitwise operators.
+
+> 如上图所示，我们可以在区间 [L, R) 中查询这棵树，其中左索引 L 包含在内，右索引 R 排除在外。
+> 我们将使用位运算符实现所有的乘法和加法操作。
+
+Let us have a look at the complete implementation: 
+
+```python
+# Python3 Code Addition 
+
+# limit for array size 
+N = 100000; 
+
+# Max size of tree 
+tree = [0] * (2 * N); 
+
+# function to build the tree 
+def build(arr) : 
+
+	# insert leaf nodes in tree 
+	for i in range(n) : 
+		tree[n + i] = arr[i]; 
+	
+	# build the tree by calculating parents 
+	for i in range(n - 1, 0, -1) : 
+    # tree[i] = tree[2*i] + tree[2*i+1]
+		tree[i] = tree[i << 1] + tree[i << 1 | 1]; 	
+
+# function to update a tree node 
+def updateTreeNode(p, value) : 
+	
+	# set value at position p 
+	tree[p + n] = value; 
+	p = p + n; 
+	
+	# move upward and update parents 
+	i = p; 
+	
+	while i > 1 : 
+		
+		tree[i >> 1] = tree[i] + tree[i ^ 1]; 
+		i >>= 1; 
+
+# function to get sum on interval [l, r) 
+def query(l, r) : 
+
+	res = 0; 
+	
+	# loop to find the sum in the range 
+	l += n; 
+	r += n; 
+	
+	while l < r : 
+	
+		if (l & 1) : 
+			res += tree[l]; 
+			l += 1
+	
+		if (r & 1) : 
+			r -= 1; 
+			res += tree[r]; 
+			
+		l >>= 1; 
+		r >>= 1
+	
+	return res; 
+
+if __name__ == "__main__" : 
+
+	a = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]; 
+
+	n = len(a); 
+	
+	build(a); 
+	
+	# print the sum in range(1,2) index-based 
+	print(query(1, 3)); 
+	
+	# modify element at 2nd index 
+	updateTreeNode(2, 1); 
+	
+	# print the sum in range(1,2) index-based 
+	print(query(1, 3)); 
+
+```
+
+
+
+**Output:** 
+
+```
+5
+3
+```
+
+Yes! That is all. The complete implementation of the segment tree includes the query and update functions. Let us now understand how each of the functions works: 
+
+
+1. The picture makes it clear that the leaf nodes are stored at i+n, so we can clearly insert all leaf nodes directly. 
+
+   > 图片清楚地表明叶节点存储在i+n的位置，因此我们可以直接明确地插入所有叶节点。
+
+2. The next step is to build the tree and it takes O(n) time. The parent always has its less index than its children, so we just process all the nodes in decreasing order, calculating the value of the parent node. If the code inside the build function to calculate parents seems confusing, then you can see this code. It is equivalent to that inside the build function. 
+
+   > 下一步是构建树，这需要O(n)的时间。父节点的索引总是小于其子节点的索引，所以我们只需按递减顺序处理所有节点，计算父节点的值。如果构建函数中用于计算父节点的代码看起来令人困惑，那么你可以参考这段代码。它与构建函数内部的代码等效。
+
+   `tree[i] = tree[2*i] + tree[2*i+1]`
+
+ 
+
+3. Updating a value at any position is also simple and the time taken will be proportional to the height （“高度”这个概念，其实就是从下往上度量，树这种数据结构的高度是从最底层开始计数，并且计数的起点是0） of the tree. We only update values in the parents of the given node which is being changed. So to get the parent, we just go up to the parent node, which is `p/2` or `p>>1`, for node `p`. `p^1` turns `(2*i`) to `(2*i + 1)` and vice versa to get the second child of p.
+
+   > 在任意位置更新一个值也非常简单，所需时间将与树的高度成正比。我们只更新给定节点（即正在更改的节点）的父节点中的值。为了得到父节点，我们只需向上移动到节点p的父节点，该父节点为p/2或p>>1。p^1将`(2*i)`转换为`(2*i + 1)`反之亦然，以获得p的第二个子节点。
+
+4. Computing the sum also works in $O(Logn)$ time. If we work through an interval of [3,11), we need to calculate only for nodes 19,26,12, and 5 in that order.  要演示这个索引上行的求和过程，前面程序数组是12个元素，图示是16个元素，需要稍作修改。增加了print输出，便于调试。
+
+
+
+<img src="https://raw.githubusercontent.com/GMyhf/img/main/img/202310312148391.png" alt="image-20231031214814445" style="zoom:50%;" />
+
+
+
+The idea behind the query function is whether we should include an element in the sum or whether we should include its parent. Let’s look at the image once again for proper understanding. 
+
+![img](https://media.geeksforgeeks.org/wp-content/uploads/excl.png)
+
+Consider that `L` is the left border of an interval and `R` is the right border of the interval `[L,R)`. It is clear from the image that if `L` is odd, then it means that it is the right child of its parent and our interval includes only `L` and not the parent. So we will simply include this node to sum and move to the parent of its next node by doing `L = (L+1)/2`. Now, if L is even, then it is the left child of its parent and the interval includes its parent also unless the right borders interfere. Similar conditions are applied to the right border also for faster computation. We will stop this iteration once the left and right borders meet.
+
+> 假设`L`是一个区间的左边界，而`R`是区间`[L,R)`的右边界。从图中可以明显看出，如果`L`是奇数，这意味着它是其父节点的右孩子，并且我们的区间仅包含`L`而不包括其父节点。因此，我们将简单地把这个节点加到总和中，并通过执行`L = (L+1)/2`移动到下一个节点的父节点。现在，如果`L`是偶数，那么它是其父节点的左孩子，除非右边界干涉，否则区间也包括其父节点。对于右边界也有类似的条件，以便更快地计算。一旦左右边界相遇，我们就会停止这次迭代。
+
+The theoretical time complexities of both previous implementation and this implementation is the same, but practically, it is found to be much more efficient as there are no recursive calls. We simply iterate over the elements that we need. Also, this is very easy to implement.
+
+> 这两种实现的理论时间复杂度是相同的，但在实际应用中，后者被发现要高效得多，因为没有递归调用。我们只是迭代我们需要的元素。此外，这种方法非常容易实现。
+
+**Time Complexities:**
+
+- Tree Construction: O( n )
+- Query in Range: O( Log n )
+- Updating an element: O( Log n ).
+
+**Auxiliary Space:** O(2*N)
+
+
+
+### 示例1364A: A. XXXXX
+
+brute force/data structures/number theory/two pointers, 1200, https://codeforces.com/problemset/problem/1364/A
+
+Ehab loves number theory, but for some reason he hates the number 𝑥. Given an array 𝑎, find the length of its longest subarray such that the sum of its elements **isn't** divisible by 𝑥, or determine that such subarray doesn't exist.
+
+An array 𝑎 is a subarray of an array 𝑏 if 𝑎 can be obtained from 𝑏 by deletion of several (possibly, zero or all) elements from the beginning and several (possibly, zero or all) elements from the end.
+
+**Input**
+
+The first line contains an integer 𝑡 (1≤𝑡≤5) — the number of test cases you need to solve. The description of the test cases follows.
+
+The first line of each test case contains 2 integers 𝑛 and 𝑥 (1≤𝑛≤10^5^, 1≤𝑥≤10^4^) — the number of elements in the array 𝑎 and the number that Ehab hates.
+
+The second line contains 𝑛 space-separated integers $𝑎_1, 𝑎_2, ……, 𝑎_𝑛 (0≤𝑎_𝑖≤10^4)$ — the elements of the array 𝑎.
+
+**Output**
+
+For each testcase, print the length of the longest subarray whose sum isn't divisible by 𝑥. If there's no such subarray, print −1.
+
+Example
+
+input
+
+```
+3
+3 3
+1 2 3
+3 4
+1 2 3
+2 2
+0 6
+```
+
+output
+
+```
+2
+3
+-1
+```
+
+Note
+
+In the first test case, the subarray \[2,3\] has sum of elements 5, which isn't divisible by 3.
+
+In the second test case, the sum of elements of the whole array is 6, which isn't divisible by 4.
+
+In the third test case, all subarrays have an even sum, so the answer is −1.
+
+
+
+Pypy3 可以AC。使用tree segment，时间复杂度是O(n*logn)
+
+```python
+# CF 1364A
+ 
+# def prefix_sum(nums):
+#     prefix = []
+#     total = 0
+#     for num in nums:
+#         total += num
+#         prefix.append(total)
+#     return prefix
+ 
+# def suffix_sum(nums):
+#     suffix = []
+#     total = 0
+#     # 首先将列表反转
+#     reversed_nums = nums[::-1]
+#     for num in reversed_nums:
+#         total += num
+#         suffix.append(total)
+#     # 将结果反转回来
+#     suffix.reverse()
+#     return suffix
+ 
+ 
+t = int(input())
+ans = []
+for _ in range(t):
+    n, x = map(int, input().split())
+    a = [int(i) for i in input().split()]
+
+
+# Segment tree | Efficient implementation
+# https://www.geeksforgeeks.org/segment-tree-efficient-implementation/
+
+    # Max size of tree 
+    tree = [0] * (2 * n); 
+
+    def build(arr) : 
+
+        # insert leaf nodes in tree 
+        for i in range(n) : 
+            tree[n + i] = arr[i]; 
+        
+        # build the tree by calculating parents 
+        for i in range(n - 1, 0, -1) : 
+            tree[i] = tree[i << 1] + tree[i << 1 | 1]; 
+
+    # function to update a tree node 
+    def updateTreeNode(p, value) : 
+        
+        # set value at position p 
+        tree[p + n] = value; 
+        p = p + n; 
+        
+        # move upward and update parents 
+        i = p; 
+        
+        while i > 1 : 
+            
+            tree[i >> 1] = tree[i] + tree[i ^ 1]; 
+            i >>= 1; 
+
+    # function to get sum on interval [l, r) 
+    def query(l, r) : 
+
+        res = 0; 
+        
+        # loop to find the sum in the range 
+        l += n; 
+        r += n; 
+        
+        while l < r : 
+        
+            if (l & 1) : 
+                res += tree[l]; 
+                l += 1
+        
+            if (r & 1) : 
+                r -= 1; 
+                res += tree[r]; 
+                
+            l >>= 1; 
+            r >>= 1
+        
+        return res; 
+    #aprefix_sum = prefix_sum(a)
+    #asuffix_sum = suffix_sum(a)
+ 
+    build([i%x for i in a]);
+    
+    left = 0
+    right = n - 1
+    if right == 0:
+        if a[0] % x !=0:
+            print(1)
+        else:
+            print(-1)
+        continue
+ 
+    leftmax = 0
+    rightmax = 0
+    while left != right:
+        #total = asuffix_sum[left]
+        total = query(left, right+1)
+        if total % x != 0:
+            leftmax = right - left + 1
+            break
+        else:
+            left += 1
+ 
+    left = 0
+    right = n - 1
+    while left != right:
+        #total = aprefix_sum[right]
+        total = query(left, right+1)
+        if total % x != 0:
+            rightmax = right - left + 1
+            break
+        else:
+            right -= 1
+    
+    if leftmax == 0 and rightmax == 0:
+        #print(-1)
+        ans.append(-1)
+    else:
+        #print(max(leftmax, rightmax))
+        ans.append(max(leftmax, rightmax))
+
+print('\n'.join(map(str,ans)))
+```
+
+
+
+如果用sum求和，O(n^2)，pypy3也会在test3 超时。
+
+
+
+
+
+
+
+### Benifits of segment tree usage
+
+https://www.geeksforgeeks.org/segment-tree-sum-of-given-range/
+
+**Range Queries:** One of the main use cases of segment trees is to perform range queries on an array in an efficient manner. The query function in the segment tree can return the ==minimum, maximum, sum, or any other aggregation== of elements within a specified range in the array in O(log n) time.
+
+> **区间查询：** 线段树的主要用途之一是以高效的方式对数组进行区间查询。线段树中的查询函数可以在O(log n)时间内返回指定区间内元素的**最小值、最大值、和或其他聚合结果**。
+
+<img src="https://raw.githubusercontent.com/GMyhf/img/main/img/image-20231031140857139.png" alt="image-20231031140857139" style="zoom:50%;" />
+
+
+
+假设根节点下标从0开始，左子节点 = 2\*父节点+1，右子节点  = 2\*父节点+2
+
+二叉树的父子节点位置关系，https://zhuanlan.zhihu.com/p/339763580
+
+```python
+class SegmentTree:
+	def __init__(self, array):
+		self.size = len(array)
+		self.tree = [0] * (4 * self.size)
+		self.build_tree(array, 0, 0, self.size - 1)
+
+	def build_tree(self, array, tree_index, left, right):
+		if left == right:
+			self.tree[tree_index] = array[left]
+			return
+		mid = (left + right) // 2
+		self.build_tree(array, 2 * tree_index + 1, left, mid)
+		self.build_tree(array, 2 * tree_index + 2, mid + 1, right)
+		self.tree[tree_index] = min(self.tree[2 * tree_index + 1], self.tree[2 * tree_index + 2])
+
+	def query(self, tree_index, left, right, query_left, query_right):
+		if query_left <= left and right <= query_right:
+			return self.tree[tree_index]
+		mid = (left + right) // 2
+		min_value = float('inf')
+		if query_left <= mid:
+			min_value = min(min_value, self.query(2 * tree_index + 1, left, mid, query_left, query_right))
+		if query_right > mid:
+			min_value = min(min_value, self.query(2 * tree_index + 2, mid + 1, right, query_left, query_right))
+		return min_value
+
+	def query_range(self, left, right):
+		return self.query(0, 0, self.size - 1, left, right)
+
+
+if __name__ == '__main__':
+	array = [1, 3, 2, 5, 4, 6]
+	st = SegmentTree(array)
+	print(st.query_range(1, 5)) # 2
+
+```
+
+如果要返回区间最大值，只需要修改第14、20、22、24行程序为求最大相应代码
+
+```python
+        #self.tree[tree_index] = min(self.tree[2 * tree_index + 1], self.tree[2 * tree_index + 2])
+        self.tree[tree_index] = max(self.tree[2 * tree_index + 1], self.tree[2 * tree_index + 2])
+...
+				#min_value = float('inf')
+        min_value = -float('inf')
+        if query_left <= mid:
+            #min_value = min(min_value, self.query(2 * tree_index + 1, left, mid, query_left, query_right))
+            min_value = max(min_value, self.query(2 * tree_index + 1, left, mid, query_left, query_right))
+        if query_right > mid:
+            #min_value = min(min_value, self.query(2 * tree_index + 2, mid + 1, right, query_left, query_right))
+            min_value = max(min_value, self.query(2 * tree_index + 2, mid + 1, right, query_left, query_right))
+        return min_value
+   ....
+   print(st.query_range(1, 5)) # 6   
+      
+```
+
+如果要返回区间 求和，只需要修改第14、20、22、24行程序为求和代码。
+
+
+
+## 2.2 树状数组（Binary Indexed Tree）
+
+树状数组或二叉索引树（英语：Binary Indexed Tree），又以其发明者命名为Fenwick树，最早由Peter M. Fenwick于1994年以A New Data Structure for Cumulative Frequency Tables为题发表。其初衷是解决数据压缩里的累积频率（Cumulative Frequency）的计算问题，现多用于高效计算数列的前缀和， 区间和。
+
+
+
+**Binary Indexed Tree or Fenwick Tree**
+
+https://www.geeksforgeeks.org/binary-indexed-tree-or-fenwick-tree-2/
+
+Let us consider the following problem to understand Binary Indexed Tree.
+We have an array $arr[0 . . . n-1]$. We would like to 
+**1** Compute the sum of the first i elements. 
+**2** Modify the value of a specified element of the array arr[i] = x where $0 \leq i \leq n-1$.
+A **simple solution** is to run a loop from 0 to i-1 and calculate the sum of the elements. To update a value, simply do arr[i] = x. The first operation takes O(n) time and the second operation takes O(1) time. Another simple solution is to create an extra array and store the sum of the first i-th elements at the i-th index in this new array. The sum of a given range can now be calculated in O(1) time, but the update operation takes O(n) time now. This works well if there are a large number of query operations but a very few number of update operations.
+**Could we perform both the query and update operations in O(log n) time?** 
+One efficient solution is to use [Segment Tree](https://www.geeksforgeeks.org/segment-tree-set-1-sum-of-given-range/) that performs both operations in O(Logn) time.
+An alternative solution is Binary Indexed Tree, which also achieves O(Logn) time complexity for both operations. Compared with Segment Tree, Binary Indexed Tree requires less space and is easier to implement.
+
+
+
+> 让我们考虑以下问题来理解二叉索引树（Binary Indexed Tree, BIT）：
+> 我们有一个数组 $arr[0 . . . n-1]$。我们希望实现两个操作：
+>
+> 1. 计算前i个元素的和。
+> 2. 修改数组中指定位置的值，即设置 $arr[i] = x$，其中 $0 \leq i \leq n-1$。
+>
+> 一个简单的解决方案是从0到i-1遍历并计算这些元素的总和。要更新一个值，只需执行 $arr[i] = x$。第一个操作的时间复杂度为O(n)，而第二个操作的时间复杂度为O(1)。另一种简单的解决方案是创建一个额外的数组，并在这个新数组的第i个位置存储前i个元素的总和。这样，给定范围的和可以在O(1)时间内计算出来，但是更新操作现在需要O(n)时间。当查询操作非常多而更新操作非常少时，这种方法表现良好。
+>
+> **我们能否在O(log n)时间内同时完成查询和更新操作呢？**
+> 一种高效的解决方案是使用段树（Segment Tree），它能够在O(log n)时间内完成这两个操作。
+> 另一种解决方案是二叉索引树（Binary Indexed Tree，也称作Fenwick Tree），同样能够以O(log n)的时间复杂度完成查询和更新操作。与段树相比，二叉索引树所需的空间更少，且实现起来更加简单。
+
+
+
+<img src="https://raw.githubusercontent.com/GMyhf/img/main/img/image-20231031141452788.png" alt="image-20231031141452788" style="zoom:50%;" />
+
+
+
+<img src="https://raw.githubusercontent.com/GMyhf/img/main/img/image-20231031141531597.png" alt="image-20231031141531597" style="zoom:50%;" />
+
+
+
+<img src="https://raw.githubusercontent.com/GMyhf/img/main/img/image-20231031141548736.png" alt="image-20231031141548736" style="zoom:50%;" />
+
+**Representation** 
+Binary Indexed Tree is represented as an array. Let the array be BITree[]. Each node of the Binary Indexed Tree stores the sum of some elements of the input array. The size of the Binary Indexed Tree is equal to the size of the input array, denoted as n. In the code below, we use a size of n+1 for ease of implementation.
+
+> **表示方式**
+> 二叉索引树用数组形式表示。设该数组为BITree[]。二叉索引树的每个节点存储了输入数组某些元素的和。二叉索引树的大小等于输入数组的大小，记为n。在下面的代码中，为了便于实现，我们使用n+1的大小。
+
+<img src="https://raw.githubusercontent.com/GMyhf/img/main/img/image-20231031141831067.png" alt="image-20231031141831067" style="zoom:50%;" />
+
+
+
+<img src="https://raw.githubusercontent.com/GMyhf/img/main/img/image-20231031141629059.png" alt="image-20231031141629059" style="zoom:50%;" />
+
+
+
+**Construction** 
+We initialize all the values in BITree[] as 0. Then we call update() for all the indexes, the update() operation is discussed below.
+
+> **构建**
+> 我们首先将BITree[]中的所有值初始化为0。然后对所有的索引调用update()函数，下面将讨论update()操作的具体内容。
+
+**Operations** 
+
+
+> ***getSum(x): Returns the sum of the sub-array arr[0,…,x]*** 
+> // Returns the sum of the sub-array arr[0,…,x] using BITree[0..n], which is constructed from arr[0..n-1] 
+>
+> 1) Initialize the output sum as 0, the current index as x+1. 
+> 2) Do following while the current index is greater than 0. 
+>
+> …a) Add BITree[index] to sum 
+> …b) Go to the parent of BITree[index]. The parent can be obtained by removing 
+> the last set bit from the current index, i.e., index = index – (index & (-index)) 
+>
+> 3) Return sum.
+
+ 
+
+<img src="https://raw.githubusercontent.com/GMyhf/img/main/img/BITSum.png" alt="BITSum" style="zoom: 67%;" />
+
+
+
+getsum(7)
+
+<img src="https://raw.githubusercontent.com/GMyhf/img/main/img/image-20231031142037881.png" alt="image-20231031142037881" style="zoom:50%;" />
+
+getsum(8)
+
+<img src="https://raw.githubusercontent.com/GMyhf/img/main/img/image-20231031142146355.png" alt="image-20231031142146355" style="zoom:50%;" />
+
+
+
+**整数的二进制表示常用的方式之一是使用补码**
+
+补码是一种表示有符号整数的方法，它将负数的二进制表示转换为正数的二进制表示。补码的优势在于可以使用相同的算术运算规则来处理正数和负数，而不需要特殊的操作。
+
+在补码表示中，最高位用于表示符号位，0表示正数，1表示负数。其他位表示数值部分。
+
+具体将一个整数转换为补码的步骤如下：
+
+1. 如果整数是正数，则补码等于二进制表示本身。
+2. 如果整数是负数，则需要先将其绝对值转换为二进制，然后取反，最后加1。
+
+例如，假设要将-5转换为补码：
+
+1. 5的二进制表示为00000101。
+
+2. 将其取反得到11111010。
+
+3. 加1得到11111011，这就是-5的补码表示。
+
+   
+
+<img src="https://raw.githubusercontent.com/GMyhf/img/main/img/image-20231031142210011.png" alt="image-20231031142210011" style="zoom:50%;" />
+
+
+
+The diagram above provides an example of how getSum() is working. Here are some important observations.
+BITree[0] is a dummy node. 
+BITree[y] is the parent of BITree[x], if and only if y can be obtained by removing the last set bit from the binary representation of x, that is y = x – (x & (-x)).
+The child node BITree[x] of the node BITree[y] stores the sum of the elements between y(inclusive) and x(exclusive): arr[y,…,x). 
+
+> 上图提供了一个getSum()如何工作的例子。这里有一些重要的观察点：
+>
+> - BITree[0]是一个虚拟节点。
+> - 如果仅通过从x的二进制表示中移除最后一个设置位（即最右边的1）可以得到y，则BITree[y]是BITree[x]的父节点，这可以表示为 y = x – (x & (-x))。
+> - 节点BITree[y]的子节点BITree[x]存储了从y（包括y）到x（不包括x）之间元素的和：arr[y,...,x)。
+
+
+> ***update(x, val): Updates the Binary Indexed Tree (BIT) by performing arr[index] += val*** 
+> // Note that the update(x, val) operation will not change arr[]. It only makes changes to BITree[] 
+>
+> 1) Initialize the current index as x+1. 
+> 2) Do the following while the current index is smaller than or equal to n. 
+>
+> …a) Add the val to BITree[index] 
+> …b) Go to next element of BITree[index]. The next element can be obtained by incrementing the last set bit of the current index, i.e., index = index + (index & (-index))
+
+ 
+
+<img src="https://raw.githubusercontent.com/GMyhf/img/main/img/BITUpdate12.png" alt="BITUpdate1" style="zoom:67%;" />
+
+update(4, 10)
+
+<img src="https://raw.githubusercontent.com/GMyhf/img/main/img/image-20231031142428708.png" alt="image-20231031142428708" style="zoom:50%;" />
+
+
+
+The update function needs to make sure that all the BITree nodes which contain arr[i] within their ranges being updated. We loop over such nodes in the BITree by repeatedly adding the decimal number corresponding to the last set bit of the current index.
+**How does Binary Indexed Tree work?** 
+The idea is based on the fact that all positive integers can be represented as the sum of powers of 2. For example 19 can be represented as 16 + 2 + 1. Every node of the BITree stores the sum of n elements where n is a power of 2. For example, in the first diagram above (the diagram for getSum()), the sum of the first 12 elements can be obtained by the sum of the last 4 elements (from 9 to 12) plus the sum of 8 elements (from 1 to 8). The number of set bits in the binary representation of a number n is O(Logn). Therefore, we traverse at-most O(Logn) nodes in both getSum() and update() operations. The time complexity of the construction is O(nLogn) as it calls update() for all n elements. 
+**Implementation:** 
+Following are the implementations of Binary Indexed Tree.
+
+> 更新函数需要确保所有包含arr[i]在其范围内的BITree节点都被更新。我们通过不断向当前索引添加其最后一位设置位对应的十进制数，在BITree中循环遍历这些节点。
+> **二叉索引树是如何工作的？**
+> 这个想法基于所有正整数都可以表示为2的幂的和这一事实。例如，19可以表示为16 + 2 + 1。BITree的每个节点都存储n个元素的和，其中n是2的幂。例如，在上面的第一个图（getSum()的图示）中，前12个元素的和可以通过最后4个元素（从9到12）的和加上前8个元素（从1到8）的和得到。一个数n的二进制表示中设置位的数量是O(Logn)。因此，在getSum()和update()操作中，我们最多遍历O(Logn)个节点。构建的时间复杂度为O(nLogn)，因为它为所有n个元素调用了update()。
+> **实现：**
+> 以下是二叉索引树的实现。
+
+```python
+# Python implementation of Binary Indexed Tree 
+
+# Returns sum of arr[0..index]. This function assumes 
+# that the array is preprocessed and partial sums of 
+# array elements are stored in BITree[]. 
+def getsum(BITTree,i): 
+	s = 0 #initialize result 
+
+	# index in BITree[] is 1 more than the index in arr[] 
+	i = i+1
+
+	# Traverse ancestors of BITree[index] 
+	while i > 0: 
+
+		# Add current element of BITree to sum 
+		s += BITTree[i] 
+
+		# Move index to parent node in getSum View 
+		i -= i & (-i) 
+	return s 
+
+# Updates a node in Binary Index Tree (BITree) at given index 
+# in BITree. The given value 'val' is added to BITree[i] and 
+# all of its ancestors in tree. 
+def updatebit(BITTree , n , i ,v): 
+
+	# index in BITree[] is 1 more than the index in arr[] 
+	i += 1
+
+	# Traverse all ancestors and add 'val' 
+	while i <= n: 
+
+		# Add 'val' to current node of BI Tree 
+		BITTree[i] += v 
+
+		# Update index to that of parent in update View 
+		i += i & (-i) 
+
+
+# Constructs and returns a Binary Indexed Tree for given 
+# array of size n. 
+def construct(arr, n): 
+
+	# Create and initialize BITree[] as 0 
+	BITTree = [0]*(n+1) 
+
+	# Store the actual values in BITree[] using update() 
+	for i in range(n): 
+		updatebit(BITTree, n, i, arr[i]) 
+
+	# Uncomment below lines to see contents of BITree[] 
+	#for i in range(1,n+1): 
+	#	 print BITTree[i], 
+	return BITTree 
+
+
+# Driver code to test above methods 
+freq = [2, 1, 1, 3, 2, 3, 4, 5, 6, 7, 8, 9] 
+BITTree = construct(freq,len(freq)) 
+print("Sum of elements in arr[0..5] is " + str(getsum(BITTree,5))) 
+freq[3] += 6
+updatebit(BITTree, len(freq), 3, 6) 
+print("Sum of elements in arr[0..5]"+
+					" after update is " + str(getsum(BITTree,5))) 
+
+# This code is contributed by Raju Varshney 
+ 
+```
+
+**Output**
+
+```
+Sum of elements in arr[0..5] is 12
+Sum of elements in arr[0..5] after update is 18
+```
+
+**Time Complexity:** O(NLogN)
+**Auxiliary Space:** O(N)
+
+**Can we extend the Binary Indexed Tree to computing the sum of a range in O(Logn) time?** 
+Yes. rangeSum(l, r) = getSum(r) – getSum(l-1).
+**Applications:** 
+The implementation of the arithmetic coding algorithm. The development of the Binary Indexed Tree was primarily motivated by its application in this case. See [this ](http://en.wikipedia.org/wiki/Fenwick_tree#Applications)for more details.
+**Example Problems:** 
+[Count inversions in an array | Set 3 (Using BIT)](https://www.geeksforgeeks.org/count-inversions-array-set-3-using-bit/) 
+[Two Dimensional Binary Indexed Tree or Fenwick Tree](https://www.geeksforgeeks.org/two-dimensional-binary-indexed-tree-or-fenwick-tree/) 
+[Counting Triangles in a Rectangular space using BIT](https://www.geeksforgeeks.org/counting-triangles-in-a-rectangular-space-using-2d-bit/)
+
+**References:** 
+http://en.wikipedia.org/wiki/Fenwick_tree 
+http://community.topcoder.com/tc?module=Static&d1=tutorials&d2=binaryIndexedTrees
+
+
+
+[力扣307] 线段树&树状数组，https://zhuanlan.zhihu.com/p/126539401
+
+
+
+## 示例LeetCode307.区域和检索 - 数组可修改
+
+https://leetcode.cn/problems/range-sum-query-mutable/
+
+给你一个数组 `nums` ，请你完成两类查询。
+
+1. 其中一类查询要求 **更新** 数组 `nums` 下标对应的值
+2. 另一类查询要求返回数组 `nums` 中索引 `left` 和索引 `right` 之间（ **包含** ）的nums元素的 **和** ，其中 `left <= right`
+
+实现 `NumArray` 类：
+
+- `NumArray(int[] nums)` 用整数数组 `nums` 初始化对象
+- `void update(int index, int val)` 将 `nums[index]` 的值 **更新** 为 `val`
+- `int sumRange(int left, int right)` 返回数组 `nums` 中索引 `left` 和索引 `right` 之间（ **包含** ）的nums元素的 **和** （即，`nums[left] + nums[left + 1], ..., nums[right]`）
+
+ 
+
+**示例 1：**
+
+```
+输入：
+["NumArray", "sumRange", "update", "sumRange"]
+[[[1, 3, 5]], [0, 2], [1, 2], [0, 2]]
+输出：
+[null, 9, null, 8]
+
+解释：
+NumArray numArray = new NumArray([1, 3, 5]);
+numArray.sumRange(0, 2); // 返回 1 + 3 + 5 = 9
+numArray.update(1, 2);   // nums = [1,2,5]
+numArray.sumRange(0, 2); // 返回 1 + 2 + 5 = 8
+```
+
+
+
+## 示例27018: 康托展开
+
+http://cs101.openjudge.cn/practice/27018/
+
+总时间限制: 3000ms 单个测试点时间限制: 2000ms 内存限制: 90112kB
+描述
+求 1∼N 的一个给定全排列在所有 1∼N 全排列中的排名。结果对 998244353取模。
+
+**输入**
+第一行一个正整数 N。
+
+第二行 N 个正整数，表示 1∼N 的一种全排列。
+**输出**
+一行一个非负整数，表示答案对 998244353 取模的值。
+样例输入
+
+```
+Sample1 in:
+3
+2 1 3
+
+Sample1 output:
+3
+```
+
+样例输出
+
+```
+Sample2 in:
+4
+1 2 4 3
+
+Sample2 output:
+2
+```
+
+提示: 对于100%数据，$1≤N≤1000000$。
+来源: https://www.luogu.com.cn/problem/P5367
+
+
+
+思路：容易想到的方法是把所有排列求出来后再进行排序，但事实上有更简单高效的算法来解决这个问题，那就是康托展开。
+
+> **康托展开**是一个全排列到一个自然数的双射，常用于构建特定哈希表时的空间压缩。 康托展开的实质是计算当前排列在所有由小到大全排列中的次序编号，因此是可逆的。即由全排列可得到其次序编号（康托展开），由次序编号可以得到对应的第几个全排列（逆康托展开）。
+>
+> 康托展开的**表达式为**：
+>
+> $X＝a_n×(n-1)!＋a_{n-1}×(n-2)!＋…＋a_i×(i-1)!＋…＋a_2×1!＋a_1×0!$
+>
+> 其中：X 为比当前排列小的全排列个数（X+1即为当前排列的次序编号）；n 表示全排列表达式的字符串长度；$a_i$ 表示原排列表达式中的第 i 位（由右往左数），前面（其右侧） i-1 位数有多少个数的值比它小。
+
+例如求 5 2 3 4 1 在 {1, 2, 3, 4, 5} 生成的排列中的次序可以按如下步骤计算。
+从右往左数，i 是5时候，其右侧比5小的数有1、2、3、4这4个数，所以有4×4！。
+是2，比2小的数有1一个数，所以有 1×3！。
+是3，比3小的数有1一个数，为1×2！。
+是4，比4小的数有1一个数，为1×1！。
+最后一位数右侧没有比它小的数，为 0×0！＝0。
+则 4×4！＋1×3！＋1×2！＋1×1！＝105。
+这个 X 只是这个排列之前的排列数，而题目要求这个排列的位置，即 5 2 3 4 1排在第 106 位。
+
+同理，4 3 5 2 1的排列数：3×4!＋2×3!＋2×2!＋1×1!＝89，即 4 3 5 2 1 排在第90位。
+因为比4小的数有3个：3、2、1；比3小的数有2个：2、1；比5小的数有2个：2、1；比2小的数有1个：1。
+
+参考代码如下。
+
+
+
+```python
+MOD = 998244353								# Time Limit Exceeded, 内存7140KB, 时间18924ms
+fac = [1]
+
+def cantor_expand(a, n):
+    ans = 0
+    
+    for i in range(1, n + 1):
+        count = 0
+        for j in range(i + 1, n + 1):
+            if a[j] < a[i]:
+                count += 1				# 计算有几个比他小的数
+        ans = (ans + (count * fac[n - i]) % MOD) % MOD
+    return ans + 1
+
+a = [0]
+N = int(input())		# 用大写N，因为spyder的debug，执行下一条指令的命令是 n/next。与变量n冲突。
+
+for i in range(1, N + 1):
+    fac.append((fac[i - 1] * i) % MOD)		# 整数除法具有分配律
+
+*perm, = map(int, input().split())
+a.extend(perm)
+
+print(cantor_expand(a, N))
+```
+
+
+
+用C++也是超时
+
+```c++
+#include<iostream>							// Time Limit Exceeded, 内存960KB, 时间1986ms
+using namespace std;
+
+const long long MOD = 998244353;
+long long fac[1000005]={1};
+
+int cantor_expand (int a[],int n){
+    int i, j, count;
+    long long ans = 0 ;
+
+    for(i = 1; i <= n; i ++){
+        count = 0;
+        for(j = i + 1; j <= n; j ++){
+            if(a[j] < a[i]) count ++;						// 计算有几个比它小的数
+        }
+        ans = (ans + (count * fac[n-i]) % MOD ) % MOD;
+    }
+    return ans + 1;
+}
+
+
+int a[1000005];
+
+int main()
+{
+  int N;
+  //cin >> N;
+  scanf("%d", &N);
+  for (int i=1; i<=N; i++){
+      fac[i] = (fac[i-1]*i)%MOD;
+  }
+
+  for (int i=1; i<=N; i++)
+      //cin >> a[i];
+      scanf("%d",&a[i]);
+  cout << cantor_expand(a,N) << endl;
+  return 0;
+}
+```
+
+
+
+### 优化
+
+康托展开用 $O(n^2)$ 算法超时，需要把时间复杂度降到$O(nLogn)$。“计算有几个比他小的数”，时间复杂度由 $O(n)$ 降到 $O(Logn)$。
+
+### 树状数组（Binary Indexed Tree）
+
+实现树状数组的核心部分，包括了三个重要的操作：lowbit、修改和求和。
+
+1. lowbit函数：`lowbit(x)` 是用来计算 `x` 的二进制表示中最低位的 `1` 所对应的值。它的运算规则是利用位运算 `(x & -x)` 来获取 `x` 的最低位 `1` 所对应的值。例如，`lowbit(6)` 的结果是 `2`，因为 `6` 的二进制表示为 `110`，最低位的 `1` 所对应的值是 `2`。
+
+   > `-x` 是 `x` 的补码表示。
+   >
+   > 对于正整数 `x`，`-x` 的二进制表示是 `x` 的二进制表示取反后加 1。
+   >
+   > `6` 的二进制表示为 `110`，取反得到 `001`，加 1 得到 `010`。
+   >
+   > `-6` 的二进制表示为 `11111111111111111111111111111010`（假设 32 位整数）。
+   >
+   > `6 & -6` 的结果：
+   >
+   > `110` 与 `11111111111111111111111111111010` 按位与运算，结果为 `010`，即 `2`。
+
+2. update函数：这个函数用于修改树状数组中某个位置的值。参数 `x` 表示要修改的位置，参数 `y` 表示要增加/减少的值。函数使用一个循环将 `x` 的所有对应位置上的值都加上 `y`。具体的操作是首先将 `x` 位置上的值与 `y` 相加，然后通过 `lowbit` 函数找到 `x` 的下一个需要修改的位置，将该位置上的值也加上 `y`，然后继续找下一个位置，直到修改完所有需要修改的位置为止。这样就完成了数组的修改。
+
+3. getsum函数：这个函数用于求解树状数组中某个范围的前缀和。参数 `x` 表示要求解前缀和的位置。函数使用一个循环将 `x` 的所有对应位置上的值累加起来，然后通过 `lowbit` 函数找到 `x` 的上一个位置（即最后一个需要累加的位置），再将该位置上的值累加起来，然后继续找上一个位置，直到累加完所有需要累加的位置为止。这样就得到了从位置 `1` 到位置 `x` 的前缀和。
+
+这就是树状数组的核心操作，通过使用这三个函数，我们可以实现树状数组的各种功能，如求解区间和、单点修改等。
+
+```python
+n, MOD, ans = int(input()), 998244353, 1						# 内存69832KB, 时间2847ms
+a, fac = list(map(int, input().split())), [1]
+
+tree = [0] * (n + 1)
+
+def lowbit(x):
+    return x & -x
+
+def update(x, y):
+    while x <= n:
+        tree[x] += y
+        x += lowbit(x)
+
+def getsum(x):
+    tot = 0
+    while x:
+        tot += tree[x]
+        x -= lowbit(x)
+    return tot
+
+
+for i in range(1, n):
+    fac.append(fac[i-1] * i % MOD)
+
+for i in range(1, n + 1):
+    cnt = getsum(a[i-1])
+    update(a[i-1], 1)
+    ans = (ans + ((a[i-1] - 1 - cnt) * fac[n - i]) % MOD) % MOD
+    
+print(ans)
+```
+
+
+
+<img src="https://raw.githubusercontent.com/GMyhf/img/main/img/image-20231029152322373.png" alt="image-20231029152322373" style="zoom:67%;" />
+
+
+
+### 线段树（Segment tree）
+
+线段树 segment tree 来计算第i位右边比该数还要小的数的个数。
+
+```python
+n, MOD, ans = int(input()), 998244353, 1					# 内存69900KB, 时间5162ms
+a, fac = list(map(int, input().split())), [1]
+
+tree = [0] * (2*n)
+
+
+def build(arr):
+
+    # insert leaf nodes in tree
+    for i in range(n):
+        tree[n + i] = arr[i]
+
+    # build the tree by calculating parents
+    for i in range(n - 1, 0, -1):
+        tree[i] = tree[i << 1] + tree[i << 1 | 1]
+
+
+# function to update a tree node
+def updateTreeNode(p, value):
+
+    # set value at position p
+    tree[p + n] = value
+    p = p + n
+
+    # move upward and update parents
+    i = p
+    while i > 1:
+
+        tree[i >> 1] = tree[i] + tree[i ^ 1]
+        i >>= 1
+
+
+# function to get sum on interval [l, r)
+def query(l, r):
+
+    res = 0
+
+    l += n
+    r += n
+
+    while l < r:
+
+        if (l & 1):
+            res += tree[l]
+            l += 1
+
+        if (r & 1):
+            r -= 1
+            res += tree[r]
+
+        l >>= 1
+        r >>= 1
+
+    return res
+
+
+#build([0]*n)
+
+for i in range(1, n):
+    fac.append(fac[i-1] * i % MOD)
+
+for i in range(1, n + 1):
+    cnt = query(0, a[i-1])
+    updateTreeNode(a[i-1]-1, 1)
+    
+    ans = (ans + (a[i-1] -1 - cnt) * fac[n - i]) % MOD
+    
+print(ans)
+
+```
+
+
+
+<img src="https://raw.githubusercontent.com/GMyhf/img/main/img/image-20231029161854925.png" alt="image-20231029161854925" style="zoom: 50%;" />
+
+
+
+
+
+
+
+# 三、二分法
 
 
 
@@ -657,7 +1741,7 @@ print(maxmax)
 
 
 
-# 三、基数排序
+# 四、基数排序
 
 基数排序是一种非比较型整数排序算法，其原理是将整数按位数切割成不同的数字，然后按每个位数分别比较。由于整数也可以表达字符串（比如名字或日期）和特定格式的浮点数，所以基数排序也不是只能使用于整数。
 
@@ -720,7 +1804,7 @@ Auxiliary Space:
 
 
 
-# *四、字典与检索
+# 五、字典与检索
 
 ## 06640: 倒排索引
 
@@ -935,7 +2019,7 @@ for result in results:
 
 
 
-# *五、B-trees
+# 六、B-trees
 
 2-3 树、2-3-4 树、B 树和 B+ 树
 
