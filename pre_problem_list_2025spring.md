@@ -1,7 +1,7 @@
 ## cs201数算（计算机基础2）2025pre每日选做
 <mark>https://github.com/GMyhf/2025spring-cs201/blob/main/pre_problem_list_2025spring.md</mark>
 
-Updated 2339 GMT+8 Feb 11 2025.
+Updated 0006 GMT+8 Feb 12 2025.
 2025 winter, Complied by Hongfei Yan
 
 题解在：
@@ -25,7 +25,7 @@ Updated 2339 GMT+8 Feb 11 2025.
 | 0213 | 04130: Saving Tang Monk | -  | Tough | http://cs101.openjudge.cn/practice/04130/    |
 | 0213 | 4.寻找两个正序数组的中位数 | 分治,二分查找  | Tough | https://leetcode.cn/problems/median-of-two-sorted-arrays/    |
 | 0213 | 23.合并K个升序链表 | 分治,归并排序  | Tough | https://leetcode.cn/problems/merge-k-sorted-lists/   |
-| 0212 | 03447: 银河贸易问题 | bfs  | - | http://cs101.openjudge.cn/practice/03447/    |
+| 0212 | 03447: 银河贸易问题 | bfs  | - | http://cs101.openjudge.cn/25dsapre/03447/    |
 | 0212 | 09202: 舰队、海域出击！ | Topological Order  | 必须会 | http://cs101.openjudge.cn/practice/09202/    |
 | 0212 | P1260: 火星大工程| AOE，拓扑排序，关键路径  | Tough | http://dsbpython.openjudge.cn/dspythonbook/P1260/    |
 | 0211 | 05442: 兔子与星空 | prim, kruskal  | 必须会 | http://cs101.openjudge.cn/25dsapre/05442/   |
