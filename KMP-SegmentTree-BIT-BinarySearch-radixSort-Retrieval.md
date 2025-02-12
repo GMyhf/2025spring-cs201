@@ -1654,6 +1654,48 @@ binary search/greedy , http://cs101.openjudge.cn/practice/04135
 
 
 
+
+
+```python
+def minMaxMonthlyExpense(N, M, expenses):
+    def can_split(max_expense):
+        """ 判断是否能合并至多 M 个花费，使最大花费不超过 max_expense """
+        months = 1  # 记录当前使用的月份数
+        current_sum = 0 # 当前月的开销
+        for cost in expenses:
+            if current_sum + cost > max_expense:
+                months += 1
+                if months > M:
+                    return False
+                current_sum = cost
+            else:
+                current_sum += cost
+        return True
+
+    # 可能的最小开销范围。所以二分是在 [left, right) 区间内进行的
+    left, right = max(expenses), sum(expenses) + 1
+    ans = -1
+    while left < right: # 二分查找最小的 "最大月度开销"
+        mid = (left + right) // 2
+        if can_split(mid):
+            ans = mid   # 记录可行的 `mid`
+            right = mid # 继续尝试更小的值
+        else:
+            left = mid + 1
+    return ans
+
+# 读取输入
+N, M = map(int, input().split())
+expenses = [int(input()) for _ in range(N)]
+
+# 计算并输出答案
+print(minMaxMonthlyExpense(N, M, expenses))
+```
+
+
+
+
+
 在所给的N天开销中寻找连续M天的最小和，即为最大月度开销的最小值。
 
 与 `OJ08210：河中跳房子`  一样都是二分+贪心判断，但注意这道题目是最大值求最小。
@@ -1688,8 +1730,8 @@ while lo < hi:
     if check(mid):      # 返回True，是因为num>m，是确定不合适
         lo = mid + 1    # 所以lo可以置为 mid + 1。
     else:
-        ans = mid    # 如果num==m, mid就是答案
-        hi = mid
+        ans = mid    # 记录可行的 `mid`
+        hi = mid		# 继续尝试更小的值
         
 #print(lo)
 print(ans)
