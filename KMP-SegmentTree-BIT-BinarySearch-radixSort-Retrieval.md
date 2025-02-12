@@ -1730,7 +1730,7 @@ while lo < hi:
     if check(mid):      # 返回True，是因为num>m，是确定不合适
         lo = mid + 1    # 所以lo可以置为 mid + 1。
     else:
-        ans = mid    # 记录可行的 `mid`
+        ans = mid   # 记录可行的 `mid`
         hi = mid		# 继续尝试更小的值
         
 #print(lo)
