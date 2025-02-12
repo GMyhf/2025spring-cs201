@@ -1,14 +1,8 @@
 # KMP-SegmentTree-BIT-BinarySearch-radixSort-Retrieval
 
-Updated 2101 GMT+8 Feb 12, 2025
+Updated 2202 GMT+8 Feb 12, 2025
 
 2024 spring, Complied by Hongfei Yan
-
-
-
-**Logs：**
-
-created on Apr 6, 2024
 
 
 
@@ -1439,7 +1433,7 @@ print(ans)
 
 
 
-# 三、二分法
+# 三、二分法+贪心
 
 
 
@@ -1451,168 +1445,164 @@ print(ans)
 
 
 
-## 08210: 河中跳房子/石头
+## 示例1760.袋子里最少数目的球
 
-binary search/greedy, http://cs101.openjudge.cn/practice/08210
+binary search, https://leetcode.cn/problems/minimum-limit-of-balls-in-a-bag/
 
-每年奶牛们都要举办各种特殊版本的跳房子比赛，包括在河里从一个岩石跳到另一个岩石。这项激动人心的活动在一条长长的笔直河道中进行，在起点和离起点L远 (1 ≤ *L*≤ 1,000,000,000) 的终点处均有一个岩石。在起点和终点之间，有*N* (0 ≤ *N* ≤ 50,000) 个岩石，每个岩石与起点的距离分别为$Di (0 < Di < L)$。
+给你一个整数数组 `nums` ，其中 `nums[i]` 表示第 `i` 个袋子里球的数目。同时给你一个整数 `maxOperations` 。
 
-在比赛过程中，奶牛轮流从起点出发，尝试到达终点，每一步只能从一个岩石跳到另一个岩石。当然，实力不济的奶牛是没有办法完成目标的。
+你可以进行如下操作至多 `maxOperations` 次：
 
-农夫约翰为他的奶牛们感到自豪并且年年都观看了这项比赛。但随着时间的推移，看着其他农夫的胆小奶牛们在相距很近的岩石之间缓慢前行，他感到非常厌烦。他计划移走一些岩石，使得从起点到终点的过程中，最短的跳跃距离最长。他可以移走除起点和终点外的至多*M* (0 ≤ *M* ≤ *N*) 个岩石。
+- 选择任意一个袋子，并将袋子里的球分到 2 个新的袋子中，每个袋子里都有 **正整数** 个球。
+  - 比方说，一个袋子里有 `5` 个球，你可以把它们分到两个新袋子里，分别有 `1` 个和 `4` 个球，或者分别有 `2` 个和 `3` 个球。
 
-请帮助约翰确定移走这些岩石后，最长可能的最短跳跃距离是多少？
+你的开销是单个袋子里球数目的 **最大值** ，你想要 **最小化** 开销。
 
+请你返回进行上述操作后的最小开销。
 
+ 
 
-**输入**
-
-第一行包含三个整数L, N, M，相邻两个整数之间用单个空格隔开。
-接下来N行，每行一个整数，表示每个岩石与起点的距离。岩石按与起点距离从近到远给出，且不会有两个岩石出现在同一个位置。
-
-**输出**
-
-一个整数，最长可能的最短跳跃距离。
-
-样例输入
+**示例 1：**
 
 ```
-25 5 2
-2
-11
-14
-17
-21
+输入：nums = [9], maxOperations = 2
+输出：3
+解释：
+- 将装有 9 个球的袋子分成装有 6 个和 3 个球的袋子。[9] -> [6,3] 。
+- 将装有 6 个球的袋子分成装有 3 个和 3 个球的袋子。[6,3] -> [3,3,3] 。
+装有最多球的袋子里装有 3 个球，所以开销为 3 并返回 3 。
 ```
 
-样例输出
+**示例 2：**
 
 ```
-4
+输入：nums = [2,4,8,2], maxOperations = 4
+输出：2
+解释：
+- 将装有 8 个球的袋子分成装有 4 个和 4 个球的袋子。[2,4,8,2] -> [2,4,4,4,2] 。
+- 将装有 4 个球的袋子分成装有 2 个和 2 个球的袋子。[2,4,4,4,2] -> [2,2,2,4,4,2] 。
+- 将装有 4 个球的袋子分成装有 2 个和 2 个球的袋子。[2,2,2,4,4,2] -> [2,2,2,2,2,4,2] 。
+- 将装有 4 个球的袋子分成装有 2 个和 2 个球的袋子。[2,2,2,2,2,4,2] -> [2,2,2,2,2,2,2,2] 。
+装有最多球的袋子里装有 2 个球，所以开销为 2 并返回 2 。
 ```
 
-提示：在移除位于2和14的两个岩石之后，最短跳跃距离为4（从17到21或从21到25）。
+**示例 3：**
+
+```
+输入：nums = [7,17], maxOperations = 2
+输出：7
+```
+
+ 
+
+**提示：**
+
+- `1 <= nums.length <= 10^5`
+- `1 <= maxOperations, nums[i] <= 10^9`
 
 
+
+
+
+**为什么 `left == right` 是结束条件？**
+
+我们使用**二分查找**来寻找最小的最大球数 `min_penalty`，在 `check(mid)` 里只是在**检查 `mid` 是否可行**，而**不是要恰好用掉 `maxOperations`**。
+
+- `operations == maxOperations` **并不意味着是最优解**，因为可能存在更小的 `mid` 也满足 `operations <= maxOperations`。
+- `left == right` 表示我们已经**收敛**到最小的可行 `mid`，即满足 `operations <= maxOperations` 且不能再更小。
 
 ```python
-def maxMinJump(L, N, M, rocks):
-    # 先将岩石位置排序，并加入起点和终点
-    rocks = [0] + rocks + [L]
+from typing import List
 
-    left, right = 0, L + 1  # 可能的最小跳跃距离范围。所以二分是在 [left, right) 区间内进行的
+class Solution:
+    def minimumSize(self, nums: List[int], maxOperations: int) -> int:
+        # 边界情况处理
+        if len(nums) == 1:
+            return (nums[0] + maxOperations) // (maxOperations + 1)
 
-    def canAchieve(min_dist):
-        """ 判断是否能移除至多 M 个岩石，使最短跳跃距离至少为 min_dist """
-        removed = 0  # 记录移除的岩石数量
-        prev = 0  # 记录上一个岩石位置（起点）
-
-        for i in range(1, len(rocks)):
-            if rocks[i] - rocks[prev] < min_dist:
-                removed += 1
-                if removed > M:
-                    return False  # 不能满足要求
-            else:
-                prev = i  # 更新上一个岩石位置
-
-        return True  # 可以满足要求
-
-    # 二分查找最长可能的最短跳跃距离
-    ans = -1
-    while left < right:
-        mid = (left + right) // 2  # 取中间偏右值
-        if canAchieve(mid):
-            ans = mid   # 记录可行的 `mid`
-            left = mid + 1  # 继续尝试更大的值
-        else:
-            right = mid
-
-    return ans
-
-
-# 读取输入
-L, N, M = map(int, input().split())
-rocks = [int(input()) for _ in range(N)]
-
-# 计算并输出答案
-print(maxMinJump(L, N, M, rocks))
-
-```
-
-
-
-
-
-二分法思路参考：https://blog.csdn.net/gyxx1998/article/details/103831426
-
-**用两分法去推求最长可能的最短跳跃距离**。
-最初，待求结果的可能范围是[0，L]的全程区间，因此暂定取其半程(L/2)，作为当前的最短跳跃距离，以这个标准进行岩石的筛选。
-**筛选过程**是：
-先以起点为基点，如果从基点到第1块岩石的距离小于这个最短跳跃距离，则移除第1块岩石，再看接下来那块岩石（原序号是第2块），如果还够不上最小跳跃距离，就继续移除。。。直至找到一块距离基点超过最小跳跃距离的岩石，保留这块岩石，并将它作为新的基点，再重复前面过程，逐一考察和移除在它之后的那些距离不足的岩石，直至找到下一个基点予以保留。。。
-当这个筛选过程最终结束时，那些幸存下来的基点，彼此之间的距离肯定是大于当前设定的最短跳跃距离的。
-这个时候要看一下被移除岩石的总数：
-
-- 如果总数>M，则说明被移除的岩石数量太多了（已超过上限值），进而说明当前设定的最小跳跃距离(即L/2)是过大的，其真实值应该是在[0, L/2]之间，故暂定这个区间的中值(L/4)作为接下来的最短跳跃距离，并以其为标准重新开始一次岩石筛选过程。。。
-- 如果总数≤M，则说明被移除的岩石数量并未超过上限值，进而说明当前设定的最小跳跃距离(即L/2)很可能过小，准确值应该是在[L/2, L]之间，故暂定这个区间的中值(3/4L)作为接下来的最短跳跃距离
-
-```python
-L,n,m = map(int,input().split())
-rock = [0]
-for i in range(n):
-    rock.append(int(input()))
-rock.append(L)
-
-def check(x):
-    num = 0
-    now = 0
-    for i in range(1, n+2):
-        if rock[i] - now < x:
-            num += 1
-        else:
-            now = rock[i]
-            
-    if num > m:
-        return True
-    else:
-        return False
-
-# https://github.com/python/cpython/blob/main/Lib/bisect.py
-'''
-2022fall-cs101，刘子鹏，元培。
-源码的二分查找逻辑是给定一个可行的下界和不可行的上界，通过二分查找，将范围缩小同时保持下界可行而区间内上界不符合，
-但这种最后print(lo-1)的写法的基础是最后夹出来一个不可行的上界，但其实L在这种情况下有可能是可行的
-（考虑所有可以移除所有岩石的情况），所以我觉得应该将上界修改为不可能的 L+1 的逻辑才是正确。
-例如：
-25 5 5
-1
-2
-3
-4
-5
-
-应该输出 25
-'''
-# lo, hi = 0, L
-lo, hi = 0, L+1 # 左闭右开写法
-ans = -1
-while lo < hi:
-    mid = (lo + hi) // 2
-    
-    if check(mid):
-        hi = mid
-    else:               
-        ans = mid       # 记录可行的 `mid`
-        lo = mid + 1		# 继续尝试更大的值
+        def check(n):
+            """检查是否可以通过不超过maxOperations次操作将所有数分割为不大于n的块"""
+            operations_needed = 0
+            for num in nums:
+                # 计算需要的操作次数以确保每个数字被分割成最多为n的部分
+                operations_needed += (num - 1) // n
+                if operations_needed > maxOperations:
+                    return False
+            return True
         
-#print(lo-1)
-print(ans)
+        # 初始化二分查找的边界
+        left, right = 1, max(nums) 
+        while left < right:
+            mid = (left + right) // 2
+            if check(mid):
+                right = mid
+            else:
+                left = mid + 1
+        
+        return left
 ```
 
+> **题意解读**
+>
+> 「最小化最大值」说人话就是，尽量均匀地分配小球。
+>
+> **思路**
+>
+> 假设最终每个袋子的球数都至多为 m，那么 m 越小，操作次数就越多，m 越大，操作次数就越少，有单调性，可以二分答案。或者说，看到「最小化最大值」就要先思考二分。
+>
+> 现在问题变成：
+>
+> 根据您提供的图片文字信息，以下是提取的内容：
+>
+> 给定 m ，要求最终每个袋子的球数都至多为  m ，能否在 $ \text{maxOperations} $次操作内完成？
+>
+> 对于 $x = \text{nums}[i] $，假设分成  k  个袋子，每个袋子都至多装  m  个球。 k  不能太小，否则没法一共装  x  个球，所以 km 至少要是 x ，即
+>
+> $ km \geq x $
+>
+> 解得
+>
+> $ k \geq \left\lceil \frac{x}{m} \right\rceil $
+>
+> 所以对于  x ，操作次数为
+>
+> $ \left\lceil \frac{x}{m} \right\rceil - 1 $
+>
+> 减一是因为操作 1 次分出 2 个袋子，操作 2 次分出 3 个袋子……依此类推，操作  k-1  次分出  k  个袋子。
+>
+> 累加操作次数，判断总操作次数与 $ \text{maxOperations} $ 的大小关系。
+>
+> **细节**
+>
+> 1)
+>
+> 下面代码采用闭区间。
+>
+> - 左端点初始值：1。每个袋子的球数至少是 1。
+> - 右端点初始值：$ \max(\text{nums})  $。
+>
+> 2)
+>
+> 关于上取整的计算，当 \( a \) 和 \( b \) 均为正整数时，我们有
+>
+> $ \left\lceil \frac{a}{b} \right\rceil = \left\lfloor \frac{a-1}{b} \right\rfloor + 1 $
+>
+> 讨论  a  被  b  整除，和不被  b  整除两种情况，可以证明上式的正确性。
+>
+> 所以有
+>
+> $ \left\lceil \frac{x}{m} \right\rceil - 1 = \left\lfloor \frac{x-1}{m} \right\rfloor $
+>
+> 作者：灵茶山艾府
+> 链接：https://leetcode.cn/problems/minimum-limit-of-balls-in-a-bag/solutions/3071967/er-fen-da-an-pythonjavaccgojsrust-by-end-g7l7/
+> 
+> 
 
 
 
 
-## 04135: 月度开销
+
+## 示例04135: 月度开销
 
 binary search/greedy , http://cs101.openjudge.cn/practice/04135
 
@@ -1824,6 +1814,169 @@ while minmax < maxmax:
 
 print(maxmax)
 ```
+
+
+
+
+
+## 08210: 河中跳房子/石头
+
+binary search/greedy, http://cs101.openjudge.cn/practice/08210
+
+每年奶牛们都要举办各种特殊版本的跳房子比赛，包括在河里从一个岩石跳到另一个岩石。这项激动人心的活动在一条长长的笔直河道中进行，在起点和离起点L远 (1 ≤ *L*≤ 1,000,000,000) 的终点处均有一个岩石。在起点和终点之间，有*N* (0 ≤ *N* ≤ 50,000) 个岩石，每个岩石与起点的距离分别为$Di (0 < Di < L)$。
+
+在比赛过程中，奶牛轮流从起点出发，尝试到达终点，每一步只能从一个岩石跳到另一个岩石。当然，实力不济的奶牛是没有办法完成目标的。
+
+农夫约翰为他的奶牛们感到自豪并且年年都观看了这项比赛。但随着时间的推移，看着其他农夫的胆小奶牛们在相距很近的岩石之间缓慢前行，他感到非常厌烦。他计划移走一些岩石，使得从起点到终点的过程中，最短的跳跃距离最长。他可以移走除起点和终点外的至多*M* (0 ≤ *M* ≤ *N*) 个岩石。
+
+请帮助约翰确定移走这些岩石后，最长可能的最短跳跃距离是多少？
+
+
+
+**输入**
+
+第一行包含三个整数L, N, M，相邻两个整数之间用单个空格隔开。
+接下来N行，每行一个整数，表示每个岩石与起点的距离。岩石按与起点距离从近到远给出，且不会有两个岩石出现在同一个位置。
+
+**输出**
+
+一个整数，最长可能的最短跳跃距离。
+
+样例输入
+
+```
+25 5 2
+2
+11
+14
+17
+21
+```
+
+样例输出
+
+```
+4
+```
+
+提示：在移除位于2和14的两个岩石之后，最短跳跃距离为4（从17到21或从21到25）。
+
+
+
+```python
+def maxMinJump(L, N, M, rocks):
+    # 先将岩石位置排序，并加入起点和终点
+    rocks = [0] + rocks + [L]
+
+    left, right = 0, L + 1  # 可能的最小跳跃距离范围。所以二分是在 [left, right) 区间内进行的
+
+    def canAchieve(min_dist):
+        """ 判断是否能移除至多 M 个岩石，使最短跳跃距离至少为 min_dist """
+        removed = 0  # 记录移除的岩石数量
+        prev = 0  # 记录上一个岩石位置（起点）
+
+        for i in range(1, len(rocks)):
+            if rocks[i] - rocks[prev] < min_dist:
+                removed += 1
+                if removed > M:
+                    return False  # 不能满足要求
+            else:
+                prev = i  # 更新上一个岩石位置
+
+        return True  # 可以满足要求
+
+    # 二分查找最长可能的最短跳跃距离
+    ans = -1
+    while left < right:
+        mid = (left + right) // 2  # 取中间偏右值
+        if canAchieve(mid):
+            ans = mid   # 记录可行的 `mid`
+            left = mid + 1  # 继续尝试更大的值
+        else:
+            right = mid
+
+    return ans
+
+
+# 读取输入
+L, N, M = map(int, input().split())
+rocks = [int(input()) for _ in range(N)]
+
+# 计算并输出答案
+print(maxMinJump(L, N, M, rocks))
+
+```
+
+
+
+
+
+二分法思路参考：https://blog.csdn.net/gyxx1998/article/details/103831426
+
+**用两分法去推求最长可能的最短跳跃距离**。
+最初，待求结果的可能范围是[0，L]的全程区间，因此暂定取其半程(L/2)，作为当前的最短跳跃距离，以这个标准进行岩石的筛选。
+**筛选过程**是：
+先以起点为基点，如果从基点到第1块岩石的距离小于这个最短跳跃距离，则移除第1块岩石，再看接下来那块岩石（原序号是第2块），如果还够不上最小跳跃距离，就继续移除。。。直至找到一块距离基点超过最小跳跃距离的岩石，保留这块岩石，并将它作为新的基点，再重复前面过程，逐一考察和移除在它之后的那些距离不足的岩石，直至找到下一个基点予以保留。。。
+当这个筛选过程最终结束时，那些幸存下来的基点，彼此之间的距离肯定是大于当前设定的最短跳跃距离的。
+这个时候要看一下被移除岩石的总数：
+
+- 如果总数>M，则说明被移除的岩石数量太多了（已超过上限值），进而说明当前设定的最小跳跃距离(即L/2)是过大的，其真实值应该是在[0, L/2]之间，故暂定这个区间的中值(L/4)作为接下来的最短跳跃距离，并以其为标准重新开始一次岩石筛选过程。。。
+- 如果总数≤M，则说明被移除的岩石数量并未超过上限值，进而说明当前设定的最小跳跃距离(即L/2)很可能过小，准确值应该是在[L/2, L]之间，故暂定这个区间的中值(3/4L)作为接下来的最短跳跃距离
+
+```python
+L,n,m = map(int,input().split())
+rock = [0]
+for i in range(n):
+    rock.append(int(input()))
+rock.append(L)
+
+def check(x):
+    num = 0
+    now = 0
+    for i in range(1, n+2):
+        if rock[i] - now < x:
+            num += 1
+        else:
+            now = rock[i]
+            
+    if num > m:
+        return True
+    else:
+        return False
+
+# https://github.com/python/cpython/blob/main/Lib/bisect.py
+'''
+2022fall-cs101，刘子鹏，元培。
+源码的二分查找逻辑是给定一个可行的下界和不可行的上界，通过二分查找，将范围缩小同时保持下界可行而区间内上界不符合，
+但这种最后print(lo-1)的写法的基础是最后夹出来一个不可行的上界，但其实L在这种情况下有可能是可行的
+（考虑所有可以移除所有岩石的情况），所以我觉得应该将上界修改为不可能的 L+1 的逻辑才是正确。
+例如：
+25 5 5
+1
+2
+3
+4
+5
+
+应该输出 25
+'''
+# lo, hi = 0, L
+lo, hi = 0, L+1 # 左闭右开写法
+ans = -1
+while lo < hi:
+    mid = (lo + hi) // 2
+    
+    if check(mid):
+        hi = mid
+    else:               
+        ans = mid       # 记录可行的 `mid`
+        lo = mid + 1		# 继续尝试更大的值
+        
+#print(lo-1)
+print(ans)
+```
+
+
 
 
 
