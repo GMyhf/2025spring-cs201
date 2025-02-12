@@ -1495,6 +1495,54 @@ binary search/greedy, http://cs101.openjudge.cn/practice/08210
 
 
 
+```python
+def maxMinJump(L, N, M, rocks):
+    # 先将岩石位置排序，并加入起点和终点
+    rocks = [0] + rocks + [L]
+
+    left, right = 0, L + 1  # 可能的最小跳跃距离范围。所以二分是在 [left, right) 区间内进行的
+
+    def canAchieve(min_dist):
+        """ 判断是否能移除至多 M 个岩石，使最短跳跃距离至少为 min_dist """
+        removed = 0  # 记录移除的岩石数量
+        prev = 0  # 记录上一个岩石位置（起点）
+
+        for i in range(1, len(rocks)):
+            if rocks[i] - rocks[prev] < min_dist:
+                removed += 1
+                if removed > M:
+                    return False  # 不能满足要求
+            else:
+                prev = i  # 更新上一个岩石位置
+
+        return True  # 可以满足要求
+
+    # 二分查找最长可能的最短跳跃距离
+    ans = -1
+    while left < right:
+        mid = (left + right) // 2  # 取中间偏右值
+        if canAchieve(mid):
+            ans = mid   # 记录可行的 `mid`
+            left = mid + 1  # 继续尝试更大的值
+        else:
+            right = mid
+
+    return ans
+
+
+# 读取输入
+L, N, M = map(int, input().split())
+rocks = [int(input()) for _ in range(N)]
+
+# 计算并输出答案
+print(maxMinJump(L, N, M, rocks))
+
+```
+
+
+
+
+
 二分法思路参考：https://blog.csdn.net/gyxx1998/article/details/103831426
 
 **用两分法去推求最长可能的最短跳跃距离**。
@@ -1545,16 +1593,16 @@ def check(x):
 应该输出 25
 '''
 # lo, hi = 0, L
-lo, hi = 0, L+1
+lo, hi = 0, L+1 # 左闭右开写法
 ans = -1
 while lo < hi:
     mid = (lo + hi) // 2
     
     if check(mid):
         hi = mid
-    else:               # 返回False，有可能是num==m
-        ans = mid       # 如果num==m, mid就是答案
-        lo = mid + 1
+    else:               
+        ans = mid       # 记录可行的 `mid`
+        lo = mid + 1		# 继续尝试更大的值
         
 #print(lo-1)
 print(ans)
