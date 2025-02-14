@@ -1,7 +1,7 @@
 ## cs201数算（计算机基础2）2025pre每日选做
 <mark>https://github.com/GMyhf/2025spring-cs201/blob/main/pre_problem_list_2025spring.md</mark>
 
-Updated 0005 GMT+8 Feb 13 2025.
+Updated 0010 GMT+8 Feb 14 2025.
 2025 winter, Complied by Hongfei Yan
 
 题解在：
@@ -19,7 +19,7 @@ Updated 0005 GMT+8 Feb 13 2025.
 | 0215 | 01961: 前缀中的周期 | KMP  | Tough | http://cs101.openjudge.cn/practice/01961/    |
 | 0215 | 909.蛇梯棋 | bfs  | Medium | https://leetcode.cn/problems/snakes-and-ladders/    |
 | 0215 | 994.腐烂的橘子  | bfs  | Medium | https://leetcode.cn/problems/rotting-oranges/    |
-| 0214 | 20106:走山路 | Dijkstra  | 必须会 | http://cs101.openjudge.cn/practice/20106/    |
+| 0214 | 20106:走山路 | Dijkstra  | 必须会 | http://cs101.openjudge.cn/25dsapre/20106/    |
 | 0214 | 2920.收集所有金币可获得的最大积分 | tree dp  | Tough | https://leetcode.cn/problems/maximum-points-after-collecting-coins-from-all-nodes/    |
 | 0214 | 37.解数独 | backtracking  | Tough | https://leetcode.cn/problems/sudoku-solver/    |
 | 0213 | 04130: Saving Tang Monk | -  | Tough | http://cs101.openjudge.cn/25dsapre/04130/    |
