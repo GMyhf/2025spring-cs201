@@ -1,7 +1,7 @@
 ## cs201数算（计算机基础2）2025pre每日选做
 <mark>https://github.com/GMyhf/2025spring-cs201/blob/main/pre_problem_list_2025spring.md</mark>
 
-Updated 0010 GMT+8 Feb 14 2025.
+Updated 0004 GMT+8 Feb 15 2025.
 2025 winter, Complied by Hongfei Yan
 
 题解在：
@@ -16,7 +16,7 @@ Updated 0010 GMT+8 Feb 14 2025.
 | ---- | --------------- | ------------- | ---- | ---------------------------------------------------- |
 | 0216 | 27018: 康托展开 | 线段树,树状数组  | tough | http://cs101.openjudge.cn/practice/27018/    |
 | 0216 | 14.最长公共前缀 | Trie  | 必须会 | https://leetcode.cn/problems/longest-common-prefix/    |
-| 0215 | 01961: 前缀中的周期 | KMP  | Tough | http://cs101.openjudge.cn/practice/01961/    |
+| 0215 | 01961: 前缀中的周期 | KMP  | Tough | http://cs101.openjudge.cn/25dsapre/01961/    |
 | 0215 | 909.蛇梯棋 | bfs  | Medium | https://leetcode.cn/problems/snakes-and-ladders/    |
 | 0215 | 994.腐烂的橘子  | bfs  | Medium | https://leetcode.cn/problems/rotting-oranges/    |
 | 0214 | 20106:走山路 | Dijkstra  | 必须会 | http://cs101.openjudge.cn/25dsapre/20106/    |
