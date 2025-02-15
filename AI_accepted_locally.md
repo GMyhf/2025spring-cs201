@@ -404,6 +404,10 @@ lmstudio-community/DeepSeek-R1-Distill-Qwen-32B-GGUF/DeepSeek-R1-Distill-Qwen-32
 
 
 
+<img src="https://raw.githubusercontent.com/GMyhf/img/main/img/image-20250215200336295.png" alt="image-20250215200336295" style="zoom: 50%;" />
+
+
+
 Thought for 3 minus 35 seconds
 
 ```python
