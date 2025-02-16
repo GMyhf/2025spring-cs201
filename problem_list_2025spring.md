@@ -2,7 +2,7 @@
 
 https://github.com/GMyhf/2025spring-cs201/blob/main/problem_list_2025spring.md
 
-Updated 1806 GMT+8 Feb 16 2025.
+Updated 0002 GMT+8 Feb 17 2025.
 2025 spring, Complied by Hongfei Yan
 
 题解在：
@@ -22,7 +22,7 @@ Updated 1806 GMT+8 Feb 16 2025.
 | ---- | ----------------- | -------------------- | ------ | ---------------------------------------------------- |
 | 0217 | 08210: 河中跳房子 | binary search+greedy | Medium | http://cs101.openjudge.cn/practice/08210             |
 | 0217 | 35.搜索插入位置   | binary search        | Easy   | https://leetcode.cn/problems/search-insert-position/ |
-| 0216 | 27300:模型整理    | sortings             | Medium | http://cs101.openjudge.cn/practice/27300/            |
+| 0216 | 27300:模型整理    | sortings             | Medium | http://cs101.openjudge.cn/2025sp_routine/27300/            |
 | 0216 | 155.最小栈        | OOP,辅助栈           | Medium | https://leetcode.cn/problems/min-stack/              |
 
 
