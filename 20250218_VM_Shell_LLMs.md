@@ -1,6 +1,6 @@
 # 20250218-Week1-虚拟机，Shell&大模型
 
-Updated 0828 GMT+8 Feb 16 2025
+Updated 1305 GMT+8 Feb 16 2025
 
 2025 spring, Complied by Hongfei Yan
 
@@ -201,7 +201,7 @@ if __name__ == "__main__":
 
 系统盘：类型SSD，容量40GiB
 
-数据盘：类型SSD，容量60Gib。去掉后面的 随云主机删除
+数据盘：类型SSD，容量60GiB。去掉后面的 随云主机删除
 
 
 
