@@ -13,15 +13,12 @@ Updated 1806 GMT+8 Feb 16 2025.
 [sunnywhy_problems.md](https://github.com/GMyhf/2024spring-cs201/blob/main/sunnywhy_problems.md)
 
 <!--
-
 |      |      | -    | -    |      |
-| ---- | ---- | ---- | ---- | ---- |
-|      |      |      |      |      |
 !-->
 
 
 
-| 日期 | 问题编号与名称    | 标签                 | 难度-  | 链接                                                 |
+| 日期 | 问题编号与名称    | 标签                 | 难度  | 链接                                                 |
 | ---- | ----------------- | -------------------- | ------ | ---------------------------------------------------- |
 | 0217 | 08210: 河中跳房子 | binary search+greedy | Medium | http://cs101.openjudge.cn/practice/08210             |
 | 0217 | 35.搜索插入位置   | binary search        | Easy   | https://leetcode.cn/problems/search-insert-position/ |
