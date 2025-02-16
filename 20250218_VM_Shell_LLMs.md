@@ -1,6 +1,6 @@
 #  20250218-Week1-虚拟机，Shell&大模型
 
-Updated 1754 GMT+8 Feb 16 2025
+Updated 1907 GMT+8 Feb 16 2025
 
 2025 spring, Complied by Hongfei Yan
 
@@ -483,9 +483,9 @@ UUID=some-unique-id  /mnt/data  ext4  defaults  0  2
 
 #  2 Linux Shell使用
 
-**定义**：Shell是为用户提供用户界面的软件，通常指命令行界面的解释器。
+**定义**：在 Linux 或 Unix 系统中，Shell 是一个命令行解释器，它接收用户的命令并将其发送给操作系统内核。
 
-**功能**：Shell提供文字界面，可以执行程序、编译代码、控制和监测计算机的运行状态。
+**功能**：Shell提供字符界面，可以执行程序、编译代码、控制和监测计算机的运行状态。
 
 **重要性**：大多数底层功能的高效执行需要基于Shell，而不是图形界面（GUI）。因此，Shell在计算机基础学习中不可或缺。使用Shell能够帮助你更好地利用你的设备，提高工作效率。
 
