@@ -1,6 +1,6 @@
 # AI Accepted locally
 
-Updated 1949 GMT+8 Feb 15 2025
+Updated 1513 GMT+8 Feb 16 2025
 
 2025 spring, Complied by Hongfei Yan
 
@@ -301,7 +301,7 @@ http://cs101.openjudge.cn/practice/16528/
 >    if start > last_end:
 >
 >        count +=1
->        
+>            
 >        last_end = end
 >
 > 7. 最后输出count的值。
@@ -896,10 +896,10 @@ tags: string, sort
 >     match = re.match(r'^(\d+\.?\d*)([A-Za-z]+)$', param_part)
 >     if not match:
 >         continue  # 或者处理错误情况，但题目中假设输入正确
->     
+>         
 >     num_str, unit = match.groups()
 >     num = float(num_str)
->     
+>         
 >     if unit == 'B':
 >         num_m = num * 1000
 >     elif unit == 'M':
@@ -907,7 +907,7 @@ tags: string, sort
 >     else:
 >         # 其他情况，但题目中没有说明，可以忽略？
 >         continue
->     
+>         
 >     if name_part not in model_dict:
 >         model_dict[name_part] = []
 >     model_dict[name_part].append( (num_m, param_part) )
@@ -1244,174 +1244,7 @@ orange: 3
 
 # 附录
 
-## Q1. 这些参数是什么意思?
 
-DeepSeek-R1-Distill-Qwen-32B-GGUF/DeepSeek-R1-Distill-Qwen-32B-Q4_K_M.gguf 
-
-
-
-问题涉及 **GGUF 格式的量化模型文件**，特别是 `DeepSeek-R1-Distill-Qwen-32B-GGUF/DeepSeek-R1-Distill-Qwen-32B-Q4_K_M.gguf` 这类文件名的参数含义。以下是详细解析：
-
-
-
-**文件名结构解析**
-
-`DeepSeek-R1-Distill-Qwen-32B-Q4_K_M.gguf`
-
-**1. `DeepSeek-R1-Distill`**
-
-   - **DeepSeek-R1-Distill**：指的是 DeepSeek 实验室训练的第一代（R1）蒸馏版（Distill）模型。  
-   - **蒸馏（Distill）** 通常意味着这个模型是从一个更大的模型（如 DeepSeek 原始模型）压缩或优化而来的，以提高推理速度并减少计算需求。
-
-**2. `Qwen-32B`**
-
-   - **Qwen**：表示这个模型基于 Qwen（通义千问）架构，由阿里巴巴 DAMO 研发。
-   - **32B**：表示该模型有 **320 亿（32 Billion）参数**，是一个较大的模型。
-
-**3. `GGUF`**
-
-   - **GGUF（GPT-Generated Unified Format）** 是一种 **高效的 LLM 量化格式**，专为 GGML/GGUF 兼容的推理引擎（如 llama.cpp）设计。
-   - 这种格式可以优化大语言模型在 CPU 和 GPU 上的推理速度。
-
-**4. `Q4_K_M`**
-
-   - **Q4**：指的是 **量化精度为 4-bit**（表示每个权重只占 4 比特）。
-   - **K**：代表 **K-quants 量化方案**，用于更好的推理精度和平衡计算效率。
-   - **M**：通常表示 **Mixed**（混合量化），意味着模型可能使用了混合精度量化（例如部分权重 4-bit，部分 8-bit）。
-
----
-
-**Q4_K_M 代表的量化方案**
-
-- `Q4` 指 4-bit 量化，意味着模型的参数被压缩为 4-bit，而不是原始的 16-bit 或 32-bit 浮点数。
-- `K`（K-quant）是一种增强的量化技术，可以提高量化模型的精度，减少推理误差。
-- `M`（Mixed）表示 **混合量化**，通常意味着：
-  - 可能对不同层使用不同的量化精度。
-  - 可能混合不同的块（blockwise quantization）。
-
----
-
-**GGUF 量化格式的选择**
-
-你可能会看到类似的 GGUF 文件，例如：
-- `Q4_K_S`（4-bit K-quants, Small）
-- `Q5_K_M`（5-bit K-quants, Mixed）
-- `Q8_K`（8-bit K-quants）
-
-通常：
-- **Q4_K_M**：平衡性能和速度，适合中等计算资源（如 CPU + 高端 GPU）。
-- **Q5_K_M**：更好的精度，但计算开销更大。
-- **Q8_K**：最高精度，但需要更多显存（VRAM）。
-
----
-
-**如何使用这些模型**
-
-如果你想在 **CPU 或 GPU** 上运行这个 GGUF 量化模型，可以使用 `llama.cpp` 或 `ollama`：
-
-**使用 llama.cpp**
-
-```sh
-./main -m DeepSeek-R1-Distill-Qwen-32B-Q4_K_M.gguf -p "Hello, how are you?"
-```
-
-**使用 Ollama**
-
-```sh
-ollama run qwen:DeepSeek-R1-Distill-Qwen-32B-Q4_K_M
-```
-
----
-
-**总结**
-
-- **DeepSeek-R1-Distill** → 代表 DeepSeek 训练的 R1 版本的蒸馏（优化）模型。
-- **Qwen-32B** → 基于 Qwen（通义千问）架构，**32B** 表示 320 亿参数。
-- **GGUF** → 现代优化的量化模型格式。
-- **Q4_K_M** → **4-bit 量化，K-quants 技术，混合量化（Mixed）**，适合 CPU 运行，也能在低端 GPU 上执行。
-
-如果你需要运行这个模型，可以告诉我你的 **硬件配置**，我可以提供更合适的建议！
-
-
-
-## Q2.我的硬件配置，请提供更合适的建议！
-
-**Mac Studio**: Processor Apple M1 Ultra @ 3.21 GHz,20 核，48核GPU，64GB 内存。 统一内存架构(UMA)让CPU和GPU共享同一内存吃，无需数据复制。 OS macOS 15.3 (Build 24D60), AI Framework: Core ML, AI Backend: GPU. 
-
-
-
-你的 Mac Studio（M1 Ultra）拥有强大的计算能力，尤其是 **统一内存架构（UMA）** 可以让 CPU 和 GPU 高效共享内存。这使得在 **Mac 上运行 GGUF 量化模型** 时，可以利用 GPU 加速推理。  
-
-**最佳方案：使用 llama.cpp + Metal 后端**
-
-`llama.cpp` 已经支持 **Apple Metal API**，能高效利用 M1/M2 GPU 进行推理，适合 GGUF 格式的 DeepSeek 和 Qwen 量化模型。
-
-**1. 安装 `llama.cpp`（带 Metal 支持）**
-
-```sh
-brew install llama.cpp
-```
-
-**2. 运行模型**
-
-下载 **DeepSeek-R1-Distill-Qwen-32B-Q4_K_M.gguf** 后，在终端运行：
-```sh
-llama-cli -m DeepSeek-R1-Distill-Qwen-32B-Q4_K_M.gguf --n-gpu-layers 100
-```
-> /Users/hfyan/.lmstudio/models/lmstudio-community/DeepSeek-R1-Distill-Qwen-32B-GGUF
-
-参数解析：
-
-- `--n-gpu-layers 100`：将 100 层放到 GPU（M1 Ultra 的 GPU 和 RAM 共享内存，适合大模型）。
-- `-m`：指定 GGUF 模型文件。
-
-**3. 如果 `brew` 版本不支持 Metal，加载 Metal 后端**
-
-```sh
-git clone https://github.com/ggerganov/llama.cpp
-cd llama.cpp
-make LLAMA_METAL=1
-./main -m DeepSeek-R1-Distill-Qwen-32B-Q4_K_M.gguf --n-gpu-layers 100
-```
-
----
-
-**替代方案：使用 `Ollama`**
-
-`Ollama` 是 **Mac 原生 AI 推理框架**，内置 Metal 加速，推荐用于 **简化运行流程**。
-
-**1. 安装 `Ollama`**
-
-```sh
-brew install ollama
-```
-**2. 运行 DeepSeek Qwen**
-
-```sh
-ollama run qwen:32b
-```
-或者直接加载本地 GGUF 模型：
-```sh
-ollama create qwen-32b -m DeepSeek-R1-Distill-Qwen-32B-Q4_K_M.gguf
-ollama run qwen-32b
-```
-
----
-
-**总结**
-
-| 方式          | 优势               | 适用场景                 |
-| ------------- | ------------------ | ------------------------ |
-| **llama.cpp** | 轻量级、Metal 支持 | 终端用户，自定义推理参数 |
-| **Ollama**    | 简单易用，自动优化 | 一键运行 AI 模型         |
-
-**推荐方案：** 
-- 如果你喜欢终端控制和调优，**用 `llama.cpp`（带 Metal）**。
-- 如果想快速运行，**用 `Ollama`**。
-
-你的 M1 Ultra **性能足够运行 Qwen-32B 量化版**，如果你想尝试更大的模型（如 Qwen-72B），可以用 **Q5_K_M** 或 **Q8_K** 量化版本，但需要更多 RAM。  
-
-如果你想要更好的推理性能优化，我可以帮你调整 **Metal 线程数、缓存策略** 等参数！
 
 
 
