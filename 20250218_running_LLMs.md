@@ -1,6 +1,6 @@
-# 20250218-Week1-大模型启动
+# 20250218-Week1-虚拟机，Shell&大模型
 
-Updated 2217 GMT+8 Feb 15 2025
+Updated 0828 GMT+8 Feb 16 2025
 
 2025 spring, Complied by Hongfei Yan
 
@@ -11,6 +11,14 @@ logs：
 > Get up and running with large language models
 >
 > 计概课程看图灵自传改编的电影《模拟游戏》，数算课程看英伟达的AI科普书《黄仁勋：英伟达之芯》，期末考试双百加油！
+
+
+
+拥抱大模型，接触大模型，跟上时代的脚步。这是我本地的，70b的也可以跑的，就是机器峰值了，风扇声大，也热。
+
+<img src="https://raw.githubusercontent.com/GMyhf/img/main/img/202502160840413.png" alt="image-20250216084051207" style="zoom:50%;" />
+
+
 
 
 
@@ -157,7 +165,9 @@ if __name__ == "__main__":
 
 
 
-# 1 创建云主机
+# 1虚拟机
+
+## 1.1 创建云主机
 
 访问 https://clab.pku.edu.cn
 
@@ -183,7 +193,7 @@ if __name__ == "__main__":
 
 操作系统：RockyLinux 9.5
 
-> 推荐的镜像是 RockyLinux 9，是一个基于 RHEL 的 Linux 发行版，有着良好的兼容性和稳定性。Ubuntu 24.04.1 和 Ubuntu 20.04 也是非常好的选择，有着良好的社区支持。
+> Clab PKU 推荐的镜像是 RockyLinux 9，是一个基于 RHEL 的 Linux 发行版，有着良好的兼容性和稳定性。Ubuntu 24.04.1 和 Ubuntu 20.04 也是非常好的选择，有着良好的社区支持。
 >
 > 对于新手来说，Ubuntu 或 Linux Mint 可能是最好的起点，而对于寻求最新技术和功能的用户，Fedora 或 Arch Linux 则可能是更好的选择。对于企业级应用，CentOS Stream 或 openSUSE Leap 可以提供所需的支持和稳定性。
 
@@ -217,19 +227,23 @@ SSH密钥对: 点“创建密钥”，点“导入密钥”，名称：YouNameOn
 
 
 
-# 2 连接云主机 
+## 1.2 连接云主机 
 
-云主机创建完成后，可以点击云主机的名称进入云主机详情页面。在这里可以看到云主机的状态、IP 地址等信息。我的是 10.129.242.98
+云主机创建完成后，可以点击云主机的名称进入云主机详情页面。在这里可以看到云主机的状态、IP 地址等信息。我的IP是 `10.129.242.98`。
+
+<img src="https://raw.githubusercontent.com/GMyhf/img/main/img/202502160843962.png" alt="image-20250216084334218" style="zoom:50%;" />
 
 在terminal中登录云主机
 
+```
 ssh rocky@10.129.242.98
+```
 
 输入yes，回车
 
 
 
-## 登陆网关
+### 登陆网关
 
 ```python
 #!/usr/bin/env python3
@@ -264,7 +278,57 @@ python login.py
 
 
 
-## 把60GB数据盘挂上来
+> 要使用Vi编辑器粘贴并保存这段Python程序，并最终执行它，请按照以下步骤操作：
+>
+> **步骤 1: 打开终端**
+>
+> 首先，打开你的Linux终端。
+>
+> **步骤 2: 使用Vi创建新文件**
+>
+> 在终端中输入以下命令来使用Vi创建一个名为`login.py`的新文件：
+> ```bash
+> vi login.py
+> ```
+>
+> **步骤 3: 进入插入模式**
+>
+> 进入Vi编辑器后，按下键盘上的 `i` 键进入插入模式（Insert Mode）。此时，你可以开始编辑文件内容了。
+>
+> **步骤 4: 粘贴代码**
+>
+> 将提供的Python代码复制到剪贴板中，然后在Vi编辑器内右键点击选择“粘贴”或者直接使用快捷键 `Ctrl+Shift+V` 来粘贴代码。确保所有代码都被正确地粘贴到了文件中。
+>
+> **步骤 5: 保存文件**
+>
+> 完成代码粘贴后，按下 `Esc` 键退出插入模式。然后输入以下命令保存文件并退出Vi编辑器：
+> ```
+> :wq
+> ```
+> 这里的 `:` 表示进入命令模式，`w` 是写入（保存）文件，`q` 是退出Vi编辑器。
+>
+> **步骤 6: 赋予执行权限**
+>
+> 为了能够运行这个Python脚本，你可能需要给它赋予执行权限。在终端中输入以下命令：
+> ```bash
+> chmod +x login.py
+> ```
+>
+> **步骤 7: 执行程序**
+>
+> 最后，在终端中输入以下命令来运行这个Python程序：
+> ```bash
+> python3 login.py
+> ```
+> 注意：根据你的系统配置和安装的Python版本，可能需要使用 `python3` 而不是 `python` 来运行脚本。
+>
+> 现在，根据提示输入用户名和密码，就可以尝试登录网关了。
+
+
+
+
+
+### 把60GB数据盘挂上来
 
 此时看不到创建云主机时候设置的容量60Gib的数据盘。
 
@@ -311,11 +375,11 @@ sr0     11:0    1  474K  0 rom
 
 
 
-### 直接挂载整个磁盘
+#### 直接挂载整个磁盘
 
 把 `/dev/sdb` 挂载并访问，下面操作步骤：
 
-#### 步骤 1: 创建文件系统
+**步骤 1: 创建文件系统**
 
 直接在 `/dev/sdb` 上创建一个文件系统（例如 ext4），而不需要创建分区。
 
@@ -325,7 +389,7 @@ sudo mkfs.ext4 /dev/sdb
 
 注意：此操作会清除磁盘上的所有数据，请确保该磁盘不包含重要数据或者已经备份。
 
-#### 步骤 2: 创建挂载点
+**步骤 2: 创建挂载点**
 
 选择一个目录作为挂载点，或者创建一个新的目录。
 
@@ -333,7 +397,7 @@ sudo mkfs.ext4 /dev/sdb
 sudo mkdir -p /mnt/data
 ```
 
-#### 步骤 3: 挂载磁盘
+**步骤 3: 挂载磁盘**
 
 使用 `mount` 命令将磁盘挂载到指定的挂载点。
 
@@ -341,7 +405,7 @@ sudo mkdir -p /mnt/data
 sudo mount /dev/sdb /mnt/data
 ```
 
-#### 步骤 4: 验证挂载
+**步骤 4: 验证挂载**
 
 检查是否成功挂载：
 
@@ -357,7 +421,7 @@ Filesystem      Size  Used Avail Use% Mounted on
 /dev/sdb         59G   24M   56G   1% /mnt/data
 ```
 
-#### 步骤 5: 设置开机自动挂载（可选）
+**步骤 5: 设置开机自动挂载（可选）**
 
 为了确保系统重启后自动挂载该磁盘，您需要编辑 `/etc/fstab` 文件。
 
@@ -389,17 +453,23 @@ UUID=some-unique-id  /mnt/data  ext4  defaults  0  2
 
 保存并退出编辑器。
 
-#### 总结
+**总结**
 
 通过上述步骤，您可以直接在 `/dev/sdb` 上创建文件系统并挂载它，而无需创建任何分区。 
 
 
 
-#  3 Unix中Shell的使用
+#  2 Linux Shell使用
 
-Shell是指为用户提供用户界面的软件，通常指的是命令行界面的解释器。顾名思义它是一层壳，而这一层壳提供了一个文字界面，可以执行程序编译代码，甚至控制监测修改计算机的运行状态，大多数底层的功能及其高效的执行，还是需要基于Shell而不是图形界面，也就是GUI。因此在计算机基础的学习中，Shell是不可或缺的一环。另一方面，实际使用Shell能帮助你更好的使用你的设备，提高你的工作效率。
+**定义**：Shell是为用户提供用户界面的软件，通常指命令行界面的解释器。
 
-我们主要讨论的是Unix环境下的Shell。首先看到的是命令提示符， 它由多个部分组成，第一个部分是用户名，在这里是hfyan。打印当前用户还有一种方法，也就是敲入`whoami`。第二部分是主机名，你可以理解为计算机的名字，在这里是jensen。
+**功能**：Shell提供文字界面，可以执行程序、编译代码、控制和监测计算机的运行状态。
+
+**重要性**：大多数底层功能的高效执行需要基于Shell，而不是图形界面（GUI）。因此，Shell在计算机基础学习中不可或缺。使用Shell能够帮助你更好地利用你的设备，提高工作效率。
+
+我们主要讨论的是Linux环境下的Bash，也称为BASH (Bourne Again Shell)。在打开BASH后，你会看到命令提示符，它由多个部分组成：用户名、主机名、工作目录和"$"符号作为命令提示符。
+
+在这里是hfyan。打印当前用户还有一种方法，是`whoami`。第二部分是主机名，可以理解为计算机的名字，在这里是jensen。
 
 ```
 (base) hfyan@HongfeideMac-Studio ~ % ssh rocky@10.129.242.98
@@ -411,25 +481,39 @@ rocky
 [rocky@jensen ~]$ 
 ```
 
-工作目录或者说working directory，在这里是 `/home/rocky`，意思就是我们当前处在这个目录中，可以使用`pwd` (print working directory) 来打印当前工作目录。dollar是命令提示符，其他命令还有 echo回显，cal是calendar打印日历，`clear`屏幕清空。
+可以使用`pwd` (print working directory) 打印当前工作目录，在这里 `/home/rocky`是工作目录，意思就是我们当前处在这个目录中。其他命令还有 `echo`回显，`cal`是打印今天的日历，`clear`清屏。
 
-在进入更加复杂或者说更加实用的命令的介绍之前，先讲两个话题。
+## 2.1 快捷键和学习资源
 
-第一个是快捷键，减少你输入命令的麻烦，提高你执行命令的效率。设想这样一种情况，你键入了一个非常非常长的指令，但是敲到一半的时候，突然发现整个都错了，需要重新写，按退格键或者一直按着，但是这样子删光整一行，可能需要比较长的时间，可以使用快捷键  `ctrl + u`，删除光标下的所有字符一直到行首。与之相对应的 `ctrl + k`，删除光标下的字符直至行尾。
+使用快捷键来提升效率，快速编辑命令行内容。
 
-另一种比较有意思的情况，安装软件如果发现 permission denied，因为你不是管理员用户，需要在前面加sudo。使用上下键来定位我们之前输入过的命令，然后 `ctrl + a` 定位到命令的首部，插入sudo，这时候你就可以直接按enter执行了。`ctrl + e` 回到整行的后面。
+**Ctrl + U**：删除光标前的所有字符。
 
-有一个非常重要的快捷键是`trl + r`（reverse search in bash history）
+**Ctrl + K**：删除光标后的所有字符。
 
-`ctrl + l` 与`clear`基本等效，但是它前面的东西都清除掉，不会清楚当前行输入的命令。
+**Ctrl + A**：定位到命令的首部。
+
+**Ctrl + E**：定位到命令的尾部。
+
+**Ctrl + R**：在命令历史记录中进行反向搜索。
 
 
 
-这些指令并不需要非常系统的去教大家，因为大家在实践的过程中自然而然就会学会。比如说你不知道ls这个指令应该怎么用，可以直接 `ls --help`，更详细的，可以`man ls`。 man命令是“manual”的缩写，用于显示命令的手册页（manual pages），在这样的这个手册界面中，一般可以使用`vi`的指令来去定位浏览，j向下，向上，如果你要在这个手册中搜索一些信息的话，可以先按正斜杠，然后再输入你要搜索的关键词，比如说line，然后按enter，这个时候所有的line都会被高亮，你再按n，也就代表next，就可以慢慢的向下搜索了。对于这些手册，可以用q来退出它，就是quit。
+快捷键可以减少你输入命令的麻烦。设想这样一种情况，键入了一个非常非常长的指令，但是敲到一半的时候，突然发现整个都错了，需要重新写，按退格键或者一直按着，但是这样子删光整一行，可能需要比较长的时间，可以使用快捷键  `ctrl + u`，删除光标下的所有字符一直到行首。与之相对应的 `ctrl + k`，删除光标下的字符直至行尾。
 
-man也好，help也好，其实他们的文字都不是非常的易读，也不是能在短时间内能够看完的，所以你就会想太长不看，实际上是有这样子一个too long didn't read第三方软件。它可以提供一些非常简单而且常用的例子，而且只使用一句话来描述。比如说 `tldr ls`，就会看到打印了一些常用的参数组合。又比如说在做lab的时候，需要解压缩一个tar文件，参数都会比较长，初学同学可能都记不太住，`tldr tar`打印一些常见的解压缩以及压缩的指令的用法。
+再比如安装软件如果发现 permission denied，因为你不是管理员用户，需要在前面加sudo。使用上下键来定位我们之前输入过的命令，然后 `ctrl + a` 定位到命令的首部，插入sudo，这时候你就可以直接按enter执行了。`ctrl + e` 回到整行的后面。
 
-> 在 Linux 的 Shell 中，你可以使用以下方法安装 `tldr`（命令行速查工具）：
+`trl + r`（reverse search in bash history）是一个非常重要的快捷键。
+
+`ctrl + l` 与`clear`基本等效，但是它前面的东西都清除掉，不会清除当前行输入的命令。
+
+
+
+对于学习资源，除了直接在命令后面加上`--help`获取简要信息外，还可以使用man指令查看详细的用户手册。比如说你不知道ls这个指令应该怎么用，可以直接 `ls --help`，更详细的，可以`man ls`。 man命令是“manual”的缩写，用于显示命令的手册页（manual pages），在这样的这个手册界面中，一般可以使用`vi`的指令来去定位浏览，j向下，向上，如果你要在这个手册中搜索一些信息的话，可以先按正斜杠，然后再输入你要搜索的关键词，比如说line，然后按enter，这个时候所有的line都会被高亮，你再按n，也就代表next，就可以慢慢的向下搜索了。对于这些手册，可以用q来退出它，就是quit。
+
+man也好，help也好，都不是非常的易读，也不是能在短时间内能够看完的，所以你就会想太长不看，有这样一个too long didn't read第三方软件。它可以提供简单常用的命令示例，而且只使用一句话来描述。比如说 `tldr ls`，就会看到打印了一些常用的参数组合。比如需要解压缩一个tar文件，参数都会比较长，初学可能都记不太住，`tldr tar`打印一些常见的解压缩以及压缩的指令的用法。
+
+> 在 Linux 的 Shell 中，可以使用以下方法安装 `tldr`（命令行速查工具）：
 >
 > **方法 ：使用 npm 安装（推荐）**
 >
@@ -448,7 +532,7 @@ man也好，help也好，其实他们的文字都不是非常的易读，也不�
 
 
 
-另外一个比较有用的命令叫info，以咨询一些信息
+另外一个比较有用的命令叫info，以咨询一些信息。info是什么？叫做GNU Core Utils，是Linux中一些核心的小工具。
 
 先安装
 
@@ -456,13 +540,183 @@ man也好，help也好，其实他们的文字都不是非常的易读，也不�
 sudo npm install -g info
 ```
 
+如果你运行 `info` 的话，会看到关于这个小工具的一个手册，里面有非常多有意思的工具。如果大家对shell的用法感兴趣的话可以探索，在网上也是有html版的，当你在这些文档中都找不到好用的信息的时候，可以上网搜索。推荐 https://unix.stackexchange.com/, https://stackoverflow.com/，比较容易能够获得有效的信息。
+
+
+
+## 2.2 与文件系统交互
+
+在shell中最基础的命令可能是从文件系统进行交互，也就是资源管理器的功能。Linux的文件系统一般遵循文件系统层次化标准FHS，在该标准中系统中的一切事物都被视为文件，包括目录。通常所有用户的加目录都存储在home下，访问文件系统需要路径的概念，从当前工作目录开始的路径称为相对路径，从根目录开始的路径则称为绝对路径。有了路径的概念后，可以开始文件系统的相关操作。
+
+### 文件操作
+
+- **`ls`**：列出目录内容。list directory contents
+  - **`ls -a`**：列出所有文件，包括隐藏文件。隐藏文件一般以dot打头。
+  - **`ls -l`**：以长列表形式列出文件详细信息。
+- **`cd`**：更改工作目录。
+  - **`cd ..`**：返回上一级目录。
+  - **`cd ~`**：返回家目录。
+  - **`cd -`**：返回上一次访问的目录。
+
+- **`mkdir`**：创建目录。
+- **`touch`**：创建空白文件或修改文件时间戳。
+- **`rm`**：删除文件。remove directory
+  - **`rm -r`**：递归删除目录及其内容。
+  - **`rm -f`**：强制删除，不提示确认。
+- **`mv`**：移动文件或重命名文件。
+- **`cp`**：复制文件。
+  - **`cp -r`**：递归复制目录及其内容。
+
+### 文件查看和执行
+
+- **`cat`**：打印文件内容。concatenate
+- **`less`**：分页查看文件内容。似于手册的方式来观察比较长的文件。可以使用手册中的那种键盘操作，按q退出
+- **`head`**、**`tail`**：查看文件的开头或结尾部分。
+- **`./`**：执行文件。执行文件采用.slash再加路径的方式。例如：`./bomb`
+
+有关文件的查看，还有wordcount,find,dif等指令。
+
+
+
+### 环境变量
+
+难道不应该使用ls的完整路径来执行吗？系统使用环境变量中的path变量来完成这件事。所谓环境变量，一般是指在操作系统中用来指定运行环境的一些参数，比如临时文件夹位置，系统文件夹位置等等。
+
+`echo $HOST` 打印主机名，`echo $PATH`打印环境变量PATH的值，可以得到一些用冒号分隔的绝对路径。当我们进入一个指令的时候，系统会在这些路径中先顺序搜索可执行文件名，如果找到了就执行。
+
+```
+(base) hfyan@Mac-mini 2025spring-cs201 % echo $HOST      
+Mac-mini.local
+(base) hfyan@Mac-mini 2025spring-cs201 % echo $PATH 
+/Users/hfyan/miniconda3/bin:/Users/hfyan/miniconda3/condabin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/Library/Apple/usr/bin:/Applications/VMware Fusion.app/Contents/Public:/opt/homebrew/bin
+(base) hfyan@Mac-mini 2025spring-cs201 % 
+```
+
+使用export这样的指令来改写环境变量
+
+- **`export`**：设置环境变量。
+- **`which`**：查找命令的路径。
+
+### 文件权限
+
+观察 `ls -l`的输出，由十位组成，第一位呢表示是否目录，剩下三位为一组，分别代表用户，用户组和其他人对这个文件的权限。文件权限包括读、写、执行，分别用rwx来表示，如果是一个短横线则表示没有这个权限。对于目录来说，执行权限就是搜索。
+
+```
+(base) hfyan@Mac-mini 2025spring-cs201 % ls -l
+total 2296
+-rw-r--r--@  1 hfyan  staff   24135 Feb 16 08:14 20250218_running_LLMs.md
+-rw-r--r--   1 hfyan  staff   51196 Feb 16 06:23 AI_accepted_locally.md
+-rw-r--r--   1 hfyan  staff    4720 Feb 14 00:09 DSA-B_course_introduction.md
+-rw-r--r--   1 hfyan  staff   91550 Feb 14 00:09 KMP-SegmentTree-BIT-BinarySearch-radixSort-Retrieval.md
+-rw-r--r--   1 hfyan  staff   10054 Feb 14 00:09 README.md
+drwxr-xr-x  12 hfyan  staff     384 Feb 16 06:23 cheatsheet
+drwxr-xr-x  11 hfyan  staff     352 Feb  6 09:18 code
+-rw-r--r--   1 hfyan  staff  156593 Feb 14 00:09 coding_exam_DSA-B.md
+drwxr-xr-x  10 hfyan  staff     320 Jan 22 00:24 machine_learning
+drwxr-xr-x   4 hfyan  staff     128 Jan 23 08:48 other
+-rw-r--r--   1 hfyan  staff   12001 Feb 16 06:23 pre_problem_list_2025spring.md
+-rw-r--r--   1 hfyan  staff  223513 Jan 21 01:32 winter_week1_OOP_linear_structure.md
+-rw-r--r--   1 hfyan  staff  246411 Jan 24 00:39 winter_week2_tree.md
+-rw-r--r--   1 hfyan  staff  216616 Feb  6 09:18 winter_week3_graph.md
+-rw-r--r--   1 hfyan  staff  115050 Feb 14 00:09 written_exam_DSA-B.md
+(base) hfyan@Mac-mini 2025spring-cs201 % 
+
+```
+
+
+
+- **`ls -l`**：查看文件权限。
+- **`chmod`**：更改文件权限。
+  - **`chmod u+x`**：给用户添加执行权限。
+
+### 文件打包和压缩
+
+谈到权限我们顺道就可以说到tar这个指令，常会用到tar格式的存档文件，它和zip甚至win rar的区别是它可以保留linux中的文件权限。tar是tape archive的缩写，就是在备份文件的时候常会用到磁带机。用tar打包之后一般会再进行压缩，扩展名为tar.gz指经过gzip算法压缩，而tar.bz2则是经过bzip2算法压缩。
+
+- **`tar`**：打包文件。
+  - **`tar czvf`**：打包并压缩文件。
+  - **`tar xzvf`**：解压文件。
+
+### 文件重定向和管道
+
+- **`>`**：重定向输出到文件。
+- **`>>`**：追加输出到文件。
+- **`2>`**：重定向错误输出。
+- **`|`**：管道，将前一个命令的输出作为后一个命令的输入。
+
+
+
+我们介绍了Shell的基本概念、常用命令、快捷键、文件操作、环境变量、文件权限、打包压缩以及重定向和管道。
+
+
+
+# 3 大模型安装和测试
+
+https://www.ollama.com 是字符界面。图像界面可以用，https://lmstudio.ai
+
+我的机器是Mac Studio。
 
 
 
 
-# 4 部署大模型&测试写代码
 
-## 安装 ollama
+<img src="https://raw.githubusercontent.com/GMyhf/img/main/img/202502160845440.png" alt="image-20250216084507879" style="zoom:50%;" />
+
+Apple M1 Ultra 是 Apple 芯片系列中的一员，专为高性能需求设计，特别是在 Mac Studio 等设备中使用。M1 Ultra 的配置包括了中央处理器（CPU）、图形处理器（GPU）以及统一内存架构（Unified Memory Architecture, UMA），其中统一内存可供 CPU、GPU 以及其他组件共享。
+
+**关于 GPU 内存**
+
+在 M1 Ultra 中， 64GB 内存实际上是整个系统共享的统一内存容量，这意味着这64GB内存是由CPU、GPU及其他组件共同使用的，而不是专门分配给GPU的独立内存。
+
+- **统一内存架构**：Apple 的设计理念是通过统一内存架构来提升性能和效率。这种架构允许 GPU 和 CPU 访问相同的内存池，减少了数据复制的需求，并且可以更灵活地根据需要分配内存资源。
+
+- **M1 Ultra 的 GPU 资源**：M1 Ultra 配备了一个强大的 48 核心 GPU。尽管没有“专用”的 GPU 显存，但其可以从整个 64GB 统一内存中获取所需的工作内存。这对于许多图形密集型应用来说是非常有利的，因为它避免了传统显存与主存之间可能存在的瓶颈。
+
+因此，当看到 M1 Ultra 配置为 64GB 内存时，实际上是指整个系统的统一内存大小，而 GPU 可以利用这部分内存中的任何部分作为其工作内存，具体取决于当前运行的应用程序及其对资源的需求情况。这种设计极大地提高了灵活性和性能表现，尤其是在处理复杂图形任务或多任务处理场景下。 
+
+<img src="https://raw.githubusercontent.com/GMyhf/img/main/img/202502160845741.png" alt="image-20250216084526735" style="zoom:50%;" />
+
+
+
+## 3.1 安装lm studio及测试
+
+<img src="https://raw.githubusercontent.com/GMyhf/img/main/img/202502160842762.png" alt="image-20250216084242045" style="zoom: 33%;" />
+
+装好后，图像界面的本地LLM。
+
+![image-20250216084933939](https://raw.githubusercontent.com/GMyhf/img/main/img/202502160849312.png)
+
+可以本地做编程题目。
+
+<img src="https://raw.githubusercontent.com/GMyhf/img/main/img/202502160850940.png" alt="image-20250216085020115" style="zoom:50%;" />
+
+
+
+![image-20250216085036709](https://raw.githubusercontent.com/GMyhf/img/main/img/202502160850429.png)
+
+
+
+再比如：
+
+<img src="https://raw.githubusercontent.com/GMyhf/img/main/img/202502160851393.png" alt="image-20250216085110235" style="zoom:50%;" />
+
+
+
+![image-20250216085123730](https://raw.githubusercontent.com/GMyhf/img/main/img/202502160851001.png)
+
+
+
+模型是通用的，不用GUI，也可以命令行运行。用 https://github.com/ggml-org/llama.cpp
+
+![image-20250216085617901](https://raw.githubusercontent.com/GMyhf/img/main/img/202502160856958.png)
+
+
+
+## 3.2安装 ollama及测试
+
+<img src="https://raw.githubusercontent.com/GMyhf/img/main/img/202502160842974.png" alt="image-20250216084224586" style="zoom: 33%;" />
+
+
 
 ```
 curl -fsSL https://ollama.com/install.sh | sh
@@ -494,15 +748,14 @@ WARNING: No NVIDIA/AMD GPU detected. Ollama will run in CPU-only mode.
 
 查看 https://ollama.com 选择相应模型安装
 
-> 基本上4g内存可用的就是llama3 1b和deepseek蒸馏的qwen1.5b的量化版，qwen3b的量化版不知道能不能跑
+> 基本上4g内存可用的就是llama3 1b和deepseek蒸馏的qwen1.5b的量化版，3b的量化版还是不行
 >
 > llama 3先发的8b和70b版本中文不行，后来又发的3.2（包括1b和3b）是做了多语言训练的
 >
->  ollama的特点是默认tag是量化版，比如您跑这个就是1b量化的版本，我感觉这样目的是让尽可能多用户至少能把模型跑起来，虽然效果可能差点
+>  ollama的特点是默认tag是量化版，感觉这样目的是让尽可能多用户至少能把模型跑起来，虽然效果可能差点
 >
 > ollama run llama3.2:1b-instruct-fp16，是跑原始的1b版本，也能跑起来
 >
-> 跑的应该是3b量化版本，看来4G内存还是不行
 
 
 
@@ -543,9 +796,9 @@ llama3.2:latest    a80c4f17acd5    2.0 GB    2 minutes ago
 
 
 
-## 测试写代码
+**测试写代码**
 
-看能否正确给出这个题目代码，但是给出的代码是错误的。 
+看能否正确给出这个题目代码，但是1b模型给出的代码是错误的。 
 
 27300:模型整理, http://cs101.openjudge.cn/practice/27300/
 
@@ -644,3 +897,20 @@ o3斩获IOI金牌冲榜全球TOP 18，自学碾压顶尖程序员！48页技术�
 >
 > ![图片](https://raw.githubusercontent.com/GMyhf/img/main/img/640)
 
+
+
+https://browser.geekbench.com 有Geekbench AI测试
+
+<img src="https://raw.githubusercontent.com/GMyhf/img/main/img/202502160849147.png" alt="image-20250216084859159" style="zoom:50%;" />
+
+
+
+![image-20250216083942943](https://raw.githubusercontent.com/GMyhf/img/main/img/202502160839008.png)
+
+
+
+<img src="https://raw.githubusercontent.com/GMyhf/img/main/img/202502160848529.png" alt="image-20250216084836890" style="zoom: 33%;" />
+
+
+
+<img src="https://raw.githubusercontent.com/GMyhf/img/main/img/202502160844411.png" alt="image-20250216084415980" style="zoom:50%;" />
