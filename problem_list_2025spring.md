@@ -1,5 +1,7 @@
 ## cs201数算 2025spring每日选做
 
+https://github.com/GMyhf/2025spring-cs201/blob/main/problem_list_2025spring.md
+
 Updated 1806 GMT+8 Feb 16 2025.
 2025 spring, Complied by Hongfei Yan
 
