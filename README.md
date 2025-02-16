@@ -1,12 +1,18 @@
 # 2025spring-cs201: DS Alog （数据结构与算法）
 
-Updated 1322 GMT+8 Feb 12 2025. 2025 winter, Complied by Hongfei Yan  
+Updated 1828 GMT+8 Feb 16 2025. 2025 winter, Complied by Hongfei Yan  
 https://github.com/GMyhf/2025spring-cs201/
 
 
 ## 1 题解 & 教材
-https://github.com/GMyhf/2024spring-cs201/blob/main/2024spring_dsa_problems.md  
 https://github.com/GMyhf/2024fall-cs101/blob/main/2024fall_LeetCode_problems.md  
+
+https://github.com/GMyhf/2024spring-cs201/blob/main/2024spring_dsa_problems.md  
+
+https://github.com/GMyhf/2020fall-cs101/blob/main/2020fall_cs101.openjudge.cn_problems.md
+
+https://github.com/GMyhf/2020fall-cs101/blob/main/2020fall_Codeforces_problems.md
+
 https://github.com/GMyhf/2024spring-cs201/blob/main/sunnywhy_problems.md
 
 Python数据结构与算法分析 第3版 (米勒 拉努姆 罗曼)   
@@ -21,15 +27,21 @@ Python数据结构与算法分析 第3版 (米勒 拉努姆 罗曼)
 
 数算总评规划：期末机考1小时52分钟包含6个题目，AC5或者AC6尽量确保获得优秀评级；如果AC0，即使笔试满分，总评最高也只能达到84；如果AC4，笔试成绩较高，在不超优秀率限制的前提下，仍有机会被评定为优秀。
 
-## 3 数算pre每日选做
-助力大家在下学期的数算课程中取得满分成绩，从1月13日至2月16日，涵盖整个寒假时段，每天3个题目。  
-https://github.com/GMyhf/2025spring-cs201/blob/main/pre_problem_list_2025spring.md
+## 3 数算每日选做
+周一17日开学，开始每日选做，每天2题，期中后调整为每日1题。
 
-因为计概各班进度不一样，各位老师对计概、数算内容覆盖理解也不一致。所以如果有题目没有思路，可以直接在这个课程群里面问。  
-1）递归是数算中必备的核心技能，建议优先掌握，可参看 https://github.com/GMyhf/2024fall-cs101/blob/main/20241029_recursion.md  
-2）队列在广度优先搜索（BFS）中有着广泛的应用。其他班级可能还没有讲搜索，可参看 https://github.com/GMyhf/2024fall-cs101/blob/main/20241119_searching.md  
-3）其他的常用技巧，没学过也没关系，遇到相关题目时逐一掌握即可。如：双指针（链表里有个 快慢指针需要掌握）、单调栈、二分查找、并查集、滑动窗口、懒删除等。通过 1～2 道题即可理解基础原理，但要熟练掌握需要多加练习。  
-4） OOP 的写法属于语法范畴，可参看 https://www.runoob.com/python3/python3-class.html
+https://github.com/GMyhf/2025spring-cs201/blob/main/problem_list_2025spring.md
+
+> 数算pre每日选做
+>
+> 助力大家在下学期的数算课程中取得满分成绩，从1月13日至2月16日，涵盖整个寒假时段，每天3个题目。  
+> https://github.com/GMyhf/2025spring-cs201/blob/main/pre_problem_list_2025spring.md
+>
+> 因为计概各班进度不一样，各位老师对计概、数算内容覆盖理解也不一致。所以如果有题目没有思路，可以直接在这个课程群里面问。  
+> 1）递归是数算中必备的核心技能，建议优先掌握，可参看 https://github.com/GMyhf/2024fall-cs101/blob/main/20241029_recursion.md  
+> 2）队列在广度优先搜索（BFS）中有着广泛的应用。其他班级可能还没有讲搜索，可参看 https://github.com/GMyhf/2024fall-cs101/blob/main/20241119_searching.md  
+> 3）其他的常用技巧，没学过也没关系，遇到相关题目时逐一掌握即可。如：双指针（链表里有个 快慢指针需要掌握）、单调栈、二分查找、并查集、滑动窗口、懒删除等。通过 1～2 道题即可理解基础原理，但要熟练掌握需要多加练习。  
+> 4） OOP 的写法属于语法范畴，可参看 https://www.runoob.com/python3/python3-class.html
 
 
 ## 4 日志
