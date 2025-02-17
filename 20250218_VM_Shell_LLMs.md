@@ -1,6 +1,6 @@
 #  20250218-Week1-虚拟机，Shell&大模型
 
-Updated 1748 GMT+8 Feb 17 2025
+Updated 2141 GMT+8 Feb 17 2025
 
 2025 spring, Complied by Hongfei Yan
 
@@ -800,7 +800,7 @@ LLM（如 GPT 系列、LLaMA、PaLM、DeepSeek）都是基于 Transformer 发展
 
 
 
-## 3.2 机器是Mac Studio
+## 3.2 机器是Mac Studio（我的机器，可skip）
 
 
 
@@ -857,6 +857,10 @@ Geekbench AI测试， https://browser.geekbench.com
 > A: 在app settings下面有个代理选项。command+逗号，在一堆设置下面。
 >
 > <img src="https://raw.githubusercontent.com/GMyhf/img/main/img/image-20250216150604619.png" alt="image-20250216150604619" style="zoom: 33%;" />
+
+代理开了。点左侧搜索那个按钮，就有很多模型列出来了
+
+![image-20250217214055583](https://raw.githubusercontent.com/GMyhf/img/main/img/image-20250217214055583.png)
 
 
 
