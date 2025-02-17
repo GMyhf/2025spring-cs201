@@ -1,6 +1,6 @@
 #  20250218-Week1-虚拟机，Shell&大模型
 
-Updated 1907 GMT+8 Feb 16 2025
+Updated 1748 GMT+8 Feb 17 2025
 
 2025 spring, Complied by Hongfei Yan
 
@@ -169,7 +169,7 @@ if __name__ == "__main__":
 
 
 
-# 1虚拟机
+# 1 虚拟机
 
 虚拟机（Virtual Machine, VM）是一种通过软件模拟的、具有完整硬件系统功能的计算机系统，运行在一个完全隔离的环境中。虚拟机可以运行在物理计算机之上，允许用户在同一台硬件上运行多个操作系统和应用程序，极大地提高了资源利用率和灵活性。
 
@@ -479,9 +479,19 @@ UUID=some-unique-id  /mnt/data  ext4  defaults  0  2
 
 通过上述步骤，您可以直接在 `/dev/sdb` 上创建文件系统并挂载它，而无需创建任何分区。 
 
+> <img src="https://raw.githubusercontent.com/GMyhf/img/main/img/image-20250217175602994.png" alt="image-20250217175602994" style="zoom:50%;" />
+
+
+
+
+
 
 
 #  2 Linux Shell使用
+
+> linux-help（Linux Shell简介），
+>
+> https://pku.instructuremedia.com/embed/06bda1b0-3342-4705-9c77-e279638f1af2
 
 **定义**：在 Linux 或 Unix 系统中，Shell 是一个命令行解释器，它接收用户的命令并将其发送给操作系统内核。
 
@@ -752,7 +762,45 @@ shell中的程序通常有三个流，也就是输入input stream，输出output
 
 https://www.ollama.com 是字符界面。图像界面可以用，https://lmstudio.ai
 
-## 3.1 机器是Mac Studio
+## 3.1 LLM 的基本概念
+
+在学习 LLM 之前，需要掌握一些基础概念：
+
+### 3.1.1 Transformer 结构
+
+Transformer 是 LLM 的核心架构，由 Google 研究团队在 2017 年提出，核心机制包括：
+
+- **自注意力机制（Self-Attention）**：使模型能关注输入序列中的重要部分，提高文本理解能力。
+- **多头注意力（Multi-Head Attention）**：增强模型捕捉不同模式的能力。
+- **前馈网络（Feedforward Network, FFN）**：提高模型表达能力。
+
+LLM（如 GPT 系列、LLaMA、PaLM、DeepSeek）都是基于 Transformer 发展而来。
+
+### 3.1.2 预训练与微调
+
+- **预训练（Pre-training）**：在大规模数据上训练模型，使其具备基础的语言理解能力。
+- **微调（Fine-tuning）**：针对特定任务优化模型，如医学 NLP、代码生成等。
+
+### 3.1.3 GPU 在 LLM 训练中的作用
+
+- **并行计算加速**：LLM 需要处理海量数据，GPU 的并行计算能力可提高训练效率。
+- **模型推理优化**：部署 LLM 需要高效推理，GPU（如 NVIDIA A100、H100）在 AI 服务器中发挥重要作用。
+
+
+
+> OpenAI o3斩获IOI金牌冲榜全球TOP 18，自学碾压顶尖程序员！48页技术报告公布，https://mp.weixin.qq.com/s/rHzZqTBhLBrb-FPtHhEYug
+>
+> Competitive Programming with Large <mark>Reasoning</mark> Models, https://arXiv.org/pdf/2502.06807
+>
+> OpenAI o3却在无人启发的情况下，通过强化学习中自己摸索出了一些技巧。即o3在推理过程中展现出更具洞察力和深度思考的思维链。对于验证过程较为复杂的问题，o3会采用一种独特的策略：先编写简单的暴力解法，牺牲一定效率来确保正确性，然后将暴力解法的输出与更优化的算法实现进行交叉检查。
+>
+> ![图片](https://raw.githubusercontent.com/GMyhf/img/main/img/640)
+
+
+
+
+
+## 3.2 机器是Mac Studio
 
 
 
@@ -794,7 +842,7 @@ Geekbench AI测试， https://browser.geekbench.com
 
 
 
-## 3.2 本地机器安装lM Studio及测试
+## 3.3 本地机器安装lM Studio及测试
 
 下载 LM-Studio-0.3.9-6-arm64，482.6MB。
 
@@ -1031,7 +1079,7 @@ DeepSeek-R1-Distill-Qwen-32B-GGUF/DeepSeek-R1-Distill-Qwen-32B-Q4_K_M.gguf
 
 
 
-## 3.3 云端虚拟机安装 Ollama及测试
+## 3.4 云端虚拟机安装 Ollama及测试
 
 
 
@@ -1208,19 +1256,7 @@ if __name__ == "__main__":
 
 1. 基于大模型和知识库构建问答教学工具，https://pku.instructuremedia.com/embed/5741e3a7-ca03-48f6-97f0-3b5e8df42e2a
 
-2. linux-help（Linux Shell简介），https://pku.instructuremedia.com/embed/06bda1b0-3342-4705-9c77-e279638f1af2
-
-3. OpenAI o3斩获IOI金牌冲榜全球TOP 18，自学碾压顶尖程序员！48页技术报告公布，https://mp.weixin.qq.com/s/rHzZqTBhLBrb-FPtHhEYug
-
-> Competitive Programming with Large Reasoning Models, https://arXiv.org/pdf/2502.06807
->
-> OpenAI o3却在无人启发的情况下，通过强化学习中自己摸索出了一些技巧。即o3在推理过程中展现出更具洞察力和深度思考的思维链。对于验证过程较为复杂的问题，o3会采用一种独特的策略：先编写简单的暴力解法，牺牲一定效率来确保正确性，然后将暴力解法的输出与更优化的算法实现进行交叉检查。
->
-> ![图片](https://raw.githubusercontent.com/GMyhf/img/main/img/640)
-
-
-
-4. 《黄仁勋：英伟达之芯》作者：[美]斯蒂芬·威特 2024-12-04
+2. 《黄仁勋：英伟达之芯》作者：[美]斯蒂芬·威特 2024-12-04
 
 > ### 黄仁勋
 >
