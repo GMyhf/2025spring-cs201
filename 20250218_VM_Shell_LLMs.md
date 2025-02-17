@@ -1,6 +1,6 @@
 #  20250218-Week1-虚拟机，Shell&大模型
 
-Updated 2141 GMT+8 Feb 17 2025
+Updated 2333 GMT+8 Feb 17 2025
 
 2025 spring, Complied by Hongfei Yan
 
@@ -266,6 +266,8 @@ ssh rocky@10.129.242.98
 
 
 **登陆网关，访问外网**
+
+> 需要会用vi编辑器，编辑文件。https://www.runoob.com/linux/linux-vim.html
 
 ```python
 #!/usr/bin/env python3
