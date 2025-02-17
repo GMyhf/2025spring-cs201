@@ -20,7 +20,7 @@ Updated 2349 GMT+8 Feb 17 2025.
 
 | 日期 | 问题编号与名称    | 标签                 | 难度  | 链接                                                 |
 | ---- | ----------------- | -------------------- | ------ | ---------------------------------------------------- |
-| 0219 |      | -    | -    |      |
+| 0219 | 01321: 棋盘问题   | backtracking   | Medium  | http://cs101.openjudge.cn/practice/01321/      |
 | 0219 | 1299.将每个元素替换为右侧最大元素  | dp  | Easy   | https://leetcode.cn/problems/replace-elements-with-greatest-element-on-right-side/     |
 | 0218 | 08210: 河中跳房子 | binary search+greedy | Medium | http://cs101.openjudge.cn/practice/08210             |
 | 0218 | 35.搜索插入位置   | binary search        | Easy   | https://leetcode.cn/problems/search-insert-position/ |
