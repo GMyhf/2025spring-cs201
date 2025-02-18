@@ -1,6 +1,6 @@
 #  20250218-Week1-虚拟机，Shell&大模型
 
-Updated 2333 GMT+8 Feb 17 2025
+Updated 1017 GMT+8 Feb 18 2025
 
 2025 spring, Complied by Hongfei Yan
 
@@ -8,6 +8,8 @@ Updated 2333 GMT+8 Feb 17 2025
 
 logs：
 
+>  推荐力扣每日一题，简单、中等的都挺好，困难的可以AI。
+>
 > Get up and running with large language models
 >
 > 计概课程看图灵自传改编的电影《模拟游戏》，数算课程看英伟达的AI科普书《黄仁勋：英伟达之芯》，期末考试双百加油！
@@ -22,7 +24,11 @@ logs：
 
 # 0 热身题目
 
-## 27300:模型整理
+<img src="https://raw.githubusercontent.com/GMyhf/img/main/img/image-20250218102127648.png" alt="image-20250218102127648" style="zoom: 33%;" />
+
+
+
+## 27300: 模型整理
 
 http://cs101.openjudge.cn/practice/27300/
 
@@ -66,15 +72,13 @@ GPT: 350M, 1.3B, 175B
 
 tags: string, sort
 
-来源
-
-2023fall zyn
+来源：2023fall zyn
 
 
 
-Competitive Programming with Large Reasoning Models, https://arXiv.org/pdf/2502.06807
 
-2025/2/14 13:52，ChatGPT Reason, DeepThink(R1) 都可以AC。
+
+2025/2/14 13:52，大模型可以AC。
 
 https://chatgpt.com/ 默认是"Search"，选到"Reason"，可以AC。
 
@@ -176,7 +180,7 @@ if __name__ == "__main__":
 **常见的本地虚拟机软件**
 
 1. **Parallels Desktop**：主要为Mac用户提供了一个运行其他操作系统（如Windows、Linux等）的解决方案。
-   
+
 2. **VirtualBox**：是一款开源的虚拟化产品，由Oracle公司提供支持。它可以安装在多种操作系统上（如Windows、Linux等），并能够运行大量的客户操作系统。VirtualBox因其免费受到广泛欢迎。
 
 **云端虚拟机**
@@ -184,6 +188,104 @@ if __name__ == "__main__":
 - **clab.pku.edu.cn**：CLab 是服务北大师生的云计算平台。提供基于云的虚拟实验室环境，供学生和研究人员用于教学、学习和科研目的。用户可以通过互联网访问这些虚拟机，执行编程实验、模拟等任务。
 
 无论是本地还是云端的虚拟机，它们都提供了灵活的计算资源分配方案，帮助用户测试软件、开发新应用或进行研究工作，而无需投资额外的硬件设施。随着云计算技术的发展，越来越多的服务迁移到了云端，使得用户可以从任何地方访问高性能的计算资源。
+
+## Q1. 部署虚拟机意义？
+
+既然第三步大模型安装和测试，可以不用虚拟机，这一步部署虚拟机意义？
+
+> ****
+>
+> A. 登录云端服务器并利用云端计算资源，是现代开发和计算任务中常见的工作方式。一旦掌握了相关技能，便可以高效地使用云端服务器，拓展更多应用场景和计算任务。相比之下，本地设备通常性能有限，更适用于日常开发和基础调试。
+>
+>  
+>
+> 部署虚拟机的意义主要体现在以下几个方面：  
+>
+> 1. **与云端环境接轨，培养云计算使用习惯**  
+>    - 现代 AI 计算通常依赖云端 GPU 资源（如 AWS、Google Cloud、Azure），本地机器性能有限，无法高效运行大模型。  
+>    - 通过虚拟机模拟远程服务器环境，让大家熟悉 SSH 登录、环境配置、远程代码执行等操作，为后续使用云端资源打下基础。  
+>
+> 2. **隔离环境，避免污染本地系统**  
+>    - 大模型部署涉及大量 Python 依赖（如 CUDA、PyTorch、Transformers），可能与本地已有环境冲突。  
+>    - 在虚拟机或 Docker 容器中运行，可以隔离依赖，避免影响日常工作环境。  
+>
+> 3. **统一环境，减少兼容性问题**  
+>    - 本地机器硬件和系统差异较大（Windows/Linux/Mac），直接安装可能遇到驱动、CUDA 版本兼容性问题。  
+>    - 通过虚拟机，大家可以在统一的 Linux 服务器环境下测试，确保配置一致，提高稳定性。  
+>
+> 4. **便于迁移到云端服务器**  
+>    - 如果在本地虚拟机上调试成功，可以无缝迁移到真正的云服务器，而无需重新配置环境。  
+>    - 这样可以降低云端服务器的调试成本，提高使用效率。  
+>
+> **结论**  即使本地能跑通大模型，使用虚拟机仍然有 **环境隔离、与云端兼容、避免污染本机、提高可移植性** 等重要作用。部署虚拟机不仅是为了当前测试，更是为未来高效使用云端计算资源做准备。
+
+
+
+## Q2.时间复杂度**和**空间复杂度
+
+> **Q2. 推荐力扣每日一题，简单、中等的都挺好，困难的可以AI。力扣的简单题目，力争提交后，击败超过 50%。**
+>
+> 感觉力扣波动挺大的，有的时候差一两毫秒就是10%和80%的区别，两次提交一样的代码就能差三四毫秒。
+>
+> A. 这是**事后测量**，其结果受到多个因素的影响，包括输入数据规模、编程语言的执行效率、以及系统当时的负载情况（如是否有其他任务在运行）。由于这些因素具有不确定性，测量结果难以精准预测，因此更常采用**事前估计**的方法，即 **大 O 表示法（Big-O Notation）**。它主要用于分析算法的**时间复杂度**和**空间复杂度**。  
+>
+> 在算法优化中，**时间复杂度**和**空间复杂度**通常难以同时达到最优，优化策略往往遵循“**以空间换时间**”的原则，而不是“**以时间换空间**”。这是因为：  
+>
+> 1. **空间资源相对廉价且可回收**：随着硬件的发展，存储成本不断降低，而计算时间却依然是关键瓶颈。  
+> 2. **内存可复用**：算法执行完毕后，占用的内存可以释放，再用于后续任务，因此合理使用额外空间（如哈希表、缓存）通常是值得的。  
+>
+> 因此，在优化算法时，应优先考虑通过增加适量的空间占用（如使用缓存、预计算等），来减少计算时间，从而提升整体运行效率。
+>
+> 
+>
+> > LeetCode 的提交排名确实有较大的波动，这是由多个因素导致的，包括：  
+> >
+> > 1. **服务器负载**：LeetCode 的评测服务器可能在不同时间段运行不同的任务，影响执行时间。  
+> > 2. **输入数据**：即使是同一个测试用例，底层执行可能受到缓存、内存分配等因素的影响。  
+> > 3. **编程语言**：C++、Java、Python 的执行效率不同，比如 Python 由于解释执行，通常比 C++ 慢。  
+> > 4. **JIT 优化**：某些语言（如 Java、PyPy）可能在运行过程中进行 Just-In-Time (JIT) 编译，导致运行时间有所浮动。  
+> > 5. **CPU 调度**：服务器运行多个代码提交，CPU 资源可能被分配给其他任务，影响你的代码执行时间。  
+> >
+> > **如何更稳定地优化代码？**
+> >
+> > 因为测不准原理（执行时间有波动），我们不能只依赖测量结果，而是要使用**事前估计**的方法，即 **时间复杂度分析**（Big-O notation）。  
+> >
+> > - **时间复杂度**（Time Complexity）：分析算法的执行时间随输入规模 \( n \) 增长的变化，例如：
+> >   - 线性时间  O(n) ：遍历数组。
+> >   - 对数时间  O(\log n) ：二分查找。
+> >   - 二次时间  O(n^2) ：双层循环。
+> >   - 指数时间  O(2^n) ：递归爆炸增长（如暴力搜索）。  
+> >
+> > - **空间复杂度**（Space Complexity）：分析算法所需的额外内存。例如：
+> >   -  O(1) ：仅使用几个变量。
+> >   -  O(n) ：存储数组或哈希表。
+> >   -  O(n^2) ：存储邻接矩阵。  
+> >
+> > **LeetCode 提交如何击败 50%+？**
+> >
+> > 1. **优化时间复杂度**：优先选用更优的算法。例如：
+> >    - **哈希表代替嵌套循环**（从  O(n^2)  优化为  O(n) ）。
+> >    - **二分查找代替遍历**（从  O(n)  优化为  O(\log n) ）。
+> >    - **动态规划优化递归**（避免指数增长）。  
+> >
+> > 2. **减少不必要的计算**：
+> >    - **缓存计算结果**（如 Memoization）。
+> >    - **提前终止循环**（如 `break`、`continue`）。
+> >    - **避免重复计算**（如 `set` 记录已访问值）。  
+> >
+> > 3. **选择合适的数据结构**：
+> >    - **查找问题**：用哈希表 (`dict` / `unordered_map`) 代替数组遍历。
+> >    - **队列 / 栈**：BFS / DFS。
+> >    - **堆**：求前 K 大 / K 小值。  
+> >
+> > 4. **语言优化技巧**：
+> >    - **Python**：使用 `map()`、`zip()`、`sum()` 等内置函数，避免手写循环。
+> >    - **C++**：`vector` 预分配 (`reserve()`)，避免动态扩容。
+> >    - **Java**：`StringBuilder` 代替 `String + String`，减少字符串拼接开销。  
+> >
+> > **总结**：如果代码能在理论上达到最优复杂度（如从  O(n^2)  降到  O(n) ），即使排名偶尔波动，长期来看仍能稳定击败 50% 以上的提交。
+
+
 
 
 
@@ -265,9 +367,90 @@ ssh rocky@10.129.242.98
 
 
 
-**登陆网关，访问外网**
+**在云端虚拟机中登陆网关，访问外网**
+
+> <img src="https://raw.githubusercontent.com/GMyhf/img/main/img/image-20250218100944047.png" alt="image-20250218100944047" style="zoom:50%;" />
+>
+> 
+
+## Q3. vi的使用？
 
 > 需要会用vi编辑器，编辑文件。https://www.runoob.com/linux/linux-vim.html
+>
+>  vim
+>
+>  Vim (Vi IMproved), a command-line text editor, provides several modes for different kinds of text manipulation.
+>
+>  Pressing i in normal mode enters insert mode. Pressing <Esc> goes back to normal mode, which enables the use of Vim commands.
+>
+>  See also: vimdiff, vimtutor, nvim.
+>
+>  More information: https://www.vim.org.
+>
+>  \- Open a file:
+>
+>   vim path/to/file
+>
+> 
+>
+>  \- Open a file at a specified line number:
+>
+>   vim +line_number path/to/file
+>
+> 
+>
+>  \- View Vim's help manual:
+>
+>   :help<Enter>
+>
+> 
+>
+>  \- Save and quit the current buffer:
+>
+>   <Esc>ZZ|<Esc>:x<Enter>|<Esc>:wq<Enter>
+>
+> 
+>
+>  \- Enter normal mode and undo the last operation:
+>
+>   <Esc>u
+>
+> 
+>
+>  \- Search for a pattern in the file (press n/N to go to next/previous match):
+>
+>   /search_pattern<Enter>
+>
+> 
+>
+>  \- Perform a regular expression substitution in the whole file:
+>
+>   :%s/regular_expression/replacement/g<Enter>
+>
+> 
+>
+>  \- Display the line numbers:
+>
+>   :set nu<Enter>
+>
+> 
+>
+> Q. vi里面敲: help，如果提示Sorry, no help for help.txt
+>
+> 在 Linux 上，你可以安装完整版 Vim：
+>
+> ```
+> sudo apt install vim        # Ubuntu/Debian
+> sudo dnf install vim        # Fedora
+> sudo yum install vim        # CentOS
+> brew install vim            # macOS (使用 Homebrew)
+> ```
+>
+> 如果你在 Windows 上使用 `vim.exe`，请确保安装的是完整版 Vim（如 gVim）。
+>
+> ![image-20250218100717589](https://raw.githubusercontent.com/GMyhf/img/main/img/image-20250218100717589.png)
+>
+> 
 
 ```python
 #!/usr/bin/env python3
@@ -349,6 +532,14 @@ python login.py
 > 现在，根据提示输入用户名和密码，就可以尝试登录网关了。
 
 
+
+## Q4.在输入密码的时候其它键都没反应？
+
+在输入密码的时候其它键都没反应，只能敲回车然后跳出密码错误该怎么办？
+
+<img src="https://raw.githubusercontent.com/GMyhf/img/main/img/image-20250218100803896.png" alt="image-20250218100803896" style="zoom:50%;" />
+
+A. 输入密码的时候不显示而已，正常输入就可以，这是为了保护你的密码
 
 
 
@@ -802,9 +993,7 @@ LLM（如 GPT 系列、LLaMA、PaLM、DeepSeek）都是基于 Transformer 发展
 
 
 
-## 3.2 机器是Mac Studio（我的机器，可skip）
-
-
+## 3.2 机器是Mac Studio（看本地机器配置和性能）
 
 
 
@@ -866,7 +1055,7 @@ Geekbench AI测试， https://browser.geekbench.com
 
 
 
-2025/2/15: 我在下载 Imstudio-community/DeepSeek-R1-Distll-Qwen-32B-GGUF/DeepSeek-R1-Distill-Qwen-32B-Q4-K_M.gguf。网速只有1.24MB/s，还需要03:17:00 left。
+> 2025/2/15: 我在下载 Imstudio-community/DeepSeek-R1-Distll-Qwen-32B-GGUF/DeepSeek-R1-Distill-Qwen-32B-Q4-K_M.gguf。网速只有1.24MB/s，还需要03:17:00 left。
 
 
 
@@ -1153,6 +1342,12 @@ success
 ```
 
 
+
+### Q4.如何退出ollama?
+
+/bye 
+
+/? for help
 
 
 
