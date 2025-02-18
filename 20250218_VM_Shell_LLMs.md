@@ -1,6 +1,6 @@
 #  20250218-Week1-虚拟机，Shell&大模型
 
-Updated 1323 GMT+8 Feb 18 2025
+Updated 1439 GMT+8 Feb 18 2025
 
 2025 spring, Complied by Hongfei Yan
 
@@ -944,6 +944,451 @@ shell中的程序通常有三个流，也就是输入input stream，输出output
 - **`|`**：管道，将前一个命令的输出作为后一个命令的输入。
 
   例如：./bomb < phase | grep solution  从输出中打印那些恰好含有solution这个词的那些行
+
+
+
+#### Shell脚本示例重定向 01017:装箱问题
+
+http://cs101.openjudge.cn/practice/01017
+
+提交代码Wrong Answer，借助测试数据找到哪里出错。
+
+![image-20250218135803533](https://raw.githubusercontent.com/GMyhf/img/main/img/image-20250218135803533.png)
+
+
+
+进到测试数据目录
+
+```
+[rocky@jensen 1017]$ ls -l
+total 92
+-rw-r--r--. 1 rocky rocky 31873 Oct  1  2023 aamy.out
+-rw-r--r--. 1 rocky rocky   586 Nov 26  2008 d.c
+-rw-r--r--. 1 rocky rocky 34950 Nov 26  2008 d.in
+-rw-r--r--. 1 rocky rocky  7805 Nov 26  2008 d.out
+-rw-r--r--. 1 rocky rocky   465 Oct 11 08:49 e1.py
+-rw-r--r--. 1 rocky rocky   217 Dec  6  2008 me.cpp
+-rw-r--r--. 1 rocky rocky  1355 Oct 11 09:24 testing_code.py
+[rocky@jensen 1017]$ ls ../../offlinejudge.zsh 
+```
+
+
+
+其中e1.py保存的是WA的程序
+
+```python
+import math
+determine_2with3=[0,5,3,1]
+
+while True:
+    n1,n2,n3,n4,n5,n6 = map(int,input().split())
+    if n1+n2+n3+n4+n5+n6==0:
+        break
+    boxes = n4+n5+n6+math.ceil(n3/4)
+    spaceleft_for_b = n4*5 + determine_2with3[n3%4]
+    if n2 > spaceleft_for_b:
+        boxes += math.ceil(n2-spaceleft_for_b/9)
+    spaceleft_for_a = (boxes-n6)*36-n5*25-n4*16-n3*9-n2*4
+    if n1 > spaceleft_for_a:
+        boxes += math.ceil(n1-spaceleft_for_a/36)
+    print(boxes)
+
+```
+
+
+
+offlinejudge.zsh 是Shell脚本
+
+```bash
+cd $2
+for i in *.in; do
+	diff -y <(python3 "$1" < "$i")  "${i%.*}.out"
+done
+```
+
+
+
+> 这段 Bash 脚本用于批量对比 Python 脚本的输出与预期输出。以下是其工作原理的详细解析：
+>
+> ### **代码解析**
+> ```bash
+> cd $2
+> ```
+> - 进入用户提供的目录 `$2`（脚本的第二个参数）。
+>
+> ```bash
+> for i in *.in; do
+> ```
+> - 遍历当前目录下所有以 `.in` 结尾的文件（即输入文件）。
+>
+> ```bash
+> diff -y <(python3 "$1" < "$i")  "${i%.*}.out"
+> ```
+> - `"$1"` 是脚本的第一个参数，表示 Python 脚本的路径。
+> - `python3 "$1" < "$i"`：运行该 Python 脚本，并使用 `$i` 作为输入文件（`*.in`）。
+> - `<(...)` 是 **进程替换**，将 Python 脚本的输出作为 `diff` 命令的一个输入。
+> - `"${i%.*}.out"` 解析如下：
+>   - `"${i%.*}"` 移除 `$i` 文件名的最后一个 `.` 及其后缀，即 `input.in` → `input`。
+>   - `"${i%.*}.out"` 生成相应的 `.out` 文件名（如 `input.out`）。
+> - `diff -y`：
+>   - `diff` 比较两个文件的内容。
+>   - `-y` 以 **并排（side-by-side）** 方式显示差异，方便人工对比。
+>
+> ---
+>
+> ### **使用示例**
+> 假设目录结构如下：
+> ```
+> 1017/
+> │── aamy.out
+> │── d.c
+> │── d.in
+> │── d.out
+> │── e1.py
+> │── me.cpp
+> │── testing_code.py
+> ```
+> 执行：
+> ```bash
+> bash ../../offlinejudge.zsh e1.py ./
+> ```
+> 脚本会：
+> 1. 进入 `./` 目录。
+> 2. 遍历所有 `.in` 文件：
+>    - 对 `d.in`，运行 `python3 e1.py < d.in`，并将其结果与 `d.out` 进行 `diff -y` 对比。
+>
+> ---
+>
+> **总结**
+>
+> 此脚本适用于**测试 Python 脚本的标准输入/输出是否符合预期**，特别是在编程竞赛、自动化测试或算法开发中。
+>
+> <img src="https://raw.githubusercontent.com/GMyhf/img/main/img/image-20250218140915756.png" alt="image-20250218140915756" style="zoom:50%;" />
+>
+> 
+
+
+
+#### Python脚本管道示例27300:模型整理
+
+http://cs101.openjudge.cn/practice/27300/
+
+
+
+Wrong Answer
+
+<img src="https://raw.githubusercontent.com/GMyhf/img/main/img/image-20250218141838119.png" alt="image-20250218141838119" style="zoom:50%;" />
+
+
+
+e1.py
+
+```python
+# -*- coding: utf-8 -*-
+"""
+Created on Fri Feb 14 19:58:10 2025
+
+@author: Liren Chen
+"""
+
+n = int(input())
+mx,sj = [],{}
+for i in range(0,n):
+    a,b = input().split('-')
+    if a not in sj:
+        sj[a] = [[],[]]
+        mx.append(a)
+        if b[-1]=='B':
+            if '.' in b:
+                b = float(b[0:-1])
+            else:
+                b = int(b[0:-1])
+            sj[a][1].append(b)
+        else:
+            if '.' in b:
+                b = float(b[0:-1])
+            else:
+                b = int(b[0:-1])
+            sj[a][0].append(b)
+    else:
+        if b[-1]=='B':
+            if '.' in b:
+                b = float(b[0:-1])
+            else:
+                b = int(b[0:-1])
+            sj[a][1].append(b)
+        else:
+            if '.' in b:
+                b = float(b[0:-1])
+            else:
+                b = int(b[0:-1])
+            sj[a][0].append(b)
+mx.sort()
+for i in mx:
+    sj[i][0].sort()
+    sj[i][1].sort()
+    if len(sj[i][0])==0:
+        print(i+': '+', '.join(str(j)+'B' for j in sj[i][1]))
+    if len(sj[i][1])==0:
+        print(i+': '+', '.join(str(j)+'M' for j in sj[i][0]))
+    else:
+        print(i+': '+', '.join(str(j)+'M' for j in sj[i][0])+', '+', '.join(str(j)+'B' for j in sj[i][1]))
+
+```
+
+
+
+```
+[rocky@jensen 27300]$ ls
+0.in   10.in   11.in   12.in   13.in   14.in   15.in   16.in   17.in   18.in   19.in   1.in   2.in   3.in   4.in   5.in   6.in   7.in   8.in   9.in   e1.py
+0.out  10.out  11.out  12.out  13.out  14.out  15.out  16.out  17.out  18.out  19.out  1.out  2.out  3.out  4.out  5.out  6.out  7.out  8.out  9.out
+```
+
+
+
+<img src="https://raw.githubusercontent.com/GMyhf/img/main/img/image-20250218142150958.png" alt="image-20250218142150958" style="zoom:50%;" />
+
+
+
+testing_code.py
+
+https://github.com/GMyhf/2024fall-cs101/blob/main/code/testing_code.py
+
+```python
+# ZHANG Yuxuan
+import subprocess
+import difflib
+import os
+import sys
+
+def test_code(script_path, infile, outfile):
+    command = ["python", script_path]  # 使用Python解释器运行脚本
+    with open(infile, 'r') as fin, open(outfile, 'r') as fout:
+        expected_output = fout.read().strip()
+        # 启动一个新的子进程来运行指定的命令
+        process = subprocess.Popen(command, stdin=fin, stdout=subprocess.PIPE)
+        actual_output, _ = process.communicate()
+        if actual_output.decode().strip() == expected_output:
+            return True
+        else:
+            print(f"Output differs for {infile}:")
+            diff = difflib.unified_diff(
+                expected_output.splitlines(),
+                actual_output.decode().splitlines(),
+                fromfile='Expected', tofile='Actual', lineterm=''
+            )
+            print('\n'.join(diff))
+            return False
+
+
+if __name__ == "__main__":
+    # 检查命令行参数的数量
+    if len(sys.argv) != 2:
+        print("Usage: python testing_code.py <filename>")
+        sys.exit(1)
+
+    # 获取文件名
+    script_path = sys.argv[1]
+
+    #script_path = "class.py"  # 你的Python脚本路径
+    #test_cases = ["d.in"]  # 输入文件列表
+    #expected_outputs = ["d.out"]  # 预期输出文件列表
+    # 获取当前目录下的所有文件
+    files = os.listdir('.')
+
+    # 筛选出 .in 和 .out 文件
+    test_cases = [f for f in files if f.endswith('.in')]
+    test_cases = sorted(test_cases, key=lambda x: int(x.split('.')[0]))
+    #print(test_cases)
+    expected_outputs = [f for f in files if f.endswith('.out')]
+    expected_outputs = sorted(expected_outputs, key=lambda x: int(x.split('.')[0]))
+    #print(expected_outputs)
+
+    for infile, outfile in zip(test_cases, expected_outputs):
+        if not test_code(script_path, infile, outfile):
+            break
+```
+
+<mark>这个程序**实际上使用了管道（pipe）** 来捕获 Python 子进程的输出</mark>
+
+
+
+> **代码功能概述：**
+>
+> 此 Python 脚本的主要目的是**自动测试另一个 Python 程序的输出是否与预期结果一致**，适用于多组测试用例的批量验证。  
+>
+> **代码执行流程解析：**
+>
+> ---
+>
+> ① **导入必要模块**
+>
+> ```python
+> import subprocess  # 用于启动子进程，执行 Python 程序
+> import difflib     # 生成输出的差异比较
+> import os          # 文件和目录操作
+> import sys         # 处理命令行参数
+> ```
+>
+> ---
+>
+> ② **核心函数：`test_code()`**
+>
+> ```python
+> def test_code(script_path, infile, outfile):
+> ```
+> 该函数用于执行目标 Python 脚本，并将其输出与预期结果进行比对。  
+>
+> **(1) 构建 Python 命令**
+>
+> ```python
+> command = ["python", script_path]
+> ```
+> - 通过 `subprocess` 模块构造执行命令，`script_path` 是目标 Python 脚本路径。  
+> - 假设输入为 `python class.py`，此处 `script_path` 指的是 `"class.py"`。
+>
+> **(2) 读取输入和预期输出**
+>
+> ```python
+> with open(infile, 'r') as fin, open(outfile, 'r') as fout:
+>     expected_output = fout.read().strip()
+> ```
+> - 打开输入文件 `infile` 和输出文件 `outfile`。
+> - `expected_output` 保存了去除首尾空白字符的预期结果。
+>
+> **(3) 运行目标脚本**
+>
+> ```python
+> process = subprocess.Popen(command, stdin=fin, stdout=subprocess.PIPE)
+> actual_output, _ = process.communicate()
+> ```
+> - **`subprocess.Popen()`** 启动一个子进程，执行目标 Python 脚本。
+>     - **`stdin=fin`**：将输入文件作为 Python 程序的输入。  
+>     - **`stdout=subprocess.PIPE`**：捕获程序的输出，方便与预期结果比较。  
+> - **`process.communicate()`**：等待子进程完成，获取输出结果。
+>
+> **(4) 输出对比**
+>
+> ```python
+> if actual_output.decode().strip() == expected_output:
+>     return True
+> ```
+> - 将子进程输出解码为字符串并去除空白字符，若与预期输出一致，返回 `True`，表示该用例通过。
+>
+> **(5) 生成差异报告**
+>
+> 如果输出不一致，则输出差异信息：
+> ```python
+> print(f"Output differs for {infile}:")
+> diff = difflib.unified_diff(
+>     expected_output.splitlines(),
+>     actual_output.decode().splitlines(),
+>     fromfile='Expected', tofile='Actual', lineterm=''
+> )
+> print('\n'.join(diff))
+> return False
+> ```
+> - **`difflib.unified_diff()`**：生成统一格式的输出差异。
+>     - `expected_output.splitlines()`：将期望输出按行分割。  
+>     - `actual_output.decode().splitlines()`：将实际输出按行分割。  
+>     - `fromfile='Expected'` 和 `tofile='Actual'`：差异报告的标签。
+>     - `lineterm=''`：避免多余的换行符。  
+> - 通过 `print()` 打印出详细的输出差异信息。
+>
+> ---
+>
+> ③ **主程序入口**
+>
+> ```python
+> if __name__ == "__main__":
+> ```
+> 确保以下代码仅在脚本被直接运行时执行。
+>
+> **(1) 检查参数**
+>
+> ```python
+> if len(sys.argv) != 2:
+>     print("Usage: python testing_code.py <filename>")
+>     sys.exit(1)
+> ```
+> - **`sys.argv`** 读取命令行参数。  
+> - 如果没有提供目标 Python 脚本路径，程序会提示正确用法并退出。
+>
+> ---
+>
+> **(2) 获取输入和输出文件**
+>
+> ```python
+> files = os.listdir('.')
+> ```
+> - **`os.listdir()`** 获取当前目录下的所有文件列表。
+>
+> **筛选 `.in` 和 `.out` 文件：**
+> ```python
+> test_cases = [f for f in files if f.endswith('.in')]
+> expected_outputs = [f for f in files if f.endswith('.out')]
+> ```
+> - 过滤出以 `.in` 结尾的输入文件和 `.out` 结尾的输出文件。
+>
+> **按数字顺序排序：**
+> ```python
+> test_cases = sorted(test_cases, key=lambda x: int(x.split('.')[0]))
+> expected_outputs = sorted(expected_outputs, key=lambda x: int(x.split('.')[0]))
+> ```
+> - 按文件名前缀的数字部分排序，确保输入和输出文件一一对应。
+>     - 例如：`1.in` 对应 `1.out`，`2.in` 对应 `2.out`。
+>
+> ---
+>
+> **(3) 执行测试**
+>
+> ```python
+> for infile, outfile in zip(test_cases, expected_outputs):
+>     if not test_code(script_path, infile, outfile):
+>         break
+> ```
+> - **`zip()`** 将输入和输出文件配对遍历。  
+> - 对每个输入输出文件调用 `test_code()`，若输出不匹配，立即终止测试（通过 `break` 退出循环）。  
+>
+> ---
+>
+> ### ④ **执行示例**
+> 1. 运行命令：
+> ```bash
+> python ../../testing_code.py e1.py
+> ```
+>
+> 2. **输出情况**：
+> - **若所有测试用例均通过**，无输出。  
+> - **若有差异**，例如 `0.in` 失败，输出类似以下结果：
+> ```
+> Traceback (most recent call last):
+>   File "/mnt/data/20071224-POJTestData/4000_/27300/e1.py", line 23, in <module>
+>     b = float(b[0:-1])
+> ValueError: could not convert string to float: '1.3B'
+> Output differs for 0.in:
+> --- Expected
+> +++ Actual
+> @@ -1,2 +0,0 @@
+> -Bert: 110M, 340M
+> -GPT: 350M, 1.3B, 175B
+> 
+> ```
+>
+> ---
+>
+> ### **总结**
+> 该脚本自动化测试 Python 程序的输出，具有以下特点：
+> 1. **批量测试**：对所有 `.in` 文件进行测试并与相应的 `.out` 文件比对。  
+> 2. **差异报告**：使用 `difflib` 输出详细差异，方便调试。  
+> 3. **自动终止**：若发现错误，立即终止后续测试，节省时间。  
+> 4. **兼容性强**：适用于任何标准输入/输出形式的 Python 程序测试。
+>
+> 
+>
+> <img src="https://raw.githubusercontent.com/GMyhf/img/main/img/image-20250218142614646.png" alt="image-20250218142614646" style="zoom:50%;" />
+>
+> 
 
 
 
