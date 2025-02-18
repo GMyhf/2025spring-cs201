@@ -1,6 +1,6 @@
 #  20250218-Week1-虚拟机，Shell&大模型
 
-Updated 1017 GMT+8 Feb 18 2025
+Updated 1323 GMT+8 Feb 18 2025
 
 2025 spring, Complied by Hongfei Yan
 
@@ -16,7 +16,7 @@ logs：
 
 
 
-拥抱大模型，接触大模型，跟上时代的脚步。这是我本地的，70b的也可以跑的，就是机器峰值了，风扇声大，也热。
+拥抱大模型，深入探索，紧跟时代步伐。这是在我的本地环境运行的，连 70B 规模的模型也能跑，不过已经接近机器的性能极限，风扇全速运转，温度也随之攀升。
 
 <img src="https://raw.githubusercontent.com/GMyhf/img/main/img/202502160840413.png" alt="image-20250216084051207" style="zoom:50%;" />
 
