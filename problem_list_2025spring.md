@@ -2,7 +2,7 @@
 
 https://github.com/GMyhf/2025spring-cs201/blob/main/problem_list_2025spring.md
 
-Updated 0007 GMT+8 Feb 19 2025.
+Updated 2322 GMT+8 Feb 19 2025.
 2025 spring, Complied by Hongfei Yan
 
 题解在：
@@ -20,6 +20,7 @@ Updated 0007 GMT+8 Feb 19 2025.
 
 | 日期 | 问题编号与名称    | 标签                 | 难度  | 链接                                                 |
 | ---- | ----------------- | -------------------- | ------ | ---------------------------------------------------- |
+| 0220 | 04123:马走日      | backtracking   | Medium    | http://cs101.openjudge.cn/practice/04123/     |
 | 0220 | 11.盛最多水的容器 | greedy, two pointers | Medium | https://leetcode.cn/problems/container-with-most-water/     |
 | 0219 | 01321: 棋盘问题   | backtracking   | Medium  | http://cs101.openjudge.cn/2025sp_routine/01321/      |
 | 0219 | 1299.将每个元素替换为右侧最大元素  | dp  | Easy   | https://leetcode.cn/problems/replace-elements-with-greatest-element-on-right-side/     |
