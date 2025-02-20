@@ -804,7 +804,7 @@ UUID=some-unique-id  /mnt/data  ext4  defaults  0  2
 >
 > ---
 >
-> ### **4. 高效开发环境**
+> **4. 高效开发环境**
 >
 > 在 Linux 终端下，可以结合多种工具提升开发体验：
 >
@@ -859,7 +859,7 @@ Clab.pku.edu.cn 云虚拟机，为每个用户提供 4 CPU, 4 GB RAM, 100 GB Dis
 >
 > 假设你有一个包含所有虚拟机IP地址的文件`hosts.txt`（每行一个IP地址），以及一个本地目录`/path/to/project`，其中包含你的Python脚本`sum.py`，该脚本接受两个参数：数组的起始索引和结束索引，并计算这部分数组的和。
 >
-> ### Python 脚本 `sum.py`
+> **Python 脚本 `sum.py`**
 >
 > ```python
 > import sys
@@ -878,7 +878,7 @@ Clab.pku.edu.cn 云虚拟机，为每个用户提供 4 CPU, 4 GB RAM, 100 GB Dis
 > print(partial_sum)
 > ```
 >
-> ### Shell 脚本 `run_distributed_task.sh`
+> **Shell 脚本 `run_distributed_task.sh`**
 >
 > ```bash
 > #!/bin/bash
@@ -1264,7 +1264,8 @@ done
 
 > 这段 Bash 脚本用于批量对比 Python 脚本的输出与预期输出。以下是其工作原理的详细解析：
 >
-> ### **代码解析**
+> **代码解析**
+>
 > ```bash
 > cd $2
 > ```
@@ -1290,7 +1291,8 @@ done
 >
 > ---
 >
-> ### **使用示例**
+> **使用示例**
+>
 > 假设目录结构如下：
 > ```
 > 1017/
@@ -1606,7 +1608,8 @@ if __name__ == "__main__":
 >
 > ---
 >
-> ### ④ **执行示例**
+> ④ **执行示例**
+>
 > 1. 运行命令：
 > ```bash
 > python ../../testing_code.py e1.py
@@ -2397,3 +2400,7 @@ if __name__ == "__main__":
 >
 > 通过这些故事可以看出，辛顿不仅是杰出的研究者，还是一位出色的导师，他培养的学生们在全球范围内推动着人工智能技术的进步和发展。这些人物的故事不仅展示了个人的才华和努力，也反映了整个深度学习领域从理论到实践的演变过程。
 
+3. 万字赏析 DeepSeek 创造之美：DeepSeek R1 是怎样炼成的？ https://mp.weixin.qq.com/s?__biz=MjM5NDk5MTA0MQ==&mid=2652324720&idx=1&sn=5ce38a508dc0ae33a870964aea367e2e&scene=21#wechat_redirect
+4. In 2024, the LLM field saw increasing specialization. Beyond pre-training and fine-tuning, we witnessed the rise of specialized applications, from RAGs to code assistants. I expect this trend to accelerate in 2025, with an even greater emphasis on domain- and application-specific optimizations (i.e., "specializations"). https://magazine.sebastianraschka.com/p/understanding-reasoning-llms
+5. Build a Large Language Model (From Scratch) (Sebastian Raschka)  这本书的程序，可以在  https://colab.research.google.com/ 用免费的GPU运行。https://github.com/rasbt/LLMs-from-scratch
+6. 
