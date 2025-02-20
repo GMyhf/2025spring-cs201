@@ -6,19 +6,14 @@ https://github.com/GMyhf/2025spring-cs201/
 
 ## 1 题解 & 教材
 https://github.com/GMyhf/2024fall-cs101/blob/main/2024fall_LeetCode_problems.md  
-
 https://github.com/GMyhf/2024spring-cs201/blob/main/2024spring_dsa_problems.md  
-
-https://github.com/GMyhf/2020fall-cs101/blob/main/2020fall_cs101.openjudge.cn_problems.md
-
-https://github.com/GMyhf/2020fall-cs101/blob/main/2020fall_Codeforces_problems.md
-
+https://github.com/GMyhf/2020fall-cs101/blob/main/2020fall_cs101.openjudge.cn_problems.md  
+https://github.com/GMyhf/2020fall-cs101/blob/main/2020fall_Codeforces_problems.md  
 https://github.com/GMyhf/2024spring-cs201/blob/main/sunnywhy_problems.md
 
 Python数据结构与算法分析 第3版 (米勒 拉努姆 罗曼)   
 算法笔记.胡凡 曾磊  
 算法导论 第3版  (Thmos.H.Cormen ,Charles E. Leiserson etc.)
-
 
 
 ## 2 机考和笔试
@@ -27,9 +22,8 @@ Python数据结构与算法分析 第3版 (米勒 拉努姆 罗曼)
 
 数算总评规划：期末机考1小时52分钟包含6个题目，AC5或者AC6尽量确保获得优秀评级；如果AC0，即使笔试满分，总评最高也只能达到84；如果AC4，笔试成绩较高，在不超优秀率限制的前提下，仍有机会被评定为优秀。
 
-## 3 数算每日选做
-周一17日开学，开始每日选做，每天2题，期中后调整为每日1题。
-
+## 3 数算2025spring每日选做
+周一17日开学，开始每日选做，每天2题，期中后调整为每日1题。  
 https://github.com/GMyhf/2025spring-cs201/blob/main/problem_list_2025spring.md
 
 > 数算pre每日选做
@@ -45,7 +39,7 @@ https://github.com/GMyhf/2025spring-cs201/blob/main/problem_list_2025spring.md
 
 
 ## 4 日志
-20250219 ：如果 数算2025spring每日选做（https://github.com/GMyhf/2025spring-cs201/blob/main/problem_list_2025spring.md）感觉困难，可以先把 LeetCode热题100 中的 简单先完成，再完成中等。https://leetcode.cn/studyplan/top-100-liked/
+20250219 ：如果 数算2025spring每日选做感觉困难，可以先把 LeetCode热题100 中的 简单先完成，再完成中等。https://leetcode.cn/studyplan/top-100-liked/
 
 github 有 codespaces，可以直接云端环境运行我上传的代码。https://docs.github.com/en/codespaces
 
