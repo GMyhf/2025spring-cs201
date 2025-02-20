@@ -27,7 +27,6 @@ Python数据结构与算法分析 第3版 (米勒 拉努姆 罗曼)
 https://github.com/GMyhf/2025spring-cs201/blob/main/problem_list_2025spring.md
 
 > 数算pre每日选做
->
 > 助力大家在下学期的数算课程中取得满分成绩，从1月13日至2月16日，涵盖整个寒假时段，每天3个题目。  
 > https://github.com/GMyhf/2025spring-cs201/blob/main/pre_problem_list_2025spring.md
 >
