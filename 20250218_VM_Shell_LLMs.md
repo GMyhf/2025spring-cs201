@@ -1,4 +1,4 @@
-#  20250218-Week1-虚拟机，Shell&大模型
+#  20250218-Week1-虚拟机，Shell&大语言模型
 
 Updated 0826 GMT+8 Feb 20 2025
 
