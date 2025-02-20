@@ -2,7 +2,7 @@
 
 Updated 1317 GMT+8 Feb 20, 2025
 
-2025 spring, Complied by ==同学的姓名、院系==
+2025 spring, Complied by <mark>同学的姓名、院系</mark>
 
 
 
@@ -54,13 +54,12 @@ http://cs101.openjudge.cn/practice/27653/
 代码：
 
 ```python
-# 
 
 ```
 
 
 
-代码运行截图 ==（至少包含有"Accepted"）==
+代码运行截图 <mark>（至少包含有"Accepted"）</mark>
 
 
 
@@ -80,13 +79,12 @@ http://cs101.openjudge.cn/practice/27653/
 代码：
 
 ```python
-# 
 
 ```
 
 
 
-代码运行截图 ==（至少包含有"Accepted"）==
+代码运行截图 <mark>（至少包含有"Accepted"）</mark>
 
 
 
@@ -105,13 +103,12 @@ http://cs101.openjudge.cn/practice/04135
 代码：
 
 ```python
-# 
 
 ```
 
 
 
-代码运行截图 ==（AC代码截图，至少包含有"Accepted"）==
+代码运行截图 <mark>（至少包含有"Accepted"）</mark>
 
 
 
@@ -130,13 +127,12 @@ http://cs101.openjudge.cn/practice/27300/
 代码：
 
 ```python
-# 
 
 ```
 
 
 
-代码运行截图 ==（AC代码截图，至少包含有"Accepted"）==
+代码运行截图 <mark>（至少包含有"Accepted"）</mark>
 
 
 
@@ -167,7 +163,7 @@ https://github.com/GMyhf/2025spring-cs201/blob/main/AI_accepted_locally.md
 
 ## 2. 学习总结和个人收获
 
-==如果发现作业题目相对简单，有否寻找额外的练习题目，如“数算2025spring每日选做”、LeetCode、Codeforces、洛谷等网站上的题目。==
+<mark>如果发现作业题目相对简单，有否寻找额外的练习题目，如“数算2025spring每日选做”、LeetCode、Codeforces、洛谷等网站上的题目。</mark>
 
 
 
