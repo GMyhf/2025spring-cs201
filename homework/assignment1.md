@@ -119,7 +119,7 @@ http://cs101.openjudge.cn/practice/04135
 
 ### 27300: 模型整理
 
-http://cs101.openjudge.cn/2025sp_routine/27300/
+http://cs101.openjudge.cn/practice/27300/
 
 
 
