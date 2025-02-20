@@ -1,4 +1,4 @@
-# Assignment #1: 虚拟机，Shell & 大模型
+# Assignment #1: 虚拟机，Shell & 大语言模型
 
 Updated 1317 GMT+8 Feb 20, 2025
 
