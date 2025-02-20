@@ -1,6 +1,6 @@
 # 2025spring-cs201: DS Alog （数据结构与算法）
 
-Updated 1828 GMT+8 Feb 16 2025. 2025 winter, Complied by Hongfei Yan  
+Updated 0843 GMT+8 Feb 20 2025. 2025 winter, Complied by Hongfei Yan  
 https://github.com/GMyhf/2025spring-cs201/
 
 
@@ -45,6 +45,16 @@ https://github.com/GMyhf/2025spring-cs201/blob/main/problem_list_2025spring.md
 
 
 ## 4 日志
+20250219 ：如果 数算2025spring每日选做（https://github.com/GMyhf/2025spring-cs201/blob/main/problem_list_2025spring.md）感觉困难，可以先把 LeetCode热题100 中的 简单先完成，再完成中等。https://leetcode.cn/studyplan/top-100-liked/
+
+github 有 codespaces，可以直接云端环境运行我上传的代码。https://docs.github.com/en/codespaces
+
+笔试题目都在gitbub上了，类似计概，至少讲一次。
+
+有同学想继续C++风格，可以的，但是不推荐用C。机考时候可以用Python、PyPy、C++提交，但是我们出题只测试python，没有测试C++是否能通过，比如大整数。
+
+大家选课，可以查一下各班开课教室容量。感觉选课自由了，如果教室容量没到，机房容量没到，理论上手工选课可行。
+
 20250212：在假期里，我们一起完成了数算课程的课件以及准备了101道题目。完成之后，认为数算课程相对较为简单，尽管一些难题的实现颇具挑战性，但总体来说，相比计算机概论中要求的计算思维要轻松不少。基于此，我们计划尽早安排，邀请助教或研究生来为大家讲解关于大模型的相关内容。如果有你们特别感兴趣的或者想要深入了解的主题，比如大模型的原理、部署流程、实际应用案例、训练方法、微调技术，或是阅读与理解大模型推理源码，请反馈。这样我们可以更有针对性地进行准备，确保我们的讨论既丰富又实用。
 
 2025211：1）线段树、树状数组在计概课程中放在附录部分，数算可以加深理解。27018:康托展开，http://cs101.openjudge.cn/practice/27018/  2）寒假学习计划安排，数算的pre每日选做 共101个题目都列出了（春季学期中会更新），课件（春季学期中会更新）也全了。3）计概需要完成201个题目，（因为从较为基础的问题开始，还要广泛地熟悉各种算法和技术），数算需要完成101个题目（重点在于掌握线性结构链表，非线性结构的树、图）。数算课程相对计概来说内容上可能较为简单，但代码实现上通常会复杂一些。
