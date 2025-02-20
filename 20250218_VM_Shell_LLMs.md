@@ -1,6 +1,6 @@
 #  20250218-Week1-虚拟机，Shell&大模型
 
-Updated 1439 GMT+8 Feb 18 2025
+Updated 0826 GMT+8 Feb 20 2025
 
 2025 spring, Complied by Hongfei Yan
 
@@ -675,6 +675,260 @@ UUID=some-unique-id  /mnt/data  ext4  defaults  0  2
 > <img src="https://raw.githubusercontent.com/GMyhf/img/main/img/image-20250217175602994.png" alt="image-20250217175602994" style="zoom:50%;" />
 
 
+
+## Q5.字符界面，就是编程自由的意思。
+
+字符界面（CLI, Command Line Interface）确实给编程带来了极大的自由度。在 Linux 下，使用终端可以方便地编写、编译、运行和调试各种语言的代码，比如 Python、C、C++ 等。以下是一些提升开发效率的技巧。
+
+<img src="https://raw.githubusercontent.com/GMyhf/img/main/img/image-20250220083407386.png" alt="image-20250220083407386" style="zoom:50%;" />
+
+
+
+> **C++程序示例，C程序示例**
+>
+> 给我一个C++程序示例，一个C程序示例，以及在linux系统下编译、运行的方法。
+>
+> A. 以下是一个简单的 C++ 和 C 代码示例，并附上在 Linux 下的编译和运行方法。  
+>
+> ---
+>
+> **C++ 示例程序**
+>
+> 文件名：`hello.cpp`
+>
+> ```cpp
+> #include <iostream>
+> 
+> int main() {
+>     std::cout << "Hello, C++!" << std::endl;
+>     return 0;
+> }
+> ```
+>
+> **编译 & 运行 (Linux)**  
+>
+> ```sh
+> g++ hello.cpp -o hello_cpp
+> ./hello_cpp
+> ```
+>
+> ---
+>
+> **C 示例程序**
+>
+> 文件名：`hello.c`
+>
+> ```c
+> #include <stdio.h>
+> 
+> int main() {
+>     printf("Hello, C!\n");
+>     return 0;
+> }
+> ```
+>
+> **编译 & 运行 (Linux)**  
+>
+> ```sh
+> gcc hello.c -o hello_c
+> ./hello_c
+> ```
+>
+> 1. `g++` 用于编译 C++ 代码，而 `gcc` 用于编译 C 代码。
+> 2. `-o` 选项用于指定输出的可执行文件名称。
+> 3. `./hello_cpp` 和 `./hello_c` 运行编译生成的可执行文件。
+>
+> 
+>
+> 以下是一些提升开发效率的技巧：
+>
+> ---
+>
+> **1. Python（脚本语言）**
+>
+> Python 脚本不需要编译，直接运行：
+>
+> ```sh
+> python3 script.py  # 运行 Python 脚本
+> ```
+>
+> **推荐工具**
+>
+> - `vim` / `nano` / `neovim`：终端文本编辑器
+> - `ipython`：增强版 Python 交互环境
+> - `virtualenv`：管理 Python 虚拟环境
+>
+> ---
+>
+> **2. C / C++（编译语言）**
+>
+> 在终端编写、编译和运行 C / C++ 程序：
+>
+> **编译 & 运行 C**
+>
+> ```sh
+> gcc program.c -o program
+> ./program
+> ```
+>
+> **编译 & 运行 C++**
+>
+> ```sh
+> g++ program.cpp -o program
+> ./program
+> ```
+>
+> **推荐工具**
+>
+> - `gdb`：GNU 调试器
+> - `valgrind`：检测内存泄漏
+> - `make`：自动化编译
+> - `clang-format`：代码格式化工具
+>
+> ---
+>
+> **3. 调试**
+>
+> **C / C++ 调试**
+>
+> ```sh
+> g++ -g program.cpp -o program
+> gdb ./program
+> ```
+>
+> **Python 调试**
+>
+> ```sh
+> python3 -m pdb script.py
+> ```
+>
+> ---
+>
+> ### **4. 高效开发环境**
+>
+> 在 Linux 终端下，可以结合多种工具提升开发体验：
+>
+> - **`tmux`** / **`screen`**：支持多窗口管理
+> - **`vim` / `neovim`**：强大的代码编辑器，支持语法高亮
+> - **`cmake`**：管理 C/C++ 项目构建
+> - **`lldb`**：苹果推荐的调试工具（C++ / C）
+> - **`autopep8`** / **`black`**：Python 代码格式化
+>
+> ---
+>
+> **5. 一键编译 & 运行（脚本化）**
+>
+> 对于 C/C++，可以写一个简单的 `run.sh` 脚本，自动编译和运行：
+>
+> ```sh
+> #!/bin/bash
+> g++ program.cpp -o program && ./program
+> ```
+>
+> 然后赋予执行权限：
+>
+> ```sh
+> chmod +x run.sh
+> ./run.sh
+> ```
+>
+> ---
+>
+> 字符界面让编程更加自由，不受 GUI 约束，适合高效开发和自动化。
+
+
+
+## Q6. 没明白第三步没有用到虚拟机，那第一步部署虚拟机用处？
+
+> 部署虚拟机提供了一个分布式计算环境，在这个环境中每个虚拟机都可以作为一个独立的计算节点运行。当你有一个需要大量计算资源的任务时（比如前面提到的分治任务），你可以将这个任务分解成多个较小的子任务，并将这些子任务分配给不同的虚拟机来并行处理。这样做的好处是可以大幅减少总计算时间，因为多个子任务可以同时在不同的机器上执行。
+>
+> 利用部署的虚拟机集群来执行具体的计算任务。具体来说，一旦所有虚拟机都设置好并且可以通过SSH访问（即公钥已经添加到各个虚拟机的`authorized_keys`文件中），就可以通过编写脚本自动登录各个虚拟机、分发任务以及收集结果。
+
+110个虚拟机可以形成一个分布式系统
+
+Clab.pku.edu.cn 云虚拟机，为每个用户提供 4 CPU, 4 GB RAM, 100 GB Disk。每个虚拟机的 .ssh/authorized_keys，保存了可以ssh 登录虚拟机的公钥。我们班110人，共 440 CPU, 440 GB, 11000 GB Disk。如果大家互相把每人的公钥，保存在各位本地机器 .ssh/id_ed25519.pub中的字符串，加入虚拟机的 authorized_keys，则 110个虚拟机可以形成一个分布式系统，可以用来计算分治任务。请示例个分治任务，并且写一个自动登录各个虚拟机，执行任务的脚本。 
+
+> A.分治任务是一种将问题分解成更小的子问题，分别求解这些子问题，然后合并这些子问题的解来得到原问题解的方法。一个典型的例子是计算一个大数组中所有元素的和。我们可以将这个数组分割成若干个较小的数组，每个虚拟机负责计算其对应的小数组的和，最后再将这些结果汇总起来得到整个数组的和。
+>
+> 以下是一个简单的示例脚本，用于自动登录各个虚拟机并执行上述分治任务。在这个例子中，我们将使用`parallel-ssh`工具来同时在多台服务器上运行命令。首先确保你已经安装了`parallel-ssh` (`pssh`)：
+>
+> ```bash
+> # 安装 parallel-ssh (如果尚未安装)
+> sudo apt-get install pssh # 对于基于Debian的Linux发行版
+> ```
+>
+> 假设你有一个包含所有虚拟机IP地址的文件`hosts.txt`（每行一个IP地址），以及一个本地目录`/path/to/project`，其中包含你的Python脚本`sum.py`，该脚本接受两个参数：数组的起始索引和结束索引，并计算这部分数组的和。
+>
+> ### Python 脚本 `sum.py`
+>
+> ```python
+> import sys
+> 
+> # 示例数组
+> array = [i for i in range(1000000)]
+> 
+> # 从命令行获取起始和结束索引
+> start_index = int(sys.argv[1])
+> end_index = int(sys.argv[2])
+> 
+> # 计算部分和
+> partial_sum = sum(array[start_index:end_index])
+> 
+> # 打印部分和
+> print(partial_sum)
+> ```
+>
+> ### Shell 脚本 `run_distributed_task.sh`
+>
+> ```bash
+> #!/bin/bash
+> 
+> # 定义变量
+> USER="your_username"
+> KEY_PATH="/path/to/your/private/key"
+> HOSTS_FILE="hosts.txt"
+> SCRIPT_PATH="/path/to/project/sum.py"
+> 
+> # 确保脚本停止在第一个错误处
+> set -e
+> 
+> # 预先将脚本上传到所有主机
+> pssh -h $HOSTS_FILE -l $USER -i -x "-i $KEY jadx" -P -I < $SCRIPT_PATH
+> 
+> # 计算每个虚拟机应处理的数组范围
+> total_elements=1000000
+> machines=$(wc -l < $HOSTS_FILE)
+> elements_per_machine=$((total_elements / machines))
+> 
+> # 分配任务给每台机器
+> for ((i=0; i<machines; i++)); do
+>     start=$((i * elements_per_machine))
+>     end=$(((i + 1) * elements_per_machine))
+>     if [ $i -eq $((machines - 1)) ]; then
+>         end=$total_elements # 最后一台机器处理到最后
+>     fi
+>     
+>     # 在每台机器上执行任务
+>     echo "Running on machine $i: $start to $end"
+>     pssh -h $HOSTS_FILE -l $USER -i -x "-i $KEY_PATH" -- "python3 $SCRIPT_PATH $start $end" &
+> done
+> 
+> wait # 等待所有后台任务完成
+> 
+> # 收集结果
+> echo "Collecting results..."
+> pssh -h $HOSTS_FILE -l $USER -i -x "-i $KEY_PATH" -- "cat /dev/shm/partial_sum" > all_results.txt
+> 
+> # 计算最终结果
+> final_sum=0
+> while read -r line; do
+>     final_sum=$((final_sum + line))
+> done < all_results.txt
+> 
+> echo "Final sum is $final_sum"
+> ```
+>
+> 注意：在实际应用中，你可能需要调整脚本以适应你的具体情况，比如数组大小、如何分配工作量、如何收集结果等。此外，为了简化说明，此脚本没有详细处理错误情况和输出结果的细节。根据你的具体需求，你可能还需要进行额外的配置和优化。
 
 
 
