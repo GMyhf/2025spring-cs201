@@ -1,6 +1,6 @@
 #  20250218-Week1-虚拟机，Shell&大语言模型
 
-Updated 0826 GMT+8 Feb 20 2025
+Updated 1700 GMT+8 Feb 20 2025
 
 2025 spring, Complied by Hongfei Yan
 
@@ -1650,9 +1650,12 @@ if __name__ == "__main__":
 
 
 
-# 3 大模型安装和测试
+# 3 大语言模型安装和测试
 
-https://www.ollama.com 是字符界面。图像界面可以用，https://lmstudio.ai
+在本地环境或通过云虚拟机（如 https://clab.pku.edu.cn/ 提供的资源）部署大语言模型（LLM）并进行测试。用户界面方面，可以选择使用图形界面工具如 https://lmstudio.ai 或命令行界面如 https://www.ollama.com 来完成部署工作。
+
+测试内容包括选择若干编程题目，确保这些题目能够在所部署的LLM上得到正确解答，并通过所有相关的测试用例（即状态为Accepted）。选题应来源于在线判题平台，例如 OpenJudge、Codeforces、LeetCode 或洛谷等，同时需注意避免与已找到的AI接受题目重复。已有的AI接受题目列表可参考以下链接：
+https://github.com/GMyhf/2025spring-cs201/blob/main/AI_accepted_locally.md
 
 ## 3.1 LLM 的基本概念
 
@@ -2251,7 +2254,7 @@ if __name__ == "__main__":
 > 
 >
 > 
->#### 超级加速定律
+>**超级加速定律**
 > 
 >“超级加速定律”（Supercharged Law）被黄仁勋提及，但没有详细的定义或解释。从上下文来看，“超级加速定律”似乎是指计算能力增长速度的一种新描述，它超越了传统的摩尔定律。
 > 
