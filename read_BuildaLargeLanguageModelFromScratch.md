@@ -2,7 +2,9 @@
 
 # Build a Large Language Model (From Scratch) 
 
-(Sebastian Raschka)
+by Sebastian Raschka
+
+
 
 Updated 1606 GMT+8 Feb 21 2025
 
@@ -125,6 +127,42 @@ GPT 仅使用 **Transformer 解码器（Decoder-Only Architecture）**，其结�
 ✅ **支持长文本上下文**
 ✅ **高效的并行计算**
 ✅ **强大的语言建模能力**
+
+> Q. ChatGPT的Transformer模型通能够有效处理的序列长度大约是多少？
+>
+> Transformer 模型能够有效处理的 **序列长度（context length）** 取决于 **架构设计、计算资源和优化方法**。一般来说：
+>
+> 1. **标准 Transformer（如 GPT-2、BERT）**
+>    - 典型最大序列长度：**512 - 2048 tokens**
+>    - 主要受 **自注意力（Self-Attention）计算复杂度 O(n²)** 限制。
+>
+> 2. **GPT-3**
+>    - 最大序列长度：**2048 tokens**
+>    - **计算开销**：随着长度增加，计算资源需求大幅增长。
+>
+> 3. **GPT-4 和 GPT-4 Turbo**
+>    - 最大序列长度：**128k tokens**（部分版本支持更长）。
+>
+> 4. **Longformer / BigBird（优化长序列）**
+>    - **窗口化注意力（Windowed Attention）** 降低计算需求。
+>    - 可处理 **8k - 32k tokens**，甚至更长。
+>
+> 5. **Mistral / Gemini / Claude 3**
+>    - 采用更高效的 **注意力机制（如稀疏注意力）**，支持 **长达 200k tokens** 的上下文。
+>
+> **你的 Transformer 能处理的序列长度**
+>
+> 如果你是 **从零实现 GPT**，受限于标准 **O(n²) 自注意力计算**：
+> - **推荐最大长度：512 - 2048 tokens**
+> - **如果 GPU 内存足够，可尝试 4096 tokens**
+> - **优化方法**：
+>   - **稀疏注意力（Sparse Attention）**
+>   - **线性 Transformer（如 Performer, Linformer）**
+>   - **分块计算（Sliding Window Attention）**
+>
+> 
+
+
 
 ---
 
@@ -328,7 +366,7 @@ LLM 会在训练过程中**优化这些向量**，以便更好地捕捉文本的
 
 Coding Attention Mechanisms
 
-在本章中，我们将探讨 LLM（大语言模型）架构的一个核心组成部分——**注意力机制**。我们将首先单独分析注意力机制的工作原理，然后编写代码实现 LLM 的其余部分，使其能够生成文本。
+在本章中，将探讨 LLM（大语言模型）架构的一个核心组成部分——**注意力机制**。首先单独分析注意力机制的工作原理，然后编写代码实现 LLM 的其余部分，使其能够生成文本。
 
 ## 本章内容：
 - 在神经网络中使用注意力机制的原因
@@ -359,16 +397,16 @@ Coding Attention Mechanisms
 
 ### 3.3.1 无可训练权重的简化自注意力机制
 
-我们首先实现一个简化的自注意力机制，该机制不涉及可训练的权重。其目标是先理解自注意力的核心概念，然后再引入可训练参数。
+首先实现一个简化的自注意力机制，该机制不涉及可训练的权重。其目标是先理解自注意力的核心概念，然后再引入可训练参数。
 
-在自注意力机制中，每个输入位置都会考虑输入序列中所有其他位置的相关性。具体来说，我们计算一个 **上下文向量（context vector）**，它是输入序列所有元素的加权和，其中权重由 **注意力权重（attention weights）** 确定。
+在自注意力机制中，每个输入位置都会考虑输入序列中所有其他位置的相关性。具体来说，计算一个 **上下文向量（context vector）**，它是输入序列所有元素的加权和，其中权重由 **注意力权重（attention weights）** 确定。
 
 ---
 
 ## 3.4 具有可训练权重的自注意力实现
 
 ### 3.4.1 逐步计算注意力权重
-我们使用以下步骤计算 **缩放点积注意力（Scaled Dot-Product Attention）**：
+使用以下步骤计算 **缩放点积注意力（Scaled Dot-Product Attention）**：
 1. 计算 **查询（Query）、键（Key）、值（Value）**：
    $$
    Q = X W_Q, \quad K = X W_K, \quad V = X W_V
@@ -418,9 +456,9 @@ class SelfAttention(nn.Module):
 ## 3.5 使用因果注意力隐藏未来单词
 
 ### 3.5.1 应用因果注意力掩码
-在 LLM 任务中，我们希望模型在预测下一个标记时，仅考虑当前位置及其之前的标记，而不允许其访问未来的信息。为此，我们使用 **因果注意力（Causal Attention）**，它通过掩码（masking）确保模型只能看到当前及之前的输入。
+在 LLM 任务中，希望模型在预测下一个标记时，仅考虑当前位置及其之前的标记，而不允许其访问未来的信息。为此，我们使用 **因果注意力（Causal Attention）**，它通过掩码（masking）确保模型只能看到当前及之前的输入。
 
-我们可以通过上三角矩阵来实现掩码：
+可以通过上三角矩阵来实现掩码：
 ```python
 mask = torch.triu(torch.ones(context_length, context_length), diagonal=1)
 masked_scores = attn_scores.masked_fill(mask.bool(), -torch.inf)
@@ -487,7 +525,7 @@ class MultiHeadAttention(nn.Module):
 
 Implementing a GPT model from scratch to generate text
 
-在本章中，我们将基于前面章节所学的知识，逐步构建一个完整的 **GPT（生成式预训练变换器）** 模型。你已经实现了 **多头注意力机制**，这是 LLM（大语言模型）的核心组件之一。现在，我们将实现其他构建模块，并将它们组装成一个类似 GPT 的模型，在下一章对其进行训练，使其能够生成类似人类的文本。
+在本章中，将基于前面章节所学的知识，逐步构建一个完整的 **GPT（生成式预训练变换器）** 模型。已经实现了 **多头注意力机制**，这是 LLM（大语言模型）的核心组件之一。现在，将实现其他构建模块，并将它们组装成一个类似 GPT 的模型，在下一章对其进行训练，使其能够生成类似人类的文本。
 
 ---
 
@@ -594,7 +632,7 @@ class TransformerBlock(nn.Module):
 
 ## 4.6 编写 GPT 模型
 
-我们现在可以组合所有的组件，实现完整的 **GPT 架构**：
+现在可以组合所有的组件，实现完整的 **GPT 架构**：
 - **嵌入层**（Embedding Layer）：将输入标记转换为向量表示。
 - **多个 Transformer 块**（Transformer Blocks）：核心计算部分。
 - **最终层归一化**（Final LayerNorm）：稳定输出。
@@ -664,7 +702,7 @@ def generate_text_simple(model, idx, max_new_tokens, context_size):
 
 Pretraining on Unlabeled Data
 
-在前几章中，我们构建了 GPT 模型的核心架构。现在，我们将进入 **预训练（Pretraining）** 阶段，使模型学习语言结构，以便能够生成连贯的文本。在预训练过程中，我们将使用 **大规模无标签文本数据**，并采用 **自监督学习（self-supervised learning）** 方法让模型自己生成标签进行训练。
+在前几章中，我们构建了 GPT 模型的核心架构。现在，将进入 **预训练（Pretraining）** 阶段，使模型学习语言结构，以便能够生成连贯的文本。在预训练过程中，将使用 **大规模无标签文本数据**，并采用 **自监督学习（self-supervised learning）** 方法让模型自己生成标签进行训练。
 
 ---
 
@@ -679,7 +717,7 @@ LLM（大语言模型）预训练的核心目标是：
 $$
 P(w_t | w_1, w_2, ..., w_{t-1})
 $$
-其中，\( w_t \) 是当前时间步的单词，模型根据之前的单词预测它。
+其中，$ w_t $ 是当前时间步的单词，模型根据之前的单词预测它。
 
 ---
 
@@ -753,7 +791,7 @@ def train_model(model, train_loader, val_loader, optimizer, device, num_epochs=3
 - **LLaMA 2 (7B 参数) 训练耗时**：184,320 GPU 小时（8× A100 GPU）
 - **训练成本**：约 **$690,000 美元**（基于 AWS 价格）。
 
-我们可以选择：
+可以选择：
 1. **使用小规模模型进行实验**
 2. **加载公开的预训练权重（如 OpenAI 提供的 GPT-2 权重）** 以节省训练成本。
 
@@ -761,7 +799,7 @@ def train_model(model, train_loader, val_loader, optimizer, device, num_epochs=3
 
 ## 5.6 加载预训练模型权重
 
-我们可以直接加载 GPT-2 的预训练权重，而无需从头训练整个模型：
+可以直接加载 GPT-2 的预训练权重，而无需从头训练整个模型：
 
 ```python
 import torch
@@ -896,7 +934,7 @@ def calc_loss_batch(input_batch, target_batch, model, device):
 
 ## 6.5 计算分类准确率
 
-分类任务的核心是 **评估准确率（Accuracy）**，我们可以通过 **argmax** 计算预测的类别，并统计正确率。
+CoreML任务的核心是 **评估准确率（Accuracy）**，我们可以通过 **argmax** 计算预测的类别，并统计正确率。
 
 ```python
 def calc_accuracy_loader(data_loader, model, device):
