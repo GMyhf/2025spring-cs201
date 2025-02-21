@@ -20,7 +20,7 @@ Updated 2322 GMT+8 Feb 19 2025.
 
 | 日期 | 问题编号与名称    | 标签                 | 难度  | 链接                                                 |
 | ---- | ----------------- | -------------------- | ------ | ---------------------------------------------------- |
-| 0221 | 04067:回文数字    | queue    | Easy    | http://cs101.openjudge.cn/practice/04067/      |
+| 0221 | 04067:回文数字    | queue    | Easy    | http://cs101.openjudge.cn/2025sp_routine/04067/      |
 | 0221 | 5.最长回文子串    | dp, two pointers, Manacher | Medium  | https://leetcode.cn/problems/longest-palindromic-substring/      |
 | 0220 | 04123:马走日      | backtracking   | Medium    | http://cs101.openjudge.cn/2025sp_routine/04123/     |
 | 0220 | 11.盛最多水的容器 | greedy, two pointers | Medium | https://leetcode.cn/problems/container-with-most-water/     |
