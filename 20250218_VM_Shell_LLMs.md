@@ -1,6 +1,6 @@
 #  20250218-Week1-虚拟机，Shell&大语言模型
 
-Updated 1700 GMT+8 Feb 20 2025
+Updated 1606 GMT+8 Feb 21 2025
 
 2025 spring, Complied by Hongfei Yan
 
@@ -2152,6 +2152,291 @@ if __name__ == "__main__":
     main()
 
 ```
+
+
+
+## 3.5 Ollama (+ Open WebUI)
+
+Ollama是字符界面，可以利用Open WebUI，在浏览中使用。
+
+ollama启动模型后，提供api访问 - 容器方式设置api端口11434
+
+https://github.com/open-webui/open-webui
+
+> **mac机器， `Open WebUI` 结合 `Ollama` 在本地部署大模型**
+>
+> 
+>
+> **chatgpt查询反馈**
+>
+> 你可以使用 `Open WebUI` 结合 `Ollama` 在本地部署大模型，提供 Web 界面交互，以下是详细步骤：  
+>
+> ---
+>
+> **1. 安装 Ollama**
+>
+> 你已经在 Mac 上安装了 Ollama，如果还没有安装，可以运行：
+>
+> ```sh
+> brew install ollama
+> ```
+>
+> 然后启动 Ollama：
+>
+> ```sh
+> ollama serve
+> ```
+>
+> 测试是否安装成功：
+>
+> ```sh
+> ollama run llama2
+> ```
+>
+> ---
+>
+> **2. 下载你要使用的模型**
+>
+> Ollama 提供了多个预训练模型，比如：
+>
+> ```sh
+> ollama pull mistral  # 下载 Mistral 模型
+> ollama pull llama2  # 下载 Llama 2 模型
+> ```
+>
+> 你可以通过 `ollama list` 查看已经下载的模型。
+>
+> ---
+>
+> **3. 安装 Open WebUI**
+>
+> 如果你还没有安装 `Docker`，请先安装：
+>
+> ```sh
+> brew install --cask docker
+> open /Applications/Docker.app
+> ```
+>
+> 然后拉取 Open WebUI：
+>
+> ```sh
+> docker run -d \
+>   --name open-webui \
+>   -p 3000:3000 \
+>   -v open-webui:/app/backend/data \
+>   --restart unless-stopped \
+>   ghcr.io/open-webui/open-webui:main
+> ```
+>
+> 访问 [http://localhost:3000](http://localhost:3000) 以确认 Open WebUI 是否运行成功。
+>
+> ---
+>
+> **4. 连接 Ollama**
+>
+> 编辑 Open WebUI 配置，让它使用 Ollama 作为后端。  
+>
+> 首先，停止 Open WebUI：
+>
+> ```sh
+> docker stop open-webui && docker rm open-webui
+> ```
+>
+> 然后，重新运行 Open WebUI，并连接 Ollama：
+>
+> ```sh
+> docker run -d \
+>   --name open-webui \
+>   -p 3000:3000 \
+>   -e OLLAMA_BASE_URL=http://host.docker.internal:11434 \
+>   -v open-webui:/app/backend/data \
+>   --restart unless-stopped \
+>   ghcr.io/open-webui/open-webui:main
+> ```
+>
+> 其中：
+>
+> - `OLLAMA_BASE_URL=http://host.docker.internal:11434` 指定了 Ollama 运行的 API 地址（Mac 上的 Docker 需要用 `host.docker.internal` 访问本机服务）。
+>
+> ---
+>
+> **5. 访问 Open WebUI**
+>
+> 打开浏览器，访问：
+>
+> ```
+> http://localhost:3000
+> ```
+>
+> 你应该可以看到一个 Web 界面，并能够通过 Ollama 运行本地模型了！🎉
+>
+> ---
+>
+> **可选：自定义模型**
+>
+> 如果你想自己微调或创建新的模型，可以使用：
+>
+> ```sh
+> ollama create mymodel -f Modelfile
+> ```
+>
+> 然后在 Open WebUI 里调用 `mymodel`。
+>
+> 如果遇到问题，可以运行 `docker logs open-webui` 查看日志。  
+>
+> 有其他需求，欢迎继续问！😊
+>
+> 
+>
+> > docker stop open-webui && docker rm open-webui\n
+>
+> 
+>
+> **Deepseek查询反馈**
+>
+> 在Mac上使用Open WebUI和Ollama本地部署大模型的步骤如下：
+>
+> ---
+>
+> **1. 安装Ollama**
+>
+> - **下载安装**：
+>
+>   - 访问 [Ollama官网](https://ollama.ai/download)，下载macOS版（支持M1/M2芯片）。
+>
+>   - 或通过Homebrew安装：
+>
+>     ```bash
+>     brew install ollama
+>     ```
+>
+> - **启动服务**：
+>
+>   ```bash
+>   ollama serve
+>   ```
+>
+>   （Ollama会以后台服务运行，默认端口`11434`）
+>
+> - **下载模型**：
+>
+>   ```bash
+>   ollama pull llama2     # 示例：Llama 2 7B
+>   ollama pull mistral    # 或Mistral等其他模型
+>   ```
+>
+> ---
+>
+> **2. 安装Docker**
+>
+> - 下载 [Docker Desktop for Mac](https://www.docker.com/products/docker-desktop) 并安装。
+> - 启动Docker，确保状态栏显示Docker图标且服务运行正常。
+>
+> ---
+>
+> **3. 部署Open WebUI**
+>
+> - **通过Docker运行**：
+>
+>   ```bash
+>   docker run -d \
+>     -p 3000:8080 \
+>     --add-host=host.docker.internal:host-gateway \
+>     -v open-webui:/app/backend/data \
+>     --name open-webui \
+>     --restart always \
+>     ghcr.io/open-webui/open-webui:main
+>   ```
+>
+>   - `-p 3000:8080`：将本地3000端口映射到容器8080端口。
+>   - `--add-host`：解决容器内访问宿主机服务的网络问题。
+>   - `-v`：持久化存储配置和数据。
+>
+> ---
+>
+> **4. 配置Open WebUI连接Ollama**
+>
+> 1. 访问 `http://localhost:3000`。
+>
+> 2. 首次进入需注册账户（或使用默认管理员账号，具体查看Open WebUI文档）。
+>
+> 3. 进入设置（Settings），填写Ollama的API地址：
+>
+>    ```
+>    http://host.docker.internal:11434
+>    ```
+>
+>    （确保地址正确指向宿主机Ollama服务）
+>
+> ---
+>
+> **5. 测试使用**
+>
+> - 在Open WebUI中选择已下载的模型（如`llama2`），输入提示词测试交互。
+> - 若无法连接，检查：
+>   - Ollama服务是否运行：`ollama list`。
+>   - Docker容器日志：`docker logs open-webui`。
+>   - 防火墙是否阻止端口`11434`或`3000`。
+>
+> ---
+>
+> **常见问题解决**
+>
+> - **Docker权限问题**：
+>
+>   - 在命令前加`sudo`，或将用户加入docker组：
+>
+>     ```bash
+>     sudo usermod -aG docker $USER
+>     ```
+>
+> - **端口冲突**：
+>
+>   - 修改映射端口，如 `-p 3001:8080`。
+>
+> - **模型下载慢**：
+>
+>   - 使用代理或更换镜像源（如Ollama的国内镜像）。
+>
+> ---
+>
+> **升级与维护**
+>
+> - **更新Open WebUI**：
+>
+>   ```bash
+>   docker pull ghcr.io/open-webui/open-webui:main
+>   docker stop open-webui && docker rm open-webui
+>   # 重新运行docker run命令
+>   ```
+>
+> - **更新Ollama**：
+>
+>   ```bash
+>   brew update && brew upgrade ollama
+>   ```
+>
+> ---
+>
+> 通过以上步骤，你可以在Mac上轻松部署本地大模型，并通过友好的Web界面进行交互。
+>
+> 
+
+Ollama (+ Open WebUI)。我试了一下，挺好看的。我本地 deepseek-r1:14b，也可以做对简单题目。
+
+![image-20250221160444049](https://raw.githubusercontent.com/GMyhf/img/main/img/image-20250221160444049.png)
+
+
+
+**04067:回文数字（Palindrome Number）**
+
+http://cs101.openjudge.cn/practice/04067/
+
+<img src="https://raw.githubusercontent.com/GMyhf/img/main/img/image-20250221160508188.png" alt="image-20250221160508188" style="zoom:50%;" />
+
+
+
+
 
 
 
