@@ -2,7 +2,7 @@
 
 https://github.com/GMyhf/2025spring-cs201/blob/main/problem_list_2025spring.md
 
-Updated 2322 GMT+8 Feb 19 2025.
+Updated 21532 GMT+8 Feb 21 2025.
 2025 spring, Complied by Hongfei Yan
 
 题解在：
@@ -20,6 +20,8 @@ Updated 2322 GMT+8 Feb 19 2025.
 
 | 日期 | 问题编号与名称    | 标签                 | 难度  | 链接                                                 |
 | ---- | ----------------- | -------------------- | ------ | ---------------------------------------------------- |
+| 0222 | 03151: Pots       | bfs    | -    | http://cs101.openjudge.cn/practice/03151/      |
+| 0222 | 121.买卖股票的最佳时机     | dp   | Easy    | https://leetcode.cn/problems/best-time-to-buy-and-sell-stock/      |
 | 0221 | 04067:回文数字    | queue    | Easy    | http://cs101.openjudge.cn/2025sp_routine/04067/      |
 | 0221 | 5.最长回文子串    | dp, two pointers, Manacher | Medium  | https://leetcode.cn/problems/longest-palindromic-substring/      |
 | 0220 | 04123:马走日      | backtracking   | Medium    | http://cs101.openjudge.cn/2025sp_routine/04123/     |
