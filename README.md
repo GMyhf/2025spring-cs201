@@ -1,6 +1,6 @@
 # 2025spring-cs201: DS Alog （数据结构与算法）
 
-Updated 0843 GMT+8 Feb 20 2025. 2025 winter, Complied by Hongfei Yan  
+Updated 2244 GMT+8 Feb 21 2025. 2025 winter, Complied by Hongfei Yan  
 https://github.com/GMyhf/2025spring-cs201/
 
 
@@ -38,6 +38,8 @@ https://github.com/GMyhf/2025spring-cs201/blob/main/problem_list_2025spring.md
 
 
 ## 4 日志
+20250221 说明：为了确保每位同学都能提升个人编程技能，请大家尽量跟上“2025春季每日选做”的进度。我们的目标是在课程开始的第一个月内，通过这些练习帮助大家拉齐整体的编程水平。特别注意，我们计划在2025年3月5日（星期三）进行月考，考试内容将主要围绕计概的相关题目。此外，考试还将考察对栈（stack）、队列（queue）及堆（heapq）基本用法的理解和应用。
+
 20250219 ：如果 数算2025spring每日选做感觉困难，可以先把 LeetCode热题100 中的 简单先完成，再完成中等。https://leetcode.cn/studyplan/top-100-liked/
 
 github 有 codespaces，可以直接云端环境运行我上传的代码。https://docs.github.com/en/codespaces
