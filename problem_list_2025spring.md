@@ -2,7 +2,7 @@
 
 https://github.com/GMyhf/2025spring-cs201/blob/main/problem_list_2025spring.md
 
-Updated 0022 GMT+8 Feb 22 2025.
+Updated 2201 GMT+8 Feb 22 2025.
 2025 spring, Complied by Hongfei Yan
 
 题解在：
@@ -20,7 +20,7 @@ Updated 0022 GMT+8 Feb 22 2025.
 
 | 日期 | 问题编号与名称    | 标签                 | 难度  | 链接                                                 |
 | ---- | ----------------- | -------------------- | ------ | ---------------------------------------------------- |
-| 0223 |      | -    | -    |      |
+| 0223 | 04093: 倒排索引查询| data structures | Tough | http://cs101.openjudge.cn/practice/04093/     |
 | 0223 | 1078.Bigram分词    | strings    | Easy    | https://leetcode.cn/problems/occurrences-after-bigram/      |
 | 0222 | 03151: Pots       | bfs    | -    | http://cs101.openjudge.cn/2025sp_routine/03151/      |
 | 0222 | 121.买卖股票的最佳时机     | dp   | Easy    | https://leetcode.cn/problems/best-time-to-buy-and-sell-stock/      |
