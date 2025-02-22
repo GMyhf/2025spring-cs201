@@ -21,6 +21,7 @@ Updated 2201 GMT+8 Feb 22 2025.
 | 日期 | 问题编号与名称    | 标签                 | 难度  | 链接                                                 |
 | ---- | ----------------- | -------------------- | ------ | ---------------------------------------------------- |
 | 0224 | 04093: 倒排索引查询| data structures | Tough | http://cs101.openjudge.cn/practice/04093/     |
+| 0224 | 2906.构造乘积矩阵  | matrices, prefix sum | Medium | https://leetcode.cn/problems/construct-product-matrix/      |
 | 0223 | 06640: 倒排索引    | data structures | Medium | http://cs101.openjudge.cn/practice/06640/      |
 | 0223 | 1078.Bigram分词    | strings    | Easy    | https://leetcode.cn/problems/occurrences-after-bigram/      |
 | 0222 | 03151: Pots       | bfs    | -    | http://cs101.openjudge.cn/2025sp_routine/03151/      |
