@@ -20,6 +20,8 @@ Updated 0022 GMT+8 Feb 22 2025.
 
 | 日期 | 问题编号与名称    | 标签                 | 难度  | 链接                                                 |
 | ---- | ----------------- | -------------------- | ------ | ---------------------------------------------------- |
+| 0223 |      | -    | -    |      |
+| 0223 | 1078.Bigram分词    | strings    | Easy    | https://leetcode.cn/problems/occurrences-after-bigram/      |
 | 0222 | 03151: Pots       | bfs    | -    | http://cs101.openjudge.cn/2025sp_routine/03151/      |
 | 0222 | 121.买卖股票的最佳时机     | dp   | Easy    | https://leetcode.cn/problems/best-time-to-buy-and-sell-stock/      |
 | 0221 | 04067:回文数字    | queue    | Easy    | http://cs101.openjudge.cn/2025sp_routine/04067/      |
