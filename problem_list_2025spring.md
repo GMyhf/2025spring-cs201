@@ -20,7 +20,7 @@ Updated 1805 GMT+8 Feb 23 2025.
 
 | 日期 | 问题编号与名称    | 标签                 | 难度  | 链接                                                 |
 | ---- | ----------------- | -------------------- | ------ | ---------------------------------------------------- |
-| 0225 | 27256: 当前队列中位数  | data structures    | Tough    | http://cs101.openjudge.cn/practice/27256/      |
+| 0225 | 27256: 当前队列中位数  | OOP, data structures    | Tough    | http://cs101.openjudge.cn/practice/27256/      |
 | 0225 | 100576.提取至多K个元素的最大总和     | data structures | Medium | https://leetcode.cn/problems/maximum-sum-with-at-most-k-elements/ |
 | 0224 | 04093: 倒排索引查询| data structures | Tough | http://cs101.openjudge.cn/practice/04093/     |
 | 0224 | 2906.构造乘积矩阵  | matrices, prefix sum | Medium | https://leetcode.cn/problems/construct-product-matrix/      |
