@@ -136,12 +136,16 @@ with torch.no_grad():  # 禁用梯度计算，加快测试速度，减少内存�
     accuracy = (predicted == y_test).sum().item() / len(y_test)
     print(f"Test Accuracy: {accuracy * 100:.2f}%")
 
-
+# 最终预测示例
+sample = X_test[0].unsqueeze(0)  # 取第一个测试样本
+prediction = torch.argmax(model(sample), dim=1)
+print(f"\nSample prediction: True class {y_test[0].item()}, "
+      f"Predicted class {prediction.item()}")
 ```
 
 > 云虚拟机运行结果：
 >
-> <img src="https://raw.githubusercontent.com/GMyhf/img/main/img/image-20250223150531913.png" alt="image-20250223150531913" style="zoom:50%;" />
+> <img src="https://raw.githubusercontent.com/GMyhf/img/main/img/image-20250223151816482.png" alt="image-20250223151816482" style="zoom:50%;" />
 
 
 
@@ -173,18 +177,20 @@ with torch.no_grad():  # 禁用梯度计算，加快测试速度，减少内存�
 **输出示例：**
 
 ```
-Epoch [10/100], Loss: 0.2116
-Epoch [20/100], Loss: 0.0935
-Epoch [30/100], Loss: 0.0652
-Epoch [40/100], Loss: 0.0563
-Epoch [50/100], Loss: 0.0510
-Epoch [60/100], Loss: 0.0492
-Epoch [70/100], Loss: 0.0453
-Epoch [80/100], Loss: 0.0427
-Epoch [90/100], Loss: 0.0414
-Epoch [100/100], Loss: 0.0413
-Test Accuracy: 96.67%
+$ python iris_neural_network.py 
+Epoch [10/100], Loss: 0.1849
+Epoch [20/100], Loss: 0.0867
+Epoch [30/100], Loss: 0.0649
+Epoch [40/100], Loss: 0.0555
+Epoch [50/100], Loss: 0.0512
+Epoch [60/100], Loss: 0.0538
+Epoch [70/100], Loss: 0.0463
+Epoch [80/100], Loss: 0.0458
+Epoch [90/100], Loss: 0.0453
+Epoch [100/100], Loss: 0.0438
+Test Accuracy: 100.00%
 
+Sample prediction: True class 0, Predicted class 0
 ```
 
 **注意事项：**
