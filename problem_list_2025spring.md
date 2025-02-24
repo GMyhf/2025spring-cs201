@@ -2,7 +2,7 @@
 
 https://github.com/GMyhf/2025spring-cs201/blob/main/problem_list_2025spring.md
 
-Updated 1805 GMT+8 Feb 23 2025.
+Updated 0927 GMT+8 Feb 24 2025.
 2025 spring, Complied by Hongfei Yan
 
 题解在：
@@ -20,6 +20,7 @@ Updated 1805 GMT+8 Feb 23 2025.
 
 | 日期 | 问题编号与名称    | 标签                 | 难度  | 链接                                                 |
 | ---- | ----------------- | -------------------- | ------ | ---------------------------------------------------- |
+| 0226 | 01328:Radar Installation     | greedy    | Medium    | http://cs101.openjudge.cn/practice/01328/      |
 | 0225 | 27256: 当前队列中位数  | OOP, data structures    | Tough    | http://cs101.openjudge.cn/practice/27256/      |
 | 0225 | 100576.提取至多K个元素的最大总和     | data structures | Medium | https://leetcode.cn/problems/maximum-sum-with-at-most-k-elements/ |
 | 0224 | 04093: 倒排索引查询| data structures | Tough | http://cs101.openjudge.cn/practice/04093/     |
