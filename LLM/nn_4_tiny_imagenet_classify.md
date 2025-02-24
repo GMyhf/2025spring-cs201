@@ -247,7 +247,7 @@ def main():
     dataset_sizes = {x: len(image_datasets[x]) for x in ['train', 'val']}
     class_names = image_datasets['train'].classes
 
-    device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
+    #device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
     # 使用 MPS 作为 GPU 后端（适用于 Apple Silicon）
     if torch.backends.mps.is_available():
         device = torch.device("mps")
