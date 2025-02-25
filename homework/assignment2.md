@@ -185,7 +185,7 @@ data structures, http://cs101.openjudge.cn/practice/04093/
 
 ### Q6. Neural Network实现鸢尾花卉数据分类
 
-在clab.pku 云端虚拟机，用Neural Network实现鸢尾花卉数据分类。
+在http://clab.pku.edu.cn 云端虚拟机，用Neural Network实现鸢尾花卉数据分类。
 
 参考链接，https://github.com/GMyhf/2025spring-cs201/blob/main/LLM/iris_neural_network.md
 
