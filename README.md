@@ -12,8 +12,8 @@ https://github.com/GMyhf/2020fall-cs101/blob/main/2020fall_Codeforces_problems.m
 https://github.com/GMyhf/2024spring-cs201/blob/main/sunnywhy_problems.md
 
 Build a Large Language Model (From Scratch) (Sebastian Raschka)  
-Python数据结构与算法分析 第3版 (米勒 拉努姆 罗曼)   
 算法笔记.胡凡 曾磊  
+Python数据结构与算法分析 第3版 (米勒 拉努姆 罗曼)   
 算法导论 第3版  (Thmos.H.Cormen ,Charles E. Leiserson etc.)
 
 
