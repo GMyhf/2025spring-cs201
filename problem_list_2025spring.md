@@ -2,7 +2,7 @@
 
 https://github.com/GMyhf/2025spring-cs201/blob/main/problem_list_2025spring.md
 
-Updated 0847 GMT+8 Feb 25 2025.
+Updated 2220 GMT+8 Feb 25 2025.
 2025 spring, Complied by Hongfei Yan
 
 题解在：
@@ -20,6 +20,8 @@ Updated 0847 GMT+8 Feb 25 2025.
 
 | 日期 | 问题编号与名称    | 标签                 | 难度  | 链接                                                 |
 | ---- | ----------------- | -------------------- | ------ | ---------------------------------------------------- |
+| 0227 | 04140: 方程求解   | 牛顿迭代法  | Medium | http://cs101.openjudge.cn/practice/04140/      |
+| 0227 | 48.旋转图像     | matrices    | Medium   | https://leetcode.cn/problems/rotate-image/      |
 | 0226 | 01328:Radar Installation     | greedy    | Medium    | http://cs101.openjudge.cn/practice/01328/      |
 | 0226 | 56.合并区间     | greedy    | Easy    | https://leetcode.cn/problems/merge-intervals/     |
 | 0225 | 27256: 当前队列中位数  | OOP, data structures    | Tough    | http://cs101.openjudge.cn/2025sp_routine/27256/      |
