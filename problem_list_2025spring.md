@@ -20,6 +20,8 @@ Updated 2220 GMT+8 Feb 25 2025.
 
 | 日期 | 问题编号与名称    | 标签                 | 难度  | 链接                                                 |
 | ---- | ----------------- | -------------------- | ------ | ---------------------------------------------------- |
+| 0228 |      | -    | -    |      |
+| 0228 | 2502.设计内存分配器 | OOP, implementation  | Medium    | https://leetcode.cn/problems/design-memory-allocator/     |
 | 0227 | 04140: 方程求解   | 牛顿迭代法  | Medium | http://cs101.openjudge.cn/practice/04140/      |
 | 0227 | 48.旋转图像     | matrices    | Medium   | https://leetcode.cn/problems/rotate-image/      |
 | 0226 | 01328:Radar Installation     | greedy    | Medium    | http://cs101.openjudge.cn/practice/01328/      |
