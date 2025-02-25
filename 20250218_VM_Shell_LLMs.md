@@ -1,6 +1,6 @@
 #  20250218-Week1-虚拟机，Shell&大语言模型
 
-Updated 2138 GMT+8 Feb 23 2025
+Updated 0904 GMT+8 Feb 25 2025
 
 2025 spring, Complied by Hongfei Yan
 
@@ -189,7 +189,7 @@ if __name__ == "__main__":
 
 无论是本地还是云端的虚拟机，它们都提供了灵活的计算资源分配方案，帮助用户测试软件、开发新应用或进行研究工作，而无需投资额外的硬件设施。随着云计算技术的发展，越来越多的服务迁移到了云端，使得用户可以从任何地方访问高性能的计算资源。
 
-## Q1. 部署虚拟机意义？
+#### Q1. 部署虚拟机意义？
 
 既然第三步大模型安装和测试，可以不用虚拟机，这一步部署虚拟机意义？
 
@@ -313,7 +313,7 @@ Clab.pku.edu.cn 云虚拟机，为每个用户提供 4 CPU, 4 GB RAM, 100 GB Dis
 
 
 
-## Q2.时间复杂度**和**空间复杂度
+#### Q2.时间复杂度**和**空间复杂度
 
 > **Q2. 推荐力扣每日一题，简单、中等的都挺好，困难的可以AI。力扣的简单题目，力争提交后，击败超过 50%。**
 >
@@ -501,7 +501,7 @@ ssh rocky@10.129.242.98
 >
 > 
 
-## Q4. vi的使用？
+#### Q4. vi的使用？
 
 > 需要会用vi编辑器，编辑文件。https://www.runoob.com/linux/linux-vim.html
 >
@@ -661,7 +661,7 @@ python login.py
 
 
 
-## Q5.在输入密码的时候其它键都没反应？
+#### Q5.在输入密码的时候其它键都没反应？
 
 在输入密码的时候其它键都没反应，只能敲回车然后跳出密码错误该怎么办？
 
@@ -804,7 +804,44 @@ UUID=some-unique-id  /mnt/data  ext4  defaults  0  2
 
 
 
-## Q6.字符界面，就是编程自由的意思。
+### 增加6GB虚拟内存，运行更大的模型
+
+```
+sudo dd if=/dev/zero of=/swapfile bs=1M count=6144
+sudo chmod 600 /swapfile
+sudo mkswap /swapfile
+sudo swapon /swapfile
+sudo vi /etc/fstab
+	在最后一行加上 /swapfile none swap sw 0 0
+sudo mount -a
+
+```
+
+> 通过上述操作所创建和配置的是硬盘模拟的内存，也就是虚拟内存 。
+>
+> 虚拟内存是计算机系统内存管理的一种技术。它使得应用程序认为它拥有连续的可用的内存（一个连续完整的地址空间），而实际上，它通常是被分隔成多个物理内存碎片，还有部分暂时存储在外部磁盘存储器上，在需要时进行数据交换。
+>
+> 具体解释本次操作创建的虚拟内存
+>
+> · 创建交换文件：sudo dd if = /dev/zero of=/swapfile bs = 1M count = 6144 这条命令创建了一个大小为6GB（1M\times6144 = 6GB）的文件 /swapfile，这个文件的内容全部是0（因为 if=/dev/zero）。这个文件就是用来模拟内存空间的基础。
+>
+> · 设置权限：sudo chmod 600 /swapfile 设置文件权限，确保只有所有者可以读写该文件，保障数据安全。
+>
+> · 格式化为交换空间：sudo mkswap /swapfile 将创建的文件格式化为交换空间格式，使其能够被系统识别和使用。
+>
+> · 启用交换文件：sudo swapon /swapfile 激活这个交换文件，让它开始充当虚拟内存的角色。此时，系统在物理内存不足时，就会将部分暂时不使用的数据存储到这个交换文件中。
+>
+> · 配置开机自动挂载：通过编辑 /etc/fstab 文件并执行 sudo mount -a，确保系统重启后，这个交换文件依然能够自动挂载并生效。
+>
+> 当系统的物理内存不够用时，操作系统会将一部分暂时不使用的数据从物理内存移动到虚拟内存（即 /swapfile 文件）中，从而为当前需要运行的程序腾出物理内存空间。当这些数据再次需要被使用时，再从虚拟内存中调回到物理内存。
+>
+> 不过，虚拟内存的读写速度比物理内存慢很多，因为涉及到磁盘I/O操作。所以，在实际应用中，合理配置物理内存和虚拟内存的比例，对于系统的性能优化非常重要。
+
+
+
+
+
+#### Q6.字符界面，就是编程自由的意思。
 
 字符界面（CLI, Command Line Interface）确实给编程带来了极大的自由度。在 Linux 下，使用终端可以方便地编写、编译、运行和调试各种语言的代码，比如 Python、C、C++ 等。以下是一些提升开发效率的技巧。
 
@@ -1779,7 +1816,7 @@ Geekbench AI测试， https://browser.geekbench.com
 
 
 
-### Q1. 装好了 LM Studio，但是无模型
+#### Q1. 装好了 LM Studio，但是无模型
 
 模型下载有问题，模型列表都加载不出来？
 
@@ -1797,7 +1834,7 @@ Geekbench AI测试， https://browser.geekbench.com
 
 
 
-### **Q2. Distill,32B,Q4这些参数是什么意思?**
+#### **Q2. Distill,32B,Q4这些参数是什么意思?**
 
 DeepSeek-R1-Distill-Qwen-32B-GGUF/DeepSeek-R1-Distill-Qwen-32B-Q4_K_M.gguf 
 
@@ -1893,7 +1930,7 @@ DeepSeek-R1-Distill-Qwen-32B-GGUF/DeepSeek-R1-Distill-Qwen-32B-Q4_K_M.gguf
 
 
 
-### **Q3.根据我的硬件配置，请提供更合适的建议**
+#### **Q3.根据我的硬件配置，请提供更合适的建议**
 
 **Mac Studio**: Processor Apple M1 Ultra @ 3.21 GHz,20 核，48核GPU，64GB 内存。 统一内存架构(UMA)让CPU和GPU共享同一内存吃，无需数据复制。 OS macOS 15.3 (Build 24D60), AI Framework: Core ML, AI Backend: GPU. 
 
@@ -2081,7 +2118,53 @@ success
 
 
 
-### Q4.如何退出ollama?
+> #### 如1.2所述，增加6GB虚拟内存，运行更大的模型
+>
+> ```
+> sudo dd if=/dev/zero of=/swapfile bs=1M count=6144
+> sudo chmod 600 /swapfile
+> sudo mkswap /swapfile
+> sudo swapon /swapfile
+> sudo vi /etc/fstab
+> 	在最后一行加上 /swapfile none swap sw 0 0
+> sudo mount -a
+> 
+> ```
+
+
+
+增加虚存后，2.0GB size的模型可以跑起来了。
+
+```
+[rocky@jensen ~]$ ollama list
+NAME               ID              SIZE      MODIFIED    
+llama3.2:1b        baf6a787fdff    1.3 GB    10 days ago    
+llama3.2:latest    a80c4f17acd5    2.0 GB    10 days ago    
+[rocky@jensen ~]$ ollama run llama3.2:latest
+Error: model requires more system memory (3.4 GiB) than is available (2.9 GiB)
+[rocky@jensen ~]$ sudo dd if=/dev/zero of=/swapfile bs=1M count=6144
+6144+0 records in
+6144+0 records out
+6442450944 bytes (6.4 GB, 6.0 GiB) copied, 4.65561 s, 1.4 GB/s
+[rocky@jensen ~]$ sudo chmod 600 /swapfile
+[rocky@jensen ~]$ sudo mkswap /swapfile
+Setting up swapspace version 1, size = 6 GiB (6442446848 bytes)
+no label, UUID=2ec17146-3945-4835-af81-4570fb68c8da
+[rocky@jensen ~]$ sudo swapon /swapfile
+[rocky@jensen ~]$ sudo vi /etc/fstab
+[rocky@jensen ~]$ sudo mount -a
+[rocky@jensen ~]$ ollama run llama3.2:latest
+>>> Send a message (/? for help)
+
+```
+
+
+
+<img src="https://raw.githubusercontent.com/GMyhf/img/main/img/image-20250225090357907.png" alt="image-20250225090357907" style="zoom:50%;" />
+
+
+
+#### Q4.如何。退出ollama?
 
 /bye 
 
