@@ -1,6 +1,6 @@
-### Assignment #2: 深度学习与大语言模型
+# Assignment #2: 深度学习与大语言模型
 
-Updated 2032 GMT+8 Feb 25, 2025
+Updated 2204 GMT+8 Feb 25, 2025
 
 2025 spring, Complied by <mark>同学的姓名、院系</mark>
 
