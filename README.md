@@ -42,8 +42,8 @@ https://github.com/GMyhf/2025spring-cs201/blob/main/problem_list_2025spring.md
 20250224: "每日选做"中有的题目看似涉及数据结构的知识。实际上，对于这些问题，可以直接利用Python标准库中的相应模块来解决，比如collections.deque，它既能作为栈也能作为队列使用；heapq模块提供了堆数据结构的支持；还有bisect模块，可用于高效地插入和搜索排序列表。在后续的课程中，我们将详细讲解这些数据结构的具体实现方法。值得注意的是，虽然这些知识在笔试中可能会被考察到，但在实际编程应用中，直接使用上述提供的标准库通常是更高效的选择。
 
 20250223: 除了问AI解读程序，这个可视化工具也很好用，https://pythontutor.com/  
-登录云端虚拟机为什么需要先设置公钥，是RSA算法。RSA算法，在《Python数据结构与算法分析 》第3版 (米勒 拉努姆 罗曼)第8章。  
-其中最难的第8章，其中的三个内容，第一周就都出现了。RSA算法，跳表，KMP。https://runestone.academy/ns/books/published/pythonds3/Advanced/toctree.html
+登录云端虚拟机为什么需要先设置公钥，是RSA算法。RSA算法，在《Python数据结构与算法分析 》第8章。  
+第8章中的三个内容，第一周就都出现了。RSA算法，跳表，KMP。https://runestone.academy/ns/books/published/pythonds3/Advanced/toctree.html
 
 上面是下周二要讲的内容，page 4~7，我加了个程序，方便大家理解。该程序可以在云虚拟机运行，https://github.com/GMyhf/2025spring-cs201/blob/main/LLM/iris_neural_network.md
 
