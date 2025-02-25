@@ -1,6 +1,6 @@
 # 2025spring-cs201: DS Alog （数据结构与算法）
 
-Updated 2244 GMT+8 Feb 21 2025. 2025 winter, Complied by Hongfei Yan  
+Updated 1042 GMT+8 Feb 25 2025. 2025 winter, Complied by Hongfei Yan  
 https://github.com/GMyhf/2025spring-cs201/
 
 
@@ -39,9 +39,21 @@ https://github.com/GMyhf/2025spring-cs201/blob/main/problem_list_2025spring.md
 
 
 ## 4 日志
-20250221 说明：为了确保每位同学都能提升个人编程技能，请大家尽量跟上“2025春季每日选做”的进度。我们的目标是在课程开始的第一个月内，通过这些练习帮助大家拉齐整体的编程水平。特别注意，我们计划在2025年3月5日（星期三）进行月考，考试内容将主要围绕计概的相关题目。此外，考试还将考察对栈（stack）、队列（queue）及堆（heapq）基本用法的理解和应用。
+20250224: "每日选做"中有的题目看似涉及数据结构的知识。实际上，对于这些问题，可以直接利用Python标准库中的相应模块来解决，比如collections.deque，它既能作为栈也能作为队列使用；heapq模块提供了堆数据结构的支持；还有bisect模块，可用于高效地插入和搜索排序列表。在后续的课程中，我们将详细讲解这些数据结构的具体实现方法。值得注意的是，虽然这些知识在笔试中可能会被考察到，但在实际编程应用中，直接使用上述提供的标准库通常是更高效的选择。
 
-20250219 ：如果 数算2025spring每日选做感觉困难，可以先把 LeetCode热题100 中的 简单先完成，再完成中等。https://leetcode.cn/studyplan/top-100-liked/
+20250223: 除了问AI解读程序，这个可视化工具也很好用，https://pythontutor.com/  
+登录云端虚拟机为什么需要先设置公钥，是RSA算法。RSA算法，在《Python数据结构与算法分析 》第3版 (米勒 拉努姆 罗曼)第8章。  
+教材最难的第8章，其中的三个内容，第一周就都出现了。RSA算法，跳表，KMP。https://runestone.academy/ns/books/published/pythonds3/Advanced/toctree.html
+
+上面是下周二要讲的内容，page 4~7，我加了个程序，方便大家理解。该程序可以在云虚拟机运行，https://github.com/GMyhf/2025spring-cs201/blob/main/LLM/iris_neural_network.md
+
+Transformer直观解释（来自 3Blue1Brown）, https://www.bilibili.com/video/BV13z421U7cs 。视频第6分钟介绍了如何准备一段文本作为系统提示词，设定用户与AI助手互动的场景。用户的初始问题或提示词被视为第一轮对话，从而解决了模型的冷启动问题。最后，在第23分钟，视频讲解了softmax with temperature 的机制，用于调整下一个词的预测概率，从而影响模型输出的随机性（即所谓的“幻觉”现象）。这一部分让我豁然开朗，瞬间理解了其中的逻辑。
+
+Attention, https://www.bilibili.com/video/BV1TZ421j7Ke
+
+20250221：为了确保每位同学都能提升个人编程技能，请大家尽量跟上“2025春季每日选做”的进度。我们的目标是在课程开始的第一个月内，通过这些练习帮助大家拉齐整体的编程水平。特别注意，我们计划在2025年3月5日（星期三）进行月考，考试内容将主要围绕计概的相关题目。此外，考试还将考察对栈（stack）、队列（queue）及堆（heapq）基本用法的理解和应用。
+
+20250219：如果 数算2025spring每日选做感觉困难，可以先把 LeetCode热题100 中的 简单先完成，再完成中等。https://leetcode.cn/studyplan/top-100-liked/
 
 github 有 codespaces，可以直接云端环境运行我上传的代码。https://docs.github.com/en/codespaces
 
