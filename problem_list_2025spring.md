@@ -24,7 +24,7 @@ Updated 2220 GMT+8 Feb 25 2025.
 | 0228 | 2502.设计内存分配器 | OOP, implementation  | Medium    | https://leetcode.cn/problems/design-memory-allocator/     |
 | 0227 | 04140: 方程求解   | 牛顿迭代法  | Medium | http://cs101.openjudge.cn/practice/04140/      |
 | 0227 | 48.旋转图像     | matrices    | Medium   | https://leetcode.cn/problems/rotate-image/      |
-| 0226 | 01328:Radar Installation     | greedy    | Medium    | http://cs101.openjudge.cn/practice/01328/      |
+| 0226 | 01328:Radar Installation     | greedy    | Medium    | http://cs101.openjudge.cn/2025sp_routine/01328/      |
 | 0226 | 56.合并区间     | greedy    | Easy    | https://leetcode.cn/problems/merge-intervals/     |
 | 0225 | 27256: 当前队列中位数  | OOP, data structures    | Tough    | http://cs101.openjudge.cn/2025sp_routine/27256/      |
 | 0225 | 100576.提取至多K个元素的最大总和     | data structures | Medium | https://leetcode.cn/problems/maximum-sum-with-at-most-k-elements/ |
