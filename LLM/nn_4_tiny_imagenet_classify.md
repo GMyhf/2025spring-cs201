@@ -1,6 +1,6 @@
 # Neural Network实现Tiny ImageNet图像分类
 
-Updated 1448 GMT+8 Feb 26 2025
+Updated 1526 GMT+8 Feb 26 2025
 
 2025 spring, Complied by Hongfei Yan
 
@@ -237,7 +237,7 @@ def main():
                                                 data_transforms[x])
                       for x in ['train', 'val']}
 
-    # 设置 num_workers 为 4 以利用多线程数据加载
+    # 设置 num_workers 为 4 以利用多进程数据加载
     dataloaders = {x: torch.utils.data.DataLoader(image_datasets[x],
                                                     batch_size=128,    # 可根据实际情况调整
                                                     shuffle=True,
@@ -609,6 +609,251 @@ Validation Accuracy: 0.8014
 
 
 ## 附录
+
+
+
+### 多进程 vs. 多线程
+
+**多进程**：`multiprocessing` 模块允许你创建多个独立的进程。每个进程都有自己的Python解释器实例和内存空间，这意味着它们不会受到GIL（Global Interpreter Lock，全局解释器锁）的影响，并且可以充分利用多核处理器的能力进行真正的并行计算。然而，进程间的通信和数据交换（如共享状态或传递消息）相比线程会更加复杂和消耗资源。
+
+**多线程**：另一方面，Python 的 `threading` 模块提供了多线程的支持。在同一个程序内，你可以启动多个线程，这些线程共享相同的内存空间。尽管这使得线程间通信更加简单直接，但由于GIL的存在，对于CPU密集型任务，多线程并不能带来真正的并行执行，它更适合于I/O密集型的任务（例如网络请求、文件读写等），在这种情况下，线程可以在等待I/O操作完成的同时让出执行权给其他线程。
+
+因此，如果你正在处理需要大量CPU计算的任务，并希望利用多核处理器提高性能，那么使用 `multiprocessing` 模块是更合适的选择。而对于涉及大量等待外部资源（如数据库访问、网络请求等）的应用场景，`threading` 可能更为适用。
+
+
+
+
+
+#### 示例18161: 矩阵运算
+
+matrices, http://cs101.openjudge.cn/practice/18161
+
+
+
+##### 多进程multiprocessing
+
+使用 multiprocessing 模块以及 dot_product 函数来实现矩阵运算 A·B + C。将利用多进程并行计算矩阵乘法部分，然后将结果与矩阵 C 相加。
+
+内存: 29964，时间: 520ms
+
+```python
+import multiprocessing
+
+def dot_product(row, col):
+    """
+    计算两个向量的点积。
+    :param row: 第一个矩阵的一行
+    :param col: 第二个矩阵的一列
+    :return: 点积结果
+    """
+    return sum(a * b for a, b in zip(row, col))
+
+def matrix_multiply_parallel(A, B, num_processes=None):
+    """
+    使用多进程并行计算两个矩阵的乘积。
+    :param A: 第一个矩阵，作为列表的列表
+    :param B: 第二个矩阵，作为列表的列表
+    :param num_processes: 要使用的进程数，默认为 None (自动决定)
+    :return: 矩阵乘积的结果
+    """
+    if len(A[0]) != len(B):
+        raise ValueError("Matrix dimensions do not match for multiplication")
+
+    result = [[None for _ in range(len(B[0]))] for _ in range(len(A))]
+    
+    with multiprocessing.Pool(processes=num_processes) as pool:
+        tasks = []
+        for i in range(len(A)):
+            for j in range(len(B[0])):
+                row = A[i]
+                col = [B_element[j] for B_element in B]
+                # 异步调用dot_product函数
+                tasks.append(pool.apply_async(dot_product, (row, col)))
+        
+        index = 0
+        for i in range(len(A)):
+            for j in range(len(B[0])):
+                #任务收集逻辑：通过直接使用 tasks[index].get() 来获取每个异步任务的结果
+                result[i][j] = tasks[index].get()
+                index += 1
+    
+    return result
+
+def matrix_add(X, Y):
+    if len(X) != len(Y) or len(X[0]) != len(Y[0]):
+        raise ValueError("Matrices must have the same dimensions for addition")
+    return [[X[i][j] + Y[i][j] for j in range(len(X[0]))] for i in range(len(X))]
+
+def read_matrix():
+    import sys
+    input = sys.stdin.read
+    data = input().strip().split('\n')
+    matrices = []
+    idx = 0
+    while idx < len(data):
+        row, col = map(int, data[idx].split())
+        matrix = []
+        for r in range(row):
+            matrix.append(list(map(int, data[idx + 1 + r].split())))
+        matrices.append(matrix)
+        idx += row + 1
+    return matrices
+
+def main():
+    matrices = read_matrix()
+    A, B, C = matrices
+    
+    try:
+        AB = matrix_multiply_parallel(A, B, 4)
+        result = matrix_add(AB, C)
+        for row in result:
+            print(' '.join(map(str, row)))
+    except ValueError:
+        print("Error!")
+
+if __name__ == "__main__":
+    main()
+```
+
+
+
+##### 单进程
+
+内存: 4392kB，时间: 71ms
+
+```python
+def read_matrix():
+    """读取矩阵输入"""
+    row, col = map(int, input().split())
+    matrix = [list(map(int, input().split())) for _ in range(row)]
+    return matrix
+
+def matrix_multiply(A, B):
+    """计算两个矩阵的乘积"""
+    # 确保A的列数等于B的行数
+    if len(A[0]) != len(B):
+        raise ValueError("Matrix dimensions do not match for multiplication")
+    
+    result = []
+    for i in range(len(A)):
+        row = []
+        for j in range(len(B[0])):
+            sum = 0
+            for k in range(len(A[0])):
+                sum += A[i][k] * B[k][j]
+            row.append(sum)
+        result.append(row)
+    return result
+
+def matrix_add(X, Y):
+    """计算两个矩阵的和"""
+    # 确保X和Y的维度相同
+    if len(X) != len(Y) or len(X[0]) != len(Y[0]):
+        raise ValueError("Matrices must have the same dimensions for addition")
+    
+    result = [[X[i][j] + Y[i][j] for j in range(len(X[0]))] for i in range(len(X))]
+    return result
+
+def main():
+    # 读取矩阵A、B、C
+    A = read_matrix()
+    B = read_matrix()
+    C = read_matrix()
+
+    try:
+        # 计算矩阵乘法A·B
+        AB = matrix_multiply(A, B)
+
+        # 检查矩阵AB和C的维度是否适合相加
+        if len(AB) != len(C) or len(AB[0]) != len(C[0]):
+            raise ValueError("Resultant matrix AB and C must have the same dimensions for addition")
+
+        # 计算矩阵加法AB+C
+        result = matrix_add(AB, C)
+
+        # 输出结果
+        for row in result:
+            print(' '.join(map(str, row)))
+    except ValueError as e:
+        print("Error!")
+
+if __name__ == "__main__":
+    main()
+```
+
+
+
+> Q. 开 multiprocessing，4线程，运行时间比普通方法计算反倒慢了一个数量级。是测试数据太少？
+>
+> 使用 `multiprocessing` 模块进行并行计算时，确实有可能在某些情况下（特别是处理小规模数据或简单任务）导致性能下降。这主要是因为：
+>
+> 1. **进程启动和通信开销**：创建新进程以及跨进程边界传递数据（如将任务分配给不同的工作进程）需要时间。如果任务本身非常轻量级（比如简单的矩阵乘法元素计算），这些额外的开销可能会超过并行化带来的性能增益。
+>
+> 2. **数据规模不足**：对于较小的数据集或简单的计算任务，CPU可能很快就能完成计算，此时多线程或多进程的优势无法体现出来。实际上，由于上述提到的进程管理和通信成本，反而可能导致总体执行时间增加。
+>
+> 3. **Python的全局解释器锁（GIL）**：尽管使用了 `multiprocessing` 可以绕过 GIL，但对于I/O密集型而非计算密集型任务，其优势并不明显。此外，在计算密集型任务中，如果任务粒度太细，频繁的上下文切换也可能影响性能。
+>
+> **测试数据大小的影响**
+>
+> 如果你使用的测试数据很小（例如样例输入中的3x1、1x2等小矩阵），那么并行化的开销会显得尤为突出。这是因为：
+>
+> - 并行化带来的加速比依赖于任务可以被有效分割的程度以及每个子任务的计算量。
+> - 对于非常小的矩阵，单个点积操作的计算量不足以抵消进程间通信和管理的开销。
+>
+> **改进建议**
+>
+> 如果你想验证并行化是否能在更大规模的数据上带来性能提升，建议尝试以下方法：
+>
+> 1. **增加数据规模**：使用更大的矩阵进行测试，这样每个子任务（即两个向量的点积）会有更多的计算量，从而更有可能从并行化中受益。
+>
+> 2. **调整线程/进程数**：根据你的CPU核心数合理设置进程池的大小。过多的进程会导致不必要的上下文切换，而过少则不能充分利用多核处理器的能力。
+>
+> 3. **优化任务粒度**：确保你划分的任务足够大，以便能够掩盖进程间的通信和调度开销。例如，可以考虑将整个行的计算作为一个任务，而不是单独计算每个元素。
+>
+> 4. **测量性能**：使用计时工具（如 `time` 模块）来精确测量不同实现方式下的运行时间，并对比分析结果。
+>
+> 总之，对于小规模数据或简单计算任务，直接使用单线程实现通常更为高效。当处理大规模数据或复杂计算时，适当利用并行化技术才能显著提高性能。
+
+
+
+
+
+### Torch 的多进程计算不受 GIL 限制
+
+https://github.com/GMyhf/2025spring-cs201/blob/main/LLM/nn_4_tiny_imagenet_classify.md
+
+```python
+...
+    # 设置 num_workers 为 4 以利用多线程数据加载
+    dataloaders = {x: torch.utils.data.DataLoader(image_datasets[x],
+                                                    batch_size=128,    
+                                                    shuffle=True,
+                                                    num_workers=8)
+...
+```
+
+GIL 的全称是 **Global Interpreter Lock**（全局解释器锁）。这是 Python 解释器（CPython）中的一个机制，用于确保同一时间只有一个线程执行 Python 字节码，即便在多核 CPU 上，也无法实现真正的并行计算。
+
+不过，**Torch 的多近程计算** 通常 **不受 GIL 限制**，原因如下：
+
+1. **计算密集型任务在 C/C++ 后端执行**  
+   PyTorch 的底层计算是基于 C++ 和 CUDA 实现的。一旦计算任务进入底层库（如调用 `torch.matmul()`、`torch.nn` 等操作），它就脱离了 Python 的解释层，因此不会被 GIL 锁住。计算主要在 C++ 层面并行执行，或者交给 GPU 加速。
+
+2. **DataLoader 使用多进程并行加载数据**  
+   你设置的 `num_workers=8` 实际上会启动 8 个 **子进程** 来加载数据，因为 PyTorch 的 `DataLoader` 默认使用 **multiprocessing** 库，而不是线程池。这种方式是跨进程的，不会触发 GIL。
+
+3. **异步计算（CUDA）**  
+   如果你在使用 GPU 计算（如 `.to('cuda')`），大部分操作是异步的。Python 线程触发计算任务后，CUDA 内核在 GPU 上执行，线程会立刻返回，继续处理其他任务。因此不会卡在 GIL 上。
+
+**总结：**
+
+- **CPU-bound任务**（纯 Python 代码计算）会受到 GIL 限制。
+- **I/O-bound任务**（如数据加载、文件读取）在 PyTorch 中主要靠多进程，不受 GIL 影响。
+- **GPU-bound任务** 完全在 CUDA 上执行，与 GIL 无关。
+
+所以 `num_workers=8` 是在开 8 个进程来并行加载数据，计算部分走的底层 C++/CUDA，不会因为 GIL 产生性能瓶颈！
+
+
 
 ### 并行计算
 
