@@ -1,6 +1,6 @@
 # Neural Network实现鸢尾花卉数据分类
 
-Updated 1723 GMT+8 Feb 24 2025
+Updated 1109 GMT+8 Feb 26 2025
 
 2025 spring, Complied by Hongfei Yan
 
@@ -51,6 +51,8 @@ Updated 1723 GMT+8 Feb 24 2025
 以下是使用PyTorch实现Fisher鸢尾花数据集分类的Python程序`iris_neural_network.py`，强调使用了神经网络进行分类。
 
 如果缺少module，安装即可，例如：pip install torch，pip install sklearn等。
+
+> 使用 pip install sklearn 可能不会得到预期的结果，因为PyPI（Python Package Index）上的官方包名称是 scikit-learn。但我确实用的 pip install sklearn。这是因为 sklearn 是 scikit-learn 的一个别名，某些情况下通过 pip 安装时能够识别这个别名并正确安装软件包。
 
 ```python
 import torch
