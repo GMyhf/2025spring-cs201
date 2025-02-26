@@ -2,7 +2,7 @@
 
 https://github.com/GMyhf/2025spring-cs201/blob/main/problem_list_2025spring.md
 
-Updated 2220 GMT+8 Feb 25 2025.
+Updated 1712 GMT+8 Feb 26 2025.
 2025 spring, Complied by Hongfei Yan
 
 题解在：
@@ -20,7 +20,10 @@ Updated 2220 GMT+8 Feb 25 2025.
 
 | 日期 | 问题编号与名称    | 标签                 | 难度  | 链接                                                 |
 | ---- | ----------------- | -------------------- | ------ | ---------------------------------------------------- |
-| 0228 |      | -    | -    |      |
+| 0302 | 46.全排列   | backtracing    | Medium    | https://leetcode.cn/problems/permutations/      |
+| 0301 |      | -    | -    |      |
+| 0301 | 994.腐烂的橘子     | bfs    | Medium    | https://leetcode.cn/problems/rotting-oranges/      |
+| 0228 | 18161:矩阵运算(先乘再加) | matrices    | Easy  | http://cs101.openjudge.cn/practice/18161/      |
 | 0228 | 2502.设计内存分配器 | OOP, implementation  | Medium    | https://leetcode.cn/problems/design-memory-allocator/     |
 | 0227 | 04140: 方程求解   | 牛顿迭代法  | Medium | http://cs101.openjudge.cn/practice/04140/      |
 | 0227 | 48.旋转图像     | matrices    | Medium   | https://leetcode.cn/problems/rotate-image/      |
