@@ -1,6 +1,6 @@
 #  20250218-Week1-虚拟机，Shell&大语言模型
 
-Updated 1343 GMT+8 Feb 26 2025
+Updated 1330 GMT+8 Feb 27 2025
 
 2025 spring, Complied by Hongfei Yan
 
@@ -812,7 +812,7 @@ sudo chmod 600 /swapfile
 sudo mkswap /swapfile
 sudo swapon /swapfile
 sudo vi /etc/fstab
-	在最后一行加上 /swapfile none swap sw 0 0
+	在最后加一行 /swapfile none swap sw 0 0
 sudo mount -a
 
 ```
