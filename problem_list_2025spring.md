@@ -22,7 +22,7 @@ Updated 0001 GMT+8 Feb 28 2025.
 | ---- | ----------------- | -------------------- | ------ | ---------------------------------------------------- |
 | 0303 | 46.全排列   | backtracing    | Medium    | https://leetcode.cn/problems/permutations/      |
 | 0302 | LCR 107.01 矩阵     | dp    | Medium    | https://leetcode.cn/problems/2bCMpM/     |
-| 0301 | 01088: 滑雪 | dp    | Medium    | http://cs101.openjudge.cn/practice/01088      |
+| 0301 | 01088: 滑雪 | dp    | Medium    | http://cs101.openjudge.cn/2025sp_routine/01088      |
 | 0301 | 994.腐烂的橘子     | bfs    | Medium    | https://leetcode.cn/problems/rotting-oranges/      |
 | 0228 | 18161:矩阵运算(先乘再加) | matrices    | Easy  | http://cs101.openjudge.cn/2025sp_routine/18161/      |
 | 0228 | 2502.设计内存分配器 | OOP, implementation  | Medium    | https://leetcode.cn/problems/design-memory-allocator/     |
