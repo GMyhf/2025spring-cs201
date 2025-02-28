@@ -1,6 +1,6 @@
 # DSA-假期Week1 OOP, stack, queue, etc.
 
-Updated 2306 GMT+8 Jan 20, 2025
+Updated 2344 GMT+8 Jan 28, 2025
 
 2025 spring, Complied by Hongfei Yan
 
@@ -693,14 +693,14 @@ print(x == y)
 ```mermaid
 classDiagram
 	class Python_Collections 
-  Python_Collections <|-- Sequential_Collections
-  Python_Collections <|-- Non-Sequential_Collections
+  Python_Collections <|-- Sequential_Collections : Inheritance
+  Python_Collections <|-- Non-Sequential_Collections : Inheritance
 
-	Sequential_Collections <|-- list
-	Sequential_Collections <|-- string
-	Sequential_Collections <|-- tuple
+	Sequential_Collections <|-- list : Inheritance
+	Sequential_Collections <|-- string : Inheritance
+	Sequential_Collections <|-- tuple : Inheritance
 	
-	Non-Sequential_Collections <|-- dictionary
+	Non-Sequential_Collections <|-- dictionary : Inheritance
 ```
 
 <center>图2-4 Python容器的继承层次结构</center>
@@ -2546,7 +2546,7 @@ linked-list, https://leetcode.cn/problems/reverse-linked-list/
 
 **示例 1：**
 
-![img](https://assets.leetcode.com/uploads/2021/02/19/rev1ex1.jpg)
+<img src="https://assets.leetcode.com/uploads/2021/02/19/rev1ex1.jpg" alt="img" style="zoom:50%;" />
 
 ```
 输入：head = [1,2,3,4,5]
@@ -2555,7 +2555,7 @@ linked-list, https://leetcode.cn/problems/reverse-linked-list/
 
 **示例 2：**
 
-![img](https://assets.leetcode.com/uploads/2021/02/19/rev1ex2.jpg)
+<img src="https://assets.leetcode.com/uploads/2021/02/19/rev1ex2.jpg" alt="img" style="zoom:50%;" />
 
 ```
 输入：head = [1,2]
@@ -2616,7 +2616,7 @@ linked-list, https://leetcode.cn/problems/palindrome-linked-list/
 
 **示例 1：**
 
-![img](https://assets.leetcode.com/uploads/2021/03/03/pal1linked-list.jpg)
+<img src="https://assets.leetcode.com/uploads/2021/03/03/pal1linked-list.jpg" alt="img" style="zoom:50%;" />
 
 ```
 输入：head = [1,2,2,1]
@@ -2625,7 +2625,7 @@ linked-list, https://leetcode.cn/problems/palindrome-linked-list/
 
 **示例 2：**
 
-![img](https://assets.leetcode.com/uploads/2021/03/03/pal2linked-list.jpg)
+<img src="https://assets.leetcode.com/uploads/2021/03/03/pal2linked-list.jpg" alt="img" style="zoom:50%;" />
 
 ```
 输入：head = [1,2]
@@ -3103,13 +3103,13 @@ As we described in Chapter 1, in Python, as in any object-oriented programming l
 ```mermaid
 classDiagram
     class Stack {
-        - items: list
+        - items: List
         
-        + isEmpty(): boolean
-        + push(item: T): void
+        + isEmpty(): bool
+        + push(item: T): None
         + pop(): T
         + peek(): T 
-        + size(): number
+        + size(): int
     }
 ```
 
