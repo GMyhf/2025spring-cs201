@@ -1,6 +1,6 @@
 #  20250218-Week1-虚拟机，Shell&大语言模型
 
-Updated 1330 GMT+8 Feb 27 2025
+Updated 1330 GMT+8 Mar 1 2025
 
 2025 spring, Complied by Hongfei Yan
 
@@ -1038,6 +1038,10 @@ sudo mount -a
 > linux-help（Linux Shell简介），
 >
 > https://pku.instructuremedia.com/embed/06bda1b0-3342-4705-9c77-e279638f1af2
+>
+> 学linux命令的小游戏，每次找下一级登录口令
+>
+> https://overthewire.org/wargames/bandit/
 
 **定义**：在 Linux 或 Unix 系统中，Shell 是一个命令行解释器，它接收用户的命令并将其发送给操作系统内核。
 
