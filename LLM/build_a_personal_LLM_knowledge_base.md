@@ -16,15 +16,15 @@ Updated 1134 GMT+8 March 1 2025
 
 启动LM Studio，点开右下角⚙️设置，打开
 
-Use LM Studio's Hugging Face Proxy
+<mark>Use LM Studio's Hugging Face Proxy</mark>
 
-Enable Local LLM Service
+<mark>Enable Local LLM Service</mark>
 
 
 
 点开左侧菜单查找按钮，安装相应模型，如：`DeepSeek-R1-Distill-7B-GGUF`。
 
-LM Studio启动后，任务栏/程序坞/Dock，点开LM Studio，启动其中的 Start Server on Port 1234
+LM Studio启动后，任务栏/程序坞/Dock，点开LM Studio，启动其中的 <mark>Start Server on Port 1234</mark>
 
 
 
