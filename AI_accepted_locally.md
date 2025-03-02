@@ -1,6 +1,6 @@
 # AI Accepted locally
 
-Updated 1738 GMT+8 Feb 21 2025
+Updated 1546 GMT+8 Mar 2 2025
 
 2025 spring, Complied by Hongfei Yan
 
@@ -21,6 +21,68 @@ DeepSeek-R1-Distill-Qwen-32B-Q4_K_M.gguf
 > 统一内存架构(UMA)让CPU和GPU共享同一内存吃，无需数据复制。
 >
 > OS macOS 15.3 (Build 24D60), AI Framework: Core ML, AI Backend: GPU.
+
+
+
+## 02524:宗教信仰
+
+http://cs101.openjudge.cn/practice/02524/
+
+
+
+<img src="https://raw.githubusercontent.com/GMyhf/img/main/img/image-20250302154618681.png" alt="image-20250302154618681" style="zoom:50%;" />
+
+
+
+```python
+import sys
+from sys import stdin
+
+class UnionFind:
+    def __init__(self, size):
+        self.parent = list(range(size + 1))
+        self.rank = [0] * (size + 1)
+    
+    def find(self, x):
+        if self.parent[x] != x:
+            self.parent[x] = self.find(self.parent[x])
+        return self.parent[x]
+    
+    def union(self, x, y):
+        x_root = self.find(x)
+        y_root = self.find(y)
+        if x_root == y_root:
+            return
+        if self.rank[x_root] < self.rank[y_root]:
+            self.parent[x_root] = y_root
+        else:
+            self.parent[y_root] = x_root
+            if self.rank[x_root] == self.rank[y_root]:
+                self.rank[x_root] += 1
+
+def main():
+    case = 1
+    while True:
+        line = stdin.readline()
+        if not line:
+            break
+        n, m = map(int, line.strip().split())
+        if n == 0 and m == 0:
+            break
+        uf = UnionFind(n)
+        for _ in range(m):
+            a, b = map(int, stdin.readline().strip().split())
+            uf.union(a, b)
+        roots = set()
+        for i in range(1, n + 1):
+            roots.add(uf.find(i))
+        print(f"Case {case}: {len(roots)}")
+        case += 1
+
+if __name__ == "__main__":
+    main()
+
+```
 
 
 
@@ -497,7 +559,7 @@ http://cs101.openjudge.cn/practice/16528/
 >    if start > last_end:
 >
 >        count +=1
->                    
+>                        
 >        last_end = end
 >
 > 7. 最后输出count的值。
@@ -1092,10 +1154,10 @@ tags: string, sort
 >     match = re.match(r'^(\d+\.?\d*)([A-Za-z]+)$', param_part)
 >     if not match:
 >         continue  # 或者处理错误情况，但题目中假设输入正确
->                 
+>                     
 >     num_str, unit = match.groups()
 >     num = float(num_str)
->                 
+>                     
 >     if unit == 'B':
 >         num_m = num * 1000
 >     elif unit == 'M':
@@ -1103,7 +1165,7 @@ tags: string, sort
 >     else:
 >         # 其他情况，但题目中没有说明，可以忽略？
 >         continue
->                 
+>                     
 >     if name_part not in model_dict:
 >         model_dict[name_part] = []
 >     model_dict[name_part].append( (num_m, param_part) )
