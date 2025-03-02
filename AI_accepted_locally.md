@@ -86,6 +86,26 @@ if __name__ == "__main__":
 
 
 
+## 02689:大小写字母互换
+
+http://cs101.openjudge.cn/practice/02689
+
+
+
+![image-20250302155716981](https://raw.githubusercontent.com/GMyhf/img/main/img/image-20250302155716981.png)
+
+
+
+## 02750:鸡兔同笼
+
+http://cs101.openjudge.cn/practice/02750/
+
+
+
+![image-20250302161143416](https://raw.githubusercontent.com/GMyhf/img/main/img/image-20250302161143416.png)
+
+
+
 ## 02808:校门外的树
 
 http://cs101.openjudge.cn/practice/02808/
@@ -213,6 +233,20 @@ for _ in range(m):
 remaining = sum(1 for x in is_removed if not x)
 print(remaining)
 ```
+
+
+
+## 03143:验证“歌德巴赫猜想”
+
+http://cs101.openjudge.cn/practice/03143/
+
+
+
+![image-20250302155425022](https://raw.githubusercontent.com/GMyhf/img/main/img/image-20250302155425022.png)
+
+
+
+
 
 
 
@@ -559,7 +593,7 @@ http://cs101.openjudge.cn/practice/16528/
 >    if start > last_end:
 >
 >        count +=1
->                        
+>                            
 >        last_end = end
 >
 > 7. 最后输出count的值。
@@ -1154,10 +1188,10 @@ tags: string, sort
 >     match = re.match(r'^(\d+\.?\d*)([A-Za-z]+)$', param_part)
 >     if not match:
 >         continue  # 或者处理错误情况，但题目中假设输入正确
->                     
+>                         
 >     num_str, unit = match.groups()
 >     num = float(num_str)
->                     
+>                         
 >     if unit == 'B':
 >         num_m = num * 1000
 >     elif unit == 'M':
@@ -1165,7 +1199,7 @@ tags: string, sort
 >     else:
 >         # 其他情况，但题目中没有说明，可以忽略？
 >         continue
->                     
+>                         
 >     if name_part not in model_dict:
 >         model_dict[name_part] = []
 >     model_dict[name_part].append( (num_m, param_part) )
