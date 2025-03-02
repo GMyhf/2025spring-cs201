@@ -1,6 +1,6 @@
 # AI Accepted locally
 
-Updated 1546 GMT+8 Mar 2 2025
+Updated 1707 GMT+8 Mar 2 2025
 
 2025 spring, Complied by Hongfei Yan
 
@@ -446,6 +446,24 @@ Ollama (+ Open WebUI)。我试了一下，挺好看的。我本地 deepseek-r1:1
 
 
 
+## 04135:月度开销
+
+http://cs101.openjudge.cn/practice/04135/
+
+
+
+DeepSeek-R1-Distill-Qwen-7B-GGUF
+
+<img src="https://raw.githubusercontent.com/GMyhf/img/main/img/image-20250302164529841.png" alt="image-20250302164529841" style="zoom:50%;" />
+
+
+
+<img src="https://raw.githubusercontent.com/GMyhf/img/main/img/image-20250302170705482.png" alt="image-20250302170705482" style="zoom:50%;" />
+
+
+
+
+
 ## 16528:充实的寒假生活
 
 http://cs101.openjudge.cn/practice/16528/
@@ -593,7 +611,7 @@ http://cs101.openjudge.cn/practice/16528/
 >    if start > last_end:
 >
 >        count +=1
->                            
+>                                
 >        last_end = end
 >
 > 7. 最后输出count的值。
@@ -1188,10 +1206,10 @@ tags: string, sort
 >     match = re.match(r'^(\d+\.?\d*)([A-Za-z]+)$', param_part)
 >     if not match:
 >         continue  # 或者处理错误情况，但题目中假设输入正确
->                         
+>                             
 >     num_str, unit = match.groups()
 >     num = float(num_str)
->                         
+>                             
 >     if unit == 'B':
 >         num_m = num * 1000
 >     elif unit == 'M':
@@ -1199,7 +1217,7 @@ tags: string, sort
 >     else:
 >         # 其他情况，但题目中没有说明，可以忽略？
 >         continue
->                         
+>                             
 >     if name_part not in model_dict:
 >         model_dict[name_part] = []
 >     model_dict[name_part].append( (num_m, param_part) )
