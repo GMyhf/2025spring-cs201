@@ -2,7 +2,7 @@
 
 https://github.com/GMyhf/2025spring-cs201/blob/main/problem_list_2025spring.md
 
-Updated 0007 GMT+8 Mar 2 2025.
+Updated 2225 GMT+8 Mar 2 2025.
 2025 spring, Complied by Hongfei Yan
 
 题解在：
@@ -20,6 +20,7 @@ Updated 0007 GMT+8 Mar 2 2025.
 
 | 日期 | 问题编号与名称    | 标签                 | 难度  | 链接                                                 |
 | ---- | ----------------- | -------------------- | ------ | ---------------------------------------------------- |
+| 0303 | 23558:有界的深度优先搜索     | dfs, graph | Medium | http://cs101.openjudge.cn/practice/23558/      |
 | 0303 | 46.全排列   | backtracing    | Medium    | https://leetcode.cn/problems/permutations/      |
 | 0302 | 02524:宗教信仰     | disjoint set   | Medium    | http://cs101.openjudge.cn/2025sp_routine/02524/      |
 | 0302 | LCR 107.01 矩阵     | dp    | Medium    | https://leetcode.cn/problems/2bCMpM/     |
