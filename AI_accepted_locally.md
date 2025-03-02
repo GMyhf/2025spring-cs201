@@ -1311,6 +1311,20 @@ for name in sorted_names:
 
 
 
+## 27310:积木
+
+http://cs101.openjudge.cn/practice/27310/
+
+
+
+<img src="/Users/hfyan/Library/Application Support/typora-user-images/image-20250302173241371.png" alt="image-20250302173241371" style="zoom:50%;" />
+
+
+
+<img src="https://raw.githubusercontent.com/GMyhf/img/main/img/image-20250302173254790.png" alt="image-20250302173254790" style="zoom:50%;" />
+
+
+
 ## 27653:Fraction类
 
 http://cs101.openjudge.cn/practice/27653/
