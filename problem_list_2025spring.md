@@ -20,7 +20,7 @@ Updated 0003 GMT+8 Mar 4 2025.
 
 | 日期 | 问题编号与名称    | 标签                 | 难度  | 链接                                                 |
 | ---- | ----------------- | -------------------- | ------ | ---------------------------------------------------- |
-| 0304 | 02299: Ultra-QuickSort | merge sort  | Tought    | http://cs101.openjudge.cn/2025sp_routine/02299/      |
+| 0304 | 02299: Ultra-QuickSort | merge sort  | Tough    | http://cs101.openjudge.cn/2025sp_routine/02299/      |
 | 0304 | 75.颜色分类     | three pointers    | Medium    | https://leetcode.cn/problems/sort-colors/      |
 | 0303 | 23558:有界的深度优先搜索     | dfs, graph, AI | Medium | http://cs101.openjudge.cn/2025sp_routine/23558/      |
 | 0303 | 46.全排列   | backtracing    | Medium    | https://leetcode.cn/problems/permutations/      |
