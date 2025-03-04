@@ -1,6 +1,6 @@
 # Week3 OOP, Time Complexity
 
-Updated 0059 GMT+8 Mar 4, 2025
+Updated 0835 GMT+8 Mar 4, 2025
 
 2025 spring, Complied by Hongfei Yan
 
@@ -32,15 +32,15 @@ https://www.geeksforgeeks.org/learn-data-structures-and-algorithms-dsa-tutorial/
 
 ![img](https://raw.githubusercontent.com/GMyhf/img/main/img/202402232017469.png)
 
-⚠️：
+⚠️：算法是计概课程（Algo DS）的主要内容，四大类的算法贪心greedy、递归recursion/回溯backtracking、动态规划dp、搜索searching，我们在计概中覆盖到了。如果同学递归题目做的少，可以找相关题目多练习。
 
-数据结构与算法（DS Algo）其他平行班确实会花很多时间讲dp, greedy, searching，但不是我们数算的重点，因为算法是计概课程（Algo DS）的主要内容，四大类的算法贪心greedy、递归recursion/回溯backtracking、动态规划dp、搜索searching，我们在计概中覆盖到了。如果同学递归题目做的少，可以找相关题目多练习。
+​	如果有题目没有思路，可以直接在这个课程群里面问。
+​	1）递归是数算中必备的核心技能，建议优先掌握，可参看 https://github.com/GMyhf/2024fall-cs101/blob/main/20241029_recursion.md
+​	2）队列在广度优先搜索（BFS）中有着广泛的应用。可参看 https://github.com/GMyhf/2024fall-cs101/blob/main/20241119_searching.md
+​	3）其他的常用技巧，即使没学过也没关系，遇到相关题目时逐一掌握即可。如：双指针（链表里有个 快慢指针需要掌握）、单调栈、二分查找、并查集、滑动窗口、懒删除等。通过 1～2 道题即可理解基础原理，但要熟练掌握需要多加练习。
+​	4） OOP 的写法属于语法范畴，可参看 https://www.runoob.com/python3/python3-class.html
 
-> 因为计概各班进度不一样，各位老师对计概、数算内容覆盖理解也不一致。所以如果有题目没有思路，可以直接在这个课程群里面问。
-> 1）递归是数算中必备的核心技能，建议优先掌握，可参看 https://github.com/GMyhf/2024fall-cs101/blob/main/20241029_recursion.md
-> 2）队列在广度优先搜索（BFS）中有着广泛的应用。其他班级可能还没有讲搜索，可参看 https://github.com/GMyhf/2024fall-cs101/blob/main/20241119_searching.md
-> 3）其他的常用技巧，没学过也没关系，遇到相关题目时逐一掌握即可。如：双指针（链表里有个 快慢指针需要掌握）、单调栈、二分查找、并查集、滑动窗口、懒删除等。通过 1～2 道题即可理解基础原理，但要熟练掌握需要多加练习。
-> 4） OOP 的写法属于语法范畴，可参看 https://www.runoob.com/python3/python3-class.html
+> ![image-20250304084603377](https://raw.githubusercontent.com/GMyhf/img/main/img/image-20250304084603377.png)
 
 
 
@@ -173,7 +173,7 @@ data structures, http://cs101.openjudge.cn/practice/04093/
 
 
 
-# 1 Python基础及OOP
+# 1 OOP及Python基础
 
 本节为之前提到的思想提供更详细的例子。目标是复习Python并且强化一些会在后续各章中变得非常重要的概念。
 Python是一门现代、易学、面向对象的编程语言。它拥有强大的內建数据类型以及简单易用的控制语句。由于Python是一门解释型语言，因此只需要查看和描述交互式会话就能进行学习。解释器会显示提示符>>>，然后计算你提供的Python语句。例如，以下代码显示了提示符、print函数、结果，以及下一个提示符。
