@@ -1,6 +1,6 @@
 # Week3 OOP, Time Complexity
 
-Updated 0835 GMT+8 Mar 4, 2025
+Updated 1447 GMT+8 Mar 4, 2025
 
 2025 spring, Complied by Hongfei Yan
 
@@ -161,15 +161,53 @@ data structures, http://cs101.openjudge.cn/practice/04093/
 
 
 
+**字典不设置上限，会耗尽内存**
+
+https://github.com/GMyhf/2025spring-cs201/blob/main/code/2048/6_auto_2048_optimized.py
+
+```python
+#!/usr/bin/env python3
+import random
+import os
+import sys
+import time
+
+BOARD_SIZE = 4
+TARGET = 2048
+SEARCH_DEPTH = 3  # 搜索深度
+
+# 缓存 expectimax 计算结果
+cache = {}
+
+def board_to_key(board):
+    return tuple(tuple(row) for row in board)
+
+def init_board():
+    board = [[0] * BOARD_SIZE for _ in range(BOARD_SIZE)]
+    add_random_tile(board)
+    add_random_tile(board)
+    return board
+
+def add_random_tile(board):
+    empty = [(i, j) for i in range(BOARD_SIZE) for j in range(BOARD_SIZE) if board[i][j] == 0]
+    if not empty:
+        return
+    i, j = random.choice(empty)
+    board[i][j] = 4 if random.random() < 0.1 else 2
+...
+```
+
+
+
 ### 2 为何学习算法
 
-计算机科学家通过经验来学习：观察他人如何解决问题，然后亲自解决问题。接触各种问题解决技巧并学习不同算法的设计方法，有助于解决新的问题。通过学习一系列不同的算法，可以举一反三，从而在遇到类似的问题时，能够快速加以解决。
+计算机科学家通过经验来学习：<mark>观察他人如何解决问题，然后亲自解决问题</mark>。<mark>接触各种问题解决技巧并学习不同算法的设计方法，有助于解决新的问题</mark>。通过学习一系列不同的算法，可以举一反三，从而在遇到类似的问题时，能够快速加以解决。
 
 各种算法之间往往差异巨大。例如求平方根的例子，完全可能有多种方法来实现计算平方根的函数。算法一可能使用了较少的资源，算法二返回结果所需的时间可能是算法一的10倍。我们需要某种方式来比较这两种算法。尽管这两种算法都能得到结果，但是其中一种可能比另一种“更好”——更高效、更快，或者使用的内存更少。随着对算法的进一步学习，你会掌握比较不同算法的分析技巧。这些技巧只依赖于算法本身的特性，而不依赖于程序或者实现算法的计算机的特性。
 
 最坏的情况是遇到难以解决的问题，即没有算法能够在合理的时间内解决该问题。因此，至关重要的一点是，要能区分有解的问题、无解的问题，以及虽然有解但是需要过多的资源和时间来求解的问题。
 
-在选择算法时，经常会有所权衡。除了有解决问题的能力之外，计算机科学家也需要知晓如何评估一个解决方案。总之，问题通常有很多解决方案，如何找到一个解决方案并且确定其为优秀的方案，是需要反复练习、熟能生巧的。
+在选择算法时，经常会有所权衡。除了有解决问题的能力之外，计算机科学家也需要知晓<mark>如何评估一个解决方案</mark>。总之，问题通常有很多解决方案，如何找到一个解决方案并且确定其为优秀的方案，是需要反复练习、熟能生巧的。
 
 
 
@@ -260,7 +298,7 @@ Python通过bool类实现对表达真值非常有用的布尔数据类型。布�
 [0, 0, 0, 0, 0, 0]
 ```
 
-非常重要的一点是，重复运算返回的结果是序列中指向数据对象的**引用**的重复。下面的例子可以很好地说明这一点。
+非常重要的一点是，重复运算返回的结果是序列中指向数据对象的<mark>引用</mark>的重复。下面的例子可以很好地说明这一点。
 
 ```
 >>> myList = [1,2,3,4]
@@ -292,11 +330,11 @@ Python通过bool类实现对表达真值非常有用的布尔数据类型。布�
 | `count`         | `alist.count(item)`    | Returns the number of occurrences of `item`         |
 | `remove`        | `alist.remove(item)`   | Removes the first occurrence of `item`              |
 
-你会发现，像pop这样的方法在返回值的同时也会修改列表的内容，reverse等方法则仅修改列表而**不返回任何值**。pop默认返回并删除列表的最后一个元素，但是也可以用来返回并删除特定的元素。这些方法默认下标从0开始。你也会注意到那个熟悉的句点符号，它被用来调用某个对象的方法。
+你会发现，像pop这样的方法在返回值的同时也会修改列表的内容，<mark>reverse等方法则仅修改列表而不返回任何值</mark>。pop默认返回并删除列表的最后一个元素，但是也可以用来返回并删除特定的元素。这些方法默认下标从0开始。你也会注意到那个熟悉的句点符号，它被用来调用某个对象的方法。
 
 range是一个常见的Python函数，我们常把它与列表放在一起讨论。range会生成一个代表值序列的范围对象。使用list函数，能够以列表形式看到范围对象的值。
 
-范围对象表示整数序列。默认情况下，它从0开始。如果提供更多的参数，它可以在特定的点开始和结束，并且跳过中间的值。在第一个例子中，range(10)从0开始并且一直到9为止（不包含10）；在第二个例子中，range(5,10)从5开始并且到9为止（不包含10）; range(5,10,2)的结果类似，但是元素的间隔变成了2（10还是没有包含在其中）。
+范围对象表示整数序列。默认情况下，它从0开始。如果提供更多的参数，它可以在特定的点开始和结束，并且跳过中间的值。在第一个例子中，range(10) 从0开始并且一直到9为止（不包含10）；在第二个例子中，range(5,10) 从5开始并且到9为止（不包含10）; range(5,10,2) 的结果类似，但是元素的间隔变成了2（10还是没有包含在其中）。
 
 > **Matrices 矩阵**
 >
@@ -315,7 +353,7 @@ range是一个常见的Python函数，我们常把它与列表放在一起讨论
 > ```mermaid
 > flowchart TD
 > 	linkStyle default interpolate basis
-> 	
+> 
 > 
 > AllIsNumber-->complex("复数")
 > 	complex-->imaginary("虚数");complex-->real("实数");
@@ -326,7 +364,7 @@ range是一个常见的Python函数，我们常把它与列表放在一起讨论
 > 	add-sub-->add("加");add-sub-->cumulative("累加");add-sub-->sub("减");
 > AllIsNumber-->vector("向量")
 > 	vector-->rowvec("行向量");vector-->colvec("列向量");vector-->transpose("向量转置");
-> 	
+> 
 > AllIsNumber(万物皆数)--> matrix("矩阵");
 > 
 > 
@@ -337,10 +375,10 @@ range是一个常见的Python函数，我们常把它与列表放在一起讨论
 > 			chunk-->YZLXL("一组列向量");chunk-->YZHXL("一组行向量");
 > 		matrix-->transpose-diagonal("矩阵转置和主对角线");
 > 		matrix-->TSJZXZ("特殊矩阵形状");
-> 		
+> 
 > 		matrix-->JJF("加减法");
 > 			JJF-->identicalshapes("形状相同");JJF-->correspondingpositions("对应位置");JJF-->Batchaddition-subtraction("批量加减");
->                      
+> 
 > end
 > ```
 >
@@ -360,15 +398,15 @@ range是一个常见的Python函数，我们常把它与列表放在一起讨论
 > $$
 > \left[
 > \matrix{
->   1 & 2 & 3 
+> 1 & 2 & 3 
 > }
 > \right]_{1\times 3},
 > 
 > \left[
 > \matrix{
->   1 \\
->   2 \\
->   3 
+> 1 \\
+> 2 \\
+> 3 
 > }
 > \right]_{3\times 1}\tag{1}
 > $$
@@ -382,37 +420,37 @@ range是一个常见的Python函数，我们常把它与列表放在一起讨论
 > $$
 > \left[
 > \matrix{
->   1 & 2 & 3 
+> 1 & 2 & 3 
 > }
 > \right]^\mathrm T
 > =
 > \left[
 > \matrix{
->   1 \\
->   2 \\
->   3 
+> 1 \\
+> 2 \\
+> 3 
 > }
 > \right],
 > 
 > 
 > \left[
 > \matrix{
->   1 \\
->   2 \\
->   3 
+> 1 \\
+> 2 \\
+> 3 
 > }
 > \right]^\mathrm T
 > =
 > \left[
 > \matrix{
->   1 & 2 & 3
+> 1 & 2 & 3
 > }
 > \right]
 > 
 > \tag{2}
 > $$
 >
-> ### 4.1.2 矩阵：数字排列成长方形
+> **矩阵：数字排列成长方形**
 >
 > 矩阵(matrix)将一系列数字以长方形方式排列，如
 >
@@ -420,41 +458,40 @@ range是一个常见的Python函数，我们常把它与列表放在一起讨论
 > $$
 > \left[
 > \matrix{
->   1 & 2 & 3 \\
->   4 & 5 & 6
+> 1 & 2 & 3 \\
+> 4 & 5 & 6
 > }
 > \right]_{2\times 3},
 > 
 > \left[
 > \matrix{
->   1 & 2 \\
->   3 & 4 \\
->   5 & 6 
+> 1 & 2 \\
+> 3 & 4 \\
+> 5 & 6 
 > }
 > \right]_{3\times 2},
 > 
 > \left[
 > \matrix{
->   1 & 2 \\
->   3 & 4 
+> 1 & 2 \\
+> 3 & 4 
 > }
 > \right]_{2\times 2}
 > 
 > \tag{3}
 > $$
 >
->
-> 通俗地讲，矩阵将数字排列成表格，有行、有列。式(3)给出了三个矩阵，形状分别是2行3列（记作2×3）、3行2列（记作3×2）和2行2列（记作2×2）。
+> 通俗地讲，矩阵将数字排列成表格，有行、有列。式 (3) 给出了三个矩阵，形状分别是2行3列、3行2列和2行2列。
 > 通常用大写字母代表矩阵，比如矩阵A和矩阵B。
 > 图2所示为一个n×D矩阵X。n是矩阵的行数(number of rows in the matrix)，D是矩阵的列数(number of columns in the matrix)。X可以展开写成表格形式，即
 > $$
 > X_{n\times D}=
 > \left[
 > \matrix{
->   x_{1,1} & x_{1,2} & ... & x_{1,D} \\
->   x_{2,1} & x_{2,2} & ... & x_{2,D} \\
->   \vdots & \vdots & \ddots & \vdots\\
->   x_{n,1} & x_{n,2} & ... & x_{n,D} 
+> x_{1,1} & x_{1,2} & ... & x_{1,D} \\
+> x_{2,1} & x_{2,2} & ... & x_{2,D} \\
+> \vdots & \vdots & \ddots & \vdots\\
+> x_{n,1} & x_{n,2} & ... & x_{n,D} 
 > }
 > \right]
 > 
@@ -464,18 +501,18 @@ range是一个常见的Python函数，我们常把它与列表放在一起讨论
 >
 > ​				
 >
-> <img src="https://raw.githubusercontent.com/GMyhf/img/main/img/image-20230902171300400.png" alt="image-20230902171300400" style="zoom: 33%;" />
+> <img src="https://raw.githubusercontent.com/GMyhf/img/main/img/image-20230902171300400.png" alt="image-20230902171300400" style="zoom: 25%;" />
 >
 > ​				图2　n×D矩阵X
 >
 > 
 >
-> 再次强调：先说行序号，再说列序号。数据矩阵一般采用大写X表达。
+> 再次强调：先说行号，再说列号。数据矩阵一般采用大写X表达。
 >
 > 矩阵X中，元素(element) $x_{i,j}$ 被称作i,j元素（i j entry或i j element），也可以说$x_{i,j}$出现在i行j列(appears in row i and column j)。比如，$x_{n,1}$是矩阵X的第n行、第1列元素。
-> 表1.4总结了如何用英文读矩阵和矩阵元素。
+> 表1 总结了如何用英文读矩阵和矩阵元素。
 >
-> 表1.4　矩阵有关英文表达
+> 表1　矩阵有关英文表达
 >
 > ![image-20230902170435199](https://raw.githubusercontent.com/GMyhf/img/main/img/image-20230902170435199.png)
 >
@@ -487,15 +524,28 @@ range是一个常见的Python函数，我们常把它与列表放在一起讨论
 >
 > 
 >
-> 02659:Bomb Game
+> **02659:Bomb Game**
 >
 > matrices, http://cs101.openjudge.cn/practice/02659/
 >
-> 
+> ```python
+> ...
+>     for (R, S, P, T) in bombs:
+>         for i in range(max(0, R - (P - 1) // 2), min(A, R + (P + 1) // 2)):
+>             for j in range(max(0, S - (P - 1) // 2), min(B, S + (P + 1) // 2)):
+> ...
+> ```
 >
-> 04133:垃圾炸弹
+> **04133:垃圾炸弹**
 >
 > matrices, http://cs101.openjudge.cn/practice/04133/
+>
+> ```python
+>     for i in range(max(x-d, 0), min(x+d+1, 1025)):
+>         for j in range(max(y-d, 0), min(y+d+1, 1025)):
+> ```
+>
+> 
 
 
 
@@ -516,6 +566,8 @@ range是一个常见的Python函数，我们常把它与列表放在一起讨论
 | `split`         | `astring.split(schar)` | Splits a string into substrings at `schar`                |
 
 split在处理数据的时候非常有用。split接受一个字符串，并且返回一个由分隔字符作为分割点的字符串列表。
+
+
 
 列表和字符串的主要区别在于，列表能够被修改，字符串则不能。列表的这一特性被称为可修改性。列表具有可修改性，字符串则不具有。
 
@@ -584,6 +636,8 @@ Note that `union`, `intersection`, `issubset`, and `difference` all have operato
 | `items`         | `adict.items()`    | Returns the key-value pairs in a dict_items object           |
 | `get`           | `adict.get(k)`     | Returns the value associated with `k`, `None` otherwise      |
 | `get`           | `adict.get(k,alt)` | Returns the value associated with `k`, `alt` otherwise       |
+
+<mark>defaultdict</mark>
 
 > `defaultdict` 是 Python `collections` 模块中提供的一个类，它继承自内置的 `dict` 类。与普通字典相比，`defaultdict` 的主要特点是当你尝试访问一个不存在的键时，它不会抛出 `KeyError` 异常，而是会自动为这个键生成一个默认值。
 >
@@ -664,6 +718,78 @@ input函数接受一个字符串作为参数。由于该字符串包含有用的
 
 需要注意的是，input函数返回的值是一个字符串，它包含用户在提示字符串后面输入的所有字符。如果需要将这个字符串转换成其他类型，必须明确地提供类型转换。
 
+
+
+> **04093: 倒排索引查询**
+>
+> data structures, http://cs101.openjudge.cn/practice/04093/
+>
+> ...
+>
+> 样例输入
+>
+> ```
+> 3
+> 3 1 2 3
+> 1 2
+> 1 3
+> 3
+> 1 1 1
+> 1 -1 0
+> 1 -1 -1
+> ```
+>
+> ...
+>
+> ```python
+> import sys
+> input = sys.stdin.read
+> data = input().split()
+> 
+> index = 0
+> N = int(data[index])
+> index += 1
+> 
+> word_documents = []
+> 
+> # 读取每个词的倒排索引
+> for _ in range(N):
+>     ci = int(data[index])
+>     index += 1
+>     documents = sorted(map(int, data[index:index + ci]))
+>     index += ci
+>     word_documents.append(documents)
+> ....
+> ```
+>
+> 
+>
+> **09201: Freda的越野跑**
+>
+> http://cs101.openjudge.cn/practice/09201/
+>
+> ...
+>
+> 样例输入
+>
+> ```
+> 5
+> 1 3 10 8 5
+> ```
+>
+> ...
+>
+> ```python
+> import sys
+> ...
+> n = int(sys.stdin.readline())
+> a = list(map(int, sys.stdin.readline().split()))
+> ```
+>
+> 
+
+
+
 格式化字符串
 print函数为输出Python程序的值提供了一种非常简便的方法。它接受零个或者多个参数，并且将单个空格作为默认分隔符来显示结果。通过设置sep这一实际参数可以改变分隔符。此外，每一次打印都默认以换行符结尾。这一行为可以通过设置实际参数end来更改。
 
@@ -671,14 +797,15 @@ print函数为输出Python程序的值提供了一种非常简便的方法。它
 
 
 
-### 输出例如 04140: 方程求解
-
-牛顿迭代法，http://cs101.openjudge.cn/practice/04140/
-
-```python
-....
-print(f"{root2:.9f}")
-```
+> **04140: 方程求解**
+>
+> 牛顿迭代法，http://cs101.openjudge.cn/practice/04140/
+>
+> ```python
+> ....
+> print(f"{root2:.9f}")
+> ```
+>
 
 
 
@@ -698,9 +825,19 @@ print(f"{root2:.9f}")
 
 
 
-列表可以可以不通过迭代结构和分支结构来创建，这种方式被称为列表解析式。通过列表解析式，可以根据一些处理和分支标准轻松创建列表。
+列表可以不通过迭代结构和分支结构来创建，这种方式被称为<mark>列表解析式</mark>。通过列表解析式，可以根据一些处理和分支标准轻松创建列表。
 
 > Returning to lists, there is an alternative method for creating a list that uses iteration and selection constructs known as a **list comprehension**. A list comprehension allows you to easily create a list based on some processing or selection criteria. 
+>
+> 
+>
+> 只想包括偶数的平方，可以加上条件：
+>
+> ```python
+> even_squares = [x*x for x in range(1, 11) if x % 2 == 0]
+> ```
+>
+> 这种方式不仅使得代码更加简洁，而且在很多情况下也更易于阅读和理解。
 
 
 
@@ -740,6 +877,12 @@ print(f"{root2:.9f}")
 
 通常来说，可以通过定义函数来隐藏任何计算的细节。函数的定义需要一个函数名、一系列参数以及一个函数体。函数也可以显式地返回一个值。
 
+<img src="https://raw.githubusercontent.com/GMyhf/img/main/img/image-20250304124722908.png" alt="image-20250304124722908" style="zoom: 25%;" />
+
+
+
+<img src="https://raw.githubusercontent.com/GMyhf/img/main/img/image-20250304124747562.png" alt="image-20250304124747562" style="zoom: 33%;" />
+
 
 
 ## 1.3 面向对象编程
@@ -756,11 +899,11 @@ Python是一门面向对象的编程语言。到目前为止，我们已经使�
 
 Fraction对象的表现应与其他数值类型一样。我们可以针对分数进行加、减、乘、除等运算，也能够使用标准的斜线形式来显示分数，比如3/5。此外，所有的分数方法都应该返回结果的最简形式。这样一来，不论进行何种运算，最后的结果都是最简分数。
 
-在Python中定义新类的做法是，提供一个类名以及一整套与函数定义语法类似的方法定义。以下是一个方法定义框架。
+在Python中<mark>定义新类的做法</mark>是，提供一个类名以及一整套与函数定义语法类似的方法定义。以下是一个方法定义框架。
 
 > 在 Python 中，新创建的类默认继承自 `object` 类。`object` 是所有类的基类，也称为顶级基类或根类。这意味着在 Python 中，如果没有显式指定一个类的基类，它将自动成为 `object` 类的子类。
 >
-> 在类中定义的方法（包括 `__str__` 方法）的第一个参数应该是 self，它表示对当前对象的引用。这样，Python 在调用方法时会自动将该对象作为第一个参数传递给方法。
+> 在类中定义的方法（包括 `__str__` 方法）的第一个参数应该是 <mark>self，它表示对当前对象的引用</mark>。这样，Python <mark>在调用方法时会自动将该对象作为第一个参数传递给方法</mark>。
 >
 > 当我们在多个类中定义了 `__str__` 方法时，通过 self 参数，Python 可以确定应该执行哪个类的 `__str__` 方法。
 
@@ -783,7 +926,7 @@ def __init__(self, top, bottom):
 
 
 
-注意，形式参数列表包含3项。self是一个总是指向对象本身的特殊参数，它必须是第一个形式参数。然而，在调用方法时，从来不需要提供相应的实际参数。如前所述，分数需要分子与分母两部分状态数据。构造方法中的self.num定义了Fraction对象有一个叫作num的内部数据对象作为其状态的一部分。同理，self.den定义了分母。这两个实际参数的值在初始时赋给了状态，使得新创建的Fraction对象能够知道其初始值。
+注意，形式参数列表包含 3 项。<mark>self是一个总是指向对象本身的特殊参数，它必须是第一个形式参数</mark>。然而，在调用方法时，从来不需要提供相应的实际参数。如前所述，分数需要分子与分母两部分状态数据。构造方法中的`self.num`定义了`Fraction`对象有一个叫作`num`的内部数据对象作为其状态的一部分。同理，`self.den`定义了分母。这两个实际参数的值在初始时赋给了状态，使得新创建的`Fraction`对象能够知道其初始值。
 
 要创建Fraction类的实例，必须调用构造方法。使用类名并且传入状态的实际值就能完成调用（注意，不要直接调用`__init__`）。
 
@@ -793,7 +936,7 @@ def __init__(self, top, bottom):
 myfraction = Fraction(3,5)
 ```
 
-以上代码创建了一个对象，名为myfraction，值为3/5。图2-1展示了这个对象。
+以上代码创建了一个对象，名为`myfraction`，值为`3/5`。图2-1展示了这个对象。
 
 ![../_images/fraction1.png](https://raw.githubusercontent.com/GMyhf/img/main/img/fraction1-20240219211135247.png)
 
@@ -809,9 +952,9 @@ myfraction = Fraction(3,5)
 
 
 
-Fraction对象myf并不知道如何响应打印请求。print函数要求对象将自己转换成一个可以被写到输出端的字符串。myf唯一能做的就是显示存储在变量中的实际引用（地址本身）。这不是我们想要的结果。
+`Fraction`对象`myf`并不知道如何响应打印请求。print函数要求对象将自己转换成一个可以被写到输出端的字符串。`myf`唯一能做的就是显示存储在变量中的实际引用（地址本身）。这不是我们想要的结果。
 
-有两种办法可以解决这个问题。一种是定义一个show方法，使得Fraction对象能够将自己作为字符串来打印。代码show方法展示了该方法的实现细节。如果像之前那样创建一个Fraction对象，可以要求它显示自己（或者说，用合适的格式将自己打印出来）。不幸的是，这种方法并不通用。为了能正确打印，我们需要告诉Fraction类如何将自己转换成字符串。要完成任务，这是print函数所必需的。
+有两种办法可以解决这个问题。一种是定义一个show方法，使得Fraction对象能够将自己作为字符串来打印。代码show方法展示了该方法的实现细节。如果像之前那样创建一个Fraction对象，可以要求它显示自己（或者说，用合适的格式将自己打印出来）。不幸的是，这种方法并不通用。为了能正确打印，我们需要告诉Fraction类如何将自己转换成字符串。要完成任务，这是`print`函数所必需的。
 
 代码 show方法
 
@@ -871,7 +1014,7 @@ TypeError: unsupported operand type(s) for +:
 
 
 
-如果仔细研究这个错误，会发现加号+无法处理Fraction的操作数。
+如果仔细研究这个错误，会发现加号`+`无法处理Fraction的操作数。
 可以通过重写Fraction类的`__add__`方法来修正这个错误。该方法需要两个参数。第一个仍然是self，第二个代表了表达式中的另一个操作数。
 
 ```python
@@ -1145,6 +1288,112 @@ classDiagram
 
 
 
+**示例继承 class IrisNet(nn.Module)**
+
+https://github.com/GMyhf/2025spring-cs201/blob/main/LLM/iris_neural_network.md
+
+```python
+import torch
+import torch.nn as nn
+import torch.optim as optim
+from torch.utils.data import TensorDataset, DataLoader
+from sklearn.datasets import load_iris
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import StandardScaler
+
+# 1. 加载数据
+iris = load_iris()
+X = iris.data
+y = iris.target
+
+# 2. 划分训练集和测试集（注意这里先划分再标准化）
+X_train, X_test, y_train, y_test = train_test_split(
+    X, y, test_size=0.2, random_state=42, stratify=y
+)
+"""
+random_state=42
+设定随机数种子，从而确保每次运行代码时数据划分的结果都是相同的。这样做可以使实验具有可重复性，
+有利于调试和结果对比。
+
+stratify=y
+这个参数表示按照 y 中的标签进行分层抽样，也就是说，训练集和测试集中各类别的
+比例会与原始数据中的类别比例保持一致。这对于类别不平衡的数据集尤为重要，可以
+避免某一类别在划分时被严重低估或过采样。
+"""
+
+# 3. 数据标准化：只在训练集上计算均值和标准差，再将相同的变换应用到测试集上
+scaler = StandardScaler()
+X_train = scaler.fit_transform(X_train)
+X_test = scaler.transform(X_test)
+
+# 转换为 PyTorch 的 tensor
+X_train = torch.tensor(X_train, dtype=torch.float32)
+X_test = torch.tensor(X_test, dtype=torch.float32)
+y_train = torch.tensor(y_train, dtype=torch.long)
+y_test = torch.tensor(y_test, dtype=torch.long)
+
+# 构造数据集和 DataLoader
+train_dataset = TensorDataset(X_train, y_train)
+train_loader = DataLoader(train_dataset, batch_size=16, shuffle=True)
+
+
+# 4. 定义模型
+class IrisNet(nn.Module):
+    def __init__(self, input_size=4, hidden_size=10, num_classes=3):
+        super(IrisNet, self).__init__()
+        self.fc1 = nn.Linear(input_size, hidden_size)
+        self.relu = nn.ReLU()
+        self.fc2 = nn.Linear(hidden_size, num_classes)
+
+    def forward(self, x):
+        x = self.fc1(x)
+        x = self.relu(x)
+        x = self.fc2(x)
+        return x
+
+
+model = IrisNet()
+
+# 5. 定义损失函数和优化器
+criterion = nn.CrossEntropyLoss()
+optimizer = optim.Adam(model.parameters(), lr=0.01)
+
+# 6. 训练模型
+num_epochs = 100
+for epoch in range(num_epochs):
+    model.train()  # 切换到训练模式
+    running_loss = 0.0
+    for batch_X, batch_y in train_loader:
+        optimizer.zero_grad()         # 清空梯度
+        outputs = model(batch_X)       # 前向传播
+        loss = criterion(outputs, batch_y)  # 计算损失
+
+        loss.backward()                # 反向传播
+        optimizer.step()               # 更新权重
+
+        running_loss += loss.item() * batch_X.size(0)
+
+    epoch_loss = running_loss / len(train_loader.dataset)
+    if (epoch + 1) % 10 == 0:
+        print(f"Epoch [{epoch + 1}/{num_epochs}], Loss: {epoch_loss:.4f}")
+
+# 7. 在测试集上评估
+model.eval()  # 切换到评估模式
+with torch.no_grad():  # 禁用梯度计算，加快测试速度，减少内存消耗
+    outputs = model(X_test)
+    _, predicted = torch.max(outputs, 1)
+    accuracy = (predicted == y_test).sum().item() / len(y_test)
+    print(f"Test Accuracy: {accuracy * 100:.2f}%")
+
+# 最终预测示例
+sample = X_test[0].unsqueeze(0)  # 取第一个测试样本
+prediction = torch.argmax(model(sample), dim=1)
+print(f"\nSample prediction: True class {y_test[0].item()}, "
+      f"Predicted class {prediction.item()}")
+```
+
+
+
 # 2 Time Complexities Big-O
 
 使用数据结构与算法（DSA）的主要目的是为了有效地和高效地解决问题。你如何决定自己编写的程序是否高效呢？这通过复杂度来衡量。复杂度分为两种类型：
@@ -1161,9 +1410,7 @@ classDiagram
 
 上述两种复杂度都是相对于输入参数来衡量的。但这里出现了一个问题。执行一段代码所需的时间取决于多个因素，例如：
 
-- 程序中执行的操作数量，
-- 设备的速度，以及
-- 如果是在在线平台上执行的话，数据传输的速度。
+- 程序中执行的操作数量，设备的速度，以及如果是在在线平台上执行的话，数据传输的速度。
 
 那么我们如何确定哪一个更高效呢？答案是使用渐近符号。**渐近符号**是一种数学工具，它根据输入大小计算所需时间，并不需要实际执行代码。
 
@@ -1205,19 +1452,19 @@ classDiagram
 
 ## 2.1 Analyzing algorithms
 
-分析算法意味着预测该算法所需的资源。虽然有时我们主要关心像内存、通信带宽或计算机硬件这类资源，但是通常我们想要度量的是计算时间。一般来说，通过分析某个问题的几种候选算法，我们可以识别出最高效的那一个。这样的分析可能会指出不止一个可行的候选算法，但在这一过程中，我们通常可以淘汰几个较差的算法。
+分析算法意味着预测该算法所需的资源。虽然有时我们主要关心像内存、通信带宽或计算机硬件这类资源，但是通常想要度量的是计算时间。一般来说，通过分析某个问题的几种候选算法，可以识别出最高效的那一个。这样的分析可能会指出不止一个可行的候选算法，但在这一过程中，通常可以淘汰几个较差的算法。
 
 > **Analyzing** an algorithm has come to mean predicting the resources that the algorithm requires. Occasionally, resources such as memory, communication bandwidth, or computer hardware are of primary concern, but most often it is computational time that we want to measure. Generally, by analyzing several candidate algorithms for a problem, we can identify a most efficient one. Such analysis may indicate more than one viable candidate, but we can often discard several inferior algorithms in the process.
 
-在分析一个算法之前，我们必须有一个要使用的实现技术的模型，包括该技术的资源模型及其成本。我们将假设一种通用的单处理器计算模型——随机存取机（random-access machine, RAM）来作为我们的实现技术，算法可以用计算机程序来实现。在RAM模型中，指令是顺序执行的，没有并发操作。
+在分析一个算法之前，必须有一个要使用的实现技术的模型，包括该技术的资源模型及其成本。我们将假设一种通用的单处理器计算模型——随机存取机（random-access machine, RAM）来作为实现技术，算法可以用计算机程序来实现。在RAM模型中，指令是顺序执行的，没有并发操作。
 
 > Before we can analyze an algorithm, we must have a model of the implementation technology that we will use, including a model for the resources of that technology and their costs. For most of this book, we shall assume a generic oneprocessor, **random-access machine (RAM)** model of computation as our implementation technology and understand that our algorithms will be implemented as computer programs. In the RAM model, instructions are executed one after another, with no concurrent operations.
 
-严格来说，我们应该精确地定义RAM模型的指令及其成本。然而这样做会很繁琐，并且不会对算法设计和分析提供太多的洞察力。但我们必须小心不要滥用RAM模型。例如，如果RAM有一个排序指令，那么我们就可以只用一条指令完成排序。这样的RAM将是不现实的，因为实际的计算机没有这样的指令。因此，我们的指导原则是实际计算机的设计方式。RAM模型包含了在实际计算机中常见的指令：算术运算（如加法、减法、乘法、除法、求余数、取底、取顶），数据移动（加载、存储、复制），以及控制（条件分支和无条件分支、子程序调用和返回）。每条这样的指令都需要固定的时间量。
+严格来说，应该精确地定义RAM模型的指令及其成本。然而这样做会很繁琐，并且不会对算法设计和分析提供太多的洞察力。但必须小心不要滥用RAM模型。例如，如果RAM有一个排序指令，那么就可以只用一条指令完成排序。这样的RAM将是不现实的，因为实际的计算机没有这样的指令。因此，指导原则是实际计算机的设计方式。RAM模型包含了在实际计算机中常见的指令：算术运算（如加法、减法、乘法、除法、求余数、取底、取顶），数据移动（加载、存储、复制），以及控制（条件分支和无条件分支、子程序调用和返回）。每条这样的指令都需要固定的时间量。
 
 > Strictly speaking, we should precisely define the instructions of the RAM model and their costs. To do so, however, would be tedious and would yield little insight into algorithm design and analysis. Yet we must be careful not to abuse the RAM model. For example, what if a RAM had an instruction that sorts? Then we couldsort in just one instruction. Such a RAM would be unrealistic, since real computers do not have such instructions. Our guide, therefore, is how real computers are designed. The RAM model contains instructions commonly found in real computers: arithmetic (such as add, subtract, multiply, divide, remainder, floor, ceiling), data movement (load, store, copy), and control (conditional and unconditional branch, subroutine call and return). Each such instruction takes a constant amount of time.
 
-RAM模型中的数据类型有整型和浮点实数型。虽然在此处我们通常不关心精度问题，但在某些应用中精度是至关重要的。我们也假设每个数据字的大小有限制。例如，在处理大小为n的输入时，我们通常假设对某个常数c≥1， 整数由`c lgn`位表示。我们要求c≥1是为了确保每个字能够容纳n的值，从而使我们能够索引各个输入元素，并且我们将c限制为常数以防止字长无限增长。（如果字长可以无限增长，我们就可以在一个字中存储大量数据并在恒定时间内对其进行操作——这显然是一种不切实际的情况。）
+RAM模型中的数据类型有整型和浮点实数型。虽然在此处通常不关心精度问题，但在某些应用中精度是至关重要的。也假设每个数据字的大小有限制。例如，在处理大小为n的输入时，我们通常假设对某个常数c≥1， 整数由`c lgn`位表示。我们要求c≥1是为了确保每个字能够容纳n的值，从而使我们能够索引各个输入元素，并且我们将c限制为常数以防止字长无限增长。（如果字长可以无限增长，我们就可以在一个字中存储大量数据并在恒定时间内对其进行操作——这显然是一种不切实际的情况。）
 
 > The data types in the RAM model are integer and floating point (for storing real numbers). Although we typically do not concern ourselves with precision in this book, in some applications precision is crucial. We also assume a limit on the size of each word of data. For example, when working with inputs of size n, we typically assume that integers are represented by c lg n bits for some constant $c \ge 1$. We require $c \ge 1$​ so that each word can hold the value of n, enabling us to index the individual input elements, and we restrict c to be a constant so that the word size does not grow arbitrarily. (If the word size could grow arbitrarily, we could store huge amounts of data in one word and operate on it all in constant time—clearly an unrealistic scenario.)
 
@@ -1231,19 +1478,85 @@ RAM模型中的数据类型有整型和浮点实数型。虽然在此处我们�
 
 
 
-实际计算机包含未在上述列表中的指令，这些指令在RAM模型中代表了一个灰色地带。例如，幂运算是否是常数时间指令？在一般情况下，并不是；当x和y是实数时，计算$x^y$需要多条指令。然而，在某些受限的情况下，幂运算是一个常数时间操作。许多计算机有一个“左移”指令，它可以在常数时间内将一个整数的位向左移动k个位置。在大多数计算机中，将一个整数的位向左移动一个位置等价于乘以2，因此将位向左移动k个位置就等价于乘以$2^k$。因此，只要k不超过计算机字的位数，这样的计算机可以通过将整数1左移k个位置来在一个常数时间内计算出$2^k$。我们将努力避免在RAM模型中出现这样的灰色地带，但在k是一个足够小的正整数时，我们会把$2^k$的计算视为一个常数时间操作。
+#### **Q3. Distill,32B,<mark>Q4</mark>这些参数是什么意思?**
+
+DeepSeek-R1-Distill-Qwen-32B-GGUF/DeepSeek-R1-Distill-Qwen-32B-Q4_K_M.gguf 
+
+> A: 问题涉及 **GGUF 格式的量化模型文件**，特别是 `DeepSeek-R1-Distill-Qwen-32B-GGUF/DeepSeek-R1-Distill-Qwen-32B-Q4_K_M.gguf` 这类文件名的参数含义。以下是详细解析：
+>
+> 
+>
+> **文件名结构解析**
+>
+> `DeepSeek-R1-Distill-Qwen-32B-Q4_K_M.gguf`
+>
+> **1. `DeepSeek-R1-Distill`**
+>
+>    - **DeepSeek-R1-Distill**：指的是 DeepSeek 实验室训练的第一代（R1）蒸馏版（Distill）模型。  
+>    - **蒸馏（Distill）** 通常意味着这个模型是从一个更大的模型（如 DeepSeek 原始模型）压缩或优化而来的，以提高推理速度并减少计算需求。
+>
+> **2. `Qwen-32B`**
+>
+>    - **Qwen**：表示这个模型基于 Qwen（通义千问）架构，由阿里巴巴 DAMO 研发。
+>    - **32B**：表示该模型有 **320 亿（32 Billion）参数**，是一个较大的模型。
+>
+> **3. `GGUF`**
+>
+>    - **GGUF（GPT-Generated Unified Format）** 是一种 **高效的 LLM 量化格式**，专为 GGML/GGUF 兼容的推理引擎（如 llama.cpp）设计。
+>    - 这种格式可以优化大语言模型在 CPU 和 GPU 上的推理速度。
+>
+> **4. `Q4_K_M`**
+>
+>    - **Q4**：指的是 **量化精度为 4-bit**（表示每个权重只占 4 比特）。
+>    - **K**：代表 **K-quants 量化方案**，用于更好的推理精度和平衡计算效率。
+>    - **M**：通常表示 **Mixed**（混合量化），意味着模型可能使用了混合精度量化（例如部分权重 4-bit，部分 8-bit）。
+>
+> ---
+>
+> **Q4_K_M 代表的量化方案**
+>
+> - `Q4` 指 4-bit 量化，意味着模型的参数被压缩为 4-bit，而不是原始的 16-bit 或 32-bit 浮点数。
+>
+>   > 在模型压缩中，量化通常是指从浮点数到整数的映射过程，目前比较常用的是8比特整数量化，即INT8量化。针对神经网络模型，通常有两种类型的数据需要进行量化，分别是权重（也称为模型参数）和激活，它们都以浮点数形式进行表示和存储。量化过程可以看作一个函数变换，目标是将连续的输入数值映射为离散的输出集合。
+>
+> - `K`（K-quant）是一种增强的量化技术，可以提高量化模型的精度，减少推理误差。
+>
+> - `M`（Mixed）表示 **混合量化**，通常意味着：
+>
+>   - 可能对不同层使用不同的量化精度。
+>   - 可能混合不同的块（blockwise quantization）。
+>
+> ---
+>
+> **GGUF 量化格式的选择**
+>
+> 你可能会看到类似的 GGUF 文件，例如：
+>
+> - `Q4_K_S`（4-bit K-quants, Small）
+> - `Q5_K_M`（5-bit K-quants, Mixed）
+> - `Q8_K`（8-bit K-quants）
+>
+> 通常：
+>
+> - **Q4_K_M**：平衡性能和速度，适合中等计算资源（如 CPU + 高端 GPU）。
+> - **Q5_K_M**：更好的精度，但计算开销更大。
+> - **Q8_K**：最高精度，但需要更多显存（VRAM）。
+
+
+
+实际计算机包含未在上述列表中的指令，这些指令在RAM模型中代表了一个灰色地带。例如，幂运算是否是常数时间指令？在一般情况下，并不是；当x和y是实数时，计算 $x^y$ 需要多条指令。然而，在某些受限的情况下，幂运算是一个常数时间操作。许多计算机有一个“左移”指令，它可以在常数时间内将一个整数的位向左移动 k 个位置。在大多数计算机中，将一个整数的位向左移动一个位置等价于乘以 2，因此将位向左移动 k 个位置就等价于乘以 $2^k$。因此，只要 k 不超过计算机字的位数，这样的计算机可以通过将整数1左移k个位置来在一个常数时间内计算出$2^k$。我们将努力避免在RAM模型中出现这样的灰色地带，但在 k 是一个足够小的正整数时，我们会把 $2^k$ 的计算视为一个常数时间操作。
 
 > Real computers contain instructions not listed above, and such instructions represent a gray area in the RAM model. For example, is exponentiation a constanttime instruction? In the general case, no; it takes several instructions to compute $x^y$ when x and y are real numbers. In restricted situations, however, exponentiation is a constant-time operation. Many computers have a “shift left” instruction, which in constant time shifts the bits of an integer by k positions to the left. In most computers, shifting the bits of an integer by one position to the left is equivalent to multiplication by 2, so that shifting the bits by k positions to the left is equivalent to multiplication by $2^k$. Therefore, such computers can compute $2^k$ in one constant-time instruction by shifting the integer 1 by k positions to the left, as long as k is no more than the number of bits in a computer word. We will endeavor to avoid such gray areas in the RAM model, but we will treat computation of $2^k$ as a constant-time operation when k is a small enough positive integer.
 
-在RAM模型中，我们并不试图模拟现代计算机中常见的内存层次结构。也就是说，我们不模拟缓存或虚拟内存。一些计算模型尝试考虑内存层次结构效应，这在实际程序运行在真实机器上时有时是非常显著的。本书中有一小部分问题会考察内存层次结构效应，但总体而言，分析不会考虑它们。包括内存层次结构的模型比RAM模型复杂得多，所以可能难于使用。此外，基于RAM模型的分析通常是实际机器性能的良好预测指标。
+在RAM模型中，并不试图模拟现代计算机中常见的内存层次结构。也就是说，不模拟缓存或虚拟内存。一些计算模型尝试考虑<mark>内存层次结构</mark>效应，这在实际程序运行在真实机器上时有时是非常显著的。但总体而言，分析不会考虑它们。包括内存层次结构的模型比RAM模型复杂得多，所以可能难于使用。此外，基于RAM模型的分析通常是实际机器性能的良好预测指标。
 
 > In the RAM model, we do not attempt to model the memory hierarchy that is common in contemporary computers. That is, we do not model caches or virtual memory. Several computational models attempt to account for memory-hierarchy effects, which are sometimes significant in real programs on real machines. A handful of problems in this book examine memory-hierarchy effects, but for the most part, the analyses in this book will not consider them. Models that include the memory hierarchy are quite a bit more complex than the RAM model, and so they can be difficult to work with. Moreover, RAM-model analyses are usually excellent predictors of performance on actual machines.
 
-即使是在RAM模型中分析一个简单的算法也可能是一项挑战。所需的数学工具可能包括组合数学、概率论、代数技巧以及识别公式中最重要项的能力。由于一个算法的行为可能对每个可能的输入都是不同的，我们需要一种方式来用简单且易于理解的公式概括这种行为。
+即使是在RAM模型中分析一个简单的算法也可能是一项挑战。所需的数学工具可能包括组合数学、概率论、代数技巧以及识别公式中最重要项的能力。由于一个算法的行为可能对每个可能的输入都是不同的，需要一种方式来用简单且易于理解的公式概括这种行为。
 
 > Analyzing even a simple algorithm in the RAM model can be a challenge. The mathematical tools required may include combinatorics, probability theory, algebraic dexterity, and the ability to identify the most significant terms in a formula. Because the behavior of an algorithm may be different for each possible input, we need a means for summarizing that behavior in simple, easily understood formulas.
 
-尽管我们通常只选择一种机器模型来分析给定的算法，但在决定如何表达我们的分析时，我们仍然面临许多选择。我们希望有一种方法可以简单地书写和操作，能够展示算法资源需求的重要特征，并抑制繁琐的细节。
+尽管通常只选择一种机器模型来分析给定的算法，但在决定如何表达分析时，仍然面临许多选择。希望有一种方法可以简单地书写和操作，能够展示算法资源需求的重要特征，并抑制繁琐的细节。
 
 > Even though we typically select only one machine model to analyze a given algorithm, we still face many choices in deciding how to express our analysis. We would like a way that is simple to write and manipulate, shows the important characteristics of an algorithm’s resource requirements, and suppresses tedious details.
 
@@ -1255,7 +1568,7 @@ RAM模型中的数据类型有整型和浮点实数型。虽然在此处我们�
 
 
 
-**输入规模**是衡量一个算法输入大小的标准，它取决于具体的问题。对于一些问题，比如排序或计算离散傅里叶变换，最自然的度量方式是输入中项目的数量——例如，排序时的数组长度n。对于其他问题，如整数乘法，输入规模的最佳度量可能是表示输入所需的总位数。有时，用两个数字描述输入规模比用一个更合适，例如，如果算法的输入是一个图，则可以用顶点和边的数量来描述输入规模。
+**输入规模**是衡量一个算法输入大小的标准，它取决于具体的问题。对于一些问题，比如排序或计算离散傅里叶变换，最自然的度量方式是输入中项目的数量——例如，排序时的数组长度n。对于其他问题，如整数乘法，输入规模的最佳度量可能是表示输入所需的总位数。<mark>有时，用两个数字描述输入规模比用一个更合适，例如，如果算法的输入是一个图，则可以用顶点和边的数量来描述输入规模</mark>。
 
 > The best notion for **input size** depends on the problem being studied. For many problems, such as sorting or computing discrete Fourier transforms, the most natural measure is the number of items in the input—for example, the array size n for sorting. For many other problems, such as multiplying two integers, the best measure of input size is the total number of bits needed to represent the input in ordinary binary notation. Sometimes, it is more appropriate to describe the size of the input with two numbers rather than one. For instance, if the input to an algorithm is a graph, the input size can be described by the numbers of vertices and edges in the graph. We shall indicate which input size measure is being used with each problem we study.
 
@@ -1349,7 +1662,7 @@ $T(n) = c_1n + c_2(n-1) + c_4\sum_{j=2}^{n} t_j + c_5\sum_{j=2}^{n} t_j-1 + c_6\
 
 
 
-即使对于给定大小的输入，算法的运行时间也可能取决于给出的是哪个具体输入。例如，在插入排序（INSERTION-SORT）中，最佳情况发生在数组已经是有序的时候。对于每个i = 1, 2, 3, ..., n-1，当$j$在其初始值$i$时，我们在第7行发现$arr[j-1] \le arr[j]$。因此，对于i = 1, 2, 3, ..., n-1，有$t_j = 1$，这时最佳情况下的运行时间是
+即使对于给定大小的输入，<mark>算法的运行时间也可能取决于给出的是哪个具体输入</mark>。例如，在插入排序（INSERTION-SORT）中，最佳情况发生在数组已经是有序的时候。对于每个i = 1, 2, 3, ..., n-1，当$j$在其初始值$i$时，我们在第7行发现$arr[j-1] \le arr[j]$。因此，对于i = 1, 2, 3, ..., n-1，有$t_j = 1$，这时最佳情况下的运行时间是
 
 > Even for inputs of a given size, an algorithm’s running time may depend on which input of that size is given. For example, in INSERTION-SORT, the best case occurs if the array is already sorted. For each i = 1, 2, 3, ... , n-1, we then find that $arr[j-1] \le arr[j]$ in line 7 when $j$ has its initial value of $i$. Thus $t_j = 1$ for i = 1, 2, 3, ... , n-1, and the best-case running time is
 >
@@ -1385,9 +1698,9 @@ $\quad = (\frac{c_4}2 + \frac{c_5}2 + \frac{c_6}2)n^2 + (c_1 + c_2 + \frac{c_4}2
 
 
 
-我们可以将这种最坏情况下的运行时间表示为$an^2 + bn + c$，其中常量a、b和c再次取决于语句成本$c_i$；因此，它是n的**二次函数**。
+可以将这种最坏情况下的运行时间表示为$an^2 + bn + c$，其中常量a、b和c再次取决于语句成本$c_i$；因此，它是n的**二次函数**。
 
-通常情况下，就像在插入排序中一样，对于给定的输入，算法的运行时间是固定的，尽管在后续章节中我们将看到一些有趣的“随机化”算法，即使对于固定的输入，它们的行为也可能有所不同。
+通常情况下，就像在插入排序中一样，对于给定的输入，算法的运行时间是固定的，尽管一些有趣的“随机化”算法，即使对于固定的输入，它们的行为也可能有所不同。
 
 > We can express this worst-case running time as $an^2 + bn + c$ for constants a, b, and c that again depend on the statement costs ci; it is thus a **quadratic function** of n.
 >
@@ -1398,14 +1711,14 @@ $\quad = (\frac{c_4}2 + \frac{c_5}2 + \frac{c_6}2)n^2 + (c_1 + c_2 + \frac{c_4}2
 
 ### 2 Worst-case and average-case analysis
 
-在我们对插入排序的分析中，我们既考虑了最佳情况，即输入数组已经排序的情况，也考虑了最坏情况，即输入数组是逆序排列的情况。然而，在本书的其余部分，我们将通常专注于寻找只有**最坏情况下的运行时间**，也就是对于任何大小为n的输入最长的运行时间。我们给出关注最坏情况的三个理由：
+在我们对插入排序的分析中，我们既考虑了最佳情况，即输入数组已经排序的情况，也考虑了最坏情况，即输入数组是逆序排列的情况。然而，<mark>通常专注于寻找只有最坏情况下的运行时间</mark>，也就是对于任何大小为n的输入最长的运行时间。我们给出关注最坏情况的三个理由：
 
 > In our analysis of insertion sort, we looked at both the best case, in which the input array was already sorted, and the worst case, in which the input array was reverse sorted. For the remainder of this book, though, we shall usually concentrate on finding only the **worst-case running time**, that is, the longest running time for any input of size n. We give three reasons for this orientation.
 
 
 
-- 一个算法的最坏情况下的运行时间为任何输入提供了一个运行时间的上限。了解它提供了算法永远不会超过这个时间的保证。我们不需要对运行时间做出一些有根据的猜测，并希望它不会变得更糟。
-- 对于某些算法，最坏情况出现得相当频繁。例如，在数据库中搜索特定信息时，当信息不在数据库中时，搜索算法的最坏情况经常发生。在某些应用中，可能经常会进行不存在的信息搜索。
+- 一个算法的最坏情况下的运行时间为任何输入提供了一个运行时间的上限。了解它提供了算法永远不会超过这个时间的保证。
+- 对于某些算法，最坏情况出现得相当频繁。例如，在数据库中搜索特定信息时，<mark>当信息不在数据库中时，搜索算法的最坏情况经常发生</mark>。在某些应用中，可能经常会进行不存在的信息搜索。
 - “平均情况”通常几乎和最坏情况一样糟糕。假设我们随机选择n个数字并应用插入排序。确定元素A[j]应该插入到子数组`A[0 .. j-1]`中的哪个位置需要多长时间？平均来说，`A[0 .. j-1]`中的一半元素小于`A[j]`，另一半大于`A[j]`。因此，平均而言，我们需要检查子数组`A[0 .. j-1]`的一半，所以$t_j$大约是$j/2$。结果得到的平均情况下的运行时间最终是输入规模的二次函数，就像最坏情况下的运行时间一样。
 
 > The worst-case running time of an algorithm gives us an upper bound on the running time for any input. Knowing it provides a guarantee that the algorithm will never take any longer. We need not make some educated guess about the running time and hope that it never gets much worse.
@@ -1416,25 +1729,25 @@ $\quad = (\frac{c_4}2 + \frac{c_5}2 + \frac{c_6}2)n^2 + (c_1 + c_2 + \frac{c_4}2
 
 
 
-> 在某些特殊情况下，我们将对算法的**平均情况**运行时间感兴趣；我们将在本书中看到**概率分析**技术应用于各种算法。平均情况分析的范围是有限的，因为可能不清楚什么构成特定问题的“平均”输入。我们经常假设所有给定大小的输入都是等可能的。实际上，这一假设可能会被违反，但有时我们可以使用一种**随机化算法**，它会做出随机选择，从而使概率分析成为可能，并得出一个**期望**的运行时间。
+> 在某些特殊情况下，我们将对算法的**平均情况**运行时间感兴趣；我们将看到**概率分析**技术应用于各种算法。平均情况分析的范围是有限的，因为可能不清楚什么构成特定问题的“平均”输入。经常假设所有给定大小的输入都是等可能的。实际上，这一假设可能会被违反，但有时可以使用一种**随机化算法**，它会做出随机选择，从而使概率分析成为可能，并得出一个**期望**的运行时间。
 >
 > In some particular cases, we shall be interested in the **average-case** running time of an algorithm; we shall see the technique of **probabilistic analysis** applied to various algorithms throughout this book. The scope of average-case analysis is limited, because it may not be apparent what constitutes an “average” input for a particular problem. Often, we shall assume that all inputs of a given size are equally likely. In practice, this assumption may be violated, but we can sometimes use a **randomized algorithm**, which makes random choices, to allow a probabilistic analysis and yield an **expected** running time. 
 
 ### 3 Order of growth
 
-我们使用了一些简化的抽象来简化对INSERTIONSORT过程的分析。首先，我们忽略了每个语句的实际成本，用常数$c_i$来表示这些成本。然后，我们注意到即使这些常数也给了我们比实际需要更多的细节：我们将最坏情况下的运行时间表达为$an^2 + bn + c$，其中a、b和c是依赖于语句成本$c_i$的常数。因此，我们不仅忽略了实际的语句成本，还忽略了抽象成本$c_i$。
+我们使用了一些简化的抽象来简化对INSERTIONSORT过程的分析。首先，忽略了每个语句的实际成本，用常数$c_i$来表示这些成本。然后，注意到即使这些常数也给出了比实际需要更多的细节：将最坏情况下的运行时间表达为$an^2 + bn + c$，其中a、b和c是依赖于语句成本$c_i$的常数。因此，我们不仅忽略了实际的语句成本，还忽略了抽象成本$c_i$。
 
 > We used some simplifying abstractions to ease our analysis of the INSERTIONSORT procedure. First, we ignored the actual cost of each statement, using the constants ci to represent these costs. Then, we observed that even these constants give us more detail than we really need: we expressed the worst-case running time as $an^2 + bn + c$ for some constants a, b, and c that depend on the statement costs $c_i$. We thus ignored not only the actual statement costs, but also the abstract costs $c_i$.
 
 
 
-现在我们将引入另一个简化的抽象：真正引起我们兴趣的是运行时间的增长率，或称为增长阶。因此，我们只考虑公式的主要项（例如，$an^2$），因为对于n的较大值来说，低阶项相对来说不那么重要。我们也忽略主要项的常数系数，因为在确定大输入的计算效率时，常数因子不如增长率重要。对于插入排序，当我们忽略低阶项和主要项的常数系数后，我们剩下的是来自主要项的$n^2$因子。我们说插入排序具有$\Theta(n^2)$（发音为“theta of n-squared”）的最坏情况运行时间。
+现在我们将引入另一个简化的抽象：<mark>真正引起我们兴趣的是运行时间的增长率，或称为增长阶</mark>。因此，只考虑公式的主要项（例如，$an^2$），因为对于n的较大值来说，低阶项相对来说不那么重要。忽略主要项的常数系数，因为在确定大输入的计算效率时，常数因子不如增长率重要。对于插入排序，当忽略低阶项和主要项的常数系数后，剩下的是来自主要项的$n^2$因子。说插入排序具有$\Theta(n^2)$（发音为“theta of n-squared”）的最坏情况运行时间。
 
 > We shall now make one more simplifying abstraction: it is the **rate of growth**, or **order of growth**, of the running time that really interests us. We therefore consider only the leading term of a formula (e.g., $an^2$), since the lower-order terms are relatively insignificant for large values of n. We also ignore the leading term’s constant coefficient, since constant factors are less significant than the rate of growth in determining computational efficiency for large inputs. For insertion sort, when we ignore the lower-order terms and the leading term’s constant coefficient, we are left with the factor of $n^2$ from the leading term. We write that insertion sort has a worst-case running time of $\Theta(n^2)$ (pronounced “theta of n-squared”). 
 
 
 
-通常我们认为一个算法如果其最坏情况运行时间的增长阶较低，则它比另一个算法更高效。由于常数因子和低阶项的影响，一个运行时间增长阶较高的算法在小输入的情况下可能会比一个增长阶较低的算法花费的时间更少。但对于足够大的输入，例如，在最坏情况下，一个$\Theta(n^2)$的算法将比一个$\Theta(n^3)$的算法运行得更快。
+通常我们认为一个算法如果其最坏情况运行时间的增长阶较低，则它比另一个算法更高效。<mark>由于常数因子和低阶项的影响，一个运行时间增长阶较高的算法在小输入的情况下可能会比一个增长阶较低的算法花费的时间更少</mark>。但对于足够大的输入，例如，在最坏情况下，一个$\Theta(n^2)$的算法将比一个$\Theta(n^3)$的算法运行得更快。
 
 > We usually consider one algorithm to be more efficient than another if its worstcase running time has a lower order of growth. Due to constant factors and lowerorder terms, an algorithm whose running time has a higher order of growth might take less time for small inputs than an algorithm whose running time has a lower order of growth. But for large enough inputs, a $\Theta(n^2)$ algorithm, for example, will run more quickly in the worst case than a $\Theta(n^3)$​ algorithm.
 >
@@ -1446,7 +1759,7 @@ $\quad = (\frac{c_4}2 + \frac{c_5}2 + \frac{c_6}2)n^2 + (c_1 + c_2 + \frac{c_4}2
 
 > 通用的记号应该是，O表示上界，$\Omega$表示下界，$\Theta$表示渐进阶，就是既上界又下界。
 
-$\Theta$-记号从渐近上界和下界两个方面约束一个函数。当我们只有渐近上界时，我们使用O-记号。对于给定的函数g(n)，我们用O(g(n)（读作“大O of g of n”或简称“O of g of n”）来表示满足以下条件的函数集合：
+$\Theta$-记号从渐近上界和下界两个方面约束一个函数。当我们只有渐近上界时，我们使用O-记号。对于给定的函数g(n)，用O(g(n)（读作“大O of g of n”或简称“O of g of n”）来表示满足以下条件的函数集合：
 
 > The $\Theta$-notation asymptotically bounds a function from above and below. When we have only an asymptotic upper bound, we use O-notation. For a given function g(n), we denote by O(g(n) (pronounced “big-oh of g of n” or sometimes just “oh of g of n”) the set of functions
 
@@ -1456,9 +1769,9 @@ $ O(g(n)) = \{f(n): 存在正的常数c 和 n_0，使得对所有 n ≥ n_0, 有
 
 我们使用O-记号来给出一个函数的上界，最多相差一个常数因子。
 
-利用O-记号，我们通常可以通过检查算法的整体结构来简单描述算法的运行时间。例如，插入排序算法中的双重嵌套循环结构立即给出了最坏情况下运行时间为$O(n^2)$的上界。
+利用O-记号，通常可以通过检查算法的整体结构来简单描述算法的运行时间。例如，插入排序算法中的双重嵌套循环结构立即给出了最坏情况下运行时间为$O(n^2)$的上界。
 
-由于O-记号描述的是上界，当我们用它来约束算法的最坏情况运行时间时，我们就得到了该算法在任何输入上的运行时间的上限。这意味着，在最坏情况下，算法不会比这个上界更慢，无论输入是什么。
+由于O-记号描述的是上界，当用它来约束算法的最坏情况运行时间时，就得到了该算法在任何输入上的运行时间的上限。这意味着，在最坏情况下，算法不会比这个上界更慢，无论输入是什么。
 
 > We use O-notation to give an upper bound on a function, to within a constant factor.
 >
@@ -1517,9 +1830,9 @@ this is true for $c=8$ and $n_0 = 2$
 
 大O记号给出了函数增长率的上界。陈述`f(n) 是 O(g(n))`意味着`f(n)`的增长率不超过`g(n)`的增长率。
 
-我们可以使用大O记号根据它们的增长率来对函数进行排序。
+可以使用大O记号根据它们的增长率来对函数进行排序。
 
-换句话说，如果一个函数`f(n)`是O(g(n))，那么对于足够大的输入n，`f(n)`的值不会超过`g(n)`的某个常数倍。这提供了一种方式来描述和比较不同算法随着输入规模增加而表现出的效率差异，通过将算法的运行时间或空间需求的增长率与一些基准函数（如线性、平方、立方、指数等）进行对比。在算法分析中，我们经常使用大O记号来简化表达，并专注于算法性能的关键趋势，忽略掉那些对于大规模输入影响较小的细节。
+换句话说，如果一个函数`f(n)`是O(g(n))，那么对于足够大的输入n，`f(n)`的值不会超过`g(n)`的某个常数倍。这提供了一种方式来描述和比较不同算法随着输入规模增加而表现出的效率差异，通过将算法的运行时间或空间需求的增长率与一些基准函数（如线性、平方、立方、指数等）进行对比。在算法分析中，经常使用大O记号来简化表达，并专注于算法性能的关键趋势，忽略掉那些对于大规模输入影响较小的细节。
 
 > The big-Oh notation gives an upper bound on the growth rate of a function. The statement `f(n) is O(g(n))` means that the growth rate of `f(n)` is no more than the growth rate of `g(n)`. •We can use the big-Oh notation to rank functions according to their growth rate.
 >
@@ -1556,7 +1869,7 @@ Use the simplest expression of the class 使用该类别中最简单的表达方
 
 由于最终无论如何都会忽略常数因子和低阶项，所以在计算原始操作时可以不考虑它们。
 
-> 这意味着，在进行算法分析时，我们主要关注的是随着输入大小增加，算法性能如何变化的趋势。通过忽略那些对于大输入规模影响较小的细节（如低阶项和常数因子），我们可以简化分析，并专注于理解算法在处理大规模数据时的行为。这种分析方法允许我们比较不同算法之间的效率，而不需要深入到具体的实现细节中去。
+> 这意味着，在进行算法分析时，主要关注的是随着输入大小增加，算法性能如何变化的趋势。通过忽略那些对于大输入规模影响较小的细节（如低阶项和常数因子），可以简化分析，并专注于理解算法在处理大规模数据时的行为。这种分析方法允许我们比较不同算法之间的效率，而不需要深入到具体的实现细节中去。
 >
 > The asymptotic analysis of an algorithm determines the running time in big-Oh notation.
 >
@@ -1591,6 +1904,12 @@ There are a lot of different types of sorting algorithms. Some widely used algor
 - [ShellSort](https://www.geeksforgeeks.org/shellsort/)
 
 There are several other sorting algorithms also and they are beneficial in different cases. You can learn about them and more in our dedicated article on [Sorting algorithms](https://www.geeksforgeeks.org/sorting-algorithms/).
+
+
+
+> https://github.com/GMyhf/2024spring-cs201/blob/main/code/ten_sort_algorithms.md
+>
+> 包括：冒泡排序（Bubble Sort），插入排序（Insertion Sort），选择排序（Selection Sort），希尔排序（Shell Sort），归并排序（Merge Sort），快速排序（Quick Sort），堆排序（Heap Sort），计数排序（Counting Sort），桶排序（Bucket Sort），基数排序（Radix Sort）
 
 
 
@@ -1663,15 +1982,15 @@ Auxiliary Space: $O(1)$
 
 **Q1. What is the Boundary Case for Bubble sort?**
 
-Bubble sort takes minimum time (Order of n) when elements are already sorted. Hence it is best to check if the array is already sorted or not beforehand, to avoid O(N2) time complexity.
+Bubble sort takes minimum time (Order of n) when elements are already sorted. Hence it is best to check if the array is already sorted or not beforehand, to avoid $O(N^2)$ time complexity.
 
 **Q2. Does sorting happen in place in Bubble sort?**
 
-Yes, Bubble sort performs the swapping of adjacent pairs without the use of any major data structure. Hence Bubble sort algorithm is an in-place algorithm.
+Yes, Bubble sort performs the swapping of adjacent pairs without the use of any major data structure. Hence Bubble sort algorithm is an <mark>in-place</mark> algorithm.
 
 **Q3. Is the Bubble sort algorithm stable?**
 
-Yes, the bubble sort algorithm is stable.
+Yes, the bubble sort algorithm is <mark>stable</mark>.
 
 **Q4. Where is the Bubble sort algorithm used?**
 
@@ -1691,7 +2010,7 @@ C： [1, 7, 3, 9, 10, 13, 8, 12, 15, 19]	D：[1, 9, 19, 7, 3, 10, 13, 15, 8, 12]
 
 > **Selection sort** is a simple and efficient sorting algorithm that works by repeatedly selecting the smallest (or largest) element from the unsorted portion of the list and moving it to the sorted portion of the list. 
 
-The algorithm repeatedly selects the smallest (or largest) element from the unsorted portion of the list and swaps it with the first element of the unsorted part. This process is repeated for the remaining unsorted portion until the entire list is sorted. 
+The algorithm repeatedly <mark>selects the smallest (or largest)</mark> element from the unsorted portion of the list and swaps it with the first element of the unsorted part. This process is repeated for the remaining unsorted portion until the entire list is sorted. 
 
 ```python
 A = [64, 25, 12, 22, 11]
@@ -1773,7 +2092,7 @@ You may see that the selection sort makes the same number of comparisons as the 
 
 **Disadvantages of the Selection Sort Algorithm**
 
-- Selection sort has a time complexity of O(n^2) in the worst and average case.
+- Selection sort has a time complexity of $O(n^2)$ in the worst and average case.
 - Does not work well on large datasets.
 - Does not preserve the relative order of items with equal keys which means it is not stable.
 
@@ -1783,11 +2102,11 @@ You may see that the selection sort makes the same number of comparisons as the 
 
 **Q1. Is Selection Sort Algorithm stable?**
 
-The default implementation of the Selection Sort Algorithm is **not stable**. However, it can be made stable. Please see the [stable Selection Sort](https://www.geeksforgeeks.org/stable-selection-sort/) for details.
+The default implementation of the Selection Sort Algorithm is <mark>not stable</mark>. However, it can be made stable. Please see the [stable Selection Sort](https://www.geeksforgeeks.org/stable-selection-sort/) for details.
 
 **Q2. Is Selection Sort Algorithm in-place?**
 
-Yes, Selection Sort Algorithm is an in-place algorithm, as it does not require extra space.
+Yes, Selection Sort Algorithm is an <mark>in-place</mark> algorithm, as it does not require extra space.
 
 
 
@@ -1876,7 +2195,7 @@ To analyze the `quickSort` function, note that for a list of length *n*, if the 
 
 Unfortunately, in the worst case, the split points may not be in the middle and can be very skewed to the left or the right, leaving a very uneven division. In this case, sorting a list of *n* items divides into sorting a list of 0 items and a list of n−1 items. Then sorting a list of n−1 divides into a list of size 0 and a list of size n−2, and so on. The result is an $O(n^2)$ sort with all of the overhead that recursion requires.
 
-We mentioned earlier that there are different ways to choose the pivot value. In particular, we can attempt to alleviate some of the potential for an uneven division by using a technique called **median of three**. To choose the pivot value, we will consider the first, the middle, and the last element in the list. In our example, those are 54, 77, and 20. Now pick the median value, in our case 54, and use it for the pivot value (of course, that was the pivot value we used originally). The idea is that in the case where the first item in the list does not belong toward the middle of the list, the median of three will choose a better “middle” value. This will be particularly useful when the original list is somewhat sorted to begin with.
+We mentioned earlier that <mark>there are different ways to choose the pivot value</mark>. In particular, we can attempt to alleviate some of the potential for an uneven division by using a technique called **median of three**. To choose the pivot value, we will consider the first, the middle, and the last element in the list. In our example, those are 54, 77, and 20. Now pick the median value, in our case 54, and use it for the pivot value (of course, that was the pivot value we used originally). The idea is that in the case where the first item in the list does not belong toward the middle of the list, the median of three will choose a better “middle” value. This will be particularly useful when the original list is somewhat sorted to begin with.
 
 
 
@@ -1906,7 +2225,7 @@ Auxiliary Space: O(1), if we don’t consider the recursive stack space. If we c
 
 - It has a worst-case time complexity of $O(N^2)$, which occurs when the pivot is chosen poorly.
 - It is not a good choice for small data sets.
-- It is not a stable sort, meaning that if two elements have the same key, their relative order will not be preserved in the sorted output in case of quick sort, because here we are swapping elements according to the pivot’s position (without considering their original positions).
+- It is <mark>not a stable</mark> sort, meaning that if two elements have the same key, their relative order will not be preserved in the sorted output in case of quick sort, because here we are swapping elements according to the pivot’s position (without considering their original positions).
 
 
 
@@ -1917,7 +2236,7 @@ B. [9, 3, 10, 13, 12, 14]
 C. [9, 3, 10, 13, 12, 14, 17, 16, 15, 19]
 **D. [9, 3, 10, 13, 12, 14, 19, 16, 15, 17]**
 
-The first partitioning works on the entire list, and the second partitioning works on the left partition not the right. It's important to remember that quicksort works on the entire list and sorts it in place.
+The first partitioning works on the entire list, and <mark>the second partitioning works on the left partition not the right</mark>. It's important to remember that quicksort works on the entire list and sorts it in place.
 
 
 
@@ -1939,7 +2258,7 @@ B. Quick Sort
 **C. Merge Sort**
 D. Insertion Sort
 
-Merge Sort is the only guaranteed O(n log n) even in the worst case. The cost is that merge sort uses more memory.
+<mark>Merge Sort is the only guaranteed O(n log n) even in the worst case</mark>. The cost is that merge sort uses more memory.
 
 
 
@@ -2013,11 +2332,11 @@ Auxiliary Space: O(N), In merge sort all elements are copied into an auxiliary a
 - Sorting large datasets: Merge sort is particularly well-suited for sorting large datasets due to its guaranteed worst-case time complexity of O(n log n).
 - External sorting: Merge sort is commonly used in external sorting, where the data to be sorted is too large to fit into memory.
 - Custom sorting: Merge sort can be adapted to handle different input distributions, such as partially sorted, nearly sorted, or completely unsorted data.
-- [Inversion Count Problem](https://www.geeksforgeeks.org/inversion-count-in-array-using-merge-sort/): Inversion Count for an array indicates – how far (or close) the array is from being sorted. If the array is already sorted, then the inversion count is 0, but if the array is sorted in reverse order, the inversion count is the maximum. 
+- [Inversion Count Problem](https://www.geeksforgeeks.org/inversion-count-in-array-using-merge-sort/): <mark>Inversion Count</mark> for an array indicates – how far (or close) the array is from being sorted. If the array is already sorted, then the inversion count is 0, but if the array is sorted in reverse order, the inversion count is the maximum. 
 
 **Advantages of Merge Sort:**
 
-- Stability: Merge sort is a stable sorting algorithm, which means it maintains the relative order of equal elements in the input array.
+- Stability: <mark>Merge sort is a stable sorting</mark> algorithm, which means it maintains the relative order of equal elements in the input array.
 - Guaranteed worst-case performance: Merge sort has a worst-case time complexity of O(N logN), which means it performs well even on large datasets.
 - Parallelizable: Merge sort is a naturally parallelizable algorithm, which means it can be easily parallelized to take advantage of multiple processors or threads.
 
