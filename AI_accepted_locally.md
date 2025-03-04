@@ -1,6 +1,6 @@
 # AI Accepted locally
 
-Updated 1707 GMT+8 Mar 2 2025
+Updated 1325 GMT+8 Mar 4 2025
 
 2025 spring, Complied by Hongfei Yan
 
@@ -27,6 +27,14 @@ DeepSeek-R1-Distill-Qwen-32B-Q4_K_M.gguf
 ## 02524:宗教信仰
 
 http://cs101.openjudge.cn/practice/02524/
+
+
+
+![image-20250304132319006](https://raw.githubusercontent.com/GMyhf/img/main/img/image-20250304132319006.png)
+
+
+
+
 
 
 
@@ -109,6 +117,14 @@ http://cs101.openjudge.cn/practice/02750/
 ## 02808:校门外的树
 
 http://cs101.openjudge.cn/practice/02808/
+
+
+
+![image-20250304132336318](https://raw.githubusercontent.com/GMyhf/img/main/img/image-20250304132336318.png)
+
+
+
+
 
 ![image-20250215202729172](https://raw.githubusercontent.com/GMyhf/img/main/img/image-20250215202729172.png)
 
@@ -611,7 +627,7 @@ http://cs101.openjudge.cn/practice/16528/
 >    if start > last_end:
 >
 >        count +=1
->                                
+>                                    
 >        last_end = end
 >
 > 7. 最后输出count的值。
@@ -1206,10 +1222,10 @@ tags: string, sort
 >     match = re.match(r'^(\d+\.?\d*)([A-Za-z]+)$', param_part)
 >     if not match:
 >         continue  # 或者处理错误情况，但题目中假设输入正确
->                             
+>                                 
 >     num_str, unit = match.groups()
 >     num = float(num_str)
->                             
+>                                 
 >     if unit == 'B':
 >         num_m = num * 1000
 >     elif unit == 'M':
@@ -1217,7 +1233,7 @@ tags: string, sort
 >     else:
 >         # 其他情况，但题目中没有说明，可以忽略？
 >         continue
->                             
+>                                 
 >     if name_part not in model_dict:
 >         model_dict[name_part] = []
 >     model_dict[name_part].append( (num_m, param_part) )
