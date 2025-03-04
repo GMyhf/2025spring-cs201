@@ -20,7 +20,7 @@ Updated 0003 GMT+8 Mar 4 2025.
 
 | 日期 | 问题编号与名称    | 标签                 | 难度  | 链接                                                 |
 | ---- | ----------------- | -------------------- | ------ | ---------------------------------------------------- |
-| 0305 | 04123: 马走日     | backtracking    | Medium    | http://cs101.openjudge.cn/practice/04123     |
+|      |      | -    | -    |      |
 | 0305 | 240.搜索二维矩阵II     | binary search    | Medium    | https://leetcode.cn/problems/search-a-2d-matrix-ii/      |
 | 0304 | 02299: Ultra-QuickSort | merge sort  | Tough    | http://cs101.openjudge.cn/2025sp_routine/02299/      |
 | 0304 | 75.颜色分类     | three pointers    | Medium    | https://leetcode.cn/problems/sort-colors/      |
