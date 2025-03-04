@@ -671,6 +671,17 @@ print函数为输出Python程序的值提供了一种非常简便的方法。它
 
 
 
+### 输出例如 04140: 方程求解
+
+牛顿迭代法，http://cs101.openjudge.cn/practice/04140/
+
+```python
+....
+print(f"{root2:.9f}")
+```
+
+
+
 ### 2 控制结构
 
 算法需要两个重要的控制结构：迭代和分支。Python通过多种方式支持这两种控制结构。程序员可以根据需要选择最有效的结构。
@@ -701,6 +712,27 @@ print函数为输出Python程序的值提供了一种非常简便的方法。它
 
 许多初级程序员简单地把异常等同于引起程序终止的严重运行时错误。然而，大多数编程语言都提供了让程序员能够处理这些错误的方法。此外，程序员也可以在检测到程序执行有问题的情况下自己创建异常。
 当异常发生时，我们称程序“抛出”异常。可以用try语句来“处理”被抛出的异常。
+
+
+
+> **04015: 邮箱验证**
+>
+> strings, http://cs101.openjudge.cn/practice/04015
+>
+> 这题目输入没有明确结束，需要套在try ...  except里面。测试时候，需要模拟输入结束，看你是window还是mac。If the user hits EOF (*nix: Ctrl-D, Windows: Ctrl-Z+Return), raise EOFError.
+>
+> ```python
+> while True:
+>     try:
+>         s = input()
+>     except EOFError:
+>         break
+>     
+> 		...
+>     print('NO' if q==-1 else 'YES')
+> ```
+>
+> 
 
 
 
