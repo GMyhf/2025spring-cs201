@@ -23,7 +23,7 @@ Updated 0928 GMT+8 Mar 5 2025.
 | 0307 | 02488:A Knight's Journey  | backtracking    | Touch  | http://cs101.openjudge.cn/practice/02488/      |
 | 0307 | 78.子集  | backtracking   | Medium    | https://leetcode.cn/problems/subsets/      |
 | 0306 | 06648: Sequence    | heap   | Tough    | http://cs101.openjudge.cn/practice/06648/      |
-| 0306 | 23.合并K个升序链表 | merge sort  | Tough    | https://leetcode.cn/problems/merge-k-sorted-lists/      |
+| 0306 | 23.合并K个升序链表 | merge sort, linked list  | Tough    | https://leetcode.cn/problems/merge-k-sorted-lists/      |
 | 0305 | 02456: Aggressive cows     | binary+greedy    | Medium    | http://cs101.openjudge.cn/2025sp_routine/02456/      |
 | 0305 | 240.搜索二维矩阵II     | binary search    | Medium    | https://leetcode.cn/problems/search-a-2d-matrix-ii/      |
 | 0304 | 02299: Ultra-QuickSort | merge sort  | Tough    | http://cs101.openjudge.cn/2025sp_routine/02299/      |
