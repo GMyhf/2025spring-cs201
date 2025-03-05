@@ -20,6 +20,10 @@ Updated 0928 GMT+8 Mar 5 2025.
 
 | 日期 | 问题编号与名称    | 标签                 | 难度  | 链接                                                 |
 | ---- | ----------------- | -------------------- | ------ | ---------------------------------------------------- |
+| 0307 |      | -    | -    |      |
+| 0307 | 78.子集  | backtracking   | Medium    | https://leetcode.cn/problems/subsets/      |
+| 0306 | 06648: Sequence    | heap   | Tough    | http://cs101.openjudge.cn/practice/06648/      |
+| 0306 | 23.合并K个升序链表 | merge sort  | Tough    | https://leetcode.cn/problems/merge-k-sorted-lists/      |
 | 0305 | 02456: Aggressive cows     | binary+greedy    | Medium    | http://cs101.openjudge.cn/2025sp_routine/02456/      |
 | 0305 | 240.搜索二维矩阵II     | binary search    | Medium    | https://leetcode.cn/problems/search-a-2d-matrix-ii/      |
 | 0304 | 02299: Ultra-QuickSort | merge sort  | Tough    | http://cs101.openjudge.cn/2025sp_routine/02299/      |
