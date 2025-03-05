@@ -20,8 +20,11 @@ Liuyh: http://lyhdsa.openjudge.cn
 Xiezm: http://xzmdsa.openjudge.cn   
 3/4 计概
 
-Yanhf（14班）: http://cs101.openjudge.cn  
+Yanhf (14 class): http://cs101.openjudge.cn  
 3/4 计概
+
+Wuyj (15 class): http://wyj_dsa.openjudge.cn/hw1/  
+3/4栈
 
 
 ## C/C++
@@ -30,6 +33,9 @@ Dly: http://xlxxsjjg.openjudge.cn
 
 Huw: http://forhuwei.openjudge.cn   
 2/21 链表
+
+Songgj: http://dsab_sgj.openjudge.cn/  
+3/4 栈
 
 Wangz :  http://sydsb.openjudge.cn  
 3/4 链表
@@ -40,8 +46,10 @@ Zhaohy：http://dsaex.openjudge.cn
 Zouyz: http://hxsjjg.openjudge.cn   
 2/26 计概
 
+程序设计实习: http://cxsjsx.openjudge.cn  
+20240621期末，http://cxsjsx.openjudge.cn/2024finalexam/
 
-
+程序设计与算法: http://eepa.openjudge.cn
 
 
 ## 未更新小组
