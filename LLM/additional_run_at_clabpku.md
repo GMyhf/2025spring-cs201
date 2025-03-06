@@ -1,8 +1,4 @@
-
-
-
-
-# 在云虚拟机安装Anaconda & 运行鸢尾花卉数据分类
+# 在云虚拟机配置conda环境 & 运行鸢尾花分类
 
 Updated 1655 GMT+8 Mar 6 2025
 
@@ -57,6 +53,8 @@ bash ./Anaconda3-2024.10-1-Linux-x86_64.sh
 ```
 
 
+
+注意第11行，指定安装路径`/mnt/data/anaconda3`
 
 ```
 Do you accept the license terms? [yes|no]
@@ -120,7 +118,9 @@ source ~/.bashrc
 
 
 
+### 创建一个名为 cs201 的新环境
 
+读取 environment.yml 文件并创建一个名为 cs201 的新环境，并安装所有列出的依赖项。
 
 根据 environment.yml 文件创建一个新的 Conda 环境
 
@@ -132,13 +132,16 @@ Pip subprocess error: ERROR: Could not find a version that satisfies the require
 
 
 
-### 移除特定标签
+### 移除特定标签&增加一行
+
+增加`- pip`
 
 尝试移除 `+cpu` 标签，直接使用 `torch==2.6.0` 进行安装。修改你的 `environment.yml` 文件中的相关依赖项：
 
 ```
 dependencies:
   - ...
+  - pip
   - pip:
       - torch==2.6.0
       - torchaudio==2.6.0
@@ -148,7 +151,7 @@ dependencies:
 
 
 
-
+**再执行创建一个新的 Conda 环境**
 
 ```
 conda env update --file environment.yml --prune
@@ -191,34 +194,36 @@ Filesystem   Size Used Avail Use% Mounted on
 Pip 和其他工具可能会使用系统的临时目录来下载文件。你可以检查和清理这些位置：
 
 查看临时目录：
-Bash
-深色版本
 
 ```
 df -h /tmp
 ```
 
 如果 /tmp 目录位于根分区并且空间不足，可以考虑将它移动到有更多空间的分区如 /mnt/data。
-创建新的临时目录：
+**创建新的临时目录：**
 
 ```
 mkdir -p /mnt/data/tmp
 export TMPDIR=/mnt/data/tmp
 ```
 
-然后重新尝试安装命令。
-使用 Pip 的 --cache-dir 参数指定缓存目录
-
-你可以指定一个不同的目录作为 Pip 的缓存目录，确保这个目录有足够的空间。
-
-在执行 conda env create 或 pip install 命令之前设置环境变量：
+**创建 Pip 缓存目录**：
 
 ```
 export PIP_CACHE_DIR=/mnt/data/pip_cache
 mkdir -p $PIP_CACHE_DIR
 ```
 
+在 `.bashrc` 中永久设置这个环境变量：
 
+```
+echo 'export TMPDIR=/mnt/data/tmp' >> ~/.bashrc
+source ~/.bashrc
+```
+
+
+
+**再执行创建一个新的 Conda 环境**
 
 ```
 conda env update --file environment.yml --prune
@@ -248,33 +253,21 @@ Installing collected packages: triton, pytz, nvidia-cusparselt-cu12, mpmath, tzd
 
 Successfully installed autopep8-2.3.2 contourpy-1.3.1 cycler-0.12.1 filelock-3.13.1 fonttools-4.56.0 fsspec-2024.6.1 jinja2-3.1.4 joblib-1.4.2 kiwisolver-1.4.8 markupsafe-2.1.5 matplotlib-3.10.1 mpmath-1.3.0 networkx-3.3 numpy-2.1.2 nvidia-cublas-cu12-12.4.5.8 nvidia-cuda-cupti-cu12-12.4.127 nvidia-cuda-nvrtc-cu12-12.4.127 nvidia-cuda-runtime-cu12-12.4.127 nvidia-cudnn-cu12-9.1.0.70 nvidia-cufft-cu12-11.2.1.3 nvidia-curand-cu12-10.3.5.147 nvidia-cusolver-cu12-11.6.1.9 nvidia-cusparse-cu12-12.3.1.170 nvidia-cusparselt-cu12-0.6.2 nvidia-nccl-cu12-2.21.5 nvidia-nvjitlink-cu12-12.4.127 nvidia-nvtx-cu12-12.4.127 packaging-24.2 pandas-2.2.3 pillow-11.0.0 pip-25.0.1 pycodestyle-2.12.1 pyparsing-3.2.1 python-dateutil-2.9.0.post0 pytz-2025.1 scikit-learn-1.6.1 scipy-1.15.2 seaborn-0.13.2 six-1.17.0 sympy-1.13.1 threadpoolctl-3.5.0 tomli-2.2.1 torch-2.6.0 torchaudio-2.6.0 torchvision-0.21.0 tqdm-4.67.1 triton-3.2.0 typing-extensions-4.12.2 tzdata-2025.1
 
-
-
 done
-
-\#
 
 \# To activate this environment, use
 
-\#
-
 \#   $ conda activate cs201
-
-\#
 
 \# To deactivate an active environment, use
 
-\#
-
 \#   $ conda deactivate
-
-
 
 (base) [rocky@jensen additional]$ 
 
 
 
-## 2.运行鸢尾花卉数据分类
+## 2.运行鸢尾花数据分类
 
 https://github.com/GMyhf/2025spring-cs201/blob/main/LLM/additional_CAOYikai.zip
 
@@ -283,7 +276,7 @@ https://github.com/GMyhf/2025spring-cs201/blob/main/LLM/additional_CAOYikai.zip
 
 
 
-
+**激活需要的环境，及建立程序输出目录**
 
 ```
 $ conda activate cs201
@@ -292,6 +285,16 @@ mkdir -p /home/rocky/assignment2/log/
 ```
 
 
+
+### 2.1 运行分类训练及评估程序
+
+在additional目录，运行
+
+```
+$ python iris_tuner.py
+```
+
+输出如图所示
 
 ![image-20250306135638535](https://raw.githubusercontent.com/GMyhf/img/main/img/image-20250306135638535.png)
 
@@ -305,13 +308,13 @@ mkdir -p /home/rocky/assignment2/log/
 
 
 
+### 2.2 运行分类结果展示程序
 
+#### 启动VS Code
 
-### 结果呈现
+在本地机器，如 macOS 上， 启动Visual Studio Code (VS Code)：
 
-在 macOS 上，如果你已经安装了 Visual Studio Code (VS Code)，启动它：
-
-#### 通过 Spotlight 搜索启动
+**通过 Spotlight 搜索启动**
 
 1. 点击屏幕右上角的放大镜图标，或者使用快捷键 `Command + Space` 来打开 Spotlight 搜索。
 2. 在搜索框中输入“Visual Studio Code”或简称“VS Code”。
@@ -319,17 +322,17 @@ mkdir -p /home/rocky/assignment2/log/
 
 
 
-#### vscode启动后，如何ssh到云虚拟机？
+**VS Code启动后，ssh连到云虚拟机**
 
 要在 VS Code 启动后通过 SSH 连接到你的云虚拟机，你需要使用 Visual Studio Code 的远程开发功能。具体步骤如下：
 
-### 前提条件
+**前提条件**
 
 - 确保你的云虚拟机已启用 SSH 服务，并且你有相应的访问权限（例如：用户名和密码或SSH密钥）。
 - 在本地计算机上安装了 Visual Studio Code。
 - 安装 Remote - SSH 扩展。
 
-### 步骤
+**步骤**
 
 1. **打开 VS Code**:
    - 启动你的 Visual Studio Code 应用程序。
@@ -366,11 +369,13 @@ ln -s /mnt/data/.vscode-server ~/
 
 
 
+#### 运行结果展示程序
+
 ![image-20250306161738995](https://raw.githubusercontent.com/GMyhf/img/main/img/image-20250306161738995.png)
 
 
 
-
+**可视化结果**
 
 ![image-20250306161850640](https://raw.githubusercontent.com/GMyhf/img/main/img/image-20250306161850640.png)
 
