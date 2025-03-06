@@ -1,6 +1,6 @@
 # AI Accepted locally
 
-Updated 1325 GMT+8 Mar 4 2025
+Updated 1739 GMT+8 Mar 6 2025
 
 2025 spring, Complied by Hongfei Yan
 
@@ -21,6 +21,228 @@ DeepSeek-R1-Distill-Qwen-32B-Q4_K_M.gguf
 > 统一内存架构(UMA)让CPU和GPU共享同一内存吃，无需数据复制。
 >
 > OS macOS 15.3 (Build 24D60), AI Framework: Core ML, AI Backend: GPU.
+
+
+
+## 02488:A Knight's Journey
+
+http://cs101.openjudge.cn/practice/02488/
+
+
+
+千问的32B推理模型，模型名 qwq:32b。看指标，比r1蒸馏的32B强。
+https://mp.weixin.qq.com/s/FZKEKMk4d0IqQOQFACJYHQ
+
+2025/3/6 16:00在我的mac studio的lm studio下载了qwq:32b。
+
+Thought for 12 minutes 59 second!
+
+15.05 tok/sec . 11739 tokens . 3.83s to first token . Stop reason: EOS Token Founc
+
+AC 了 02488: A Knight's Journey。但是mac主机摸着热了，不适合自己机器跑。
+
+![image-20250306173701106](https://raw.githubusercontent.com/GMyhf/img/main/img/image-20250306173701106.png)
+
+
+
+```python
+import sys
+
+def get_moves(x, y, p, q):
+    deltas = [(2, 1), (2, -1), (-2, 1), (-2, -1),
+              (1, 2), (1, -2), (-1, 2), (-1, -2)]
+    moves = []
+    for dx, dy in deltas:
+        nx = x + dx
+        ny = y + dy
+        if 0 <= nx < q and 0 <= ny < p:
+            moves.append((nx, ny))
+    # Sort moves by their square name lex order: first by letter (A,B...), then number.
+    sorted_moves = sorted(moves, key=lambda pos: (chr(ord('A') + pos[0]) + str(pos[1] + 1)))
+    return sorted_moves
+
+def backtrack(sx, sy, p, q, visited, path):
+    if len(path) == p * q:
+        return True
+    for move in get_moves(sx, sy, p, q):
+        nx, ny = move
+        if not visited[nx][ny]:
+            visited[nx][ny] = True
+            new_square = chr(ord('A') + nx) + str(ny + 1)
+            path.append(new_square)
+            if backtrack(nx, ny, p, q, visited, path):
+                return True
+            # Backtrack
+            path.pop()
+            visited[nx][ny] = False
+    return False
+
+def solve_case(p, q):
+    total_squares = p * q
+    sorted_starts = []
+    for x in range(q):
+        for y in range(p):
+            square_name = chr(ord('A') + x) + str(y+1)
+            sorted_starts.append( (square_name, x, y) )
+    # Sort starts by their name to ensure we try them in lex order
+    sorted_starts.sort()
+    
+    result_path = None
+    for start in sorted_starts:
+        name_start, sx, sy = start
+        visited = [[False]*p for _ in range(q)]
+        path = [name_start]
+        visited[sx][sy] = True
+        if backtrack(sx, sy, p, q, visited, path):
+            return ''.join(path)
+    return "impossible"
+
+def main():
+    input_lines = sys.stdin.read().split()
+    idx = 0
+    n = int(input_lines[idx])
+    idx +=1
+    for case_num in range(1, n+1):
+        p = int(input_lines[idx])
+        q = int(input_lines[idx+1])
+        idx +=2
+        
+        print("Scenario #%d:" % case_num)
+        result = solve_case(p, q)
+        print(result)
+        # Add empty line as per output requirements
+        if case_num != n:
+            print()
+    
+if __name__ == "__main__":
+    main()
+```
+
+
+
+这个题目背景是**哈密尔顿路径**？
+
+> <think>
+> 嗯，用户问的是这个问题的背景是否是关于哈密尔顿路径。首先我需要回忆一下问题的内容和要求。问题是要找出骑士在棋盘上走遍每个方格恰好一次的路径，这确实符合哈密尔顿路径的定义——即访问所有顶点一次且仅一次的路径。
+>
+> 用户可能是在确认题目类型或者想了解解题思路是否基于哈密尔顿路径的相关算法。我应该先肯定这一点，然后解释问题如何转化为寻找哈密尔顿路径的问题，并说明骑士移动的特点和解决方案中的回溯法是如何处理这个问题的。
+>
+> 另外，用户可能对哈密尔顿路径不太熟悉，需要简单解释一下这个概念。比如，可以提到每个棋盘格是一个顶点，而合法的骑士走法是边，这样问题就转化为在图中找一条通过所有顶点的路径。
+>
+> 同时要注意到问题中的额外要求：路径必须是字典序最小的，并且输出格式的要求。这部分也需要解释一下解决方案是如何考虑这些条件的，比如如何排序候选移动来保证找到的是字典序最小的路径。
+>
+> 可能用户还关心为什么选择回溯法而不是其他算法（比如动态规划或启发式搜索），尤其是在棋盘较小的情况下，回溯是可行的，而更大的输入则需要更优化的方法。不过题目中的限制条件（面积不超过26）使得回溯在时间上是可接受的，这也是解决方案有效的原因。
+>
+> 最后要确保解释清晰，并指出问题的核心确实属于哈密尔顿路径的问题类型。
+> </think>
+>
+> 
+>
+> 是的！这个问题本质上是在寻找骑士在给定棋盘上的 **哈密尔顿路径**（Hamiltonian Path）。哈密尔顿路径是指从图中一个顶点出发，沿着边访问每个顶点恰好一次的路径。骑士的移动方式对应了图中的边，而我们需要找到一条这样的路径覆盖整个棋盘。
+>
+> ---
+>
+> 具体分析：
+>
+> 1. **问题建模为图**：
+>
+>    - 将棋盘上的每个格子视为一个顶点。
+>    - 骑士的合法走法（L型移动：横向2步+纵向1步）作为相邻顶点之间的边。例如，从 `A1` 可以跳到 `B3` 或 `C2` 等位置。
+>
+> 2. **哈密尔顿路径的目标**：
+>
+>    - 需要找到一条路径，使得骑士可以遍历棋盘上的 **所有格子恰好一次**。
+>    - 如果存在这样的路径，则输出字典序最小的解；否则输出 "impossible"。
+>
+> ---
+>
+> ### 解决方案的核心思想：
+> #### 1. **回溯法（Backtracking）**：
+>    - 回溯法是解决哈密尔顿路径问题的经典方法，尤其适合小规模问题（本题中棋盘大小 ≤ 26 × 26）。
+>    - 算法思路：
+>      1. 尝试从每一个可能的起点出发（按字典序排序，优先 `A1`、`A2` 等）。
+>      2. 在每一步递归中，尝试所有合法的下一步移动，并标记已访问过的格子。
+>      3. 如果找到一条完整路径，则立即返回结果（因为回溯法会按字典序优先探索，因此第一个解即为最小字典序解）。
+>
+> 2. **优化与剪枝**：
+>
+>    - **字典序排序**：在尝试下一步时，将候选移动按格子名称的字典序从小到大排列（例如 `A1` → `B3` 的优先级高于 `C4`）。这样能确保回溯法首先找到的路径就是字典序最小的结果。
+>    - **剪枝条件**：一旦当前路径长度超过最优解，或无法继续前进，则立即回退。
+>
+> ---
+>
+> 关键代码解释：
+>
+> 1. **生成合法移动（按字典序排序）**：
+>
+> ```python
+> def get_moves(x, y, p, q):
+>     # 骑士的8种可能移动方向（坐标变化）
+>     deltas = [(2,1), (2,-1), (-2,1), (-2,-1),
+>               (1,2), (1,-2), (-1,2), (-1,-2)]
+>     
+>     moves = []
+>     for dx, dy in deltas:
+>         nx, ny = x+dx, y+dy
+>         # 检查坐标是否在棋盘范围内（注意：x对应列，y对应行）
+>         if 0 <= nx < q and 0 <= ny < p:
+>             moves.append( (nx, ny) )
+>     
+>     # 按格子名称的字典序排序移动选项
+>     sorted_moves = sorted(moves, 
+>                          key=lambda pos: chr(ord('A') + pos[0]) + str(pos[1]+1))
+>     return sorted_moves
+> ```
+> - **为什么按字典序排序？**  
+>   因为题目要求输出 **lexicographically first path**（即字典序最小的路径），我们需要确保回溯时优先尝试字典序更小的移动选项。
+>
+> 2. **回溯函数核心逻辑**：
+>
+> ```python
+> def backtrack(sx, sy, p, q, visited, path):
+>     if len(path) == p*q:  
+>         # 找到完整路径，立即返回True
+>         return True
+>     
+>     for move in get_moves(sx, sy, p, q):  # 按字典序尝试所有下一步移动
+>         nx, ny = move
+>         if not visited[nx][ny]:
+>             visited[nx][ny] = True  
+>             new_square = chr(ord('A') + nx) + str(ny+1)
+>             path.append(new_square)
+>             
+>             # 递归探索下一步
+>             if backtrack(nx, ny, p, q, visited, path):
+>                 return True  # 成功找到路径，直接返回
+>             
+>             # 回溯：撤销当前选择
+>             path.pop()
+>             visited[nx][ny] = False
+>     
+>     return False  # 当前分支无解
+> ```
+>
+> ---
+>
+> 特殊情况与输出规则：
+>
+> 1. **输入 `1 1`（棋盘仅一个格子）**：
+>
+>    - 直接返回该格子的名称，如 `A1`。
+>
+> 2. **不存在路径的情况（例如 `2x3 棋盘`）**：
+>
+>    - 骑士在 $2 \times 3$ 的棋盘上无法完成覆盖所有格子。因为骑士移动后会陷入循环或被卡住，导致无解。
+>
+> ---
+>
+> **总结：**
+>
+> 这个问题的本质是 **哈密尔顿路径问题的变种**，通过回溯法结合字典序排序来寻找最小路径。其核心挑战在于高效地探索所有可能路径并满足题目对输出格式的要求。
+
+
+
+
 
 
 
@@ -249,6 +471,22 @@ for _ in range(m):
 remaining = sum(1 for x in is_removed if not x)
 print(remaining)
 ```
+
+
+
+## 02995:登山
+
+http://cs101.openjudge.cn/practice/02995
+
+尝试下载了 deepseek 8B 的模型，跑了一下登山的那道 dp 题目，分析的 cpu 占用在百分之三到百
+分之四之间，发现分析了 16min，模型一直卡在提出新想法、验证、否定的循环中。
+于是找了 14B 的模型，发现模型一开始就做到了 8B 始终没能想到的方法：分为 up down 两个 dp
+数组来做。在随后的分析过程之中，发现 14B 模型分析时的速度（分析过程的显示速度）更慢，但是分
+析的效果好得多，不会像 8B 的一样一直卡在死循环中。之后程序写出来也能够直接 AC。
+另外还发现 8B 模型（中途终止）思考了 16min 多就用掉了 36K 的 token，但 14B 模型完整跑完整
+个过程用了 36min，但是使用的 token 却只有 13K。
+
+![image-20250306174647978](https://raw.githubusercontent.com/GMyhf/img/main/img/image-20250306174647978.png)
 
 
 
@@ -627,7 +865,7 @@ http://cs101.openjudge.cn/practice/16528/
 >    if start > last_end:
 >
 >        count +=1
->                                    
+>                                        
 >        last_end = end
 >
 > 7. 最后输出count的值。
@@ -1222,10 +1460,10 @@ tags: string, sort
 >     match = re.match(r'^(\d+\.?\d*)([A-Za-z]+)$', param_part)
 >     if not match:
 >         continue  # 或者处理错误情况，但题目中假设输入正确
->                                 
+>                                     
 >     num_str, unit = match.groups()
 >     num = float(num_str)
->                                 
+>                                     
 >     if unit == 'B':
 >         num_m = num * 1000
 >     elif unit == 'M':
@@ -1233,7 +1471,7 @@ tags: string, sort
 >     else:
 >         # 其他情况，但题目中没有说明，可以忽略？
 >         continue
->                                 
+>                                     
 >     if name_part not in model_dict:
 >         model_dict[name_part] = []
 >     model_dict[name_part].append( (num_m, param_part) )
