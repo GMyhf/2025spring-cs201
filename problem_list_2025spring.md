@@ -20,6 +20,8 @@ Updated 0002 GMT+8 Mar 6 2025.
 
 | 日期 | 问题编号与名称    | 标签                 | 难度  | 链接                                                 |
 | ---- | ----------------- | -------------------- | ------ | ---------------------------------------------------- |
+| 0308 | 02659: Bomb Game  | matrices  | Medium   | http://cs101.openjudge.cn/practice/02659/      |
+| 0308 | 2597.美丽子集的数目 | backtracking, combinations    | Medium    | https://leetcode.cn/problems/the-number-of-beautiful-subsets/      |
 | 0307 | 02488:A Knight's Journey  | backtracking    | Touch  | http://cs101.openjudge.cn/2025sp_routine/02488/      |
 | 0307 | 78.子集  | backtracking   | Medium    | https://leetcode.cn/problems/subsets/      |
 | 0306 | 06648: Sequence    | heap   | Tough    | http://cs101.openjudge.cn/2025sp_routine/06648/      |
