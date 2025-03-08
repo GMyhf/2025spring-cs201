@@ -1,6 +1,6 @@
 # AI Accepted locally
 
-Updated 1739 GMT+8 Mar 6 2025
+Updated 2047 GMT+8 Mar 8 2025
 
 2025 spring, Complied by Hongfei Yan
 
@@ -865,7 +865,7 @@ http://cs101.openjudge.cn/practice/16528/
 >    if start > last_end:
 >
 >        count +=1
->                                        
+>                                            
 >        last_end = end
 >
 > 7. 最后输出count的值。
@@ -1460,10 +1460,10 @@ tags: string, sort
 >     match = re.match(r'^(\d+\.?\d*)([A-Za-z]+)$', param_part)
 >     if not match:
 >         continue  # 或者处理错误情况，但题目中假设输入正确
->                                     
+>                                         
 >     num_str, unit = match.groups()
 >     num = float(num_str)
->                                     
+>                                         
 >     if unit == 'B':
 >         num_m = num * 1000
 >     elif unit == 'M':
@@ -1471,7 +1471,7 @@ tags: string, sort
 >     else:
 >         # 其他情况，但题目中没有说明，可以忽略？
 >         continue
->                                     
+>                                         
 >     if name_part not in model_dict:
 >         model_dict[name_part] = []
 >     model_dict[name_part].append( (num_m, param_part) )
@@ -2199,7 +2199,120 @@ http://cs101.openjudge.cn/practice/29256/
 
 
 
-## Todo
+## P1002 [NOIP 2002 普及组] 过河卒
+
+dp, https://www.luogu.com.cn/problem/P1002
+
+棋盘上 $A$ 点有一个过河卒，需要走到目标 $B$ 点。卒行走的规则：可以向下、或者向右。同时在棋盘上 $C$ 点有一个对方的马，该马所在的点和所有跳跃一步可达的点称为对方马的控制点。因此称之为“马拦过河卒”。
+
+棋盘用坐标表示，$A$ 点 $(0, 0)$、$B$ 点 $(n, m)$，同样马的位置坐标是需要给出的。
+
+<img src="https://cdn.luogu.com.cn/upload/image_hosting/ipmwl52i.png" style="zoom: 33%;" />
+
+现在要求你计算出卒从 $A$ 点能够到达 $B$ 点的路径的条数，假设马的位置是固定不动的，并不是卒走一步马走一步。
+
+**输入格式**
+
+一行四个正整数，分别表示 $B$ 点坐标和马的坐标。
+
+**输出格式**
+
+一个整数，表示所有的路径条数。
+
+**输入输出样例 #1**
+
+**输入 #1**
+
+```
+6 6 3 3
+```
+
+**输出 #1**
+
+```
+6
+```
+
+**说明/提示**
+
+对于 $100 \%$ 的数据，$1 \le n, m \le 20$，$0 \le$ 马的坐标 $\le 20$。
+
+**【题目来源】**
+
+NOIP 2002 普及组第四题
+
+
+
+
+
+解题思路：过河卒问题是一个经典的动态规划问题。需要计算从起点 $(0, 0)$ 到终点 $(n, m)$ 的路径数，同时需要避开对方马的控制点。
+
+**动态规划状态定义**
+
+用 `dp[i][j]` 表示从起点 $(0, 0)$ 到达位置 $(i, j)$ 的路径数。初始时，`dp[0][0] = 1`，因为从起点到起点只有一种方式。
+
+**动态规划状态转移**
+
+对于每个位置 $(i, j)$，可以通过以下两种方式到达：
+
+1. 从上方 $(i-1, j)$ 向下走一步。
+2. 从左方 $(i, j-1)$ 向右走一步。
+
+因此，状态转移方程为：
+`dp[i][j] = dp[i-1][j] + dp[i][j-1]`
+
+需要在计算路径数时，避开对方马的控制点。如果位置 $(i, j)$ 是对方马的控制点，则 `dp[i][j] = 0`。
+
+代码实现
+
+```python
+def count_paths(n, m, horse_x, horse_y):
+    # 初始化 dp 数组
+    dp = [[0 for _ in range(m + 1)] for _ in range(n + 1)]
+    
+    # 避开对方马的控制点
+    def is_control_point(x, y):
+        if x == horse_x and y == horse_y:
+            return True
+        if abs(horse_x - x) == 2 and abs(horse_y - y) == 1:
+            return True
+        if abs(horse_x - x) == 1 and abs(horse_y - y) == 2:
+            return True
+        return False
+    
+    # 设置起点
+    dp[0][0] = 1
+    
+    # 填充 dp 数组
+    for i in range(n + 1):
+        for j in range(m + 1):
+            if is_control_point(i, j):
+                dp[i][j] = 0
+            else:
+                if i > 0:
+                    dp[i][j] += dp[i-1][j]
+                if j > 0:
+                    dp[i][j] += dp[i][j-1]
+    
+    return dp[n][m]
+
+# 输入读取
+n, m, horse_x, horse_y = map(int, input().split())
+
+# 计算并输出结果
+print(count_paths(n, m, horse_x, horse_y))
+```
+
+解释
+
+1. **初始化 `dp` 数组**：我们创建一个大小为 `(n+1) x (m+1)` 的二维数组 `dp`，初始值全为 0。
+2. **避开对方马的控制点**：定义一个辅助函数 `is_control_point(x, y)` 来判断位置 $(x, y)$ 是否是对方马的控制点。如果是，则将 `dp[x][y]` 设为 0。
+3. **设置起点**：将 `dp[0][0]` 设为 1，表示从起点到起点只有一种方式。
+4. **填充 `dp` 数组**：使用双重循环遍历每个位置 $(i, j)$，如果该位置不是对方马的控制点，则根据状态转移方程更新 `dp[i][j]`。
+
+通过这种方式，我们可以计算出过河卒从起点到终点的所有路径数，并避开对方马的控制点。
+
+<mark>使用本地部署qwen2.5-coder:7b模型，成功AC</mark>
 
 
 
