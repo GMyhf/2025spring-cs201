@@ -20,6 +20,9 @@ Updated 1738 GMT+8 Mar 9 2025.
 
 | 日期 | 问题编号与名称    | 标签                 | 难度  | 链接                                                 |
 | ---- | ----------------- | -------------------- | ------ | ---------------------------------------------------- |
+| 0311 |      | -    | -    |      |
+| 0310 | 20140:今日化学论文 | stack    | Medium    | http://cs101.openjudge.cn/practice/20140/      |
+| 0310 | 2070.每一个查询的最大美丽值   | binary search    | Medium     | https://leetcode.cn/problems/most-beautiful-item-for-each-query/      |
 | 0309 | 03704:扩号匹配问题 | stack    | Easy    | http://cs101.openjudge.cn/2025sp_routine/03704/      |
 | 0309 | 394.字符串解码     | stack    | Medium | https://leetcode.cn/problems/decode-string/     |
 | 0308 | 02659: Bomb Game  | matrices  | Medium   | http://cs101.openjudge.cn/practice/02659/      |
