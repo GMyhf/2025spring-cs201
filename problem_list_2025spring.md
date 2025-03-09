@@ -2,7 +2,7 @@
 
 https://github.com/GMyhf/2025spring-cs201/blob/main/problem_list_2025spring.md
 
-Updated 0020 GMT+8 Mar 9 2025.
+Updated 1738 GMT+8 Mar 9 2025.
 2025 spring, Complied by Hongfei Yan
 
 题解在：
@@ -20,7 +20,7 @@ Updated 0020 GMT+8 Mar 9 2025.
 
 | 日期 | 问题编号与名称    | 标签                 | 难度  | 链接                                                 |
 | ---- | ----------------- | -------------------- | ------ | ---------------------------------------------------- |
-| 0309 | 03704:扩号匹配问题 | stack    | -    | http://cs101.openjudge.cn/2025sp_routine/03704/      |
+| 0309 | 03704:扩号匹配问题 | stack    | Easy    | http://cs101.openjudge.cn/2025sp_routine/03704/      |
 | 0309 | 394.字符串解码     | stack    | Medium | https://leetcode.cn/problems/decode-string/     |
 | 0308 | 02659: Bomb Game  | matrices  | Medium   | http://cs101.openjudge.cn/practice/02659/      |
 | 0308 | 2597.美丽子集的数目 | backtracking, combinations    | Medium    | https://leetcode.cn/problems/the-number-of-beautiful-subsets/      |
@@ -38,13 +38,13 @@ Updated 0020 GMT+8 Mar 9 2025.
 | 0302 | LCR 107.01 矩阵     | dp    | Medium    | https://leetcode.cn/problems/2bCMpM/     |
 | 0301 | 01088: 滑雪 | dp    | Medium    | http://cs101.openjudge.cn/2025sp_routine/01088      |
 | 0301 | 994.腐烂的橘子     | bfs    | Medium    | https://leetcode.cn/problems/rotting-oranges/      |
-| 0228 | 18161:矩阵运算(先乘再加) | matrices, AI    | Easy  | http://cs101.openjudge.cn/2025sp_routine/18161/      |
+| 0228 | 18161:矩阵运算(先乘再加) | matrices, OOP, AI    | Easy  | http://cs101.openjudge.cn/2025sp_routine/18161/      |
 | 0228 | 2502.设计内存分配器 | OOP, implementation  | Medium    | https://leetcode.cn/problems/design-memory-allocator/     |
 | 0227 | 04140: 方程求解   | 牛顿迭代法, AI  | Medium | http://cs101.openjudge.cn/2025sp_routine/04140/      |
 | 0227 | 48.旋转图像     | matrices    | Medium   | https://leetcode.cn/problems/rotate-image/      |
 | 0226 | 01328:Radar Installation     | greedy    | Medium    | http://cs101.openjudge.cn/2025sp_routine/01328/      |
 | 0226 | 56.合并区间     | greedy    | Easy    | https://leetcode.cn/problems/merge-intervals/     |
-| 0225 | 27256: 当前队列中位数  | OOP, data structures    | Tough    | http://cs101.openjudge.cn/2025sp_routine/27256/      |
+| 0225 | 27256: 当前队列中位数  | data structures, OOP    | Tough    | http://cs101.openjudge.cn/2025sp_routine/27256/      |
 | 0225 | 100576.提取至多K个元素的最大总和     | data structures | Medium | https://leetcode.cn/problems/maximum-sum-with-at-most-k-elements/ |
 | 0224 | 04093: 倒排索引查询| data structures, IR | Tough | http://cs101.openjudge.cn/practice/04093/     |
 | 0224 | 2906.构造乘积矩阵  | matrices, prefix sum | Medium | https://leetcode.cn/problems/construct-product-matrix/      |
