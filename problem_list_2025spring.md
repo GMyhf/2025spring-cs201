@@ -2,7 +2,7 @@
 
 https://github.com/GMyhf/2025spring-cs201/blob/main/problem_list_2025spring.md
 
-Updated 2242 GMT+8 Mar 10 2025.
+Updated 1046 GMT+8 Mar 11 2025.
 2025 spring, Complied by Hongfei Yan
 
 题解在：
@@ -20,6 +20,9 @@ Updated 2242 GMT+8 Mar 10 2025.
 
 | 日期 | 问题编号与名称    | 标签                 | 难度  | 链接                                                 |
 | ---- | ----------------- | -------------------- | ------ | ---------------------------------------------------- |
+|      |      | -    | -    | graph recap   |
+|      |      | -    | -    |      |
+|      |      | -    | -    | tree begin   |
 | 0312 | 02815: 城堡问题     | dfs, bit manipulation    | Tough    | http://cs101.openjudge.cn/practice/02815/      |
 | 0312 | 234.回文链表     | linked list    | Easy    | https://leetcode.cn/problems/palindrome-linked-list/     |
 |      |      | -    | -    | linked list begin   |
