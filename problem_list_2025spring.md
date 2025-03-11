@@ -22,7 +22,7 @@ Updated 1046 GMT+8 Mar 11 2025.
 | ---- | ----------------- | -------------------- | ------ | ---------------------------------------------------- |
 |      |      | -    | -    | tree begin, graph recap   |
 |      |      | -    | -    |      |
-| 0312 | 02815: 城堡问题     | dfs, bit manipulation    | Tough    | http://cs101.openjudge.cn/practice/02815/      |
+| 0312 | 02815: 城堡问题     | dfs, bit manipulation    | Tough    | http://cs101.openjudge.cn/2025sp_routine/02815/      |
 | 0312 | 234.回文链表     | linked list,two pointers    | Easy    | https://leetcode.cn/problems/palindrome-linked-list/     |
 |      |      | -    | -    | linked list begin   |
 | 0311 | 02694:波兰表达式  | dfs    | Easy    | http://cs101.openjudge.cn/2025sp_routine/02694/      |
