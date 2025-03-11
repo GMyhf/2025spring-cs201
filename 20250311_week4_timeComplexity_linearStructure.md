@@ -1,6 +1,6 @@
-# Week4 时间复杂度 & 线性数据结构
+# Week4 线性数据结构&时间复杂度
 
-Updated 1848 GMT+8 Mar 4, 2025
+Updated 1422 GMT+8 Mar 11, 2025
 
 2025 spring, Complied by Hongfei Yan
 
@@ -8,15 +8,529 @@ Updated 1848 GMT+8 Mar 4, 2025
 
 Logs:
 
-> 假期按照4周计算，对应学期中4个月，即每周要完成1个月的工作量。计划是第一周线性结构（链表，stack, queue, Big-O，排序等），第二周树，第三周图，第四周综合。假期每日选做争取累计满100个，1/3是树的题目，1/3是图，其他占1/3。
+> 2025/03/11, 因为assign#4 留了链表题目，我们<mark>先从 3 基本数据结构讲起</mark>，之后再讲 2 时间复杂度。
 >
 > cs201数算（计算机基础2/2）2025pre每日选做，https://github.com/GMyhf/2025spring-cs201/blob/main/pre_problem_list_2025spring.md
 >
-> 《Python数据结构与算法分析》v2与v3基本一致的，新版程序更规范了。我们按照v3讲，书上不足的地方，会有其他材料补充。https://runestone.academy/ns/books/published/pythonds3/index.html
+> 《Python数据结构与算法分析》v2与v3基本一致的，新版程序更规范了。我们会选讲v3部分内容，书上不足的地方，有其他材料补充。https://runestone.academy/ns/books/published/pythonds3/index.html
 
 
 
-... continue
+# 0 Recap复习
+
+## 0.1 OOP面向对象编程
+
+### 18161: 矩阵运算（先乘再加）
+
+matrices, OOP, http://cs101.openjudge.cn/practice/18161
+
+
+
+创建<mark>自己的数据类型</mark>
+
+```python
+# 颜鼎堃 24工学院
+class Matrix():
+    def __init__(self, row, col, val):
+        self.row = row
+        self.col = col
+        self.val = val
+
+    def __add__(self, other):
+        if self.row != other.row or self.col != other.col:
+            raise ValueError
+        ans = [[self.val[i][j] + other.val[i][j] for j in range(self.col)] for i in range(self.row)]
+        return Matrix(self.row, self.col, ans)
+
+    def __str__(self):
+        ans = []
+        for r in self.val:
+            ans.append(" ".join(map(str, r)))
+        return "\n".join(ans)
+
+    def __mul__(self, other):
+        if self.col != other.row:
+            raise ValueError
+        ans = [[0 for i in range(other.col)] for j in range(self.row)]
+        for i in range(self.row):
+            for j in range(other.col):
+                for k in range(self.col):
+                    ans[i][j] += self.val[i][k] * other.val[k][j]
+        return Matrix(self.row, other.col, ans)
+
+
+A = []
+for i in range(3):
+    row, col = map(int, input().split())
+    val = [list(map(int, input().split())) for i in range(row)]
+    A.append(Matrix(row, col, val))
+try:
+    print(A[0] * A[1] + A[2])
+except ValueError:
+    print("Error!")
+```
+
+
+
+### 19942: 二维矩阵上的卷积运算
+
+matrices, OOP, http://cs101.openjudge.cn/practice/19942/
+
+OOP<mark>继承</mark>
+
+```python
+class Matrix():
+    def __init__(self, row, col, val):
+        self.row = row
+        self.col = col
+        self.val = val
+
+    def __add__(self, other):
+        if self.row != other.row or self.col != other.col:
+            raise ValueError
+        ans = [[self.val[i][j] + other.val[i][j] for j in range(self.col)] for i in range(self.row)]
+        return Matrix(self.row, self.col, ans)
+
+    def __str__(self):
+        ans = []
+        for r in self.val:
+            ans.append(" ".join(map(str, r)))
+        return "\n".join(ans)
+
+    def __mul__(self, other):
+        if self.col != other.row:
+            raise ValueError
+        ans = [[0 for i in range(other.col)] for j in range(self.row)]
+        for i in range(self.row):
+            for j in range(other.col):
+                for k in range(self.col):
+                    ans[i][j] += self.val[i][k] * other.val[k][j]
+        return Matrix(self.row, other.col, ans)
+
+
+class ConvMatrix(Matrix):
+    def __init__(self, row, col, val):
+        super().__init__(row, col, val)
+
+    def conv2d(self, kernel):
+        # 获取卷积核的尺寸
+        k_row, k_col = len(kernel), len(kernel[0])
+
+        # 计算输出矩阵的尺寸
+        out_row = self.row - k_row + 1
+        out_col = self.col - k_col + 1
+
+        # 初始化输出矩阵
+        output_val = [[0] * out_col for _ in range(out_row)]
+
+        # 进行卷积运算
+        for i in range(out_row):
+            for j in range(out_col):
+                for ki in range(k_row):
+                    for kj in range(k_col):
+                        output_val[i][j] += self.val[i + ki][j + kj] * kernel[ki][kj]
+
+        return Matrix(out_row, out_col, output_val)
+
+
+if __name__ == "__main__":
+    m, n, p, q = map(int, input().split())
+    M = ConvMatrix(m, n, [list(map(int, input().split())) for _ in range(m)])
+
+    kernel = []
+    for _ in range(p):
+        kernel.append(list(map(int, input().split())))
+
+    result = M.conv2d(kernel)
+    for row in result.val:
+        print(" ".join(map(str, row)))
+```
+
+
+
+## 0.2 binary search + greedy二分
+
+二分+贪心题目类型，需要掌握了。这类问题通常涉及求解最小化最大值（minMax）或最大化最小值（maxMin）。遇到此类问题时，应考虑使用二分查找配合贪心策略来进行判定。
+
+> <img src="https://raw.githubusercontent.com/GMyhf/img/main/img/image-20231212104106505.png" alt="image-20231212104106505" style="zoom:50%;" />
+>
+> 数院胡睿诚：这就是个求最小值的最大值或者最大值的最小值的一个套路。
+>
+> 求最值转化为判定对不对，判定问题是可以用贪心解决的，然后用二分只用判定log次。
+
+
+
+### 08210: 河中跳房子/石头
+
+binary search/greedy, http://cs101.openjudge.cn/practice/08210
+
+
+
+```python
+L,n,m = map(int,input().split())
+rock = [0]
+for i in range(n):
+    rock.append(int(input()))
+rock.append(L)
+
+def check(x):
+    num = 0
+    now = 0
+    for i in range(1, n+2):
+        if rock[i] - now < x:
+            num += 1
+        else:
+            now = rock[i]
+            
+    if num > m:
+        return True
+    else:
+        return False
+
+# https://github.com/python/cpython/blob/main/Lib/bisect.py
+'''
+2022fall-cs101，刘子鹏，元培。
+源码的二分查找逻辑是给定一个可行的下界和不可行的上界，通过二分查找，将范围缩小同时保持下界可行而区间内上界不符合，
+但这种最后print(lo-1)的写法的基础是最后夹出来一个不可行的上界，但其实L在这种情况下有可能是可行的
+（考虑所有可以移除所有岩石的情况），所以我觉得应该将上界修改为不可能的 L+1 的逻辑才是正确。
+例如：
+25 5 5
+1
+2
+3
+4
+5
+
+应该输出 25
+'''
+# lo, hi = 0, L
+lo, hi = 0, L+1
+ans = -1
+while lo < hi:
+    mid = (lo + hi) // 2
+    
+    if check(mid):
+        hi = mid
+    else:               # 返回False，有可能是num==m
+        ans = mid       # 如果num==m, mid就是答案
+        lo = mid + 1
+        
+#print(lo-1)
+print(ans)
+```
+
+
+
+### 04135: 月度开销
+
+binary search/greedy , http://cs101.openjudge.cn/practice/04135
+
+
+
+```python
+n,m = map(int, input().split())
+expenditure = []
+for _ in range(n):
+    expenditure.append(int(input()))
+
+def check(x):
+    num, s = 1, 0
+    for i in range(n):
+        if s + expenditure[i] > x:
+            s = expenditure[i]
+            num += 1
+        else:
+            s += expenditure[i]
+    
+    return [False, True][num > m]
+
+# https://github.com/python/cpython/blob/main/Lib/bisect.py
+lo = max(expenditure)
+# hi = sum(expenditure)
+hi = sum(expenditure) + 1
+ans = 1
+while lo < hi:
+    mid = (lo + hi) // 2
+    if check(mid):      # 返回True，是因为num>m，是确定不合适
+        lo = mid + 1    # 所以lo可以置为 mid + 1。
+    else:
+        ans = mid    # 如果num==m, mid就是答案
+        hi = mid
+        
+#print(lo)
+print(ans)
+```
+
+
+
+### LC1760.袋子里最少数目的球
+
+中等, 二分查找，https://leetcode.cn/problems/minimum-limit-of-balls-in-a-bag/
+
+
+
+Deepseek Coder v2 Lite Instruct 4bit mlx: Beaking the Barrier of Closed-Source models in Code Intelligence. 16B, 8.84GB, last updated: 238 days ago.
+
+
+
+![image-20250311094233684](https://raw.githubusercontent.com/GMyhf/img/main/img/image-20250311094233684.png)
+
+
+
+要解决这个问题，我们可以使用二分查找来找到最小的开销。具体来说，我们设定一个可能的最小开销 `x`，然后检查是否可以在给定的操作次数内将所有袋子中的球数目减少到 `x` 以下。如果可以，我们就尝试缩小开销；否则，我们就增大开销。
+
+下面是实现这个算法的 Python 代码：
+
+```python
+def min_cost(nums, maxOperations):
+    def can_achieve(threshold):
+        operations = 0
+        for num in nums:
+            if num > threshold:
+                operations += (num - 1) // threshold
+        return operations <= maxOperations
+    
+    left, right = 1, max(nums)
+    while left < right:
+        mid = (left + right) // 2
+        if can_achieve(mid):
+            right = mid
+        else:
+            left = mid + 1
+    return left
+
+# 示例测试
+nums1 = [9]
+maxOperations1 = 2
+print(min_cost(nums1, maxOperations1))  # 输出: 3
+
+nums2 = [2, 4, 8, 2]
+maxOperations2 = 4
+print(min_cost(nums2, maxOperations2))  # 输出: 2
+
+nums3 = [7, 17]
+maxOperations3 = 2
+print(min_cost(nums3, maxOperations3))  # 输出: 7
+```
+
+代码解释：
+
+1. **`can_achieve(threshold)`**:
+   - 这个函数用于检查在给定的操作次数内，是否可以将所有袋子中的球数目减少到 `threshold` 以下。
+   - 对于每个袋子，如果袋子中的球数目大于 `threshold`，我们就需要进行分割操作。具体来说，分割的次数是 `(num - 1) // threshold`。
+   - 如果总的分割次数不超过 `maxOperations`，那么就返回 `True`，否则返回 `False`。
+
+2. **二分查找**:
+   - 我们设定一个可能的最小开销 `left` 为 `1`，最大开销 `right` 为 `max(nums)`。
+   - 在每次迭代中，计算中间值 `mid`，并检查是否可以在这个开销下完成分割操作。
+   - 如果可以，就尝试缩小开销范围（即 `right = mid`）；否则，增大开销范围（即 `left = mid + 1`）。
+   - 最终，当 `left` 和 `right` 相等时，就找到了最小的开销。
+
+这个算法的时间复杂度是 O(n log m)，其中 n 是数组的长度，m 是数组中最大元素的值。这个复杂度是可以接受的，因为题目给定的约束条件是 `1 <= nums[i] <= 10^9`，所以 `m` 的最大值是 `10^9`。
+
+
+
+
+
+
+
+## 0.3 Information Retrieval 中的倒排索引
+
+信息检索中的倒排索引
+
+搜索引擎的工作机制涉及网页的抓取，每个被获取到的网页被视为一个文档（doc），并被处理转化为一系列的标记（token）。为了确保在用户进行搜索时能够快速响应，搜索引擎会预先构建一种从标记到文档的映引结构，即所谓的倒排索引。这是因为用户的查询输入通常是一个或多个标记。
+
+具体来说，从文档到标记的映射被称为**正排索引**，而从标记指向包含该标记的文档（例如：标记 -> 文档_i, 文档_j, ...）的映射则被称为**倒排索引**。这种命名方式正是基于上述两种映射的方向性差异而来的。倒排索引是提升搜索效率的关键技术之一，它使得搜索引擎能够在大量文档中迅速定位到含有特定标记的所有文档。
+
+
+
+### 06640: 倒排索引
+
+data structures, http://cs101.openjudge.cn/practice/06640/
+
+
+
+输入给出的是正排索引，输出要求倒排索引
+
+```python
+from collections import defaultdict
+def main():
+    n = int(input())
+    index = 1
+    inverted_index = defaultdict(set)   # 构建倒排索引
+    for i in range(1, n + 1):
+        parts = input().split()
+        doc_id = i
+        num_words = int(parts[0])
+        words = parts[1:num_words + 1]
+        for word in words:
+            inverted_index[word].add(doc_id)
+
+    m = int(input())
+    results = []
+
+    # 查询倒排索引
+    for _ in range(m):
+        query = input()
+        if query in inverted_index:
+            results.append(" ".join(map(str, sorted(list(inverted_index[query])))))
+        else:
+            results.append("NOT FOUND")
+
+    # 输出查询结果
+    for result in results:
+        print(result)
+
+if __name__ == "__main__":
+    main()
+```
+
+
+
+### 04093: 倒排索引查询
+
+data structures, http://cs101.openjudge.cn/practice/04093/
+
+
+
+输入给出的是倒排索引。
+
+处理查询：
+
+- 单词查询：对于单个词的查询，搜索引擎直接返回该词的倒排列表。
+- 多词交集查询：对于包含多个词的查询，搜索引擎找到每个词的倒排列表，然后计算这些列表的交集。
+  这个交集代表了所有查询词都出现的文档集合。
+- 复杂逻辑处理：对于包含逻辑运算（AND, OR, NOT）的查询，搜索引擎会结合使用集合的
+  交集（AND）、并集（OR）和差集（NOT）操作来处理查询。特别是在处理 NOT 逻辑时，
+  它并不是去查找那些未出现词的文档集合，而是从已经确定的结果集中排除含有这个词的文档。
+
+```python
+import sys
+
+
+def main():
+    data = sys.stdin.read().split()
+    it = iter(data)
+
+    # 读入倒排索引的词数
+    N = int(next(it))
+    inverted = []
+    for _ in range(N):
+        # 每个词的出现文档数
+        count = int(next(it))
+        docs = set()
+        for _ in range(count):
+            docs.add(int(next(it)))
+        inverted.append(docs)
+
+    # 读入查询数目
+    M = int(next(it))
+    output_lines = []
+    for _ in range(M):
+        # 每个查询包含 N 个数字
+        query = [int(next(it)) for _ in range(N)]
+        candidate = None
+        # 处理必须出现的词（值为 1）：取交集
+        for j in range(N):
+            if query[j] == 1:
+                if candidate is None:
+                    candidate = inverted[j].copy()  # 集合初始化
+                else:
+                    candidate &= inverted[j]
+        # 处理必须不出现的词（值为 -1）：从候选集合中剔除
+        for j in range(N):
+            if query[j] == -1:
+                candidate -= inverted[j]
+        # 输出结果
+        if candidate:
+            result_line = " ".join(map(str, sorted(candidate)))
+            output_lines.append(result_line)
+        else:
+            output_lines.append("NOT FOUND")
+
+    sys.stdout.write("\n".join(output_lines))
+
+
+if __name__ == '__main__':
+    main()
+```
+
+
+
+## 0.4 Heap堆
+
+### 06648: Sequence
+
+heap, merge http://cs101.openjudge.cn/practice/06648/
+
+
+
+```python
+import sys
+import heapq
+
+def merge(arr1, arr2, n):
+    """
+    将两个有序数组 arr1 和 arr2 合并，求出所有组合中最小的 n 个和
+    使用堆来进行合并搜索
+    """
+    heap = []
+    visited = set()
+    # 初始候选项：(arr1[0]+arr2[0], 0, 0)
+    heapq.heappush(heap, (arr1[0] + arr2[0], 0, 0))
+    visited.add((0, 0))
+    result = []
+    while len(result) < n:
+        s, i, j = heapq.heappop(heap)
+        result.append(s)
+        # 如果 arr1 中的下一个数存在，尝试加入候选项
+        if i + 1 < n and (i + 1, j) not in visited:
+            heapq.heappush(heap, (arr1[i + 1] + arr2[j], i + 1, j))
+            visited.add((i + 1, j))
+        # 如果 arr2 中的下一个数存在，尝试加入候选项
+        if j + 1 < n and (i, j + 1) not in visited:
+            heapq.heappush(heap, (arr1[i] + arr2[j + 1], i, j + 1))
+            visited.add((i, j + 1))
+    return result
+
+def main():
+    input_data = sys.stdin.read().split()
+    it = iter(input_data)
+    T = int(next(it))
+    results = []
+    for _ in range(T):
+        m = int(next(it))
+        n = int(next(it))
+        # 读取第一个序列，并排序
+        current = sorted(int(next(it)) for _ in range(n))
+        # 依次与后续的 m-1 个序列合并
+        for _ in range(m - 1):
+            seq = sorted(int(next(it)) for _ in range(n))
+            current = merge(current, seq, n)
+        results.append(" ".join(map(str, current)))
+    sys.stdout.write("\n".join(results))
+
+if __name__ == "__main__":
+    main()
+```
+
+
+
+## Assign4-Q6.交互可视化neural network
+
+https://developers.google.com/machine-learning/crash-course/neural-networks/interactive-exercises
+
+**Your task:** configure a neural network that can separate the orange dots from the blue dots in the diagram, achieving a loss of less than 0.2 on both the training and test data.
+
+![image-20250311112914644](https://raw.githubusercontent.com/GMyhf/img/main/img/image-20250311112914644.png)
+
+
+
+
+
+# Continuing with the content from 03/04/2025...
+
+
 
 # 2 Time Complexities Big-O
 
@@ -686,13 +1200,13 @@ You may see that the selection sort makes the same number of comparisons as the 
 
 **Complexity Analysis of Selection Sort**
 
-**Time Complexity:** The time complexity of Selection Sort is **O(N2)** as there are two nested loops:
+**Time Complexity:** The time complexity of Selection Sort is $O(N^2) $as there are two nested loops:
 
-- One loop to select an element of Array one by one = O(N)
-- Another loop to compare that element with every other Array element = O(N)
-- Therefore overall complexity = O(N) * O(N) = O(N*N) = O(N2)
+- One loop to select an element of Array one by one = $O(N)$
+- Another loop to compare that element with every other Array element = $O(N)$
+- Therefore overall complexity = O(N) * O(N) = O(N*N) = $O(N^2)$
 
-**Auxiliary Space:** O(1) as the only extra memory used is for temporary variables while swapping two values in Array. The selection sort never makes more than O(N) swaps and can be useful when memory writing is costly. 
+**Auxiliary Space:** $O(1)$ as the only extra memory used is for temporary variables while swapping two values in Array. The selection sort never makes more than $O(N)$ swaps and can be useful when memory writing is costly. 
 
 
 
@@ -816,15 +1330,15 @@ We mentioned earlier that <mark>there are different ways to choose the pivot val
 
 Time Complexity:
 
-- Best Case: $\Omega(N log (N))$
+- Best Case: $\Omega(N log N)$
   The best-case scenario for quicksort occur when the pivot chosen at the each step divides the array into roughly equal halves.
   In this case, the algorithm will make balanced partitions, leading to efficient Sorting.
-- Average Case: $\Theta ( N log (N))$
+- Average Case: $\Theta ( N log N)$
   Quicksort’s average-case performance is usually very good in practice, making it one of the fastest sorting Algorithm.
 - Worst Case: $O(N^2)$
   The worst-case Scenario for Quicksort occur when the pivot at each step consistently results in highly unbalanced partitions. When the array is already sorted and the pivot is always chosen as the smallest or largest element. To mitigate the worst-case Scenario, various techniques are used such as choosing a good pivot (e.g., median of three) and using Randomized algorithm (Randomized Quicksort ) to shuffle the element before sorting.
 
-Auxiliary Space: O(1), if we don’t consider the recursive stack space. If we consider the recursive stack space then, in the worst case quicksort could make O(N).
+Auxiliary Space: $O(1)$, if we don’t consider the recursive stack space. If we consider the recursive stack space then, in the worst case quicksort could make $O(N)$.
 
 
 
@@ -932,7 +1446,7 @@ if __name__ == '__main__':
 
 **Complexity Analysis of Merge Sort**
 
-Time Complexity: O(N log(N)),  Merge Sort is a recursive algorithm and time complexity can be expressed as following recurrence relation. 
+Time Complexity: $O(N logN)$,  Merge Sort is a recursive algorithm and time complexity can be expressed as following recurrence relation. 
 
 > T(n) = 2T(n/2) + θ(n)
 
@@ -1106,39 +1620,62 @@ merge sort, http://cs101.openjudge.cn/practice/02299/
 
 # 3 基本数据结构
 
-**What Are Linear Structures?**
+**What Are Linear Structures? 线性结构**
 
-We will begin our study of data structures by considering four simple but very powerful concepts. Stacks, queues, deques, and lists are examples of data collections whose items are ordered depending on how they are added or removed. Once an item is added, it stays in that position relative to the other elements that came before and came after it. Collections such as these are often referred to as **linear data structures**.
+我们将通过考虑四个简单但非常强大的概念开始数据结构的研究。栈、队列、双端队列和列表是数据集合的例子，它们的项目根据添加或移除的方式有序排列。一旦一个项目被添加，它相对于之前和之后添加的其他元素的位置保持不变。像这样的集合通常被称为**线性数据结构**。
 
-Linear structures can be thought of as having two ends. Sometimes these ends are referred to as the “left” and the “right” or in some cases the “front” and the “rear.” You could also call them the “top” and the “bottom.” The names given to the ends are not significant. What distinguishes one linear structure from another is the way in which items are added and removed, in particular the location where these additions and removals occur. For example, a structure might allow new items to be added at only one end. Some structures might allow items to be removed from either end.
+> We will begin our study of data structures by considering four simple but very powerful concepts. Stacks, queues, deques, and lists are examples of data collections whose items are ordered depending on how they are added or removed. Once an item is added, it stays in that position relative to the other elements that came before and came after it. Collections such as these are often referred to as **linear data structures**.
 
-These variations give rise to some of the most useful data structures in computer science. They appear in many algorithms and can be used to solve a variety of important problems.
+线性结构可以被认为有两个端点。有时这些端点被称作“左”和“右”，或者在某些情况下称为“前”和“后”。你也可以称它们为“顶”和“底”。赋予这些端点的名称并不重要。区分一种线性结构与另一种线性结构的是项目如何被添加和移除，尤其是这些添加和移除发生的位置。例如，某种结构可能只允许在一端添加新项目。而有些结构可能允许从两端移除项目。
 
+这些变化产生了计算机科学中一些最有用的数据结构。它们出现在许多算法中，并且可用于解决各种重要的问题。
 
-
-**What is a Stack?**
-
-A **stack** (sometimes called a “push-down stack”) is an ordered collection of items where the addition of new items and the removal of existing items always takes place at the same end. This end is commonly referred to as the “top.” The end opposite the top is known as the “base.”
-
-The base of the stack is significant since items stored in the stack that are closer to the base represent those that have been in the stack the longest. The most recently added item is the one that is in position to be removed first. This ordering principle is sometimes called **LIFO**, **last-in first-out**. It provides an ordering based on length of time in the collection. Newer items are near the top, while older items are near the base.
-
-Many examples of stacks occur in everyday situations. Almost any cafeteria has a stack of trays or plates where you take the one at the top, uncovering a new tray or plate for the next customer in line.
+> Linear structures can be thought of as having two ends. Sometimes these ends are referred to as the “left” and the “right” or in some cases the “front” and the “rear.” You could also call them the “top” and the “bottom.” The names given to the ends are not significant. What distinguishes one linear structure from another is the way in which items are added and removed, in particular the location where these additions and removals occur. For example, a structure might allow new items to be added at only one end. Some structures might allow items to be removed from either end.
+>
+> These variations give rise to some of the most useful data structures in computer science. They appear in many algorithms and can be used to solve a variety of important problems.
+>
 
 
 
-**What Is a Queue?**
+**What is a Stack? 栈**
 
-A queue is an ordered collection of items where the addition of new items happens at one end, called the “rear,” and the removal of existing items occurs at the other end, commonly called the “front.” As an element enters the queue it starts at the rear and makes its way toward the front, waiting until that time when it is the next element to be removed.
+**栈**（有时被称为“压入栈”）是一种有序的项目集合，其中新项目的添加和现有项目的移除总是在同一端进行。这一端通常被称为“顶端”。与顶端相对的另一端被称为“基底”。
 
-The most recently added item in the queue must wait at the end of the collection. The item that has been in the collection the longest is at the front. This ordering principle is sometimes called **FIFO**, **first-in first-out**. It is also known as “first-come first-served.”
+栈的基底是重要的，因为存储在栈中靠近基底的项目代表了在栈中最久的项目。最近添加的项目是准备首先被移除的那个。这种排序原则有时被称为**LIFO（后进先出）**。它提供了一种基于项目在集合中停留时间长短的排序。较新的项目接近顶端，而较旧的项目接近基底。
+
+日常生活中有许多栈的例子。几乎任何自助餐厅都有一个托盘或盘子的堆栈，你可以从顶部取走一个，为下一位排队的顾客露出一个新的托盘或盘子。
+
+> A **stack** (sometimes called a “push-down stack”) is an ordered collection of items where the addition of new items and the removal of existing items always takes place at the same end. This end is commonly referred to as the “top.” The end opposite the top is known as the “base.”
+>
+> The base of the stack is significant since items stored in the stack that are closer to the base represent those that have been in the stack the longest. The most recently added item is the one that is in position to be removed first. This ordering principle is sometimes called **LIFO**, **last-in first-out**. It provides an ordering based on length of time in the collection. Newer items are near the top, while older items are near the base.
+>
+> Many examples of stacks occur in everyday situations. Almost any cafeteria has a stack of trays or plates where you take the one at the top, uncovering a new tray or plate for the next customer in line.
+>
 
 
 
-**线性表**是一种逻辑结构，描述了元素按线性顺序排列的规则。常见的线性表存储方式有**数组**和**链表**，它们在不同场景下具有各自的优势和劣势。
+**What Is a Queue? 队列**
 
-数组是一种连续存储结构，它将线性表的元素按照一定的顺序依次存储在内存中的连续地址空间上。数组需要预先分配一定的内存空间，每个元素占用相同大小的内存空间，并可以通过索引来进行快速访问和操作元素。访问元素的时间复杂度为O(1)，因为可以直接计算元素的内存地址。然而，插入和删除元素的时间复杂度较高，平均为O(n)，因为需要移动其他元素来保持连续存储的特性。
+队列是一种有序的项目集合，其中新项目的添加发生在一端，这端被称为“尾部”，而现有项目的移除则发生在另一端，通常称为“前端”。当元素进入队列时，它从尾部开始，向前端移动，直到成为下一个要被移除的元素为止。
 
-**链表**是一种存储结构，它是线性表的链式存储方式。链表通过节点的相互链接来实现元素的存储。每个节点包含元素本身以及指向下一个节点的指针。链表的插入和删除操作非常高效，时间复杂度为O(1)，因为只需要调整节点的指针。然而，访问元素的时间复杂度较高，平均为O(n)，因为必须从头节点开始遍历链表直到找到目标元素。
+队列中最新增加的项目必须在集合的末尾等待。在集合中最久的项目位于前端。这种排序原则有时被称为**FIFO（先进先出）**，也称为“先来先服务”。
+
+> A queue is an ordered collection of items where the addition of new items happens at one end, called the “rear,” and the removal of existing items occurs at the other end, commonly called the “front.” As an element enters the queue it starts at the rear and makes its way toward the front, waiting until that time when it is the next element to be removed.
+>
+> The most recently added item in the queue must wait at the end of the collection. The item that has been in the collection the longest is at the front. This ordering principle is sometimes called **FIFO**, **first-in first-out**. It is also known as “first-come first-served.”
+>
+
+
+
+**线性表**/线性结构，是一种逻辑结构，描述了元素按线性顺序排列的规则。常见的线性表存储方式有**数组**和**链表**，它们在不同场景下具有各自的优势和劣势。
+
+数组是一种连续存储结构，它将线性表的元素按照一定的顺序依次存储在内存中的连续地址空间上。数组需要预先分配一定的内存空间，每个元素占用相同大小的内存空间，并可以通过索引来进行快速访问和操作元素。访问元素的时间复杂度为$O(1)$，因为可以直接计算元素的内存地址。然而，插入和删除元素的时间复杂度较高，平均为$O(n)$，因为需要移动其他元素来保持连续存储的特性。
+
+
+
+<img src="https://raw.githubusercontent.com/GMyhf/img/main/img/image-20250311114427161.png" alt="image-20250311114427161" style="zoom:50%;" />
+
+**链表**是一种存储结构，它是线性表的链式存储方式。链表通过节点的相互链接来实现元素的存储。每个节点包含元素本身以及指向下一个节点的指针。链表的插入和删除操作非常高效，时间复杂度为$O(1)$，因为只需要调整节点的指针。然而，访问元素的时间复杂度较高，平均为$O(n)$，因为必须从头节点开始遍历链表直到找到目标元素。
 
 选择使用数组还是链表作为存储方式取决于具体问题的需求和限制。如果需要频繁进行随机访问操作，数组是更好的选择。如果需要频繁进行插入和删除操作，链表更适合。通过了解它们的特点和性能，可以根据实际情况做出选择。
 
@@ -1176,7 +1713,7 @@ $$
 
 ## 4.1 顺序表
 
-python中的顺序表就是列表，元素在内存中连续存放，每个元素都有唯一序号(下标），且根据序号访问（包括读取和修改）元素的时间复杂度是$$O(1)$$的（**随机访问**）。
+python中的顺序表就是列表，元素在内存中连续存放，每个元素都有唯一序号（下标），且根据序号访问（包括读取和修改）元素的时间复杂度是$$O(1)$$的（**随机访问**）。
 
 代码使用Python的内置列表来实现
 
@@ -1282,7 +1819,7 @@ if __name__ == "__main__":
 
 线性表的优缺点：
 
-优点：1、无须为表中元素之间的逻辑关系而增加额外的存储空间；
+优点：1、<mark>无须为表中元素之间的逻辑关系而增加额外的存储空间；</mark>
 
 ​	    2、可以快速的存取表中任一位置的元素。
 
@@ -1300,11 +1837,17 @@ if __name__ == "__main__":
 
 链表（Linked List）是一种常见的数据结构，用于存储和组织数据。它由一系列节点组成，每个节点包含一个数据元素和一个指向下一个节点（或前一个节点）的指针。
 
+
+
+<img src="https://raw.githubusercontent.com/GMyhf/img/main/img/image-20250311114427161.png" alt="image-20250311114427161" style="zoom:50%;" />
+
 在链表中，每个节点都包含两部分：
 
 1. 数据元素（或数据项）：这是节点存储的实际数据。可以是任何数据类型，例如整数、字符串、对象等。
 
 2. 指针（或引用）：该指针指向链表中的下一个节点（或前一个节点）。它们用于建立节点之间的连接关系，从而形成链表的结构。
+
+
 
 根据指针的类型和连接方式，链表可以分为不同类型，包括：
 
@@ -1314,6 +1857,30 @@ if __name__ == "__main__":
 
 3. 循环链表：最后一个节点的指针指向链表的头部，形成一个环形结构。循环链表可以从任意节点开始遍历，并且可以无限地循环下去。
 
+   
+
+```python
+# Definition for singly-linked list.
+class ListNode:
+    def __init__(self, x):
+        self.val = x
+        self.next = None
+```
+
+
+
+```python
+class DLinkedNode:
+    """双向链表的节点类"""
+    def __init__(self, key=0, value=0):
+        self.key = key
+        self.value = value
+        self.prev = None
+        self.next = None
+```
+
+
+
 链表相对于数组的一个重要特点是，链表的大小可以动态地增长或缩小，而不需要预先定义固定的大小。这使得链表在需要频繁插入和删除元素的场景中更加灵活。
 
 然而，链表的访问和搜索操作相对较慢，因为需要遍历整个链表才能找到目标节点。与数组相比，链表的优势在于插入和删除操作的效率较高，尤其是在操作头部或尾部节点时。因此，链表在需要频繁插入和删除元素而不关心随机访问的情况下，是一种常用的数据结构。
@@ -1322,11 +1889,11 @@ if __name__ == "__main__":
 
 > <img src="https://raw.githubusercontent.com/GMyhf/img/main/img/image-20240228230417320.png" alt="image-20240228230417320" style="zoom: 33%;" />
 >
-> 在 Python 中，`list` 是使用动态数组（Dynamic Array）实现的，而不是链表。动态数组是一种连续的、固定大小的内存块，可以在需要时自动调整大小。这使得 `list` 支持快速的随机访问和高效的尾部操作，例如附加（append）和弹出（pop）。
+> 在 Python 中，`list` 是使用动态数组（Dynamic Array）实现的，而不是链表。<mark>动态数组是一种连续的、固定大小的内存块</mark>，可以在需要时自动调整大小。这使得 `list` 支持快速的随机访问和高效的尾部操作，例如附加（append）和弹出（pop）。
 >
-> 与链表不同，动态数组中的元素在内存中是连续存储的。这允许通过索引在 `list` 中的任何位置进行常数时间（O(1)）的访问。此外，动态数组还具有较小的内存开销，因为它们不需要为每个元素存储额外的指针。
+> 与链表不同，动态数组中的元素在内存中是连续存储的。这允许通过索引在 `list` 中的任何位置进行常数时间O(1)的访问。此外，动态数组还具有较小的内存开销，因为它们不需要为每个元素存储额外的指针。
 >
-> 当需要在 `list` 的中间进行插入或删除操作时，动态数组需要进行元素的移动，因此这些操作的时间复杂度是线性的（O(n)）。如果频繁地插入或删除元素，而不仅仅是在尾部进行操作，那么链表可能更适合，因为链表的插入和删除操作在平均情况下具有常数时间复杂度。
+> 当需要在 `list` 的中间进行插入或删除操作时，动态数组需要进行元素的移动，因此这些操作的时间复杂度是线性的O(n)。如果频繁地插入或删除元素，而不仅仅是在尾部进行操作，那么链表可能更适合，因为链表的插入和删除操作在平均情况下具有常数时间复杂度。
 >
 > 总结起来，Python 中的 `list` 是使用动态数组实现的，具有支持快速随机访问和高效尾部操作的优点。但是，如果需要频繁进行插入和删除操作，可能需要考虑使用链表或其他数据结构。
 >
@@ -1356,7 +1923,7 @@ if __name__ == "__main__":
 **单向链表结构图**
 
 ```text
-Head -> Node1 -> Node2 -> Node3 -> NULL
+Head -> Node1 -> Node2 -> Node3 -> None
 ```
 
 - `Head`：指向链表的第一个节点。
@@ -1377,7 +1944,7 @@ Head -> Node1 -> Node2 -> Node3 -> NULL
 
   
 
-单向链表实现1：尾插法
+单向链表实现1：<mark>尾插法</mark>
 
 ```python
 class Node:
@@ -1432,7 +1999,7 @@ linked_list.display()  # 输出：1 3
 
 
 
-单向链表实现2，保存了链表的长度
+单向链表实现2，<mark>保存了链表的长度</mark>
 
 ```python
 class LinkList:
@@ -1547,14 +2114,14 @@ if __name__ == "__main__":
 **双链表的结构图**
 
 ```text
-NULL <- Node1 <-> Node2 <-> Node3 -> NULL
+None <- Node1 <-> Node2 <-> Node3 -> None
 ```
 
 - 每个节点有两个指针：
   - `next`：指向下一个节点。
   - `prev`：指向前一个节点。
 
-- `NULL`：表示链表的头和尾，头节点head/Node1的 `prev` 指向 `NULL`，尾节点tail/Node3的 `next` 指向 `NULL`。
+- `None`：表示链表的头和尾，头节点head/Node1的 `prev` 指向 `None`，尾节点tail/Node3的 `next` 指向 `None`。
 
 **常见操作**
 
@@ -1677,9 +2244,72 @@ dll.print_list()    # 5 <-> 20 <-> 30 <-> None
 
 **双链表的应用**
 
-- 双向遍历：由于双链表可以从头到尾或从尾到头遍历，因此在某些需要双向遍历的数据结构（如浏览器历史记录、操作系统任务调度等）中非常有用。
-- 实现双端队列（Deque）：双链表非常适合用于双端队列的实现，可以在队头和队尾都进行快速的插入和删除。
+- 双向遍历：由于双链表可以从头到尾或从尾到头遍历，因此在某些需要双向遍历的数据结构（如<mark>浏览器历史记录</mark>、操作系统任务调度等）中非常有用。
+- 实现双端队列（Deque）：双链表非常适合用于<mark>双端队列</mark>的实现，可以在队头和队尾都进行快速的插入和删除。
 - 内存管理和垃圾回收：双链表用于管理动态内存块，常见于操作系统的内存管理和垃圾回收机制中
+
+
+
+### 示例1472.设计浏览器历史记录
+
+双向链表，https://leetcode.cn/problems/design-browser-history/
+
+你有一个只支持单个标签页的 **浏览器** ，最开始你浏览的网页是 `homepage` ，你可以访问其他的网站 `url` ，也可以在浏览历史中后退 `steps` 步或前进 `steps` 步。
+
+请你实现 `BrowserHistory` 类：
+
+- `BrowserHistory(string homepage)` ，用 `homepage` 初始化浏览器类。
+- `void visit(string url)` 从当前页跳转访问 `url` 对应的页面 。执行此操作会把浏览历史前进的记录全部删除。
+- `string back(int steps)` 在浏览历史中后退 `steps` 步。如果你只能在浏览历史中后退至多 `x` 步且 `steps > x` ，那么你只后退 `x` 步。请返回后退 **至多** `steps` 步以后的 `url` 。
+- `string forward(int steps)` 在浏览历史中前进 `steps` 步。如果你只能在浏览历史中前进至多 `x` 步且 `steps > x` ，那么你只前进 `x` 步。请返回前进 **至多** `steps`步以后的 `url` 。
+
+
+
+```python
+class ListNode:
+    def __init__(self, url: str):
+        self.url = url
+        self.prev = None
+        self.next = None
+
+class BrowserHistory:
+    def __init__(self, homepage: str):
+        self.current = ListNode(homepage)
+
+    def visit(self, url: str) -> None:
+        new_node = ListNode(url)
+        self.current.next = new_node
+        new_node.prev = self.current
+        self.current = new_node
+
+    def back(self, steps: int) -> str:
+        while steps > 0 and self.current.prev is not None:
+            self.current = self.current.prev
+            steps -= 1
+        return self.current.url
+
+    def forward(self, steps: int) -> str:
+        while steps > 0 and self.current.next is not None:
+            self.current = self.current.next
+            steps -= 1
+        return self.current.url
+
+if __name__ == "__main__":
+    browserHistory = BrowserHistory("leetcode.com")
+    browserHistory.visit("google.com")
+    browserHistory.visit("facebook.com")
+    browserHistory.visit("youtube.com")
+    print(browserHistory.back(1))  # facebook.com
+    print(browserHistory.back(1))  # google.com
+    print(browserHistory.forward(1))  # facebook.com
+    browserHistory.visit("linkedin.com")
+    print(browserHistory.forward(2))  # linkedin.com
+    print(browserHistory.back(2))  # google.com
+    print(browserHistory.back(7))  # leetcode.com
+
+```
+
+ 
 
 
 
@@ -1817,7 +2447,7 @@ if __name__ == "__main__":
 
 
 
-## 5.5 常见算法：链表的操作
+## 5.5 常见链表的操作
 
 ### 1 链表反转（Reverse Linked List）
 
@@ -1825,67 +2455,30 @@ if __name__ == "__main__":
 
 **单链表反转算法**
 
-```text
-def reverse_linked_list(head):
+```python
+# Definition for singly-linked list.
+class ListNode:
+    def __init__(self, val=0, next=None):
+        self.val = val
+        self.next = next
+
+def reverse_linked_list(head: ListNode) -> ListNode:
     prev = None
-    current = head
-    while current:
-        next_node = current.next
-        current.next = prev
-        prev = current
-        current = next_node
+    curr = head
+    while curr is not None:
+        next_node = curr.next  # 暂存当前节点的下一个节点
+        curr.next = prev       # 将当前节点的下一个节点指向前一个节点
+        prev = curr            # 前一个节点变为当前节点
+        curr = next_node       # 当前节点变更为原先的下一个节点
     return prev
+
 ```
 
 
 
-### 2 **合并两个排序的链表**
+#### 示例206.反转链表
 
-合并两个已经排序的链表是一种常见的操作，特别是在归并排序中。
-
-**合并两个排序链表**
-
-```text
-def merge_sorted_lists(l1, l2):
-    dummy = Node(0)
-    tail = dummy
-    while l1 and l2:
-        if l1.data < l2.data:
-            tail.next = l1
-            l1 = l1.next
-        else:
-            tail.next = l2
-            l2 = l2.next
-        tail = tail.next
-    if l1:
-        tail.next = l1
-    else:
-        tail.next = l2
-    return dummy.next
-```
-
-
-
-### 3 **查找链表的中间节点**
-
-通过快慢指针的方法，可以在 O(n) 的时间复杂度内找到链表的中间节点。
-
-**查找中间节点**
-
-```text
-def find_middle_node(head):
-    slow = fast = head
-    while fast and fast.next:
-        slow = slow.next
-        fast = fast.next.next
-    return slow
-```
-
-
-
-### 示例206.反转链表
-
-linked-list, https://leetcode.cn/problems/reverse-linked-list/
+linked list, https://leetcode.cn/problems/reverse-linked-list/
 
 给你单链表的头节点 `head` ，请你反转链表，并返回反转后的链表。
 
@@ -1949,7 +2542,128 @@ class Solution:
 
 
 
-### 示例234.回文链表
+
+
+### 2 **合并两个排序的链表**
+
+合并两个已经排序的链表是一种常见的操作，特别是在归并排序中。
+
+**合并两个排序链表**
+
+```python
+def merge_sorted_lists(l1, l2):
+    dummy = Node(0)
+    tail = dummy
+    while l1 and l2:
+        if l1.data < l2.data:
+            tail.next = l1
+            l1 = l1.next
+        else:
+            tail.next = l2
+            l2 = l2.next
+        tail = tail.next
+    if l1:
+        tail.next = l1
+    else:
+        tail.next = l2
+    return dummy.next
+```
+
+
+
+#### 示例21.合并两个有序链表
+
+https://leetcode.cn/problems/merge-two-sorted-lists/
+
+将两个升序链表合并为一个新的 **升序** 链表并返回。新链表是通过拼接给定的两个链表的所有节点组成的。 
+
+ 
+
+**示例 1：**
+
+<img src="https://assets.leetcode.com/uploads/2020/10/03/merge_ex1.jpg" alt="img" style="zoom:67%;" />
+
+```
+输入：l1 = [1,2,4], l2 = [1,3,4]
+输出：[1,1,2,3,4,4]
+```
+
+**示例 2：**
+
+```
+输入：l1 = [], l2 = []
+输出：[]
+```
+
+**示例 3：**
+
+```
+输入：l1 = [], l2 = [0]
+输出：[0]
+```
+
+ 
+
+**提示：**
+
+- 两个链表的节点数目范围是 `[0, 50]`
+- `-100 <= Node.val <= 100`
+- `l1` 和 `l2` 均按 **非递减顺序** 排列
+
+
+
+```python
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+
+class Solution:
+    def mergeTwoLists(self, list1: Optional[ListNode], list2: Optional[ListNode]) -> Optional[ListNode]:
+        # 创建一个哨兵节点（dummy node），简化边界条件处理
+        prehead = ListNode(-200)
+        prev = prehead
+
+        # 遍历两个链表直到其中一个为空
+        while list1 and list2:
+            if list1.val <= list2.val:
+                prev.next = list1
+                list1 = list1.next
+            else:
+                prev.next = list2
+                list2 = list2.next            
+            prev = prev.next
+
+        # 连接还未遍历完的那个链表
+        prev.next = list1 if list1 is not None else list2
+
+        # 返回合并后的链表，跳过哨兵节点
+        return prehead.next
+```
+
+
+
+
+
+### 3 **查找链表的中间节点**
+
+通过<mark>快慢指针</mark>的方法，可以在 O(n) 的时间复杂度内找到链表的中间节点。
+
+**查找中间节点**
+
+```python
+def find_middle_node(head):
+    slow = fast = head
+    while fast and fast.next:
+        slow = slow.next
+        fast = fast.next.next
+    return slow
+```
+
+
+
+#### 示例234.回文链表
 
 linked-list, https://leetcode.cn/problems/palindrome-linked-list/
 
@@ -2033,7 +2747,9 @@ class Solution:
 
 
 
-### 示例20.删除链表元素
+### 4 其他示例
+
+#### 示例20.删除链表元素
 
 http://dsbpython.openjudge.cn/dspythonbook/P0020/
 
@@ -2262,7 +2978,7 @@ EMPTY
 
 
 
-### 示例4.插入链表元素
+#### 示例4.插入链表元素
 
 http://dsbpython.openjudge.cn/2024allhw/004/
 
@@ -2408,7 +3124,9 @@ lkList.printLk()
 
 # 6 The Stack Abstract Data Type
 
-The stack abstract data type is defined by the following structure and operations. A stack is structured, as described above, as an ordered collection of items where items are added to and removed from the end called the “top.” Stacks are ordered LIFO. The stack operations are given below.
+栈抽象数据类型通过以下结构和操作来定义。如上所述，栈是一种有序的项集合，其中项被添加到被称为“顶端”的一端，也从这一端移除。栈是按照后进先出（LIFO）的顺序排列的。下面给出了栈的操作。
+
+> The stack abstract data type is defined by the following structure and operations. A stack is structured, as described above, as an ordered collection of items where items are added to and removed from the end called the “top.” Stacks are ordered LIFO. The stack operations are given below.
 
 - `Stack()` creates a new stack that is empty. It needs no parameters and returns an empty stack.
 - `push(item)` adds a new item to the top of the stack. It needs the item and returns nothing.
@@ -2443,9 +3161,14 @@ Table 1: Sample Stack Operations
 
 ## 6.1 Implementing a Stack in Python
 
-Now that we have clearly defined the stack as an abstract data type we will turn our attention to using Python to implement the stack. Recall that when we give an abstract data type a physical implementation we refer to the implementation as a data structure.
+现在已经明确定义了栈作为一种抽象数据类型，接下来我们将注意力转向使用Python来实现栈。回想一下，当我们为抽象数据类型提供物理实现时，称这种实现为数据结构。
 
-As we described in Chapter 1, in Python, as in any object-oriented programming language, the implementation of choice for an abstract data type such as a stack is the creation of a new class. The stack operations are implemented as methods. Further, to implement a stack, which is a collection of elements, it makes sense to utilize the power and simplicity of the primitive collections provided by Python. We will use a list.
+在Python中，就像在任何面向对象编程语言中一样，实现诸如栈这样的抽象数据类型的首选方法是创建一个新类。栈操作被实现为方法。此外，为了实现栈（它是一个元素的集合），利用Python提供的简单而强大的基本集合是很合理的。我们将使用列表来实现。
+
+> Now that we have clearly defined the stack as an abstract data type we will turn our attention to using Python to implement the stack. Recall that when we give an abstract data type a physical implementation we refer to the implementation as a data structure.
+>
+> As we described in Chapter 1, in Python, as in any object-oriented programming language, the implementation of choice for an abstract data type such as a stack is the creation of a new class. The stack operations are implemented as methods. Further, to implement a stack, which is a collection of elements, it makes sense to utilize the power and simplicity of the primitive collections provided by Python. We will use a list.
+>
 
 ```mermaid
 classDiagram
@@ -2537,20 +3260,16 @@ print(rev_string(test_string))
 
 ## 6.2 匹配括号
 
-We now turn our attention to using stacks to solve real computer science problems. You have no doubt written arithmetic expressions such as
+我们现在将注意力转向使用栈来解决真正的计算机科学问题。毫无疑问，你已经写过诸如`(5+6)∗(7+8)/(4+3)`这样的算术表达式，其中使用了括号来安排操作的执行顺序。
 
-(5+6)∗(7+8)/(4+3)
+括号必须以平衡的方式出现。**平衡的括号**意味着每个开符号都有一个对应的闭符号，并且括号对是正确嵌套的。考虑以下正确平衡的括号字符串：
 
-where parentheses are used to order the performance of operations. You may also have some experience programming in a language such as Lisp with constructs like
-
-```
-(defun square(n)
-     (* n n))
-```
-
-This defines a function called `square` that will return the square of its argument `n`. Lisp is notorious for using lots and lots of parentheses.
-
-In both of these examples, parentheses must appear in a balanced fashion. **Balanced parentheses** means that each opening symbol has a corresponding closing symbol and the pairs of parentheses are properly nested. Consider the following correctly balanced strings of parentheses:
+> We now turn our attention to using stacks to solve real computer science problems. You have no doubt written arithmetic expressions such as
+>
+> `(5+6)∗(7+8)/(4+3)` where parentheses are used to order the performance of operations. 
+>
+> Parentheses must appear in a balanced fashion. **Balanced parentheses** means that each opening symbol has a corresponding closing symbol and the pairs of parentheses are properly nested. Consider the following correctly balanced strings of parentheses:
+>
 
 ```
 (()()()())
@@ -2570,9 +3289,14 @@ Compare those with the following, which are not balanced:
 (()()(()
 ```
 
-The ability to differentiate between parentheses that are correctly balanced and those that are unbalanced is an important part of recognizing many programming language structures.
+区分括号是否正确平衡是识别许多编程语言结构的重要部分。
 
-The challenge then is to write an algorithm that will read a string of parentheses from left to right and decide whether the symbols are balanced. To solve this problem we need to make an important observation. As you process symbols from left to right, the most recent opening parenthesis must match the next closing symbol (see Figure 4). Also, the first opening symbol processed may have to wait until the very last symbol for its match. Closing symbols match opening symbols in the reverse order of their appearance; they match from the inside out. This is a clue that stacks can be used to solve the problem.
+接下来的挑战是编写一个算法，该算法能够从左到右读取一串括号，并判断这些符号是否平衡。为了解决这个问题，我们需要做一个重要的观察。当你从左到右处理符号时，最近的开括号必须与下一个闭括号匹配（见图4）。同时，第一个被处理的开括号可能需要等到最后一个符号才能找到它的匹配项。闭括号与开括号的匹配顺序与其出现顺序相反，它们从内到外进行匹配。这一点提示我们可以使用栈来解决这个问题。
+
+> The ability to differentiate between parentheses that are correctly balanced and those that are unbalanced is an important part of recognizing many programming language structures.
+>
+> The challenge then is to write an algorithm that will read a string of parentheses from left to right and decide whether the symbols are balanced. To solve this problem we need to make an important observation. As you process symbols from left to right, the most recent opening parenthesis must match the next closing symbol (see Figure 4). Also, the first opening symbol processed may have to wait until the very last symbol for its match. Closing symbols match opening symbols in the reverse order of their appearance; they match from the inside out. This is a clue that stacks can be used to solve the problem.
+>
 
 ![../_images/simpleparcheck.png](https://raw.githubusercontent.com/GMyhf/img/main/img/simpleparcheck.png)
 
@@ -2615,7 +3339,9 @@ print(par_checker('(()'))
 
 ### 1 Balanced Symbols (A General Case)
 
-The balanced parentheses problem shown above is a specific case of a more general situation that arises in many programming languages. The general problem of balancing and nesting different kinds of opening and closing symbols occurs frequently. For example, in Python square brackets, `[` and `]`, are used for lists; curly braces, `{` and `}`, are used for dictionaries; and parentheses, `(` and `)`, are used for tuples and arithmetic expressions. It is possible to mix symbols as long as each maintains its own open and close relationship. Strings of symbols such as
+上述的平衡括号问题是出现在许多编程语言中的一种更普遍情况的具体案例。平衡和嵌套不同类型的开符号和闭符号的一般问题频繁出现。例如，在Python中，方括号`[`和`]`用于列表；花括号`{`和`}`用于字典；圆括号`(`和`)`用于元组和算术表达式。只要每种符号都保持自身的开和关关系，就可以混合使用这些符号。例如，如下所示的符号字符串：
+
+> The balanced parentheses problem shown above is a specific case of a more general situation that arises in many programming languages. The general problem of balancing and nesting different kinds of opening and closing symbols occurs frequently. For example, in Python square brackets, `[` and `]`, are used for lists; curly braces, `{` and `}`, are used for dictionaries; and parentheses, `(` and `)`, are used for tuples and arithmetic expressions. It is possible to mix symbols as long as each maintains its own open and close relationship. Strings of symbols such as
 
 ```
 { { ( [ ] [ ] ) } ( ) }
@@ -2637,7 +3363,9 @@ Compare those with the following strings that are not balanced:
 [ { ( ) ]
 ```
 
-The simple parentheses checker from the previous section can easily be extended to handle these new types of symbols. Recall that each opening symbol is simply pushed on the stack to wait for the matching closing symbol to appear later in the sequence. When a closing symbol does appear, the only difference is that we must check to be sure that it correctly matches the type of the opening symbol on top of the stack. If the two symbols do not match, the string is not balanced. Once again, if the entire string is processed and nothing is left on the stack, the string is correctly balanced.
+从前一节的简单括号检查器可以很容易地扩展来处理这些新的符号类型。回想一下，每个开符号只是简单地压入栈中，等待匹配的闭符号稍后在序列中出现。当一个闭符号确实出现时，唯一的区别是我们必须检查它是否正确匹配栈顶的开符号类型。如果这两个符号不匹配，那么字符串就不平衡。再次强调，如果整个字符串都被处理且栈中没有剩下任何未匹配的符号，那么该字符串就是正确平衡的。
+
+> The simple parentheses checker from the previous section can easily be extended to handle these new types of symbols. Recall that each opening symbol is simply pushed on the stack to wait for the matching closing symbol to appear later in the sequence. When a closing symbol does appear, the only difference is that we must check to be sure that it correctly matches the type of the opening symbol on top of the stack. If the two symbols do not match, the string is not balanced. Once again, if the entire string is processed and nothing is left on the stack, the string is correctly balanced.
 
 
 
@@ -2673,7 +3401,7 @@ print(par_checker('{{}}[]]'))
 
 
 
-#### 练习OJ03704: 括号匹配问题
+#### 示例OJ03704: 括号匹配问题
 
 stack, http://cs101.openjudge.cn/practice/03704
 
@@ -2749,9 +3477,19 @@ for s in lines:
 
 ### 1 将十进制数转换成二进制数
 
-In your study of computer science, you have probably been exposed in one way or another to the idea of a binary number. Binary representation is important in computer science since all values stored within a computer exist as a string of binary digits, a string of 0s and 1s. Without the ability to convert back and forth between common representations and binary numbers, we would need to interact with computers in very awkward ways.
+在你学习计算机科学的过程中，可能已经以这样或那样的方式接触到二进制数的概念。二进制表示在计算机科学中非常重要，因为计算机中存储的所有值都以一串二进制数字的形式存在，即由0和1组成的字符串。如果没有能力在常见表示法和二进制数之间来回转换，我们将需要以非常笨拙的方式与计算机进行交互。
 
-Integer values are common data items. They are used in computer programs and computation all the time. We learn about them in math class and of course represent them using the decimal number system, or base 10. The decimal number $233_{10}$ and its corresponding binary equivalent $11101001_2$ are interpreted respectively as
+整数值是常见的数据项，在计算机程序和计算中无时无刻不在使用。我们在数学课上学习它们，并且当然使用十进制数系统或基数为10的方式来表示它们。十进制数$233_{10}$及其对应的二进制等价形式$11101001_2$分别被解释为：
+
+- 十进制数$233_{10}$意味着这是一个基于10的数值，计算方式为$2*10^2 + 3*10^1 + 3*10^0$。
+- 二进制数$11101001_2$则是一个基于2的数值，计算方式为$1*2^7 + 1*2^6 + 1*2^5 + 0*2^4 + 1*2^3 + 0*2^2 + 0*2^1 + 1*2^0$。
+
+这种转换对于理解计算机如何处理和存储数值数据至关重要。
+
+> In your study of computer science, you have probably been exposed in one way or another to the idea of a binary number. Binary representation is important in computer science since all values stored within a computer exist as a string of binary digits, a string of 0s and 1s. Without the ability to convert back and forth between common representations and binary numbers, we would need to interact with computers in very awkward ways.
+>
+> Integer values are common data items. They are used in computer programs and computation all the time. We learn about them in math class and of course represent them using the decimal number system, or base 10. The decimal number $233_{10}$ and its corresponding binary equivalent $11101001_2$ are interpreted respectively as
+>
 
 $2×10^2+3×10^1+3×10^0$
 
@@ -2759,9 +3497,14 @@ and
 
 $1×2^7+1×2^6+1×2^5+0×2^4+1×2^3+0×2^2+0×2^1+1×2^0$
 
-But how can we easily convert integer values into binary numbers? The answer is an algorithm called “Divide by 2” that uses a stack to keep track of the digits for the binary result.
+但是，我们如何轻松地将整数值转换为二进制数呢？答案是一种称为“除以2”的算法，它使用栈来跟踪二进制结果的数字。
 
-The Divide by 2 algorithm assumes that we start with an integer greater than 0. A simple iteration then continually divides the decimal number by 2 and keeps track of the remainder. The first division by 2 gives information as to whether the value is even or odd. An even value will have a remainder of 0. It will have the digit 0 in the ones place. An odd value will have a remainder of 1 and will have the digit 1 in the ones place. We think about building our binary number as a sequence of digits; the first remainder we compute will actually be the last digit in the sequence. As shown in Figure 5, we again see the reversal property that signals that a stack is likely to be the appropriate data structure for solving the problem.
+“除以2”算法假设我们从一个大于0的整数开始。然后通过一个简单的迭代过程不断将十进制数除以2并记录余数。第一次除以2可以告诉我们该值是奇数还是偶数。偶数值的余数为0，意味着在个位上将是数字0。奇数值的余数为1，在个位上将是数字1。我们可以认为构建二进制数是一个数字序列的过程；我们计算的<mark>第一个余数实际上会是这个序列中的最后一个数字</mark>。如图5所示，我们再次看到了这种<mark>反转特性</mark>，这表明栈可能是解决问题的合适数据结构。
+
+> But how can we easily convert integer values into binary numbers? The answer is an algorithm called “Divide by 2” that uses a stack to keep track of the digits for the binary result.
+>
+> The Divide by 2 algorithm assumes that we start with an integer greater than 0. A simple iteration then continually divides the decimal number by 2 and keeps track of the remainder. The first division by 2 gives information as to whether the value is even or odd. An even value will have a remainder of 0. It will have the digit 0 in the ones place. An odd value will have a remainder of 1 and will have the digit 1 in the ones place. We think about building our binary number as a sequence of digits; the first remainder we compute will actually be the last digit in the sequence. As shown in Figure 5, we again see the reversal property that signals that a stack is likely to be the appropriate data structure for solving the problem.
+>
 
 ![../_images/dectobin.png](https://raw.githubusercontent.com/GMyhf/img/main/img/dectobin.png)
 
@@ -2874,25 +3617,46 @@ else:
 
 ## 6.4 中序、前序和后序表达式
 
-When you write an arithmetic expression such as B * C, the form of the expression provides you with information so that you can interpret it correctly. In this case we know that the variable B is being multiplied by the variable C since the multiplication operator * appears between them in the expression. This type of notation is referred to as **infix** since the operator is *in between* the two operands that it is working on.
+当你写一个算术表达式，如 B * C 时，表达式的形式为你提供了可以正确解释它的信息。在这种情况下，我们知道变量 B 正在乘以变量 C，因为乘法操作符 * 出现在它们之间的表达式中。这种类型的表示法被称为**中缀**表示法，因为操作符位于它所操作的两个操作数*之间*。
 
-Consider another infix example, A + B * C. The operators + and * still appear between the operands, but there is a problem. Which operands do they work on? Does the + work on A and B or does the * take B and C? The expression seems ambiguous.
+考虑另一个中缀的例子，A + B * C。操作符 + 和 * 仍然出现在操作数之间，但现在有一个问题：它们各自作用于哪些操作数？是 + 作用于 A 和 B，还是 * 作用于 B 和 C？这个表达式似乎有歧义。
 
-In fact, you have been reading and writing these types of expressions for a long time and they do not cause you any problem. The reason for this is that you know something about the operators + and *. Each operator has a **precedence** level. Operators of higher precedence are used before operators of lower precedence. The only thing that can change that order is the presence of parentheses. The precedence order for arithmetic operators places multiplication and division above addition and subtraction. If two operators of equal precedence appear, then a left-to-right ordering or associativity is used.
+实际上，你已经阅读和书写这类表达式很长时间了，并且它们并不会给你造成任何问题。原因是你了解关于操作符 + 和 * 的一些事情。每个操作符都有一个**优先级**级别。优先级较高的操作符先于优先级较低的操作符使用。唯一能改变该顺序的是括号的存在。对于算术操作符的优先级顺序将乘除放在加减之上。如果出现相同优先级的操作符，则按照从左到右的顺序或结合性来决定。
 
-Let’s interpret the troublesome expression A + B * C using operator precedence. B and C are multiplied first, and A is then added to that result. (A + B) * C would force the addition of A and B to be done first before the multiplication. In expression A + B + C, by precedence (via associativity), the leftmost + would be done first.
+让我们使用操作符优先级来解释令人困惑的表达式 A + B * C。首先对 B 和 C 进行乘法运算，然后将 A 加到那个结果上。(A + B) * C 将强制先执行 A 和 B 的加法运算，然后再进行乘法运算。在表达式 A + B + C 中，根据优先级（通过结合性），最左边的 + 会首先被执行。
 
-Although all this may be obvious to you, remember that computers need to know exactly what operators to perform and in what order. One way to write an expression that guarantees there will be no confusion with respect to the order of operations is to create what is called a **fully parenthesized** expression. This type of expression uses one pair of parentheses for each operator. The parentheses dictate the order of operations; there is no ambiguity. There is also no need to remember any precedence rules.
+尽管这一切对你来说可能是显而易见的，请记住计算机需要确切知道要执行什么操作以及它们的顺序。一种确保不会因操作顺序引起混淆的方式是创建所谓的**完全括号化**表达式。这种类型的表达式为每个操作符使用一对括号。括号规定了操作的顺序；没有歧义。也不需要记忆任何优先级规则。
 
-The expression A + B * C + D can be rewritten as ((A + (B * C)) + D) to show that the multiplication happens first, followed by the leftmost addition. A + B + C + D can be written as (((A + B) + C) + D) since the addition operations associate from left to right.
+表达式 A + B * C + D 可以重写为 ((A + (B * C)) + D)，以显示首先进行乘法，随后是最左边的加法。A + B + C + D 可以写作 (((A + B) + C) + D)，因为加法操作从左向右结合。
 
-There are two other very important expression formats that may not seem obvious to you at first. Consider the infix expression A + B. What would happen if we moved the operator before the two operands? The resulting expression would be + A B. Likewise, we could move the operator to the end. We would get A B +. These look a bit strange.
+还有两种其他非常重要的表达式格式，一开始可能并不明显。考虑中缀表达式 A + B。如果我们把操作符移到两个操作数之前会发生什么？生成的表达式将是 + A B。同样，我们可以把操作符移到最后。我们得到 A B +。这些看起来有点奇怪。
 
-These changes to the position of the operator with respect to the operands create two new expression formats, **prefix** and **postfix**. Prefix expression notation requires that all operators precede the two operands that they work on. Postfix, on the other hand, requires that its operators come after the corresponding operands. A few more examples should help to make this a bit clearer (see Table 2).
+操作符相对于操作数位置的这些变化创造了两种新的表达式格式，**前缀**和**后缀**。<mark>前缀表达式要求所有操作符都在其工作的两个操作数之前</mark>。而后缀则要求其操作符在其对应的操作数之后。更多的例子应该有助于更清晰地理解这一点。
 
-A + B * C would be written as + A * B C in prefix. The multiplication operator comes immediately before the operands B and C, denoting that * has precedence over +. The addition operator then appears before the A and the result of the multiplication.
+A + B * C 在前缀中会被写作 + A * B C。乘法操作符直接出现在操作数 B 和 C 之前，表示 * 的优先级高于 +。然后加法操作符出现在 A 和乘法的结果之前。
 
-In postfix, the expression would be A B C * +. Again, the order of operations is preserved since the * appears immediately after the B and the C, denoting that * has precedence, with + coming after. Although the operators moved and now appear either before or after their respective operands, the order of the operands stayed exactly the same relative to one another.
+在后缀中，表达式会是 A B C * +。再次，操作顺序被保留，因为 * 紧接在 B 和 C 之后出现，表明 * 有更高的优先级，随后是 +。虽然操作符移动了，现在要么出现在各自操作数之前，要么出现在之后，但操作数之间的相对顺序保持不变。
+
+> When you write an arithmetic expression such as B * C, the form of the expression provides you with information so that you can interpret it correctly. In this case we know that the variable B is being multiplied by the variable C since the multiplication operator * appears between them in the expression. This type of notation is referred to as **infix** since the operator is *in between* the two operands that it is working on.
+>
+> Consider another infix example, A + B * C. The operators + and * still appear between the operands, but there is a problem. Which operands do they work on? Does the + work on A and B or does the * take B and C? The expression seems ambiguous.
+>
+> In fact, you have been reading and writing these types of expressions for a long time and they do not cause you any problem. The reason for this is that you know something about the operators + and *. Each operator has a **precedence** level. Operators of higher precedence are used before operators of lower precedence. The only thing that can change that order is the presence of parentheses. The precedence order for arithmetic operators places multiplication and division above addition and subtraction. If two operators of equal precedence appear, then a left-to-right ordering or associativity is used.
+>
+> Let’s interpret the troublesome expression A + B * C using operator precedence. B and C are multiplied first, and A is then added to that result. (A + B) * C would force the addition of A and B to be done first before the multiplication. In expression A + B + C, by precedence (via associativity), the leftmost + would be done first.
+>
+> Although all this may be obvious to you, remember that computers need to know exactly what operators to perform and in what order. One way to write an expression that guarantees there will be no confusion with respect to the order of operations is to create what is called a **fully parenthesized** expression. This type of expression uses one pair of parentheses for each operator. The parentheses dictate the order of operations; there is no ambiguity. There is also no need to remember any precedence rules.
+>
+> The expression A + B * C + D can be rewritten as ((A + (B * C)) + D) to show that the multiplication happens first, followed by the leftmost addition. A + B + C + D can be written as (((A + B) + C) + D) since the addition operations associate from left to right.
+>
+> There are two other very important expression formats that may not seem obvious to you at first. Consider the infix expression A + B. What would happen if we moved the operator before the two operands? The resulting expression would be + A B. Likewise, we could move the operator to the end. We would get A B +. These look a bit strange.
+>
+> These changes to the position of the operator with respect to the operands create two new expression formats, **prefix** and **postfix**. Prefix expression notation requires that all operators precede the two operands that they work on. Postfix, on the other hand, requires that its operators come after the corresponding operands. A few more examples should help to make this a bit clearer (see Table 2).
+>
+> A + B * C would be written as + A * B C in prefix. The multiplication operator comes immediately before the operands B and C, denoting that * has precedence over +. The addition operator then appears before the A and the result of the multiplication.
+>
+> In postfix, the expression would be A B C * +. Again, the order of operations is preserved since the * appears immediately after the B and the C, denoting that * has precedence, with + coming after. Although the operators moved and now appear either before or after their respective operands, the order of the operands stayed exactly the same relative to one another.
+>
 
 Table 2: Exmples of Infix, Prefix, and Postfix
 
@@ -2901,9 +3665,14 @@ Table 2: Exmples of Infix, Prefix, and Postfix
 | A + B                | + A B                 | A B +                  |
 | A + B * C            | + A * B C             | A B C * +              |
 
-Now consider the infix expression (A + B) * C. Recall that in this case, infix requires the parentheses to force the performance of the addition before the multiplication. However, when A + B was written in prefix, the addition operator was simply moved before the operands, + A B. The result of this operation becomes the first operand for the multiplication. The multiplication operator is moved in front of the entire expression, giving us * + A B C. Likewise, in postfix A B + forces the addition to happen first. The multiplication can be done to that result and the remaining operand C. The proper postfix expression is then A B + C *.
+现在考虑中缀表达式 (A + B) * C。回想一下，在这种情况下，<mark>中缀</mark>要求使用括号以强制在乘法之前执行加法运算。然而，当我们将 A + B 写成前缀时，只需将加法操作符移到操作数之前，即 + A B。此操作的结果成为乘法的第一个操作数。然后将乘法操作符移到整个表达式的前面，得到 * + A B C。同样，在后缀表达式中，A B + 强制先进行加法运算。然后可以将乘法应用于该结果和剩余的操作数 C。因此，正确的后缀表达式是 A B + C *。
 
-Consider these three expressions again (see Table 3). Something very important has happened. Where did the parentheses go? Why don’t we need them in prefix and postfix? The answer is that the operators are no longer ambiguous with respect to the operands that they work on. Only infix notation requires the additional symbols. The order of operations within prefix and postfix expressions is completely determined by the position of the operator and nothing else. In many ways, this makes infix the least desirable notation to use.
+再次考虑这三个表达式（见表3）。这里发生了一件非常重要的事情。括号去哪了？为什么我们在前缀和后缀中不需要它们？答案是，<mark>操作符相对于它们所操作的操作数不再有歧义</mark>。只有中缀表示法需要额外的符号。前缀和后缀表达式中的操作顺序完全由操作符的位置决定，而不受其他因素影响。在很多方面，这使得中缀成为最不理想的表示法。
+
+> Now consider the infix expression (A + B) * C. Recall that in this case, infix requires the parentheses to force the performance of the addition before the multiplication. However, when A + B was written in prefix, the addition operator was simply moved before the operands, + A B. The result of this operation becomes the first operand for the multiplication. The multiplication operator is moved in front of the entire expression, giving us * + A B C. Likewise, in postfix A B + forces the addition to happen first. The multiplication can be done to that result and the remaining operand C. The proper postfix expression is then A B + C *.
+>
+> Consider these three expressions again (see Table 3). Something very important has happened. Where did the parentheses go? Why don’t we need them in prefix and postfix? The answer is that the operators are no longer ambiguous with respect to the operands that they work on. Only infix notation requires the additional symbols. The order of operations within prefix and postfix expressions is completely determined by the position of the operator and nothing else. In many ways, this makes infix the least desirable notation to use.
+>
 
 
 
@@ -2928,11 +3697,20 @@ Table 4: Additional Examples of Infix, Prefix and Postfix
 
 ### 1 Conversion of Infix Expressions to Prefix and Postfix
 
-So far, we have used ad hoc methods to convert between infix expressions and the equivalent prefix and postfix expression notations. As you might expect, there are algorithmic ways to perform the conversion that allow any expression of any complexity to be correctly transformed.
+到目前为止，我们使用了临时的方法在中缀表达式和等价的前缀及后缀表达式表示法之间进行转换。正如你可能预期的那样，存在算法方法可以执行这种转换，使得任何复杂度的表达式都能被正确地变换。
 
-The first technique that we will consider uses the notion of a fully parenthesized expression that was discussed earlier. Recall that A + B * C can be written as (A + (B * C)) to show explicitly that the multiplication has precedence over the addition. On closer observation, however, you can see that each parenthesis pair also denotes the beginning and the end of an operand pair with the corresponding operator in the middle.
+我们将首先考虑的技术使用了之前讨论过的完全括号化表达式的概念。回想一下，A + B * C 可以写成 (A + (B * C)) 来明确显示乘法优先于加法。然而，仔细观察后你可以看到，<mark>每对括号也标明了一个操作数对的开始和结束</mark>，其中间是相应的操作符。
 
-Look at the right parenthesis in the subexpression (B * C) above. If we were to move the multiplication symbol to that position and remove the matching left parenthesis, giving us B C *, we would in effect have converted the subexpression to postfix notation. If the addition operator were also moved to its corresponding right parenthesis position and the matching left parenthesis were removed, the complete postfix expression would result (see Figure 6).
+看看上面子表达式 (B * C) 中的右括号。<mark>如果我们把乘法符号移到该位置并移除匹配的左括号</mark>，得到 B C *，实际上我们就将子表达式转换为了后缀表示法。如果也将加法操作符移动到其对应的右括号位置，并移除匹配的左括号，就会得到完整的后缀表达式（见图6）。 
+
+通过这种方法，我们可以系统地将包含任意复杂度的中缀表达式转换为后缀形式，确保了转换过程的准确性和一致性，而无需依赖记忆操作符优先级规则。同样的原则也可应用于创建前缀表达式，只是操作符的位置相对于操作数有所不同。
+
+> So far, we have used ad hoc methods to convert between infix expressions and the equivalent prefix and postfix expression notations. As you might expect, there are algorithmic ways to perform the conversion that allow any expression of any complexity to be correctly transformed.
+>
+> The first technique that we will consider uses the notion of a fully parenthesized expression that was discussed earlier. Recall that A + B * C can be written as (A + (B * C)) to show explicitly that the multiplication has precedence over the addition. On closer observation, however, you can see that each parenthesis pair also denotes the beginning and the end of an operand pair with the corresponding operator in the middle.
+>
+> Look at the right parenthesis in the subexpression (B * C) above. If we were to move the multiplication symbol to that position and remove the matching left parenthesis, giving us B C *, we would in effect have converted the subexpression to postfix notation. If the addition operator were also moved to its corresponding right parenthesis position and the matching left parenthesis were removed, the complete postfix expression would result (see Figure 6).
+>
 
 ![../_images/moveright.png](https://raw.githubusercontent.com/GMyhf/img/main/img/moveright.png)
 
@@ -2944,7 +3722,7 @@ If we do the same thing but instead of moving the symbol to the position of the 
 
 Figure 7: Moving Operators to the Left for Prefix Notation
 
-So in order to convert an expression, no matter how complex, to either prefix or postfix notation, fully parenthesize the expression using the order of operations. Then move the enclosed operator to the position of either the left or the right parenthesis depending on whether you want prefix or postfix notation.
+So in order to convert an expression, no matter how complex, to either prefix or postfix notation, fully parenthesize the expression using the order of operations. Then <mark>move the enclosed operator to the position of either the left or the right parenthesis depending on whether you want prefix or postfix notation</mark>.
 
 Here is a more complex expression: (A + B) * C - (D - E) * (F + G). Figure 8 shows the conversion to postfix and prefix notations.
 
@@ -2956,26 +3734,48 @@ Figure 8: Converting a Complex Expression to Prefix and Postfix Notations
 
 ### 2 通用的中缀转后缀算法
 
-We need to develop an algorithm to convert any infix expression to a postfix expression. To do this we will look closer at the conversion process.
+我们需要开发一种算法，将任何中缀表达式转换为后缀表达式。为此，我们将更仔细地观察转换过程。
 
-Consider once again the expression A + B * C. As shown above, A B C * + is the postfix equivalent. We have already noted that the operands A, B, and C stay in their relative positions. It is only the operators that change position. Let’s look again at the operators in the infix expression. The first operator that appears from left to right is +. However, in the postfix expression, + is at the end since the next operator, *, has precedence over addition. The order of the operators in the original expression is reversed in the resulting postfix expression.
+再次考虑表达式 A + B * C。如上所示，其对应的后缀表达式是 A B C * +。我们已经注意到操作数 A、B 和 C 保持它们的相对位置不变。<mark>只有操作符改变了位置</mark>。让我们再次查看中缀表达式中的操作符。从左到右首先出现的操作符是 +。然而，在后缀表达式中，由于下一个操作符 * 的优先级高于加法，+ 被放在了最后。原始表达式中的操作符顺序在得到的后缀表达式中被反转了。
 
-As we process the expression, the operators have to be saved somewhere since their corresponding right operands are not seen yet. Also, the order of these saved operators may need to be reversed due to their precedence. This is the case with the addition and the multiplication in this example. Since the addition operator comes before the multiplication operator and has lower precedence, it needs to appear after the multiplication operator is used. Because of this reversal of order, it makes sense to consider using a stack to keep the operators until they are needed.
+当我们处理表达式时，由于相应的右操作数还未出现，操作符需要暂时存储在某处。此外，这些<mark>已保存的操作符的顺序可能需要根据它们的优先级进行反转</mark>。在这个例子中的加法和乘法就是这种情况。由于加法操作符出现在乘法操作符之前且优先级较低，它需要在乘法操作符之后出现。由于这种<mark>顺序的反转，使用栈来保存操作符</mark>直到需要它们为止是有意义的。
 
-What about (A + B) * C? Recall that A B + C * is the postfix equivalent. Again, processing this infix expression from left to right, we see + first. In this case, when we see *, + has already been placed in the result expression because it has precedence over * by virtue of the parentheses. We can now start to see how the conversion algorithm will work. When we see a left parenthesis, we will save it to denote that another operator of high precedence will be coming. That operator will need to wait until the corresponding right parenthesis appears to denote its position (recall the fully parenthesized technique). When that right parenthesis does appear, the operator can be popped from the stack.
+那么对于 (A + B) * C 怎么办呢？回想一下，其对应的后缀表达式是 A B + C *。同样，从左到右处理这个中缀表达式，我们首先看到的是 +。在这种情况下，当我们看到 * 时，由于括号的作用，+ 已经被放置在结果表达式中，因为它对 * 具有优先权。现在我们可以开始<mark>了解转换算法的工作原理</mark>了。当我们看到一个左括号时，我们会将其保存以指示即将出现一个高优先级的操作符。那个操作符需要等待直到出现相应的右括号来标明它的位置（回忆完全括号化的方法）。当右括号出现时，操作符可以从栈中弹出。
 
-As we scan the infix expression from left to right, we will use a stack to keep the operators. This will provide the reversal that we noted in the first example. The top of the stack will always be the most recently saved operator. Whenever we read a new operator, we will need to consider how that operator compares in precedence with the operators, if any, already on the stack.
+当我们从左到右扫描中缀表达式时，我们将使用一个栈来保存操作符。这提供了我们在第一个例子中提到的反转。栈顶总是最近保存的操作符。每当我们<mark>读取一个新的操作符时，我们需要考虑该操作符与已经在栈上的操作符（如果有的话）相比，其优先级如何</mark>。
 
-Assume the infix expression is a string of tokens delimited by spaces. The operator tokens are *, /, +, and -, along with the left and right parentheses, ( and ). The operand tokens are the single-character identifiers A, B, C, and so on. The following steps will produce a string of tokens in postfix order.
+假设中缀表达式是由空格分隔的标记字符串。操作符标记包括 *, /, + 和 -，以及左右括号 ( 和 )。操作数标记是单字符标识符 A, B, C 等等。遵循以下步骤可以产生按后缀顺序排列的标记字符串：
 
-1. Create an empty stack called `opstack` for keeping operators. Create an empty list for output.
-2. Convert the input infix string to a list by using the string method `split`.
-3. Scan the token list from left to right.
-   - If the token is an operand, append it to the end of the output list.
-   - If the token is a left parenthesis, push it on the `opstack`.
-   - If the token is a right parenthesis, pop the `opstack` until the corresponding left parenthesis is removed. Append each operator to the end of the output list.
-   - If the token is an operator, *, /, +, or -, push it on the `opstack`. However, first remove any operators already on the `opstack` that have higher or equal precedence and append them to the output list.
-4. When the input expression has been completely processed, check the `opstack`. Any operators still on the stack can be removed and appended to the end of the output list.
+1. 创建一个名为 `opstack` 的空栈用于存放操作符，并创建一个空列表用于输出。
+2. 使用字符串方法 `split` 将输入的中缀字符串转换成列表。
+3. 从左到右扫描标记列表：
+   - 如果标记是操作数，则将其附加到输出列表的末尾。
+   - 如果标记是左括号，则将其压入 `opstack` 栈中。
+   - 如果标记是右括号，则从 `opstack` 中弹出元素直到移除相应的左括号为止，并将每个操作符附加到输出列表的末尾。
+   - 如果标记是操作符 *, /, + 或 -，则将其压入 `opstack` 栈中。但是，首先移除已在 `opstack` 上且具有更高或相同优先级的所有操作符，并将它们附加到输出列表的末尾。
+4. 当输入表达式被完全处理后，检查 `opstack`。栈上任何剩余的操作符都可以被移除并附加到输出列表的末尾。
+
+> We need to develop an algorithm to convert any infix expression to a postfix expression. To do this we will look closer at the conversion process.
+>
+> Consider once again the expression A + B * C. As shown above, A B C * + is the postfix equivalent. We have already noted that the operands A, B, and C stay in their relative positions. It is only the operators that change position. Let’s look again at the operators in the infix expression. The first operator that appears from left to right is +. However, in the postfix expression, + is at the end since the next operator, *, has precedence over addition. The order of the operators in the original expression is reversed in the resulting postfix expression.
+>
+> As we process the expression, the operators have to be saved somewhere since their corresponding right operands are not seen yet. Also, the order of these saved operators may need to be reversed due to their precedence. This is the case with the addition and the multiplication in this example. Since the addition operator comes before the multiplication operator and has lower precedence, it needs to appear after the multiplication operator is used. Because of this reversal of order, it makes sense to consider using a stack to keep the operators until they are needed.
+>
+> What about (A + B) * C? Recall that A B + C * is the postfix equivalent. Again, processing this infix expression from left to right, we see + first. In this case, when we see *, + has already been placed in the result expression because it has precedence over * by virtue of the parentheses. We can now start to see how the conversion algorithm will work. When we see a left parenthesis, we will save it to denote that another operator of high precedence will be coming. That operator will need to wait until the corresponding right parenthesis appears to denote its position (recall the fully parenthesized technique). When that right parenthesis does appear, the operator can be popped from the stack.
+>
+> As we scan the infix expression from left to right, we will use a stack to keep the operators. This will provide the reversal that we noted in the first example. The top of the stack will always be the most recently saved operator. Whenever we read a new operator, we will need to consider how that operator compares in precedence with the operators, if any, already on the stack.
+>
+> Assume the infix expression is a string of tokens delimited by spaces. The operator tokens are *, /, +, and -, along with the left and right parentheses, ( and ). The operand tokens are the single-character identifiers A, B, C, and so on. The following steps will produce a string of tokens in postfix order.
+>
+> 1. Create an empty stack called `opstack` for keeping operators. Create an empty list for output.
+> 2. Convert the input infix string to a list by using the string method `split`.
+> 3. Scan the token list from left to right.
+>    - If the token is an operand, append it to the end of the output list.
+>    - If the token is a left parenthesis, push it on the `opstack`.
+>    - If the token is a right parenthesis, pop the `opstack` until the corresponding left parenthesis is removed. Append each operator to the end of the output list.
+>    - If the token is an operator, *, /, +, or -, push it on the `opstack`. However, first remove any operators already on the `opstack` that have higher or equal precedence and append them to the output list.
+> 4. When the input expression has been completely processed, check the `opstack`. Any operators still on the stack can be removed and appended to the end of the output list.
+>
 
 
 
@@ -3074,11 +3874,11 @@ http://cs101.openjudge.cn/practice/24591/
 
 
 
-Shunting yard algorightm（调度场算法）是一种用于将中缀表达式转换为后缀表达式的算法。它由荷兰计算机科学家 Edsger Dijkstra 在1960年代提出，用于解析和计算数学表达式。
+<mark>Shunting yard algorightm（调度场算法）是一种用于将中缀表达式转换为后缀表达式的算法。它由荷兰计算机科学家 Edsger Dijkstra 在1960年代提出，用于解析和计算数学表达式。</mark>
 
 ![image-20240305142138853](https://raw.githubusercontent.com/GMyhf/img/main/img/image-20240305142138853.png)
 
-Shunting Yard 算法的主要思想是使用两个栈（运算符栈和输出栈）来处理表达式的符号。算法按照运算符的优先级和结合性，将符号逐个处理并放置到正确的位置。最终，输出栈中的元素就是转换后的后缀表达式。
+<mark>Shunting Yard 算法的主要思想是使用两个栈（运算符栈和输出栈）来处理表达式的符号</mark>。算法按照运算符的优先级和结合性，将符号逐个处理并放置到正确的位置。最终，输出栈中的元素就是转换后的后缀表达式。
 
 以下是 Shunting Yard 算法的基本步骤：
 
@@ -3096,7 +3896,7 @@ Shunting Yard 算法的主要思想是使用两个栈（运算符栈和输出栈
 
 
 
-接收浮点数，是number buffer技巧。
+<mark>接收浮点数，是number buffer技巧。</mark>
 
 ```python
 def infix_to_postfix(expression):
@@ -3141,7 +3941,7 @@ for _ in range(n):
 
 
 
-接收数据，还可以用re处理。
+接收数据，还可以用<mark>re处理</mark>。
 
 ```python
 # 24591:中序表达式转后序表达式
@@ -3162,7 +3962,11 @@ print(inp(exp))
 
 ### 3 Postfix Evaluation
 
-As a final stack example, we will consider the evaluation of an expression that is already in postfix notation. In this case, a stack is again the data structure of choice. However, as you scan the postfix expression, it is the operands that must wait, not the operators as in the conversion algorithm above. Another way to think about the solution is that whenever an operator is seen on the input, the two most recent operands will be used in the evaluation.
+作为栈的最后一个示例，我们将考虑已经处于后缀表示法中的表达式的求值。在这种情况下，栈再次成为首选的数据结构。然而，当你<mark>扫描后缀表达式时，需要等待的是操作数，而不是像在上述转换算法中那样等待操作符</mark>。另一种思考解决方案的方式是，<mark>每当在输入中看到一个操作符时，将会使用最近的两个操作数进行求值。</mark>
+
+这意味着，在读取后缀表达式的过程中，每当你遇到一个操作数，就将其压入栈中。一旦遇到操作符，就从栈中弹出适当数量的操作数（对于二元操作符来说是两个），执行相应的计算，并将结果压回到栈中。这个过程会一直持续到表达式的末尾，最终栈顶元素就是整个表达式的计算结果。这种方法简洁而有效地解决了后缀表达式的求值问题，因为它充分利用了栈的后进先出特性来管理操作数和操作符的顺序。
+
+> As a final stack example, we will consider the evaluation of an expression that is already in postfix notation. In this case, a stack is again the data structure of choice. However, as you scan the postfix expression, it is the operands that must wait, not the operators as in the conversion algorithm above. Another way to think about the solution is that whenever an operator is seen on the input, the two most recent operands will be used in the evaluation.
 
 ```python
 def postfixEval(postfixExpr):
@@ -3196,7 +4000,7 @@ print(postfixEval('7 8 + 3 2 + /'))
 
 
 
-#### 练习OJ24588: 后序表达式求值
+#### 示例OJ24588: 后序表达式求值
 
 http://cs101.openjudge.cn/practice/24588/
 
@@ -3290,7 +4094,7 @@ for _ in range(n):
 
 
 
-## 6.5 经典八皇后用递归或者栈实现
+## 6.5 经典八皇后用回溯或者栈实现
 
 ### 示例OJ02754: 八皇后
 
@@ -3521,7 +4325,9 @@ for _ in range(test_cases):
 
 # 7 The Queue Abstract Data Type
 
-Like a stack, the queue is a linear data structure that stores items in a First In First Out (FIFO) manner. With a queue, the least recently added item is removed first. A good example of a queue is any queue of consumers for a resource where the consumer that came first is served first.
+像栈一样，队列也是一种线性数据结构，它以先入先出（FIFO, First In First Out）的方式存储项目。在队列中，最早添加的项会最先被移除。队列的一个很好的<mark>例子是资源的消费者队列</mark>，其中最早来的消费者会被优先服务。这意味着，队列中的元素按照它们进入的顺序进行处理，确保了第一个进入队列的元素也是第一个从队列中出来的，体现了“先到先得”的原则。
+
+> Like a stack, the queue is a linear data structure that stores items in a First In First Out (FIFO) manner. With a queue, the least recently added item is removed first. A good example of a queue is any queue of consumers for a resource where the consumer that came first is served first.
 
 
 ![Queue in Python](https://raw.githubusercontent.com/GMyhf/img/main/img/Queue.png)
@@ -3530,13 +4336,13 @@ Like a stack, the queue is a linear data structure that stores items in a First 
 Operations associated with queue are: 
 
 - Enqueue: Adds an item to the queue. If the queue is full, then it is said to be an Overflow condition – Time Complexity : O(1)
-- Dequeue: Removes an item from the queue. The items are popped in the same order in which they are pushed. If the queue is empty, then it is said to be an Underflow condition – Time Complexity : O(1)
+- Dequeue: Removes an item from the queue. <mark>The items are popped in the same order in which they are pushed</mark>. If the queue is empty, then it is said to be an Underflow condition – Time Complexity : O(1)
 - Front: Get the front item from queue – Time Complexity : O(1)
 - Rear: Get the last item from queue – Time Complexity : O(1)
 
 
 
-The queue abstract data type is defined by the following structure and operations. A queue is structured, as described above, as an ordered collection of items which are added at one end, called the “rear,” and removed from the other end, called the “front.” Queues maintain a FIFO ordering property. The queue operations are given below.
+The queue abstract data type is defined by the following structure and operations. A queue is structured, as described above, as <mark>an ordered collection of items which are added at one end, called the “rear,” and removed from the other end, called the “front.” </mark>mQueues maintain a FIFO ordering property. The queue operations are given below.
 
 - `Queue()` creates a new queue that is empty. It needs no parameters and returns an empty queue.
 - `enqueue(item)` adds a new item to the rear of the queue. It needs the item and returns nothing.
@@ -3565,9 +4371,16 @@ As an example, if we assume that `q` is a queue that has been created and is cur
 
 ## 7.1 Implementing a Queue in Python
 
-It is again appropriate to create a new class for the implementation of the abstract data type queue. As before, we will use the power and simplicity of the list collection to build the internal representation of the queue.
+再次创建一个新类来实现队列这种抽象数据类型是合适的。像之前一样，我们将利用列表集合的强大和简洁性来构建队列的内部表示。
 
-We need to decide which end of the list to use as the rear and which to use as the front. The implementation shown in Listing 1 assumes that the rear is at position 0 in the list. This allows us to use the `insert` function on lists to add new elements to the rear of the queue. The `pop` operation can be used to remove the front element (the last element of the list). Recall that this also means that enqueue will be O(n) and dequeue will be O(1).
+我们需要决定使用列表的哪一端作为队列的尾部（rear），哪一端作为前端（front）。清单1中所示的实现<mark>假设列表的位置0处为队列的尾部</mark>。这允许我们对列表使用`insert`函数在队列尾部添加新元素。可以<mark>使用`pop`操作移除前端的元素（即列表的最后一个元素）</mark>。请记住，这也意味着入队（enqueue）操作的时间复杂度为O(n)，而出队（dequeue）操作的时间复杂度为O(1)。
+
+这种方法下，虽然在队列的尾部添加元素需要移动其他元素以腾出空间，导致了较高的时间复杂度O(n)，但是从队列前端移除元素则非常高效，不需要额外的元素移动（时间复杂度为O(1)）。因此，选择列表的哪一端作为队列的前端或尾部取决于应用的具体需求以及对于入队和出队操作性能的不同考虑。然而，通常更常见的是将列表的末尾视为队列的尾部，这样可以优化入队操作的效率，尽管这与上述示例中的做法相反。
+
+> It is again appropriate to create a new class for the implementation of the abstract data type queue. As before, we will use the power and simplicity of the list collection to build the internal representation of the queue.
+>
+> We need to decide which end of the list to use as the rear and which to use as the front. The implementation shown in Listing 1 assumes that the rear is at position 0 in the list. This allows us to use the `insert` function on lists to add new elements to the rear of the queue. The `pop` operation can be used to remove the front element (the last element of the list). Recall that this also means that enqueue will be O(n) and dequeue will be O(1).
+>
 
 ```mermaid
 classDiagram
@@ -3642,7 +4455,7 @@ D. 'hello', 'dog', 3
 
 
 
-## 7.2 练习OJ02746: 约瑟夫问题
+### 示例OJ02746: 约瑟夫问题
 
 implementation, http://cs101.openjudge.cn/practice/02746
 
@@ -3736,18 +4549,21 @@ while True:
 
 
 
-## 7.3 模拟器打印机
+## 7.2 模拟器打印机
 
 一个更有趣的例子是模拟打印任务队列。学生向共享打印机发送打印请求，这些打印任务被存在一个队列中，并且按照先到先得的顺序执行。这样的设定可能导致很多问题。其中最重要的是，打印机能否处理一定量的工作。如果不能，学生可能会由于等待过长时间而错过
 要上的课。
+
 考虑计算机科学实验室里的这样一个场景：在任何给定的一小时内，实验室里都有约 10 个学生。他们在这一小时内最多打印 2 次，并且打印的页数从 1 到 20 不等。实验室的打印机比较老旧，每分钟只能以低质量打印 10 页。可以将打印质量调高，但是这样做会导致打印机每分钟只能打印 5 页。降低打印速度可能导致学生等待过长时间。那么，应该如何设置打印速度呢？
-可以通过构建一个实验室模型来解决该问题。我们需要为学生、打印任务和打印机构建对象，如图 3-15 所示。当学生提交打印任务时，我们需要将它们加入等待列表中，该列表是打印机上的打印任务队列。当打印机执行完一个任务后，它会检查该队列，看看其中是否还有需要处理的任务。我们感兴趣的是学生平均需要等待多久才能拿到打印好的文章。这个时间等于打印任务在队列中的平均等待时间。
+
+可以通过构建一个实验室模型来解决该问题。我们需要为学生、打印任务和打印机构建对象，如图所示。当学生提交打印任务时，将它们加入等待列表中，该列表是打印机上的<mark>打印任务队列</mark>。当打印机执行完一个任务后，它会检查该队列，看看其中是否还有需要处理的任务。我们感兴趣的是学生<mark>平均需要等待多久</mark>才能拿到打印好的文章。这个时间<mark>等于打印任务在队列中的平均等待时间</mark>。
 
 ![../_images/simulationsetup.png](https://raw.githubusercontent.com/GMyhf/img/main/img/simulationsetup.png)
 
 Figure 4: Computer Science Laboratory Printing Queue
 
 在模拟时，需要应用一些概率学知识。举例来说，学生打印的文章可能有 1~20 页。如果各页数出现的概率相等，那么打印任务的实际时长可以通过 1~20 的一个随机数来模拟。
+
 如果实验室里有 10 个学生，并且在一小时内每个人都打印两次，那么每小时平均就有 20 个打印任务。在任意一秒，创建一个打印任务的概率是多少？回答这个问题需要考虑任务与时间的比值。每小时 20 个任务相当于每 180 秒 1 个任务。
 
 
@@ -3756,15 +4572,15 @@ $\frac {20\ tasks}{1\ hour} \times \frac {1\ hour}  {60\ minutes} \times \frac {
 
 
 
-1．主要模拟步骤
+**1.主要模拟步骤**
 下面是主要的模拟步骤。
 (1) 创建一个打印任务队列。每一个任务到来时都会有一个时间戳。一开始，队列是空的。
 
-(2) 针对每一秒（currentSecond），执行以下操作。
-❏ 是否有新创建的打印任务？如果是，以currentSecond作为其时间戳并将该任务加入到队列中。
+(2) 针对每一秒（current_second），执行以下操作。
+❏ 是否有新创建的打印任务？如果是，以current_second作为其时间戳并将该任务加入到队列中。
 ❏ 如果打印机空闲，并且有正在等待执行的任务，执行以下操作：
 ■ 从队列中取出第一个任务并提交给打印机；
-■ 用currentSecond减去该任务的时间戳，以此计算其等待时间；
+■ 用current_second减去该任务的时间戳，以此计算其等待时间；
 ■ 将该任务的等待时间存入一个列表，以备后用；
 ■ 根据该任务的页数，计算执行时间。
 ❏ 打印机进行一秒的打印，同时从该任务的执行时间中减去一秒。
@@ -3772,8 +4588,8 @@ $\frac {20\ tasks}{1\ hour} \times \frac {1\ hour}  {60\ minutes} \times \frac {
 
 (3) 当模拟完成之后，根据等待时间列表中的值计算平均等待时间。
 
-2. Python实现
-   我们创建3个类：Printer、Task和PrintQueue。它们分别模拟打印机、打印任务和队列。
+**2.Python实现**
+我们创建3个类：Printer、Task和PrintQueue。它们分别模拟打印机、打印任务和队列。
 
 Printer类需要检查当前是否有待完成的任务。如果有，那么打印机就处于工作状态（busy方法），并且其工作所需的时间可以通过要打印的页数来计算。其构造方法会初始化打印速度，即每分钟打印多少页。tick方法会减量计时，并且在执行完任务之后将打印机设置成空闲状态None。
 
@@ -3794,22 +4610,22 @@ classDiagram
     }
 
     class Printer {
-        - pagerate: int
-        - currentTask: Task
-        - timeRemaining: int
+        - page_rate: int
+        - current_task: Task
+        - time_remaining: int
         
         + tick(self)
         + busy(self)
-        + startNext(self, newtask)
+        + start_next(self, newtask)
     }
 
     class Task {
         - timestamp: int
         - pages: int
         
-        + getStamp(self)
-        + getPages(self)
-        + waitTime(self, currenttime)
+        + get_stamp(self)
+        + get_pages(self)
+        + wait_ime(self, currenttime)
     }
 ```
 
@@ -3839,25 +4655,25 @@ class Queue:
 
 class Printer:
     def __init__(self, ppm):
-        self.pagerate = ppm
-        self.currentTask = None
-        self.timeRemaining = 0
+        self.page_rate = ppm
+        self.current_task = None
+        self.time_remaining = 0
 
     def tick(self):
-        if self.currentTask != None:
-            self.timeRemaining = self.timeRemaining - 1
-            if self.timeRemaining <= 0:
-                self.currentTask = None
+        if self.current_task != None:
+            self.time_remaining = self.time_remaining - 1
+            if self.time_remaining <= 0:
+                self.current_task = None
 
     def busy(self):
-        if self.currentTask != None:
+        if self.current_task != None:
             return True
         else:
             return False
 
-    def startNext(self, newtask):
-        self.currentTask = newtask
-        self.timeRemaining = newtask.getPages() * 60 / self.pagerate
+    def start_next(self, new_task):
+        self.current_task = new_task
+        self.time_remaining = new_task.get_pages() * 60 / self.page_rate
 
 
 class Task:
@@ -3865,39 +4681,39 @@ class Task:
         self.timestamp = time
         self.pages = random.randrange(1, 21)
 
-    def getStamp(self):
+    def get_stamp(self):
         return self.timestamp
 
-    def getPages(self):
+    def get_pages(self):
         return self.pages
 
-    def waitTime(self, currenttime):
-        return currenttime - self.timestamp
+    def wait_time(self, current_time):
+        return current_time - self.timestamp
 
 
-def simulation(numSeconds, pagesPerMinute):
-    labprinter = Printer(pagesPerMinute)
-    printQueue = Queue()
-    waitingtimes = []
+def simulation(num_seconds, pages_per_minute):
+    lab_printer = Printer(pages_per_minute)
+    print_queue = Queue()
+    waiting_times = []
 
-    for currentSecond in range(numSeconds):
+    for current_second in range(num_seconds):
 
-        if newPrintTask():
-            task = Task(currentSecond)
-            printQueue.enqueue(task)
+        if new_print_task():
+            task = Task(current_second)
+            print_queue.enqueue(task)
 
-        if (not labprinter.busy()) and (not printQueue.is_empty()):
-            nexttask = printQueue.dequeue()
-            waitingtimes.append(nexttask.waitTime(currentSecond))
-            labprinter.startNext(nexttask)
+        if (not lab_printer.busy()) and (not print_queue.is_empty()):
+            nexttask = print_queue.dequeue()
+            waiting_times.append(nexttask.wait_time(current_second))
+            lab_printer.start_next(nexttask)
 
-        labprinter.tick()
+        lab_printer.tick()
 
-    averageWait = sum(waitingtimes) / len(waitingtimes)
-    print("Average Wait %6.2f secs %3d tasks remaining." % (averageWait, printQueue.size()))
+    average_wait = sum(waiting_times) / len(waiting_times)
+    print(f"Average Wait {average_wait:6.2f} secs {print_queue.size():3d} tasks remaining.")
 
 
-def newPrintTask():
+def new_print_task():
     num = random.randrange(1, 181)
     if num == 180:
         return True
@@ -3924,9 +4740,9 @@ Average Wait   6.71 secs   0 tasks remaining.
 
 
 
-每一个任务都需要保存一个时间戳，用于计算等待时间。这个时间戳代表任务被创建并放入打印任务队列的时间。 waitTime 方法可以获得任务在队列中等待的时间。
+每一个任务都需要保存一个时间戳，用于计算等待时间。这个时间戳代表任务被创建并放入打印任务队列的时间。 wait_time 方法可以获得任务在队列中等待的时间。
 
-主模拟程序simulation实现了之前描述的算法。 printQueue 对象是队列抽象数据类型的实例。布尔辅助函数newPrintTask判断是否有新创建的打印任务。我们再一次使用random模块中的 randrange 函数来生成随机数，不过这一次的取值范围是 1~180。平均每 180 秒有一个打印任务。通过从随机数中选取 180，可以模拟这个随机事件。
+主模拟程序simulation实现了之前描述的算法。 print_queue 对象是队列抽象数据类型的实例。布尔辅助函数new_print_task判断是否有新创建的打印任务。我们再一次使用random模块中的 randrange 函数来生成随机数，不过这一次的取值范围是 1~180。平均每 180 秒有一个打印任务。通过从随机数中选取 180，可以模拟这个随机事件。
 
 每次模拟的结果不一定相同。对此，我们不需要在意。这是由于随机数的本质导致的。我们感兴趣的是当参数改变时结果出现的趋势。
 
@@ -3936,11 +4752,23 @@ Average Wait   6.71 secs   0 tasks remaining.
 
 
 
+**3.讨论**
+在之前的内容中，我们试图解答这样一个问题：如果提高打印质量并降低打印速度，打印机能否及时完成所有任务？我们编写了一个程序来模拟随机提交的打印任务，待打印的页数也是随机的。
 
-3. 讨论
-   在之前的内容中，我们试图解答这样一个问题：如果提高打印质量并降低打印速度，打印机能否及时完成所有任务？我们编写了一个程序来模拟随机提交的打印任务，待打印的页数也是随机的。
+上面的输出结果显示，按每分钟5页的打印速度，任务的等待时间在31.50秒和292.40秒之间，相差约6分钟。提高打印速度之后，等待时间在1.29秒和28.96秒之间。此外，在每分钟5页的速度下，10次模拟中有2次没有按时完成所有任务。
 
-上面的输出结果显示，按每分钟5页的打印速度，任务的等待时间在17.27秒和376.05秒之间，相差约6分钟。提高打印速度之后，等待时间在1.29秒和28.96秒之间。此外，在每分钟5页的速度下，10次模拟中有8次没有按时完成所有任务。
+```
+Average Wait  45.88 secs   0 tasks remaining.
+Average Wait  94.42 secs   0 tasks remaining.
+Average Wait 292.40 secs   2 tasks remaining.
+Average Wait  49.39 secs   0 tasks remaining.
+Average Wait 148.27 secs   0 tasks remaining.
+Average Wait 162.19 secs   0 tasks remaining.
+Average Wait  71.00 secs   1 tasks remaining.
+Average Wait  31.50 secs   0 tasks remaining.
+Average Wait 116.74 secs   0 tasks remaining.
+Average Wait  90.63 secs   0 tasks remaining.
+```
 
 可见，降低打印速度以提高打印质量，并不是明智的做法。学生不能等待太长时间，当他们要赶去上课时尤其如此。6分钟的等待时间实在是太长了。
 
@@ -3995,19 +4823,19 @@ class Deque:
     def __init__(self):
         self.items = []
 
-    def isEmpty(self):
+    def is_empty(self):
         return self.items == []
 
-    def addFront(self, item):
+    def add_front(self, item):
         self.items.append(item)
 
-    def addRear(self, item):
+    def add_rear(self, item):
         self.items.insert(0, item)
 
-    def removeFront(self):
+    def remove_front(self):
         return self.items.pop()
 
-    def removeRear(self):
+    def remove_rear(self):
         return self.items.pop(0)
 
     def size(self):
@@ -4015,16 +4843,16 @@ class Deque:
 
 
 d = Deque()
-print(d.isEmpty())
-d.addRear(4)
-d.addRear('dog')
-d.addFront('cat')
-d.addFront(True)
+print(d.is_empty())
+d.add_rear(4)
+d.add_rear('dog')
+d.add_front('cat')
+d.add_front(True)
 print(d.size())
-print(d.isEmpty())
-d.addRear(8.4)
-print(d.removeRear())
-print(d.removeFront())
+print(d.is_empty())
+d.add_rear(8.4)
+print(d.remove_rear())
+print(d.remove_front())
 """
 True
 4
