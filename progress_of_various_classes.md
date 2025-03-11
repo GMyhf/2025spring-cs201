@@ -1,6 +1,6 @@
 # 2025春季 数算B各班进度
 
-Updated 0947 GMT+8 Mar 5, 2025  
+Updated 2344 GMT+8 Mar 11, 2025  
 2025 spring, Complied by Hongfei Yan
 
 
@@ -15,33 +15,33 @@ Guow: http://dsbpython.openjudge.cn
 3/4 链表
 
 Liuyh: http://lyhdsa.openjudge.cn  
-2/29 计概
+2/29 计概, 3/4 计概, 
 
 Xiezm: http://xzmdsa.openjudge.cn   
-3/4 计概
+3/4 计概, 3/11 计概,
 
 Yanhf (14 class): http://cs101.openjudge.cn  
-3/4 计概
+3/4 计概, 3/11 链表
 
-Wuyj (15 class): http://wyj_dsa.openjudge.cn/hw1/  
-3/4栈
+Wuyj (15 class): http://wyj_dsa.openjudge.cn/  
+3/4栈, 3/11 队列
 
 
 ## C/C++
 Dly: http://xlxxsjjg.openjudge.cn  
 2/25 计概
 
-Huw: http://forhuwei.openjudge.cn   
-2/21 链表
+Huw(2 class): http://forhuwei.openjudge.cn   
+2/21 链表, 3/5 链表
 
 Songgj: http://dsab_sgj.openjudge.cn/  
-3/4 栈
+3/4 栈, 3/11 计概
 
-Wangz :  http://sydsb.openjudge.cn  
-3/4 链表
+Wangz(4 class) :  http://sydsb.openjudge.cn  
+3/4 链表, 3/11 计概
 
-Zhaohy：http://dsaex.openjudge.cn  
-2/27 栈
+Zhaohy(6 class)：http://dsaex.openjudge.cn  
+3/6 栈
 
 Zouyz: http://hxsjjg.openjudge.cn   
 2/26 计概
