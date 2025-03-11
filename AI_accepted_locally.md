@@ -1,6 +1,6 @@
 # AI Accepted locally
 
-Updated 2047 GMT+8 Mar 8 2025
+Updated 0952 GMT+8 Mar 11 2025
 
 2025 spring, Complied by Hongfei Yan
 
@@ -21,6 +21,215 @@ DeepSeek-R1-Distill-Qwen-32B-Q4_K_M.gguf
 > 统一内存架构(UMA)让CPU和GPU共享同一内存吃，无需数据复制。
 >
 > OS macOS 15.3 (Build 24D60), AI Framework: Core ML, AI Backend: GPU.
+
+
+
+
+
+## LC41.缺失的第一正数
+
+困难, 哈希表，https://leetcode.cn/problems/first-missing-positive/
+
+> 电脑配置为英特尔最新一代Ultra 5 225H，核显是Arc-130T，**Deepseek Coder v2 Lite Instruct，16B**，且运行速度很快。
+
+要解决这个问题，我们需要找到数组中未出现的最小正整数。由于时间复杂度要求为 O(n)*O*(*n*) 且只使用常数级别额外空间，我们可以利用数组的索引位置来标记数字的存在与否。具体步骤如下：
+
+1. **将所有负数和大于数组长度的数变为一个特殊值**：我们选择用数组中的最大值加一来表示这个特殊值（例如，数组长度为 n*n*，则用 n+1*n*+1 表示）。这样可以确保这些数字不会影响我们的结果。
+2. **将每个数字放在正确的位置上**：遍历数组，如果当前数字在 [1,n][1,*n*] 范围内，则将其放到索引为该数字减一的位置上（例如，数字 33 放在索引 22 处）。
+3. **寻找未出现的最小正整数**：再次遍历数组，找到第一个位置不正确的数字，即为未出现的最小正整数。如果所有位置都正确，则返回 n+1*n*+1。
+
+以下是实现代码：
+
+```python
+class Solution:
+    def firstMissingPositive(self, nums: List[int]) -> int:
+        n = len(nums)
+        
+        # Step 1: Place each number in its correct position (if possible)
+        for i in range(n):
+            while 1 <= nums[i] <= n and nums[nums[i] - 1] != nums[i]:
+                nums[nums[i] - 1], nums[i] = nums[i], nums[nums[i] - 1]
+        
+        # Step 2: Find the first missing positive integer
+        for i in range(n):
+            if nums[i] != i + 1:
+                return i + 1
+        
+        # If all positions are filled correctly, return n+1
+        return n + 1
+```
+
+解释：
+
+- **第一步**：我们遍历数组，对于每个数字 nums[i]*n**u**m**s*[*i*]，如果它在 [1,n][1,*n*] 范围内且不在正确的位置上（即 `nums[nums[i] - 1] != nums[i]`），则将其交换到正确的位置。这样可以确保每个数字都在其应该在的位置上。
+- **第二步**：再次遍历数组，找到第一个不满足 `nums[i] == i + 1` 的位置，返回该位置加一即为未出现的最小正整数。如果所有位置都正确，则返回 n+1*n*+1。
+
+这种方法的时间复杂度为 O(n)*O*(*n*)，因为我们最多遍历两次数组，且每次交换操作都是常数时间复杂度的。空间复杂度为 O(1)*O*(1)，因为我们没有使用额外的空间来存储数据结构。
+
+19.81 tok/sec
+
+646 tokens
+
+39.45s to first token
+
+Stop reason: EOS Token Found
+
+**总结：**coder真的好强，基本上1秒生成20个token，这还是核显的情况下，它将对我练习编程有很大帮助！
+
+
+
+## LC1745.分割回文串IV
+
+困难，dp, https://leetcode.cn/problems/palindrome-partitioning-iv/
+
+> 电脑配置为英特尔最新一代Ultra 5 225H，核显是Arc-130T，**Deepseek Coder v2 Lite Instruct，16B**，且运行速度很快。
+
+要解决这个问题，我们需要检查字符串 `s` 是否可以被分割成三个非空的回文子字符串。我们可以使用动态规划来识别所有的回文子字符串，然后检查是否有满足条件的分割方法。
+
+以下是详细的步骤和代码实现：
+
+1. **预处理**：首先，我们需要一个函数来检测一个子字符串是否是回文。我们可以使用动态规划来构建这个表。
+2. **分割检查**：然后，我们遍历所有可能的分割点，检查是否可以将字符串分成三个回文子字符串。
+
+以下是具体的代码实现：
+
+```python
+class Solution:
+    def checkPartitioning(self, s: str) -> bool:
+        n = len(s)
+        
+        # 预处理，构建一个表来存储子字符串是否为回文
+        dp = [[False] * n for _ in range(n)]
+        
+        # 所有长度为1的子字符串都是回文
+        for i in range(n):
+            dp[i][i] = True
+        
+        # 检查长度为2到n的所有子字符串
+        for length in range(2, n + 1):
+            for i in range(n - length + 1):
+                j = i + length - 1
+                if s[i] == s[j]:
+                    if length == 2:
+                        dp[i][j] = True
+                    else:
+                        dp[i][j] = dp[i + 1][j - 1]
+        
+        # 检查是否可以分割成三个回文子字符串
+        for i in range(1, n - 1):
+            for j in range(i, n - 1):
+                if dp[0][i - 1] and dp[i][j] and dp[j + 1][n - 1]:
+                    return True
+        
+        return False
+```
+
+解释：
+
+1. **预处理**：
+   - `dp` 是一个二维列表，`dp[i][j]` 表示子字符串 `s[i:j+1]` 是否是回文。
+   - 初始化所有长度为1的子字符串（即对角线）为 `True`，因为单个字符总是回文。
+   - 然后检查所有长度为2到n的子字符串，更新 `dp` 表来标记回文。
+2. **分割检查**：
+   - 遍历所有可能的分割点 `i` 和 `j`，确保 `i` 在第一个分割点和第二个分割点之间，`j` 在第二个分割点和最后一个字符之间。
+   - 如果 `dp[0][i-1]`, `dp[i][j]`, 和 `dp[j+1][n-1]` 都是回文，则返回 `True`。
+   - 如果没有找到这样的分割点，返回 `False`。
+
+这个方法通过动态规划有效地识别了所有可能的回文子字符串，并检查了是否可以将其分成三个非空的回文子字符串。
+
+23.34 tok/sec
+
+722 tokens
+
+8.80s to first token
+
+Stop reason: EOS Token Found
+
+
+
+## LC1760.袋子里最少数目的球
+
+中等, 二分查找，https://leetcode.cn/problems/minimum-limit-of-balls-in-a-bag/
+
+> 电脑配置为英特尔最新一代Ultra 5 225H，核显是Arc-130T，居然可以运行14B和32B，但由于14B较慢且有一些傻，我又配了一个**Deepseek Coder v2 Lite Instruct，16B**的且运行速度很快，下面包含对这两个大模型的测试。
+>
+> **Deepseek R1 Distill Qwen 14B Q4_K_M，Deepseek Coder v2 Lite Instruct Q4_K_M 16B**
+>
+> 先测试了下作业题，发现14B的解题速度很慢，但是是对的，只不过用时远多于正常水平。
+
+
+
+![image-20250311094233684](https://raw.githubusercontent.com/GMyhf/img/main/img/image-20250311094233684.png)
+
+
+
+为了解决这个问题，我们需要找到一种方法来最小化在最多 `maxOperations` 次操作后袋子中球的最大数量。通过将每个袋子的球分成两个新的袋子，我们可以逐步减少最大值。
+
+方法思路
+
+1. **问题分析**:
+   - 我们需要进行最多 `maxOperations` 次操作。
+   - 每次操作可以选择一个袋子，并将其分成两个正整数的新袋子。
+   - 目标是最小化最终的最大球数。
+2. **直觉和见解**:
+   - 使用二分查找来确定最小的最大值。我们可以通过调整中间值 `mid` 来找到满足条件的最小最大值。
+   - 对于每个可能的最大值 `mid`，计算所需的总操作次数。如果操作次数不超过 `maxOperations`，则可以尝试更小的 `mid`。
+3. **算法选择和优化**:
+   - 使用二分查找来高效地缩小范围，检查每个中间值 `mid` 是否满足条件。
+   - 对于每个 `mid`，计算每个袋子需要拆分成多少次操作，并累加总操作次数。如果总操作次数在允许范围内，则继续尝试更小的值。
+
+解决代码
+
+```python
+from typing import List
+
+class Solution:
+    def minimumSize(self, nums: List[int], maxOperations: int) -> int:
+        left = 1
+        right = max(nums)
+        
+        while left < right:
+            mid = (left + right) // 2
+            total_ops = 0
+            
+            for num in nums:
+                if num > mid:
+                    k = (num + mid - 1) // mid
+                    total_ops += (k - 1)
+                    
+                    if total_ops > maxOperations:
+                        break
+            
+            if total_ops <= maxOperations:
+                right = mid
+            else:
+                left = mid + 1
+        
+        return left
+```
+
+代码解释
+
+- **初始化边界**: `left` 设为 1，`right` 设为数组中的最大值。
+- **二分查找**: 在每次循环中计算中间值 `mid`，并检查每个袋子在拆分到 `mid` 次数时的操作次数。
+- **操作次数计算**: 对于每个大于 `mid` 的袋子，计算需要拆分成多少次，并累加到总操作次数中。如果总操作次数超过允许范围，提前终止循环。
+- **调整边界**: 根据总操作次数是否在允许范围内调整二分查找的边界，直到找到最小的最大值。
+
+这种方法确保了我们能够在对数时间内找到最优解，时间复杂度为 O(n log(max_value))，其中 n 是数组长度，max_value 是数组中的最大值。
+
+3.20 tok/sec
+
+4457 tokens
+
+29.03s to first token
+
+Stop reason: EOS Token Found
+
+同样的题目我喂给coder秒出答案。这让我好奇是不是这些题已经被训练过了？
+
+![image-20250311094137597](https://raw.githubusercontent.com/GMyhf/img/main/img/image-20250311094137597.png)
+
+
 
 
 
@@ -865,7 +1074,7 @@ http://cs101.openjudge.cn/practice/16528/
 >    if start > last_end:
 >
 >        count +=1
->                                            
+>                                                
 >        last_end = end
 >
 > 7. 最后输出count的值。
@@ -1460,10 +1669,10 @@ tags: string, sort
 >     match = re.match(r'^(\d+\.?\d*)([A-Za-z]+)$', param_part)
 >     if not match:
 >         continue  # 或者处理错误情况，但题目中假设输入正确
->                                         
+>                                             
 >     num_str, unit = match.groups()
 >     num = float(num_str)
->                                         
+>                                             
 >     if unit == 'B':
 >         num_m = num * 1000
 >     elif unit == 'M':
@@ -1471,7 +1680,7 @@ tags: string, sort
 >     else:
 >         # 其他情况，但题目中没有说明，可以忽略？
 >         continue
->                                         
+>                                             
 >     if name_part not in model_dict:
 >         model_dict[name_part] = []
 >     model_dict[name_part].append( (num_m, param_part) )
@@ -2199,7 +2408,7 @@ http://cs101.openjudge.cn/practice/29256/
 
 
 
-## P1002 [NOIP 2002 普及组] 过河卒
+## LG-P1002 [NOIP 2002 普及组] 过河卒
 
 dp, https://www.luogu.com.cn/problem/P1002
 
