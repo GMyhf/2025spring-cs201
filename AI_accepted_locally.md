@@ -1,6 +1,6 @@
 # AI Accepted locally
 
-Updated 0952 GMT+8 Mar 11 2025
+Updated 2018 GMT+8 Mar 11 2025
 
 2025 spring, Complied by Hongfei Yan
 
@@ -925,6 +925,27 @@ DeepSeek-R1-Distill-Qwen-7B-GGUF
 
 
 
+## 06648:Sequence
+
+http://cs101.openjudge.cn/practice/06648/
+
+电脑配置：2021 Macbook Pro
+Apple M1 Max chip with 10‑core CPU, 24‑core GPU, 16‑core Neural Engine
+32GB unified memory
+DeepSeek R1 Distill Qwen 14B Q6_K 成功解决 06648: Sequence ！！
+
+
+
+![image-20250311201628392](https://raw.githubusercontent.com/GMyhf/img/main/img/image-20250311201628392.png)
+
+
+
+deepseek-coder-v2-lite-instructe-4bit-mlx 做不对06648: Sequence。 第一次WA；第二次我提醒WA了，step by step，还是WA
+
+我用deepseek-r1-distill-qwer-32b, AC了。
+
+![image-20250311201748816](https://raw.githubusercontent.com/GMyhf/img/main/img/image-20250311201748816.png)
+
 
 
 ## 16528:充实的寒假生活
@@ -1074,7 +1095,7 @@ http://cs101.openjudge.cn/practice/16528/
 >    if start > last_end:
 >
 >        count +=1
->                                                
+>                                                    
 >        last_end = end
 >
 > 7. 最后输出count的值。
@@ -1669,10 +1690,10 @@ tags: string, sort
 >     match = re.match(r'^(\d+\.?\d*)([A-Za-z]+)$', param_part)
 >     if not match:
 >         continue  # 或者处理错误情况，但题目中假设输入正确
->                                             
+>                                                 
 >     num_str, unit = match.groups()
 >     num = float(num_str)
->                                             
+>                                                 
 >     if unit == 'B':
 >         num_m = num * 1000
 >     elif unit == 'M':
@@ -1680,7 +1701,7 @@ tags: string, sort
 >     else:
 >         # 其他情况，但题目中没有说明，可以忽略？
 >         continue
->                                             
+>                                                 
 >     if name_part not in model_dict:
 >         model_dict[name_part] = []
 >     model_dict[name_part].append( (num_m, param_part) )
