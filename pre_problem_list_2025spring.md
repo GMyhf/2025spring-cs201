@@ -105,7 +105,7 @@ Updated 0011 GMT+8 Feb 16 2025.
 | 0118 | 02746: 约瑟夫问题   | queue  | - | http://cs101.openjudge.cn/25dsapre/02746/       |
 | 0118 | 24588: 后序表达式求值   | stack  | - | http://cs101.openjudge.cn/practice/24588/       |
 | 0118 | 20.删除链表元素   | linked-list  | - | http://dsbpython.openjudge.cn/dspythonbook/P0020/       |
-| 0117 | 02734: 十进制到八进制   | stack  | - | http://cs101.openjudge.cn/25dsapre/02734/       |
+| 0117 | 02734: 十进制到八进制   | stack  | Easy | http://cs101.openjudge.cn/25dsapre/02734/       |
 | 0117 | 4.插入链表元素   | linked-list  | - | http://dsbpython.openjudge.cn/2024allhw/004/       |
 | 0117 | sy296: 后缀表达式 | stack    | Easy | https://sunnywhy.com/sfbj/7/1/296       |
 | 0116 | 03704: 括号匹配问题   | stack  | 必须会 | http://cs101.openjudge.cn/25dsapre/03704       |
