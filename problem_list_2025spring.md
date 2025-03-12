@@ -29,7 +29,7 @@ Updated 1046 GMT+8 Mar 11 2025.
 | 0312 | 234.回文链表     | linked list,two pointers    | Easy    | https://leetcode.cn/problems/palindrome-linked-list/     |
 |      |      | -    | -    | linked list begin   |
 | 0311 | 02694:波兰表达式  | stack    | Medium    | http://cs101.openjudge.cn/2025sp_routine/02694/      |
-|      |      | stack    | Medium    | https://leetcode.cn/problems/evaluate-reverse-polish-notation/      |
+|      | 150.逆波兰表达式求值 | stack    | Medium    | https://leetcode.cn/problems/evaluate-reverse-polish-notation/      |
 | 0311 | 3478.选出和最大的K个元素     | heap    | Medium    | https://leetcode.cn/problems/choose-k-elements-with-maximum-sum/      |
 | 0310 | 20140:今日化学论文 | stack    | Medium    | http://cs101.openjudge.cn/2025sp_routine/20140/      |
 | 0310 | 2070.每一个查询的最大美丽值   | binary search    | Medium     | https://leetcode.cn/problems/most-beautiful-item-for-each-query/      |
