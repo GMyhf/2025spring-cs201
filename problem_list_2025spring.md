@@ -2,7 +2,7 @@
 
 https://github.com/GMyhf/2025spring-cs201/blob/main/problem_list_2025spring.md
 
-Updated 0021 GMT+8 Mar 13 2025.
+Updated 0007 GMT+8 Mar 14 2025.
 2025 spring, Complied by Hongfei Yan
 
 题解在：
@@ -23,7 +23,7 @@ Updated 0021 GMT+8 Mar 13 2025.
 |      |      | -    | -    | tree begin, graph recap   |
 |      |      | -    | -    |      |
 | 0315 | 24591:中序表达式转后序表达式 | stack    | Tough    | http://cs101.openjudge.cn/practice/24591/      |
-| 0314 | 27217: 有多少种合法的出栈顺序| dfs,dp    | Medium  | http://cs101.openjudge.cn/practice/27217/      |
+| 0314 | 27217: 有多少种合法的出栈顺序| dfs,dp    | Medium  | http://cs101.openjudge.cn/2025sp_routine/27217/      |
 | 0314 | sy295: 可能的出栈序列     | stack    | Medium  | https://sunnywhy.com/sfbj/7/1/295      |
 | similar | 22068:合法出栈序列 | stack| Medium | http://cs101.openjudge.cn/practice/22068/      |
 | 0313 | 02734: 十进制到八进制     | stack    | Easy    | http://cs101.openjudge.cn/2025sp_routine/02734/      |
