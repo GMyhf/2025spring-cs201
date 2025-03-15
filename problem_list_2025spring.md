@@ -22,7 +22,7 @@ Updated 0002 GMT+8 Mar 15 2025.
 | ---- | ----------------- | -------------------- | ------ | ---------------------------------------------------- |
 |      |      | -    | -    | tree begin, graph recap   |
 |      |      | -    | -    |      |
-| 0316 | 01159: Palindrome  | dp    | Tough    | http://cs101.openjudge.cn/practice/01159/      |
+| 0316 | 01159: Palindrome  | dp    | Tough    | http://cs101.openjudge.cn/2025sp_routine/01159/      |
 | 0316 | 274.H指数   | sorting    | Medium    | https://leetcode.cn/problems/h-index/      |
 | 0315 | 02749:分解因数     | recursion    | Medium    | http://cs101.openjudge.cn/2025sp_routine/02749/      |
 | 0315 | 24591:中序表达式转后序表达式 | stack    | Tough    | http://cs101.openjudge.cn/practice/24591/      |
