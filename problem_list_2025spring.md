@@ -23,7 +23,7 @@ Updated 2018 GMT+8 Mar 16 2025.
 |      |      | -    | -    | tree begin, graph recap   |
 |      |      | -    | -    |      |
 | 0318 | 3484. 设计电子表格 | OOP, RE | Medium  | https://leetcode.cn/contest/biweekly-contest-152/problems/design-spreadsheet/      |
-| 0317 | 02766: 最大子矩阵  | Kadane | Tough    | http://cs101.openjudge.cn/practice/02766/      |
+| 0317 | 02766: 最大子矩阵  | Kadane | Medium    | http://cs101.openjudge.cn/practice/02766/      |
 | 0317 | 3487.删除后的最大子数组元素和 | implementation  | Easy    | 3487.删除后的最大子数组元素和      |
 | 0316 | 01159: Palindrome  | dp    | Tough    | http://cs101.openjudge.cn/2025sp_routine/01159/      |
 | 0316 | 274.H指数   | sorting    | Medium    | https://leetcode.cn/problems/h-index/      |
