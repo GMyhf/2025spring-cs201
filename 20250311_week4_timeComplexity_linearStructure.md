@@ -1,6 +1,6 @@
-# Week4 线性数据结构&时间复杂度
+# Week4～5 线性数据结构&时间复杂度
 
-Updated 1422 GMT+8 Mar 11, 2025
+Updated 1025 GMT+8 Mar 18, 2025
 
 2025 spring, Complied by Hongfei Yan
 
@@ -8,7 +8,9 @@ Updated 1422 GMT+8 Mar 11, 2025
 
 Logs:
 
-> 2025/03/11, 因为assign#4 留了链表题目，我们<mark>先从 3 基本数据结构讲起</mark>，之后再讲 2 时间复杂度。
+> 2025/03/11, week5, 讲时间复杂度、栈、队列 
+>
+> 2025/03/11, week4, 因为assign#4 留了链表题目，我们<mark>先从 3 基本数据结构讲起</mark>，之后再讲 2 时间复杂度。
 >
 > cs201数算（计算机基础2/2）2025pre每日选做，https://github.com/GMyhf/2025spring-cs201/blob/main/pre_problem_list_2025spring.md
 >
@@ -334,7 +336,7 @@ print(min_cost(nums3, maxOperations3))  # 输出: 7
 
 
 
-## 0.3 Information Retrieval 中的倒排索引
+## 0.3 Information Retrieval中的倒排索引
 
 信息检索中的倒排索引
 
@@ -528,16 +530,147 @@ https://developers.google.com/machine-learning/crash-course/neural-networks/inte
 
 
 
-# Continuing with the content from 03/04/2025...
+## 0.5 Backpropagation反向传播
+
+反向传播（Back Propagation，BP）算法是一种重要的神经网络训练算法，它的一些算法思想可以追溯到20世纪60年代的控制理论。反向传播算法其实和大部分有监督学习算法如线性回归、逻辑回归等求解思路相似，都是通过梯度下降法来逐渐调节参数进而训练模型的，其名称中“反向”的含义主要是指误差的反向传播。
+
+众多机器学习算法在求解参数过程中都会使用到梯度下降法，神经网络算法也不例外。<mark>神经网络中主要使用梯度下降法来进行权重和偏置的学习与改进，从而使代价函数取得极小值</mark>。但随着参数规模越来越大，梯度的求解本身就是一件让人头痛的事情。如何能够快速求解出<mark>复杂函数的梯度</mark>，从而加快梯度下降过程呢？这就需要用到反向传播算法。
+
+反向传播算法可以看成梯度下降法在神经网络中的变形版本，它的原理主要是利用<mark>链式法则</mark>通过递归的方式求解微分，从而简化对神经网络梯度下降优化参数时的计算。在输入数据固定的情况下，反向传播算法利用神经网络的输出敏感度来快速计算神经网络中的各种超参数，从而大大减少训练所需时间。
+
+反向传播算法是神经网络算法的核心所在。<mark>反向传播算法的核心理念就是把下一层神经元对于上一层神经元的所有期待汇总，从而指导上一层神经元改变</mark>。
+假设神经网络还没有被训练好，这个时候输出层神经元的激活值看起来比较随机，与我们期望的正确结果相差较大。我们当然希望对此做出改变，但是我们并不能直接改变神经元的激活值，我们能够改变的只是权重和偏置，
+
+<img src="https://raw.githubusercontent.com/GMyhf/img/main/img/image-20250318105058016.png" alt="image-20250318105058016" style="zoom: 50%;" />
 
 
 
-# 2 Time Complexities Big-O
+**Backpropagation in Neural Network**
+
+https://www.geeksforgeeks.org/backpropagation-in-neural-network/
+
+Last Updated : 07 Mar, 2025
+
+
+
+**示例：对于XOR问题（输入为[0,0], [0,1], [1,0], [1,1]），期望输出为[0,1,1,0]**
+
+手动实现反向传播，没有使用深度学习框架，这有助于理解底层原理
+
+代码`xor_bp_neural_net_manual.py`
+
+```python
+import numpy as np
+
+
+class NeuralNetwork:
+    def __init__(self, input_size, hidden_size, output_size):
+        self.input_size = input_size  # 输入特征维度
+        self.hidden_size = hidden_size  # 隐藏层神经元数量
+        self.output_size = output_size  # 输出层神经元数量
+
+        # 输入层到隐藏层的权重，形状为 (输入维度, 隐藏层维度)
+        self.weights_input_hidden = np.random.randn(self.input_size, self.hidden_size)
+        # 隐藏层到输出层的权重，形状为 (隐藏层维度, 输出层维度)
+        self.weights_hidden_output = np.random.randn(self.hidden_size, self.output_size)
+
+        # 隐藏层的偏置，形状为 (1, 隐藏层维度)
+        self.bias_hidden = np.zeros((1, self.hidden_size))
+        # 输出层的偏置，形状为 (1, 输出层维度)
+        self.bias_output = np.zeros((1, self.output_size))
+
+    def sigmoid(self, x):  # 激活函数，将输入压缩到(0,1)区间
+        return 1 / (1 + np.exp(-x))
+
+    def sigmoid_derivative(self, x):
+        return x * (1 - x)  # Sigmoid的导数，用于反向传播中的梯度计算
+
+    def feedforward(self, X):
+        # 隐藏层计算
+        self.hidden_activation = np.dot(X, self.weights_input_hidden) + self.bias_hidden  # 线性变换
+        self.hidden_output = self.sigmoid(self.hidden_activation)  # 激活函数
+
+        # 输出层计算
+        self.output_activation = np.dot(self.hidden_output, self.weights_hidden_output) + self.bias_output
+        self.predicted_output = self.sigmoid(self.output_activation)
+
+        return self.predicted_output
+
+    def backward(self, X, y, learning_rate):
+        # 计算输出层误差和梯度
+        output_error = y - self.predicted_output  # 误差 = 真实值 - 预测值
+        output_delta = output_error * self.sigmoid_derivative(self.predicted_output)  # 梯度 = 误差 × 导数
+
+        # 计算隐藏层误差和梯度
+        hidden_error = np.dot(output_delta, self.weights_hidden_output.T)  # 误差传递到隐藏层
+        hidden_delta = hidden_error * self.sigmoid_derivative(self.hidden_output)  # 梯度 = 误差 × 导数
+
+        # 更新权重和偏置（梯度下降）
+        self.weights_hidden_output += np.dot(self.hidden_output.T, output_delta) * learning_rate  # 输出层权重更新
+        self.bias_output += np.sum(output_delta, axis=0, keepdims=True) * learning_rate  # 输出层偏置更新
+        self.weights_input_hidden += np.dot(X.T, hidden_delta) * learning_rate  # 隐藏层权重更新
+
+        # axis=0：沿列求和，聚合所有样本的梯度
+        # keepdims=True：保持原矩阵的行数维度，确保偏置更新的形状兼容性
+        self.bias_hidden += np.sum(hidden_delta, axis=0, keepdims=True) * learning_rate  # 隐藏层偏置更新
+
+    def train(self, X, y, epochs, learning_rate):
+        for epoch in range(epochs):
+            output = self.feedforward(X)  # 前向传播
+            self.backward(X, y, learning_rate)  # 反向传播与参数更新
+            if epoch % 4000 == 0:
+                loss = np.mean(np.square(y - output))  # 计算均方误差
+                print(f"Epoch {epoch}, Loss:{loss}")
+
+
+X = np.array([[0, 0], [0, 1], [1, 0], [1, 1]])
+y = np.array([[0], [1], [1], [0]])
+
+# 输入维度 2（二维二进制特征），隐藏层4个神经元，输出层1个神经元（二分类问题）
+nn = NeuralNetwork(input_size=2, hidden_size=4, output_size=1)
+# 训练总轮次, 学习率
+nn.train(X, y, epochs=10000, learning_rate=0.1)
+
+output = nn.feedforward(X)
+print("Predictions after training:")
+print(output)
+"""
+Epoch 0, Loss:0.2653166263520884
+Epoch 4000, Loss:0.007000926683956338
+Epoch 8000, Loss:0.001973630232951721
+Predictions after training:
+[[0.03613239]
+ [0.96431351]
+ [0.96058291]
+ [0.03919372]]
+"""
+
+```
+
+
+
+![image-20250318103310678](https://raw.githubusercontent.com/GMyhf/img/main/img/image-20250318103310678.png)
+
+
+
+
+
+# Continuing with the content 
+
+from 03/04/2025, 03/11/2025...
+
+
+
+# 2 时间复杂度 Big-O
 
 使用数据结构与算法（DSA）的主要目的是为了有效地和高效地解决问题。你如何决定自己编写的程序是否高效呢？这通过复杂度来衡量。复杂度分为两种类型：
 
 1. 时间复杂度：时间复杂度用于衡量执行代码所需的时间。
-2. 空间复杂度：空间复杂度指的是成功执行代码功能所需的存储空间量。 在数据结构与算法中，你还会经常遇到**辅助空间**这个术语，它指的是程序中除了输入数据结构外使用的额外空间。
+2. 空间复杂度：空间复杂度指的是成功执行代码功能所需的存储空间量。 在数据结构与算法中，会经常遇到**辅助空间**这个术语，它指的是程序中除了输入数据结构外使用的额外空间。
+
+> LC234.回文链表。**进阶：**能否用 `O(n)` 时间复杂度和 `O(1)` 空间复杂度解决此题？
+
+
 
 > Here comes one of the interesting and important topics. The primary motive to use DSA is to solve a problem effectively and efficiently. How can you decide if a program written by you is efficient or not? This is measured by complexities. Complexity is of two types:
 >
@@ -549,7 +682,7 @@ https://developers.google.com/machine-learning/crash-course/neural-networks/inte
 
 - 程序中执行的操作数量，设备的速度，以及如果是在在线平台上执行的话，数据传输的速度。
 
-那么我们如何确定哪一个更高效呢？答案是使用渐近符号。**渐近符号**是一种数学工具，它根据输入大小计算所需时间，并不需要实际执行代码。
+那么如何确定哪一个更高效呢？答案是使用渐近符号。<mark>渐近符号</mark>是一种数学工具，它根据输入大小计算所需时间，并不需要实际执行代码。
 
 > Both of the above complexities are measured with respect to the input parameters. But here arises a problem. The time required for executing a code depends on several factors, such as: 
 >
@@ -561,9 +694,9 @@ https://developers.google.com/machine-learning/crash-course/neural-networks/inte
 
 它忽略了依赖于系统的常数，并且只与整个程序中执行的模块化操作的数量有关。以下三种渐近符号最常用以表示算法的时间复杂度：
 
-- **大O符号 (Ο)** – 大O符号特别描述了最坏情况下的情形。
+- **大O符号 (Ο)** – <mark>大O符号特别描述了最坏情况下的情形</mark>。$\Theta$记号渐进地给出算法的平均复杂度，即一个函数的上界和下界。当只有一个渐进上界时，即当n足够大时，使用 $O$ 记号。
 - **欧米伽符号 (Ω)** – 欧米伽(Ω)符号特别描述了最好情况下的情形。
-- **西塔符号 (θ)** – 这个符号代表了算法的平均复杂度。
+- **西塔符号 ($\Theta$)** – 这个符号代表了算法的平均复杂度。
 
 > It neglects the system-dependent constants and is related to only the number of modular operations being performed in the whole program. The following 3 asymptotic notations are mostly used to represent the time complexity of algorithms:
 >
@@ -577,7 +710,7 @@ https://developers.google.com/machine-learning/crash-course/neural-networks/inte
 
 算法的增长率
 
-在代码分析中最常用的符号是**大O符号**，它给出了代码运行时间的上界（或者说是输入规模大小对应的内存使用量）。大O符号帮助我们理解当输入数据量增加时，算法的执行时间或空间需求将以怎样的速度增长。
+<mark>在代码分析中最常用的符号是**大O符号**，它给出了代码运行时间的上界</mark>（或者说是输入规模大小对应的内存使用量）。大O符号帮助我们理解当输入数据量增加时，算法的执行时间或空间需求将以怎样的速度增长。
 
 > Rate of Growth of Algorithms
 >
@@ -591,15 +724,15 @@ https://developers.google.com/machine-learning/crash-course/neural-networks/inte
 
 > **Analyzing** an algorithm has come to mean predicting the resources that the algorithm requires. Occasionally, resources such as memory, communication bandwidth, or computer hardware are of primary concern, but most often it is computational time that we want to measure. Generally, by analyzing several candidate algorithms for a problem, we can identify a most efficient one. Such analysis may indicate more than one viable candidate, but we can often discard several inferior algorithms in the process.
 
-在分析一个算法之前，必须有一个要使用的实现技术的模型，包括该技术的资源模型及其成本。我们将假设一种通用的单处理器计算模型——随机存取机（random-access machine, RAM）来作为实现技术，算法可以用计算机程序来实现。在RAM模型中，指令是顺序执行的，没有并发操作。
+在分析一个算法之前，必须有一个要使用的实现技术的模型，包括该技术的资源模型及其成本。我们将假设一种通用的<mark>单处理器计算模型——随机存取机（random-access machine, RAM）</mark>来作为实现技术，算法可以用计算机程序来实现。在RAM模型中，指令是顺序执行的，没有并发操作。
 
 > Before we can analyze an algorithm, we must have a model of the implementation technology that we will use, including a model for the resources of that technology and their costs. For most of this book, we shall assume a generic oneprocessor, **random-access machine (RAM)** model of computation as our implementation technology and understand that our algorithms will be implemented as computer programs. In the RAM model, instructions are executed one after another, with no concurrent operations.
 
-严格来说，应该精确地定义RAM模型的指令及其成本。然而这样做会很繁琐，并且不会对算法设计和分析提供太多的洞察力。但必须小心不要滥用RAM模型。例如，如果RAM有一个排序指令，那么就可以只用一条指令完成排序。这样的RAM将是不现实的，因为实际的计算机没有这样的指令。因此，指导原则是实际计算机的设计方式。RAM模型包含了在实际计算机中常见的指令：算术运算（如加法、减法、乘法、除法、求余数、取底、取顶），数据移动（加载、存储、复制），以及控制（条件分支和无条件分支、子程序调用和返回）。每条这样的指令都需要固定的时间量。
+严格来说，应该精确地定义RAM模型的指令及其成本。然而这样做会很繁琐，并且不会对算法设计和分析提供太多的洞察力。但必须小心不要滥用RAM模型。例如，如果RAM有一个排序指令，那么就可以只用一条指令完成排序。这样的RAM将是不现实的，因为实际的计算机没有这样的指令。因此，**指导原则是实际计算机的设计方式**。<mark>RAM模型包含了在实际计算机中常见的指令：算术运算（如加法、减法、乘法、除法、求余数、取底、取顶），数据移动（加载、存储、复制），以及控制（条件分支和无条件分支、子程序调用和返回）。每条这样的指令都需要固定的时间量。</mark>
 
 > Strictly speaking, we should precisely define the instructions of the RAM model and their costs. To do so, however, would be tedious and would yield little insight into algorithm design and analysis. Yet we must be careful not to abuse the RAM model. For example, what if a RAM had an instruction that sorts? Then we couldsort in just one instruction. Such a RAM would be unrealistic, since real computers do not have such instructions. Our guide, therefore, is how real computers are designed. The RAM model contains instructions commonly found in real computers: arithmetic (such as add, subtract, multiply, divide, remainder, floor, ceiling), data movement (load, store, copy), and control (conditional and unconditional branch, subroutine call and return). Each such instruction takes a constant amount of time.
 
-RAM模型中的数据类型有整型和浮点实数型。虽然在此处通常不关心精度问题，但在某些应用中精度是至关重要的。也假设每个数据字的大小有限制。例如，在处理大小为n的输入时，我们通常假设对某个常数c≥1， 整数由`c lgn`位表示。我们要求c≥1是为了确保每个字能够容纳n的值，从而使我们能够索引各个输入元素，并且我们将c限制为常数以防止字长无限增长。（如果字长可以无限增长，我们就可以在一个字中存储大量数据并在恒定时间内对其进行操作——这显然是一种不切实际的情况。）
+<mark>RAM模型中的数据类型有整型和浮点实数型</mark>。虽然在此处通常不关心精度问题，但在某些应用中精度是至关重要的。也假设每个数据字的大小有限制。例如，在处理大小为n的输入时，我们通常假设对某个常数c≥1， 整数由`c lgn`位表示。我们要求c≥1是为了确保每个字能够容纳n的值，从而使我们能够索引各个输入元素，并且我们将c限制为常数以防止字长无限增长。（如果字长可以无限增长，我们就可以在一个字中存储大量数据并在恒定时间内对其进行操作——这显然是一种不切实际的情况。）
 
 > The data types in the RAM model are integer and floating point (for storing real numbers). Although we typically do not concern ourselves with precision in this book, in some applications precision is crucial. We also assume a limit on the size of each word of data. For example, when working with inputs of size n, we typically assume that integers are represented by c lg n bits for some constant $c \ge 1$. We require $c \ge 1$​ so that each word can hold the value of n, enabling us to index the individual input elements, and we restrict c to be a constant so that the word size does not grow arbitrarily. (If the word size could grow arbitrarily, we could store huge amounts of data in one word and operate on it all in constant time—clearly an unrealistic scenario.)
 
@@ -613,7 +746,7 @@ RAM模型中的数据类型有整型和浮点实数型。虽然在此处通常�
 
 
 
-#### **Q3. Distill,32B,<mark>Q4</mark>这些参数是什么意思?**
+#### **Q. Distill,32B,<mark>Q4</mark>这些参数是什么意思?**
 
 DeepSeek-R1-Distill-Qwen-32B-GGUF/DeepSeek-R1-Distill-Qwen-32B-Q4_K_M.gguf 
 
@@ -679,11 +812,11 @@ DeepSeek-R1-Distill-Qwen-32B-GGUF/DeepSeek-R1-Distill-Qwen-32B-Q4_K_M.gguf
 
 
 
-实际计算机包含未在上述列表中的指令，这些指令在RAM模型中代表了一个灰色地带。例如，幂运算是否是常数时间指令？在一般情况下，并不是；当x和y是实数时，计算 $x^y$ 需要多条指令。然而，在某些受限的情况下，幂运算是一个常数时间操作。许多计算机有一个“左移”指令，它可以在常数时间内将一个整数的位向左移动 k 个位置。在大多数计算机中，将一个整数的位向左移动一个位置等价于乘以 2，因此将位向左移动 k 个位置就等价于乘以 $2^k$。因此，只要 k 不超过计算机字的位数，这样的计算机可以通过将整数1左移k个位置来在一个常数时间内计算出$2^k$。我们将努力避免在RAM模型中出现这样的灰色地带，但在 k 是一个足够小的正整数时，我们会把 $2^k$ 的计算视为一个常数时间操作。
+实际计算机包含未在上述列表中的指令，这些指令在RAM模型中代表了一个灰色地带。例如，幂运算是否是常数时间指令？在一般情况下，并不是；当x和y是实数时，计算 $x^y$ 需要多条指令。然而，<mark>在某些受限的情况下，幂运算是一个常数时间操作</mark>。许多计算机有一个“左移”指令，它可以在常数时间内将一个整数的位向左移动 k 个位置。在大多数计算机中，将一个整数的位向左移动一个位置等价于乘以 2，因此将位向左移动 k 个位置就等价于乘以 $2^k$。因此，只要 k 不超过计算机字的位数，这样的计算机可以通过将整数1左移k个位置来在一个常数时间内计算出$2^k$。我们将努力避免在RAM模型中出现这样的灰色地带，但在 k 是一个足够小的正整数时，我们会把 $2^k$ 的计算视为一个常数时间操作。
 
 > Real computers contain instructions not listed above, and such instructions represent a gray area in the RAM model. For example, is exponentiation a constanttime instruction? In the general case, no; it takes several instructions to compute $x^y$ when x and y are real numbers. In restricted situations, however, exponentiation is a constant-time operation. Many computers have a “shift left” instruction, which in constant time shifts the bits of an integer by k positions to the left. In most computers, shifting the bits of an integer by one position to the left is equivalent to multiplication by 2, so that shifting the bits by k positions to the left is equivalent to multiplication by $2^k$. Therefore, such computers can compute $2^k$ in one constant-time instruction by shifting the integer 1 by k positions to the left, as long as k is no more than the number of bits in a computer word. We will endeavor to avoid such gray areas in the RAM model, but we will treat computation of $2^k$ as a constant-time operation when k is a small enough positive integer.
 
-在RAM模型中，并不试图模拟现代计算机中常见的内存层次结构。也就是说，不模拟缓存或虚拟内存。一些计算模型尝试考虑<mark>内存层次结构</mark>效应，这在实际程序运行在真实机器上时有时是非常显著的。但总体而言，分析不会考虑它们。包括内存层次结构的模型比RAM模型复杂得多，所以可能难于使用。此外，基于RAM模型的分析通常是实际机器性能的良好预测指标。
+<mark>在RAM模型中，并不试图模拟现代计算机中常见的内存层次结构</mark>。也就是说，不模拟缓存或虚拟内存。一些计算模型尝试考虑内存层次结构效应，这在实际程序运行在真实机器上时有时是非常显著的。但总体而言，分析不会考虑它们。包括内存层次结构的模型比RAM模型复杂得多，所以可能难于使用。此外，基于RAM模型的分析通常是实际机器性能的良好预测指标。
 
 > In the RAM model, we do not attempt to model the memory hierarchy that is common in contemporary computers. That is, we do not model caches or virtual memory. Several computational models attempt to account for memory-hierarchy effects, which are sometimes significant in real programs on real machines. A handful of problems in this book examine memory-hierarchy effects, but for the most part, the analyses in this book will not consider them. Models that include the memory hierarchy are quite a bit more complex than the RAM model, and so they can be difficult to work with. Moreover, RAM-model analyses are usually excellent predictors of performance on actual machines.
 
@@ -709,7 +842,7 @@ DeepSeek-R1-Distill-Qwen-32B-GGUF/DeepSeek-R1-Distill-Qwen-32B-Q4_K_M.gguf
 
 
 
-**运行时间**是指特定输入上算法执行的基本操作或“步骤”的数量。为了使这个概念尽可能与机器无关，通常假设伪代码中的每一行需要常量时间来执行。也就是说，每一行可能需要不同的时间，但每执行第i行所需的时间为ci，其中ci是一个常数。这种观点符合随机访问机（RAM）模型，并且反映了大多数实际计算机上如何实现伪代码。
+<mark>**运行时间**是指特定输入上算法执行的基本操作或“步骤”的数量</mark>。为了使这个概念尽可能与机器无关，通常假设伪代码中的每一行需要常量时间来执行。也就是说，每一行可能需要不同的时间，但每执行第i行所需的时间为ci，其中ci是一个常数。这种观点符合随机访问机（RAM）模型，并且反映了大多数实际计算机上如何实现伪代码。
 
 > The **running time** of an algorithm on a particular input is the number of primitive operations or “steps” executed. It is convenient to define the notion of step so that it is as machine-independent as possible. For the moment, let us adopt the following view. A constant amount of time is required to execute each line of our pseudocode. One line may take a different amount of time than another line, but we shall assume that each execution of the ith line takes time ci, where ci is a constant. This viewpoint is in keeping with the **RAM** model, and it also reflects how the pseudocode would be implemented on most actual computers.
 
@@ -727,9 +860,11 @@ DeepSeek-R1-Distill-Qwen-32B-GGUF/DeepSeek-R1-Distill-Qwen-32B-Q4_K_M.gguf
 
 Implementation of Insertion Sort Algorithm
 
-`\sum_{j=2}^{n} t_j`  是 $\sum_{j=2}^{n} t_j$ 的LaTex表示，
-
-`\sum_{j=2}^{n} t_{j}-1` 是 $\sum_{j=2}^{n} t_{j}-1$​ 的LaTex表示。
+> <mark>**插入排序**是一种简单的排序算法，其工作原理类似于你在手中整理扑克牌的方式。数组被虚拟地分成已排序和未排序两部分。从未排序部分选取值，并将其放置到已排序部分的正确位置上。</mark>
+>
+> `\sum_{j=1}^{n-1} t_j`  是 $\sum_{j=1}^{n-1} t_j$ 的LaTex表示，
+>
+> `\sum_{j=1}^{n-1} (t_{j}-1)` 是 $\sum_{j=1}^{n-1} (t_{j}-1)$​ 的LaTex表示。
 
 ```python
 def insertion_sort(arr):														# cost	times
@@ -738,9 +873,9 @@ def insertion_sort(arr):														# cost	times
         
         # Insert arr[j] into the
         # sorted sequence arry[0..j-1]							#	0			n - 1
-        while arr[j - 1] > arr[j] and j > 0:				# c4		\sum_{j=2}^{n} t_j
-            arr[j - 1], arr[j] = arr[j], arr[j - 1] # c5		\sum_{j=2}^{n} t_j - 1
-            j -= 1																	# c6		\sum_{j=2}^{n} t_j - 1
+        while arr[j - 1] > arr[j] and j > 0:				# c4		\sum_{j=1}^{n-1} t_j
+            arr[j - 1], arr[j] = arr[j], arr[j - 1] # c5		\sum_{j=1}^{n-1} (t_j - 1)
+            j -= 1																	# c6		\sum_{j=1}^{n-1} (t_j - 1)
 
 
 arr = [2, 6, 5, 1, 3, 4]
@@ -756,8 +891,6 @@ print(arr)
 
 > https://www.geeksforgeeks.org/insertion-sort/
 >
-> **插入排序**是一种简单的排序算法，其工作原理类似于你在手中整理扑克牌的方式。数组被虚拟地分成已排序和未排序两部分。从未排序部分选取值，并将其放置到已排序部分的正确位置上。
->
 > **Insertion sort** is a simple sorting algorithm that works similarly to the way you sort playing cards in your hands. The array is virtually split into a sorted and an unsorted part. Values from the unsorted part are picked and placed in the correct position in the sorted part.
 >
 > 
@@ -770,7 +903,7 @@ print(arr)
 
 
 
-
+<mark>笔试题目示例</mark>
 
 > **Q:** Suppose you have the following list of numbers to sort: [15, 5, 4, 18, 12, 19, 14, 10, 8, 20] which list represents the partially sorted list after three complete passes of insertion sort? (C)
 >
@@ -791,7 +924,7 @@ $ T(n) = \sum (c_i \times t_i) $
 
 
 
-$T(n) = c_1n + c_2(n-1) + c_4\sum_{j=2}^{n} t_j + c_5\sum_{j=2}^{n} t_j-1 + c_6\sum_{j=2}^{n} t_j-1$
+$T(n) = c_1n + c_2(n-1) + c_4\sum_{j=1}^{n-1} t_j + c_5\sum_{j=1}^{n-1} (t_j-1) + c_6\sum_{j=1}^{n-1} (t_j-1)$
 
 
 
@@ -815,17 +948,17 @@ $\quad = (c_1 + c_2 + c_4)n - (c_2 + c_4)$
 >
 > If the array is in reverse sorted order—that is, in decreasing order—the worst case results. We must compare each element A[j]  with each element in the entire sorted subarray `A[0..j-1]`, and so $t_j = j$ for `j = 1, 2, ..., n-1`. Noting that
 
-$\sum_{j=2}^{n} j = \frac{n(n+1)}{2} - 1$​ 
+$\sum_{j=1}^{n-1} j = \frac{n(n-1)}{2}$​ 
 
-$\sum_{j=2}^{n} j-1 = \frac{n(n-1)}{2}$ 
+$\sum_{j=1}^{n-1} (j-1) = \frac{(n-1)(n-2)}{2}$ 
 
 we find that in the worst case, the running time of INSERTION-SORT is
 
 
 
-$T_{\text{worst}}(n) = c_1n + c_2(n-1) + c_4(\frac{n(n+1)}{2} -1) + c_5(\frac{n(n-1)}{2}) + + c_6(\frac{n(n-1)}{2})$
+$T_{\text{worst}}(n) = c_1n + c_2(n-1) + c_4(\frac{n(n-1)}{2} -1) + c_5(\frac{(n-1)(n-2)}{2}) + + c_6(\frac{(n-1)(n-2)}{2})$
 
-$\quad = (\frac{c_4}2 + \frac{c_5}2 + \frac{c_6}2)n^2 + (c_1 + c_2 + \frac{c_4}2 - \frac{c_5}2 - \frac{c_6}2)n - (c_2 + c_4)$
+$\quad = (\frac{c_4}2 + \frac{c_5}2 + \frac{c_6}2)n^2 + (c_1 + c_2 - \frac{c_4}2 - \frac{3c_5}2 - \frac{2c_6}2)n + (-c_2 - c_4 + c_5 + c_6)$
 
 
 
@@ -848,7 +981,19 @@ $\quad = (\frac{c_4}2 + \frac{c_5}2 + \frac{c_6}2)n^2 + (c_1 + c_2 + \frac{c_4}2
 
 
 - 一个算法的最坏情况下的运行时间为任何输入提供了一个运行时间的上限。了解它提供了算法永远不会超过这个时间的保证。
+
 - 对于某些算法，最坏情况出现得相当频繁。例如，在数据库中搜索特定信息时，<mark>当信息不在数据库中时，搜索算法的最坏情况经常发生</mark>。在某些应用中，可能经常会进行不存在的信息搜索。
+
+  
+
+<mark>笔试题目示例</mark>
+
+> 对长度为 3 的顺序表进行查找，若查找第一个元素的概率为 1/2，查找第二个元素的概率为 1/4，查找第三个元素的概率为 1/8，则执行任意查找需要比较元素的平均个数为 _ _ _ _ 。
+>
+> #$1*(1/2) + 2*(1/4) + 3*(1/8) + 3*(1/8) = 1.75$, 还有1/8的失败查询概率。
+>
+> 
+
 - “平均情况”通常几乎和最坏情况一样糟糕。假设我们随机选择n个数字并应用插入排序。确定元素A[j]应该插入到子数组`A[0 .. j-1]`中的哪个位置需要多长时间？平均来说，`A[0 .. j-1]`中的一半元素小于`A[j]`，另一半大于`A[j]`。因此，平均而言，我们需要检查子数组`A[0 .. j-1]`的一半，所以$t_j$大约是$j/2$。结果得到的平均情况下的运行时间最终是输入规模的二次函数，就像最坏情况下的运行时间一样。
 
 > The worst-case running time of an algorithm gives us an upper bound on the running time for any input. Knowing it provides a guarantee that the algorithm will never take any longer. We need not make some educated guess about the running time and hope that it never gets much worse.
@@ -863,7 +1008,7 @@ $\quad = (\frac{c_4}2 + \frac{c_5}2 + \frac{c_6}2)n^2 + (c_1 + c_2 + \frac{c_4}2
 >
 > In some particular cases, we shall be interested in the **average-case** running time of an algorithm; we shall see the technique of **probabilistic analysis** applied to various algorithms throughout this book. The scope of average-case analysis is limited, because it may not be apparent what constitutes an “average” input for a particular problem. Often, we shall assume that all inputs of a given size are equally likely. In practice, this assumption may be violated, but we can sometimes use a **randomized algorithm**, which makes random choices, to allow a probabilistic analysis and yield an **expected** running time. 
 
-### 3 Order of growth
+### 3 Order of growth增长量级
 
 我们使用了一些简化的抽象来简化对INSERTIONSORT过程的分析。首先，忽略了每个语句的实际成本，用常数$c_i$来表示这些成本。然后，注意到即使这些常数也给出了比实际需要更多的细节：将最坏情况下的运行时间表达为$an^2 + bn + c$，其中a、b和c是依赖于语句成本$c_i$的常数。因此，我们不仅忽略了实际的语句成本，还忽略了抽象成本$c_i$。
 
@@ -871,7 +1016,7 @@ $\quad = (\frac{c_4}2 + \frac{c_5}2 + \frac{c_6}2)n^2 + (c_1 + c_2 + \frac{c_4}2
 
 
 
-现在我们将引入另一个简化的抽象：<mark>真正引起我们兴趣的是运行时间的增长率，或称为增长阶</mark>。因此，只考虑公式的主要项（例如，$an^2$），因为对于n的较大值来说，低阶项相对来说不那么重要。忽略主要项的常数系数，因为在确定大输入的计算效率时，常数因子不如增长率重要。对于插入排序，当忽略低阶项和主要项的常数系数后，剩下的是来自主要项的$n^2$因子。说插入排序具有$\Theta(n^2)$（发音为“theta of n-squared”）的最坏情况运行时间。
+现在我们将引入另一个简化的抽象：<mark>真正引起我们兴趣的是运行时间的增长率，或称为增长量级</mark>。因此，只考虑公式的主要项（例如，$an^2$），因为对于n的较大值来说，低阶项相对来说不那么重要。忽略主要项的常数系数，因为在确定大输入的计算效率时，常数因子不如增长率重要。对于插入排序，当忽略低阶项和主要项的常数系数后，剩下的是来自主要项的$n^2$因子。说插入排序具有$\Theta(n^2)$（发音为“theta of n-squared”）的最坏情况运行时间。
 
 > We shall now make one more simplifying abstraction: it is the **rate of growth**, or **order of growth**, of the running time that really interests us. We therefore consider only the leading term of a formula (e.g., $an^2$), since the lower-order terms are relatively insignificant for large values of n. We also ignore the leading term’s constant coefficient, since constant factors are less significant than the rate of growth in determining computational efficiency for large inputs. For insertion sort, when we ignore the lower-order terms and the leading term’s constant coefficient, we are left with the factor of $n^2$ from the leading term. We write that insertion sort has a worst-case running time of $\Theta(n^2)$ (pronounced “theta of n-squared”). 
 
@@ -957,7 +1102,7 @@ this is true for $c=8$ and $n_0 = 2$
 
 
 
-大O记号给出了函数增长率的上界。陈述`f(n) 是 O(g(n))`意味着`f(n)`的增长率不超过`g(n)`的增长率。
+<mark>大O记号给出了函数增长率的上界。陈述`f(n) 是 O(g(n))`意味着`f(n)`的增长率不超过`g(n)`的增长率。</mark>
 
 可以使用大O记号根据它们的增长率来对函数进行排序。
 
@@ -967,7 +1112,7 @@ this is true for $c=8$ and $n_0 = 2$
 
 
 
-**Big-Oh Rules**
+<mark>**Big-Oh Rules**</mark>
 
 If is `f(n)` a polynomial of degree `d`, then `f(n)` is $O(n^d)$, i.e.,
 
@@ -1095,8 +1240,8 @@ Auxiliary Space: $O(1)$
 **Advantages of Bubble Sort:**
 
 - Bubble sort is easy to understand and implement.
-- It does not require any additional memory space.
-- It is a stable sorting algorithm, meaning that elements with the same key value maintain their relative order in the sorted output.
+- It <mark>does not require any additional memory space</mark>.
+- It is a <mark>stable sorting</mark> algorithm, meaning that elements with the same key value maintain their relative order in the sorted output.
 
 **Disadvantages of Bubble Sort:**
 
@@ -1105,31 +1250,32 @@ Auxiliary Space: $O(1)$
 
 
 
-**Some FAQs related to Bubble Sort:**
-
-**Q1. What is the Boundary Case for Bubble sort?**
-
-Bubble sort takes minimum time (Order of n) when elements are already sorted. Hence it is best to check if the array is already sorted or not beforehand, to avoid $O(N^2)$ time complexity.
-
-**Q2. Does sorting happen in place in Bubble sort?**
-
-Yes, Bubble sort performs the swapping of adjacent pairs without the use of any major data structure. Hence Bubble sort algorithm is an <mark>in-place</mark> algorithm.
-
-**Q3. Is the Bubble sort algorithm stable?**
-
-Yes, the bubble sort algorithm is <mark>stable</mark>.
-
-**Q4. Where is the Bubble sort algorithm used?**
-
-Due to its simplicity, bubble sort is often used to introduce the concept of a sorting algorithm. 
-
-
-
-**Q:** Suppose you have the following list of numbers to sort: [19, 1, 9, 7, 3, 10, 13, 15, 8, 12] which list represents the partially sorted list after three complete passes of bubble sort?? （ B ）
-
-A： [1, 9, 19, 7, 3, 10, 13, 15, 8, 12]	B： **[1, 3, 7, 9, 10, 8, 12, 13, 15, 19]**	
-
-C： [1, 7, 3, 9, 10, 13, 8, 12, 15, 19]	D：[1, 9, 19, 7, 3, 10, 13, 15, 8, 12]
+> **Some FAQs related to Bubble Sort:**
+>
+> **Q1. What is the Boundary Case for Bubble sort?**
+>
+> Bubble sort takes minimum time (Order of n) when elements are already sorted. Hence it is best to check if the array is already sorted or not beforehand, to avoid $O(N^2)$ time complexity.
+>
+> **Q2. Does sorting happen in place in Bubble sort?**
+>
+> Yes, Bubble sort performs the swapping of adjacent pairs without the use of any major data structure. Hence Bubble sort algorithm is an <mark>in-place</mark> algorithm.
+>
+> **Q3. Is the Bubble sort algorithm stable?**
+>
+> Yes, the bubble sort algorithm is <mark>stable</mark>.
+>
+> **Q4. Where is the Bubble sort algorithm used?**
+>
+> Due to its simplicity, bubble sort is often used to introduce the concept of a sorting algorithm. 
+>
+> 
+>
+> **Q:** Suppose you have the following list of numbers to sort: [19, 1, 9, 7, 3, 10, 13, 15, 8, 12] which list represents the partially sorted list after three complete passes of bubble sort?? （ B ）
+>
+> A： [1, 9, 19, 7, 3, 10, 13, 15, 8, 12]	B： **[1, 3, 7, 9, 10, 8, 12, 13, 15, 19]**	
+>
+> C： [1, 7, 3, 9, 10, 13, 8, 12, 15, 19]	D：[1, 9, 19, 7, 3, 10, 13, 15, 8, 12]
+>
 
 
 
@@ -1139,32 +1285,35 @@ C： [1, 7, 3, 9, 10, 13, 8, 12, 15, 19]	D：[1, 9, 19, 7, 3, 10, 13, 15, 8, 12]
 
 The algorithm repeatedly <mark>selects the smallest (or largest)</mark> element from the unsorted portion of the list and swaps it with the first element of the unsorted part. This process is repeated for the remaining unsorted portion until the entire list is sorted. 
 
-```python
-A = [64, 25, 12, 22, 11]
+> 
+>
+> ```python
+> A = [64, 25, 12, 22, 11]
+> 
+> # Traverse through all array elements
+> for i in range(len(A)):
+> 
+>     # Find the minimum element in remaining
+>     # unsorted array
+>     min_idx = i
+>     for j in range(i + 1, len(A)):
+>         if A[min_idx] > A[j]:
+>             min_idx = j
+> 
+>         # Swap the found minimum element with
+>     # the first element
+>     A[i], A[min_idx] = A[min_idx], A[i]
+> 
+> # Driver code to test above
+> print(' '.join(map(str, A)))
+> 
+> # Output: 11 12 22 25 64 
+> ```
+>
 
-# Traverse through all array elements
-for i in range(len(A)):
-
-    # Find the minimum element in remaining
-    # unsorted array
-    min_idx = i
-    for j in range(i + 1, len(A)):
-        if A[min_idx] > A[j]:
-            min_idx = j
-
-        # Swap the found minimum element with
-    # the first element
-    A[i], A[min_idx] = A[min_idx], A[i]
-
-# Driver code to test above
-print(' '.join(map(str, A)))
-
-# Output: 11 12 22 25 64 
-```
 
 
-
-The **selection sort** improves on the bubble sort by making only one exchange for every pass through the list. In order to do this, a selection sort looks for the largest value as it makes a pass and, after completing the pass, places it in the proper location. As with a bubble sort, after the first pass, the largest item is in the correct place. After the second pass, the next largest is in place. This process continues and requires n−1 passes to sort *n* items, since the final item must be in place after the (n−1) st pass.
+The **selection sort** <mark>improves on the bubble sort by making only one exchange</mark> for every pass through the list. In order to do this, a selection sort looks for the largest value as it makes a pass and, after completing the pass, places it in the proper location. As with a bubble sort, after the first pass, the largest item is in the correct place. After the second pass, the next largest is in place. This process continues and requires n−1 passes to sort *n* items, since the final item must be in place after the (n−1) st pass.
 
 Figure 3 shows the entire sorting process. On each pass, the largest remaining item is selected and then placed in its proper location. The first pass places 93, the second pass places 77, the third places 55, and so on. 
 
@@ -1194,7 +1343,7 @@ print(alist)
 
 
 
-You may see that the selection sort makes the same number of comparisons as the bubble sort and is therefore also $(O^2)$. However, due to the reduction in the number of exchanges, the selection sort typically executes faster in benchmark studies. In fact, for our list, the bubble sort makes 20 exchanges, while the selection sort makes only 8.
+You may see that the selection sort makes the same number of comparisons as the bubble sort and is therefore also $(O^2)$. However, <mark>due to the reduction in the number of exchanges, the selection sort typically executes faster in benchmark studies</mark>. In fact, for our list, the bubble sort makes 20 exchanges, while the selection sort makes only 8.
 
 
 
@@ -1225,24 +1374,24 @@ You may see that the selection sort makes the same number of comparisons as the 
 
 
 
-**Frequently Asked Questions on Selection Sort**
-
-**Q1. Is Selection Sort Algorithm stable?**
-
-The default implementation of the Selection Sort Algorithm is <mark>not stable</mark>. However, it can be made stable. Please see the [stable Selection Sort](https://www.geeksforgeeks.org/stable-selection-sort/) for details.
-
-**Q2. Is Selection Sort Algorithm in-place?**
-
-Yes, Selection Sort Algorithm is an <mark>in-place</mark> algorithm, as it does not require extra space.
-
-
-
-**Q:** Suppose you have the following list of numbers to sort: [11, 7, 12, 14, 19, 1, 6, 18, 8, 20] which list represents the partially sorted list after three complete passes of selection sort? (D)
-
-A. [7, 11, 12, 1, 6, 14, 8, 18, 19, 20]
-B. [7, 11, 12, 14, 19, 1, 6, 18, 8, 20]
-C. [11, 7, 12, 14, 1, 6, 8, 18, 19, 20]
-D. **[11, 7, 12, 14, 8, 1, 6, 18, 19, 20]**
+> **Frequently Asked Questions on Selection Sort**
+>
+> **Q1. Is Selection Sort Algorithm stable?**
+>
+> The default implementation of the Selection Sort Algorithm is <mark>not stable</mark>. However, it can be made stable. Please see the [stable Selection Sort](https://www.geeksforgeeks.org/stable-selection-sort/) for details.
+>
+> **Q2. Is Selection Sort Algorithm in-place?**
+>
+> Yes, Selection Sort Algorithm is an <mark>in-place</mark> algorithm, as it does not require extra space.
+>
+> 
+>
+> **Q:** Suppose you have the following list of numbers to sort: [11, 7, 12, 14, 19, 1, 6, 18, 8, 20] which list represents the partially sorted list after three complete passes of selection sort? (D)
+>
+> A. [7, 11, 12, 1, 6, 14, 8, 18, 19, 20]
+> B. [7, 11, 12, 14, 19, 1, 6, 18, 8, 20]
+> C. [11, 7, 12, 14, 1, 6, 8, 18, 19, 20]
+> D. **[11, 7, 12, 14, 8, 1, 6, 18, 19, 20]**
 
 
 
@@ -1254,13 +1403,13 @@ How does QuickSort work?
 
 > The key process in quickSort is a partition(). The target of partitions is to place the pivot (any element can be chosen to be a pivot) at its correct position in the sorted array and put all smaller elements to the left of the pivot, and all greater elements to the right of the pivot.
 >
-> Partition is done recursively on each side of the pivot after the pivot is placed in its correct position and this finally sorts the array.
+> Partition is done <mark>recursively</mark> on each side of the pivot after the pivot is placed in its correct position and this finally sorts the array.
 
 
 
 > https://www.geeksforgeeks.org/introduction-to-divide-and-conquer-algorithm-data-structure-and-algorithm-tutorials/
 >
-> **Divide And Conquer** 
+> <mark>**Divide And Conquer** </mark>
 > This technique can be divided into the following three parts:
 >
 > 1. **Divide:** This involves dividing the problem into smaller sub-problems.
@@ -1277,7 +1426,7 @@ How does QuickSort work?
 > 
 >
 > What does not qualifies as Divide and Conquer:
-> Binary Search is a searching algorithm. In each step, the algorithm compares the input element x with the value of the middle element in the array. If the values match, return the index of the middle. Otherwise, if x is less than the middle element, then the algorithm recurs for the left side of the middle element, else recurs for the right side of the middle element. Contrary to popular belief, this is not an example of Divide and Conquer because there is only one sub-problem in each step (Divide and conquer requires that there must be two or more sub-problems) and hence this is a case of Decrease and Conquer.
+> Binary Search is a searching algorithm. In each step, the algorithm compares the input element x with the value of the middle element in the array. If the values match, return the index of the middle. Otherwise, if x is less than the middle element, then the algorithm recurs for the left side of the middle element, else recurs for the right side of the middle element. Contrary to popular belief, this is not an example of Divide and Conquer because there is only one sub-problem in each step (<mark>Divide and conquer requires that there must be two or more sub-problems</mark>) and hence this is a case of <mark>Decrease and Conquer</mark>.
 
 
 
@@ -1316,13 +1465,18 @@ print(arr)
 
 
 
+要分析`quickSort`函数，注意对于长度为*n*的列表，如果分区总是发生在列表中间，则将再次有$logn$次划分。为了找到分割点，需要检查每个*n*项与枢轴值（pivot value）。结果是$nlogn$。此外，不需要额外的内存，不像归并排序过程那样。
 
+不幸的是，在最坏的情况下，分割点可能不在中间，并且可能会极度偏向左侧或右侧，导致非常不均匀的划分。在这种情况下，对*n*项的列表进行排序会被分为对0项和n−1项的两个列表进行排序。然后，对n−1项的列表排序又被分为大小为0和大小为n−2的列表，依此类推。结果是一个$O(n^2)$的排序，伴随着递归所需的所有开销。
 
-To analyze the `quickSort` function, note that for a list of length *n*, if the partition always occurs in the middle of the list, there will again be $log⁡n$ divisions. In order to find the split point, each of the *n* items needs to be checked against the pivot value. The result is $nlogn$. In addition, there is no need for additional memory as in the merge sort process.
+我们之前提到过<mark>有多种方式来选择枢轴值</mark>。特别地，我们可以尝试通过一种称为“三数取中”（median of three）的技术来缓解因划分不均带来的问题。为了选择枢轴值，我们会考虑列表中的第一个、中间的和最后一个元素。在我们的例子中，它们是54、77和20。现在选取中位数值，在我们的情况中是54，并用它作为枢轴值（当然，这正是我们最初使用的枢轴值）。这个想法是在列表中的第一项不属于列表中间位置时，使用三数取中能选择一个更好的“中间”值。当原始列表初始时已部分排序的情况下，这种方法将特别有用。
 
-Unfortunately, in the worst case, the split points may not be in the middle and can be very skewed to the left or the right, leaving a very uneven division. In this case, sorting a list of *n* items divides into sorting a list of 0 items and a list of n−1 items. Then sorting a list of n−1 divides into a list of size 0 and a list of size n−2, and so on. The result is an $O(n^2)$ sort with all of the overhead that recursion requires.
-
-We mentioned earlier that <mark>there are different ways to choose the pivot value</mark>. In particular, we can attempt to alleviate some of the potential for an uneven division by using a technique called **median of three**. To choose the pivot value, we will consider the first, the middle, and the last element in the list. In our example, those are 54, 77, and 20. Now pick the median value, in our case 54, and use it for the pivot value (of course, that was the pivot value we used originally). The idea is that in the case where the first item in the list does not belong toward the middle of the list, the median of three will choose a better “middle” value. This will be particularly useful when the original list is somewhat sorted to begin with.
+> To analyze the `quickSort` function, note that for a list of length *n*, if the partition always occurs in the middle of the list, there will again be $log⁡n$ divisions. In order to find the split point, each of the *n* items needs to be checked against the pivot value. The result is $nlogn$. In addition, there is no need for additional memory as in the merge sort process.
+>
+> Unfortunately, in the worst case, the split points may not be in the middle and can be very skewed to the left or the right, leaving a very uneven division. In this case, sorting a list of *n* items divides into sorting a list of 0 items and a list of n−1 items. Then sorting a list of n−1 divides into a list of size 0 and a list of size n−2, and so on. The result is an $O(n^2)$ sort with all of the overhead that recursion requires.
+>
+> We mentioned earlier that <mark>there are different ways to choose the pivot value</mark>. In particular, we can attempt to alleviate some of the potential for an uneven division by using a technique called **median of three**. To choose the pivot value, we will consider the first, the middle, and the last element in the list. In our example, those are 54, 77, and 20. Now pick the median value, in our case 54, and use it for the pivot value (of course, that was the pivot value we used originally). The idea is that in the case where the first item in the list does not belong toward the middle of the list, the median of three will choose a better “middle” value. This will be particularly useful when the original list is somewhat sorted to begin with.
+>
 
 
 
@@ -1333,7 +1487,7 @@ Time Complexity:
 - Best Case: $\Omega(N log N)$
   The best-case scenario for quicksort occur when the pivot chosen at the each step divides the array into roughly equal halves.
   In this case, the algorithm will make balanced partitions, leading to efficient Sorting.
-- Average Case: $\Theta ( N log N)$
+- <mark>Average Case</mark>: $\Theta ( N log N)$
   Quicksort’s average-case performance is usually very good in practice, making it one of the fastest sorting Algorithm.
 - Worst Case: $O(N^2)$
   The worst-case Scenario for Quicksort occur when the pivot at each step consistently results in highly unbalanced partitions. When the array is already sorted and the pivot is always chosen as the smallest or largest element. To mitigate the worst-case Scenario, various techniques are used such as choosing a good pivot (e.g., median of three) and using Randomized algorithm (Randomized Quicksort ) to shuffle the element before sorting.
@@ -1367,14 +1521,15 @@ The first partitioning works on the entire list, and <mark>the second partitioni
 
 
 
-**Q:** Given the following list of numbers [1, 20, 11, 5, 2, 9, 16, 14, 13, 19] what would be the first pivot value using the median of 3 method? (B)
-
-A. 1
-**B. 9**
-C. 16
-D. 19
-
- although 16 would be the median of 1, 16, 19 the middle is at len(list) // 2.
+> **Q:** Given the following list of numbers [1, 20, 11, 5, 2, 9, 16, 14, 13, 19] what would be the first pivot value using the median of 3 method? (B)
+>
+> A. 1
+> **B. 9**
+> C. 16
+> D. 19
+>
+>  although 16 would be the median of 1, 16, 19 the middle is at len(list) // 2.
+>
 
 
 
@@ -1446,24 +1601,24 @@ if __name__ == '__main__':
 
 **Complexity Analysis of Merge Sort**
 
-Time Complexity: $O(N logN)$,  Merge Sort is a recursive algorithm and time complexity can be expressed as following recurrence relation. 
+Time Complexity: $O(N logN)$,  Merge Sort is a <mark>recursive</mark> algorithm and time complexity can be expressed as following recurrence relation. 
 
 > T(n) = 2T(n/2) + θ(n)
 
-The above recurrence can be solved either using the Recurrence Tree method or the Master method. It falls in case II of the Master Method and the solution of the recurrence is θ(Nlog(N)). The time complexity of Merge Sort isθ(Nlog(N)) in all 3 cases (worst, average, and best) as merge sort always divides the array into two halves and takes linear time to merge two halves.
+The above recurrence can be solved either using the Recurrence Tree method or the Master method. It falls in case II of the Master Method and the solution of the recurrence is θ(Nlog(N)). The time complexity of Merge Sort is θ(Nlog(N)) in all 3 cases (worst, average, and best) as merge sort always divides the array into two halves and takes linear time to merge two halves.
 
-Auxiliary Space: O(N), In merge sort all elements are copied into an auxiliary array. So N auxiliary space is required for merge sort.
+Auxiliary Space: O(N), In merge sort all elements are copied into an auxiliary array. So <mark>N auxiliary space is required for merge sort</mark>.
 
 **Applications of Merge Sort:**
 
 - Sorting large datasets: Merge sort is particularly well-suited for sorting large datasets due to its guaranteed worst-case time complexity of O(n log n).
-- External sorting: Merge sort is commonly used in external sorting, where the data to be sorted is too large to fit into memory.
+- <mark>External sorting</mark>: Merge sort is commonly used in external sorting, where the data to be sorted is too large to fit into memory.
 - Custom sorting: Merge sort can be adapted to handle different input distributions, such as partially sorted, nearly sorted, or completely unsorted data.
 - [Inversion Count Problem](https://www.geeksforgeeks.org/inversion-count-in-array-using-merge-sort/): <mark>Inversion Count</mark> for an array indicates – how far (or close) the array is from being sorted. If the array is already sorted, then the inversion count is 0, but if the array is sorted in reverse order, the inversion count is the maximum. 
 
 **Advantages of Merge Sort:**
 
-- Stability: <mark>Merge sort is a stable sorting</mark> algorithm, which means it maintains the relative order of equal elements in the input array.
+- Stability: <mark>Merge sort is a stable sorting</mark> algorithm, which means it <mark>maintains the relative order of equal elements in the input array</mark>.
 - Guaranteed worst-case performance: Merge sort has a worst-case time complexity of O(N logN), which means it performs well even on large datasets.
 - Parallelizable: Merge sort is a naturally parallelizable algorithm, which means it can be easily parallelized to take advantage of multiple processors or threads.
 
@@ -1479,7 +1634,7 @@ Auxiliary Space: O(N), In merge sort all elements are copied into an auxiliary a
 
 A： [16, 49,39,27,43,34,46,40]	B： **[21,1]**	C： [21,1,26,45]	D：[21]
 
-Remember mergesort doesn't work on the right half of the list until the left half is completely sorted.
+Remember <mark>mergesort doesn't work on the right half of the list until the left half is completely sorted.</mark>
 
 
 
@@ -1495,14 +1650,16 @@ The lists [21] and [1] are the first two base cases encountered by mergesort and
 
 ### 5 Shell Sort
 
-Shell sort is mainly a variation of **Insertion Sort**. In insertion sort, we move elements only one position ahead. When an element has to be moved far ahead, many movements are involved. The idea of ShellSort is to allow the exchange of far items. In Shell sort, we make the array h-sorted for a large value of h. We keep reducing the value of h until it becomes 1. An array is said to be h-sorted if all sublists of every h’th element are sorted.
+希尔排序主要是**插入排序**的一种变体。在插入排序中，我们只能将元素向前移动一个位置。当一个元素需要被移动很远时，会涉及到很多次移动。希尔排序的思想是允许远距离的元素交换。在希尔排序中，我们使数组对于较大的h值成为h-sorted。我们不断减少 h 的值直到它变为1。如果一个数组的所有每隔 h个元素的子列表都是排序的，则称该数组为*h*排序的。
+
+> Shell sort is mainly a variation of **Insertion Sort**. In insertion sort, we move elements only one position ahead. When an element has to be moved far ahead, many movements are involved. The idea of ShellSort is to allow the exchange of far items. In Shell sort, we make the array h-sorted for a large value of h. We keep reducing the value of h until it becomes 1. An array is said to be h-sorted if all sublists of every h’th element are sorted.
 
 **Algorithm:**
 
 Step 1 − Start
 Step 2 − Initialize the value of gap size. Example: h
 Step 3 − Divide the list into smaller sub-part. Each must have equal intervals to h
-Step 4 − Sort these sub-lists using insertion sort
+Step 4 − <mark>Sort these sub-lists using insertion sort</mark>
 Step 5 – Repeat this step 2 until the list is sorted.
 Step 6 – Print a sorted list.
 Step 7 – Stop.
@@ -1567,9 +1724,9 @@ https://en.wikipedia.org/wiki/Shellsort
 
 The running time of Shellsort is heavily dependent on the gap sequence it uses. For many practical variants, determining their time complexity remains an open problem.
 
-Unlike **insertion sort**, Shellsort is not a **stable sort** since gapped insertions transport equal elements past one another and thus lose their original order. It is an **adaptive sorting algorithm** in that it executes faster when the input is partially sorted.
+Unlike **insertion sort**, <mark>Shellsort is not a **stable sort**</mark> since gapped insertions transport equal elements past one another and thus lose their original order. It is an **adaptive sorting algorithm** in that it executes faster when the input is partially sorted.
 
-**Stable sort** algorithms sort equal elements in the same order that they appear in the input. 
+<mark>**Stable sort** algorithms sort equal elements in the same order that they appear in the input. </mark>
 
 
 
@@ -1586,23 +1743,22 @@ Each group of numbers represented by index positions 3 apart are sorted correctl
 
 ### 6 Comparison sorts
 
-> 在排序算法中，稳定性是指相等元素的相对顺序是否在排序后保持不变。换句话说，如果排序算法在排序过程中保持了相等元素的相对顺序，则称该算法是稳定的，否则是不稳定的。
+> 在排序算法中，<mark>稳定性是指相等元素的相对顺序是否在排序后保持不变</mark>。换句话说，如果排序算法在排序过程中保持了相等元素的相对顺序，则称该算法是稳定的，否则是不稳定的。
 >
 > 对于判断一个排序算法是否稳定，一种常见的方法是观察交换操作。挨着交换（相邻元素交换）是稳定的，而隔着交换（跳跃式交换）可能会导致不稳定性。
 
 Below is a table of [comparison sorts](https://en.wikipedia.org/wiki/Comparison_sort). A comparison sort cannot perform better than *O*(*n* log *n*) on average.
 
-|        Name         |  Best   |  Average  |   Worst   | Memory | Stable |       Method        |                         Other notes                          |
-| :-----------------: | :-----: | :-------: | :-------: | :----: | :----: | :-----------------: | :----------------------------------------------------------: |
-| In-place merge sort |    —    |     —     | $nlog^2n$ |   1    |  Yes   |       Merging       | Can be implemented as a stable sort based on stable in-place merging. |
-|      Heapsort       | $nlogn$ |  $nlogn$  |  $nlogn$  |   1    |   No   |      Selection      |                                                              |
-|     Merge sort      | $nlogn$ |  $nlogn$  |  $nlogn$  |  *n*   |  Yes   |       Merging       | Highly parallelizable (up to *O*(log *n*) using the Three Hungarian's Algorithm) |
-|       Timsort       |   *n*   |  $nlogn$  |  $nlogn$  |  *n*   |  Yes   | Insertion & Merging | Makes *n-1* comparisons when the data is already sorted or reverse sorted. |
-|      Quicksort      | $nlogn$ |  $nlogn$  |   $n^2$   | $logn$ |   No   |    Partitioning     | Quicksort is usually done in-place with *O*(log *n*) stack space. |
-|      Shellsort      | $nlogn$ | $n^{4/3}$ | $n^{3/2}$ |   1    |   No   |      Insertion      |                       Small code size.                       |
-|   Insertion sort    |   *n*   |   $n^2$   |   $n^2$   |   1    |  Yes   |      Insertion      | *O*(n + d), in the worst case over sequences that have *d* inversions. |
-|     Bubble sort     |   *n*   |   $n^2$   |   $n^2$   |   1    |  Yes   |     Exchanging      |                       Tiny code size.                        |
-|   Selection sort    |  $n^2$  |   $n^2$   |   $n^2$   |   1    |   No   |      Selection      | Stable with O(n) extra space, when using linked lists, or when made as a variant of Insertion Sort instead of swapping the two items. |
+|      Name      |  Best   |  Average  |   Worst   | Memory | Stable |       Method        |                         Other notes                          |
+| :------------: | :-----: | :-------: | :-------: | :----: | :----: | :-----------------: | :----------------------------------------------------------: |
+|    Heapsort    | $nlogn$ |  $nlogn$  |  $nlogn$  |   1    |   No   |      Selection      |                                                              |
+|   Merge sort   | $nlogn$ |  $nlogn$  |  $nlogn$  |  *n*   |  Yes   |       Merging       | Highly parallelizable (up to *O*(log *n*) using the Three Hungarian's Algorithm) |
+|    Timsort     |   *n*   |  $nlogn$  |  $nlogn$  |  *n*   |  Yes   | Insertion & Merging | Makes *n-1* comparisons when the data is already sorted or reverse sorted. |
+|   Quicksort    | $nlogn$ |  $nlogn$  |   $n^2$   | $logn$ |   No   |    Partitioning     | Quicksort is usually done in-place with *O*(log *n*) stack space. |
+|   Shellsort    | $nlogn$ | $n^{4/3}$ | $n^{3/2}$ |   1    |   No   |      Insertion      |                       Small code size.                       |
+| Insertion sort |   *n*   |   $n^2$   |   $n^2$   |   1    |  Yes   |      Insertion      | *O*(n + d), in the worst case over sequences that have *d* inversions. |
+|  Bubble sort   |   *n*   |   $n^2$   |   $n^2$   |   1    |  Yes   |     Exchanging      |                       Tiny code size.                        |
+| Selection sort |  $n^2$  |   $n^2$   |   $n^2$   |   1    |   No   |      Selection      | Stable with O(n) extra space, when using linked lists, or when made as a variant of Insertion Sort instead of swapping the two items. |
 
 
 
@@ -3714,15 +3870,17 @@ Table 4: Additional Examples of Infix, Prefix and Postfix
 
 ![../_images/moveright.png](https://raw.githubusercontent.com/GMyhf/img/main/img/moveright.png)
 
-Figure 6: Moving Operators to the Right for Postfix Notation
+<center>Figure 6: Moving Operators to the Right for Postfix Notation</center>
 
 If we do the same thing but instead of moving the symbol to the position of the right parenthesis, we move it to the left, we get prefix notation (see Figure 7). The position of the parenthesis pair is actually a clue to the final position of the enclosed operator.
 
 ![../_images/moveleft.png](https://raw.githubusercontent.com/GMyhf/img/main/img/moveleft.png)
 
-Figure 7: Moving Operators to the Left for Prefix Notation
+<center>Figure 7: Moving Operators to the Left for Prefix Notation</center>
 
-So in order to convert an expression, no matter how complex, to either prefix or postfix notation, fully parenthesize the expression using the order of operations. Then <mark>move the enclosed operator to the position of either the left or the right parenthesis depending on whether you want prefix or postfix notation</mark>.
+因此，为了将一个表达式（无论多么复杂）转换为前缀或后缀表示法，首先使用运算顺序完全加上括号。然后，<mark>根据你想要得到前缀还是后缀表示法，将括号内的操作符移动到左括号或右括号的位置</mark>。
+
+> So in order to convert an expression, no matter how complex, to either prefix or postfix notation, fully parenthesize the expression using the order of operations. Then <mark>move the enclosed operator to the position of either the left or the right parenthesis depending on whether you want prefix or postfix notation</mark>.
 
 Here is a more complex expression: (A + B) * C - (D - E) * (F + G). Figure 8 shows the conversion to postfix and prefix notations.
 
