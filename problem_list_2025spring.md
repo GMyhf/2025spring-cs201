@@ -22,7 +22,7 @@ Updated 1326 GMT+8 Mar 19 2025.
 | ---- | ----------------- | -------------------- | ------ | ---------------------------------------------------- |
 |      |      | -    | -    | tree begin, graph recap   |
 |      |      | -    | -    |      |
-| 0321 | 295.数据流的中位数 | heap | Tough    | https://leetcode.cn/problems/find-median-from-data-stream/     |
+| 0321 | 295.数据流的中位数 | heap | Tough,比 27256:当前队列中位数 简单    | https://leetcode.cn/problems/find-median-from-data-stream/     |
 | 0320 | 18250:冰阔落 I     | disjoint set    | Medium    | http://cs101.openjudge.cn/practice/18250/      |
 | 0320 | 1963.使字符串平衡的最小交换次数  | greedy   | Medium    | https://leetcode.cn/problems/minimum-number-of-swaps-to-make-the-string-balanced/      |
 | 0319 | 20018: 蚂蚁王国的越野跑  | merge sort,binary search    | Tough    | http://cs101.openjudge.cn/2025sp_routine/20018      |
