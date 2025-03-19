@@ -40,28 +40,37 @@ class NeuralNetwork:
     def backward(self, X, y, learning_rate):
         # 计算输出层误差
         output_error = y - self.predicted_output  # 误差 = 真实值 - 预测值
-        # 计算输出层的delta（不是直接的梯度，而是用于计算梯度的一部分）
+        # 计算输出层的delta（梯度的一部分，损失对激活输入的梯度）
         output_delta = output_error * self.sigmoid_derivative(self.predicted_output)  # Delta = 误差 × 激活函数导数
+        # output_delta = (y - ŷ) * σ'(z_output)
 
-        # 计算隐藏层接收到的误差
+        # 计算隐藏层误差（反向传播）
         hidden_error = np.dot(output_delta, self.weights_hidden_output.T)  # 将误差从输出层反向传播到隐藏层
-        # 计算隐藏层的delta（不是直接的梯度，而是用于计算梯度的一部分）
+        # hidden_error = output_delta @ W_hidden_output^T
+        # 计算隐藏层的delta（损失对隐藏层激活输入的梯度）
         hidden_delta = hidden_error * self.sigmoid_derivative(self.hidden_output)  # Delta = 误差 × 激活函数导数
+        # hidden_delta = (hidden_error) * σ'(z_hidden)
 
         # 更新权重和偏置（使用梯度下降法）
-        # 计算并更新从隐藏层到输出层的权重的梯度
+        # 计算并更新隐藏层到输出层的权重
         self.weights_hidden_output += np.dot(self.hidden_output.T,
                                              output_delta) * learning_rate  # 权重更新量 = 学习率 × (隐藏层输出转置 × 输出层delta)
+        # W_hidden_output += learning_rate * (hidden_output^T @ output_delta)
+
         # 更新输出层偏置，基于所有样本的输出层delta沿列求和
         self.bias_output += np.sum(output_delta, axis=0, keepdims=True) * learning_rate  # 偏置更新量 = 学习率 × (沿列求和输出层delta)
+        # b_output += learning_rate * sum(output_delta)
+
         # 计算并更新从输入层到隐藏层的权重的梯度
         self.weights_input_hidden += np.dot(X.T, hidden_delta) * learning_rate  # 权重更新量 = 学习率 × (输入数据转置 × 隐藏层delta)
+        # W_input_hidden += learning_rate * (X^T @ hidden_delta)
 
         # 更新隐藏层偏置，基于所有样本的隐藏层delta沿列求和
         # axis=0：沿列求和，聚合所有样本的梯度
         # keepdims=True：保持原矩阵的行数维度，确保偏置更新的形状兼容性
         self.bias_hidden += np.sum(hidden_delta, axis=0, keepdims=True) * learning_rate  # 偏置更新量 = 学习率 × (沿列求和隐藏层delta)
-        
+        # b_hidden += learning_rate * sum(hidden_delta)
+
     def train(self, X, y, epochs, learning_rate):
         for epoch in range(epochs):
             output = self.feedforward(X)  # 前向传播
