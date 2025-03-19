@@ -38,23 +38,30 @@ class NeuralNetwork:
         return self.predicted_output
 
     def backward(self, X, y, learning_rate):
-        # 计算输出层误差和梯度
+        # 计算输出层误差
         output_error = y - self.predicted_output  # 误差 = 真实值 - 预测值
-        output_delta = output_error * self.sigmoid_derivative(self.predicted_output)  # 梯度 = 误差 × 导数
+        # 计算输出层的delta（不是直接的梯度，而是用于计算梯度的一部分）
+        output_delta = output_error * self.sigmoid_derivative(self.predicted_output)  # Delta = 误差 × 激活函数导数
 
-        # 计算隐藏层误差和梯度
-        hidden_error = np.dot(output_delta, self.weights_hidden_output.T)  # 误差传递到隐藏层
-        hidden_delta = hidden_error * self.sigmoid_derivative(self.hidden_output)  # 梯度 = 误差 × 导数
+        # 计算隐藏层接收到的误差
+        hidden_error = np.dot(output_delta, self.weights_hidden_output.T)  # 将误差从输出层反向传播到隐藏层
+        # 计算隐藏层的delta（不是直接的梯度，而是用于计算梯度的一部分）
+        hidden_delta = hidden_error * self.sigmoid_derivative(self.hidden_output)  # Delta = 误差 × 激活函数导数
 
-        # 更新权重和偏置（梯度下降）
-        self.weights_hidden_output += np.dot(self.hidden_output.T, output_delta) * learning_rate  # 输出层权重更新
-        self.bias_output += np.sum(output_delta, axis=0, keepdims=True) * learning_rate  # 输出层偏置更新
-        self.weights_input_hidden += np.dot(X.T, hidden_delta) * learning_rate  # 隐藏层权重更新
+        # 更新权重和偏置（使用梯度下降法）
+        # 计算并更新从隐藏层到输出层的权重的梯度
+        self.weights_hidden_output += np.dot(self.hidden_output.T,
+                                             output_delta) * learning_rate  # 权重更新量 = 学习率 × (隐藏层输出转置 × 输出层delta)
+        # 更新输出层偏置，基于所有样本的输出层delta沿列求和
+        self.bias_output += np.sum(output_delta, axis=0, keepdims=True) * learning_rate  # 偏置更新量 = 学习率 × (沿列求和输出层delta)
+        # 计算并更新从输入层到隐藏层的权重的梯度
+        self.weights_input_hidden += np.dot(X.T, hidden_delta) * learning_rate  # 权重更新量 = 学习率 × (输入数据转置 × 隐藏层delta)
 
+        # 更新隐藏层偏置，基于所有样本的隐藏层delta沿列求和
         # axis=0：沿列求和，聚合所有样本的梯度
         # keepdims=True：保持原矩阵的行数维度，确保偏置更新的形状兼容性
-        self.bias_hidden += np.sum(hidden_delta, axis=0, keepdims=True) * learning_rate  # 隐藏层偏置更新
-
+        self.bias_hidden += np.sum(hidden_delta, axis=0, keepdims=True) * learning_rate  # 偏置更新量 = 学习率 × (沿列求和隐藏层delta)
+        
     def train(self, X, y, epochs, learning_rate):
         for epoch in range(epochs):
             output = self.feedforward(X)  # 前向传播
