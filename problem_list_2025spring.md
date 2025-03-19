@@ -23,7 +23,7 @@ Updated 1326 GMT+8 Mar 19 2025.
 |      |      | -    | -    | tree begin, graph recap   |
 |      |      | -    | -    |      |
 | 0320 | 1963.使字符串平衡的最小交换次数  | greedy   | Medium    | https://leetcode.cn/problems/minimum-number-of-swaps-to-make-the-string-balanced/      |
-| 0319 | 20018: 蚂蚁王国的越野跑  | merge sort    | Tough    | http://cs101.openjudge.cn/2025sp_routine/20018      |
+| 0319 | 20018: 蚂蚁王国的越野跑  | merge sort,binary search    | Tough    | http://cs101.openjudge.cn/2025sp_routine/20018      |
 | 0319 | 37.解数独   | backtracking, set | Tough    | https://leetcode.cn/problems/sudoku-solver/      |
 | 0318 | 04015: 邮箱验证     | RE    | Medium    | http://cs101.openjudge.cn/2025sp_routine/04015      |
 | 0318 | 3484. 设计电子表格 | OOP, RE | Medium  | https://leetcode.cn/contest/biweekly-contest-152/problems/design-spreadsheet/      |
