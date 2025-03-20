@@ -2,7 +2,7 @@
 
 https://github.com/GMyhf/2025spring-cs201/blob/main/problem_list_2025spring.md
 
-Updated 0006 GMT+8 Mar 20 2025.
+Updated 22366 GMT+8 Mar 20 2025.
 2025 spring, Complied by Hongfei Yan
 
 题解在：
@@ -22,6 +22,7 @@ Updated 0006 GMT+8 Mar 20 2025.
 | ---- | ----------------- | -------------------- | ------ | ---------------------------------------------------- |
 |      |      | -    | -    | tree begin, graph recap   |
 |      |      | -    | -    |      |
+| 0321 | 07206:我是最快的马 | bfs  | Medium    | http://cs101.openjudge.cn/practice/07206/     |
 | 0321 | 25.K个一组翻转链表 | linked list | Tough    | https://leetcode.cn/problems/reverse-nodes-in-k-group/     |
 | 0320 | 18250:冰阔落 I     | disjoint set    | Medium    | http://cs101.openjudge.cn/2025sp_routine/18250/      |
 | 0320 | 1963.使字符串平衡的最小交换次数  | greedy   | Medium    | https://leetcode.cn/problems/minimum-number-of-swaps-to-make-the-string-balanced/      |
