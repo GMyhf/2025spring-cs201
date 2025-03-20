@@ -70,7 +70,7 @@ linked list, https://leetcode.cn/problems/palindrome-linked-list/
 
 doubly-lined list, https://leetcode.cn/problems/design-browser-history/
 
-<mark>请用双链表实现。</mark>
+<mark>请用双向链表实现。</mark>
 
 
 
