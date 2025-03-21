@@ -22,7 +22,7 @@ Updated 22366 GMT+8 Mar 20 2025.
 | ---- | ----------------- | -------------------- | ------ | ---------------------------------------------------- |
 |      |      | -    | -    | tree begin, graph recap   |
 |      |      | -    | -    |      |
-| 0321 | 07206:我是最快的马 | bfs  | Medium    | http://cs101.openjudge.cn/practice/07206/     |
+| 0321 | 07206:我是最快的马 | bfs  | Medium    | http://cs101.openjudge.cn/2025sp_routine/07206/     |
 | 0321 | 25.K个一组翻转链表 | linked list | Tough    | https://leetcode.cn/problems/reverse-nodes-in-k-group/     |
 | 0320 | 18250:冰阔落 I     | disjoint set    | Medium    | http://cs101.openjudge.cn/2025sp_routine/18250/      |
 | 0320 | 1963.使字符串平衡的最小交换次数  | greedy   | Medium    | https://leetcode.cn/problems/minimum-number-of-swaps-to-make-the-string-balanced/      |
