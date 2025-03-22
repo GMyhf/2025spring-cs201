@@ -27,7 +27,7 @@ Updated 2345 GMT+8 Mar 22 2025.
 |      |      | -    | -    | tree begin  |
 | 0324 | 20052: 最大点数（重力作用2048）  | dfs,matrices    | Tough    | http://cs101.openjudge.cn/practice/20052/      |
 | 0324 | 2680.最大或值 | greedy,prefix sum  | Medium    | https://leetcode.cn/problems/maximum-or/      |
-| 0323 | 01376: Robot  | bfs    | Tough    | http://cs101.openjudge.cn/practice/01376/      |
+| 0323 | 01376: Robot  | bfs    | Tough    | http://cs101.openjudge.cn/2025sp_routine/01376/      |
 | 0323 | 45.跳跃游戏II | dp, greedy    | Medium    | https://leetcode.cn/problems/jump-game-ii/      |
 | 0322 | 01426: Find The Multiple  | bfs    | Medium    | http://cs101.openjudge.cn/2025sp_routine/01426/     |
 | 0322 | 84.柱状图中最大的矩形     | monotonic stack    | Tough    | https://leetcode.cn/problems/largest-rectangle-in-histogram/      |
