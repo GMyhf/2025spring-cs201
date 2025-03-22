@@ -22,6 +22,8 @@ Updated 1226 GMT+8 Mar 22 2025.
 | ---- | ----------------- | -------------------- | ------ | ---------------------------------------------------- |
 |      |      | -    | -    | tree begin, graph recap   |
 |      |      | -    | -    |      |
+| 0325 | 146.LRU缓存 | hash table, doubly-linked list | Medium    | https://leetcode.cn/problems/lru-cache/      |
+|      |      | -    | -    |      |
 | 0324 | 2680.最大或值 | greedy,prefix sum  | Medium    | https://leetcode.cn/problems/maximum-or/      |
 | 0323 | 01376: Robot  | bfs    | Tough    | http://cs101.openjudge.cn/practice/01376/      |
 | 0323 | 45.跳跃游戏II | dp, greedy    | Medium    | https://leetcode.cn/problems/jump-game-ii/      |
