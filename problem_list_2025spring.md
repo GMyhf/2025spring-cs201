@@ -2,7 +2,7 @@
 
 https://github.com/GMyhf/2025spring-cs201/blob/main/problem_list_2025spring.md
 
-Updated 1411 GMT+8 Mar 21 2025.
+Updated 1226 GMT+8 Mar 22 2025.
 2025 spring, Complied by Hongfei Yan
 
 题解在：
@@ -25,7 +25,7 @@ Updated 1411 GMT+8 Mar 21 2025.
 | 0324 | 2680.最大或值 | greedy,prefix sum  | Medium    | https://leetcode.cn/problems/maximum-or/      |
 | 0323 | 01376: Robot  | bfs    | Tough    | http://cs101.openjudge.cn/practice/01376/      |
 | 0323 | 45.跳跃游戏II | dp, greedy    | Medium    | https://leetcode.cn/problems/jump-game-ii/      |
-| 0322 | 01426: Find The Multiple  | bfs    | Medium    | http://cs101.openjudge.cn/practice/01426/     |
+| 0322 | 01426: Find The Multiple  | bfs    | Medium    | http://cs101.openjudge.cn/2025sp_routine/01426/     |
 | 0322 | 84.柱状图中最大的矩形     | monotonic stack    | Tough    | https://leetcode.cn/problems/largest-rectangle-in-histogram/      |
 | 0321 | 07206:我是最快的马 | bfs  | Tough    | http://cs101.openjudge.cn/2025sp_routine/07206/     |
 | 0321 | 25.K个一组翻转链表 | linked list | Tough    | https://leetcode.cn/problems/reverse-nodes-in-k-group/     |
