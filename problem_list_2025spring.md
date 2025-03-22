@@ -2,7 +2,7 @@
 
 https://github.com/GMyhf/2025spring-cs201/blob/main/problem_list_2025spring.md
 
-Updated 1226 GMT+8 Mar 22 2025.
+Updated 1614 GMT+8 Mar 22 2025.
 2025 spring, Complied by Hongfei Yan
 
 题解在：
@@ -20,9 +20,11 @@ Updated 1226 GMT+8 Mar 22 2025.
 
 | 日期 | 问题编号与名称    | 标签                 | 难度  | 链接                                                 |
 | ---- | ----------------- | -------------------- | ------ | ---------------------------------------------------- |
-|      |      | -    | -    | tree begin, graph recap   |
 |      |      | -    | -    |      |
-| 0325 | 146.LRU缓存 | hash table, doubly-linked list | Medium    | https://leetcode.cn/problems/lru-cache/      |
+| 0326 | 146.LRU缓存 | hash table, doubly-linked list | Medium    | https://leetcode.cn/problems/lru-cache/      |
+|      |      | -    | -    |      |
+| 0325 | 104.二叉树的最大深度 | dfs, bfs    | Easy    | https://leetcode.cn/problems/maximum-depth-of-binary-tree/      |
+|      |      | -    | -    | tree begin  |
 |      |      | -    | -    |      |
 | 0324 | 2680.最大或值 | greedy,prefix sum  | Medium    | https://leetcode.cn/problems/maximum-or/      |
 | 0323 | 01376: Robot  | bfs    | Tough    | http://cs101.openjudge.cn/practice/01376/      |
