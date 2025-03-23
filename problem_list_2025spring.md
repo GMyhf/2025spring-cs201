@@ -2,7 +2,7 @@
 
 https://github.com/GMyhf/2025spring-cs201/blob/main/problem_list_2025spring.md
 
-Updated 2345 GMT+8 Mar 22 2025.
+Updated 0007 GMT+8 Mar 24 2025.
 2025 spring, Complied by Hongfei Yan
 
 题解在：
@@ -25,7 +25,7 @@ Updated 2345 GMT+8 Mar 22 2025.
 |      |      | -    | -    |      |
 | 0325 | 104.二叉树的最大深度 | dfs, bfs    | Easy    | https://leetcode.cn/problems/maximum-depth-of-binary-tree/      |
 |      |      | -    | -    | tree begin  |
-| 0324 | 20052: 最大点数（重力作用2048）  | dfs,matrices    | Tough    | http://cs101.openjudge.cn/practice/20052/      |
+| 0324 | 20052: 最大点数（同2048规则）  | dfs,matrices    | Tough    | http://cs101.openjudge.cn/practice/20052/      |
 | 0324 | 2680.最大或值 | greedy,prefix sum  | Medium    | https://leetcode.cn/problems/maximum-or/      |
 | 0323 | 01376: Robot  | bfs    | Tough    | http://cs101.openjudge.cn/2025sp_routine/01376/      |
 | 0323 | 45.跳跃游戏II | dp, greedy    | Medium    | https://leetcode.cn/problems/jump-game-ii/      |
