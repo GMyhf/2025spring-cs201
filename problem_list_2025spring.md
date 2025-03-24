@@ -2,7 +2,7 @@
 
 https://github.com/GMyhf/2025spring-cs201/blob/main/problem_list_2025spring.md
 
-Updated 1846 GMT+8 Mar 24 2025.
+Updated 0003 GMT+8 Mar 25 2025.
 2025 spring, Complied by Hongfei Yan
 
 题解在：
@@ -22,7 +22,7 @@ Updated 1846 GMT+8 Mar 24 2025.
 | ---- | ----------------- | -------------------- | ------ | ---------------------------------------------------- |
 | 0326 | 27638:求二叉树的高度和叶子数目  | tree, dfs    | Medium    | http://cs101.openjudge.cn/practice/27638/      |
 | 0326 | 146.LRU缓存 | hash table, doubly-linked list | Medium    | https://leetcode.cn/problems/lru-cache/      |
-| 0325 | 06646:二叉树的深度   | tree, dfs    | Medium    | http://cs101.openjudge.cn/practice/06646/      |
+| 0325 | 06646:二叉树的深度   | tree, dfs    | Medium    | http://cs101.openjudge.cn/2025sp_routine/06646/      |
 | 0325 | 104.二叉树的最大深度 | tree, dfs    | Easy    | https://leetcode.cn/problems/maximum-depth-of-binary-tree/      |
 |      |      | -    | -    | tree begin  |
 | 0324 | 20052: 最大点数（同2048规则）  | dfs,matrices    | Tough    | http://cs101.openjudge.cn/2025sp_routine/20052/      |
