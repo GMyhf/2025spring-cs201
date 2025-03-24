@@ -25,7 +25,7 @@ Updated 1846 GMT+8 Mar 24 2025.
 | 0325 | 06646:二叉树的深度   | tree, dfs    | Medium    | http://cs101.openjudge.cn/practice/06646/      |
 | 0325 | 104.二叉树的最大深度 | tree, dfs    | Easy    | https://leetcode.cn/problems/maximum-depth-of-binary-tree/      |
 |      |      | -    | -    | tree begin  |
-| 0324 | 20052: 最大点数（同2048规则）  | dfs,matrices    | Tough    | http://cs101.openjudge.cn/practice/20052/      |
+| 0324 | 20052: 最大点数（同2048规则）  | dfs,matrices    | Tough    | http://cs101.openjudge.cn/2025sp_routine/20052/      |
 | 0324 | 2680.最大或值 | greedy,prefix sum  | Medium    | https://leetcode.cn/problems/maximum-or/      |
 | 0323 | 01376: Robot  | bfs    | Tough    | http://cs101.openjudge.cn/2025sp_routine/01376/      |
 | 0323 | 45.跳跃游戏II | dp, greedy    | Medium    | https://leetcode.cn/problems/jump-game-ii/      |
