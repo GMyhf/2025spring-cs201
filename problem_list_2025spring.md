@@ -20,7 +20,7 @@ Updated 0003 GMT+8 Mar 25 2025.
 
 | 日期 | 问题编号与名称    | 标签                 | 难度  | 链接                                                 |
 | ---- | ----------------- | -------------------- | ------ | ---------------------------------------------------- |
-| 0326 | 27638:求二叉树的高度和叶子数目  | tree, dfs    | Medium    | http://cs101.openjudge.cn/practice/27638/      |
+| 0326 | 27638:求二叉树的高度和叶子数目  | tree, dfs    | Medium    | http://cs101.openjudge.cn/2025sp_routine/27638/      |
 | 0326 | 146.LRU缓存 | hash table, doubly-linked list | Medium    | https://leetcode.cn/problems/lru-cache/      |
 | 0325 | 06646:二叉树的深度   | tree, dfs    | Medium    | http://cs101.openjudge.cn/2025sp_routine/06646/      |
 | 0325 | 104.二叉树的最大深度 | tree, dfs    | Easy    | https://leetcode.cn/problems/maximum-depth-of-binary-tree/      |
