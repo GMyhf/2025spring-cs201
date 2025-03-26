@@ -20,7 +20,9 @@ Updated 0003 GMT+8 Mar 25 2025.
 
 | 日期 | 问题编号与名称    | 标签                 | 难度  | 链接                                                 |
 | ---- | ----------------- | -------------------- | ------ | ---------------------------------------------------- |
+| 0328 | 230.二叉搜索树中第K小的元素     | tree, dfs    | Medium    | https://leetcode.cn/problems/kth-smallest-element-in-a-bst/      |
 | 0327 |      | -    | -    |      |
+| 0327 | 543.二叉树的直径     | tree, dfs    | Easy    | https://leetcode.cn/problems/diameter-of-binary-tree/      |
 | 0327 | 230.二叉搜索树中第K小的元素     | tree, dfs    | Medium    | https://leetcode.cn/problems/kth-smallest-element-in-a-bst/      |
 | 0326 | 27638:求二叉树的高度和叶子数目  | tree, dfs    | Medium    | http://cs101.openjudge.cn/2025sp_routine/27638/      |
 | 0326 | 146.LRU缓存 | hash table, doubly-linked list | Medium    | https://leetcode.cn/problems/lru-cache/      |
