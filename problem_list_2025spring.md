@@ -18,14 +18,15 @@ Updated 0002 GMT+8 Mar 27 2025.
 
 
 
-| 日期 | 问题编号与名称    | 标签                 | 难度  | 链接                                                 |
+|  日期 | 问题编号与名称    | 标签                 | 难度  | 链接                                                 |
 | ---- | ----------------- | -------------------- | ------ | ---------------------------------------------------- |
 |      |      | -    | -    |      |
 | 0330 | 98.验证二叉搜索树  | dfs  | Medium    | https://leetcode.cn/problems/validate-binary-search-tree/      |
 |      |      | -    | -    |      |
 | 0329 | 27637:括号嵌套二叉树 | dfs+stack | Tough    | http://cs101.openjudge.cn/practice/27637      |
 | 0329 | 108.将有序数组转换为二叉树| dfs    | Easy    | https://leetcode.cn/problems/convert-sorted-array-to-binary-search-tree/      |
-| 0328 | 24729: 括号嵌套树  | dfs, stack    | Tough   | http://cs101.openjudge.cn/practice/24729/     |
+| 0328 | 02775:文件结构“图”   | dfs, stack  | Tough   | http://cs101.openjudge.cn/2025sp_routine/02775/      |
+| 0328 | 24729: 括号嵌套树  | dfs, stack    | Tough   | http://cs101.openjudge.cn/practice/24729/ (private)     |
 | 0328 | 230.二叉搜索树中第K小的元素     | tree, dfs    | Medium    | https://leetcode.cn/problems/kth-smallest-element-in-a-bst/      |
 | 0327 | 08581: 扩展二叉树    | dfs    | Medium    | http://cs101.openjudge.cn/2025sp_routine/08581/      |
 | 0327 | 543.二叉树的直径     | tree, dfs    | Easy    | https://leetcode.cn/problems/diameter-of-binary-tree/      |
