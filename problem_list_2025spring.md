@@ -2,7 +2,7 @@
 
 https://github.com/GMyhf/2025spring-cs201/blob/main/problem_list_2025spring.md
 
-Updated 0821 GMT+8 Mar 29 2025.
+Updated 2147 GMT+8 Mar 29 2025.
 2025 spring, Complied by Hongfei Yan
 
 题解在：
@@ -20,7 +20,10 @@ Updated 0821 GMT+8 Mar 29 2025.
 
 |  日期 | 问题编号与名称    | 标签                 | 难度  | 链接                                                 |
 | ---- | ----------------- | -------------------- | ------ | ---------------------------------------------------- |
-|      |      | -    | -    |      |
+| 0331 | 05455:二叉搜索树的层次遍历     | tree    | Medium    | http://cs101.openjudge.cn/practice/05455/     |
+| 0331 | 105.从前序与中序遍历序列构造二叉树     | tree    | Medium    | https://leetcode.cn/problems/construct-binary-tree-from-preorder-and-inorder-traversal/      |
+| similar | 22158: 根据二叉树前中序序列建树     | tree    | Medium    | http://cs101.openjudge.cn/practice/22158/     |
+| 0330 | 22275: 二叉搜索树的遍历   | tree    | Medium    | http://cs101.openjudge.cn/practice/22275/      |
 | 0330 | 98.验证二叉搜索树  | dfs  | Medium    | https://leetcode.cn/problems/validate-binary-search-tree/      |
 | 0329 | 27637:括号嵌套二叉树 | dfs+stack | Tough    | http://cs101.openjudge.cn/2025sp_routine/27637      |
 | 0329 | 108.将有序数组转换为二叉树| dfs    | Easy    | https://leetcode.cn/problems/convert-sorted-array-to-binary-search-tree/      |
