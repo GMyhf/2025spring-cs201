@@ -20,8 +20,10 @@ Updated 0009 GMT+8 Mar 31 2025.
 
 |  日期 | 问题编号与名称    | 标签                 | 难度  | 链接                                                 |
 | ---- | ----------------- | -------------------- | ------ | ---------------------------------------------------- |
+| 0401 | 02788:二叉树| tree    | Medium  | http://cs101.openjudge.cn/practice/02788/ |
+| 0401 |      | -    | -    |      |
 | 0331 | 05455:二叉搜索树的层次遍历     | tree    | Medium    | http://cs101.openjudge.cn/2025sp_routine/05455/     |
-| 0331 | 105.从前序与中序遍历序列构造二叉树     | tree    | Medium    | https://leetcode.cn/problems/construct-binary-tree-from-preorder-and-inorder-traversal/      |
+| 0331 | 105.从前序与中序遍历序列构造二叉树     | tree    | Medium    | https://leetcode.cn/problems/construct-binary-tree-from-preorder-and-inorder-traversal/ |
 | similar | 22158: 根据二叉树前中序序列建树     | tree    | Medium    | http://cs101.openjudge.cn/practice/22158/     |
 | 0330 | 22275: 二叉搜索树的遍历   | tree    | Medium    | http://cs101.openjudge.cn/2025sp_routine/22275/      |
 | 0330 | 98.验证二叉搜索树  | dfs  | Medium    | https://leetcode.cn/problems/validate-binary-search-tree/      |
