@@ -20,6 +20,8 @@ Updated 1028 GMT+8 Apr 1 2025.
 
 |  日期 | 问题编号与名称    | 标签                 | 难度  | 链接                                                 |
 | ---- | ----------------- | -------------------- | ------ | ---------------------------------------------------- |
+| 0402 |      | -    | -    |      |
+| 0402 | 236.二叉树的最近公共祖先  | dfs    | Medium | https://leetcode.cn/problems/lowest-common-ancestor-of-a-binary-tree/      |
 | 0401 | 02788:二叉树| tree    | Medium  | http://cs101.openjudge.cn/2025sp_routine/02788/ |
 | 0401 | 437.路径总和III     | dfs, prefix  | Medium  | https://leetcode.cn/problems/path-sum-iii/      |
 | 0331 | 05455:二叉搜索树的层次遍历     | tree    | Medium    | http://cs101.openjudge.cn/2025sp_routine/05455/     |
