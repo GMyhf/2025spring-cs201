@@ -2,7 +2,7 @@
 
 https://github.com/GMyhf/2025spring-cs201/blob/main/problem_list_2025spring.md
 
-Updated 1028 GMT+8 Apr 1 2025.
+Updated 0922 GMT+8 Apr 2 2025.
 2025 spring, Complied by Hongfei Yan
 
 题解在：
@@ -20,7 +20,7 @@ Updated 1028 GMT+8 Apr 1 2025.
 
 |  日期 | 问题编号与名称    | 标签                 | 难度  | 链接                                                 |
 | ---- | ----------------- | -------------------- | ------ | ---------------------------------------------------- |
-| 0402 | T20576: printExp（逆波兰表达式建树）| tree    | Tough    | http://cs101.openjudge.cn/practice/20576/      |
+| 0402 | T20576: printExp（逆波兰表达式建树）| tree    | Tough    | http://cs101.openjudge.cn/2025sp_routine/20576/      |
 | 0402 | 236.二叉树的最近公共祖先  | dfs    | Medium | https://leetcode.cn/problems/lowest-common-ancestor-of-a-binary-tree/      |
 | 0401 | 02788:二叉树| tree    | Medium  | http://cs101.openjudge.cn/2025sp_routine/02788/ |
 | 0401 | 437.路径总和III     | dfs, prefix  | Medium  | https://leetcode.cn/problems/path-sum-iii/      |
