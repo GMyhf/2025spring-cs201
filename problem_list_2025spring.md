@@ -2,7 +2,7 @@
 
 https://github.com/GMyhf/2025spring-cs201/blob/main/problem_list_2025spring.md
 
-Updated 1435 GMT+8 Apr 4 2025.
+Updated 0025 GMT+8 Apr 5 2025.
 2025 spring, Complied by Hongfei Yan
 
 题解在：
@@ -21,7 +21,7 @@ Updated 1435 GMT+8 Apr 4 2025.
 |  日期 | 问题编号与名称    | 标签                 | 难度  | 链接                                                 |
 | ---- | ----------------- | -------------------- | ------ | ---------------------------------------------------- |
 |      |      | -    | -    |      |
-| 0405 | 01577:Falling Leaves | tree    | Medium    | http://cs101.openjudge.cn/practice/01577/     |
+| 0405 | 01577:Falling Leaves | tree    | Medium    | http://cs101.openjudge.cn/2025sp_routine/01577/     |
 | 0405 | 124.二叉树中的最大路径和  | dfs    | Tough    | https://leetcode.cn/problems/binary-tree-maximum-path-sum/      |
 | 0404 | 01145:Tree Summing     | tree    | Medium    | http://cs101.openjudge.cn/2025sp_routine/01145/      |
 | 0404 | 114.二叉树展开为链表 | dfs   | Medium    | https://leetcode.cn/problems/flatten-binary-tree-to-linked-list/      |
