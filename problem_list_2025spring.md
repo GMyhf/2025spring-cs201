@@ -20,9 +20,9 @@ Updated 1008 GMT+8 Apr 6 2025.
 
 |  日期 | 问题编号与名称    | 标签                 | 难度  | 链接                                                 |
 | ---- | ----------------- | -------------------- | ------ | ---------------------------------------------------- |
-| 0407 | 27928:遍历树 | adjacency list, dfs   | Medium    | http://cs101.openjudge.cn/2025sp_routine/27928/      |
+| 0407 | 27928:遍历树 | adjacency list, dfs   | Medium    | http://cs101.openjudge.cn/practice/27928/      |
 |      |      | -    | -    | Change to one question per day.   |
-| 0406 | 27948: FBI树 | dfs | Easy | http://cs101.openjudge.cn/practice/27948/      |
+| 0406 | 27948: FBI树 | dfs | Easy | http://cs101.openjudge.cn/2025sp_routine/27948/      |
 | 0406 | 129.求根节点到叶节点数字之和   | dfs    | Medium | https://leetcode.cn/problems/sum-root-to-leaf-numbers/      |
 | 0405 | 01577:Falling Leaves | tree    | Medium    | http://cs101.openjudge.cn/2025sp_routine/01577/     |
 | 0405 | 124.二叉树中的最大路径和  | dfs    | Tough    | https://leetcode.cn/problems/binary-tree-maximum-path-sum/      |
