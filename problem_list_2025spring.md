@@ -2,7 +2,7 @@
 
 https://github.com/GMyhf/2025spring-cs201/blob/main/problem_list_2025spring.md
 
-Updated 1008 GMT+8 Apr 6 2025.
+Updated 2013 GMT+8 Apr 6 2025.
 2025 spring, Complied by Hongfei Yan
 
 题解在：
@@ -20,6 +20,7 @@ Updated 1008 GMT+8 Apr 6 2025.
 
 |  日期 | 问题编号与名称    | 标签                 | 难度  | 链接                                                 |
 | ---- | ----------------- | -------------------- | ------ | ---------------------------------------------------- |
+| 0408 | 3510.移除最小数对使数组有序II  | doubly-linked list + heap   | Tough    | doubly-linked list + heap      |
 | 0407 | 27928:遍历树 | adjacency list, dfs   | Medium    | http://cs101.openjudge.cn/practice/27928/      |
 |      |      | -    | -    | Change to one question per day.   |
 | 0406 | 27948: FBI树 | dfs | Easy | http://cs101.openjudge.cn/2025sp_routine/27948/      |
