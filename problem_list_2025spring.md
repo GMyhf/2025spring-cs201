@@ -40,7 +40,7 @@ Updated 0852 GMT+8 Apr 7 2025.
 | similar | 22158: 根据二叉树前中序序列建树     | tree    | Medium    | http://cs101.openjudge.cn/practice/22158/     |
 | 0330 | 22275: 二叉搜索树的遍历   | tree    | Medium    | http://cs101.openjudge.cn/2025sp_routine/22275/      |
 | 0330 | 98.验证二叉搜索树  | dfs  | Medium    | https://leetcode.cn/problems/validate-binary-search-tree/      |
-| 0329 | 27637:括号嵌套二叉树 | dfs+stack | Tough    | http://cs101.openjudge.cn/2025sp_routine/27637      |
+| 0329 | 27637:括号嵌套二叉树 | dfs+stack | Medium    | http://cs101.openjudge.cn/2025sp_routine/27637      |
 | 0329 | 108.将有序数组转换为二叉树| dfs    | Easy    | https://leetcode.cn/problems/convert-sorted-array-to-binary-search-tree/      |
 | 0328 | 02775:文件结构“图”   | dfs, stack  | Tough   | http://cs101.openjudge.cn/2025sp_routine/02775/      |
 | 0328 | 24729: 括号嵌套树  | dfs, stack    | Tough   | http://cs101.openjudge.cn/practice/24729/ (private)     |
