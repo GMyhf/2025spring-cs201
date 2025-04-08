@@ -110,7 +110,7 @@ tree, http://cs101.openjudge.cn/practice/22158/
 
 
 
-### T24729:括号嵌套树
+### M24729:括号嵌套树
 
 dfs, stack, http://cs101.openjudge.cn/practice/24729/
 
