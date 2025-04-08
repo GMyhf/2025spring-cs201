@@ -90,7 +90,7 @@ dfs, https://leetcode.cn/problems/sum-root-to-leaf-numbers/
 
 ### M22158:根据二叉树前中序序列建树
 
-tree, http://cs101.openjudge.cn/practice/24729/
+tree, http://cs101.openjudge.cn/practice/22158/
 
 思路：
 
