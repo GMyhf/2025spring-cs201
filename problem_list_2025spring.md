@@ -20,7 +20,7 @@ Updated 1647 GMT+8 Apr 9 2025.
 
 |  日期 | 问题编号与名称    | 标签                 | 难度  | 链接                                                 |
 | ---- | ----------------- | -------------------- | ------ | ---------------------------------------------------- |
-| 0410 | 22161: 哈夫曼编码树   | Huffman  | Tought    | http://cs101.openjudge.cn/practice/22161/     |
+| 0410 | 22161: 哈夫曼编码树   | greedy  | Tought    | http://cs101.openjudge.cn/practice/22161/     |
 | 0409 | 02499:Binary Tree | math    | Medium    | http://cs101.openjudge.cn/practice/02499/      |
 | 0408 | 3510.移除最小数对使数组有序II  | doubly-linked list + heap   | Tough    | https://leetcode.cn/problems/minimum-pair-removal-to-sort-array-ii/     |
 | 0407 | 27928:遍历树 | adjacency list, dfs   | Medium    | http://cs101.openjudge.cn/2025sp_routine/27928/      |
