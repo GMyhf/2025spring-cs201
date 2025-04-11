@@ -15,13 +15,7 @@ Updated 0134 GMT+8 Apr 12, 2025
 
 ### 二．教学安排
 
-​	本课程全面覆盖了经典计算机科学问题中的数据结构与算法。虽然在学习顺序上没有严格的要求，但建议按序进行以充分利用知识点间的关联。除了课堂学习外，还提供每日选做编程题目的练习列表：	 
-​	开课前假期中的 数算2025pre每日选做，  
-https://github.com/GMyhf/2025spring-cs201/blob/main/pre_problem_list_2025spring.md  
-​	开课中的 数算2025spring每日选做，  
-https://github.com/GMyhf/2025spring-cs201/blob/main/problem_list_2025spring.md
-
-​	鼓励学生利用AI对话系统如，如：https://chatgpt.com/、https://tongyi.aliyun.com/、https://yuanbao.tencent.com/  等辅助学习，同时提供线上线下的答疑服务以支持学生的学习需求。
+​	本课程全面覆盖了经典计算机科学问题中的数据结构与算法。虽然在学习顺序上没有严格的要求，但建议按序进行以充分利用知识点间的关联。
 
 ​	为期16周的教学内容涵盖了AI技术到数据结构和算法等多个内容。16周的详细课程内容安排如下。  
 
@@ -34,6 +28,14 @@ https://github.com/GMyhf/2025spring-cs201/blob/main/problem_list_2025spring.md
 | 11. 图及其算法（1/4），月考（exam 3/3）               | 12. 图及其算法（2/4）                                        |
 | 13. 图及其算法（3/4）                                 | 14. 图及其算法（4/4）                                        |
 | 15. 算法拓展、笔试内容                                | 16. 课程总结、期末机考                                       |
+
+​	除了课堂学习外，还提供每日选做编程题目的练习列表：	 
+​	开课前假期中的 数算2025pre每日选做，  
+https://github.com/GMyhf/2025spring-cs201/blob/main/pre_problem_list_2025spring.md  
+​	开课中的 数算2025spring每日选做，  
+https://github.com/GMyhf/2025spring-cs201/blob/main/problem_list_2025spring.md
+
+​	鼓励学生利用AI对话系统如，如：https://chatgpt.com/、https://tongyi.aliyun.com/、https://yuanbao.tencent.com/  等辅助学习，同时提供线上线下的答疑服务以支持学生的学习需求。
 
 ### 三．题解解析和推荐教材
 
