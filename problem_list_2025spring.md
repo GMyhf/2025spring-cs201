@@ -2,7 +2,7 @@
 
 https://github.com/GMyhf/2025spring-cs201/blob/main/problem_list_2025spring.md
 
-Updated 2052 GMT+8 Apr 10 2025.
+Updated 0041 GMT+8 Apr 12 2025.
 2025 spring, Complied by Hongfei Yan
 
 题解在：
@@ -20,7 +20,7 @@ Updated 2052 GMT+8 Apr 10 2025.
 
 |  日期 | 问题编号与名称    | 标签                 | 难度  | 链接                                                 |
 | ---- | ----------------- | -------------------- | ------ | ---------------------------------------------------- |
-| 0412 | 04080:Huffman编码树 | greedy    | Medium    | http://cs101.openjudge.cn/practice/04080/      |
+| 0412 | 04080:Huffman编码树 | greedy    | Medium    | http://cs101.openjudge.cn/2025sp_routine/04080/      |
 | 0411 | 103.二叉树的锯齿形层序遍历     | bfs    | Medium    | https://leetcode.cn/problems/binary-tree-zigzag-level-order-traversal/      |
 | 0410 | 22161: 哈夫曼编码树   | greedy  | Tought    | http://cs101.openjudge.cn/practice/22161/     |
 | 0409 | 02499:Binary Tree | math    | Medium    | http://cs101.openjudge.cn/practice/02499/      |
