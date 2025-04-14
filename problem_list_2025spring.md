@@ -21,7 +21,7 @@ Updated 2015 GMT+8 Apr 13 2025.
 |  日期 | 问题编号与名称    | 标签                 | 难度  | 链接                                                 |
 | ---- | ----------------- | -------------------- | ------ | ---------------------------------------------------- |
 | 0415 |      | -    | -    |      |
-| 0414 | 03720:文本二叉树     | tree    | Medium    | http://cs101.openjudge.cn/practice/03720/      |
+| 0414 | 03720:文本二叉树     | tree    | Medium    | http://cs101.openjudge.cn/2025sp_routine/03720/      |
 | 0413 | 222.完全二叉树的节点个数     | dfs    | Easy    | https://leetcode.cn/problems/count-complete-tree-nodes/      |
 | 0412 | 04080:Huffman编码树 | greedy    | Medium    | http://cs101.openjudge.cn/2025sp_routine/04080/      |
 | 0411 | 103.二叉树的锯齿形层序遍历     | bfs    | Medium    | https://leetcode.cn/problems/binary-tree-zigzag-level-order-traversal/      |
