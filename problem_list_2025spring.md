@@ -26,7 +26,7 @@ Updated 2211 GMT+8 Apr 15 2025.
 | 0413 | 222.完全二叉树的节点个数     | dfs    | Easy    | https://leetcode.cn/problems/count-complete-tree-nodes/      |
 | 0412 | 04080:Huffman编码树 | greedy    | Medium    | http://cs101.openjudge.cn/2025sp_routine/04080/      |
 | 0411 | 103.二叉树的锯齿形层序遍历     | bfs    | Medium    | https://leetcode.cn/problems/binary-tree-zigzag-level-order-traversal/      |
-| 0410 | 22161: 哈夫曼编码树   | greedy  | Tought    | http://cs101.openjudge.cn/practice/22161/     |
+| 0410 | 22161: 哈夫曼编码树   | greedy  | Tough    | http://cs101.openjudge.cn/practice/22161/     |
 | 0409 | 02499:Binary Tree | math    | Medium    | http://cs101.openjudge.cn/practice/02499/      |
 | 0408 | 3510.移除最小数对使数组有序II  | doubly-linked list + heap   | Tough    | https://leetcode.cn/problems/minimum-pair-removal-to-sort-array-ii/     |
 | 0407 | 27928:遍历树 | adjacency list, dfs   | Medium    | http://cs101.openjudge.cn/2025sp_routine/27928/      |
