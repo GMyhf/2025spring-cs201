@@ -1,6 +1,6 @@
-# Assignment #: Huffman & Fenwick
+# Assignment #9: Huffman, BST & Heap
 
-Updated 1034 GMT+8 Apr 15, 2025
+Updated 1834 GMT+8 Apr 15, 2025
 
 2025 spring, Complied by <mark>同学的姓名、院系</mark>
 
@@ -66,28 +66,6 @@ bfs, https://leetcode.cn/problems/binary-tree-zigzag-level-order-traversal/
 
 
 
-### M03720:文本二叉树
-
-tree, http://cs101.openjudge.cn/practice/03720/
-
-思路：
-
-
-
-代码：
-
-```python
-
-```
-
-
-
-代码运行截图 <mark>（至少包含有"Accepted"）</mark>
-
-
-
-
-
 ### M04080:Huffman编码树
 
 greedy, http://cs101.openjudge.cn/practice/04080/
@@ -110,9 +88,9 @@ greedy, http://cs101.openjudge.cn/practice/04080/
 
 
 
-### T22161: 哈夫曼编码树
+### M05455: 二叉搜索树的层次遍历
 
-greedy, http://cs101.openjudge.cn/practice/22161/
+http://cs101.openjudge.cn/practice/05455/
 
 思路：
 
@@ -132,9 +110,33 @@ greedy, http://cs101.openjudge.cn/practice/22161/
 
 
 
-### 2179.统计数组中好三元组数目
+### M04078: 实现堆结构
 
-Binary Indexed Tree, Segment Tree, Divide and Conquer, Merge Sort, https://leetcode.cn/problems/count-good-triplets-in-an-array/description/
+手搓实现，http://cs101.openjudge.cn/practice/04078/
+
+类似的题目是 晴问9.7: 向下调整构建大顶堆，https://sunnywhy.com/sfbj/9/7
+
+思路：
+
+
+
+代码：
+
+```python
+
+```
+
+
+
+代码运行截图 <mark>（至少包含有"Accepted"）</mark>
+
+
+
+
+
+### T22161: 哈夫曼编码树
+
+greedy, http://cs101.openjudge.cn/practice/22161/
 
 思路：
 
