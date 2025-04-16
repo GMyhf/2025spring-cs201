@@ -24,7 +24,9 @@ Updated 1834 GMT+8 Apr 15, 2025
 
 ### LC222.完全二叉树的节点个数
 
-dfs, https://leetcode.cn/problems/count-complete-tree-nodes/
+bfs, dfs, binary + greedy,  https://leetcode.cn/problems/count-complete-tree-nodes/
+
+如果用bfs写是简单级别，其他方法是中级难度。
 
 思路：
 
