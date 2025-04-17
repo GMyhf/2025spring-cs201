@@ -2,7 +2,7 @@
 
 https://github.com/GMyhf/2025spring-cs201/blob/main/problem_list_2025spring.md
 
-Updated 2104 GMT+8 Apr 16 2025.
+Updated 1711 GMT+8 Apr 17 2025.
 2025 spring, Complied by Hongfei Yan
 
 题解在：
@@ -21,7 +21,7 @@ Updated 2104 GMT+8 Apr 16 2025.
 |  日期 | 问题编号与名称    | 标签                 | 难度  | 链接                                                 |
 | ---- | ----------------- | -------------------- | ------ | ---------------------------------------------------- |
 | 0419 | 827.最大人工岛    | disjoint set    | Tough    | https://leetcode.cn/problems/making-a-large-island/      |
-|      |      | -    | -    |      |
+| 0418 | 04082:树的镜面映射| implementation  | Tough    | http://cs101.openjudge.cn/practice/04082/      |
 | 0417 | 547.省份数量      | dfs, disjoint set    | Medium    | https://leetcode.cn/problems/number-of-provinces/      |
 | 0416 | 04078: 实现堆结构 | implementation   | Medium    | http://cs101.openjudge.cn/2025sp_routine/04078/      |
 | 0415 | 117.填充每个节点的下一个右侧节点指针II     | bfs    | Medium    | https://leetcode.cn/problems/populating-next-right-pointers-in-each-node-ii/      |
