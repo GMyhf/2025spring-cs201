@@ -20,7 +20,7 @@ Updated 1711 GMT+8 Apr 17 2025.
 
 |  日期 | 问题编号与名称    | 标签                 | 难度  | 链接                                                 |
 | ---- | ----------------- | -------------------- | ------ | ---------------------------------------------------- |
-|      |      | -    | -    | graph and all kinds lables begin  |
+|      |      | -    | -    | graph and all kinds of tags begin  |
 | 0419 | 827.最大人工岛    | disjoint set    | Tough    | https://leetcode.cn/problems/making-a-large-island/      |
 | 0418 | 04082:树的镜面映射| implementation  | Tough    | http://cs101.openjudge.cn/practice/04082/      |
 | 0417 | 547.省份数量      | dfs, disjoint set    | Medium    | https://leetcode.cn/problems/number-of-provinces/      |
