@@ -20,6 +20,8 @@ Updated 0957 GMT+8 Apr 18 2025.
 
 |  日期 | 问题编号与名称    | 标签                 | 难度  | 链接                                                 |
 | ---- | ----------------- | -------------------- | ------ | ---------------------------------------------------- |
+| 0421 | 2364.统计坏数对的数目 | hash table    | Medium    | https://leetcode.cn/problems/count-number-of-bad-pairs/      |
+| 0420 |      | -    | -    |      |
 |      |      | -    | -    | graph and all kinds of tags begin  |
 | 0419 | 827.最大人工岛    | disjoint set    | Tough    | https://leetcode.cn/problems/making-a-large-island/      |
 | 0418 | 04082:树的镜面映射| implementation  | Tough    | http://cs101.openjudge.cn/2025sp_routine/04082/      |
