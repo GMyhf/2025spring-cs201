@@ -22,7 +22,7 @@ Updated 2202 GMT+8 Apr 20 2025.
 | ---- | ----------------- | -------------------- | ------ | ---------------------------------------------------- |
 | 0425 | 781.森林中的兔子  | greedy| Medium   | https://leetcode.cn/problems/rabbits-in-forest/      |
 |      |      | -    | -    |      |
-| 0423 | 909.蛇梯棋  | bfs  | Medium    | https://leetcode.cn/problems/rabbits-in-forest/      |
+| 0423 | 909.蛇梯棋  | bfs  | Medium    | https://leetcode.cn/problems/snakes-and-ladders/      |
 |      |      | -    | -    |      |
 | 0421 | 2364.统计坏数对的数目 | hash table    | Medium    | https://leetcode.cn/problems/count-number-of-bad-pairs/      |
 | 0420 | 19943:图的拉普拉斯矩阵 | implementation    | Easy    | http://cs101.openjudge.cn/2025sp_routine/19943/      |
