@@ -25,7 +25,7 @@ Updated 2351 GMT+8 Apr 21 2025.
 | 0423 | 909.蛇梯棋  | bfs  | Medium    | https://leetcode.cn/problems/snakes-and-ladders/      |
 | 0422 | 28046: 词梯 | bfs    | Medium    | http://cs101.openjudge.cn/2025sp_routine/28046/       |
 | 0421 | 2364.统计坏数对的数目 | hash table    | Medium    | https://leetcode.cn/problems/count-number-of-bad-pairs/      |
-| 0420 | 19943:图的拉普拉斯矩阵 | implementation    | Easy    | http://cs101.openjudge.cn/2025sp_routine/19943/      |
+| 0420 | 19943:图的拉普拉斯矩阵 | OOP,implementation    | Easy    | http://cs101.openjudge.cn/2025sp_routine/19943/      |
 |      |      | -    | -    | graph and all kinds of tags begin  |
 | 0419 | 827.最大人工岛    | disjoint set    | Tough    | https://leetcode.cn/problems/making-a-large-island/      |
 | 0418 | 04082:树的镜面映射| implementation  | Tough    | http://cs101.openjudge.cn/2025sp_routine/04082/      |
