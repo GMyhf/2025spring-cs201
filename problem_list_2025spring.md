@@ -2,7 +2,7 @@
 
 https://github.com/GMyhf/2025spring-cs201/blob/main/problem_list_2025spring.md
 
-Updated 2003 GMT+8 Apr 22 2025.
+Updated 1022 GMT+8 Apr 24 2025.
 2025 spring, Complied by Hongfei Yan
 
 题解在：
@@ -20,6 +20,8 @@ Updated 2003 GMT+8 Apr 22 2025.
 
 |  日期 | 问题编号与名称    | 标签                 | 难度  | 链接                                                 |
 | ---- | ----------------- | -------------------- | ------ | ---------------------------------------------------- |
+| 0427 | 2799.统计完全子数组的数目 | hash table, sliding window | Medium  | https://leetcode.cn/problems/count-complete-subarrays-in-an-array/      |
+|      |      | -    | -    |      |
 | 0425 | 781.森林中的兔子  | greedy| Medium   | https://leetcode.cn/problems/rabbits-in-forest/      |
 | 0424 | 04089:电话号码    | trie    | Medium    | http://cs101.openjudge.cn/practice/04089/      |
 | 0423 | 909.蛇梯棋  | bfs  | Medium    | https://leetcode.cn/problems/snakes-and-ladders/      |
