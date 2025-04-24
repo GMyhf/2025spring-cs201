@@ -23,7 +23,7 @@ Updated 1022 GMT+8 Apr 24 2025.
 | 0427 | 2799.统计完全子数组的数目 | hash table, sliding window | Medium  | https://leetcode.cn/problems/count-complete-subarrays-in-an-array/      |
 |      |      | -    | -    |      |
 | 0425 | 781.森林中的兔子  | greedy| Medium   | https://leetcode.cn/problems/rabbits-in-forest/      |
-| 0424 | 04089:电话号码    | trie    | Medium    | http://cs101.openjudge.cn/practice/04089/      |
+| 0424 | 04089:电话号码    | trie    | Medium    | http://cs101.openjudge.cn/2025sp_routine/04089/      |
 | 0423 | 909.蛇梯棋  | bfs  | Medium    | https://leetcode.cn/problems/snakes-and-ladders/      |
 | 0422 | 28046: 词梯 | bfs    | Tough    | http://cs101.openjudge.cn/2025sp_routine/28046/       |
 | 0421 | 2364.统计坏数对的数目 | hash table    | Medium    | https://leetcode.cn/problems/count-number-of-bad-pairs/      |
