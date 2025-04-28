@@ -2,7 +2,7 @@
 
 https://github.com/GMyhf/2025spring-cs201/blob/main/problem_list_2025spring.md
 
-Updated 2206 GMT+8 Apr 25 2025.
+Updated 1553 GMT+8 Apr 28 2025.
 2025 spring, Complied by Hongfei Yan
 
 题解在：
@@ -21,9 +21,9 @@ Updated 2206 GMT+8 Apr 25 2025.
 |  日期 | 问题编号与名称    | 标签                 | 难度  | 链接                                                 |
 | ---- | ----------------- | -------------------- | ------ | ---------------------------------------------------- |
 | 0502 | 22528:厚道的调分方法  | binary search   | Medium    | http://cs101.openjudge.cn/practice/22528/      |
-|      |      | -    | -    |      |
+| 0501 | 3532.针对图的路径存在性查询I     | disjoint set    | Medium    | https://leetcode.cn/problems/path-existence-queries-in-a-graph-i/description/      |
 | 0430 | 07218:献给阿尔吉侬的花束  | bfs    | Easy    | http://cs101.openjudge.cn/practice/07218/      |
-|      |      | -    | -    |      |
+| 0429 | 3531.统计被覆盖的建筑     | implementation   | Medium    | https://leetcode.cn/problems/count-covered-buildings/      |
 | 0428 | 05443:兔子与樱花  | Dijkstra    | Medium    | http://cs101.openjudge.cn/2025sp_routine/05443/      |
 | 0427 | 2799.统计完全子数组的数目 | hash table, sliding window | Medium  | https://leetcode.cn/problems/count-complete-subarrays-in-an-array/      |
 | 0426 | 20106:走山路     | Dijkstra    | Medium    | http://cs101.openjudge.cn/2025sp_routine/20106/      |
