@@ -20,7 +20,7 @@ Updated 2206 GMT+8 Apr 25 2025.
 
 |  日期 | 问题编号与名称    | 标签                 | 难度  | 链接                                                 |
 | ---- | ----------------- | -------------------- | ------ | ---------------------------------------------------- |
-| 0428 | 05443:兔子与樱花  | Dijkstra    | Medium    | http://cs101.openjudge.cn/practice/05443/      |
+| 0428 | 05443:兔子与樱花  | Dijkstra    | Medium    | http://cs101.openjudge.cn/2025sp_routine/05443/      |
 | 0427 | 2799.统计完全子数组的数目 | hash table, sliding window | Medium  | https://leetcode.cn/problems/count-complete-subarrays-in-an-array/      |
 | 0426 | 20106:走山路     | Dijkstra    | Medium    | http://cs101.openjudge.cn/2025sp_routine/20106/      |
 | 0425 | 781.森林中的兔子  | greedy| Medium   | https://leetcode.cn/problems/rabbits-in-forest/      |
