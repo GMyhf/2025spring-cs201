@@ -20,9 +20,13 @@ Updated 0924 GMT+8 Apr 30 2025.
 
 |  日期 | 问题编号与名称    | 标签                 | 难度  | 链接                                                 |
 | ---- | ----------------- | -------------------- | ------ | ---------------------------------------------------- |
+| 0510 | 05442: 兔子与星空 | prim, krusal    | Medium    | http://cs101.openjudge.cn/practice/27635/      |
+|      |      | -    | -    |      |
+| 0508 | 09202: 舰队、海域出击！   | topological order    | Medium    | http://cs101.openjudge.cn/practice/09202/      |
+|      |      | -    | -    |      |
 | 0506 | 12029:水淹七军    | bfs    | Medium    | http://cs101.openjudge.cn/practice/12029/      |
 |      |      | -    | -    |      |
-| 0504 | 28050: 骑士周游   | dfs    | Tough     | http://cs101.openjudge.cn/practice/28050/     |
+| 0504 | 28050: 骑士周游   | dfs, Warnsdorff    | Tough     | http://cs101.openjudge.cn/practice/28050/     |
 |      |      | -    | -    |      |
 | 0502 | 22528:厚道的调分方法  | binary search   | Medium    | http://cs101.openjudge.cn/practice/22528/      |
 | 0501 | 3532.针对图的路径存在性查询I     | disjoint set    | Medium    | https://leetcode.cn/problems/path-existence-queries-in-a-graph-i/      |
