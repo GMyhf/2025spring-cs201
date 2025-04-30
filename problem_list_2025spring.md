@@ -25,9 +25,9 @@ Updated 0924 GMT+8 Apr 30 2025.
 | 0508 | 09202: 舰队、海域出击！   | topological order    | Medium    | http://cs101.openjudge.cn/practice/09202/      |
 |      |      | -    | -    |      |
 | 0506 | 12029:水淹七军    | bfs    | Medium    | http://cs101.openjudge.cn/practice/12029/      |
-|      |      | -    | -    |      |
+| 0505 | 208.实现Trie(前缀树)     | OOP, hash table    | Medium    | https://leetcode.cn/problems/implement-trie-prefix-tree/      |
 | 0504 | 28050: 骑士周游   | dfs, Warnsdorff    | Tough     | http://cs101.openjudge.cn/practice/28050/     |
-|      |      | -    | -    |      |
+| 0503 | 207.课程表  | topological order    | Medium    | https://leetcode.cn/problems/course-schedule/      |
 | 0502 | 22528:厚道的调分方法  | binary search   | Medium    | http://cs101.openjudge.cn/practice/22528/      |
 | 0501 | 3532.针对图的路径存在性查询I     | disjoint set    | Medium    | https://leetcode.cn/problems/path-existence-queries-in-a-graph-i/      |
 | 0430 | 07218:献给阿尔吉侬的花束  | bfs    | Easy    | http://cs101.openjudge.cn/2025sp_routine/07218/      |
