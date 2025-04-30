@@ -29,7 +29,7 @@ Updated 0011 GMT+8 Feb 16 2025.
 | 0212 | 09202: 舰队、海域出击！ | Topological Order  | 必须会 | http://cs101.openjudge.cn/practice/09202/    |
 | 0212 | P1260: 火星大工程| AOE，拓扑排序，关键路径  | Tough | http://dsbpython.openjudge.cn/dspythonbook/P1260/    |
 | 0211 | 05442: 兔子与星空 | prim, kruskal  | 必须会 | http://cs101.openjudge.cn/25dsapre/05442/   |
-| 0211 | 27635:判断无向图是否连通有无回路  | dfs,topological order  | 必须会 | http://cs101.openjudge.cn/practice/27635/    |
+| 0211 | 27635:判断无向图是否连通有无回路  | dfs, union-findr  | 必须会 | http://cs101.openjudge.cn/practice/27635/    |
 | 0211 | 1843D. Apple Tree | combinatorics, dfs and similar, dp, math, trees  | 1200 | https://codeforces.com/problemset/problem/1843/D    |
 | 0210 | 05443: 兔子与樱花 | dijkstra  | 必须会 | http://cs101.openjudge.cn/25dsapre/05443/   |
 | 0210 | 20C. Dijkstra? | graphs, shortest paths | 1900 | https://codeforces.com/problemset/problem/20/C   |
