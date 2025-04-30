@@ -20,6 +20,8 @@ Updated 0924 GMT+8 Apr 30 2025.
 
 |  日期 | 问题编号与名称    | 标签                 | 难度  | 链接                                                 |
 | ---- | ----------------- | -------------------- | ------ | ---------------------------------------------------- |
+| 0506 | 12029:水淹七军    | bfs    | Medium    | http://cs101.openjudge.cn/practice/12029/      |
+|      |      | -    | -    |      |
 | 0504 | 28050: 骑士周游   | dfs    | Tough     | http://cs101.openjudge.cn/practice/28050/     |
 |      |      | -    | -    |      |
 | 0502 | 22528:厚道的调分方法  | binary search   | Medium    | http://cs101.openjudge.cn/practice/22528/      |
