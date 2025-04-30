@@ -23,7 +23,7 @@ Updated 0924 GMT+8 Apr 30 2025.
 | 0510 | 05442: 兔子与星空 | prim, krusal    | Medium    | http://cs101.openjudge.cn/practice/27635/      |
 |      |      | -    | -    |      |
 | 0508 | 09202: 舰队、海域出击！   | topological order    | Medium    | http://cs101.openjudge.cn/practice/09202/      |
-|      |      | -    | -    |      |
+| 0507 | 2962.统计最大元素出现至少K次的子数组   | sliding window    | Medium    | https://leetcode.cn/problems/count-subarrays-where-max-element-appears-at-least-k-times/     |
 | 0506 | 12029:水淹七军    | bfs    | Medium    | http://cs101.openjudge.cn/practice/12029/      |
 | 0505 | 208.实现Trie(前缀树)     | OOP, hash table    | Medium    | https://leetcode.cn/problems/implement-trie-prefix-tree/      |
 | 0504 | 28050: 骑士周游   | dfs, Warnsdorff    | Tough     | http://cs101.openjudge.cn/practice/28050/     |
