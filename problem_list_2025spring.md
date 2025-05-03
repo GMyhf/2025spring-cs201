@@ -32,7 +32,7 @@ Updated 0940 GMT+8 May 2 2025.
 | 0501 | 3532.针对图的路径存在性查询I     | disjoint set    | Medium    | https://leetcode.cn/problems/path-existence-queries-in-a-graph-i/      |
 | 0430 | 07218:献给阿尔吉侬的花束  | bfs    | Easy    | http://cs101.openjudge.cn/2025sp_routine/07218/      |
 | 0429 | 3531.统计被覆盖的建筑     | implementation   | Medium    | https://leetcode.cn/problems/count-covered-buildings/      |
-| 0428 | 05443:兔子与樱花  | Dijkstra    | Medium    | http://cs101.openjudge.cn/2025sp_routine/05443/      |
+| 0428 | 05443:兔子与樱花  | Dijkstra, Floyd-Warshall    | Medium    | http://cs101.openjudge.cn/2025sp_routine/05443/      |
 | 0427 | 2799.统计完全子数组的数目 | hash table, sliding window | Medium  | https://leetcode.cn/problems/count-complete-subarrays-in-an-array/      |
 | 0426 | 20106:走山路     | Dijkstra    | Medium    | http://cs101.openjudge.cn/2025sp_routine/20106/      |
 | 0425 | 781.森林中的兔子  | greedy| Medium   | https://leetcode.cn/problems/rabbits-in-forest/      |
