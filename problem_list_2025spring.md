@@ -2,7 +2,7 @@
 
 https://github.com/GMyhf/2025spring-cs201/blob/main/problem_list_2025spring.md
 
-Updated 0940 GMT+8 May 2 2025.
+Updated 0008 GMT+8 May 4 2025.
 2025 spring, Complied by Hongfei Yan
 
 题解在：
@@ -26,7 +26,7 @@ Updated 0940 GMT+8 May 2 2025.
 | 0507 | 2962.统计最大元素出现至少K次的子数组   | sliding window    | Medium    | https://leetcode.cn/problems/count-subarrays-where-max-element-appears-at-least-k-times/     |
 | 0506 | 12029:水淹七军    | bfs    | Medium    | http://cs101.openjudge.cn/practice/12029/      |
 | 0505 | 208.实现Trie(前缀树)     | OOP, hash table    | Medium    | https://leetcode.cn/problems/implement-trie-prefix-tree/      |
-| 0504 | 28050: 骑士周游   | dfs, Warnsdorff    | Tough     | http://cs101.openjudge.cn/practice/28050/     |
+| 0504 | 28050: 骑士周游   | dfs, Warnsdorff    | Tough     | http://cs101.openjudge.cn/2025sp_routine/28050/     |
 | 0503 | 207.课程表  | topological order    | Medium    | https://leetcode.cn/problems/course-schedule/      |
 | 0502 | 22528:厚道的调分方法  | binary search   | Medium    | http://cs101.openjudge.cn/2025sp_routine/22528/      |
 | 0501 | 3532.针对图的路径存在性查询I     | disjoint set    | Medium    | https://leetcode.cn/problems/path-existence-queries-in-a-graph-i/      |
