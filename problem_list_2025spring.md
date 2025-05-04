@@ -20,6 +20,8 @@ Updated 2014 GMT+8 May 4 2025.
 
 |  日期 | 问题编号与名称    | 标签                 | 难度  | 链接                                                 |
 | ---- | ----------------- | -------------------- | ------ | ---------------------------------------------------- |
+| 0514 | 17975: 用二次探查法建立散列表  | hash table    | Medium    | http://cs101.openjudge.cn/practice/17975/      |
+|      |      | -    | -    |      |
 | 0512 | 22508:最小奖金方案 | DAG上的DP    | Tough    | http://cs101.openjudge.cn/practice/22508/      |
 |      |      | -    | -    |      |
 | 0510 | 05442: 兔子与星空 | prim, krusal    | Medium    | http://cs101.openjudge.cn/practice/27635/      |
