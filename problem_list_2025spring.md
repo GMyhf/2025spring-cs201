@@ -20,12 +20,13 @@ Updated 2014 GMT+8 May 4 2025.
 
 |  日期 | 问题编号与名称    | 标签                 | 难度  | 链接                                                 |
 | ---- | ----------------- | -------------------- | ------ | ---------------------------------------------------- |
+| 0515 | 787.K站中转内最便宜的航班      | Bellman Ford  | Medium  | https://leetcode.cn/problems/cheapest-flights-within-k-stops/      |
 | 0514 | 17975: 用二次探查法建立散列表  | hash table    | Medium    | http://cs101.openjudge.cn/practice/17975/      |
-|      |      | -    | -    |      |
+| 0513 | 210.课程表II  | topological sort    | Medium    | https://leetcode.cn/problems/course-schedule-ii/description/      |
 | 0512 | 22508:最小奖金方案 | DAG上的DP    | Tough    | http://cs101.openjudge.cn/practice/22508/      |
-|      |      | -    | -    |      |
+| 0511 | 743.网络延迟时间  | Dijkstra    | Medium    | https://leetcode.cn/problems/network-delay-time/description/      |
 | 0510 | 05442: 兔子与星空 | prim, krusal    | Medium    | http://cs101.openjudge.cn/practice/27635/      |
-|      |      | -    | -    |      |
+| 0509 | 1584.连接所有点的最小费用 | Union find, minimum spanning tree | Medium    | https://leetcode.cn/problems/min-cost-to-connect-all-points/      |
 | 0508 | 09202: 舰队、海域出击！   | topological order    | Medium    | http://cs101.openjudge.cn/practice/09202/      |
 | 0507 | 2962.统计最大元素出现至少K次的子数组   | sliding window    | Medium    | https://leetcode.cn/problems/count-subarrays-where-max-element-appears-at-least-k-times/     |
 | 0506 | 12029:水淹七军    | bfs    | Medium    | http://cs101.openjudge.cn/practice/12029/      |
