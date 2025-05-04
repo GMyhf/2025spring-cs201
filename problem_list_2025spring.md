@@ -95,7 +95,7 @@ Updated 2014 GMT+8 May 4 2025.
 | 0323 | 01376: Robot  | bfs    | Tough    | http://cs101.openjudge.cn/2025sp_routine/01376/      |
 | 0323 | 45.跳跃游戏II | dp, greedy    | Medium    | https://leetcode.cn/problems/jump-game-ii/      |
 | 0322 | 01426: Find The Multiple  | bfs    | Medium    | http://cs101.openjudge.cn/2025sp_routine/01426/     |
-| 0322 | 84.柱状图中最大的矩形     | monotonic stack    | Tough    | https://leetcode.cn/problems/largest-rectangle-in-histogram/      |
+| 0322 | ==84.柱状图中最大的矩形== | monotonic stack    | Tough    | https://leetcode.cn/problems/largest-rectangle-in-histogram/      |
 | 0321 | 07206:我是最快的马 | bfs  | Tough    | http://cs101.openjudge.cn/2025sp_routine/07206/     |
 | 0321 | 25.K个一组翻转链表 | linked list | Tough    | https://leetcode.cn/problems/reverse-nodes-in-k-group/     |
 | 0320 | 18250:冰阔落 I     | disjoint set    | Medium    | http://cs101.openjudge.cn/2025sp_routine/18250/      |
@@ -106,17 +106,17 @@ Updated 2014 GMT+8 May 4 2025.
 | 0318 | 3484. 设计电子表格 | OOP, RE | Medium  | https://leetcode.cn/contest/biweekly-contest-152/problems/design-spreadsheet/      |
 | 0317 | 02766: 最大子矩阵  | Kadane | Medium    | http://cs101.openjudge.cn/2025sp_routine/02766/      |
 | 0317 | 3487.删除后的最大子数组元素和 | implementation  | Easy    | https://leetcode.cn/problems/maximum-unique-subarray-sum-after-deletion/      |
-| 0316 | 01159: Palindrome  | dp    | Tough    | http://cs101.openjudge.cn/2025sp_routine/01159/      |
+| 0316 | ==01159: Palindrome== | dp    | Tough    | http://cs101.openjudge.cn/2025sp_routine/01159/      |
 | 0316 | 274.H指数   | sorting    | Medium    | https://leetcode.cn/problems/h-index/      |
 | 0315 | 02749:分解因数     | recursion    | Medium    | http://cs101.openjudge.cn/2025sp_routine/02749/      |
-| 0315 | 24591:中序表达式转后序表达式 | stack    | Tough    | http://cs101.openjudge.cn/practice/24591/      |
+| 0315 | ==24591:中序表达式转后序表达式== | stack    | Tough    | http://cs101.openjudge.cn/practice/24591/      |
 | 0314 | 27217: 有多少种合法的出栈顺序| dfs,dp    | Medium  | http://cs101.openjudge.cn/2025sp_routine/27217/      |
-| 0314 | sy295: 可能的出栈序列     | stack    | Medium  | https://sunnywhy.com/sfbj/7/1/295      |
+| 0314 | ==sy295: 可能的出栈序列== | stack    | Medium  | https://sunnywhy.com/sfbj/7/1/295      |
 | similar | 22068:合法出栈序列 | stack| Medium | http://cs101.openjudge.cn/practice/22068/      |
 | 0313 | 02734: 十进制到八进制     | stack    | Easy    | http://cs101.openjudge.cn/2025sp_routine/02734/      |
 | 0313 | 19.删除链表的倒数第N个结点| linked list, tow pointers | Medium | https://leetcode.cn/problems/remove-nth-node-from-end-of-list/      |
 | 0312 | 02815: 城堡问题     | dfs, bit manipulation    | Tough    | http://cs101.openjudge.cn/2025sp_routine/02815/      |
-| 0312 | 234.回文链表     | linked list,two pointers    | Easy    | https://leetcode.cn/problems/palindrome-linked-list/     |
+| 0312 | ==234.回文链表== | linked list,two pointers    | Easy    | https://leetcode.cn/problems/palindrome-linked-list/     |
 |      |      | -    | -    | linked list begin   |
 | 0311 | 02694:波兰表达式  | stack    | Medium    | http://cs101.openjudge.cn/2025sp_routine/02694/      |
 | similar | 150.逆波兰表达式求值 | stack    | Medium    | https://leetcode.cn/problems/evaluate-reverse-polish-notation/      |
@@ -129,15 +129,15 @@ Updated 2014 GMT+8 May 4 2025.
 | 0308 | 2597.美丽子集的数目 | backtracking, combinations    | Medium    | https://leetcode.cn/problems/the-number-of-beautiful-subsets/      |
 | 0307 | 02488:A Knight's Journey  | backtracking    | Touch  | http://cs101.openjudge.cn/2025sp_routine/02488/      |
 | 0307 | 78.子集  | backtracking   | Medium    | https://leetcode.cn/problems/subsets/      |
-| 0306 | 06648: Sequence    | heap   | Tough    | http://cs101.openjudge.cn/2025sp_routine/06648/      |
+| 0306 | ==06648: Sequence== | heap   | Tough    | http://cs101.openjudge.cn/2025sp_routine/06648/      |
 | 0306 | 23.合并K个升序链表 | merge sort, linked list  | Tough    | https://leetcode.cn/problems/merge-k-sorted-lists/      |
-| 0305 | 02456: Aggressive cows     | binary+greedy    | Medium    | http://cs101.openjudge.cn/2025sp_routine/02456/      |
+| 0305 | ==02456: Aggressive cows== | binary+greedy    | Medium    | http://cs101.openjudge.cn/2025sp_routine/02456/      |
 | 0305 | 240.搜索二维矩阵II     | binary search    | Medium    | https://leetcode.cn/problems/search-a-2d-matrix-ii/      |
-| 0304 | 02299: Ultra-QuickSort | merge sort  | Tough    | http://cs101.openjudge.cn/2025sp_routine/02299/      |
+| 0304 | ==02299: Ultra-QuickSort== | merge sort  | Tough    | http://cs101.openjudge.cn/2025sp_routine/02299/      |
 | 0304 | 75.颜色分类     | three pointers    | Medium    | https://leetcode.cn/problems/sort-colors/      |
 | 0303 | 23558:有界的深度优先搜索     | dfs, graph, AI | Medium | http://cs101.openjudge.cn/2025sp_routine/23558/      |
 | 0303 | 46.全排列   | backtracing    | Medium    | https://leetcode.cn/problems/permutations/      |
-| 0302 | 02524:宗教信仰     | disjoint set   | Medium    | http://cs101.openjudge.cn/2025sp_routine/02524/      |
+| 0302 | ==02524:宗教信仰== | disjoint set   | Medium    | http://cs101.openjudge.cn/2025sp_routine/02524/      |
 | 0302 | LCR 107.01 矩阵     | dp    | Medium    | https://leetcode.cn/problems/2bCMpM/     |
 | 0301 | 01088: 滑雪 | dp    | Medium    | http://cs101.openjudge.cn/2025sp_routine/01088      |
 | 0301 | 994.腐烂的橘子     | bfs    | Medium    | https://leetcode.cn/problems/rotting-oranges/      |
