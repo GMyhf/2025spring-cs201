@@ -2,7 +2,7 @@
 
 https://github.com/GMyhf/2025spring-cs201/blob/main/problem_list_2025spring.md
 
-Updated 0008 GMT+8 May 4 2025.
+Updated 2014 GMT+8 May 4 2025.
 2025 spring, Complied by Hongfei Yan
 
 题解在：
@@ -20,6 +20,8 @@ Updated 0008 GMT+8 May 4 2025.
 
 |  日期 | 问题编号与名称    | 标签                 | 难度  | 链接                                                 |
 | ---- | ----------------- | -------------------- | ------ | ---------------------------------------------------- |
+| 0512 | 22508:最小奖金方案 | DAG上的DP    | Tough    | http://cs101.openjudge.cn/practice/22508/      |
+|      |      | -    | -    |      |
 | 0510 | 05442: 兔子与星空 | prim, krusal    | Medium    | http://cs101.openjudge.cn/practice/27635/      |
 |      |      | -    | -    |      |
 | 0508 | 09202: 舰队、海域出击！   | topological order    | Medium    | http://cs101.openjudge.cn/practice/09202/      |
