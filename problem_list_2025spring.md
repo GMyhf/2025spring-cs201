@@ -2,7 +2,7 @@
 
 https://github.com/GMyhf/2025spring-cs201/blob/main/problem_list_2025spring.md
 
-Updated 2014 GMT+8 May 4 2025.
+Updated 0008 GMT+8 May 6 2025.
 2025 spring, Complied by Hongfei Yan
 
 题解在：
@@ -20,7 +20,7 @@ Updated 2014 GMT+8 May 4 2025.
 
 |  日期 | 问题编号与名称    | 标签                 | 难度  | 链接                                                 |
 | ---- | ----------------- | -------------------- | ------ | ---------------------------------------------------- |
-| 0515 | 787.K站中转内最便宜的航班      | Bellman Ford  | Medium  | https://leetcode.cn/problems/cheapest-flights-within-k-stops/      |
+| 0515 | 787.K站中转内最便宜的航班      | Bellman Ford, dp  | Medium  | https://leetcode.cn/problems/cheapest-flights-within-k-stops/      |
 | 0514 | 17975: 用二次探查法建立散列表  | hash table    | Medium    | http://cs101.openjudge.cn/practice/17975/      |
 | 0513 | 210.课程表II  | topological sort    | Medium    | https://leetcode.cn/problems/course-schedule-ii/description/      |
 | 0512 | 22508:最小奖金方案 | DAG上的DP    | Tough    | http://cs101.openjudge.cn/practice/22508/      |
