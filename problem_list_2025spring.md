@@ -29,7 +29,7 @@ Updated 2014 GMT+8 May 4 2025.
 | 0509 | 1584.连接所有点的最小费用 | Union find, minimum spanning tree | Medium    | https://leetcode.cn/problems/min-cost-to-connect-all-points/      |
 | 0508 | 09202: 舰队、海域出击！   | topological order    | Medium    | http://cs101.openjudge.cn/practice/09202/      |
 | 0507 | 2962.统计最大元素出现至少K次的子数组   | sliding window    | Medium    | https://leetcode.cn/problems/count-subarrays-where-max-element-appears-at-least-k-times/     |
-| 0506 | 12029:水淹七军    | bfs    | Medium    | http://cs101.openjudge.cn/practice/12029/      |
+| 0506 | 12029:水淹七军    | bfs    | Medium    | http://cs101.openjudge.cn/2025sp_routine/12029/      |
 | 0505 | 208.实现Trie(前缀树)     | OOP, hash table    | Medium    | https://leetcode.cn/problems/implement-trie-prefix-tree/      |
 | 0504 | 28050: 骑士周游   | dfs, Warnsdorff    | Tough     | http://cs101.openjudge.cn/2025sp_routine/28050/     |
 | 0503 | 207.课程表  | topological order    | Medium    | https://leetcode.cn/problems/course-schedule/      |
