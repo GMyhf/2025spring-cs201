@@ -20,6 +20,8 @@ Updated 0008 GMT+8 May 6 2025.
 
 |  日期 | 问题编号与名称    | 标签                 | 难度  | 链接                                                 |
 | ---- | ----------------- | -------------------- | ------ | ---------------------------------------------------- |
+| 0517 | 3341. 到达最后一个房间的最少时间 I | Dijkstra    | Medium    | https://leetcode.cn/problems/find-minimum-time-to-reach-last-room-i/      |
+|      |      | -    | -    |      |
 | 0515 | 787.K站中转内最便宜的航班      | Bellman Ford, dp  | Medium  | https://leetcode.cn/problems/cheapest-flights-within-k-stops/      |
 | 0514 | 17975: 用二次探查法建立散列表  | hash table    | Medium    | http://cs101.openjudge.cn/practice/17975/      |
 | 0513 | 210.课程表II  | topological sort    | Medium    | https://leetcode.cn/problems/course-schedule-ii/description/      |
