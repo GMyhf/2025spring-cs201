@@ -90,7 +90,7 @@ binary search, http://cs101.openjudge.cn/practice/22528/
 
 ### Msy382: 有向图判环 
 
-dfs, https://sunnywhy.com/sfbj/10/3/382
+dfs, topological sort, https://sunnywhy.com/sfbj/10/3/382
 
 思路：
 
