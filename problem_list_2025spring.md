@@ -2,7 +2,7 @@
 
 https://github.com/GMyhf/2025spring-cs201/blob/main/problem_list_2025spring.md
 
-Updated 2353 GMT+8 May 12 2025.
+Updated 2353 GMT+8 May 14 2025.
 2025 spring, Complied by Hongfei Yan
 
 题解在：
@@ -23,7 +23,7 @@ Updated 2353 GMT+8 May 12 2025.
 | 0517 | 3341. 到达最后一个房间的最少时间 I | Dijkstra    | Medium    | https://leetcode.cn/problems/find-minimum-time-to-reach-last-room-i/      |
 |      |      | -    | -    |      |
 | 0515 | 787.K站中转内最便宜的航班      | Bellman Ford, dp  | Medium  | https://leetcode.cn/problems/cheapest-flights-within-k-stops/      |
-| 0514 | 17975: 用二次探查法建立散列表  | hash table    | Medium    | http://cs101.openjudge.cn/practice/17975/      |
+| 0514 | 17975: 用二次探查法建立散列表  | hash table    | Medium    | http://cs101.openjudge.cn/2025sp_routine/17975/      |
 | 0513 | 210.课程表II  | topological sort    | Medium    | https://leetcode.cn/problems/course-schedule-ii/description/      |
 | 0512 | 22508:最小奖金方案 | topological sort    | Medium    | http://cs101.openjudge.cn/practice/22508/      |
 | 0511 | 743.网络延迟时间  | Dijkstra    | Medium    | https://leetcode.cn/problems/network-delay-time/description/      |
