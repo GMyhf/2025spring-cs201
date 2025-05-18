@@ -2,7 +2,7 @@
 
 https://github.com/GMyhf/2025spring-cs201/blob/main/problem_list_2025spring.md
 
-Updated 0802 GMT+8 May 18 2025.
+Updated 2156 GMT+8 May 18 2025.
 2025 spring, Complied by Hongfei Yan
 
 题解在：
@@ -20,6 +20,7 @@ Updated 0802 GMT+8 May 18 2025.
 
 |  日期 | 问题编号与名称    | 标签                 | 难度  | 链接                                                 |
 | ---- | ----------------- | -------------------- | ------ | ---------------------------------------------------- |
+| 0519 | 3552.网络传送门旅游     | bfs    | Medium    | https://leetcode.cn/problems/grid-teleportation-traversal/      |
 | 0518 | 01064:网线主管    | binary search    | Medium    | http://cs101.openjudge.cn/2025sp_routine/01064/     |
 | 0517 | 3341. 到达最后一个房间的最少时间 I | Dijkstra    | Medium    | https://leetcode.cn/problems/find-minimum-time-to-reach-last-room-i/      |
 | 0516 | 24637:宝藏二叉树     | tree dp    | Medium    | http://cs101.openjudge.cn/2025sp_routine/24637/      |
