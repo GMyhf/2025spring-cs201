@@ -20,6 +20,10 @@ Updated 2021 GMT+8 May 19 2025.
 
 |  日期 | 问题编号与名称    | 标签                 | 难度  | 链接                                                 |
 | ---- | ----------------- | -------------------- | ------ | ---------------------------------------------------- |
+| 0523 | 01258: Agri-Net   | prim    | Medium    | http://cs101.openjudge.cn/practice/01258/      |
+|      |      | -    | -    |      |
+| 0522 | 03424: Candies    | Dijkstra    | Medium    | http://cs101.openjudge.cn/practice/03424/      |
+|      |      | -    | -    |      |
 | 0520 | 01860: Currency Exchange| Bellman Ford   | Medium | http://cs101.openjudge.cn/practice/01860/      |
 | 0519 | 3552.网络传送门旅游     | bfs    | Medium    | https://leetcode.cn/problems/grid-teleportation-traversal/      |
 | 0518 | 01064:网线主管    | binary search    | Medium    | http://cs101.openjudge.cn/2025sp_routine/01064/     |
