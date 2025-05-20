@@ -2,7 +2,7 @@
 
 https://github.com/GMyhf/2025spring-cs201/blob/main/problem_list_2025spring.md
 
-Updated 2021 GMT+8 May 19 2025.
+Updated 0909 GMT+8 May 20 2025.
 2025 spring, Complied by Hongfei Yan
 
 题解在：
@@ -24,7 +24,7 @@ Updated 2021 GMT+8 May 19 2025.
 |      |      | -    | -    |      |
 | 0522 | 03424: Candies    | Dijkstra    | Medium    | http://cs101.openjudge.cn/practice/03424/      |
 |      |      | -    | -    |      |
-| 0520 | 01860: Currency Exchange| Bellman Ford   | Medium | http://cs101.openjudge.cn/practice/01860/      |
+| 0520 | 01860: Currency Exchange| Bellman Ford   | Medium | http://cs101.openjudge.cn/2025sp_routine/01860/      |
 | 0519 | 3552.网络传送门旅游     | bfs    | Medium    | https://leetcode.cn/problems/grid-teleportation-traversal/      |
 | 0518 | 01064:网线主管    | binary search    | Medium    | http://cs101.openjudge.cn/2025sp_routine/01064/     |
 | 0517 | 3341. 到达最后一个房间的最少时间 I | Dijkstra    | Medium    | https://leetcode.cn/problems/find-minimum-time-to-reach-last-room-i/      |
