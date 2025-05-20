@@ -1,12 +1,8 @@
-
-
 # Hash Table & KMP
 
 Updated 1434 GMT+8 May 20, 2025
 
 2025 spring, Complied by Hongfei Yan
-
-
 
 
 
