@@ -2,7 +2,7 @@
 
 https://github.com/GMyhf/2025spring-cs201/blob/main/problem_list_2025spring.md
 
-Updated 0909 GMT+8 May 20 2025.
+Updated 0954 GMT+8 May 22 2025.
 2025 spring, Complied by Hongfei Yan
 
 题解在：
@@ -22,7 +22,7 @@ Updated 0909 GMT+8 May 20 2025.
 | ---- | ----------------- | -------------------- | ------ | ---------------------------------------------------- |
 | 0523 | 01258: Agri-Net   | prim    | Medium    | http://cs101.openjudge.cn/practice/01258/      |
 |      |      | -    | -    |      |
-| 0522 | 03424: Candies    | Dijkstra    | Medium    | http://cs101.openjudge.cn/practice/03424/      |
+| 0522 | 03424: Candies    | Dijkstra    | Medium    | http://cs101.openjudge.cn/2025sp_routine/03424/      |
 | 0521 | 3355.零数组变换 I | prefix sum, greedy  | Medium    | https://leetcode.cn/problems/zero-array-transformation-i/     |
 | 0520 | 01860: Currency Exchange| Bellman Ford   | Medium | http://cs101.openjudge.cn/2025sp_routine/01860/      |
 | 0519 | 3552.网络传送门旅游     | bfs    | Medium    | https://leetcode.cn/problems/grid-teleportation-traversal/      |
