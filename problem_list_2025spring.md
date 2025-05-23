@@ -20,6 +20,7 @@ Updated 2103 GMT+8 May 22 2025.
 
 |  日期 | 问题编号与名称    | 标签                 | 难度  | 链接                                                 |
 | ---- | ----------------- | -------------------- | ------ | ---------------------------------------------------- |
+| 0526 | 02502:Subway   | Dijkstra    | Medium    | http://cs101.openjudge.cn/practice/02502/     |
 | 0525 | 337.打家劫舍III     | tree dp    | Medium    | https://leetcode.cn/problems/house-robber-iii/description/      |
 | 0524 | 01258: Agri-Net   | prim    | Medium    | http://cs101.openjudge.cn/practice/01258/      |
 | 0523 | 3362.零数组变换 III | greedy, heap, 差分数组    | Tough    | https://leetcode.cn/problems/zero-array-transformation-iii/      |
