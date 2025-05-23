@@ -2,7 +2,7 @@
 
 https://github.com/GMyhf/2025spring-cs201/blob/main/problem_list_2025spring.md
 
-Updated 2103 GMT+8 May 22 2025.
+Updated 0028 GMT+8 May 24 2025.
 2025 spring, Complied by Hongfei Yan
 
 题解在：
@@ -22,7 +22,7 @@ Updated 2103 GMT+8 May 22 2025.
 | ---- | ----------------- | -------------------- | ------ | ---------------------------------------------------- |
 | 0526 | 02502:Subway   | Dijkstra    | Medium    | http://cs101.openjudge.cn/practice/02502/     |
 | 0525 | 337.打家劫舍III     | tree dp    | Medium    | https://leetcode.cn/problems/house-robber-iii/description/      |
-| 0524 | 01258: Agri-Net   | prim    | Medium    | http://cs101.openjudge.cn/practice/01258/      |
+| 0524 | 01258: Agri-Net   | prim    | Medium    | http://cs101.openjudge.cn/2025sp_routine/01258/      |
 | 0523 | 3362.零数组变换 III | greedy, heap, 差分数组    | Tough    | https://leetcode.cn/problems/zero-array-transformation-iii/      |
 | 0522 | 03424: Candies    | Dijkstra    | Medium    | http://cs101.openjudge.cn/2025sp_routine/03424/      |
 | 0521 | 3355.零数组变换 I | prefix sum, greedy  | Medium    | https://leetcode.cn/problems/zero-array-transformation-i/     |
