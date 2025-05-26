@@ -2,7 +2,7 @@
 
 https://github.com/GMyhf/2025spring-cs201/blob/main/problem_list_2025spring.md
 
-Updated 0028 GMT+8 May 24 2025.
+Updated 1334 GMT+8 May 26 2025.
 2025 spring, Complied by Hongfei Yan
 
 题解在：
@@ -20,6 +20,8 @@ Updated 0028 GMT+8 May 24 2025.
 
 |  日期 | 问题编号与名称    | 标签                 | 难度  | 链接                                                 |
 | ---- | ----------------- | -------------------- | ------ | ---------------------------------------------------- |
+| 0531 | 1857.有向图中最大颜色值   | topological sort, dp    | Tough    | https://leetcode.cn/problems/largest-color-value-in-a-directed-graph/      |
+|      |      | -    | -    |      |
 | 0529 | 3556.最大质数子字符串之和 | sliding window    | Medium    | https://leetcode.cn/problems/sum-of-largest-prime-substrings/description/      |
 |      |      | -    | -    |      |
 | 0527 | 3561.移除相邻字符     | stack    | Medium    | https://leetcode.cn/problems/resulting-string-after-adjacent-removals/      |
