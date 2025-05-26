@@ -23,7 +23,7 @@ Updated 0028 GMT+8 May 24 2025.
 | 0529 | 3556.最大质数子字符串之和 | sliding window    | Medium    | https://leetcode.cn/problems/sum-of-largest-prime-substrings/description/      |
 |      |      | -    | -    |      |
 | 0527 | 3561.移除相邻字符     | stack    | Medium    | https://leetcode.cn/problems/resulting-string-after-adjacent-removals/      |
-| 0526 | 02502:Subway   | Dijkstra    | Medium    | http://cs101.openjudge.cn/practice/02502/     |
+| 0526 | 02502:Subway   | Dijkstra    | Medium    | http://cs101.openjudge.cn/2025sp_routine/02502/     |
 | 0525 | 337.打家劫舍III     | tree dp    | Medium    | https://leetcode.cn/problems/house-robber-iii/description/      |
 | 0524 | 01258: Agri-Net   | prim    | Medium    | http://cs101.openjudge.cn/2025sp_routine/01258/      |
 | 0523 | 3362.零数组变换 III | greedy, heap, 差分数组    | Tough    | https://leetcode.cn/problems/zero-array-transformation-iii/      |
