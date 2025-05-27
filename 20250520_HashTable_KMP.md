@@ -1,6 +1,6 @@
 # Hash Table & KMP
 
-Updated 1434 GMT+8 May 20, 2025
+Updated 1122 GMT+8 May 27, 2025
 
 2025 spring, Complied by Hongfei Yan
 
@@ -12,7 +12,7 @@ Updated 1434 GMT+8 May 20, 2025
 
 > 参考：数据结构（C语言版 第2版） (严蔚敏) ，第7章 查找
 
-前6周讨论了基于线性结构、树表结构的查找方法，这类查找方法都是以关键字的比较为基础的。
+前面讨论了基于线性结构、树表结构的查找方法，这类查找方法都是以关键字的比较为基础的。
 
 > 线性表是一种具有相同数据类型的有限序列，其特点是每个元素都有唯一的直接前驱和直接后继。换句话说，线性表中的元素之间存在明确的线性关系，每个元素都与其前后相邻的元素相关联。
 >
@@ -754,10 +754,10 @@ Knuth-Morris-Pratt（KMP）算法是**一种用于在文本字符串中查找单
 
 **KMP 算法的工作原理**
 
-- 该算法会在模式串中寻找被称为 LPS（最长前缀后缀）的重复子串，并将这些 LPS 信息存储在一个数组中。
+- 该算法会在<mark>模式串</mark>中寻找被称为 <mark>LPS（Longest Prefix which is also Suffix，最长前缀后缀）</mark>的重复子串，并将这些 LPS 信息存储在一个数组中。
 - 算法从左到右逐个比较字符。
 - 当发生不匹配时，算法使用一个预处理好的表（称为“前缀表”）来跳过字符比较。
-- 算法预先计算一个前缀函数，帮助确定每次发生不匹配时可以在模式串中跳过多少字符。
+- 算法预先计算一个前缀函数，帮助确定每次发生不匹配时可以在<mark>模式串</mark>中跳过多少字符。
 - 相比暴力搜索方法，KMP 算法利用先前比较的信息，避免了不必要的字符比较，从而提高了效率。
 
 **KMP 算法的优势**
@@ -798,16 +798,16 @@ Knuth-Morris-Pratt（KMP）算法是**一种用于在文本字符串中查找单
 
 - For each sub-pattern pat[0..i] where i = 0 to m-1, lps[i] stores the length of the maximum matching proper prefix which is also a suffix of the sub-pattern pat[0..i].
 
-  > <mark>LPS表是一个数组，其中的每个元素表示模式字符串中当前位置之前的子串的最长前缀后缀的长度。</mark>
+  > LPS表是一个数组，其中的每个元素表示模式字符串中<mark>当前位置之前</mark>的子串的最长前缀后缀的长度。
 
 >   lps[i] = the longest proper prefix of pat[0..i] which is also a suffix of pat[0..i]. 
 >
 >   <mark>核心概念：最长前缀后缀（LPS 表）</mark>
 >
->   - **<mark>LPS（Longest Prefix which is also Suffix）</mark>表**：对模式串 `pattern` 的每个前缀子串，记录它的“最长相等前后缀”的长度。
->   - 它的作用是：**当匹配失败时，指针无需回退主串的位置，只需调整模式串的位置即可继续匹配**。
+>   - **LPS（Longest Prefix which is also Suffix）表**：对模式串 `pattern` 的每个前缀子串，记录它的“最长相等前后缀”的长度。
+>   - 它的作用是：<mark>**当匹配失败时，指针无需回退主串的位置，只需调整模式串的位置即可继续匹配**</。
 
-**Note:** lps[i] could also be defined as the longest prefix which is also a proper suffix. We need to use it properly in one place to make sure that the whole substring is not considered.
+**Note:** lps[i] could also be defined as the longest prefix which is also a proper suffix. We need to use it properly in one place to make sure that <mark>the whole substring is not considered</mark>.
 
 Examples of lps[] construction:
 
@@ -902,6 +902,103 @@ KMP 是一种利用双指针和动态规划的字符串匹配算法。
 
 ## 关于 kmp 算法中 next 数组的周期性质
 
+**🌟 引理：**
+
+对于某一字符串 $S[1∼i]$，在它的 `next[i]` 的候选值中，若存在某一 `next[i]` 使得：
+
+> 注意这个i是从1开始的，写代码通常从0开始。
+
+$i \mod  (i−next[i])=0$
+
+那么：
+
+- $S[1∼(i−next[i])]$ 是 $S[1∼i]$ 的**最小循环元**（最小周期子串）；
+- $K= \frac{i}{i−next[i]}$ 是这个循环元在 $S[1∼i]$ 中出现的次数。
+
+------
+
+这个引理揭示了 KMP 算法中 `next` 数组与字符串的**周期性质**之间的联系，是字符串处理中的一个经典思想。我们来详细解释它的含义与推导过程。
+
+🧠 **解释与推导**
+
+KMP 算法中 `next[i]` 表示：在 $S[1∼i]$ 中，最长的**真前缀 = 真后缀**的长度。
+
+设：
+
+- $p=i−next[i]$
+
+也就是说，当前字符串 $S[1∼i]$ 的最长相等前后缀长度是 $next[i]$，剩下的部分（中间不能匹配的部分）长度为 p。
+
+如果 $i \mod  p=0$，也就是 i 是 p 的整数倍，意味着我们可以将长度为 p 的子串重复 $K = \frac{i}{p}$ 次，刚好构成整个 $S[1∼i]$。
+
+这说明：
+
+- S[1∼i] 是由某个长度为 p 的子串重复 K 次构成；
+- 即 S[1∼p] 是 S[1∼i] 的**最小循环节（最小周期）**；
+- K 是循环次数。
+
+------
+
+✅ **举个例子**
+
+考虑字符串 `ababab`，即 S=a b a b a b
+
+构造其 `next` 数组：
+
+| i    | S[i] | next[i] |
+| ---- | ---- | ------- |
+| 1    | a    | 0       |
+| 2    | b    | 0       |
+| 3    | a    | 1       |
+| 4    | b    | 2       |
+| 5    | a    | 3       |
+| 6    | b    | 4       |
+
+对 i=6，有 next[6] = 4，则：
+
+- p = i−next[i] = 6−4=2
+- i mod  p = 6 mod  2=0，满足条件
+- 所以 `ab`（即 S[1∼2]）是 `ababab` 的最小循环元；
+- $K=\frac62=3$，循环了 3 次。
+
+------
+
+🔁 用途：判断字符串是否由某个子串重复构成
+
+基于这个引理，可以用来快速判断一个字符串是否可以由某个子串重复得到。例如：
+
+```python
+def is_repeated_pattern(s: str) -> bool:
+    n = len(s)
+    next = [0] * (n + 1)
+    j = 0
+    for i in range(2, n + 1):
+        while j > 0 and s[j] != s[i-1]:
+            j = next[j]
+        if s[j] == s[i - 1]:
+            j += 1
+        next[i] = j
+
+    p = n - next[n]
+    return n % p == 0 and n != p
+
+print(is_repeated_pattern("ababab"))  # True
+```
+
+------
+
+📌 总结
+
+引理中的结论可以归纳如下：
+
+> 如果一个字符串 $S[1∼i]$ 的 `next[i]` 满足 $i \mod  (i−next[i])==0$，
+> 则 $S[1∼(i−next[i])]$ 是它的最小循环节，
+> 且重复次数为 $K= \frac{i}{i−next[i]}$。
+
+这种性质在字符串压缩、周期检测、重复匹配等应用中非常重要。
+
+
+
 参考：https://www.acwing.com/solution/content/4614/
 
 引理：
@@ -927,7 +1024,7 @@ KMP 是一种利用双指针和动态规划的字符串匹配算法。
 
 ### 练习02406: 字符串乘方
 
-http://cs101.openjudge.cn/practice/02406/
+KMP, http://cs101.openjudge.cn/practice/02406/
 
 给定两个字符串a和b,我们定义`a*b`为他们的连接。例如，如果a=”abc” 而b=”def”， 则`a*b=”abcdef”`。 如果我们将连接考虑成乘法，一个非负整数的乘方将用一种通常的方式定义：a^0^=””(空字符串)，a^(n+1)^=a*(a^n^)。
 
@@ -964,39 +1061,37 @@ ababab
 
 ```python
 '''
-gpt
 使用KMP算法的部分知识，当字符串的长度能被提取的"base字符串"的长度整除时，
 即可判断s可以被表示为a^n的形式，此时的n就是s的长度除以"base字符串"的长度。
-
 '''
 
 import sys
+
 while True:
     s = sys.stdin.readline().strip()
     if s == '.':
         break
-    len_s = len(s)
+    n = len(s)
     next = [0] * len(s)
     j = 0
-    for i in range(1, len_s):
+    for i in range(1, n):
         while j > 0 and s[i] != s[j]:
             j = next[j - 1]
         if s[i] == s[j]:
             j += 1
         next[i] = j
-    base_len = len(s)-next[-1]
-    if len(s) % base_len == 0:
-        print(len_s // base_len)
+    p = len(s) - next[-1]
+    if n % p == 0:
+        print(n // p)
     else:
         print(1)
-
 ```
 
 
 
 ### 练习01961: 前缀中的周期
 
-http://cs101.openjudge.cn/practice/01961/
+KMP, http://cs101.openjudge.cn/practice/01961/
 
 http://poj.org/problem?id=1961
 
