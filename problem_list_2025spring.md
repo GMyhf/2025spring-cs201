@@ -23,7 +23,7 @@ Updated 1122 GMT+8 May 27 2025.
 | 0531 | 1857.有向图中最大颜色值   | topological sort, dp    | Tough    | https://leetcode.cn/problems/largest-color-value-in-a-directed-graph/      |
 |      |      | -    | -    |      |
 | 0529 | 3556.最大质数子字符串之和 | sliding window    | Medium    | https://leetcode.cn/problems/sum-of-largest-prime-substrings/description/      |
-| 0528 | 01961: 前缀中的周期     | KMP    | Tough    | http://cs101.openjudge.cn/practice/01961/      |
+| 0528 | 01961: 前缀中的周期     | KMP    | Tough    | http://cs101.openjudge.cn/2025sp_routine/01961/      |
 | 0527 | 3561.移除相邻字符     | stack    | Medium    | https://leetcode.cn/problems/resulting-string-after-adjacent-removals/      |
 | 0526 | 02502:Subway   | Dijkstra    | Medium    | http://cs101.openjudge.cn/2025sp_routine/02502/     |
 | 0525 | 337.打家劫舍III     | tree dp    | Medium    | https://leetcode.cn/problems/house-robber-iii/description/      |
