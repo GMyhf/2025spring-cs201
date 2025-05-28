@@ -21,7 +21,7 @@ Updated 1930 GMT+8 May 28 2025.
 |  日期 | 问题编号与名称    | 标签                 | 难度  | 链接                                                 |
 | ---- | ----------------- | -------------------- | ------ | ---------------------------------------------------- |
 | 0531 | 1857.有向图中最大颜色值   | topological sort, dp    | Tough    | https://leetcode.cn/problems/largest-color-value-in-a-directed-graph/      |
-| 0530 | 01145: Tree Summing     | tree    | Tough    | http://cs101.openjudge.cn/practice/01145/      |
+| 0530 | 01094: Sorting It All Out     | topological sort    | Tough    | http://cs101.openjudge.cn/practice/01094/      |
 | 0529 | 3556.最大质数子字符串之和 | sliding window    | Medium    | https://leetcode.cn/problems/sum-of-largest-prime-substrings/description/      |
 | 0528 | 01961: 前缀中的周期     | KMP    | Tough    | http://cs101.openjudge.cn/2025sp_routine/01961/      |
 | 0527 | 3561.移除相邻字符     | stack    | Medium    | https://leetcode.cn/problems/resulting-string-after-adjacent-removals/      |
