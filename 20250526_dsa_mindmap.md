@@ -299,7 +299,7 @@ https://github.com/GMyhf/2024fall-cs101/blob/main/2024fall_LeetCode_problems.md
 
 
 
-## 四、机考必须掌握题目
+## 四、必须掌握题目
 
 从每日选做中调了一些重点需要掌握的题目如下。
 
@@ -327,7 +327,7 @@ https://github.com/GMyhf/2024fall-cs101/blob/main/2024fall_LeetCode_problems.md
 
 
 
-## 五、机考练习每日选做题目
+## 五、每日选做题目
 
 Q：`problem_list_2025spring.md`是这学期课程内容覆盖到的题目，将`problem_list_2025spring.md`中的题目，按照 “问题编号与名称“ 在`2024spring_dsa_problems`，或者`2024fall_LeetCode_problems.md` 中找到原题的题面，及相应的 AC代码等信息。请按照`problem_list_2025spring.md`的“标签”分类这些题目，给出对应题目简短1-2句的题面要求，及解题思路，及解法关键词等。
 
