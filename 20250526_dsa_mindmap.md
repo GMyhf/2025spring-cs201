@@ -273,7 +273,7 @@ mindmap
 
 ## 三、课件
 
-课件在 https://github.com/。下面只列出考试范围内的课件，大语言模型相关课件也可以在线查阅。
+课件网址 https://github.com/，下面只列出考试范围内的课件，大语言模型相关课件也可以在线查阅。
 
 20250304_week3_DSA_OOP.md	面向对象编程
 
@@ -285,9 +285,15 @@ mindmap
 
 20250520_HashTable_KMP.md	散列表、KMP
 
-problem_list_2025spring.md	每日选做
 
-20250526_dsa_mindmap.md	本文件
+
+
+
+在认真学习上面4个课件内容后，可以练习和完成每日选做题面。
+
+problem_list_2025spring.md	每日选做题目
+
+20250526_dsa_mindmap.md	数算知识体系（本文件）
 
 
 
@@ -301,7 +307,7 @@ https://github.com/GMyhf/2024fall-cs101/blob/main/2024fall_LeetCode_problems.md
 
 ## 四、必须掌握题目
 
-从每日选做中调了一些重点需要掌握的题目如下。
+从每日选做中挑了一些重点需要掌握的题目如下。
 
 | 问题编号与名称                   | 标签              | 难度   | 链接                                      |
 | -------------------------------- | ----------------- | ------ | ----------------------------------------- |
@@ -313,7 +319,6 @@ https://github.com/GMyhf/2024fall-cs101/blob/main/2024fall_LeetCode_problems.md
 | 28046: 词梯                      | bfs               | Tough  | http://cs101.openjudge.cn/practice/28046/ |
 | 04123: 马走日                    | backtracking      | Medium | http://cs101.openjudge.cn/practice/04123  |
 | 02524: 宗教信仰                  | disjoint set      | Medium | http://cs101.openjudge.cn/practice/02524/ |
-| 18164: 剪绳子                    | heap              | Easy   | http://cs101.openjudge.cn/practice/18164/ |
 | 04078: 实现堆结构                | heap              | Medium | http://cs101.openjudge.cn/practice/04078/ |
 | 22158: 根据二叉树前中序序列建树  | tree              | Medium | http://cs101.openjudge.cn/practice/22158/ |
 | 24750: 根据二叉树中后序序列建树  | tree              | Medium | http://cs101.openjudge.cn/practice/24750/ |
@@ -324,44 +329,164 @@ https://github.com/GMyhf/2024fall-cs101/blob/main/2024fall_LeetCode_problems.md
 | 27256: 当前队列中位数            | data structures   | Tough  | http://cs101.openjudge.cn/practice/27256/ |
 |                                  |                   |        |                                           |
 |                                  |                   |        |                                           |
+|                                  |                   |        |                                           |
 
 
 
 ## 五、每日选做题目
 
-Q：`problem_list_2025spring.md`是这学期课程内容覆盖到的题目，将`problem_list_2025spring.md`中的题目，按照 “问题编号与名称“ 在`2024spring_dsa_problems`，或者`2024fall_LeetCode_problems.md` 中找到原题的题面，及相应的 AC代码等信息。请按照`problem_list_2025spring.md`的“标签”分类这些题目，给出对应题目简短1-2句的题面要求，及解题思路，及解法关键词等。
+课件网址 https://github.com/
+
+Q：材料`problem_list_2025spring.md`是这学期课程内容覆盖到的题目，有各个题目的名称、标签、难度和链接。需要结合题解`2024spring_dsa_problems`，`2024fall_LeetCode_problems.md`来找题面和代码。 
+
+将`problem_list_2025spring.md`中的题目，按照 “问题编号与名称“ 在`2024spring_dsa_problems`，或者`2024fall_LeetCode_problems.md` 中可以找到题目的题面，及相应的 AC代码等信息。
+
+对于`problem_list_2025spring.md`中每个标签，遍历的所有161个条目，然后收集题号、名称、链接，给出对应题目简短1-2句的题面要求，及解题思路。
 
 
 
-### AI助教
+### 拓扑排序
+1. **01094: Sorting It All Out**  http://cs101.openjudge.cn/practice/01094/
+   - 题面：给定n个大写字母和m个"A<B"形式的关系，判断是否能确定唯一排序序列，或发现矛盾  
+   - 思路：增量式拓扑排序，每次添加关系后检测入度变化，若存在多个入度0节点则序列不唯一，出现环则矛盾
+
+2. **1857.有向图中最大颜色值**  https://leetcode.cn/problems/largest-color-value-in-a-directed-graph/
+   - 题面：在有向图中寻找路径使得节点颜色出现次数最大值最大  
+   - 思路：拓扑排序+动态规划，维护每个节点各颜色出现次数的最大值
+
+---
+
+### 树结构
+1. **337.打家劫舍III**  https://leetcode.cn/problems/house-robber-iii/description/
+   - 题面：在二叉树中选择不相邻节点求最大和  
+   - 思路：树形DP，记录每个节点偷/不偷两种状态的最大值
+
+2. **04082:树的镜面映射**  http://cs101.openjudge.cn/practice/04082/
+   - 题面：将给定二叉树进行水平镜像翻转后输出层序遍历  
+   - 思路：层序遍历时交换左右子节点顺序
+
+---
+
+### 单调栈
+1. **84.柱状图中最大的矩形**  https://leetcode.cn/problems/largest-rectangle-in-histogram/
+   - 题面：在柱状图中找出面积最大的矩形  
+   - 思路：单调栈维护高度递增序列，计算以每个柱子为高度的最大宽度
+
+---
+
+### 图论（Dijkstra）
+1. **03424: Candies**  http://cs101.openjudge.cn/practice/03424/
+   - 题面：求从起点到终点的最大糖果数路径  
+   - 思路：Dijkstra算法变形，维护最大权值路径
+
+2. **743.网络延迟时间**  https://leetcode.cn/problems/network-delay-time/description/
+   - 题面：计算信号从起点传播到所有节点的最短时间中的最大值  
+   - 思路：标准Dijkstra算法实现
+
+---
+
+### 贪心算法
+1. **01328:Radar Installation**  http://cs101.openjudge.cn/practice/01328/
+   - 题面：在海岸线部署雷达覆盖岛屿，求最少雷达数  
+   - 思路：按岛屿可覆盖区间右端点排序，贪心选择雷达位置[citation:14]
+
+2. **781.森林中的兔子**  https://leetcode.cn/problems/rabbits-in-forest/
+   - 题面：根据兔子回答的同类数量计算最少兔子数  
+   - 思路：统计相同回答的分组，每组数量超过回答值+1时需新建组[citation:8]
+
+---
+
+### 滑动窗口
+1. **2962.统计最大元素出现至少K次的子数组**  https://leetcode.cn/problems/count-subarrays-where-max-element-appears-at-least-k-times/
+   - 题面：统计包含最大元素出现≥K次的子数组数量  
+   - 思路：滑动窗口记录最大元素出现次数，动态维护窗口有效性[citation:16]
+
+2. **3556.最大质数子字符串之和**  https://leetcode.cn/problems/sum-of-largest-prime-substrings/description/
+   - 题面：找出字符串中连续数字组成的最大质数  
+   - 思路：滑动窗口生成所有子串，结合质数判断与数值比较[citation:5]
+
+---
+
+### 并查集
+1. **547.省份数量**  https://leetcode.cn/problems/number-of-provinces/
+   - 题面：判断城市连通分量数  
+   - 思路：标准并查集实现，合并相连城市后统计根节点数量
+
+2. **1584.连接所有点的最小费用**  https://leetcode.cn/problems/min-cost-to-connect-all-points/
+   - 题面：用最小成本连接所有点形成连通图  
+   - 思路：Kruskal算法，先构造所有边再按权值排序合并
+
+---
 
 
 
 
 
-<think>
-好的，我现在需要处理用户的查询，帮助他根据problem_list_2025spring.md中的标签分类题目，提供题面、解题思路和关键词。首先，我要仔细分析用户的需求，确保理解正确。
+### 滚动数组优化DP
 
-用户提到需要按照problem_list_2025spring.md的“标签”来分类题目，每个题目要给出题面、解题思路和解法关键词。同时，题目对应的详细信息可以在2024spring_dsa_problems.md或2024fall_LeetCode_problems.md中找到。我需要从提供的材料中寻找这些信息，尤其是材料3、材料15、材料8等。
+01-背包，滚动数组，https://oi-wiki.org/dp/knapsack/
 
-首先查看材料3，即problem_list_2025spring.md的摘要，它提到了题目的分类包括图论、树结构、动态规划、滑动窗口、堆、并查集等。例如，拓扑排序（1857.有向图中最大颜色值）、树形DP（337.打家劫舍III）、最近公共祖先（236.LCA）等。材料15中的2024spring_dsa_problems.md包含了具体题目的题解，比如01094拓扑排序问题，01145树路径求和，以及01178棋盘游戏问题。材料8的LeetCode题目摘要中也有部分相关题目，如两数之和、有效括号等。
+“23421: 小偷背包” 用到了滚动数组，http://cs101.openjudge.cn/practice/23421/
 
-接下来需要将每个标签对应的题目整理出来。例如，二分查找部分可能涉及材料1中提到的月度开销和LeetCode 1760题，但用户提供的材料中没有详细题面，可能需要结合其他材料。材料15中的01094属于拓扑排序，对应图论标签，解题思路是邻接表和入度数组，检测环路和唯一性。
 
-树结构部分，材料10详细介绍了树的相关知识，材料15中的01145题涉及解析LISP格式的二叉树，判断路径和，使用递归和DFS。动态规划方面，材料15提到了207课程表问题，需要检测循环依赖，建模为图并进行拓扑排序。
 
-回溯部分，材料3中的37.解数独属于回溯，解题思路是递归尝试填充数字，使用剪枝。材料8中的LeetCode题目如有效括号使用栈结构，可能属于栈的应用，但用户问题中未提到栈标签，需确认。
+```python
+N, B = map(int, input().split())
+values = list(map(int, input().split()))
+weights = list(map(int, input().split()))
 
-并查集部分，材料3中的547.省份数量，解题思路是并查集合并连通分量，对应材料15中的并查集应用。
+dp = [0] * (B + 1)
 
-需要确保每个标签下的题目都正确归类，题面描述简洁，思路清晰，关键词准确。同时，引用相关的材料编号，如材料3、材料15、材料8等，以支持答案的可信度。
+for i in range(N):
+    prev = dp[:]  # 复制上一次的状态
+    for j in range(B + 1):
+        if j >= weights[i]:
+            dp[j] = max(prev[j], prev[j - weights[i]] + values[i])
 
-可能遇到的挑战是部分题目的材料信息不全，需要合理推断。例如，二分查找的题目在材料1中提到，但具体题面可能需参考其他材料，若无详细说明，则可能无法提供更详细信息，需按用户要求不主动提供未提及内容。
+print(dp[B])
+```
 
-最后，整理所有标签，确保每个题目对应正确的分类，并正确引用材料来源。
-</think>
 
-### 根据材料[citation:3][citation:15][citation:8]整理的分类题解：
+
+“M787.K站中转内最便宜的航班” 用到了滚动数组，
+
+https://leetcode.cn/problems/cheapest-flights-within-k-stops/
+
+在「最多经过 K 次中转」的约束下，求出从 src 到 dst 的最小费用。
+
+```python
+from typing import List
+
+class Solution:
+    def findCheapestPrice(self, 
+                          n: int, 
+                          flights: List[List[int]], 
+                          src: int, 
+                          dst: int, 
+                          K: int) -> int:
+        # 初始化：到各城最便宜费用
+        INF = float('inf')
+        dist = [INF] * n
+        dist[src] = 0
+        
+        # 最多允许 K 次中转 -> 最多使用 K+1 条边
+        for _ in range(K + 1):
+            # 基于上一轮的结果创建新一轮的 dist
+            prev = dist[:]  
+            
+            # 对每条航班边做松弛
+            for u, v, w in flights:
+                # 若 u 可达，则尝试用 u -> v 这条边更新 v
+                if prev[u] + w < dist[v]:
+                    dist[v] = prev[u] + w
+            
+            # 下一轮松弛时，依然要基于本轮更新后的 dist，
+            # 因此不需要再额外复制
+        
+        return dist[dst] if dist[dst] != INF else -1
+```
+
+
 
 ---
 
@@ -379,12 +504,7 @@ Q：`problem_list_2025spring.md`是这学期课程内容覆盖到的题目，将
 ---
 
 #### **二、图论**
-1. **1857. 有向图中最大颜色值**  
-   - 题面：在带颜色的有向图中找路径使某颜色出现次数最多  
-   - 思路：拓扑排序+动态规划记录各节点的颜色计数  
-   - 关键词：拓扑排序、DAG动态规划、颜色状态压缩[citation:3][citation:18]
-
-2. **207. 课程表**  
+1. **207. 课程表**  
    - 题面：判断课程安排是否存在循环依赖  
    - 思路：建图后拓扑排序检测环路  
    - 关键词：邻接表、入度数组、环路检测[citation:15][citation:18]
@@ -405,12 +525,7 @@ Q：`problem_list_2025spring.md`是这学期课程内容覆盖到的题目，将
 ---
 
 #### **四、动态规划**
-1. **337. 打家劫舍 III**  
-   - 题面：二叉树房屋中选择不相邻节点求最大收益  
-   - 思路：树形DP记录选择/不选择当前节点的状态  
-   - 关键词：树形DP、状态转移[citation:3][citation:10]
-
-2. **5. 最长回文子串**  
+1. **5. 最长回文子串**  
    - 题面：找字符串中的最长回文子串  
    - 思路：动态规划状态表记录子串回文性，或中心扩展法  
    - 关键词：状态转移方程、中心扩散[citation:20]
@@ -469,7 +584,7 @@ Q：`problem_list_2025spring.md`是这学期课程内容覆盖到的题目，将
 
 ---
 
-以上题目均可通过材料[citation:3][citation:15][citation:8]中的链接找到对应AC代码和详细题解。
+
 
 
 
