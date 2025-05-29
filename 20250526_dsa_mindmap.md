@@ -341,7 +341,7 @@ Q：材料`problem_list_2025spring.md`是这学期课程内容覆盖到的题目
 
 将`problem_list_2025spring.md`中的题目，按照 “问题编号与名称“ 在`2024spring_dsa_problems`，或者`2024fall_LeetCode_problems.md` 中可以找到题目的题面，及相应的 AC代码等信息。
 
-对于`problem_list_2025spring.md`中每个标签，遍历的所有161个条目，然后收集题号、名称、链接，给出对应题目简短1-2句的题面要求，及解题思路。
+对于`problem_list_2025spring.md`中每个标签，遍历的所有161个题目，然后收集题号、名称、链接，给出对应题目简短1-2句的题面要求，及解题思路。
 
 
 
