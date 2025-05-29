@@ -21,15 +21,15 @@ Updated 1125 GMT+8 May 29, 2025
 
 <img src="https://raw.githubusercontent.com/GMyhf/img/main/img/image-20250207152537952.png" alt="image-20250207152537952" style="zoom: 33%;" />
 
-
-
-📚 数据结构与算法（DSA）知识体系
-
-图示左侧为**数据结构**（Data Structure），右侧为**算法**（Algorithm），二者结合构成了 DSA 的核心内容。
+<center>图1 数据结构与算法、计算概论课程内容覆盖知识点</center>
 
 
 
-## 一 数据结构分类
+图1左侧为**数据结构**（Data Structure），右侧为**算法**（Algorithm），二者结合构成了 DSA 的核心内容。
+
+
+
+## 一 、数据结构分类
 
 
 ### 1. 基础数据结构
@@ -74,7 +74,7 @@ Updated 1125 GMT+8 May 29, 2025
 
 ---
 
-## 二 算法分类
+## 二、 算法分类
 
 ### 1. 基础算法技巧
 
@@ -133,27 +133,13 @@ Updated 1125 GMT+8 May 29, 2025
 
 
 
-**数据结构包括：**
-
-- **基本数据结构**：栈、队列、哈希表、链表、前缀和、差分数组。字符串也可以认为是一种线性结构。
-- **树结构**
-  - 通用树：了解节点、边、根、子树、父节点、孩子节点、兄弟节点、叶子节点等概念；熟悉嵌套括号表示法、基于节点的表示法、缩进式树形表示法和邻接列表表示法。
-  - 二叉树：包括解析树、树遍历、霍夫曼编码的应用；优先队列通过二叉堆实现；二叉搜索树；AVL树；以及更高级的线段树和二叉索引树（BIT）。
-- **图结构**：涉及顶点、边、路径和权重的概念；矩阵和邻接列表的表示方法。
-
-**算法包括：**
-
-- 滑动窗口与双指针、二分算法、单调栈、辅助栈、树形DP、广度优先搜索（BFS）、深度优先搜索（DFS）、分治法（例如快速排序、归并排序）、调度场算法、解析树、树遍历、霍夫曼编码、最短路径算法（Dijkstra、Bellman-Ford、Floyd-Warshall）、拓扑排序、最小生成树算法（Prim、Kruskal）、KMP模式匹配算法、动态规划（DP）等。
 
 
+图2是数算内容汇总知识图谱。因为树、图的概念和相应算法较多，单独给出了树和图的知识图谱。
 
+图3是树的知识图谱，描述了树的基本概念，到具体应用的各个方面。
 
-
-图1是数算内容汇总知识图谱。因为树、图的概念和相应算法较多，单独给出了树和图的知识图谱。
-
-图2是树的知识图谱，描述了树的基本概念，到具体应用的各个方面。
-
-图3是图的知识图谱，聚焦于图的基本概念、表示方法及其相关算法。
+图4是图的知识图谱，聚焦于图的基本概念、表示方法及其相关算法。
 
 希望这种组织方式有助于清晰地理解各个知识点之间的关系，从而更加系统地学习数据结构与算法。
 
@@ -197,7 +183,7 @@ mindmap
     	KMP
 ```
 
-<center>图1 数算知识图谱</center>
+<center>图2 数算知识图谱</center>
 
 
 
@@ -234,7 +220,7 @@ mindmap
       *KD Tree
 ```
 
-<center>图2 树的知识图谱</center>
+<center>图3 树的知识图谱</center>
 
 
 
@@ -273,7 +259,7 @@ mindmap
 
 ```
 
-<center>图3 图的知识图谱</center>
+<center>图4 图的知识图谱</center>
 
 
 
@@ -285,16 +271,44 @@ mindmap
 
 
 
-## 三 必须掌握题目
+## 三、课件
+
+课件在 https://github.com/。下面只列出考试范围内的课件，大语言模型相关课件也可以在线查阅。
+
+20250304_week3_DSA_OOP.md	面向对象编程
+
+20250311_week4-5_timeComplexity_linearStructure.md	时间复杂度、排序、线性结构
+
+20250325_week6-9_tree.md	树
+
+20250421_week10-13_graph.md	图
+
+20250520_HashTable_KMP.md	散列表、KMP
+
+problem_list_2025spring.md	每日选做
+
+20250526_dsa_mindmap.md	本文件
 
 
+
+两个主要的题解：
+
+https://github.com/GMyhf/2024spring-cs201/blob/main/2024spring_dsa_problems.md
+
+https://github.com/GMyhf/2024fall-cs101/blob/main/2024fall_LeetCode_problems.md
+
+
+
+## 四、机考必须掌握题目
+
+从每日选做中调了一些重点需要掌握的题目如下。
 
 | 问题编号与名称                   | 标签              | 难度   | 链接                                      |
 | -------------------------------- | ----------------- | ------ | ----------------------------------------- |
 | 04089:电话号码                   | Trie              | Medium | http://cs101.openjudge.cn/practice/04089/ |
 | 20106:走山路                     | Dijkstra          | Medium | http://cs101.openjudge.cn/practice/20106/ |
 | 09202: 舰队、海域出击！          | Topological Order | Medium | http://cs101.openjudge.cn/practice/09202/ |
-| 05442: 兔子与星空                | prim, kruskal     | Medium | http://cs101.openjudge.cn/practice/05442/ |
+| 05442: 兔子与星空                | MST               | Medium | http://cs101.openjudge.cn/practice/05442/ |
 | 27635:判断无向图是否连通有无回路 | dfs, union-find   | Medium | http://cs101.openjudge.cn/practice/27635/ |
 | 28046: 词梯                      | bfs               | Tough  | http://cs101.openjudge.cn/practice/28046/ |
 | 04123: 马走日                    | backtracking      | Medium | http://cs101.openjudge.cn/practice/04123  |
@@ -313,7 +327,7 @@ mindmap
 
 
 
-## 四、2025spring每日选做覆盖题目
+## 五、机考练习每日选做题目
 
 Q：`problem_list_2025spring.md`是这学期课程内容覆盖到的题目，将`problem_list_2025spring.md`中的题目，按照 “问题编号与名称“ 在`2024spring_dsa_problems`，或者`2024fall_LeetCode_problems.md` 中找到原题的题面，及相应的 AC代码等信息。请按照`problem_list_2025spring.md`的“标签”分类这些题目，给出对应题目简短1-2句的题面要求，及解题思路，及解法关键词等。
 
@@ -855,4 +869,6 @@ Q：知识库 `数算课件_GMyhf` 中的 `problem_list_2025spring.md` 是这学
 
 
 
-## 五、笔试题目
+## 六、笔试题目
+
+https://github.com/GMyhf/2025spring-cs201/blob/main/written_exam_DSA-B.md
