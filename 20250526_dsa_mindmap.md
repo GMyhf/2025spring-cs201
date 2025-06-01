@@ -1,10 +1,36 @@
 # 数据结构与算法知识体系（DSA）
 
-Updated 1125 GMT+8 May 29, 2025
+Updated 2157 GMT+8 Jun 1, 2025
 
 2025 spring, Complied by Hongfei Yan
 
 
+
+> 我们考数算，尽量避免计概题目
+>
+> 建议适当降低笔试总分，同时考虑减少或取消算法填空题。鉴于机考环节已经对算法能力进行了考察，笔试中再设置此类题型略显重复，必要性不大。
+>
+> 机考时间：第16周周三上机，2025年6月4日 15:08-17:00, 在7、8号机房
+> 笔试时间：周二，2025年6月17日 14:00-16:00
+>
+> 数算总评规划：期末机考1小时52分钟包含6个题目，AC5或者AC6尽量确保获得优秀评级；如果AC0，即使笔试满分，总评最高也只能达到84；如果AC4，笔试成绩较高，在不超优秀率限制的前提下，仍有机会被评定为优秀。
+>
+> 
+>
+> 机考提示信息：
+>
+> 数据结构与算法（B）课程考试。
+> 请独立完成，不能通讯，如：不能使用微信、邮件、QQ等工具。
+> 考试期间，请同学只访问OJ，不能访问其他网站，不要查看OJ考试之前自己提交的代码。
+> 考试过程中允许可以带10张A4纸大小的cheat sheet，如记录语法信息作为参考。
+> 题目编号前面的大写字母，相应表明是 Easy/Medium/Tough 级别。
+>
+> ————-
+> 登录别人的账号即视为违纪甚至作弊。把自己的账号密码告诉别人，被别人登录，也视为违纪甚至作弊。如果考前别人用过你的账号，请立即修改密码。
+> 请确保你的昵称格式为 24nxxxxx, 后面部分是学号。http://cs101.openjudge.cn/mine
+> 有同学昵称22n, 21n, 20n, 19n开始也是可以的，学号别错，就能找到你的成绩。
+>
+> 
 
 数据结构与算法（DSA，数算）的学习重点是树和图，及其涉及的各种核心算法。尽管栈和队列是基础的数据结构，且现代编程语言对其提供了直接支持，这使得我们可以方便地使用它们，但要真正掌握并高效利用这些结构，仍需深入理解其内部原理及适用场景。此外，其他一些复杂而强大的数据结构如并查集、前缀树等，同样值得我们去学习和探索。
 
@@ -291,7 +317,7 @@ mindmap
 
 在认真学习上面4个课件内容后，可以练习和完成每日选做题面。
 
-problem_list_2025spring.md	每日选做题目
+<mark>problem_list_2025spring.md	每日选做题目</mark>
 
 20250526_dsa_mindmap.md	数算知识体系（本文件）
 
@@ -327,9 +353,6 @@ https://github.com/GMyhf/2024fall-cs101/blob/main/2024fall_LeetCode_problems.md
 | 02299: Ultra-QuickSort           | 归并排序          | Tough  | http://cs101.openjudge.cn/practice/02299/ |
 | 08210:河中跳房子                 | Binary search     | Medium | http://cs101.openjudge.cn/practice/08210  |
 | 27256: 当前队列中位数            | data structures   | Tough  | http://cs101.openjudge.cn/practice/27256/ |
-|                                  |                   |        |                                           |
-|                                  |                   |        |                                           |
-|                                  |                   |        |                                           |
 
 
 
@@ -345,111 +368,499 @@ Q：材料`problem_list_2025spring.md`是这学期课程内容覆盖到的题目
 
 
 
+> AI分类不出来，还得人工来
+
 ### 拓扑排序
-**01094: Sorting It All Out**  http://cs101.openjudge.cn/practice/01094/
+01094: Sorting It All Out,  http://cs101.openjudge.cn/practice/01094/
 
 - 题面：给定n个大写字母和m个"A<B"形式的关系，判断是否能确定唯一排序序列，或发现矛盾  
 - 思路：增量式拓扑排序，每次添加关系后检测入度变化，若存在多个入度0节点则序列不唯一，出现环则矛盾
 
-**1857.有向图中最大颜色值**  https://leetcode.cn/problems/largest-color-value-in-a-directed-graph/
+1857.有向图中最大颜色值，  https://leetcode.cn/problems/largest-color-value-in-a-directed-graph/
 
 - 题面：在有向图中寻找路径使得节点颜色出现次数最大值最大  
 - 思路：拓扑排序+动态规划，维护每个节点各颜色出现次数的最大值
 
----
+210.课程表II， https://leetcode.cn/problems/course-schedule-ii/description/
 
-### 树结构
-**337.打家劫舍III**  https://leetcode.cn/problems/house-robber-iii/description/
+22508:最小奖金方案， http://cs101.openjudge.cn/practice/22508/
+
+09202: 舰队、海域出击！http://cs101.openjudge.cn/2025sp_routine/09202/
+
+207.课程表，https://leetcode.cn/problems/course-schedule/
+
+
+
+### 树形DP
+337.打家劫舍III，https://leetcode.cn/problems/house-robber-iii/description/
 
 - 题面：在二叉树中选择不相邻节点求最大和  
 - 思路：树形DP，记录每个节点偷/不偷两种状态的最大值
 
-**04082:树的镜面映射**  http://cs101.openjudge.cn/practice/04082/
+24637:宝藏二叉树， http://cs101.openjudge.cn/2025sp_routine/24637/
+
+
+
+### 动态规划DP
+
+45.跳跃游戏II, https://leetcode.cn/problems/jump-game-ii/
+
+01159: Palindrome， http://cs101.openjudge.cn/2025sp_routine/01159/
+
+LCR 107.01 矩阵，https://leetcode.cn/problems/2bCMpM/
+
+01088: 滑雪，http://cs101.openjudge.cn/2025sp_routine/01088
+
+121.买卖股票的最佳时机，https://leetcode.cn/problems/best-time-to-buy-and-sell-stock/
+
+5.最长回文子串
+
+dp, two pointers, Manacher，https://leetcode.cn/problems/longest-palindromic-substring/
+
+1299.将每个元素替换为右侧最大元素，https://leetcode.cn/problems/replace-elements-with-greatest-element-on-right-side/
+
+
+
+### 滑动窗口
+
+3556.最大质数子字符串之和，https://leetcode.cn/problems/sum-of-largest-prime-substrings/description/
+
+2962.统计最大元素出现至少K次的子数组，https://leetcode.cn/problems/count-subarrays-where-max-element-appears-at-least-k-times/
+
+2799.统计完全子数组的数目，https://leetcode.cn/problems/count-complete-subarrays-in-an-array/
+
+
+
+### 单调栈Monotonic Stack
+
+84.柱状图中最大的矩形，https://leetcode.cn/problems/largest-rectangle-in-histogram/
+
+
+
+### KMP
+
+01961: 前缀中的周期，http://cs101.openjudge.cn/2025sp_routine/01961/
+
+
+
+### 栈Stack
+
+3561.移除相邻字符，https://leetcode.cn/problems/resulting-string-after-adjacent-removals/
+
+24591:中序表达式转后序表达式，http://cs101.openjudge.cn/practice/24591/
+
+sy295: 可能的出栈序列，https://sunnywhy.com/sfbj/7/1/295
+
+22068:合法出栈序列，http://cs101.openjudge.cn/practice/22068/
+
+02734: 十进制到八进制，http://cs101.openjudge.cn/2025sp_routine/02734/
+
+02694:波兰表达式，http://cs101.openjudge.cn/2025sp_routine/02694/
+
+150.逆波兰表达式求值，https://leetcode.cn/problems/evaluate-reverse-polish-notation/
+
+20140:今日化学论文，http://cs101.openjudge.cn/2025sp_routine/20140/
+
+03704:扩号匹配问题，http://cs101.openjudge.cn/2025sp_routine/03704/
+
+394.字符串解码，https://leetcode.cn/problems/decode-string/
+
+
+
+### 辅助栈
+
+155.最小栈，https://leetcode.cn/problems/min-stack/
+
+
+
+### 队列queue
+
+04067:回文数字，http://cs101.openjudge.cn/2025sp_routine/04067/
+
+
+
+### 矩阵matrices
+
+02659: Bomb Game, http://cs101.openjudge.cn/practice/02659/
+
+18161:矩阵运算(先乘再加)，http://cs101.openjudge.cn/2025sp_routine/18161/
+
+48.旋转图像，https://leetcode.cn/problems/rotate-image/
+
+2906.构造乘积矩阵
+
+matrices, prefix sum，https://leetcode.cn/problems/construct-product-matrix/
+
+
+
+
+
+### 宽搜BFS
+
+3552.网络传送门旅游，https://leetcode.cn/problems/grid-teleportation-traversal/
+
+12029:水淹七军，http://cs101.openjudge.cn/2025sp_routine/12029/
+
+07218:献给阿尔吉侬的花束，http://cs101.openjudge.cn/2025sp_routine/07218/
+
+909.蛇梯棋，https://leetcode.cn/problems/snakes-and-ladders/
+
+28046: 词梯，http://cs101.openjudge.cn/2025sp_routine/28046/
+
+117.填充每个节点的下一个右侧节点指针II，https://leetcode.cn/problems/populating-next-right-pointers-in-each-node-ii/
+
+103.二叉树的锯齿形层序遍历，https://leetcode.cn/problems/binary-tree-zigzag-level-order-traversal/
+
+199.二叉树的右视图，https://leetcode.cn/problems/binary-tree-right-side-view/
+
+01376: Robot，http://cs101.openjudge.cn/2025sp_routine/01376/
+
+01426: Find The Multiple, http://cs101.openjudge.cn/2025sp_routine/01426/
+
+07206:我是最快的马，http://cs101.openjudge.cn/2025sp_routine/07206/
+
+994.腐烂的橘子，https://leetcode.cn/problems/rotting-oranges/
+
+03151: Pots, http://cs101.openjudge.cn/2025sp_routine/03151/
+
+
+
+### 深搜DFS
+
+28050: 骑士周游, 
+
+dfs, Warnsdorff, http://cs101.openjudge.cn/2025sp_routine/28050/
+
+222.完全二叉树的节点个数，https://leetcode.cn/problems/count-complete-tree-nodes/
+
+27928:遍历树，http://cs101.openjudge.cn/2025sp_routine/27928/
+
+27948: FBI树，http://cs101.openjudge.cn/2025sp_routine/27948/
+
+129.求根节点到叶节点数字之和，https://leetcode.cn/problems/sum-root-to-leaf-numbers/
+
+124.二叉树中的最大路径和，https://leetcode.cn/problems/binary-tree-maximum-path-sum/
+
+114.二叉树展开为链表，https://leetcode.cn/problems/flatten-binary-tree-to-linked-list/
+
+236.二叉树的最近公共祖先，https://leetcode.cn/problems/lowest-common-ancestor-of-a-binary-tree/
+
+437.路径总和III
+
+dfs, prefix, https://leetcode.cn/problems/path-sum-iii/
+
+98.验证二叉搜索树，https://leetcode.cn/problems/validate-binary-search-tree/
+
+27637:括号嵌套二叉树
+
+dfs+stack, http://cs101.openjudge.cn/2025sp_routine/27637
+
+108.将有序数组转换为二叉树，https://leetcode.cn/problems/convert-sorted-array-to-binary-search-tree/
+
+02775:文件结构“图”
+
+dfs, stack, http://cs101.openjudge.cn/practice/24729/
+
+230.二叉搜索树中第K小的元素，https://leetcode.cn/problems/kth-smallest-element-in-a-bst/
+
+08581: 扩展二叉树，http://cs101.openjudge.cn/2025sp_routine/08581/
+
+543.二叉树的直径，https://leetcode.cn/problems/diameter-of-binary-tree/
+
+27638:求二叉树的高度和叶子数目，http://cs101.openjudge.cn/2025sp_routine/27638/
+
+06646:二叉树的深度，http://cs101.openjudge.cn/2025sp_routine/06646/
+
+104.二叉树的最大深度，https://leetcode.cn/problems/maximum-depth-of-binary-tree/
+
+20052: 最大点数（同2048规则）
+
+dfs, matirces, http://cs101.openjudge.cn/2025sp_routine/20052/
+
+27217: 有多少种合法的出栈顺序, http://cs101.openjudge.cn/2025sp_routine/27217/
+
+02815: 城堡问题, http://cs101.openjudge.cn/2025sp_routine/02815/
+
+23558:有界的深度优先搜索，http://cs101.openjudge.cn/2025sp_routine/23558/
+
+
+
+### Dijkstra
+
+02502:Subway，http://cs101.openjudge.cn/2025sp_routine/02502/
+
+03424: Candies，http://cs101.openjudge.cn/2025sp_routine/03424/
+
+3341.到达最后一个房间的最少时间 I，https://leetcode.cn/problems/find-minimum-time-to-reach-last-room-i/
+
+743.网络延迟时间，https://leetcode.cn/problems/network-delay-time/description/
+
+05443:兔子与樱花
+
+Dijkstra, Floyd-Warshall, http://cs101.openjudge.cn/2025sp_routine/05443/
+
+20106:走山路，http://cs101.openjudge.cn/2025sp_routine/20106/
+
+
+
+### Bellman Ford
+
+01860: Currency Exchange，http://cs101.openjudge.cn/2025sp_routine/01860/
+
+787.K站中转内最便宜的航班，https://leetcode.cn/problems/cheapest-flights-within-k-stops/
+
+
+
+### 散列表
+
+17975: 用二次探查法建立散列表，http://cs101.openjudge.cn/2025sp_routine/17975/
+
+
+
+### 最小生成树（Mininum Spanning Tree）
+
+01258: Agri-Net，http://cs101.openjudge.cn/2025sp_routine/01258/
+
+05442: 兔子与星空，http://cs101.openjudge.cn/2025sp_routine/05442/
+
+1584.连接所有点的最小费用，https://leetcode.cn/problems/min-cost-to-connect-all-points/
+
+
+
+### 贪心Greedy
+
+3362.零数组变换 III
+
+greedy, heap, 差分数组，https://leetcode.cn/problems/zero-array-transformation-iii/
+
+3355.零数组变换 I
+
+Prefix sum, greedy, https://leetcode.cn/problems/zero-array-transformation-i/
+
+781.森林中的兔子，https://leetcode.cn/problems/rabbits-in-forest/
+
+04080:Huffman编码树，http://cs101.openjudge.cn/2025sp_routine/04080/
+
+22161: 哈夫曼编码树，http://cs101.openjudge.cn/practice/22161/
+
+2680.最大或值，https://leetcode.cn/problems/maximum-or/
+
+1963.使字符串平衡的最小交换次数，https://leetcode.cn/problems/minimum-number-of-swaps-to-make-the-string-balanced/
+
+01328:Radar Installation, http://cs101.openjudge.cn/2025sp_routine/01328/
+
+56.合并区间，https://leetcode.cn/problems/merge-intervals/
+
+11.盛最多水的容器
+
+greedy, two pointers，https://leetcode.cn/problems/container-with-most-water/
+
+
+
+### 归并排序Merge Sort
+
+20018: 蚂蚁王国的越野跑
+
+Merge sort, binary search, http://cs101.openjudge.cn/2025sp_routine/20018
+
+23.合并K个升序链表，https://leetcode.cn/problems/merge-k-sorted-lists/
+
+02299: Ultra-QuickSort, http://cs101.openjudge.cn/2025sp_routine/02299/
+
+
+
+### 三指针
+
+75.颜色分类，https://leetcode.cn/problems/sort-colors/
+
+
+
+### 排序Sorting
+
+274.H指数，https://leetcode.cn/problems/h-index/
+
+27300:模型整理，http://cs101.openjudge.cn/2025sp_routine/27300/
+
+
+
+### 递归Recursion
+
+02749:分解因数，http://cs101.openjudge.cn/2025sp_routine/02749/
+
+
+
+### 回溯Backtracking 
+
+37.解数独，https://leetcode.cn/problems/sudoku-solver/
+
+2597.美丽子集的数目，https://leetcode.cn/problems/the-number-of-beautiful-subsets/
+
+02488:A Knight's Journey，http://cs101.openjudge.cn/2025sp_routine/02488/
+
+78.子集，https://leetcode.cn/problems/subsets/
+
+46.全排列，https://leetcode.cn/problems/permutations/
+
+04123:马走日，http://cs101.openjudge.cn/2025sp_routine/04123/
+
+01321:棋盘问题，http://cs101.openjudge.cn/2025sp_routine/01321/
+
+
+
+### 正则表达式RE
+
+04015: 邮箱验证，http://cs101.openjudge.cn/2025sp_routine/04015
+
+
+
+### 数学Math
+
+02499:Binary Tree, http://cs101.openjudge.cn/practice/02499/
+
+
+
+### 堆Heap
+
+3510.移除最小数对使数组有序II，https://leetcode.cn/problems/minimum-pair-removal-to-sort-array-ii/
+
+3478.选出和最大的K个元素，https://leetcode.cn/problems/choose-k-elements-with-maximum-sum/
+
+06648: Sequence，http://cs101.openjudge.cn/2025sp_routine/06648/
+
+27256: 当前队列中位数，http://cs101.openjudge.cn/2025sp_routine/27256/
+
+100576.提取至多K个元素的最大总和，https://leetcode.cn/problems/maximum-sum-with-at-most-k-elements/
+
+
+
+### 前缀树Trie
+
+04089:电话号码，http://cs101.openjudge.cn/2025sp_routine/04089/
+
+
+
+### 信息检索IR
+
+04093: 倒排索引查询，http://cs101.openjudge.cn/practice/04093/
+
+06640: 倒排索引，http://cs101.openjudge.cn/2025sp_routine/06640/
+
+
+
+### 自然语言处理 NLP
+
+1078.Bigram分词，https://leetcode.cn/problems/occurrences-after-bigram/
+
+
+
+### 二分查Binary Search
+
+01064:网线主管，http://cs101.openjudge.cn/2025sp_routine/01064/
+
+22528:厚道的调分方法, http://cs101.openjudge.cn/2025sp_routine/22528/
+
+2070.每一个查询的最大美丽值, https://leetcode.cn/problems/most-beautiful-item-for-each-query/
+
+02456: Aggressive cows，http://cs101.openjudge.cn/2025sp_routine/02456/
+
+240.搜索二维矩阵II，https://leetcode.cn/problems/search-a-2d-matrix-ii/
+
+08210:河中跳房子，http://cs101.openjudge.cn/2025sp_routine/08210
+
+35.搜索插入位置，https://leetcode.cn/problems/search-insert-position/
+
+
+
+### 并查集(Union find / Disjoint set)
+
+3532.针对图的路径存在性查询I，https://leetcode.cn/problems/path-existence-queries-in-a-graph-i/
+
+827.最大人工岛，https://leetcode.cn/problems/making-a-large-island/
+
+547.省份数量，https://leetcode.cn/problems/number-of-provinces/
+
+18250:冰阔落 I，http://cs101.openjudge.cn/2025sp_routine/18250/
+
+02524:宗教信仰，http://cs101.openjudge.cn/2025sp_routine/02524/
+
+
+
+### 面向对象编程OOP
+
+208.实现Trie(前缀树),https://leetcode.cn/problems/implement-trie-prefix-tree/
+
+19943:图的拉普拉斯矩阵, http://cs101.openjudge.cn/2025sp_routine/19943/
+
+3384.设计电子表格
+
+OOP, RE, https://leetcode.cn/contest/biweekly-contest-152/problems/design-spreadsheet/
+
+2502.设计内存分配器，https://leetcode.cn/problems/design-memory-allocator/
+
+
+
+### 牛顿迭代分
+
+04140: 方程求解，http://cs101.openjudge.cn/2025sp_routine/04140/
+
+
+
+### Kadane
+
+02766: 最大子矩阵, http://cs101.openjudge.cn/2025sp_routine/02766/
+
+
+
+### 实现implementation 
+
+3531.统计被覆盖的建筑， https://leetcode.cn/problems/count-covered-buildings/
+
+04078: 实现堆结构，http://cs101.openjudge.cn/2025sp_routine/04078/
+
+3487.删除后的最大子数组元素和，https://leetcode.cn/problems/maximum-unique-subarray-sum-after-deletion/
+
+
+
+
+
+### 哈希Hash Table
+
+2364.统计坏数对的数目，https://leetcode.cn/problems/count-number-of-bad-pairs/
+
+146.LRU缓存
+
+hash table, doubly-linked list, https://leetcode.cn/problems/lru-cache/
+
+
+
+### 树结构Tree
+
+04082:树的镜面映射，http://cs101.openjudge.cn/practice/04082/
 
 - 题面：将给定二叉树进行水平镜像翻转后输出层序遍历  
 - 思路：层序遍历时交换左右子节点顺序
 
----
+03720:文本二叉树，http://cs101.openjudge.cn/2025sp_routine/03720/
 
-### 单调栈
-**84.柱状图中最大的矩形**  https://leetcode.cn/problems/largest-rectangle-in-histogram/
+01577:Falling Leaves, http://cs101.openjudge.cn/2025sp_routine/01577/
 
-- 题面：在柱状图中找出面积最大的矩形  
-- 思路：单调栈维护高度递增序列，计算以每个柱子为高度的最大宽度
+01145:Tree Summing, http://cs101.openjudge.cn/2025sp_routine/01145/
 
----
+05907:二叉树的操作，http://cs101.openjudge.cn/practice/05907/
 
-### 图论（Dijkstra）
-**03424: Candies**  http://cs101.openjudge.cn/practice/03424/
+T20576: printExp（逆波兰表达式建树），http://cs101.openjudge.cn/2025sp_routine/20576/
 
-- 题面：求从起点到终点的最大糖果数路径  
-- 思路：Dijkstra算法变形，维护最大权值路径
+02788:二叉树，http://cs101.openjudge.cn/2025sp_routine/02788/
 
-**743.网络延迟时间**  https://leetcode.cn/problems/network-delay-time/description/
+05455:二叉搜索树的层次遍历，http://cs101.openjudge.cn/2025sp_routine/05455/
 
-- 题面：计算信号从起点传播到所有节点的最短时间中的最大值  
-- 思路：标准Dijkstra算法实现
+105.从前序与中序遍历序列构造二叉树，https://leetcode.cn/problems/construct-binary-tree-from-preorder-and-inorder-traversal/
 
----
+22158: 根据二叉树前中序序列建树，http://cs101.openjudge.cn/practice/22158/
 
-### 贪心算法
-**01328:Radar Installation**  http://cs101.openjudge.cn/practice/01328/
+22275: 二叉搜索树的遍历，http://cs101.openjudge.cn/2025sp_routine/22275/
 
-- 题面：在海岸线部署雷达覆盖岛屿，求最少雷达数  
-- 思路：按岛屿可覆盖区间右端点排序，贪心选择雷达位置
 
-**781.森林中的兔子**  https://leetcode.cn/problems/rabbits-in-forest/
-
-- 题面：根据兔子回答的同类数量计算最少兔子数  
-- 思路：统计相同回答的分组，每组数量超过回答值+1时需新建组
-
-**3362.零数组变换 III** https://leetcode.cn/problems/zero-array-transformation-iii/
-
-- **题面**: 通过一系列操作将数组变换为零数组。
-- **解题思路**: 使用<mark>堆</mark>和<mark>差分数组</mark>来实现贪心策略。
-
-**01258: Agri-Net**http://cs101.openjudge.cn/practice/01258/
-
-- **题面**: 使用最小生成树算法连接农场。
-- **解题思路**: 使用Prim算法或Kruskal算法。
-
----
-
-### 滑动窗口
-**2962.统计最大元素出现至少K次的子数组**  https://leetcode.cn/problems/count-subarrays-where-max-element-appears-at-least-k-times/
-
-- 题面：统计包含最大元素出现≥K次的子数组数量  
-- 思路：滑动窗口记录最大元素出现次数，动态维护窗口有效性[citation:16]
-
-**3556.最大质数子字符串之和**  https://leetcode.cn/problems/sum-of-largest-prime-substrings/description/
-
-- 题面：找出字符串中连续数字组成的最大质数  
-- 思路：滑动窗口生成所有子串，结合质数判断与数值比较[citation:5]
-
----
-
-### 并查集
-**547.省份数量**  https://leetcode.cn/problems/number-of-provinces/
-
-- 题面：判断城市连通分量数  
-- 思路：标准并查集实现，合并相连城市后统计根节点数量
-
-**1584.连接所有点的最小费用**  https://leetcode.cn/problems/min-cost-to-connect-all-points/
-
-- 题面：用最小成本连接所有点形成连通图  
-- 思路：Kruskal算法，先构造所有边再按权值排序合并
-
-**01611: The Suspects**
-
-- **题面**: 找出所有与感染者直接或间接接触的人。
-- **解题思路**: 使用并查集（Union-Find）。
-
-**01703: 发现它，抓住它**
-
-- **题面**: 判断两起案件是否是同一个犯罪团伙所为。
-- **解题思路**: 使用并查集（Union-Find）。
-
----
 
 ### 滚动数组优化DP
 
@@ -516,484 +927,6 @@ class Solution:
 ```
 
 
-
----
-
-#### **一、二分查找**
-1. **月度开销 (04135)**  
-   - 题面：将N天开销分成M段，求各段最大值的最小可能  
-   - 思路：二分查找可能的开销范围，贪心验证分段可行性  
-   - 关键词：最小值最大化、贪心验证、二分框架
-
-2. **LeetCode 1760**  
-   - 题面：通过最多k次操作将数组分割成连续子数组，最小化最大子数组和  
-   - 思路：二分查找可能的子数组和范围，滑动窗口验证分割次数  
-   - 关键词：二分答案、滑动窗口验证
-
----
-
-#### **二、图论**
-1. **207. 课程表**  
-   - 题面：判断课程安排是否存在循环依赖  
-   - 思路：建图后拓扑排序检测环路  
-   - 关键词：邻接表、入度数组、环路检测[citation:15][citation:18]
-
----
-
-#### **三、树结构**
-1. **236. 二叉树的最近公共祖先**  
-   - 题面：找二叉树中两个节点的最低公共祖先  
-   - 思路：后序遍历递归判断左右子树状态  
-   - 关键词：后序遍历、状态传递[citation:10][citation:15]
-
-2. **01145. Tree Summing**  
-   - 题面：解析LISP格式二叉树，判断是否存在根到叶子的路径和等于目标值  
-   - 思路：递归解析括号结构，DFS遍历路径和  
-   - 关键词：LISP解析、递归DFS、路径剪枝[citation:15]
-
----
-
-#### **四、动态规划**
-1. **5. 最长回文子串**  
-   - 题面：找字符串中的最长回文子串  
-   - 思路：动态规划状态表记录子串回文性，或中心扩展法  
-   - 关键词：状态转移方程、中心扩散[citation:20]
-
----
-
-#### **五、回溯算法**
-1. **37. 解数独**  
-   - 题面：填充9×9数独的空格满足每行/列/3×3子矩阵不重复  
-   - 思路：递归尝试填充数字，用位运算记录可用数字  
-   - 关键词：位运算剪枝、回溯恢复状态[citation:3][citation:15]
-
-2. **0311. 波兰表达式求值**  
-   - 题面：解析逆波兰表达式并计算结果  
-   - 思路：栈结构模拟运算符优先级，回溯处理嵌套表达式  
-   - 关键词：栈操作、递归解析[citation:15]
-
----
-
-#### **六、并查集**
-1. **547. 省份数量**  
-   - 题面：根据城市连接矩阵计算连通分量数  
-   - 思路：并查集合并连通区域，路径压缩优化  
-   - 关键词：连通分量、路径压缩[citation:3][citation:18]
-
-2. **827. 最大人工岛**  
-   - 题面：通过最多填海一个网格扩大最大岛屿面积  
-   - 思路：并查集记录岛屿区域，枚举可填海位置计算潜在面积  
-   - 关键词：连通块统计、枚举优化[citation:3]
-
----
-
-#### **七、堆**
-1. **3478. 和最大的K个元素**  
-   - 题面：从数组中选择最大的k个数之和  
-   - 思路：维护大小为k的最小堆，过滤小值  
-   - 关键词：TopK问题、堆排序[citation:3][citation:8]
-
-2. **剑指 Offer 40. 最小的k个数**  
-   - 题面：找出数组中最小的k个数  
-   - 思路：最大堆维护候选集，替换较大值  
-   - 关键词：堆性质、反向筛选[citation:8]
-
----
-
-#### **八、滑动窗口**
-1. **2962. 统计最大元素出现至少 K 次的子数组**  
-   - 题面：统计数组中满足最大元素出现≥k次的子数组数量  
-   - 思路：滑动窗口维护最大值频率，双指针收缩窗口  
-   - 关键词：单调队列、频率统计[citation:3][citation:8]
-
-2. **3. 无重复字符的最长子串**  
-   - 题面：找不含重复字符的最长子串长度  
-   - 思路：哈希表记录字符位置，滑动窗口维护无重复区间  
-   - 关键词：哈希映射、窗口收缩[citation:8]
-
----
-
-### stack
-
-- **3561.移除相邻字符** https://leetcode.cn/problems/resulting-string-after-adjacent-removals/
-  - **题面**: 移除字符串中相邻的重复字符。
-  - **解题思路**: 使用栈来移除相邻的重复字符。
-
-### 前缀和
-
-- **0521: 3355.零数组变换 I** https://leetcode.cn/problems/zero-array-transformation-i/
-
-  - **题面**: 通过前缀和和贪心策略将数组变换为零数组。
-
-  - **解题思路**: 使用前缀和和贪心策略。
-
-    
-
-### 二分查找
-
-2070.每一个查询的最大美丽值
-
-https://leetcode.cn/problems/most-beautiful-item-for-each-query/
-
-
-
-### 元宝腾讯
-
-Q：知识库 `数算课件_GMyhf` 中的 `problem_list_2025spring.md` 是这学期课程内容覆盖到的题目，对应题目，按照“问题编号与名称” 可以在 `数算计概题解_GMyhf` 中的 `2024spring_dsa_problems`，或者`2024fall_LeetCode_problems.md` 中找到原题的题面，及相应的 AC代码等信息。请按照 `problem_list_2025spring.md`的 “标签” 分类这些题目，给出对应题目简短1-2句的题面要求，及解题思路，及解法关键词等。
-
-
-
-根据您提供的 `problem_list_2025spring.md` 文件中的题目编号与名称，我将按照“标签”分类这些题目，并给出每个题目的简短题面要求、解题思路及解法关键词。
-
-- - 
-  
-    
-  
-- **01321: 棋盘问题**
-  - **题面**: 在棋盘上摆放棋子，使得任意两个棋子不在同一行或列。
-  - **解题思路**: 使用回溯算法。
-  - **解法关键词**: 回溯算法
-  
-- **01426: Find The Multiple**
-  - **题面**: 找到一个只包含0和1的数字，且是给定数的倍数。
-  - **解题思路**: 使用广度优先搜索（BFS）。
-  - **解法关键词**: BFS
-  
-- **01577: Falling Leaves**
-  - **题面**: 重建二叉搜索树。
-  - **解题思路**: 使用BFS重建二叉搜索树。
-  - **解法关键词**: BFS, 二叉搜索树
-
-
-
-
-
-- **01724: ROADS**
-  - **题面**: 找到Bob从城市1到城市N的最短路径。
-  - **解题思路**: 使用Dijkstra算法。
-  - **解法关键词**: Dijkstra算法
-- **01760: Disk Tree**
-  - **题面**: 恢复目录结构。
-  - **解题思路**: 使用前缀树（Trie）。
-  - **解法关键词**: 前缀树
-
-
-
-### MST最小生成树
-
-- **01789: Truck History**
-  - **题面**: 找到卡车类型派生的最高质量计划。
-  - **解题思路**: 使用最小生成树算法。
-  - **解法关键词**: 最小生成树
-
-
-
-- **01860: Currency Exchange**
-  - **题面**: 判断是否可以通过一系列货币兑换操作增加资金。
-  - **解题思路**: 使用Bellman-Ford算法检测是否存在正权环。
-  - **解法关键词**: Bellman-Ford算法
-- **01941: The Sierpinski Fractal**
-  - **题面**: 绘制Sierpinski三角形。
-  - **解题思路**: 使用递归绘制Sierpinski三角形。
-  - **解法关键词**: 递归, 分形
-- **01944: Fiber Communications**
-  - **题面**: 连接农场，使得所有农场都能通信。
-  - **解题思路**: 使用贪心算法。
-  - **解法关键词**: 贪心算法
-- **02039: 反反复复**
-  - **题面**: 还原加密信息。
-  - **解题思路**: 使用模拟方法还原信息。
-  - **解法关键词**: 模拟
-- **02049: Finding Nemo**
-  - **题面**: 计算Marlin到达Nemo的最短路径。
-  - **解题思路**: 使用BFS。
-  - **解法关键词**: BFS
-- **02092: Grandpa is Famous**
-  - **题面**: 找出比赛中出现次数第二多的选手。
-  - **解题思路**: 统计每个选手的出现次数，找出第二多的。
-  - **解法关键词**: 统计, 排序
-- **02192: Zipper**
-  - **题面**: 判断第三个字符串是否可以由前两个字符串组合而成。
-  - **解题思路**: 使用递归和记忆化搜索。
-  - **解法关键词**: 递归, 记忆化搜索
-- **02226: Muddy Fields**
-  - **题面**: 用最少的木板覆盖泥泞区域。
-  - **解题思路**: 使用贪心算法和并查集。
-  - **解法关键词**: 贪心算法, 并查集
-
-### 标签: implementation
-
-- **02701: 与7无关的数**
-  - **题面**: 计算小于等于n的所有与7无关的正整数的平方和。
-  - **解题思路**: 遍历所有小于等于n的正整数，检查是否与7无关，并计算平方和。
-  - **解法关键词**: 遍历, 条件判断
-  
-- **02707: 求一元二次方程的根**
-  - **题面**: 求一元二次方程的根。
-  - **解题思路**: 使用公式计算根，并处理特殊情况。
-  - **解法关键词**: 公式计算, 特殊情况处理
-  
-- 
-  
-- **02734: 十进制到八进制**
-  - **题面**: 将十进制数转换为八进制。
-  - **解题思路**: 使用栈实现转换。
-  - **解法关键词**: 栈, 数制转换
-  
-  
-  
-- **02753: 菲波那契数列**
-  - **题面**: 求菲波那契数列的第a个数。
-  - **解题思路**: 使用递归或动态规划计算。
-  - **解法关键词**: 递归, 动态规划
-  
-- **02767: 简单密码**
-  - **题面**: 解密凯撒密码。
-  - **解题思路**: 使用字符替换解密。
-  - **解法关键词**: 字符替换
-  
-- **02783: Holiday Hotel**
-  - **题面**: 找出符合条件的酒店。
-  - **解题思路**: 使用排序和遍历。
-  - **解法关键词**: 排序, 遍历
-  
-- **02786: Pell数列**
-  - **题面**: 求Pell数列的第k项模32767的值。
-  - **解题思路**: 使用递归和记忆化搜索。
-  - **解法关键词**: 递归, 记忆化搜索
-  
-- **02792: 集合加法**
-  - **题面**: 计算满足条件的(i, j)对的数量。
-  - **解题思路**: 使用计数器统计。
-  - **解法关键词**: 计数器, 统计
-  
-- **02804: 词典**
-  - **题面**: 翻译文档。
-  - **解题思路**: 使用字典进行翻译。
-  - **解法关键词**: 字典, 翻译
-  
-- **02808: 校门外的树**
-  - **题面**: 计算移走树后剩余的树的数量。
-  - **解题思路**: 使用数组标记树的位置。
-  - **解法关键词**: 数组, 标记
-  
-- **02810: 完美立方**
-  - **题面**: 寻找满足条件的四元组。
-  - **解题思路**: 使用暴力搜索和排序。
-  - **解法关键词**: 暴力搜索, 排序
-  
-- **02883: Checking order**
-  - **题面**: 检查数字串是否按升序排列。
-  - **解题思路**: 检查并排序。
-  - **解法关键词**: 检查, 排序
-  
-- **02899: 矩阵交换行**
-  - **题面**: 交换矩阵的行。
-  - **解题思路**: 检查范围并交换行。
-  - **解法关键词**: 检查, 交换
-  
-- **02911: 受限完全平方数**
-  - **题面**: 找出满足条件的四位数。
-  - **解题思路**: 生成完全平方数并检查条件。
-  - **解法关键词**: 生成, 检查
-  
-- **02913: 加密技术**
-  - **题面**: 编制程序，将输入的一行字符加密解密。
-  - **解题思路**: 使用字符替换和模运算进行加密和解密。
-  - **解法关键词**: 字符替换, 模运算
-
-### 标签: dp
-
-- **02502: Subway**
-  - **题面**: 计算从起点到终点的最短路径。
-  - **解题思路**: 使用Dijkstra算法找到最短路径。
-  - **解法关键词**: Dijkstra算法
-- **03424: Candies**
-  - **题面**: 计算从起点到终点的最短路径。
-  - **解题思路**: 使用Dijkstra算法找到最短路径。
-  - **解法关键词**: Dijkstra算法
-- **01860: Currency Exchange**
-  - **题面**: 判断是否可以通过一系列货币兑换操作增加资金。
-  - **解题思路**: 使用Bellman-Ford算法检测是否存在正权环。
-  - **解法关键词**: Bellman-Ford算法
-
-### 标签: math
-
-- **02733: 判断闰年**
-  - **题面**: 判断某年是否是闰年。
-  - **解题思路**: 根据闰年规则判断。
-  - **解法关键词**: 条件判断
-- **02734: 十进制到八进制**
-  - **题面**: 将十进制数转换为八进制。
-  - **解题思路**: 使用栈实现转换。
-  - **解法关键词**: 栈, 数制转换
-- **02753: 菲波那契数列**
-  - **题面**: 求菲波那契数列的第a个数。
-  - **解题思路**: 使用递归或动态规划计算。
-  - **解法关键词**: 递归, 动态规划
-
-### 标签: tree
-
-- **01321: 棋盘问题**
-  - **题面**: 在棋盘上摆放棋子，使得任意两个棋子不在同一行或列。
-  - **解题思路**: 使用回溯算法。
-  - **解法关键词**: 回溯算法
-- **01577: Falling Leaves**
-  - **题面**: 重建二叉搜索树。
-  - **解题思路**: 使用BFS重建二叉搜索树。
-  - **解法关键词**: BFS, 二叉搜索树
-- **01760: Disk Tree**
-  - **题面**: 恢复目录结构。
-  - **解题思路**: 使用前缀树（Trie）。
-  - **解法关键词**: 前缀树
-
-### 标签: graph
-
-- **01789: Truck History**
-  - **题面**: 找到卡车类型派生的最高质量计划。
-  - **解题思路**: 使用最小生成树算法。
-  - **解法关键词**: 最小生成树
-- **01941: The Sierpinski Fractal**
-  - **题面**: 绘制Sierpinski三角形。
-  - **解题思路**: 使用递归绘制Sierpinski三角形。
-  - **解法关键词**: 递归, 分形
-- **01944: Fiber Communications**
-  - **题面**: 连接农场，使得所有农场都能通信。
-  - **解题思路**: 使用贪心算法。
-  - **解法关键词**: 贪心算法
-
-### 标签: backtracking
-
-- 01321: 棋盘问题
-  - **题面**: 在棋盘上摆放棋子，使得任意两个棋子不在同一行或列。
-  - **解题思路**: 使用回溯算法。
-  - **解法关键词**: 回溯算法
-
-### 标签: binary search
-
-- 01426: Find The Multiple
-  - **题面**: 找到一个只包含0和1的数字，且是给定数的倍数。
-  - **解题思路**: 使用广度优先搜索（BFS）。
-  - **解法关键词**: BFS
-
-### 标签: implementation
-
-- **02701: 与7无关的数**
-  - **题面**: 计算小于等于n的所有与7无关的正整数的平方和。
-  - **解题思路**: 遍历所有小于等于n的正整数，检查是否与7无关，并计算平方和。
-  - **解法关键词**: 遍历, 条件判断
-  
-- **02707: 求一元二次方程的根**
-  - **题面**: 求一元二次方程的根。
-  - **解题思路**: 使用公式计算根，并处理特殊情况。
-  - **解法关键词**: 公式计算, 特殊情况处理
-  
-  
-  
-- **02786: Pell数列**
-  - **题面**: 求Pell数列的第k项模32767的值。
-  - **解题思路**: 使用递归和记忆化搜索。
-  - **解法关键词**: 递归, 记忆化搜索
-  
-- **02792: 集合加法**
-  - **题面**: 计算满足条件的(i, j)对的数量。
-  - **解题思路**: 使用计数器统计。
-  - **解法关键词**: 计数器, 统计
-  
-- **02804: 词典**
-  - **题面**: 翻译文档。
-  - **解题思路**: 使用字典进行翻译。
-  - **解法关键词**: 字典, 翻译
-  
-- **02808: 校门外的树**
-  - **题面**: 计算移走树后剩余的树的数量。
-  - **解题思路**: 使用数组标记树的位置。
-  - **解法关键词**: 数组, 标记
-  
-- **02810: 完美立方**
-  - **题面**: 寻找满足条件的四元组。
-  - **解题思路**: 使用暴力搜索和排序。
-  - **解法关键词**: 暴力搜索, 排序
-  
-- **02883: Checking order**
-  - **题面**: 检查数字串是否按升序排列。
-  - **解题思路**: 检查并排序。
-  - **解法关键词**: 检查, 排序
-  
-- **02899: 矩阵交换行**
-  - **题面**: 交换矩阵的行。
-  - **解题思路**: 检查范围并交换行。
-  - **解法关键词**: 检查, 交换
-  
-- **02911: 受限完全平方数**
-  - **题面**: 找出满足条件的四位数。
-  - **解题思路**: 生成完全平方数并检查条件。
-  - **解法关键词**: 生成, 检查
-  
-- **02913: 加密技术**
-  - **题面**: 编制程序，将输入的一行字符加密解密。
-  - **解题思路**: 使用字符替换和模运算进行加密和解密。
-  - **解法关键词**: 字符替换, 模运算
-
-### 标签: BFS
-
-- 01577: Falling Leaves
-  - **题面**: 重建二叉搜索树。
-  - **解题思路**: 使用BFS重建二叉搜索树。
-  - **解法关键词**: BFS, 二叉搜索树
-
-### 标签: DFS
-
-- 01321: 棋盘问题
-  - **题面**: 在棋盘上摆放棋子，使得任意两个棋子不在同一行或列。
-  - **解题思路**: 使用回溯算法。
-  - **解法关键词**: 回溯算法
-
-### 标签: Union Find
-
-- 01611: The Suspects
-  - **题面**: 找出所有与感染者直接或间接接触的人。
-  - **解题思路**: 使用并查集（Union-Find）。
-  - **解法关键词**: 并查集
-
-### 标签: Greedy
-
-- **01724: ROADS**
-  - **题面**: 找到Bob从城市1到城市N的最短路径。
-  - **解题思路**: 使用Dijkstra算法。
-  - **解法关键词**: Dijkstra算法
-- **01944: Fiber Communications**
-  - **题面**: 连接农场，使得所有农场都能通信。
-  - **解题思路**: 使用贪心算法。
-  - **解法关键词**: 贪心算法
-
-### 标签: Trie
-
-- 01760: Disk Tree
-  - **题面**: 恢复目录结构。
-  - **解题思路**: 使用前缀树（Trie）。
-  - **解法关键词**: 前缀树
-
-### 标签: Prim
-
-- 01258: Agri-Net
-  - **题面**: 使用最小生成树算法连接农场。
-  - **解题思路**: 使用Prim算法或Kruskal算法。
-  - **解法关键词**: Prim算法, Kruskal算法
-
-### 标签: Bellman-Ford
-
-- 01860: Currency Exchange
-  - **题面**: 判断是否可以通过一系列货币兑换操作增加资金。
-  - **解题思路**: 使用Bellman-Ford算法检测是否存在正权环。
-  - **解法关键词**: Bellman-Ford算法
-
-### 标签: Suffix Array
-
-- 02913: 加密技术
-  - **题面**: 编制程序，将输入的一行字符加密解密。
-  - **解题思路**: 使用字符替换和模运算进行加密和解密。
-  - **解法关键词**: 字符替换, 模运算
 
 
 
