@@ -1,6 +1,6 @@
 # 数据结构与算法知识体系（DSA）
 
-Updated 2157 GMT+8 Jun 1, 2025
+Updated 2106 GMT+8 Jun 2, 2025
 
 2025 spring, Complied by Hongfei Yan
 
@@ -21,9 +21,9 @@ Updated 2157 GMT+8 Jun 1, 2025
 >
 > 数据结构与算法（B）课程考试。
 > 请独立完成，不能通讯，如：不能使用微信、邮件、QQ等工具。
-> 考试期间，请同学只访问OJ，不能访问其他网站，不要查看OJ考试之前自己提交的代码。
+> 考试期间，请同学只能访问OJ，不能访问其他网站，不能查看OJ考试之前自己提交的代码。
 > 考试过程中允许可以带10张A4纸大小的cheat sheet，如记录语法信息作为参考。
-> 题目编号前面的大写字母，相应表明是 Easy/Medium/Tough 级别。
+> 题目编号前的英文字母大写表示题目的难度等级，分别对应 Easy、Medium 和 Tough。
 >
 > ————-
 > 登录别人的账号即视为违纪甚至作弊。把自己的账号密码告诉别人，被别人登录，也视为违纪甚至作弊。如果考前别人用过你的账号，请立即修改密码。
@@ -376,10 +376,58 @@ Q：材料`problem_list_2025spring.md`是这学期课程内容覆盖到的题目
 - 题面：给定n个大写字母和m个"A<B"形式的关系，判断是否能确定唯一排序序列，或发现矛盾  
 - 思路：增量式拓扑排序，每次添加关系后检测入度变化，若存在多个入度0节点则序列不唯一，出现环则矛盾
 
-1857.有向图中最大颜色值，  https://leetcode.cn/problems/largest-color-value-in-a-directed-graph/
+**T1857.有向图中最大颜色值**，  https://leetcode.cn/problems/largest-color-value-in-a-directed-graph/
 
 - 题面：在有向图中寻找路径使得节点颜色出现次数最大值最大  
 - 思路：拓扑排序+动态规划，维护每个节点各颜色出现次数的最大值
+
+```python
+from collections import deque
+from typing import List
+
+class Solution:
+    def largestPathValue(self, colors: str, edges: List[List[int]]) -> int:
+        n = len(colors)
+        # 1. 构建图与入度
+        g = [[] for _ in range(n)]
+        indeg = [0] * n
+        for u, v in edges:
+            g[u].append(v)
+            indeg[v] += 1
+
+        # 2. 初始化 DP 表
+        # dp[u][c] = 在以 u 结尾的路径中，颜色 c 出现的最大次数
+        dp = [[0] * 26 for _ in range(n)]
+        for u, ch in enumerate(colors):
+            dp[u][ord(ch) - ord('a')] = 1
+
+        # 3. 拓扑排序
+        q = deque(u for u in range(n) if indeg[u] == 0)
+        visited = 0
+        ans = 0
+
+        while q:
+            u = q.popleft()
+            visited += 1
+            # 更新全局最优
+            ans = max(ans, max(dp[u]))
+            for v in g[u]:
+                # 对 v 的每一种颜色尝试松弛
+                for c in range(26):
+                    # 如果 v 的颜色恰好是 c，则要 +1，否则不加
+                    dp[v][c] = max(dp[v][c], dp[u][c] + (ord(colors[v]) - ord('a') == c))
+                indeg[v] -= 1
+                if indeg[v] == 0:
+                    q.append(v)
+
+        # 4. 如果没遍历完所有节点，说明存在环
+        if visited < n:
+            return -1
+
+        return ans
+```
+
+
 
 210.课程表II， https://leetcode.cn/problems/course-schedule-ii/description/
 
@@ -392,10 +440,35 @@ Q：材料`problem_list_2025spring.md`是这学期课程内容覆盖到的题目
 
 
 ### 树形DP
-337.打家劫舍III，https://leetcode.cn/problems/house-robber-iii/description/
+**M337.打家劫舍III**，https://leetcode.cn/problems/house-robber-iii/description/
 
 - 题面：在二叉树中选择不相邻节点求最大和  
 - 思路：树形DP，记录每个节点偷/不偷两种状态的最大值
+
+```python
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def rob(self, root: Optional[TreeNode]) -> int:
+        def dfs(node):
+            if node is None:
+                return 0,0
+
+            l_rob, l_not_rob = dfs(node.left)
+            r_rob, r_not_rob = dfs(node.right)
+            choose = node.val + l_not_rob + r_not_rob
+            not_choose = max(l_rob, l_not_rob) + max(r_rob, r_not_rob)
+        
+            return choose, not_choose
+        
+        return max(dfs(root))
+```
+
+
 
 24637:宝藏二叉树， http://cs101.openjudge.cn/2025sp_routine/24637/
 
@@ -407,7 +480,146 @@ Q：材料`problem_list_2025spring.md`是这学期课程内容覆盖到的题目
 
 01159: Palindrome， http://cs101.openjudge.cn/2025sp_routine/01159/
 
-LCR 107.01 矩阵，https://leetcode.cn/problems/2bCMpM/
+**M542.01 矩阵，**
+
+bfs, dp, https://leetcode-cn.com/problems/01-matrix/
+
+给定一个由 `0` 和 `1` 组成的矩阵 `mat` ，请输出一个大小相同的矩阵，其中每一个格子是 `mat` 中对应位置元素到最近的 `0` 的距离。
+
+两个相邻元素间的距离为 `1` 。
+
+ 
+
+**示例 1：**
+
+<img src="https://pic.leetcode-cn.com/1626667201-NCWmuP-image.png" alt="img" style="zoom:67%;" />
+
+```
+输入：mat = [[0,0,0],[0,1,0],[0,0,0]]
+输出：[[0,0,0],[0,1,0],[0,0,0]]
+```
+
+**示例 2：**
+
+<img src="https://pic.leetcode-cn.com/1626667205-xFxIeK-image.png" alt="img" style="zoom:67%;" />
+
+```
+输入：mat = [[0,0,0],[0,1,0],[1,1,1]]
+输出：[[0,0,0],[0,1,0],[1,2,1]]
+```
+
+ 
+
+**提示：**
+
+- `m == mat.length`
+- `n == mat[i].length`
+- `1 <= m, n <= 10^4`
+- `1 <= m * n <= 10^4`
+- `mat[i][j] is either 0 or 1.`
+- `mat` 中至少有一个 `0 `
+
+ 
+
+124ms，击败64.56%
+
+```python
+from typing import List
+from collections import deque
+
+class Solution:
+    def updateMatrix(self, mat: List[List[int]]) -> List[List[int]]:
+        m, n = len(mat), len(mat[0])
+        dp = [[float('inf')] * n for _ in range(m)]
+        queue = deque()
+
+        # 初始化，把所有 0 加入队列，结构为 (dist, i, j)
+        for i in range(m):
+            for j in range(n):
+                if mat[i][j] == 0:
+                    dp[i][j] = 0
+                    queue.append((0, i, j))  # 明确带 dist，便于调试、阅读
+
+        directions = [(-1,0), (1,0), (0,-1), (0,1)]
+
+        while queue:
+            dist, x, y = queue.popleft()
+
+            # 如果当前距离比 dp 更大，说明已被更新（可选的剪枝）
+            if dist > dp[x][y]:
+                continue
+
+            for dx, dy in directions:
+                nx, ny = x + dx, y + dy
+                if 0 <= nx < m and 0 <= ny < n:
+                    if dp[nx][ny] > dist + 1:
+                        dp[nx][ny] = dist + 1
+                        queue.append((dp[nx][ny], nx, ny))  
+
+        return dp
+
+# 测试
+if __name__ == "__main__":
+    mat = [[0,0,0],[0,1,0],[1,1,1]]
+    for row in Solution().updateMatrix(mat):
+        print(row)
+
+```
+
+
+
+是 OJ01088:滑雪 的升级版。因为矩阵每个点的高度有更新，不能只用sort一次，需要使用heapq。
+
+当路径代价不同、更新存在“早晚优先级”时，用堆有优势。否则 BFS 更快。
+
+207ms，击败19.49%
+
+```python
+import heapq
+from typing import List
+
+class Solution:
+    def updateMatrix(self, mat: List[List[int]]) -> List[List[int]]:
+        m, n = len(mat), len(mat[0])
+        dp = [[float('inf')] * n for _ in range(m)]
+        heap = []
+
+        # 初始化，所有的0加入到堆中
+        for i in range(m):
+            for j in range(n):
+                if mat[i][j] == 0:
+                    dp[i][j] = 0
+                    heapq.heappush(heap, (0, i, j))  # (distance, x, y)
+
+        # 定义四个方向的移动
+        directions = [(0, 1), (0, -1), (1, 0), (-1, 0)]
+
+        # 使用堆进行更新
+        while heap:
+            dist, x, y = heapq.heappop(heap)
+
+            # 如果当前的距离大于 dp[x][y]，说明这个位置已经被更新过，不需要再次处理
+            if dist > dp[x][y]:
+                continue
+
+            # 对当前点的四个方向进行处理
+            for dx, dy in directions:
+                nx, ny = x + dx, y + dy
+                if 0 <= nx < m and 0 <= ny < n:
+                    # 如果新位置的dp值可以更新（即发现更短的路径）
+                    if dp[nx][ny] > dp[x][y] + 1:
+                        dp[nx][ny] = dp[x][y] + 1
+                        heapq.heappush(heap, (dp[nx][ny], nx, ny))
+
+        return dp
+
+# 测试用例
+if __name__ == "__main__":
+    mat = [[0,0,0],[0,1,0],[1,1,1]]
+    print(Solution().updateMatrix(mat))
+```
+
+
 
 01088: 滑雪，http://cs101.openjudge.cn/2025sp_routine/01088
 
@@ -421,9 +633,91 @@ dp, two pointers, Manacher，https://leetcode.cn/problems/longest-palindromic-su
 
 
 
-### 滑动窗口
+### 滑动窗口sliding window
 
-3556.最大质数子字符串之和，https://leetcode.cn/problems/sum-of-largest-prime-substrings/description/
+**M3556.最大质数子字符串之和，**https://leetcode.cn/problems/sum-of-largest-prime-substrings/description/
+
+给定一个字符串 `s`，找出可以由其 **子字符串** 组成的 **3个最大的不同质数** 的和。
+
+返回这些质数的 **总和** ，如果少于 3 个不同的质数，则返回 **所有** 不同质数的和。
+
+质数是大于 1 且只有两个因数的自然数：1和它本身。
+
+**子字符串** 是字符串中的一个连续字符序列。 
+
+**注意：**每个质数即使出现在 **多个** 子字符串中，也只能计算 **一次** 。此外，将子字符串转换为整数时，忽略任何前导零。
+
+ 
+
+**示例 1：**
+
+**输入：** s = "12234"
+
+**输出：** 1469
+
+**解释：**
+
+- 由 `"12234"` 的子字符串形成的不同质数为 2 ，3 ，23 ，223 和 1223。
+- 最大的 3 个质数是 1223、223 和 23。它们的和是 1469。
+
+**示例 2：**
+
+**输入：** s = "111"
+
+**输出：** 11
+
+**解释：**
+
+- 由 `"111"` 的子字符串形成的不同质数是 11。
+- 由于只有一个质数，所以结果是 11。
+
+ 
+
+**提示：**
+
+- `1 <= s.length <= 10`
+- `s` 仅由数字组成。
+
+
+
+
+
+```python
+class Solution:
+    def sumOfLargestPrimes(self, s: str) -> int:
+        def is_prime(n: int) -> bool:
+            if n < 2:
+                return False
+            for i in range(2, int(n**0.5) + 1):
+                if n % i == 0:
+                    return False
+            return True
+
+        primes = set()
+        for left in range(len(s)):
+            num = int(s[left])
+            if is_prime(num):
+                primes.add(num)
+            for right in range(left + 1, len(s)):
+                num = int(s[left:right + 1])
+
+                if is_prime(num):
+                    primes.add(num)
+
+        primes = list(primes)
+        primes.sort(reverse=True)
+
+        return sum(primes[:3]) if len(primes) > 2 else sum(primes)
+
+if __name__ == "__main__":
+    sol = Solution()
+    print(sol.sumOfLargestPrimes("12234"))
+    print(sol.sumOfLargestPrimes("111"))
+```
+
+
+
+
 
 2962.统计最大元素出现至少K次的子数组，https://leetcode.cn/problems/count-subarrays-where-max-element-appears-at-least-k-times/
 
@@ -433,13 +727,131 @@ dp, two pointers, Manacher，https://leetcode.cn/problems/longest-palindromic-su
 
 ### 单调栈Monotonic Stack
 
-84.柱状图中最大的矩形，https://leetcode.cn/problems/largest-rectangle-in-histogram/
+**T84.柱状图中最大的矩形，**https://leetcode.cn/problems/largest-rectangle-in-histogram/
+
+给定 *n* 个非负整数，用来表示柱状图中各个柱子的高度。每个柱子彼此相邻，且宽度为 1 。
+
+求在该柱状图中，能够勾勒出来的矩形的最大面积。
+
+ 
+
+**示例 1:**
+
+<img src="https://assets.leetcode.com/uploads/2021/01/04/histogram.jpg" alt="img" style="zoom:67%;" />
+
+```
+输入：heights = [2,1,5,6,2,3]
+输出：10
+解释：最大的矩形为图中红色区域，面积为 10
+```
+
+**示例 2：**
+
+<img src="https://assets.leetcode.com/uploads/2021/01/04/histogram-1.jpg" alt="img" style="zoom:67%;" />
+
+```
+输入： heights = [2,4]
+输出： 4
+```
+
+ 
+
+**提示：**
+
+- `1 <= heights.length <=10^5`
+- `0 <= heights[i] <= 10^4`
+
+
+
+```python
+from typing import List
+class Solution:
+    def largestRectangleArea(self, heights: List[int]) -> int:
+        stack = []
+        heights = [0] + heights + [0]
+        res = 0
+        for i in range(len(heights)):
+            while stack and heights[i] < heights[stack[-1]]:
+                h = heights[stack.pop()]
+                w = i - stack[-1] - 1
+                res = max(res, h * w)
+            stack.append(i)
+        return res
+
+if __name__ == '__main__':
+    s = Solution()
+    print(s.largestRectangleArea([2,1,5,6,2,3]))
+```
+
+关键概念：
+
+1. **单调栈**：
+   - <mark>用栈来维护柱子的索引，并确保栈中的柱子高度是单调递增的。</mark>
+   - 当遇到比栈顶柱子矮的柱子时，就意味着栈顶的柱子已经不能再扩展更大的矩形了，应该从栈中弹出这个柱子，计算以它为高度的矩形面积。
+2. **为什么需要在 `heights` 前后加 0**：
+   - 通过在 `heights` 数组的开始和结束分别加上 `0`，可以保证栈最终能清空，并且在所有柱子处理完后能够强制计算出最后一块矩形面积。
+   - 这个“0”是为了处理栈中剩余的柱子（特别是最后一部分）。
+
+栈操作：
+
+- **栈中存储的是什么**：
+  - `stack` 中存储的是柱子的 **索引**，而不是柱子的高度。这样可以通过 `heights[i]` 直接访问到柱子的高度。
+- **计算矩形面积**：
+  - 在栈顶元素出栈时，表示栈顶柱子所能组成的最大矩形已经结束，当前的矩形高度就是栈顶柱子的高度。
+  - 宽度 `w` 的计算是当前索引 `i` 减去栈中的下一个元素索引（即 `stack[-1]`），再减去 1，因为栈中的元素代表了一个 **区间**。
+  - 例如，如果 `stack[-1]` 是索引 `j`，那么这个矩形的宽度就是 `i - j - 1`。
 
 
 
 ### KMP
 
-01961: 前缀中的周期，http://cs101.openjudge.cn/2025sp_routine/01961/
+T01961: 前缀中的周期，http://cs101.openjudge.cn/2025sp_routine/01961/
+
+题意：给定一个长度为N的字符串S，对S的每一个前缀S[1~i]，如果它的最大循环次数大于1，则输出该前缀的长度和最大循环次数。
+
+```python
+'''
+这是一个字符串匹配问题，通常使用KMP算法（Knuth-Morris-Pratt算法）来解决。
+使用了 Knuth-Morris-Pratt 算法来寻找字符串的所有前缀，并检查它们是否由重复的子串组成，
+如果是的话，就打印出前缀的长度和最大重复次数。
+'''
+
+# 得到字符串s的前缀值列表
+def kmp_next(s):
+  	# kmp算法计算最长相等前后缀
+    next = [0] * len(s)
+    j = 0
+    for i in range(1, len(s)):
+        while s[i] != s[j] and j > 0:
+            j = next[j - 1]
+        if s[i] == s[j]:
+            j += 1
+        next[i] = j
+    return next
+
+
+def main():
+    case = 0
+    while True:
+        n = int(input().strip())
+        if n == 0:
+            break
+        s = input().strip()
+        case += 1
+        print("Test case #{}".format(case))
+        next = kmp_next(s)
+        for i in range(2, len(s) + 1):
+            k = i - next[i - 1]		# 可能的重复子串的长度
+            if (i % k == 0) and i // k > 1:
+                print(i, i // k)
+        print()
+
+
+if __name__ == "__main__":
+    main()
+```
+
+
 
 
 
@@ -447,7 +859,91 @@ dp, two pointers, Manacher，https://leetcode.cn/problems/longest-palindromic-su
 
 3561.移除相邻字符，https://leetcode.cn/problems/resulting-string-after-adjacent-removals/
 
-24591:中序表达式转后序表达式，http://cs101.openjudge.cn/practice/24591/
+**T24591:中序表达式转后序表达式**，http://cs101.openjudge.cn/practice/24591/
+
+<mark>Shunting Yard 算法的主要思想是使用两个栈（运算符栈和输出栈）来处理表达式的符号</mark>。算法按照运算符的优先级和结合性，将符号逐个处理并放置到正确的位置。最终，输出栈中的元素就是转换后的后缀表达式。
+
+以下是 Shunting Yard 算法的基本步骤：
+
+1. 初始化运算符栈和输出栈为空。
+2. 从左到右遍历中缀表达式的每个符号。
+   - 如果是操作数（数字），则将其添加到输出栈。
+   - 如果是左括号，则将其推入运算符栈。
+   - 如果是运算符：
+     - 如果运算符的优先级大于运算符栈顶的运算符，或者运算符栈顶是左括号，则将当前运算符推入运算符栈。
+     - 否则，将运算符栈顶的运算符弹出并添加到输出栈中，直到满足上述条件（或者运算符栈为空）。
+     - 将当前运算符推入运算符栈。
+   - 如果是右括号，则将运算符栈顶的运算符弹出并添加到输出栈中，直到遇到左括号。将左括号弹出但不添加到输出栈中。
+3. 如果还有剩余的运算符在运算符栈中，将它们依次弹出并添加到输出栈中。
+4. 输出栈中的元素就是转换后的后缀表达式。
+
+
+
+<mark>接收浮点数，是number buffer技巧。</mark>
+
+```python
+def infix_to_postfix(expression):
+    precedence = {'+':1, '-':1, '*':2, '/':2}
+    stack = []
+    postfix = []
+    number = ''
+
+    for char in expression:
+        if char.isnumeric() or char == '.':
+            number += char
+        else:
+            if number:
+                num = float(number)
+                postfix.append(int(num) if num.is_integer() else num)
+                number = ''
+            if char in '+-*/':
+                while stack and stack[-1] in '+-*/' and precedence[char] <= precedence[stack[-1]]:
+                    postfix.append(stack.pop())
+                stack.append(char)
+            elif char == '(':
+                stack.append(char)
+            elif char == ')':
+                while stack and stack[-1] != '(':
+                    postfix.append(stack.pop())
+                stack.pop()
+
+    if number:
+        num = float(number)
+        postfix.append(int(num) if num.is_integer() else num)
+
+    while stack:
+        postfix.append(stack.pop())
+
+    return ' '.join(str(x) for x in postfix)
+
+n = int(input())
+for _ in range(n):
+    expression = input()
+    print(infix_to_postfix(expression))
+```
+
+
+
+接收数据，还可以用<mark>re处理</mark>。
+
+```python
+# 24591:中序表达式转后序表达式
+# http://cs101.openjudge.cn/practice/24591/
+
+def inp(s):
+    #s=input().strip()
+    import re
+    s=re.split(r'([\(\)\+\-\*\/])',s)
+    s=[item for item in s if item.strip()]
+    return s
+
+exp = "(3)*((3+4)*(2+3.5)/(4+5)) "
+print(inp(exp))
+```
+
+
+
+
 
 sy295: 可能的出栈序列，https://sunnywhy.com/sfbj/7/1/295
 
@@ -469,13 +965,113 @@ sy295: 可能的出栈序列，https://sunnywhy.com/sfbj/7/1/295
 
 ### 辅助栈
 
-155.最小栈，https://leetcode.cn/problems/min-stack/
+M155.最小栈，https://leetcode.cn/problems/min-stack/
+
+OOP，辅助栈, https://leetcode.cn/problems/min-stack/
+
+设计一个支持 `push` ，`pop` ，`top` 操作，并能在<mark>常数时间内检索到最小元素的栈</mark>。
+
+实现 `MinStack` 类:
+
+- `MinStack()` 初始化堆栈对象。
+- `void push(int val)` 将元素val推入堆栈。
+- `void pop()` 删除堆栈顶部的元素。
+- `int top()` 获取堆栈顶部的元素。
+- `int getMin()` 获取堆栈中的最小元素。
+
+ 
+
+**示例 1:**
+
+```
+输入：
+["MinStack","push","push","push","getMin","pop","top","getMin"]
+[[],[-2],[0],[-3],[],[],[],[]]
+
+输出：
+[null,null,null,null,-3,null,0,-2]
+
+解释：
+MinStack minStack = new MinStack();
+minStack.push(-2);
+minStack.push(0);
+minStack.push(-3);
+minStack.getMin();   --> 返回 -3.
+minStack.pop();
+minStack.top();      --> 返回 0.
+minStack.getMin();   --> 返回 -2.
+```
+
+ 
+
+**提示：**
+
+- `-2^31 <= val <= 2^31 - 1`
+- `pop`、`top` 和 `getMin` 操作总是在 **非空栈** 上调用
+- `push`, `pop`, `top`, and `getMin`最多被调用 `3 * 10^4` 次
+
+
+
+```python
+class MinStack:
+
+    def __init__(self):
+        self.stack = []
+        self.min_stack = []
+
+    def push(self, val: int) -> None:
+        self.stack.append(val)
+        if not self.min_stack or val <= self.min_stack[-1]:
+            self.min_stack.append(val)
+
+    def pop(self) -> None:
+        if self.stack:
+            if self.stack[-1] == self.min_stack[-1]:
+                self.min_stack.pop()
+            self.stack.pop()
+
+    def top(self) -> int:
+        if self.stack:
+            return self.stack[-1]
+
+    def getMin(self) -> int:
+        if self.min_stack:
+            return self.min_stack[-1]
+
+# Your MinStack object will be instantiated and called as such:
+# obj = MinStack()
+# obj.push(val)
+# obj.pop()
+# param_3 = obj.top()
+# param_4 = obj.getMin()
+```
+
+
 
 
 
 ### 队列queue
 
-04067:回文数字，http://cs101.openjudge.cn/2025sp_routine/04067/
+**E04067:回文数字**，http://cs101.openjudge.cn/2025sp_routine/04067/
+
+```python
+from collections import deque
+
+def is_palindrome(num):
+    num_str = str(num)
+    num_deque = deque(num_str)
+    while len(num_deque) > 1:
+        if num_deque.popleft() != num_deque.pop():
+            return "NO"
+    return "YES"
+
+while True:
+    try:
+        num = int(input())
+        print(is_palindrome(num))
+    except EOFError:
+        break
+```
 
 
 
@@ -485,11 +1081,171 @@ sy295: 可能的出栈序列，https://sunnywhy.com/sfbj/7/1/295
 
 18161:矩阵运算(先乘再加)，http://cs101.openjudge.cn/2025sp_routine/18161/
 
-48.旋转图像，https://leetcode.cn/problems/rotate-image/
+**M48.旋转图像**，https://leetcode.cn/problems/rotate-image/
 
-2906.构造乘积矩阵
+给定一个 *n* × *n* 的二维矩阵 `matrix` 表示一个图像。请你将图像顺时针旋转 90 度。
+
+你必须在**[ 原地](https://baike.baidu.com/item/原地算法)** 旋转图像，这意味着你需要直接修改输入的二维矩阵。**请不要** 使用另一个矩阵来旋转图像。
+
+ 
+
+**示例 1：**
+
+<img src="https://assets.leetcode.com/uploads/2020/08/28/mat1.jpg" alt="img" style="zoom:67%;" />
+
+```
+输入：matrix = [[1,2,3],[4,5,6],[7,8,9]]
+输出：[[7,4,1],[8,5,2],[9,6,3]]
+```
+
+**示例 2：**
+
+<img src="https://assets.leetcode.com/uploads/2020/08/28/mat2.jpg" alt="img" style="zoom:67%;" />
+
+```
+输入：matrix = [[5,1,9,11],[2,4,8,10],[13,3,6,7],[15,14,12,16]]
+输出：[[15,13,2,5],[14,3,4,1],[12,6,8,9],[16,7,10,11]]
+```
+
+ 
+
+**提示：**
+
+- `n == matrix.length == matrix[i].length`
+- `1 <= n <= 20`
+- `-1000 <= matrix[i][j] <= 1000`
+
+
+
+```python
+class Solution:
+    def rotate(self, matrix: List[List[int]]) -> None:
+        """
+        Do not return anything, modify matrix in-place instead.
+        """
+        n = len(matrix)
+        for i in range(n):  # 先转置矩阵
+            for j in range(i, n):
+                matrix[i][j], matrix[j][i] = matrix[j][i], matrix[i][j]
+        for i in range(n):  # 再水平翻转矩阵
+            matrix[i].reverse()
+```
+
+
+
+
+
+**M2906.构造乘积矩阵**
 
 matrices, prefix sum，https://leetcode.cn/problems/construct-product-matrix/
+
+给你一个下标从 **0** 开始、大小为 `n * m` 的二维整数矩阵 `grid` ，定义一个下标从 **0** 开始、大小为 `n * m` 的的二维矩阵 `p`。如果满足以下条件，则称 `p` 为 `grid` 的 **乘积矩阵** ：
+
+- 对于每个元素 `p[i][j]` ，它的值等于除了 `grid[i][j]` 外所有元素的乘积。乘积对 `12345` 取余数。
+
+返回 `grid` 的乘积矩阵。
+
+ 
+
+**示例 1：**
+
+```
+输入：grid = [[1,2],[3,4]]
+输出：[[24,12],[8,6]]
+解释：p[0][0] = grid[0][1] * grid[1][0] * grid[1][1] = 2 * 3 * 4 = 24
+p[0][1] = grid[0][0] * grid[1][0] * grid[1][1] = 1 * 3 * 4 = 12
+p[1][0] = grid[0][0] * grid[0][1] * grid[1][1] = 1 * 2 * 4 = 8
+p[1][1] = grid[0][0] * grid[0][1] * grid[1][0] = 1 * 2 * 3 = 6
+所以答案是 [[24,12],[8,6]] 。
+```
+
+**示例 2：**
+
+```
+输入：grid = [[12345],[2],[1]]
+输出：[[2],[0],[0]]
+解释：p[0][0] = grid[0][1] * grid[0][2] = 2 * 1 = 2
+p[0][1] = grid[0][0] * grid[0][2] = 12345 * 1 = 12345. 12345 % 12345 = 0 ，所以 p[0][1] = 0
+p[0][2] = grid[0][0] * grid[0][1] = 12345 * 2 = 24690. 24690 % 12345 = 0 ，所以 p[0][2] = 0
+所以答案是 [[2],[0],[0]] 。
+```
+
+ 
+
+**提示：**
+
+- `1 <= n == grid.length <= 10^5`
+- `1 <= m == grid[i].length <= 10^5`
+- `2 <= n * m <= 10^5`
+- `1 <= grid[i][j] <= 10^9`
+
+
+
+
+
+思路是先将二维矩阵拉平成一维数组，然后利用前缀与后缀乘积数组计算出每个位置除去当前值外所有元素的乘积，最后再还原为二维矩阵。注意计算均在模 12345 意义下进行。
+
+```python
+from typing import List
+
+class Solution:
+    def constructProductMatrix(self, grid: List[List[int]]) -> List[List[int]]:
+        mod = 12345
+        n = len(grid)
+        m = len(grid[0])
+        N = n * m
+        # 将二维矩阵展平成一维数组
+        arr = []
+        for row in grid:
+            arr.extend(row)
+
+        # 计算前缀乘积数组
+        prefix = [0] * N
+        prefix[0] = arr[0] % mod
+        for i in range(1, N):
+            prefix[i] = (prefix[i - 1] * arr[i]) % mod
+
+        # 计算后缀乘积数组
+        suffix = [0] * N
+        suffix[-1] = arr[-1] % mod
+        for i in range(N - 2, -1, -1):
+            suffix[i] = (suffix[i + 1] * arr[i]) % mod
+
+        # 计算结果数组：对于位置 i, 结果为 (前缀[i-1] * 后缀[i+1]) % mod
+        res = [0] * N
+        for i in range(N):
+            left = prefix[i - 1] if i > 0 else 1
+            right = suffix[i + 1] if i < N - 1 else 1
+            res[i] = (left * right) % mod
+
+        # 将结果数组还原成 n*m 的矩阵
+        ans = []
+        idx = 0
+        for i in range(n):
+            row = []
+            for j in range(m):
+                row.append(res[idx])
+                idx += 1
+            ans.append(row)
+        return ans
+
+if __name__ == "__main__":
+    sol = Solution()
+    grid1 = [[1, 2], [3, 4]]
+    grid2 = [[12345], [2], [1]]
+    print(sol.constructProductMatrix(grid1))  # Expected output: [[24, 12], [8, 6]]
+    print(sol.constructProductMatrix(grid2))  # Expected output: [[2], [0], [0]]
+
+```
+
+**说明**
+
+- **思路：**  
+  将二维矩阵拉平成一维数组后，可以用前缀和后缀乘积分别保存当前位置之前和之后所有元素的乘积。对于位置 `i`，其答案就是前缀乘积（不包括当前值）与后缀乘积（不包括当前值）的乘积，最后再取模 12345。
+- **时间复杂度：**  
+  整个过程只需对所有元素进行几次遍历，时间复杂度为 O(n*m)（最多 10^5 个元素）。
+- **注意事项：**  
+  由于模数 12345 不是质数，因此不能直接使用全局乘积再除去当前值（利用模逆元）来计算答案。使用前缀后缀数组可以避免除法问题。
 
 
 
@@ -505,7 +1261,359 @@ matrices, prefix sum，https://leetcode.cn/problems/construct-product-matrix/
 
 909.蛇梯棋，https://leetcode.cn/problems/snakes-and-ladders/
 
-28046: 词梯，http://cs101.openjudge.cn/2025sp_routine/28046/
+**28046: 词梯**，http://cs101.openjudge.cn/2025sp_routine/28046/
+
+词梯问题是由“爱丽丝漫游奇境”的作者 Lewis Carroll 在1878年所发明的单词游戏。从一个单词演变到另一个单词，其中的过程可以经过多个中间单词。要求是相邻两个单词之间差异只能是1个字母，如fool -> pool -> poll -> pole -> pale -> sale -> sage。与“最小编辑距离”问题的区别是，中间状态必须是单词。目标是找到最短的单词变换序列。
+
+假设有一个大的单词集合（或者全是大写单词，或者全是小写单词），集合中每个元素都是四个字母的单词。采用图来解决这个问题，如果两个单词的区别仅在于有一个不同的字母，就用一条边将它们相连。如果能创建这样一个图，那么其中的任意一条连接两个单词的路径就是词梯问题的一个解，我们要找最短路径的解。下图展示了一个小型图，可用于解决从 fool 到sage的词梯问题。
+
+注意，它是无向图，并且边没有权重。
+
+![img](http://media.openjudge.cn/images/upload/2596/1712744630.jpg)
+
+
+
+**输入**
+
+输入第一行是个正整数 n，表示接下来有n个四字母的单词，每个单词一行。2 <= n <= 4000。
+随后是 1 行，描述了一组要找词梯的起始单词和结束单词，空格隔开。
+
+**输出**
+
+输出词梯对应的单词路径，空格隔开。如果不存在输出 NO。
+如果有路径，保证有唯一解。
+
+样例输入
+
+```
+25
+bane
+bank
+bunk
+cane
+dale
+dunk
+foil
+fool
+kale
+lane
+male
+mane
+pale
+pole
+poll
+pool
+quip
+quit
+rain
+sage
+sale
+same
+tank
+vain
+wane
+fool sage
+```
+
+样例输出
+
+```
+fool pool poll pole pale sale sage
+```
+
+来源
+
+https://runestone.academy/ns/books/published/pythonds/Graphs/TheWordLadderProblem.html
+
+
+
+按照单词随机替换一个字母建立桶，构建桶内各单词的联系，然后从起点广度优先遍历和起点相连的
+点，过程中记录每个词的前一个词，直至遇到终止词，然后倒序往前追溯即可
+
+```python
+import sys
+from collections import deque
+
+class Graph:
+    def __init__(self):
+        self.vertices = {}
+        self.num_vertices = 0
+
+    def add_vertex(self, key):
+        self.num_vertices = self.num_vertices + 1
+        new_vertex = Vertex(key)
+        self.vertices[key] = new_vertex
+        return new_vertex
+
+    def get_vertex(self, n):
+        if n in self.vertices:
+            return self.vertices[n]
+        else:
+            return None
+
+    def __len__(self):
+        return self.num_vertices
+
+    def __contains__(self, n):
+        return n in self.vertices
+
+    def add_edge(self, f, t, cost=0):
+        if f not in self.vertices:
+            nv = self.add_vertex(f)
+        if t not in self.vertices:
+            nv = self.add_vertex(t)
+        self.vertices[f].add_neighbor(self.vertices[t], cost)
+
+    def get_vertices(self):
+        return list(self.vertices.keys())
+
+    def __iter__(self):
+        return iter(self.vertices.values())
+
+
+class Vertex:
+    def __init__(self, num):
+        self.key = num
+        self.connectedTo = {}
+        self.color = 'white'
+        self.distance = sys.maxsize
+        self.previous = None
+        self.disc = 0
+        self.fin = 0
+
+    def add_neighbor(self, nbr, weight=0):
+        self.connectedTo[nbr] = weight
+
+    # def setDiscovery(self, dtime):
+    #     self.disc = dtime
+    #
+    # def setFinish(self, ftime):
+    #     self.fin = ftime
+    #
+    # def getFinish(self):
+    #     return self.fin
+    #
+    # def getDiscovery(self):
+    #     return self.disc
+
+    def get_neighbors(self):
+        return self.connectedTo.keys()
+
+    # def getWeight(self, nbr):
+    #     return self.connectedTo[nbr]
+
+    # def __str__(self):
+    #     return str(self.key) + ":color " + self.color + ":disc " + str(self.disc) + ":fin " + str(
+    #         self.fin) + ":dist " + str(self.distance) + ":pred \n\t[" + str(self.previous) + "]\n"
+
+
+
+def build_graph(all_words):
+    buckets = {}
+    the_graph = Graph()
+
+    # 创建词桶 create buckets of words that differ by 1 letter
+    for line in all_words:
+        word = line.strip()
+        for i, _ in enumerate(word):
+            bucket = f"{word[:i]}_{word[i + 1:]}"
+            buckets.setdefault(bucket, set()).add(word)
+
+    # 为同一个桶中的单词添加顶点和边
+    for similar_words in buckets.values():
+        for word1 in similar_words:
+            for word2 in similar_words - {word1}:
+                the_graph.add_edge(word1, word2)
+
+    return the_graph
+
+
+def bfs(start, end):
+    start.distnce = 0
+    start.previous = None
+    vert_queue = deque()
+    vert_queue.append(start)
+    while len(vert_queue) > 0:
+        current = vert_queue.popleft()  # 取队首作为当前顶点
+
+        if current == end:
+            return True
+
+        for neighbor in current.get_neighbors():  # 遍历当前顶点的邻接顶点
+            if neighbor.color == "white":
+                neighbor.color = "gray"
+                neighbor.distance = current.distance + 1
+                neighbor.previous = current
+                vert_queue.append(neighbor)
+        current.color = "black"  # 当前顶点已经处理完毕，设黑色
+
+    return False
+
+"""
+BFS 算法主体是两个循环的嵌套: while-for
+    while 循环对图中每个顶点访问一次，所以是 O(|V|)；
+    嵌套在 while 中的 for，由于每条边只有在其起始顶点u出队的时候才会被检查一次，
+    而每个顶点最多出队1次，所以边最多被检查次，一共是 O(|E|)；
+    综合起来 BFS 的时间复杂度为 0(V+|E|)
+
+词梯问题还包括两个部分算法
+    建立 BFS 树之后，回溯顶点到起始顶点的过程，最多为 O(|V|)
+    创建单词关系图也需要时间，时间是 O(|V|+|E|) 的，因为每个顶点和边都只被处理一次
+"""
+
+
+def traverse(starting_vertex):
+    ans = []
+    current = starting_vertex
+    while (current.previous):
+        ans.append(current.key)
+        current = current.previous
+    ans.append(current.key)
+
+    return ans
+
+
+n = int(input())
+all_words = []
+for _ in range(n):
+    all_words.append(input().strip())
+
+g = build_graph(all_words)
+# print(len(g))
+
+s, e = input().split()
+start, end = g.get_vertex(s), g.get_vertex(e)
+if start is None or end is None:
+    print('NO')
+    exit(0)
+
+if bfs(start, end):
+    ans = traverse(end)
+    print(' '.join(ans[::-1]))
+else:
+    print('NO')
+```
+
+
+
+```python
+# 周添 物理学院
+from collections import deque
+
+def construct_graph(words):
+    graph = {}
+    for word in words:
+        for i in range(len(word)):
+            pattern = word[:i] + '*' + word[i + 1:]
+            if pattern not in graph:
+                graph[pattern] = []
+            graph[pattern].append(word)
+    return graph
+
+def bfs(start, end, graph):
+    queue = deque([(start, [start])])
+    visited = set([start])
+    
+    while queue:
+        word, path = queue.popleft()
+        if word == end:
+            return path
+        for i in range(len(word)):
+            pattern = word[:i] + '*' + word[i + 1:]
+            if pattern in graph:
+                neighbors = graph[pattern]
+                for neighbor in neighbors:
+                    if neighbor not in visited:
+                        visited.add(neighbor)
+                        queue.append((neighbor, path + [neighbor]))
+    return None
+
+def word_ladder(words, start, end):
+    graph = construct_graph(words)
+    return bfs(start, end, graph)
+
+n = int(input())
+words = [input().strip() for _ in range(n)]
+start, end = input().strip().split()
+
+result = word_ladder(words, start, end)
+
+if result:
+    print(' '.join(result))
+else:
+    print("NO")
+```
+
+
+
+焦晨航 数学科学学院：最最最高兴的一集！零碎看了一天，看了题解没直接ctrl c+ctrl v，而是狠狠洞察思路用计概手段拿下！长度短，能看懂，好操作，爽完了。
+
+```python
+# 焦晨航 数学科学学院
+from collections import defaultdict
+dic=defaultdict(list)
+n,lis=int(input()),[]
+for i in range(n):
+    lis.append(input())
+for word in lis:
+    for i in range(len(word)):
+        bucket=word[:i]+'_'+word[i+1:]
+        dic[bucket].append(word)
+def bfs(start,end,dic):
+    queue=[(start,[start])]
+    visited=[start]
+    while queue:
+        currentword,currentpath=queue.pop(0)
+        if currentword==end:
+            return ' '.join(currentpath)
+        for i in range(len(currentword)):
+            bucket=currentword[:i]+'_'+currentword[i+1:]
+            for nbr in dic[bucket]:
+                if nbr not in visited:
+                    visited.append(nbr)
+                    newpath=currentpath+[nbr]
+                    queue.append((nbr,newpath))
+    return 'NO'
+start,end=map(str,input().split())    
+print(bfs(start,end,dic))
+```
+
+
+
+将有三个字母确定的单词存到固定的桶中，进行BFS时只要将同一个桶中未入队的单词入队即可。对每个单词存储其BFS过程中的“父节点”，最后逆序找出路径输出即可。
+
+```python
+# 蔡沐轩 数学科学学院
+from collections import defaultdict,deque
+
+buckets=defaultdict(list)
+for _ in range(int(input())):
+    word=input()
+    for k in range(4):
+        buckets[word[:k]+' '+word[k+1:]].append(word)
+x,y=input().split()
+father={x:x}
+q=deque([x])
+while q:
+    word=q.popleft()
+    if word==y:break
+    for k in range(4):
+        for i in buckets[word[:k]+' '+word[k+1:]]:
+            if i not in father:
+                q.append(i)
+                father[i]=word
+if word==y:
+    ans=[y]
+    while y!=x:
+        y=father[y]
+        ans.append(y)
+    print(' '.join(reversed(ans)))
+else:print('NO')
+```
+
+
+
+
 
 117.填充每个节点的下一个右侧节点指针II，https://leetcode.cn/problems/populating-next-right-pointers-in-each-node-ii/
 
@@ -543,7 +1651,95 @@ dfs, Warnsdorff, http://cs101.openjudge.cn/2025sp_routine/28050/
 
 114.二叉树展开为链表，https://leetcode.cn/problems/flatten-binary-tree-to-linked-list/
 
-236.二叉树的最近公共祖先，https://leetcode.cn/problems/lowest-common-ancestor-of-a-binary-tree/
+**236.二叉树的最近公共祖先**，https://leetcode.cn/problems/lowest-common-ancestor-of-a-binary-tree/
+
+给定一个二叉树, 找到该树中两个指定节点的最近公共祖先。
+
+[百度百科](https://baike.baidu.com/item/最近公共祖先/8918834?fr=aladdin)中最近公共祖先的定义为：“对于有根树 T 的两个节点 p、q，最近公共祖先表示为一个节点 x，满足 x 是 p、q 的祖先且 x 的深度尽可能大（**一个节点也可以是它自己的祖先**）。”
+
+ 
+
+**示例 1：**
+
+![img](https://assets.leetcode.com/uploads/2018/12/14/binarytree.png)
+
+```
+输入：root = [3,5,1,6,2,0,8,null,null,7,4], p = 5, q = 1
+输出：3
+解释：节点 5 和节点 1 的最近公共祖先是节点 3 。
+```
+
+**示例 2：**
+
+![img](https://assets.leetcode.com/uploads/2018/12/14/binarytree.png)
+
+```
+输入：root = [3,5,1,6,2,0,8,null,null,7,4], p = 5, q = 4
+输出：5
+解释：节点 5 和节点 4 的最近公共祖先是节点 5 。因为根据定义最近公共祖先节点可以为节点本身。
+```
+
+**示例 3：**
+
+```
+输入：root = [1,2], p = 1, q = 2
+输出：1
+```
+
+ 
+
+**提示：**
+
+- 树中节点数目在范围 `[2, 10^5]` 内。
+- `-10^9 <= Node.val <= 10^9`
+- 所有 `Node.val` `互不相同` 。
+- `p != q`
+- `p` 和 `q` 均存在于给定的二叉树中。
+
+
+
+这是一个经典的“**最近公共祖先**”问题，可以用递归解决。基本思路如下：
+
+------
+
+🔍 递归思路
+
+对于任意节点 `root`：
+
+- 如果 `root` 是 `None`，或者 `root == p` 或 `root == q`，那么就返回 `root`。
+- 否则，递归查找左子树和右子树：
+  - `left = lowestCommonAncestor(root.left, p, q)`
+  - `right = lowestCommonAncestor(root.right, p, q)`
+- 如果 `left` 和 `right` 都非空，说明 `p` 和 `q` 分别在左右子树中，`root` 就是最近公共祖先。
+- 如果只有一个非空，说明两个节点都在某一边，返回那一边的结果。
+
+------
+
+✅ Python 代码实现
+
+```python
+class TreeNode:
+    def __init__(self, val=0, left=None, right=None):
+        self.val = val
+        self.left = left
+        self.right = right
+
+class Solution:
+    def lowestCommonAncestor(self, root: TreeNode, p: TreeNode, q: TreeNode) -> TreeNode:
+        if root is None or root == p or root == q:
+            return root
+        
+        left = self.lowestCommonAncestor(root.left, p, q)
+        right = self.lowestCommonAncestor(root.right, p, q)
+
+        if left and right:
+            return root  # p 和 q 分别在左右子树
+        return left if left else right  # 都在左子树或右子树
+```
+
+
+
+
 
 437.路径总和III
 
@@ -591,9 +1787,117 @@ dfs, matirces, http://cs101.openjudge.cn/2025sp_routine/20052/
 
 03424: Candies，http://cs101.openjudge.cn/2025sp_routine/03424/
 
-3341.到达最后一个房间的最少时间 I，https://leetcode.cn/problems/find-minimum-time-to-reach-last-room-i/
+M3341.到达最后一个房间的最少时间 I，https://leetcode.cn/problems/find-minimum-time-to-reach-last-room-i/
 
-743.网络延迟时间，https://leetcode.cn/problems/network-delay-time/description/
+
+
+**M743.网络延迟时间**
+
+Dijkstra, https://leetcode.cn/problems/network-delay-time/
+
+有 `n` 个网络节点，标记为 `1` 到 `n`。
+
+给你一个列表 `times`，表示信号经过 **有向** 边的传递时间。 `times[i] = (ui, vi, wi)`，其中 `ui` 是源节点，`vi` 是目标节点， `wi` 是一个信号从源节点传递到目标节点的时间。
+
+现在，从某个节点 `K` 发出一个信号。需要多久才能使所有节点都收到信号？如果不能使所有节点收到信号，返回 `-1`。
+
+ 
+
+**示例 1：**
+
+<img src="https://assets.leetcode.com/uploads/2019/05/23/931_example_1.png" alt="img" style="zoom: 67%;" />
+
+```
+输入：times = [[2,1,1],[2,3,1],[3,4,1]], n = 4, k = 2
+输出：2
+```
+
+**示例 2：**
+
+```
+输入：times = [[1,2,1]], n = 2, k = 1
+输出：1
+```
+
+**示例 3：**
+
+```
+输入：times = [[1,2,1]], n = 2, k = 2
+输出：-1
+```
+
+ 
+
+**提示：**
+
+- `1 <= k <= n <= 100`
+- `1 <= times.length <= 6000`
+- `times[i].length == 3`
+- `1 <= ui, vi <= n`
+- `ui != vi`
+- `0 <= wi <= 100`
+- 所有 `(ui, vi)` 对都 **互不相同**（即，不含重复边）
+
+
+
+这是一个典型的 **最短路径问题**，我们要计算从起点 `k` 出发，到所有其他节点的最短传递时间。
+
+我们可以使用 **Dijkstra 算法** 来解决这个问题。因为节点编号是 `1` 到 `n`，我们需要建图并用 **最小堆** 来高效找到当前可达的最短路径节点。
+
+✅ 代码实现（Dijkstra 算法）
+
+```python
+import heapq
+from typing import List
+from collections import defaultdict
+
+class Solution:
+    def networkDelayTime(self, times: List[List[int]], n: int, k: int) -> int:
+        # 建图：邻接表
+        graph = defaultdict(list)
+        for u, v, w in times:
+            graph[u].append((v, w))
+
+        # 最短路径字典，记录每个节点被首次到达的最短时间
+        dist = dict()
+
+        # 小根堆，存储的是 (到达时间, 节点)
+        heap = [(0, k)]
+
+        while heap:
+            time, node = heapq.heappop(heap)
+            if node in dist:
+                continue  # 已访问，跳过
+
+            dist[node] = time
+            for nei, wt in graph[node]:
+                if nei not in dist:
+                    heapq.heappush(heap, (time + wt, nei))
+
+        # 如果并非所有节点都被访问，说明有节点无法到达
+        if len(dist) != n:
+            return -1
+        return max(dist.values())
+```
+
+------
+
+🚀 解释
+
+- 使用 Dijkstra 算法找到从 `k` 出发到所有节点的最短时间。
+- 用 `dist` 字典记录每个节点的最短到达时间。
+- 如果最后 `dist` 中的节点数量小于 `n`，说明有节点无法到达，返回 `-1`。
+- 否则，返回所有节点中最晚收到信号的时间，也就是 `dist` 的最大值。
+
+------
+
+🕒 时间复杂度
+
+- 构图时间：`O(E)`，E 为边数
+- Dijkstra 运行时间：`O((E + N) * log N)`
+- 最坏情况下：`O(6000 * log 100)`
+
+
 
 05443:兔子与樱花
 
@@ -671,7 +1975,79 @@ Merge sort, binary search, http://cs101.openjudge.cn/2025sp_routine/20018
 
 ### 三指针
 
-75.颜色分类，https://leetcode.cn/problems/sort-colors/
+**M75.颜色分类**，https://leetcode.cn/problems/sort-colors/
+
+给定一个包含红色、白色和蓝色、共 `n` 个元素的数组 `nums` ，**原地** 对它们进行排序，使得相同颜色的元素相邻，并按照红色、白色、蓝色顺序排列。
+
+一个原地算法（in-place algorithm）是一种使用小的，固定数量的额外之空间来转换资料的算法。当算法执行时，输入的资料通常会被要输出的部分覆盖掉。
+
+我们使用整数 `0`、 `1` 和 `2` 分别表示红色、白色和蓝色。
+
+必须在不使用库内置的 sort 函数的情况下解决这个问题。
+
+ 
+
+**示例 1：**
+
+```
+输入：nums = [2,0,2,1,1,0]
+输出：[0,0,1,1,2,2]
+```
+
+**示例 2：**
+
+```
+输入：nums = [2,0,1]
+输出：[0,1,2]
+```
+
+ 
+
+**提示：**
+
+- `n == nums.length`
+- `1 <= n <= 300`
+- `nums[i]` 为 `0`、`1` 或 `2`
+
+
+
+使用荷兰国旗问题的算法来解决这个问题。该算法基于三个指针：一个指向红色的边界（0），一个指向白色的边界（1），一个指向蓝色的边界（2）。我们可以通过一次遍历，将所有的颜色分组并按顺序排列。
+
+具体步骤如下：
+
+1. 使用三个指针，`low`（红色的边界）、`mid`（白色的当前指针）和 `high`（蓝色的边界）。
+2. 遍历数组，遇到以下情况：
+   - 如果当前元素是 `0`，将它和 `low` 指向的元素交换，然后 `low` 和 `mid` 都向右移动。
+   - 如果当前元素是 `1`，只需将 `mid` 向右移动。
+   - 如果当前元素是 `2`，将它和 `high` 指向的元素交换，然后 `high` 向左移动，`mid` 不变。
+
+这个算法的时间复杂度是 O(n)，空间复杂度是 O(1)。
+
+下面是代码实现：
+
+```python
+class Solution:
+    def sortColors(self, nums: List[int]) -> None:
+        """
+        Do not return anything, modify nums in-place instead.
+        """
+        low, mid, high = 0, 0, len(nums) - 1
+    
+        while mid <= high:
+            if nums[mid] == 0:
+                nums[low], nums[mid] = nums[mid], nums[low]  # Swap 0 to the low part
+                low += 1
+                mid += 1
+            elif nums[mid] == 1:
+                mid += 1  # Just move the mid pointer
+            else:  # nums[mid] == 2
+                nums[high], nums[mid] = nums[mid], nums[high]  # Swap 2 to the high part
+                high -= 1
+        
+        return nums
+```
+
+这个算法会一次性完成排序，且不使用任何额外的空间。
 
 
 
@@ -733,12 +2109,6 @@ Merge sort, binary search, http://cs101.openjudge.cn/2025sp_routine/20018
 
 
 
-### 前缀树Trie
-
-04089:电话号码，http://cs101.openjudge.cn/2025sp_routine/04089/
-
-
-
 ### 信息检索IR
 
 04093: 倒排索引查询，http://cs101.openjudge.cn/practice/04093/
@@ -787,7 +2157,109 @@ Merge sort, binary search, http://cs101.openjudge.cn/2025sp_routine/20018
 
 ### 面向对象编程OOP
 
-208.实现Trie(前缀树),https://leetcode.cn/problems/implement-trie-prefix-tree/
+**M208.实现Trie(前缀树)**,
+
+OOP，字典树，https://leetcode.cn/problems/implement-trie-prefix-tree/
+
+Trie（发音类似 "try"）或者说 **前缀树** 是一种树形数据结构，用于高效地存储和检索字符串数据集中的键。这一数据结构有相当多的应用情景，例如自动补全和拼写检查。
+
+请你实现 Trie 类：
+
+- `Trie()` 初始化前缀树对象。
+- `void insert(String word)` 向前缀树中插入字符串 `word` 。
+- `boolean search(String word)` 如果字符串 `word` 在前缀树中，返回 `true`（即，在检索之前已经插入）；否则，返回 `false` 。
+- `boolean startsWith(String prefix)` 如果之前已经插入的字符串 `word` 的前缀之一为 `prefix` ，返回 `true` ；否则，返回 `false` 。
+
+ 
+
+**示例：**
+
+```
+输入
+["Trie", "insert", "search", "search", "startsWith", "insert", "search"]
+[[], ["apple"], ["apple"], ["app"], ["app"], ["app"], ["app"]]
+输出
+[null, null, true, false, true, null, true]
+
+解释
+Trie trie = new Trie();
+trie.insert("apple");
+trie.search("apple");   // 返回 True
+trie.search("app");     // 返回 False
+trie.startsWith("app"); // 返回 True
+trie.insert("app");
+trie.search("app");     // 返回 True
+```
+
+ 
+
+**提示：**
+
+- `1 <= word.length, prefix.length <= 2000`
+- `word` 和 `prefix` 仅由小写英文字母组成
+- `insert`、`search` 和 `startsWith` 调用次数 **总计** 不超过 `3 * 10^4` 次
+
+
+
+
+
+```python
+class Trie:
+
+    def __init__(self):
+        """
+        Initialize your data structure here.
+        """
+        self.root = {}
+        self.end_of_word = "#"
+
+    def insert(self, word: str) -> None:
+        """
+        Inserts a word into the trie.
+        """
+        node = self.root
+        for char in word:
+            node = node.setdefault(char, {})    #returns the value of the item with the specified key.
+                                                # If the key does not exist, insert the key, with the specified value
+        node[self.end_of_word] = self.end_of_word
+
+
+    def search(self, word: str) -> bool:
+        """
+        Returns if the word is in the trie.
+        """
+        node = self.root
+        for char in word:
+            if char not in node:
+                return False
+            node = node[char]
+        return self.end_of_word in node
+
+    def startsWith(self, prefix: str) -> bool:
+        """
+        Returns if there is any word in the trie that starts with the given prefix.
+        """
+        node = self.root
+        for char in prefix:
+            if char not in node:
+                return False
+            node = node[char]
+        return True
+
+if __name__ == "__main__":
+    trie = Trie()
+    trie.insert("apple")
+    print(trie.search("apple"))   # return True
+    print(trie.search("app"))     # return False
+    print(trie.startsWith("app")) # return True
+    trie.insert("app")
+    print(trie.search("app"))     # return True
+
+```
+
+
+
+
 
 19943:图的拉普拉斯矩阵, http://cs101.openjudge.cn/2025sp_routine/19943/
 
@@ -799,15 +2271,285 @@ OOP, RE, https://leetcode.cn/contest/biweekly-contest-152/problems/design-spread
 
 
 
-### 牛顿迭代分
+### 前缀树Trie
 
-04140: 方程求解，http://cs101.openjudge.cn/2025sp_routine/04140/
+04089:电话号码，http://cs101.openjudge.cn/2025sp_routine/04089/
+
+
+
+### 牛顿迭代法
+
+**M04140: 方程求解**，
+
+牛顿迭代法, AI, binary search, http://cs101.openjudge.cn/practice/04140/
+
+求下面方程的根：$ f(x) = x^3 - 5x^2 + 10x - 80 = 0 $。
+
+**输入**
+
+\-
+
+**输出**
+
+精确到小数点后9位。
+
+样例输入
+
+```
+-
+```
+
+样例输出
+
+```
+-
+```
+
+
+
+
+
+可以用 **牛顿迭代法** 或 **二分法**  来求解方程 $ f(x) = x^3 - 5x^2 + 10x - 80 = 0 $。
+
+
+
+**方法 1：牛顿迭代法**（Newton-Raphson Method）
+
+牛顿法适用于方程可微的情况，需要计算导数：
+
+$$
+f'(x) = 3x^2 - 10x + 10
+$$
+更新公式：
+$$
+x_{n+1} = x_n - \frac{f(x_n)}{f'(x_n)}
+$$
+
+
+
+Python 实现，输出保留到小数点后 9 位：
+
+```python
+def f(x):
+    return x**3 - 5*x**2 + 10*x - 80
+
+def f_prime(x):
+    return 3*x**2 - 10*x + 10
+
+def newton_method(x0, eps=1e-10, max_iter=1000):
+    x = x0
+    for _ in range(max_iter):
+        fx = f(x)
+        fpx = f_prime(x)
+        if abs(fpx) < 1e-12:
+            raise ValueError("Derivative too small, method fails.")
+        x_new = x - fx / fpx
+        if abs(x_new - x) < eps:
+            return x_new
+        x = x_new
+    raise ValueError("Newton method did not converge.")
+
+# 初始猜测（可以图像估计或经验选择）
+initial_guess = 4.0
+root = newton_method(initial_guess)
+
+# 输出结果，保留9位小数
+print(f"{root:.9f}")
+```
+
+说明：
+
+- 使用初始猜测 `x0 = 4.0`，该函数在 x=4 附近有根。
+- 精度设置为 `1e-10`，确保输出时小数点后 9 位准确。
+- 若牛顿法不收敛，会抛出异常。
+
+这个程序没有输入，因此运行时直接输出结果即可，符合题目要求。
+
+
+
+> 用<mark>牛顿迭代法</mark>实现。
+>
+> 因为大语言模型的训练过程中涉及到了梯度下降（或其变种，如SGD、Adam等），用于优化模型参数以最小化损失函数。两种方法都是通过迭代的方式逐步接近最优解。每一次迭代都基于当前点的局部信息调整参数，试图找到一个比当前点更优的新点。理解牛顿迭代法有助于深入理解基于梯度的优化算法的工作原理，特别是它们如何利用导数信息进行决策。
+>
+> > **牛顿迭代法**
+> >
+> > - **目的**：主要用于寻找一个函数 $f(x)$ 的根，即找到满足 $f(x)=0$ 的 $x$ 值。不过，通过适当变换目标函数，它也可以用于寻找函数的极值。
+> > - **方法基础**：利用泰勒级数的一阶和二阶项来近似目标函数，在每次迭代中使用目标函数及其导数的信息来计算下一步的方向和步长。
+> > - **迭代公式**：$ x_{n+1} = x_n - \frac{f(x_n)}{f'(x_n)} $ 对于求极值问题，这可以转化为$ x_{n+1} = x_n - \frac{f'(x_n)}{f''(x_n)} $，这里 $f'(x)$ 和 $f''(x)$ 分别是目标函数的一阶导数和二阶导数。
+> > - **特点**：牛顿法通常具有更快的收敛速度（尤其是对于二次可微函数），但是需要计算目标函数的二阶导数（Hessian矩阵在多维情况下），并且对初始点的选择较为敏感。
+> >
+> > **梯度下降法**
+> >
+> > - **目的**：直接用于寻找函数的最小值（也可以通过取负寻找最大值），尤其在机器学习领域应用广泛。
+> > - **方法基础**：仅依赖于目标函数的一阶导数信息（即梯度），沿着梯度的反方向移动以达到减少函数值的目的。
+> > - **迭代公式**：$ x_{n+1} = x_n - \alpha \cdot \nabla f(x_n) $ 这里 $\alpha$ 是学习率，$\nabla f(x_n)$ 表示目标函数在 $x_n$ 点的梯度。
+> > - **特点**：梯度下降不需要计算复杂的二阶导数，因此在高维空间中相对容易实现。然而，它的收敛速度通常较慢，特别是当目标函数的等高线呈现出椭圆而非圆形时（即存在条件数大的情况）。
+> >
+> > **相同与不同**
+> >
+> > - **相同点**：两者都可用于优化问题，试图找到函数的极小值点；都需要目标函数至少一阶可导。
+> > - **不同点**：
+> >   - 牛顿法使用了更多的局部信息（即二阶导数），因此理论上收敛速度更快，但在实际应用中可能会遇到计算成本高、难以处理大规模数据集等问题。
+> >   - 梯度下降则更为简单，易于实现，特别是在高维空间中，但由于只使用了一阶导数信息，其收敛速度可能较慢，尤其是在接近极值点时。
+>
+> 
+
+
+
+**方法 2：二分法**
+
+二分法适用于单调区间，我们需要先找到根所在的区间，然后不断缩小范围，直到精度满足要求。
+
+```python
+def f(x):
+    return x ** 3 - 5 * x ** 2 + 10 * x - 80
+
+
+def binary_search(a, b, tol=1e-9):
+    """在区间 [a, b] 内使用二分法找到方程 f(x) = 0 的根"""
+    if f(a) * f(b) > 0:
+        raise ValueError("二分法要求 f(a) 和 f(b) 符号相反，确保根在区间内")
+
+    while abs(b - a) > tol:
+        mid = (a + b) / 2
+        if f(mid) == 0:
+            return mid
+        elif f(mid) * f(a) < 0: # 说明区间内有根
+            b = mid
+        else:
+            a = mid
+
+    return (a + b) / 2 # 根就在这个很小的区间里
+
+
+# 选择合适的区间（先观察 f(x) 在不同区间的符号变化）
+root1 = binary_search(3, 10)
+print(f"{root1:.9f}")
+```
+
+**比较**
+
+| 方法       | 适用情况       | 优点     | 缺点                             |
+| ---------- | -------------- | -------- | -------------------------------- |
+| **二分法** | 确保有根的区间 | 一定收敛 | 需要选区间，收敛较慢             |
+| **牛顿法** | 初值合理时     | 收敛快   | 需要计算导数，初值不好可能不收敛 |
+
+
 
 
 
 ### Kadane
 
-02766: 最大子矩阵, http://cs101.openjudge.cn/2025sp_routine/02766/
+**02766: 最大子矩阵**, 
+
+kadane, http://cs101.openjudge.cn/practice/02766/
+
+已知矩阵的大小定义为矩阵中所有元素的和。给定一个矩阵，你的任务是找到最大的非空(大小至少是1 * 1)子矩阵。
+
+比如，如下4 * 4的矩阵
+
+0 -2 -7 0
+9 2 -6 2
+-4 1 -4 1
+-1 8 0 -2
+
+的最大子矩阵是
+
+9 2
+-4 1
+-1 8
+
+这个子矩阵的大小是15。
+
+**输入**
+
+输入是一个N * N的矩阵。输入的第一行给出N (0 < N <= 100)。再后面的若干行中，依次（首先从左到右给出第一行的N个整数，再从左到右给出第二行的N个整数……）给出矩阵中的N2个整数，整数之间由空白字符分隔（空格或者空行）。已知矩阵中整数的范围都在[-127, 127]。
+
+**输出**
+
+输出最大子矩阵的大小。
+
+样例输入
+
+```
+4
+0 -2 -7 0 9 2 -6 2
+-4 1 -4  1 -1
+
+8  0 -2
+```
+
+样例输出
+
+```
+15
+```
+
+来源：翻译自 Greater New York 2001 的试题
+
+
+
+这个问题是一个经典的“最大子矩阵和”问题，属于二维动态规划的应用场景。解决的核心思想是将二维问题降为多个一维的“最大子段和”问题（Kadane 算法），从而降低复杂度。
+
+------
+
+✅ 解题思路（二维 Kadane 变种）
+
+1. 固定两个行索引 `top` 和 `bottom`，将这两行之间（包含）的矩阵压缩成一个一维数组 `temp_col_sum`，其中每个元素是这几行中该列的和。
+2. 在这个一维数组上应用“最大子段和”算法（Kadane）求出最大和。
+3. 枚举所有可能的 `top` 和 `bottom` 组合，更新全局最大值。
+
+------
+
+✅ 代码实现（Python）
+
+```python
+'''
+为了找到最大的非空子矩阵，可以使用动态规划中的Kadane算法进行扩展来处理二维矩阵。
+基本思路是将二维问题转化为一维问题：可以计算出从第i行到第j行的列的累计和，
+这样就得到了一个一维数组。然后对这个一维数组应用Kadane算法，找到最大的子数组和。
+通过遍历所有可能的行组合，我们可以找到最大的子矩阵。
+'''
+def max_submatrix(matrix, n):
+    def kadane(arr):
+      	# max_ending_here 用于追踪到当前元素为止包含当前元素的最大子数组和。
+        # max_so_far 用于存储迄今为止遇到的最大子数组和。
+        max_end_here = max_so_far = arr[0]
+        for x in arr[1:]:
+          	# 对于每个新元素，我们决定是开始一个新的子数组（仅包含当前元素 x），
+            # 还是将当前元素添加到现有的子数组中。这一步是 Kadane 算法的核心。
+            max_end_here = max(x, max_end_here + x)
+            max_so_far = max(max_so_far, max_end_here)
+        return max_so_far
+
+    max_sum = float('-inf')
+
+    for top in range(n):
+        temp_col_num = [0] * n
+        for bottom in range(top, n):
+            for col in range(n):
+                temp_col_num[col] += matrix[bottom][col]
+            max_sum = max(max_sum, kadane(temp_col_num))
+    return max_sum
+
+# 输入处理
+import sys
+data = sys.stdin.read().split()
+n = int(data[0])
+numbers = list(map(int, data[1:]))
+matrix = [numbers[i * n:(i + 1) * n] for i in range(n)]
+
+max_sum = max_submatrix(matrix, n)
+print(max_sum)
+```
+
+------
+
+✅ 时间复杂度分析
+
+- 外层双重循环（`top` 和 `bottom`）：O(n²)
+- 内层 Kadane：O(n)
+- 总体时间复杂度：**O(n³)**，对于 `n <= 100` 是可接受的。
 
 
 
