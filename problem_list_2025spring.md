@@ -154,7 +154,7 @@ Updated 1056 GMT+8 May 30 2025.
 | 0303 | 23558:有界的深度优先搜索     | dfs, graph, AI | Medium | http://cs101.openjudge.cn/2025sp_routine/23558/      |
 | 0303 | 46.全排列   | backtracing    | Medium    | https://leetcode.cn/problems/permutations/      |
 | 0302 | 02524:宗教信仰     | disjoint set   | Medium    | http://cs101.openjudge.cn/2025sp_routine/02524/      |
-| 0302 | LCR 107.01 矩阵     | dp    | Medium    | https://leetcode.cn/problems/2bCMpM/     |
+| 0302 | 542.01 矩阵     | dp    | Medium    | https://leetcode-cn.com/problems/01-matrix/     |
 | 0301 | 01088: 滑雪 | dp    | Medium    | http://cs101.openjudge.cn/2025sp_routine/01088      |
 | 0301 | 994.腐烂的橘子     | bfs    | Medium    | https://leetcode.cn/problems/rotting-oranges/      |
 | 0228 | 18161:矩阵运算(先乘再加) | matrices, OOP, AI    | Easy  | http://cs101.openjudge.cn/2025sp_routine/18161/      |
