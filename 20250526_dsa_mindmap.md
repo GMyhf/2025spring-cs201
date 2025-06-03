@@ -439,8 +439,10 @@ class Solution:
 
 
 
-### 树形DP
-**M337.打家劫舍III**，https://leetcode.cn/problems/house-robber-iii/description/
+### 动态规划DP
+**M337.打家劫舍III**，
+
+树形dp, https://leetcode.cn/problems/house-robber-iii/description/
 
 - 题面：在二叉树中选择不相邻节点求最大和  
 - 思路：树形DP，记录每个节点偷/不偷两种状态的最大值
@@ -470,11 +472,11 @@ class Solution:
 
 
 
-24637:宝藏二叉树， http://cs101.openjudge.cn/2025sp_routine/24637/
+24637:宝藏二叉树， 
+
+树形dp, http://cs101.openjudge.cn/2025sp_routine/24637/
 
 
-
-### 动态规划DP
 
 45.跳跃游戏II, https://leetcode.cn/problems/jump-game-ii/
 
@@ -1253,6 +1255,266 @@ if __name__ == "__main__":
 
 ### 宽搜BFS
 
+**T1298.你能从盒子里获得的最大糖果数**
+
+set, bfs, https://leetcode.cn/problems/maximum-candies-you-can-get-from-boxes/)
+
+给你 `n` 个盒子，每个盒子的格式为 `[status, candies, keys, containedBoxes]` ，其中：
+
+- 状态字 `status[i]`：整数，如果 `box[i]` 是开的，那么是 **1** ，否则是 **0** 。
+- 糖果数 `candies[i]`: 整数，表示 `box[i]` 中糖果的数目。
+- 钥匙 `keys[i]`：数组，表示你打开 `box[i]` 后，可以得到一些盒子的钥匙，每个元素分别为该钥匙对应盒子的下标。
+- 内含的盒子 `containedBoxes[i]`：整数，表示放在 `box[i]` 里的盒子所对应的下标。
+
+给你一个 `initialBoxes` 数组，表示你现在得到的盒子，你可以获得里面的糖果，也可以用盒子里的钥匙打开新的盒子，还可以继续探索从这个盒子里找到的其他盒子。
+
+请你按照上述规则，返回可以获得糖果的 **最大数目** 。
+
+ 
+
+**示例 1：**
+
+```
+输入：status = [1,0,1,0], candies = [7,5,4,100], keys = [[],[],[1],[]], containedBoxes = [[1,2],[3],[],[]], initialBoxes = [0]
+输出：16
+解释：
+一开始你有盒子 0 。你将获得它里面的 7 个糖果和盒子 1 和 2。
+盒子 1 目前状态是关闭的，而且你还没有对应它的钥匙。所以你将会打开盒子 2 ，并得到里面的 4 个糖果和盒子 1 的钥匙。
+在盒子 1 中，你会获得 5 个糖果和盒子 3 ，但是你没法获得盒子 3 的钥匙所以盒子 3 会保持关闭状态。
+你总共可以获得的糖果数目 = 7 + 4 + 5 = 16 个。
+```
+
+**示例 2：**
+
+```
+输入：status = [1,0,0,0,0,0], candies = [1,1,1,1,1,1], keys = [[1,2,3,4,5],[],[],[],[],[]], containedBoxes = [[1,2,3,4,5],[],[],[],[],[]], initialBoxes = [0]
+输出：6
+解释：
+你一开始拥有盒子 0 。打开它你可以找到盒子 1,2,3,4,5 和它们对应的钥匙。
+打开这些盒子，你将获得所有盒子的糖果，所以总糖果数为 6 个。
+```
+
+**示例 3：**
+
+```
+输入：status = [1,1,1], candies = [100,1,100], keys = [[],[0,2],[]], containedBoxes = [[],[],[]], initialBoxes = [1]
+输出：1
+```
+
+**示例 4：**
+
+```
+输入：status = [1], candies = [100], keys = [[]], containedBoxes = [[]], initialBoxes = []
+输出：0
+```
+
+**示例 5：**
+
+```
+输入：status = [1,1,1], candies = [2,3,2], keys = [[],[],[]], containedBoxes = [[],[],[]], initialBoxes = [2,1,0]
+输出：7
+```
+
+ 
+
+**提示：**
+
+- `1 <= status.length <= 1000`
+- `status.length == candies.length == keys.length == containedBoxes.length == n`
+- `status[i]` 要么是 `0` 要么是 `1` 。
+- `1 <= candies[i] <= 1000`
+- `0 <= keys[i].length <= status.length`
+- `0 <= keys[i][j] < status.length`
+- `keys[i]` 中的值都是互不相同的。
+- `0 <= containedBoxes[i].length <= status.length`
+- `0 <= containedBoxes[i][j] < status.length`
+- `containedBoxes[i]` 中的值都是互不相同的。
+- 每个盒子最多被一个盒子包含。
+- `0 <= initialBoxes.length <= status.length`
+- `0 <= initialBoxes[i] < status.length`
+
+
+
+下面给出一种常见的做法：维护三个集合——“手上有的盒子”、“已经拿到的钥匙”和“已经打开过的盒子”，反复扫描能打开的盒子，不断收集糖果、钥匙和新盒子，直到无法再打开为止。
+
+------
+
+思路
+
+1. **初始化**
+
+   - `haveBoxes = set(initialBoxes)`：表示当前手上已经拿到（但未必能打开）的盒子。
+   - `haveKeys = set()`：表示当前已经获得的钥匙（对应可打开的盒子编号）。
+   - `opened = set()`：表示已经打开过的盒子（避免重复打开）。
+   - `ans = 0`：统计已经收集的糖果总数。
+
+2. **反复“松弛”**
+   我们不断尝试去打开 `haveBoxes` 中的盒子，如果该盒子满足 **状态是开的（status[i] == 1）或者我们已经有这个盒子的钥匙（i ∈ haveKeys）**，并且还没被打开（i ∉ opened），就可以打开它：
+
+   - 把 `opened.add(i)`。
+   - 把 `candies[i]` 加到 `ans`。
+   - 把打开盒子后获得的所有钥匙 `keys[i]` 加入 `haveKeys`。
+   - 把盒子里包含的所有子盒子 `containedBoxes[i]` 加入 `haveBoxes`。
+
+   每次只要至少打开了一个新盒子，就说明我们的“信息”（钥匙/新盒子）进一步扩展，我们还可以继续尝试打开新的盒子；如果一次循环里没有任何新盒子能被打开，就说明再也无法获得更多的糖果，可以结束。
+
+3. **复杂度**
+
+   - 外层循环（反复扫描所有“手上有”的盒子）最糟糕会执行 O(n) 次，每次内部最坏扫描 O(n) 个盒子，总体 O(n²)。
+   - 由于 `n ≤ 1000`，这种做法是可以接受的。
+
+------
+
+代码实现
+
+```python
+from typing import List
+
+class Solution:
+    def maxCandies(self, status: List[int], 
+                   candies: List[int], 
+                   keys: List[List[int]], 
+                   containedBoxes: List[List[int]], 
+                   initialBoxes: List[int]) -> int:
+        # 已拿到的盒子
+        haveBoxes = set(initialBoxes)
+        # 已拿到的钥匙
+        haveKeys = set()
+        # 已经打开过的盒子
+        opened = set()
+        # 总糖果数
+        ans = 0
+        
+        # 只要每一轮还能打开至少一个新盒子，就继续循环
+        while True:
+            opened_this_round = False
+            
+            # 尝试遍历“手上有”的所有盒子
+            for b in list(haveBoxes):
+                # 如果这个盒子还没打开，并且是开着的 或者 我们有它的钥匙
+                if b not in opened and (status[b] == 1 or b in haveKeys):
+                    # 打开它
+                    opened.add(b)
+                    opened_this_round = True
+                    # 收糖果
+                    ans += candies[b]
+                    # 拿到钥匙
+                    for k in keys[b]:
+                        haveKeys.add(k)
+                    # 拿到子盒子
+                    for nb in containedBoxes[b]:
+                        haveBoxes.add(nb)
+            
+            # 如果这一轮没有打开任何新盒子，就可以结束
+            if not opened_this_round:
+                break
+        
+        return ans
+```
+
+解释要点
+
+- **`haveBoxes`**：存放“已经在手上，但尚未（必然）打开”的盒子。
+- **`haveKeys`**：存放“已经拿到的钥匙”，一旦钥匙里包含某个盒子的编号，就意味着无论该盒子原本是“关的”还是“开着的”，我们都能把它打开。
+- **外层 `while True`**：之所以要反复循环，是因为：拿到新钥匙之后，可能让之前“拿到但因没有钥匙而没法打开”的某个盒子瞬间变为“可打开”；同样，打开一个盒子后拿到的新盒子也可能本身就是“开着的”，可以下轮打开。只有当**一整轮下来都没有任何新盒子被打开**，才说明剩余的盒子都无法继续打开，此时退出循环。
+- **跳出条件**：`opened_this_round=False`，说明这一轮没有成功打开任何新盒子，就可以结束搜索，返回当前累加的 `ans`。
+
+这样就能保证“尽可能地”打开所有能够打开的盒子，从而收集到最大数量的糖果。
+
+
+
+下面是使用 BFS（广度优先搜索）实现的 Python 解法：
+
+------
+
+✅ **思路：使用队列模拟 BFS 拓展盒子**
+
+我们用一个队列来模拟“当前可以访问的盒子”，每次从队列中取出盒子，判断能不能打开（有钥匙或是开的），能打开就处理里面的糖果、钥匙和新盒子，并把新盒子加入队列继续处理。
+
+------
+
+✅ **代码实现**
+
+```python
+from collections import deque
+from typing import List
+
+class Solution:
+    def maxCandies(self, status: List[int], candies: List[int],
+                   keys: List[List[int]], containedBoxes: List[List[int]],
+                   initialBoxes: List[int]) -> int:
+        from collections import deque
+
+        n = len(status)
+        queue = deque(initialBoxes)
+        hasKey = set()
+        seenBoxes = set(initialBoxes)
+        opened = [False] * n
+        ans = 0
+
+        while queue:
+            size = len(queue)
+            progress = False  # 本轮是否成功打开了盒子
+
+            for _ in range(size):
+                box = queue.popleft()
+
+                # 如果已打开，跳过
+                if opened[box]:
+                    continue
+
+                # 条件：要么是开的，要么有钥匙
+                if status[box] == 1 or box in hasKey:
+                    # 打开这个盒子
+                    opened[box] = True
+                    ans += candies[box]
+                    progress = True
+
+                    # 获得钥匙
+                    for k in keys[box]:
+                        hasKey.add(k)
+
+                    # 获得新盒子
+                    for b in containedBoxes[box]:
+                        if b not in seenBoxes:
+                            queue.append(b)
+                            seenBoxes.add(b)
+                else:
+                    # 没法打开，暂时放回队尾（未来可能拿到钥匙）
+                    queue.append(box)
+
+            # 如果一轮 BFS 没有任何盒子被打开，说明不能再继续了
+            if not progress:
+                break
+
+        return ans
+```
+
+------
+
+✅ **说明**
+
+- `queue`: 当前持有但未处理的盒子。
+- `hasKey`: 当前拥有的钥匙集合。
+- `seenBoxes`: 避免重复加入队列。
+- `opened`: 防止一个盒子被打开多次。
+- `progress`: 每轮判断是否打开了新盒子，若未打开任何盒子则终止。
+
+------
+
+✅ **与集合法对比**
+
+| 点       | 集合法          | BFS法              |
+| -------- | --------------- | ------------------ |
+| 结构     | 循环扫描集合    | 队列拓展           |
+| 处理顺序 | 无特定顺序      | 更偏向层次广度拓展 |
+| 本质     | 类似 BFS 懒加载 | 显式 BFS           |
+| 易理解性 | 逻辑直接        | 更像图搜索         |
+
+两种写法都可以 **AC**，你可以根据个人偏好选择结构清晰或逻辑更紧凑的方式。
+
+
+
 3552.网络传送门旅游，https://leetcode.cn/problems/grid-teleportation-traversal/
 
 12029:水淹七军，http://cs101.openjudge.cn/2025sp_routine/12029/
@@ -1933,9 +2195,102 @@ Dijkstra, Floyd-Warshall, http://cs101.openjudge.cn/2025sp_routine/05443/
 
 ### 贪心Greedy
 
-3362.零数组变换 III
+**T3362.零数组变换 III**
 
 greedy, heap, 差分数组，https://leetcode.cn/problems/zero-array-transformation-iii/
+
+给你一个长度为 `n` 的整数数组 `nums` 和一个二维数组 `queries` ，其中 `queries[i] = [li, ri]` 。
+
+每一个 `queries[i]` 表示对于 `nums` 的以下操作：
+
+- 将 `nums` 中下标在范围 `[li, ri]` 之间的每一个元素 **最多** 减少 1 。
+- 坐标范围内每一个元素减少的值相互 **独立** 。
+
+**零数组** 指的是一个数组里所有元素都等于 0 。
+
+请你返回 **最多** 可以从 `queries` 中删除多少个元素，使得 `queries` 中剩下的元素仍然能将 `nums` 变为一个 **零数组** 。如果无法将 `nums` 变为一个 **零数组** ，返回 -1 。
+
+ 
+
+**示例 1：**
+
+**输入：**nums = [2,0,2], queries = [[0,2],[0,2],[1,1]]
+
+**输出：**1
+
+**解释：**
+
+删除 `queries[2]` 后，`nums` 仍然可以变为零数组。
+
+- 对于 `queries[0]` ，将 `nums[0]` 和 `nums[2]` 减少 1 ，将 `nums[1]` 减少 0 。
+- 对于 `queries[1]` ，将 `nums[0]` 和 `nums[2]` 减少 1 ，将 `nums[1]` 减少 0 。
+
+**示例 2：**
+
+**输入：**nums = [1,1,1,1], queries = [[1,3],[0,2],[1,3],[1,2]]
+
+**输出：**2
+
+**解释：**
+
+可以删除 `queries[2]` 和 `queries[3]` 。
+
+**示例 3：**
+
+**输入：**nums = [1,2,3,4], queries = [[0,3]]
+
+**输出：**-1
+
+**解释：**
+
+`nums` 无法通过 `queries` 变成零数组。
+
+ 
+
+**提示：**
+
+- `1 <= nums.length <= 10^5`
+- `0 <= nums[i] <= 10^5`
+- `1 <= queries.length <= 10^5`
+- `queries[i].length == 2`
+- `0 <= li <= ri < nums.length`
+
+
+
+
+
+```python
+from heapq import heappop, heappush
+from typing import List
+
+class Solution:
+    def maxRemoval(self, nums: List[int], queries: List[List[int]]) -> int:
+        queries.sort()
+        heap = []
+        diff = [0] * (len(nums) + 1)
+        presum = 0
+        j = 0
+        for i, num in enumerate(nums):
+            presum += diff[i]
+            while j < len(queries) and queries[j][0] == i:
+                heappush(heap, -queries[j][1])
+                j += 1
+            while presum < num and heap and -heap[0] >= i:
+                presum += 1
+                diff[-heappop(heap) + 1] -= 1
+            if presum < num:
+                return -1
+        return len(heap)
+
+if __name__ == "__main__":
+    sol = Solution()
+    print(sol.maxRemoval([2,0,2], [[0,2],[0,2],[1,1]]))  # Output: 1
+        
+```
+
+​        
+
+
 
 3355.零数组变换 I
 
