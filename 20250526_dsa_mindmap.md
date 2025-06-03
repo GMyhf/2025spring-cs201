@@ -1,6 +1,6 @@
 # 数据结构与算法知识体系（DSA）
 
-Updated 2117 GMT+8 Jun 2, 2025
+Updated 1450 GMT+8 Jun 3, 2025
 
 2025 spring, Complied by Hongfei Yan
 
@@ -2021,7 +2021,109 @@ dfs, stack, http://cs101.openjudge.cn/practice/24729/
 
 230.二叉搜索树中第K小的元素，https://leetcode.cn/problems/kth-smallest-element-in-a-bst/
 
-08581: 扩展二叉树，http://cs101.openjudge.cn/2025sp_routine/08581/
+**08581: 扩展二叉树**，
+
+tree, dfs, http://cs101.openjudge.cn/practice/08581/
+
+由于先序、中序和后序序列中的任一个都不能唯一确定一棵二叉树，所以对二叉树做如下处理，将二叉树的空结点用·补齐，如图所示。我们把这样处理后的二叉树称为原二叉树的扩展二叉树，扩展二叉树的先序和后序序列能唯一确定其二叉树。 现给出扩展二叉树的先序序列，要求输出其中序和后序序列。
+
+![img](http://media.openjudge.cn/images/upload/1440300244.png)
+
+**输入**
+
+扩展二叉树的先序序列（全部都由大写字母或者.组成）
+
+**输出**
+
+第一行：中序序列
+第二行：后序序列
+
+样例输入
+
+```
+ABD..EF..G..C..
+```
+
+样例输出
+
+```
+DBFEGAC
+DFGEBCA
+```
+
+
+
+通过递归方法解析扩展二叉树的先序序列，并输出其中序和后序序列：
+
+```python
+class Node:
+    def __init__(self, val):
+        self.val = val
+        self.left = None
+        self.right = None
+
+def build_tree(s, index):
+    # 如果当前字符为'.'，表示空结点，返回None，并将索引后移一位
+    if s[index] == '.':
+        return None, index + 1
+    # 否则创建一个结点
+    node = Node(s[index])
+    index += 1
+    # 递归构造左子树
+    node.left, index = build_tree(s, index)
+    # 递归构造右子树
+    node.right, index = build_tree(s, index)
+    return node, index
+
+def inorder(node, res):
+    if node is None:
+        return
+    inorder(node.left, res)
+    res.append(node.val)
+    inorder(node.right, res)
+
+def postorder(node, res):
+    if node is None:
+        return
+    postorder(node.left, res)
+    postorder(node.right, res)
+    res.append(node.val)
+
+def main():
+    s = input().strip()
+    root, _ = build_tree(s, 0)
+    
+    in_res = []
+    inorder(root, in_res)
+    
+    post_res = []
+    postorder(root, post_res)
+    
+    print("".join(in_res))
+    print("".join(post_res))
+
+if __name__ == '__main__':
+    main()
+```
+
+代码说明
+
+- **build_tree 函数**  
+  递归地根据扩展二叉树的先序序列构造二叉树：  
+  - 当遇到 `'.'` 时表示空结点，直接返回 `None`。  
+  - 否则以当前字符创建一个结点，然后递归构造其左子树和右子树。
+
+- **inorder 和 postorder 函数**  
+  分别实现中序遍历（左-根-右）和后序遍历（左-右-根）。
+
+- **main 函数**  
+  读取输入字符串，构造树后计算中序和后序遍历结果，并输出。  
+
+
+
+
+
+
 
 543.二叉树的直径，https://leetcode.cn/problems/diameter-of-binary-tree/
 
@@ -2043,9 +2145,163 @@ dfs, matirces, http://cs101.openjudge.cn/2025sp_routine/20052/
 
 
 
+### 树结构Tree
+
+04082:树的镜面映射，http://cs101.openjudge.cn/practice/04082/
+
+- 题面：将给定二叉树进行水平镜像翻转后输出层序遍历  
+- 思路：层序遍历时交换左右子节点顺序
+
+03720:文本二叉树，http://cs101.openjudge.cn/2025sp_routine/03720/
+
+01577:Falling Leaves, http://cs101.openjudge.cn/2025sp_routine/01577/
+
+01145:Tree Summing, http://cs101.openjudge.cn/2025sp_routine/01145/
+
+05907:二叉树的操作，http://cs101.openjudge.cn/practice/05907/
+
+T20576: printExp（逆波兰表达式建树），http://cs101.openjudge.cn/2025sp_routine/20576/
+
+02788:二叉树，http://cs101.openjudge.cn/2025sp_routine/02788/
+
+05455:二叉搜索树的层次遍历，http://cs101.openjudge.cn/2025sp_routine/05455/
+
+105.从前序与中序遍历序列构造二叉树，https://leetcode.cn/problems/construct-binary-tree-from-preorder-and-inorder-traversal/
+
+22158: 根据二叉树前中序序列建树，http://cs101.openjudge.cn/practice/22158/
+
+22275: 二叉搜索树的遍历，http://cs101.openjudge.cn/2025sp_routine/22275/
+
+
+
 ### Dijkstra
 
-02502:Subway，http://cs101.openjudge.cn/2025sp_routine/02502/
+**02502:Subway**，http://cs101.openjudge.cn/2025sp_routine/02502/
+
+dijkstra, http://cs101.openjudge.cn/practice/02502/
+
+You have just moved from a quiet Waterloo neighbourhood to a big, noisy city. Instead of getting to ride your bike to school every day, you now get to walk and take the subway. Because you don't want to be late for class, you want to know how long it will take you to get to school. 
+You walk at a speed of 10 km/h. The subway travels at 40 km/h. Assume that you are lucky, and whenever you arrive at a subway station, a train is there that you can board immediately. You may get on and off the subway any number of times, and you may switch between different subway lines if you wish. All subway lines go in both directions.
+
+**输入**
+
+Input consists of the x,y coordinates of your home and your school, followed by specifications of several subway lines. Each subway line consists of the non-negative integer x,y coordinates of each stop on the line, in order. You may assume the subway runs in a straight line between adjacent stops, and the coordinates represent an integral number of metres. Each line has at least two stops. The end of each subway line is followed by the dummy coordinate pair -1,-1. In total there are at most 200 subway stops in the city. 
+
+**输出**
+
+Output is the number of minutes it will take you to get to school, rounded to the nearest minute, taking the fastest route.
+
+样例输入
+
+```
+0 0 10000 1000
+0 200 5000 200 7000 200 -1 -1 
+2000 600 5000 600 10000 600 -1 -1
+```
+
+样例输出
+
+```
+21
+```
+
+来源
+
+Waterloo local 2001.09.22
+
+
+
+✅ 带注释的 Dijkstra 最短路径算法（支持步行与地铁）：
+
+```python
+import math
+import heapq
+
+# 计算两点之间的欧几里得距离
+def get_distance(x1, y1, x2, y2):
+    return math.sqrt((x1 - x2) ** 2 + (y1 - y2) ** 2)
+
+# 读取起点（家）和终点（学校）坐标
+sx, sy, ex, ey = map(int, input().split())
+
+# min_time: 记录从起点到每个地铁站/终点的最短时间（单位：小时）
+min_time = {}
+
+# rails: 记录所有地铁连接（双向）
+rails = set()
+
+# 读取所有地铁线路
+while True:
+    try:
+        rail = list(map(int, input().split()))
+        if rail == [-1, -1]:
+            break
+        # 解析当前地铁线路的所有站点
+        stations = [(rail[2 * i], rail[2 * i + 1]) for i in range(len(rail) // 2 - 1)]
+
+        for j, station in enumerate(stations):
+            # 初始化所有地铁站点的最短时间为无穷大
+            min_time[station] = float('inf')
+            # 添加地铁线路中相邻站点的双向连接
+            if j != len(stations) - 1:
+                rails.add((station, stations[j + 1]))
+                rails.add((stations[j + 1], station))
+    except EOFError:
+        break  # 输入结束
+
+# 把起点和终点加入时间表中
+min_time[(sx, sy)] = 0  # 起点时间为 0
+min_time[(ex, ey)] = float('inf')  # 终点初始化为无穷大
+
+# 使用小根堆实现 Dijkstra 算法，按时间升序处理节点
+min_heap = [(0, sx, sy)]  # (当前耗时, 当前x, 当前y)
+
+while min_heap:
+    curr_time, x, y = heapq.heappop(min_heap)
+
+    # 如果当前耗时不是最短路径中记录的值，说明已经被更新，跳过
+    if curr_time > min_time[(x, y)]:
+        continue
+
+    # 如果已经到达终点，提前结束
+    if (x, y) == (ex, ey):
+        break
+
+    # 遍历所有可达点（隐式图）
+    for position in min_time.keys():
+        if position == (x, y):
+            continue  # 自己跳过
+        nx, ny = position
+
+        # 计算当前位置到下一个点的距离
+        dis = get_distance(x, y, nx, ny)
+
+        # 判断是否为地铁连接：地铁速度是步行的4倍
+        rail_factor = 4 if ((position, (x, y)) in rails or ((x, y), position) in rails) else 1
+
+        # 计算到该点的所需时间（单位：小时）
+        new_time = curr_time + dis / (10000 * rail_factor)
+
+        # 如果时间更短，则更新并加入堆中
+        if new_time < min_time[position]:
+            min_time[position] = new_time
+            heapq.heappush(min_heap, (new_time, nx, ny))
+
+# 输出从起点到终点的最短时间，转换为分钟并四舍五入
+print(round(min_time[(ex, ey)] * 60))
+```
+
+------
+
+✅ 小结
+
+- **地铁速度**是步行的 4 倍 → 用 `rail_factor = 4` 简化处理。
+- **图是隐式图**：所有站点间的连边不是预先建好，而是在 Dijkstra 中动态判断。
+- 只对包含的点建图（避免不必要计算，提升效率）。
+
+这个代码不仅**简洁清晰**，还**容易维护和扩展**，比如日后加入不同速度的公交车或地铁线路都很方便。
+
+
 
 03424: Candies，http://cs101.openjudge.cn/2025sp_routine/03424/
 
@@ -2173,13 +2429,170 @@ Dijkstra, Floyd-Warshall, http://cs101.openjudge.cn/2025sp_routine/05443/
 
 01860: Currency Exchange，http://cs101.openjudge.cn/2025sp_routine/01860/
 
-787.K站中转内最便宜的航班，https://leetcode.cn/problems/cheapest-flights-within-k-stops/
+**787.K站中转内最便宜的航班**，https://leetcode.cn/problems/cheapest-flights-within-k-stops/
+
+> **滚动数组优化DP**
+>
+> 01-背包，滚动数组，https://oi-wiki.org/dp/knapsack/
+>
+> **23421: 小偷背包**，http://cs101.openjudge.cn/practice/23421/
+>
+> 
+>
+> ```python
+> N, B = map(int, input().split())
+> values = list(map(int, input().split()))
+> weights = list(map(int, input().split()))
+> 
+> dp = [0] * (B + 1)
+> 
+> for i in range(N):
+>     prev = dp[:]  # 复制上一次的状态
+>     for j in range(B + 1):
+>         if j >= weights[i]:
+>             dp[j] = max(prev[j], prev[j - weights[i]] + values[i])
+> 
+> print(dp[B])
+> ```
+>
+
+
+
+在「最多经过 K 次中转」的约束下，求出从 src 到 dst 的最小费用。
+
+```python
+from typing import List
+
+class Solution:
+    def findCheapestPrice(self, 
+                          n: int, 
+                          flights: List[List[int]], 
+                          src: int, 
+                          dst: int, 
+                          K: int) -> int:
+        # 初始化：到各城最便宜费用
+        INF = float('inf')
+        dist = [INF] * n
+        dist[src] = 0
+        
+        # 最多允许 K 次中转 -> 最多使用 K+1 条边
+        for _ in range(K + 1):
+            # 基于上一轮的结果创建新一轮的 dist
+            prev = dist[:]  
+            
+            # 对每条航班边做松弛
+            for u, v, w in flights:
+                # 若 u 可达，则尝试用 u -> v 这条边更新 v
+                if prev[u] + w < dist[v]:
+                    dist[v] = prev[u] + w
+            
+            # 下一轮松弛时，依然要基于本轮更新后的 dist，
+            # 因此不需要再额外复制
+        
+        return dist[dst] if dist[dst] != INF else -1
+```
+
+
 
 
 
 ### 散列表
 
-17975: 用二次探查法建立散列表，http://cs101.openjudge.cn/2025sp_routine/17975/
+**M17975: 用二次探查法建立散列表**，
+
+hash table, http://cs101.openjudge.cn/practice/17975/
+
+给定一系列整型关键字和素数P，用除留余数法定义的散列函数H（key)=key%M，将关键字映射到长度为M的散列表中，用二次探查法解决冲突.
+
+本题不涉及删除，且保证表长不小于关键字总数的2倍，即没有插入失败的可能。
+
+**输入**
+
+输入第一行首先给出两个正整数N（N<=1000）和M（一般为>=2N的最小素数），分别为待插入的关键字总数以及散列表的长度。
+第二行给出N个整型的关键字。数字之间以空格分隔。
+
+**输出**
+
+在一行内输出每个整型关键字的在散列表中的位置。数字间以空格分隔。
+
+样例输入
+
+```
+5 11
+24 13 35 15 14
+```
+
+样例输出
+
+```
+2 3 1 4 7 
+```
+
+提示
+
+探查增量序列依次为：$1^2，-1^2，2^2 ，-2^2，....,^2$表示平方
+
+
+
+需要用这样接收数据。因为输入数据可能分行了，不是题面描述的形式。OJ上面有的题目是给C++设计的，细节考虑不周全。
+
+```python
+import sys
+input = sys.stdin.read
+data = input().split()
+index = 0
+n = int(data[index])
+index += 1
+m = int(data[index])
+index += 1
+num_list = [int(i) for i in data[index:index+n]]
+```
+
+
+
+```python
+def quadratic_probe_insert(keys, M):
+    table = [None] * M
+    result = []
+
+    for key in keys:
+        pos = key % M
+        if table[pos] is None or table[pos] == key:
+            table[pos] = key
+            result.append(pos)
+            continue
+
+        # 否则开始二次探查
+        i = 1
+        instered = False
+        while not instered:
+            for sign in [1, -1]:
+                new_pos = (pos + sign * (i ** 2)) % M
+                if table[new_pos] is None or table[new_pos] == key:
+                    table[new_pos] = key
+                    result.append(new_pos)
+                    instered = True
+                    break
+
+            i += 1  # 探查次数增加
+
+    return result
+
+
+import sys
+
+input = sys.stdin.read
+data = input().split()
+N = int(data[0])
+M = int(data[1])
+keys = list(map(int, data[2:2 + N]))
+
+positions = quadratic_probe_insert(keys, M)
+print(*positions)
+
+```
+
+
 
 
 
@@ -2194,6 +2607,119 @@ Dijkstra, Floyd-Warshall, http://cs101.openjudge.cn/2025sp_routine/05443/
 
 
 ### 贪心Greedy
+
+**25302: 最大并发量**
+
+greedy, http://cs101.openjudge.cn/practice/25302
+
+互联网公司大家一个服务，比如社交app的后台，都会考虑用户连接服务器的并发量，就是同一时刻的最大连接数。
+
+现在给出一些的开始时间和断开时间，问这个过程中，最大的并发量有多少。
+
+如果一个连接在 x 时刻开始，另一个连接在 x 时刻结束，认为 x 时刻并发量是 1，而不是 2.
+
+**输入**
+
+第一行是 t，t <= 100，代表数据组数。
+对于每组数据，第一行是 n，1 <= n <= 100，代表有 n 个连接，
+接下来 n 行，每一行有两个整数 x, y ，0 <= x < y <= 10^9，代表连接的开始时间是 x，断开时间是 y。
+
+**输出**
+
+对于每组数据输出一行，代表最大并发量。
+
+样例输入
+
+```
+2
+2
+1 2
+2 3
+2
+1 3
+2 4
+```
+
+样例输出
+
+```
+1
+2
+```
+
+来源：2016fall-cs101
+
+
+
+典型的**区间合并与并发计数问题**，适合用扫描线算法（sweep line）解决。
+
+✅ **题意解读**
+
+- 给你若干个连接的开始和断开时间，问在整个过程中“**同一时刻最多有多少个连接是活跃的**”。
+- 特别注意：
+  - 如果一个连接在 `x` 时刻开始，另一个连接在 `x` 时刻断开，`x` 时刻的并发是 **1**（不是 2）。
+  - 所以我们认为：“结束先于开始”在同一时刻。
+
+------
+
+✅ **解决方案解析**
+
+🧠 **核心思路：扫描线**
+
+把每个时间点视为一个“事件”：
+
+- 开始连接：`(x, +1)`
+- 结束连接：`(y, -1)`
+
+然后将所有事件按时间排序处理。
+
+- 若时间相同，优先处理 `-1`（断开），避免并发误增。
+
+⏱️ **时间复杂度**
+
+- 每组：排序 O(n log n)，遍历 O(n)
+
+
+
+模拟接入（+1）、断开（-1）的动态过程，而最大并发量就是这一过程中能达到的最大的数。
+
+```python
+def max_concurrent_connections(n, intervals):
+    events = []
+    for start, end in intervals:
+        events.append((start, 1))  # 开始 +1
+        events.append((end, -1))   # 结束 -1
+
+    # 按时间排序，时间相同时结束事件在前
+    events.sort(key=lambda x: (x[0], x[1]))
+
+    current = 0
+    max_concurrent = 0
+    for time, delta in events:
+        current += delta
+        max_concurrent = max(max_concurrent, current)
+
+    return max_concurrent
+
+# 主程序处理多组数据
+t = int(input())
+for _ in range(t):
+    n = int(input())
+    intervals = [tuple(map(int, input().split())) for _ in range(n)]
+    print(max_concurrent_connections(n, intervals))
+
+
+```
+
+✅ **总结**
+
+- 本题是典型的**事件排序+前缀和模拟**问题；
+- 考察**排序规则、扫描线思想**；
+- 可作为处理“时间区间统计类问题”的模板。
+
+
+
+
 
 **T3362.零数组变换 III**
 
@@ -2257,7 +2783,27 @@ greedy, heap, 差分数组，https://leetcode.cn/problems/zero-array-transformat
 
 
 
+贪心解法，使用了**差分数组 + 最小堆（最大堆模拟）** 的技巧。
 
+------
+
+💡 题目精简理解：
+
+- 每个 `query = [l, r]` 表示可以在 `[l, r]` 范围内，**每个位置最多减 1**，并且不同位置减多少是独立的。
+- 我们可以**删除一些 queries**，目标是让剩下的 queries 能把 `nums` 所有位置减成 0。
+- 问最多可以删除多少个 queries（换句话说，最少保留多少个 queries 也能把 `nums` 变成零数组）。
+
+------
+
+🧠 解题核心思想：
+
+你要通过若干次“最多减 1”的操作，把 `nums[i]` 减成 0。
+
+例如 `nums[i] = 3`，就要找 3 次能操作到 `i` 的 query。
+
+✅ 贪心策略：
+
+遍历 `nums` 时，逐个满足 `nums[i]` 所需的“减法操作”，**优先使用右端点大的 query**（因为右边可以覆盖更多下标，贪心保留这类 query 以备后续使用）。
 
 ```python
 from heapq import heappop, heappush
@@ -2265,30 +2811,51 @@ from typing import List
 
 class Solution:
     def maxRemoval(self, nums: List[int], queries: List[List[int]]) -> int:
+        # 先按左端点 li 升序排序，便于遍历过程中逐步加入可用的 query
         queries.sort()
-        heap = []
-        diff = [0] * (len(nums) + 1)
-        presum = 0
-        j = 0
+        
+        heap = []  # 最大堆（用负数实现），用于保存当前能用的 query（按右端点排序）
+        diff = [0] * (len(nums) + 1)  # 差分数组，记录当前位置累计的“减1”操作次数
+        presum = 0  # 前缀和，表示当前位置 i 前面所有 query 累计的影响值
+        j = 0  # 指针，表示当前处理到第几个 query
+        
+        # 遍历 nums 中每个元素，试图用已有 query 将其减到 0
         for i, num in enumerate(nums):
+            # 差分转前缀和，得到当前位置实际已被减少的次数
             presum += diff[i]
+
+            # 将所有起点为 i 的 query 加入堆中（即在当前位置生效的 query）
             while j < len(queries) and queries[j][0] == i:
+                # Python 默认是小顶堆，为了实现最大堆，使用负数存右端点
                 heappush(heap, -queries[j][1])
                 j += 1
+            
+            # 当前 presum 不足以满足 nums[i] 所需的减次数
+            # 从堆中弹出可以作用于当前位置的 query，贡献一次减操作
             while presum < num and heap and -heap[0] >= i:
-                presum += 1
+                presum += 1  # 当前 nums[i] 获得一次减操作
+                # 更新差分数组：我们在 r + 1 位置减1，表示这个 query 的作用到 r 结束
                 diff[-heappop(heap) + 1] -= 1
+            
+            # 如果所有 query 都用完了，还是无法满足 nums[i]，直接返回 -1
             if presum < num:
                 return -1
+        
+        # 剩下堆中没被使用的 query 就是可以被删除的最大数量
         return len(heap)
 
+# 示例运行
 if __name__ == "__main__":
     sol = Solution()
-    print(sol.maxRemoval([2,0,2], [[0,2],[0,2],[1,1]]))  # Output: 1
-        
+    print(sol.maxRemoval([2,0,2], [[0,2],[0,2],[1,1]]))  # 输出：1
+
 ```
 
-​        
+关键点：
+
+- 贪心选择 **尽可能右的 query** 来覆盖当前 nums[i]。
+- 用差分数组控制每个 query 对未来位置的贡献何时“消失”。
+- 未使用的 query 数量就是可以删掉的最大数量。
 
 
 
@@ -2306,7 +2873,102 @@ Prefix sum, greedy, https://leetcode.cn/problems/zero-array-transformation-i/
 
 1963.使字符串平衡的最小交换次数，https://leetcode.cn/problems/minimum-number-of-swaps-to-make-the-string-balanced/
 
-01328:Radar Installation, http://cs101.openjudge.cn/2025sp_routine/01328/
+**01328:Radar Installation**, http://cs101.openjudge.cn/2025sp_routine/01328/
+
+Assume the coasting is an infinite straight line. Land is in one side of coasting, sea in the other. Each small island is a point locating in the sea side. And any radar installation, locating on the coasting, can only cover d distance, so an island in the sea can be covered by a radius installation, if the distance between them is at most d.
+
+We use Cartesian coordinate system, defining the coasting is the x-axis. The sea side is above x-axis, and the land side below. Given the position of each island in the sea, and given the distance of the coverage of the radar installation, your task is to write a program to find the minimal number of radar installations to cover all the islands. Note that the position of an island is represented by its x-y coordinates.
+![image-20231021115237439](https://raw.githubusercontent.com/GMyhf/img/main/img/image-20231021115237439.png)
+Figure A Sample Input of Radar Installations
+
+**输入**
+
+The input consists of several test cases. The first line of each case contains two integers n (1<=n<=1000) and d, where n is the number of islands in the sea and d is the distance of coverage of the radar installation. This is followed by n lines each containing two integers representing the coordinate of the position of each island. Then a blank line follows to separate the cases.
+
+The input is terminated by a line containing pair of zeros
+
+**输出**
+
+For each test case output one line consisting of the test case number followed by the minimal number of radar installations needed. "-1" installation means no solution for that case.
+
+样例输入
+
+```
+3 2
+1 2
+-3 1
+2 1
+
+1 2
+0 2
+
+0 0
+```
+
+样例输出
+
+```
+Case 1: 2
+Case 2: 1
+```
+
+来源: Beijing 2002
+
+
+
+映射到x轴，排序，左右端点互相看看。程序逻辑解释：
+
+1. **计算岛屿的覆盖区间**：对于每个岛屿，先根据其x和y坐标计算出在x轴上的区间范围。这是通过$\sqrt{d^2 - y^2}$来确定的。
+2. **排序**：将所有岛屿的区间按照右端点进行排序，目的是尽可能让新的雷达覆盖更多的岛屿。
+3. **更新覆盖范围**：逐个岛屿进行遍历，尝试更新当前雷达能够覆盖的最远点。如果当前岛屿的左端点在已经覆盖的区间之外，则必须增加一个新的雷达，并将新的覆盖范围设为当前岛屿的区间。
+
+```python
+import math
+
+def solve(n, d, islands):
+    if d < 0:
+        return -1
+
+    ranges = []
+    for x, y in islands:
+        if y > d:
+            return -1
+        delta = math.sqrt(d * d - y * y)
+        ranges.append((x - delta, x + delta))
+
+    if not ranges:
+        return -1
+
+    ranges.sort(key=lambda x:x[1])
+
+    number = 1
+    r = ranges[0][1]
+    for start, end in ranges[1:]:
+        if r < start:
+            r = end
+            number += 1
+
+    return number
+
+case_number = 0
+while True:
+    n, d = map(int, input().split())
+    if n == 0 and d == 0:
+        break
+
+    case_number += 1
+    islands = []
+    for _ in range(n):
+        islands.append(tuple(map(int, input().split())))
+
+    result = solve(n, d, islands)
+    print(f"Case {case_number}: {result}")
+    input()
+```
+
+
+
+
 
 56.合并区间，https://leetcode.cn/problems/merge-intervals/
 
@@ -2410,19 +3072,322 @@ class Solution:
 
 274.H指数，https://leetcode.cn/problems/h-index/
 
-27300:模型整理，http://cs101.openjudge.cn/2025sp_routine/27300/
+**27300:模型整理**，
+
+sortings, AI, http://cs101.openjudge.cn/2025sp_routine/27300/
+
+深度学习模型（尤其是大模型）是近两年计算机学术和业界热门的研究方向。每个模型可以用 “模型名称-参数量” 命名，其中参数量的单位会使用两种：M，即百万；B，即十亿。同一个模型通常有多个不同参数的版本。例如，Bert-110M，Bert-340M 分别代表参数量为 1.1 亿和 3.4 亿的 Bert 模型，GPT3-350M，GPT3-1.3B 和 GPT3-175B 分别代表参数量为 3.5亿，13亿和 1750 亿的 GPT3 模型。参数量的数字部分取值在 [1, 1000) 区间（一个 8 亿参数的模型表示为 800M 而非 0.8B，10 亿参数的模型表示为 1B 而非 1000M）。计算机专业的学生小 A 从网上收集了一份模型的列表，他需要将它们按照名称归类排序，并且同一个模型的参数量从小到大排序，生成 “模型名称: 参数量1, 参数量2, ...” 的列表。请你帮他写一个程序实现。
+
+**输入**
+
+第一行为一个正整数 n（n <= 1000），表示有 n 个待整理的模型。
+
+接下来 n 行，每行一个 “模型名称-参数量” 的字符串。模型名称是字母和数字的混合。
+
+**输出**
+
+每行一个 “模型名称: 参数量1, 参数量2, ...” 的字符串，符号均为英文符号，模型名称按字典序排列，参数量按从小到大排序。
+
+样例输入
+
+```
+5
+GPT-1.3B
+Bert-340M
+GPT-350M
+Bert-110M
+GPT-175B
+```
+
+样例输出
+
+```
+Bert: 110M, 340M
+GPT: 350M, 1.3B, 175B
+```
+
+提示
+
+tags: string, sort
+
+来源: 2023fall zyn
+
+
+
+```python
+from collections import defaultdict
+
+class llm:
+
+    def __init__(self,fullname:str) -> None:
+        self.name,self.m=fullname.split('-')
+        self.unit=self.m[-1]
+        self.num=eval(self.m[:-1])
+
+    def __lt__(self,other):
+        if self.unit!=other.unit:
+            return self.unit=='M'
+        else:
+            return self.num<other.num
+
+d = defaultdict(list)
+n = int(input())
+for i in range(n):
+    l = llm(input())
+    d[l.name].append(l)
+names = sorted(d.keys())
+for i in names:
+    llms = sorted(d[i])
+    print(f'{i}: {", ".join([j.m for j in llms])}')
+```
+
+
+
+
 
 
 
 ### 递归Recursion
 
-02749:分解因数，http://cs101.openjudge.cn/2025sp_routine/02749/
+**02749:分解因数**，http://cs101.openjudge.cn/2025sp_routine/02749/
+
+给出一个正整数a，要求分解成若干个正整数的乘积，即a = a1 * a2 * a3 * ... * an，并且1 < a1 <= a2 <= a3 <= ... <= an，问这样的分解的种数有多少。注意到a = a也是一种分解。
+**输入**
+第1行是测试数据的组数n，后面跟着n行输入。每组测试数据占1行，包括一个正整数a (1 < a < 32768)
+**输出**
+n行，每行输出对应一个输入。输出应是一个正整数，指明满足要求的分解的种数
+
+样例输入
+
+```
+2
+2
+20
+```
+
+样例输出
+
+```
+1
+4
+```
+
+
+
+```python
+# 蒋子轩23工学院
+def decompositions(n,minfactor):
+    if n==1:
+        return 1
+    count=0
+    for i in range(minfactor,n+1):
+        if n%i==0:
+        #递归，只找更大的因数，避免重复
+            count+=decompositions(n//i,i)
+    return count
+n=int(input())
+for _ in range(n):
+    x=int(input())
+    print(decompositions(x,2))
+```
+
+
 
 
 
 ### 回溯Backtracking 
 
-37.解数独，https://leetcode.cn/problems/sudoku-solver/
+**T37.解数独**，
+
+backtracking, set, https://leetcode.cn/problems/sudoku-solver/
+
+编写一个程序，通过填充空格来解决数独问题。
+
+数独的解法需 **遵循如下规则**：
+
+1. 数字 `1-9` 在每一行只能出现一次。
+2. 数字 `1-9` 在每一列只能出现一次。
+3. 数字 `1-9` 在每一个以粗实线分隔的 `3x3` 宫内只能出现一次。（请参考示例图）
+
+数独部分空格内已填入了数字，空白格用 `'.'` 表示。
+
+ 
+
+**示例 1：**
+
+![img](https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2021/04/12/250px-sudoku-by-l2g-20050714svg.png)
+
+```
+输入：board = [["5","3",".",".","7",".",".",".","."],["6",".",".","1","9","5",".",".","."],[".","9","8",".",".",".",".","6","."],["8",".",".",".","6",".",".",".","3"],["4",".",".","8",".","3",".",".","1"],["7",".",".",".","2",".",".",".","6"],[".","6",".",".",".",".","2","8","."],[".",".",".","4","1","9",".",".","5"],[".",".",".",".","8",".",".","7","9"]]
+输出：[["5","3","4","6","7","8","9","1","2"],["6","7","2","1","9","5","3","4","8"],["1","9","8","3","4","2","5","6","7"],["8","5","9","7","6","1","4","2","3"],["4","2","6","8","5","3","7","9","1"],["7","1","3","9","2","4","8","5","6"],["9","6","1","5","3","7","2","8","4"],["2","8","7","4","1","9","6","3","5"],["3","4","5","2","8","6","1","7","9"]]
+解释：输入的数独如上图所示，唯一有效的解决方案如下所示：
+```
+
+ 
+
+**提示：**
+
+- `board.length == 9`
+- `board[i].length == 9`
+- `board[i][j]` 是一位数字或者 `'.'`
+- 题目数据 **保证** 输入数独仅有一个解
+
+
+
+这个代码超时了，如何优化
+
+```python
+from typing import List
+
+class Solution:
+    def solveSudoku(self, board: List[List[str]]) -> None:
+        """
+        填充数独的解法（原地修改 board）
+        """
+        self.solve(board)
+
+    def solve(self, board: List[List[str]]) -> bool:
+        for i in range(9):
+            for j in range(9):
+                if board[i][j] == '.':  # 发现空格
+                    for num in map(str, range(1, 10)):  # 依次尝试填入 '1' - '9'
+                        if self.isValid(board, i, j, num):  # 检查是否满足规则
+                            board[i][j] = num
+                            if self.solve(board):  # 递归求解
+                                return True
+                            board[i][j] = '.'  # 回溯
+                    return False  # 没有可填的数，返回 False（触发回溯）
+        return True  # 填完所有格子，返回 True
+
+    def isValid(self, board: List[List[str]], row: int, col: int, num: str) -> bool:
+        """
+        检查在 (row, col) 位置填入 num 是否符合数独规则
+        """
+        block_x, block_y = (row // 3) * 3, (col // 3) * 3  # 计算 3x3 宫格的起始位置
+        for i in range(9):
+            if board[row][i] == num or board[i][col] == num:  # 检查行列
+                return False
+            if board[block_x + i // 3][block_y + i % 3] == num:  # 检查 3x3 宫格
+                return False
+        return True
+
+```
+
+
+
+
+
+如果超时了，可以优化 **数独搜索的效率**，主要思路如下：
+
+**优化思路**
+
+1. **使用哈希表（Set）存储已填入的数字**
+   - 维护 `row_sets`、`col_sets` 和 `box_sets` 记录已填入的数字，避免 `isValid` 的重复遍历。
+2. **优先填充最少可选项的位置**
+   - 预处理所有空格，优先选择候选数最少的空格填充（**最小剩余值原则 MRV**）。
+
+> 最小剩余值（Minimum Remaining Values, MRV）是一种用于解决约束满足问题（Constraint Satisfaction Problems, CSPs）的启发式策略。在CSP中，我们有一组变量，每个变量都必须被赋予一个值，同时还要满足一组约束条件，这些约束限制了哪些值可以合法地分配给变量。
+>
+> MRV 的概念
+>
+> MRV 启发式方法用于选择下一个要赋值的变量，具体来说，它会选择具有最少合法值（即剩余值最少）的变量进行赋值。这种策略背后的直觉是，如果一个变量的合法值较少，那么我们应该尽早处理它，因为如果不这样做，可能会导致后面的选择更加困难或者无解。
+
+1. **回溯剪枝**
+   - 一旦发现无解，立即返回 `False`，减少不必要的搜索。
+
+---
+
+**优化代码**
+
+```python
+from typing import List
+
+class Solution:
+    def solveSudoku(self, board: List[List[str]]) -> None:
+        """
+        解决数独问题，原地修改 board
+        """
+        self.rows = [set() for _ in range(9)]  # 每行已填数字集合
+        self.cols = [set() for _ in range(9)]  # 每列已填数字集合
+        self.boxes = [set() for _ in range(9)]  # 每个 3x3 宫格已填数字集合
+        self.empty_cells = []  # 记录所有待填充的位置
+        
+        # 初始化状态
+        for i in range(9):
+            for j in range(9):
+                if board[i][j] == '.':
+                    self.empty_cells.append((i, j))  # 记录空格
+                else:
+                    num = board[i][j]
+                    self.rows[i].add(num)
+                    self.cols[j].add(num)
+                    self.boxes[(i // 3) * 3 + (j // 3)].add(num)
+
+        # **排序空格：优先填充候选数最少的位置**
+        self.empty_cells.sort(key=lambda pos: self.get_candidates_count(board, pos))
+        
+        self.solve(board, 0)  # 开始回溯填充
+
+    def solve(self, board: List[List[str]], index: int) -> bool:
+        """
+        回溯填充数独
+        """
+        if index == len(self.empty_cells):
+            return True  # 终止条件：所有空格填完
+        
+        row, col = self.empty_cells[index]
+        box_index = (row // 3) * 3 + (col // 3)
+        
+        for num in map(str, range(1, 10)):  # 依次尝试 '1'-'9'
+            if num not in self.rows[row] and num not in self.cols[col] and num not in self.boxes[box_index]:
+                # 选择
+                board[row][col] = num
+                self.rows[row].add(num)
+                self.cols[col].add(num)
+                self.boxes[box_index].add(num)
+
+                if self.solve(board, index + 1):  # 递归填充下一个
+                    return True
+
+                # 回溯
+                board[row][col] = '.'
+                self.rows[row].remove(num)
+                self.cols[col].remove(num)
+                self.boxes[box_index].remove(num)
+
+        return False  # 触发回溯
+
+    def get_candidates_count(self, board: List[List[str]], pos: tuple) -> int:
+        """
+        获取某个空格的可选数字数目（用于排序优化）
+        """
+        row, col = pos
+        box_index = (row // 3) * 3 + (col // 3)
+        used_numbers = self.rows[row] | self.cols[col] | self.boxes[box_index]
+        return 9 - len(used_numbers)  # 可能的候选数
+```
+
+---
+
+**优化点**
+
+1. **`self.rows`、`self.cols`、`self.boxes`**
+   - 直接记录已填数字，避免每次 `isValid` 进行 `O(9)` 遍历，查询复杂度变为 `O(1)`。
+
+2. **`self.empty_cells.sort(key=lambda pos: self.get_candidates_count(board, pos))`**
+   - 预排序所有空格，使得最少候选数的位置优先填充，大大减少回溯次数。
+
+3. **回溯剪枝**
+   - 如果当前数字不满足约束，直接跳过，减少不必要的递归调用。
+
+---
+
+**时间复杂度分析**
+
+- 由于 `get_candidates_count` 优化了搜索顺序，回溯的搜索空间大幅减少。
+- 平均情况下复杂度从 `O(9^n)` 降低到 **接近 `O(9^m)`**，其中 `m << n`。
+
+
 
 2597.美丽子集的数目，https://leetcode.cn/problems/the-number-of-beautiful-subsets/
 
@@ -2440,7 +3405,109 @@ class Solution:
 
 ### 正则表达式RE
 
-04015: 邮箱验证，http://cs101.openjudge.cn/2025sp_routine/04015
+**04015: 邮箱验证**，http://cs101.openjudge.cn/2025sp_routine/04015
+
+strings, RE, http://cs101.openjudge.cn/practice/04015
+
+POJ 注册的时候需要用户输入邮箱，验证邮箱的规则包括：
+1)有且仅有一个'@'符号
+2)'@'和'.'不能出现在字符串的首和尾
+3)'@'之后至少要有一个'.'，并且'@'不能和'.'直接相连
+满足以上3条的字符串为合法邮箱，否则不合法，
+编写程序验证输入是否合法
+
+**输入**
+
+输入包含若干行，每一行为一个代验证的邮箱地址，长度小于100
+
+**输出**
+
+每一行输入对应一行输出
+如果验证合法，输出 YES
+如果验证非法：输出 NO
+
+样例输入
+
+```
+.a@b.com
+pku@edu.cn
+cs101@gmail.com
+cs101@gmail
+```
+
+样例输出
+
+```
+NO
+YES
+YES
+NO
+```
+
+
+
+这题目输入没有明确结束，需要套在try ...  except里面。测试时候，需要模拟输入结束，看你是window还是mac。If the user hits EOF (*nix: Ctrl-D, Windows: Ctrl-Z+Return), raise EOFError.
+
+```python
+while True:
+    try:
+        s = input()
+    except EOFError:
+        break
+    
+    if s.count('@') != 1:
+        print("NO"); continue
+    
+    #if (s[0]=='@' or s[-1]=='@' or s[0]=='.' or s[-1]=='.'):
+    if (s[0] in {'@', '.'} or s[-1] in {'@', '.'}):
+        print("NO"); continue
+
+    if (s.find("@.")!=-1 or s.find(".@")!=-1):
+        print("NO"); continue
+
+    p = s.find("@");
+    q = s.find(".", p+1);
+    
+    '''
+    if (q==-1):
+        print("NO")
+    else:
+        print("YES")
+    '''
+    print('NO' if q==-1 else 'YES')
+```
+
+
+
+唐浴歌经济学院1900015516
+
+题目给的要求是\[\^@\.]，也就是说正常字段只需要不是“@”和“.”即可。以前遇到的要求是：正常字段只能是大小写字母或“-”，所以也试了试[\w-]。虽然regulation需要前后match，也就是说前面加一个“^”，后面加一个“$”， 但 是.match函数本身就是从头开始检索的，所以“^”可以删去。
+
+
+
+
+
+```python
+# https://www.tutorialspoint.com/python/python_reg_expressions.htm
+# https://www.geeksforgeeks.org/python-regex/
+
+import re
+while True:
+    try:
+        s = input()
+        reg = r'^[\w-]+(\.[\w-]+)*@[\w-]+(\.[\w-]+)+$'
+        print('YES' if re.match(reg, s) else 'NO')
+    except EOFError:
+        break
+```
+
+> ^：匹配字符串的开始。
+> [\w-]+：匹配用户名部分的第一个子部分，允许字母、数字、下划线和连字符，至少有一个字符。
+> (\.[\w-]+)*：匹配用户名部分的其余子部分，每个子部分由点分隔，可以有零个或多个这样的子部分。
+> @：匹配单个 @ 符号。
+> [\w-]+：匹配域名的第一部分，允许字母、数字、下划线和连字符，至少有一个字符。
+> (\.[\w-]+)+：匹配域名的后续部分，每个部分由点分隔，至少有一个这样的部分，并且每个部分都至少包含一个字符。
+> $：匹配字符串的结尾，确保整个字符串都被匹配到结尾，不允许多余的字符。
 
 
 
@@ -2466,15 +3533,131 @@ class Solution:
 
 ### 信息检索IR
 
-04093: 倒排索引查询，http://cs101.openjudge.cn/practice/04093/
+**04093: 倒排索引查询**，
+
+data structures, http://cs101.openjudge.cn/practice/04093/
+
+现在已经对一些文档求出了倒排索引，对于一些词得出了这些词在哪些文档中出现的列表。
+
+要求对于倒排索引实现一些简单的查询，即查询某些词同时出现，或者有些词出现有些词不出现的文档有哪些。
+
+**输入**
+
+第一行包含一个数N，1 <= N <= 100，表示倒排索引表的数目。
+接下来N行，每行第一个数ci，表示这个词出现在了多少个文档中。接下来跟着ci个数，表示出现在的文档编号，编号不一定有序。1 <= ci <= 1000，文档编号为32位整数。
+接下来一行包含一个数M，1 <= M <= 100，表示查询的数目。
+接下来M行每行N个数，每个数表示这个词要不要出现，1表示出现，-1表示不出现，0表示无所谓。数据保证每行至少出现一个1。
+
+**输出**
+
+共M行，每行对应一个查询。输出查询到的文档编号，按照编号升序输出。
+如果查不到任何文档，输出"NOT FOUND"。
+
+样例输入
+
+```
+3
+3 1 2 3
+1 2
+1 3
+3
+1 1 1
+1 -1 0
+1 -1 -1
+```
+
+样例输出
+
+```
+NOT FOUND
+1 3
+1
+```
+
+
+
+在实际搜索引擎在处理基于倒排索引的查询时，搜索引擎确实会优先关注各个查询词的倒排表的合并和交集处理，而不是直接准备未出现文档的集合。这种方法更有效，特别是在处理大规模数据集时，因为它允许系统动态地调整和优化查询过程，特别是在有复杂查询逻辑（如多个词的组合、词的排除等）时。详细解释一下搜索引擎如何使用倒排索引来处理查询：
+
+倒排索引查询的核心概念
+
+1. 倒排索引结构：
+   - 对于每个词（token），都有一个关联的文档列表，这个列表通常是按文档编号排序的。
+   - 每个文档在列表中可能还会有附加信息，如词频、位置信息等。
+2. 处理查询：
+   - 单词查询：对于单个词的查询，搜索引擎直接返回该词的倒排列表。
+   - 多词交集查询：对于包含多个词的查询，搜索引擎找到每个词的倒排列表，然后计算这些列表的交集。
+     这个交集代表了所有查询词都出现的文档集合。
+   - 复杂逻辑处理：对于包含逻辑运算（AND, OR, NOT）的查询，搜索引擎会结合使用集合的
+     交集（AND）、并集（OR）和差集（NOT）操作来处理查询。特别是在处理 NOT 逻辑时，
+     它并不是去查找那些未出现词的文档集合，而是从已经确定的结果集中排除含有这个词的文档。
+
+更贴近实际搜索引擎的处理实现，如下：
+
+```python
+import sys
+input = sys.stdin.read
+data = input().split()
+
+index = 0
+N = int(data[index])
+index += 1
+
+word_documents = []
+
+# 读取每个词的倒排索引
+for _ in range(N):
+    ci = int(data[index])
+    index += 1
+    documents = sorted(map(int, data[index:index + ci]))
+    index += ci
+    word_documents.append(documents)
+
+M = int(data[index])
+index += 1
+
+results = []
+
+# 处理每个查询
+for _ in range(M):
+    query = list(map(int, data[index:index + N]))
+    index += N
+
+    # 集合存储各词的文档集合（使用交集获取所有词都出现的文档）
+    included_docs = []
+    excluded_docs = set()
+
+    # 解析查询条件
+    for i in range(N):
+        if query[i] == 1:
+            included_docs.append(word_documents[i])
+        elif query[i] == -1:
+            excluded_docs.update(word_documents[i])
+
+    # 仅在有包含词时计算交集
+    if included_docs:
+        result_set = set(included_docs[0])
+        for docs in included_docs[1:]:
+            result_set.intersection_update(docs)
+        result_set.difference_update(excluded_docs)
+        final_docs = sorted(result_set)
+        results.append(" ".join(map(str, final_docs)) if final_docs else "NOT FOUND")
+    else:
+        results.append("NOT FOUND")
+
+# 输出所有查询结果
+for result in results:
+    print(result)
+```
+
+
+
+
 
 06640: 倒排索引，http://cs101.openjudge.cn/2025sp_routine/06640/
 
 
 
-### 自然语言处理 NLP
-
-1078.Bigram分词，https://leetcode.cn/problems/occurrences-after-bigram/
+1078.Bigram分词，string, https://leetcode.cn/problems/occurrences-after-bigram/
 
 
 
@@ -2929,99 +4112,6 @@ print(max_sum)
 hash table, doubly-linked list, https://leetcode.cn/problems/lru-cache/
 
 
-
-### 树结构Tree
-
-04082:树的镜面映射，http://cs101.openjudge.cn/practice/04082/
-
-- 题面：将给定二叉树进行水平镜像翻转后输出层序遍历  
-- 思路：层序遍历时交换左右子节点顺序
-
-03720:文本二叉树，http://cs101.openjudge.cn/2025sp_routine/03720/
-
-01577:Falling Leaves, http://cs101.openjudge.cn/2025sp_routine/01577/
-
-01145:Tree Summing, http://cs101.openjudge.cn/2025sp_routine/01145/
-
-05907:二叉树的操作，http://cs101.openjudge.cn/practice/05907/
-
-T20576: printExp（逆波兰表达式建树），http://cs101.openjudge.cn/2025sp_routine/20576/
-
-02788:二叉树，http://cs101.openjudge.cn/2025sp_routine/02788/
-
-05455:二叉搜索树的层次遍历，http://cs101.openjudge.cn/2025sp_routine/05455/
-
-105.从前序与中序遍历序列构造二叉树，https://leetcode.cn/problems/construct-binary-tree-from-preorder-and-inorder-traversal/
-
-22158: 根据二叉树前中序序列建树，http://cs101.openjudge.cn/practice/22158/
-
-22275: 二叉搜索树的遍历，http://cs101.openjudge.cn/2025sp_routine/22275/
-
-
-
-### 滚动数组优化DP
-
-01-背包，滚动数组，https://oi-wiki.org/dp/knapsack/
-
-**23421: 小偷背包**，http://cs101.openjudge.cn/practice/23421/
-
-
-
-```python
-N, B = map(int, input().split())
-values = list(map(int, input().split()))
-weights = list(map(int, input().split()))
-
-dp = [0] * (B + 1)
-
-for i in range(N):
-    prev = dp[:]  # 复制上一次的状态
-    for j in range(B + 1):
-        if j >= weights[i]:
-            dp[j] = max(prev[j], prev[j - weights[i]] + values[i])
-
-print(dp[B])
-```
-
-
-
-**M787.K站中转内最便宜的航班**
-
-https://leetcode.cn/problems/cheapest-flights-within-k-stops/
-
-在「最多经过 K 次中转」的约束下，求出从 src 到 dst 的最小费用。
-
-```python
-from typing import List
-
-class Solution:
-    def findCheapestPrice(self, 
-                          n: int, 
-                          flights: List[List[int]], 
-                          src: int, 
-                          dst: int, 
-                          K: int) -> int:
-        # 初始化：到各城最便宜费用
-        INF = float('inf')
-        dist = [INF] * n
-        dist[src] = 0
-        
-        # 最多允许 K 次中转 -> 最多使用 K+1 条边
-        for _ in range(K + 1):
-            # 基于上一轮的结果创建新一轮的 dist
-            prev = dist[:]  
-            
-            # 对每条航班边做松弛
-            for u, v, w in flights:
-                # 若 u 可达，则尝试用 u -> v 这条边更新 v
-                if prev[u] + w < dist[v]:
-                    dist[v] = prev[u] + w
-            
-            # 下一轮松弛时，依然要基于本轮更新后的 dist，
-            # 因此不需要再额外复制
-        
-        return dist[dst] if dist[dst] != INF else -1
-```
 
 
 
