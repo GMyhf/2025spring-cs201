@@ -1,6 +1,6 @@
 # 2025春季 数算B各班进度
 
-Updated 2344 GMT+8 Mar 11, 2025  
+Updated 1448 GMT+8 Jun 6, 2025  
 2025 spring, Complied by Hongfei Yan
 
 
@@ -51,6 +51,8 @@ Zouyz: http://hxsjjg.openjudge.cn
 
 程序设计与算法: http://eepa.openjudge.cn
 
+PKU Online Judge, http://poj.openjudge.cn/campus2025
+
 
 ## 未更新小组
 http://dsb.openjudge.cn  
@@ -71,7 +73,7 @@ Zhangsl: http://ssbzsl.openjudge.cn   （好像停课了）
 | 邹艳珍   |                  |                  |          |      | 仅能访问[openjudge.cn](http://openjudge.cn) |               |
 |          |                  |                  |          |      |                                             |               |
 | 谢正茂   |                  |                  |          |      | 仅能访问[openjudge.cn](http://openjudge.cn) |               |
-| 张史梁   |                  |                  |          |      | 仅能访问[openjudge.cn](http://openjudge.cn) |               |
+|          |                  |                  |          |      |                                             |               |
 | 郭炜     |                  |                  |          |      | 仅能访问[openjudge.cn](http://openjudge.cn) |               |
 | 胡玮     |                  |                  |          |      | 仅能访问[openjudge.cn](http://openjudge.cn) |               |
 |          |                  |                  |          |      |                                             |               |
