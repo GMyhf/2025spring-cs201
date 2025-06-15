@@ -2548,6 +2548,41 @@ for x in a:
 
     
 
+    > 没访问过的结点，至少要访问一下。v0 v1 v4 v3的顺序要对
+    >
+    > ```python
+    > def dfs(graph, start, visited, result):
+    >     visited.add(start)
+    >     result.append(start)
+    >     for neighbor in graph.get(start, []):
+    >         if neighbor not in visited:
+    >             dfs(graph, neighbor, visited, result)
+    > 
+    > # 邻接表
+    > graph = {
+    >     'v0': ['v1'],
+    >     'v1': ['v0', 'v4'],
+    >     'v2': ['v0', 'v3'],
+    >     'v3': ['v1'],
+    >     'v4': ['v2']
+    > }
+    > 
+    > visited = set()
+    > result = []
+    > 
+    > # 遍历所有节点，确保每个节点都至少访问一次
+    > for node in sorted(graph.keys()):
+    >     if node not in visited:
+    >         dfs(graph, node, visited, result)
+    > 
+    > print("DFS 遍历顺序:", result)
+    > # DFS 遍历顺序: ['v0', 'v1', 'v4', 'v2', 'v3']
+    > ```
+    >
+    > 
+    
+    
+    
 11. 若按照排序的稳定性和不稳定性对排序算法进行分类，则（ D ）是不稳定排序。
     A：冒泡排序	B：归并排序	C：直接插入排序	**D：希尔排序**
 
