@@ -1,6 +1,6 @@
 # Week4～5 线性数据结构&时间复杂度
 
-Updated 1601 GMT+8 Mar 19, 2025
+Updated 2114 GMT+8 Jun 16, 2025
 
 2025 spring, Complied by Hongfei Yan
 
@@ -1645,6 +1645,81 @@ A： [21,1] and [26,45]	B：[1, 2, 9,21,26,28,29,45] and [16,27,34,39,40,43, 46,
 C： **[21] and [1]**	D：[9] and [16]
 
 The lists [21] and [1] are the first two base cases encountered by mergesort and will therefore be the first two lists merged.
+
+
+
+> ## 归并排序如果自上而下是递归，自下而上是迭代？
+>
+> 是的，**归并排序**有两种常见的实现方式，对应不同的思维方式：
+>
+> ------
+>
+> ✅ **自上而下（递归实现）**
+>
+> - **思路**：分治法。把数组不断二分直到每个子数组长度为1，然后两两合并。
+> - **过程**：递归地将数组拆分为两半；合并排序好的左右子数组。
+> - **特点**：
+>   - 写法直观，易理解；
+>   - 使用系统栈递归，空间复杂度为 O(log n)。
+>
+> ```python
+> def merge_sort(arr):
+>     if len(arr) <= 1:
+>         return arr
+>     mid = len(arr) // 2
+>     left = merge_sort(arr[:mid])
+>     right = merge_sort(arr[mid:])
+>     return merge(left, right)
+> 
+> def merge(left, right):
+>     result = []
+>     i = j = 0
+>     while i < len(left) and j < len(right):
+>         result.append(left[i] if left[i] <= right[j] else right[j])
+>         if left[i] <= right[j]:
+>             i += 1
+>         else:
+>             j += 1
+>     result.extend(left[i:])
+>     result.extend(right[j:])
+>     return result
+> ```
+>
+> ------
+>
+> ✅ **自下而上（迭代实现）**
+>
+> - **思路**：从最小粒度（每个元素是一个已排序段）开始，两两合并，不断扩大子数组的大小。
+> - **过程**：
+>   1. 初始时，每个长度为1的元素看作已排序；
+>   2. 进行第一轮合并：长度为1的段合并成长度为2；
+>   3. 再进行第二轮：长度为2合并成长度为4，以此类推；
+>   4. 最后整段合并完成。
+> - **特点**：无需递归；空间复杂度相同，但可以避免系统栈溢出。
+>
+> ```python
+> def merge_sort_iterative(arr):
+>     n = len(arr)
+>     size = 1
+>     while size < n:
+>         for start in range(0, n, 2 * size):
+>             mid = min(start + size, n)
+>             end = min(start + 2 * size, n)
+>             arr[start:end] = merge(arr[start:mid], arr[mid:end])
+>         size *= 2
+>     return arr
+> ```
+>
+> ------
+>
+> 🔁 总结比较：
+>
+> | 实现方式     | 分治顺序 | 栈/循环 | 空间复杂度   | 特点                 |
+> | ------------ | -------- | ------- | ------------ | -------------------- |
+> | 自上而下递归 | 先分后合 | 递归栈  | O(n + log n) | 写法直观、易理解     |
+> | 自下而上迭代 | 先合后归 | 循环    | O(n)         | 避免递归、适合大数组 |
+>
+> 如果你要分析归并排序的“一趟归并”效果，那通常是基于 **自下而上迭代实现**，因为那里面每一轮循环就是“归并一趟”。
 
 
 
