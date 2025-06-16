@@ -1842,10 +1842,10 @@ def count_components(n, edges):
    A：f     B：c    C：a    D：d
 
 7. 对于单链表，表头节点为 head，判定空表的条件是（ D ）。
-   A: head.next \== None
+   A: head.next == None
    B: head != None
-   C: head.next \== head
-   D: head \== None
+   C: head.next == head
+   D: head == None
 
 8. 以下典型排序算法中，具有稳定排序特性的是（ A ）。
    A:冒泡排序（Bubble Sort） B: 直接选择排序（Selection Sort） 
