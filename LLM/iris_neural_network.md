@@ -1,6 +1,6 @@
 # Neural Network实现鸢尾花卉数据分类
 
-Updated 1109 GMT+8 Feb 26 2025
+Updated 2013 GMT+8 Jul 26 2025
 
 2025 spring, Complied by Hongfei Yan
 
@@ -63,95 +63,119 @@ from sklearn.datasets import load_iris
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 
-# 1. 加载数据
-iris = load_iris()
-X = iris.data
-y = iris.target
 
-# 2. 划分训练集和测试集（注意这里先划分再标准化）
-X_train, X_test, y_train, y_test = train_test_split(
-    X, y, test_size=0.2, random_state=42, stratify=y
-)
-"""
-random_state=42
-设定随机数种子，从而确保每次运行代码时数据划分的结果都是相同的。这样做可以使实验具有可重复性，
-有利于调试和结果对比。
-
-stratify=y
-这个参数表示按照 y 中的标签进行分层抽样，也就是说，训练集和测试集中各类别的
-比例会与原始数据中的类别比例保持一致。这对于类别不平衡的数据集尤为重要，可以
-避免某一类别在划分时被严重低估或过采样。
-"""
-
-# 3. 数据标准化：只在训练集上计算均值和标准差，再将相同的变换应用到测试集上
-scaler = StandardScaler()
-X_train = scaler.fit_transform(X_train)
-X_test = scaler.transform(X_test)
-
-# 转换为 PyTorch 的 tensor
-X_train = torch.tensor(X_train, dtype=torch.float32)
-X_test = torch.tensor(X_test, dtype=torch.float32)
-y_train = torch.tensor(y_train, dtype=torch.long)
-y_test = torch.tensor(y_test, dtype=torch.long)
-
-# 构造数据集和 DataLoader
-train_dataset = TensorDataset(X_train, y_train)
-train_loader = DataLoader(train_dataset, batch_size=16, shuffle=True)
-
-
-# 4. 定义模型
+# 定义模型结构
 class IrisNet(nn.Module):
     def __init__(self, input_size=4, hidden_size=10, num_classes=3):
         super(IrisNet, self).__init__()
-        self.fc1 = nn.Linear(input_size, hidden_size)
-        self.relu = nn.ReLU()
-        self.fc2 = nn.Linear(hidden_size, num_classes)
+        self.net = nn.Sequential(
+            nn.Linear(input_size, hidden_size),
+            nn.ReLU(),
+            nn.Linear(hidden_size, num_classes)
+        )
 
     def forward(self, x):
-        x = self.fc1(x)
-        x = self.relu(x)
-        x = self.fc2(x)
-        return x
+        return self.net(x)
 
 
-model = IrisNet()
-
-# 5. 定义损失函数和优化器
-criterion = nn.CrossEntropyLoss()
-optimizer = optim.Adam(model.parameters(), lr=0.01)
-
-# 6. 训练模型
-num_epochs = 100
-for epoch in range(num_epochs):
-    model.train()  # 切换到训练模式
+# 训练函数
+def train(model, dataloader, criterion, optimizer, device):
+    model.train()
     running_loss = 0.0
-    for batch_X, batch_y in train_loader:
-        optimizer.zero_grad()         # 清空梯度
-        outputs = model(batch_X)       # 前向传播
-        loss = criterion(outputs, batch_y)  # 计算损失
+    for batch_X, batch_y in dataloader:
+        batch_X, batch_y = batch_X.to(device), batch_y.to(device)
 
-        loss.backward()                # 反向传播
-        optimizer.step()               # 更新权重
+        optimizer.zero_grad()
+        outputs = model(batch_X)
+        loss = criterion(outputs, batch_y)
+        loss.backward()
+        optimizer.step()
 
         running_loss += loss.item() * batch_X.size(0)
 
-    epoch_loss = running_loss / len(train_loader.dataset)
-    if (epoch + 1) % 10 == 0:
-        print(f"Epoch [{epoch + 1}/{num_epochs}], Loss: {epoch_loss:.4f}")
+    return running_loss / len(dataloader.dataset)
 
-# 7. 在测试集上评估
-model.eval()  # 切换到评估模式
-with torch.no_grad():  # 禁用梯度计算，加快测试速度，减少内存消耗
-    outputs = model(X_test)
-    _, predicted = torch.max(outputs, 1)
-    accuracy = (predicted == y_test).sum().item() / len(y_test)
-    print(f"Test Accuracy: {accuracy * 100:.2f}%")
 
-# 最终预测示例
-sample = X_test[0].unsqueeze(0)  # 取第一个测试样本
-prediction = torch.argmax(model(sample), dim=1)
-print(f"\nSample prediction: True class {y_test[0].item()}, "
-      f"Predicted class {prediction.item()}")
+# 测试函数
+def evaluate(model, X, y, device):
+    model.eval()
+    with torch.no_grad():
+        X, y = X.to(device), y.to(device)
+        outputs = model(X)
+        _, predicted = torch.max(outputs, 1)
+        accuracy = (predicted == y).float().mean().item()
+    return accuracy, predicted
+
+
+# 主程序
+def main():
+    # 设置设备
+    if torch.backends.mps.is_available():
+        device = torch.device("mps")
+    elif torch.cuda.is_available():
+        device = torch.device("cuda")
+    else:
+        device = torch.device("cpu")
+
+    # 加载数据
+    iris = load_iris()
+    X, y = iris.data, iris.target
+
+    X_train, X_test, y_train, y_test = train_test_split(
+        X, y, test_size=0.2, random_state=42, stratify=y
+    )
+    """
+    random_state=42
+    设定随机数种子，从而确保每次运行代码时数据划分的结果都是相同的。这样做可以使实验具有可重复性，
+    有利于调试和结果对比。
+
+    stratify=y
+    这个参数表示按照 y 中的标签进行分层抽样，也就是说，训练集和测试集中各类别的
+    比例会与原始数据中的类别比例保持一致。这对于类别不平衡的数据集尤为重要，可以
+    避免某一类别在划分时被严重低估或过采样。
+    """
+
+    # 标准化：只在训练集上计算均值和标准差，再将相同的变换应用到测试集上
+    scaler = StandardScaler()
+    X_train = scaler.fit_transform(X_train)
+    X_test = scaler.transform(X_test)
+
+    # 转换为 Tensor
+    X_train = torch.tensor(X_train, dtype=torch.float32)
+    X_test = torch.tensor(X_test, dtype=torch.float32)
+    y_train = torch.tensor(y_train, dtype=torch.long)
+    y_test = torch.tensor(y_test, dtype=torch.long)
+
+    # 构造 DataLoader
+    train_dataset = TensorDataset(X_train, y_train)
+    train_loader = DataLoader(train_dataset, batch_size=16, shuffle=True)
+
+    # 模型、损失函数、优化器
+    model = IrisNet().to(device)
+    criterion = nn.CrossEntropyLoss()
+    optimizer = optim.Adam(model.parameters(), lr=0.01)
+
+    # 训练
+    num_epochs = 100
+    for epoch in range(1, num_epochs + 1):
+        loss = train(model, train_loader, criterion, optimizer, device)
+        if epoch % 10 == 0:
+            print(f"Epoch [{epoch:3d}/{num_epochs}], Loss: {loss:.4f}")
+
+    # 评估
+    test_acc, test_pred = evaluate(model, X_test, y_test, device)
+    print(f"\n✅ Test Accuracy: {test_acc * 100:.2f}%")
+
+    # 示例预测
+    sample = X_test[0].unsqueeze(0)
+    sample_pred = model(sample.to(device))
+    pred_class = torch.argmax(sample_pred, dim=1).item()
+    print(f"🔍 Sample Prediction: True = {y_test[0].item()}, Predicted = {pred_class}")
+
+
+if __name__ == "__main__":
+    main()
+
 ```
 
 > 云虚拟机运行结果：
@@ -189,19 +213,19 @@ print(f"\nSample prediction: True class {y_test[0].item()}, "
 
 ```
 $ python iris_neural_network.py 
-Epoch [10/100], Loss: 0.1849
-Epoch [20/100], Loss: 0.0867
-Epoch [30/100], Loss: 0.0649
-Epoch [40/100], Loss: 0.0555
-Epoch [50/100], Loss: 0.0512
-Epoch [60/100], Loss: 0.0538
-Epoch [70/100], Loss: 0.0463
-Epoch [80/100], Loss: 0.0458
-Epoch [90/100], Loss: 0.0453
-Epoch [100/100], Loss: 0.0438
-Test Accuracy: 100.00%
+Epoch [ 10/100], Loss: 0.2363
+Epoch [ 20/100], Loss: 0.0899
+Epoch [ 30/100], Loss: 0.0614
+Epoch [ 40/100], Loss: 0.0634
+Epoch [ 50/100], Loss: 0.0498
+Epoch [ 60/100], Loss: 0.0492
+Epoch [ 70/100], Loss: 0.0492
+Epoch [ 80/100], Loss: 0.0451
+Epoch [ 90/100], Loss: 0.0479
+Epoch [100/100], Loss: 0.0436
 
-Sample prediction: True class 0, Predicted class 0
+✅ Test Accuracy: 100.00%
+🔍 Sample Prediction: True = 0, Predicted = 0
 ```
 
 **注意事项：**
