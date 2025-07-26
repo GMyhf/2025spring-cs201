@@ -1,6 +1,6 @@
-# Neural Network实现Tiny ImageNet图像分类
+# PyTorch 实例 -Tiny ImageNet图像分类项目
 
-Updated 1526 GMT+8 Feb 26 2025
+Updated 1947 GMT+8 Jul 26 2025
 
 2025 spring, Complied by Hongfei Yan
 
