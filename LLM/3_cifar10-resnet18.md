@@ -356,6 +356,12 @@ Accuracy of truck: 92.70%
 Process finished with exit code 0
 ```
 
+
+
+<img src="https://raw.githubusercontent.com/GMyhf/img/main/img/202507280020181.jpg" alt="d561be986280572516ac1023e9ff715c" style="zoom:50%;" />
+
+
+
 ### Q: 之前版本 `image_classification-ResNet18.py` 没有baseline好？
 
 > 你现在的结果是：
