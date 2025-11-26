@@ -2,7 +2,7 @@
 
 Backpropagation in Neural Network
 
-Last Updated : 01 Jul, 2025
+Last Updated : 26 Nov, 2025
 
 https://www.geeksforgeeks.org/machine-learning/backpropagation-in-neural-network/
 
