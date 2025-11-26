@@ -140,7 +140,7 @@ $$
 a_1 = (0.2 \times 0.35) + (0.2 \times 0.7) = 0.21
 $$
 
-计算完 $ a_1 $ 后，我们可以继续计算 $ y_3 $ 的值：
+计算完 $a_1$ 后，我们可以继续计算 $y_3$ 的值：
 
 $$
 y_j = F(a_j) = \frac{1}{1 + e^{-a_1}}
@@ -285,7 +285,7 @@ After updating the weights the forward pass is repeated yielding:
 
 This process demonstrates how Back Propagation iteratively updates weights by minimizing errors until the network accurately predicts the output.
 
-> $Error=y_{target}−y_5 $
+> $Error=y_{target}−y_5$
 
 =0.5−0.61=−0.11=0.5−0.61=−0.11
 
