@@ -1,8 +1,11 @@
 # 神经网络中的反向传播
 
-Backpropagation in Neural Network
+Updated 2025-11-27 15:00 GMT+8*  
+*Compiled by Hongfei Yan (2025 Spring)*   
 
-Last Updated : 26 Nov, 2025
+
+
+Backpropagation in Neural Network
 
 https://www.geeksforgeeks.org/machine-learning/backpropagation-in-neural-network/
 
@@ -10,17 +13,17 @@ https://www.geeksforgeeks.org/machine-learning/backpropagation-in-neural-network
 
 反向传播（Back Propagation），又称为“误差的反向传播”，是一种用于训练神经网络的方法。其目标是通过调整网络中的权重（weights）和偏置（biases），来减小模型预测输出与实际输出之间的差异。
 
-它通过迭代方式更新权重和偏置，以最小化损失函数（cost function）。在每一个训练周期（epoch）中，模型会根据误差梯度（error gradient）更新参数，常用的优化算法包括梯度下降（Gradient Descent）或随机梯度下降（SGD）。该算法使用微积分中的链式法则来计算梯度，从而能够有效地穿越复杂的神经网络结构，优化损失函数。
+它通过迭代方式更新权重和偏置，以最小化损失函数（cost function）。在每一个训练周期（epoch）中，模型会根据误差梯度（error gradient）更新参数，常用的优化算法包括梯度下降（Gradient Descent）或随机梯度下降（SGD）。该算法使用微积分中的<mark>链式法则</mark>来计算梯度，从而能够有效地穿越复杂的神经网络结构，优化损失函数。
 
 > Back Propagation is also known as "Backward Propagation of Errors" is a method used to train neural network . Its goal is to reduce the difference between the model’s predicted output and the actual output by adjusting the weights and biases in the network.
 >
 > It works iteratively to adjust weights and bias to minimize the cost function. In each epoch the model adapts these parameters by reducing loss by following the error gradient. It often uses optimization algorithms like **gradient descent** or **stochastic gradient descent**. The algorithm computes the gradient using the chain rule from calculus allowing it to effectively navigate complex layers in the neural network to minimize the cost function.
 
-![Backpropagation-in-Neural-Network-1](https://media.geeksforgeeks.org/wp-content/uploads/20250701163824448467/Backpropagation-in-Neural-Network-1.webp)
+<img src="https://media.geeksforgeeks.org/wp-content/uploads/20250701163824448467/Backpropagation-in-Neural-Network-1.webp" alt="Backpropagation-in-Neural-Network-1" style="zoom:67%;" />
 
-<center>Fig(a) A simple illustration of how the backpropagation works by adjustments of weights</center>
+<center>A simple illustration of how the backpropagation works by adjustments of weights</center>
 
-<center>图(a)：通过权重调整，简单展示反向传播的工作方式</center>
+<center>通过权重调整，简单展示反向传播的工作方式</center>
 
 
 
@@ -58,7 +61,7 @@ https://www.geeksforgeeks.org/machine-learning/backpropagation-in-neural-network
 >
 > Each hidden layer computes the weighted sum (`a`) of the inputs then applies an activation function like [**ReLU (Rectified Linear Unit)**](https://www.geeksforgeeks.org/deep-learning/relu-activation-function-in-deep-learning/) to obtain the output (`o`). The output is passed to the next layer where an activation function such as [**softmax**](https://www.geeksforgeeks.org/deep-learning/the-role-of-softmax-in-neural-networks-detailed-explanation-and-applications/) converts the weighted outputs into probabilities for classification.
 
-![Backpropagation-in-Neural-Network-2](https://media.geeksforgeeks.org/wp-content/uploads/20250701163954688803/Backpropagation-in-Neural-Network-2.webp)
+<img src="https://raw.githubusercontent.com/GMyhf/img/main/img/Backpropagation-in-Neural-Network-2.webp" alt="Backpropagation-in-Neural-Network-2" style="zoom:67%;" />
 
 <center>The forward pass using weights and biases</center>
 
@@ -94,7 +97,7 @@ $MSE = (\text{Predicted Output} − \text{Actual Output})^2$
 >
 > Let’s walk through an example of Back Propagation in machine learning. Assume the neurons use the sigmoid activation function for the forward and backward pass. The target output is 0.5 and the learning rate is 1.
 
-![Backpropagation-in-Neural-Network-3](https://media.geeksforgeeks.org/wp-content/uploads/20250701164029130520/Backpropagation-in-Neural-Network-3.webp)
+<img src="https://raw.githubusercontent.com/GMyhf/img/main/img/Backpropagation-in-Neural-Network-3.webp" alt="Backpropagation-in-Neural-Network-3" style="zoom:67%;" />
 
 <center>Example (1) of backpropagation sum</center>
 
@@ -124,7 +127,7 @@ The sigmoid function returns a value between 0 and 1, introducing non-linearity 
 
 > $y_j = \frac{1}{1+e^{−a_j}}$ 
 
-![Backpropagation-in-Neural-Network-4](https://media.geeksforgeeks.org/wp-content/uploads/20250701164114106895/Backpropagation-in-Neural-Network-4.webp)
+<img src="https://raw.githubusercontent.com/GMyhf/img/main/img/Backpropagation-in-Neural-Network-4.webp" alt="Backpropagation-in-Neural-Network-4" style="zoom:67%;" />
 
 <center>To find the outputs of y3, y4 and y5</center>
 
@@ -179,7 +182,7 @@ $$
 
 
 
-![Backpropagation-in-Neural-Network-5](https://media.geeksforgeeks.org/wp-content/uploads/20250701164956768059/Backpropagation-in-Neural-Network-5.webp)
+<img src="https://raw.githubusercontent.com/GMyhf/img/main/img/Backpropagation-in-Neural-Network-5.webp" alt="Backpropagation-in-Neural-Network-5" style="zoom:67%;" />
 
 <center>Values of y3, y4 and y5</center>
 
@@ -263,7 +266,7 @@ Similarly other weights are updated:
 
 The updated weights are illustrated below
 
-![Backpropagation-in-Neural-Network-5](https://media.geeksforgeeks.org/wp-content/uploads/20250701165041328619/Backpropagation-in-Neural-Network-5.webp)
+<img src="https://raw.githubusercontent.com/GMyhf/img/main/img/Backpropagation-in-Neural-Network-5-20251127160556998.webp" alt="Backpropagation-in-Neural-Network-5" style="zoom:67%;" />
 
 <center>Through backward pass the weights are updated</center>
 
@@ -294,6 +297,135 @@ This process is said to be continued until the actual output is gained by the ne
 
 
 ## Back Propagation Implementation in Python for XOR Problem
+
+**Q: XOR 问题是什么？**
+
+> XOR（异或）是一个经典的逻辑问题，它的输入输出如下：
+>
+> | 输入 A | 输入 B | 输出 |
+> | ------ | ------ | ---- |
+> | 0      | 0      | 0    |
+> | 0      | 1      | 1    |
+> | 1      | 0      | 1    |
+> | 1      | 1      | 0    |
+>
+> 这个问题**不能用一条直线分开**（不是线性可分的），所以单层感知机无法解决，必须用**至少一个隐藏层的神经网络**。
+
+
+
+> “**单层感知机**”（Single-Layer Perceptron）是神经网络最原始、最简单的形式，由 Frank Rosenblatt 在 1957 年提出。理解它，有助于明白为什么像 **XOR 这样的问题无法被它解决**，从而引出多层神经网络和反向传播的必要性。
+>
+> 单层感知机结构：
+>
+> - **输入层**：接收特征（比如 $x_1, x_2$）
+> - **输出层**：**直接输出结果**（没有隐藏层！）
+> - 每个输入有一个对应的权重 $w_1, w_2$，还有一个偏置 $b$
+>
+> **数学表达：**
+> $$
+> z = w_1 x_1 + w_2 x_2 + b
+> \nonumber
+> $$
+>
+> $$
+> \text{output} = \begin{cases} 1 & \text{if } z \geq 0 \\ 0 & \text{if } z < 0 \end{cases}
+> \nonumber
+> $$
+>
+> > 注意：**没有激活函数（或只有阶跃函数）**，**没有隐藏层**，所以叫“单层”。
+> >
+> > 阶跃函数是“硬判决”，适合理论分析；但因为不可导，不能用于现代神经网络的训练。
+>
+> ------
+>
+> ✅ 单层感知机能做什么？
+>
+> 它只能解决 **线性可分**（linearly separable）的问题。
+>
+> **例子：AND 门**
+>
+> | x₁   | x₂   | y    |
+> | ---- | ---- | ---- |
+> | 0    | 0    | 0    |
+> | 0    | 1    | 0    |
+> | 1    | 0    | 0    |
+> | 1    | 1    | 1    |
+>
+> ✅ 可以用一条直线分开 0 和 1 → **线性可分** → **单层感知机可以学会**
+>
+> 比如：
+> 取 (w_1 = 1, w_2 = 1, b = -1.5)
+> 则：
+>
+> - (0+0-1.5 = -1.5 < 0 → 0)
+> - (1+1-1.5 = 0.5 ≥ 0 → 1)
+>
+> 完美！
+>
+> ------
+>
+> **❌ 单层感知机不能做什么？**
+>
+> **XOR 问题（异或）：**
+>
+> | x₁   | x₂   | y    |
+> | ---- | ---- | ---- |
+> | 0    | 0    | 0    |
+> | 0    | 1    | 1    |
+> | 1    | 0    | 1    |
+> | 1    | 1    | 0    |
+>
+> 在二维平面上画出来：
+>
+> ```
+> (0,1) ● (y=1)        (1,1) ○ (y=0)
+> 
+> (0,0) ○ (y=0)        (1,0) ● (y=1)
+> ```
+>
+> 你会发现：**无法用一条直线把 ● 和 ○ 完全分开**！
+>
+> → 这就是 **非线性可分问题**。
+>
+> **结论**： 
+>
+> > **单层感知机无法解决 XOR 问题**，因为它缺乏非线性表达能力。
+>
+> ------
+>
+> ** 那怎么办？——引入隐藏层！**
+>
+> 1969 年，Minsky 和 Papert 在《Perceptrons》一书中指出了这个局限，导致神经网络研究一度停滞。
+>
+> 直到后来人们发现：
+>
+> > **只要加一个隐藏层，并使用非线性激活函数（如 sigmoid、ReLU），神经网络就能逼近任意函数**（万能近似定理）。
+>
+> 于是，**多层感知机**（MLP） + **反向传播** 成为解决方案。
+>
+> ------
+>
+> **🔄 对比总结**
+>
+> | 特性                | 单层感知机         | 多层感知机（带反向传播） |
+> | ------------------- | ------------------ | ------------------------ |
+> | 隐藏层              | ❌ 没有             | ✅ 有（至少1层）          |
+> | 激活函数            | 阶跃函数（不可导） | Sigmoid / ReLU（可导）   |
+> | 能否解决 AND/OR/NOT | ✅ 可以             | ✅ 可以                   |
+> | 能否解决 XOR        | ❌ 不行             | ✅ 可以                   |
+> | 是否支持反向传播    | ❌ 不支持（不可导） | ✅ 支持                   |
+> | 学习能力            | 仅线性分类         | 非线性建模               |
+>
+> ------
+>
+> 📌 小知识
+>
+> - “感知机”（Perceptron）通常特指**单层、使用阶跃激活、用感知机学习规则更新权重**的模型。
+> - 而我们今天说的“神经网络”，一般指**多层、可微激活、用梯度下降+反向传播训练**的模型，也叫 **多层感知机**（MLP），尽管名字里有“感知机”，但已经完全不同了。
+>
+> 
+
+
 
 This code demonstrates how Back Propagation is used in a neural network to solve the XOR problem. The neural network consists of:
 
@@ -451,7 +583,7 @@ print(output)
 
 **Output:**
 
-![Screenshot-2025-03-07-130223](https://media.geeksforgeeks.org/wp-content/uploads/20250307130234877256/Screenshot-2025-03-07-130223.png)
+![Screenshot-2025-03-07-130223](https://raw.githubusercontent.com/GMyhf/img/main/img/Screenshot-2025-03-07-130223.png)
 
 <center>Trained Model</center>
 
