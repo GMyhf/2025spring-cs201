@@ -1,6 +1,6 @@
 # PyTorch 实例 - CIFAR-10 图像分类项目
 
-Updated 1640 GMT+8 Jul 26 2025
+Updated 1123 GMT+8 Nov 28 2025
 
 2025 summer, Complied by Hongfei Yan
 
@@ -230,7 +230,9 @@ if __name__ == "__main__":
 
 
 
-运行结果如下：
+### 在Mac Studio（Apple M1 Ultra, 64GB）运行
+
+结果如下：
 
 ```
 /Users/hfyan/miniconda3/bin/python /Users/hfyan/Desktop/LLMs-from-scratch-main/runoob/pytorch-image-classification/image_classification-ResNet18-RandomCropFlipLR_Cosine.py 
@@ -359,6 +361,122 @@ Process finished with exit code 0
 
 
 <img src="https://raw.githubusercontent.com/GMyhf/img/main/img/202507280020181.jpg" alt="d561be986280572516ac1023e9ff715c" style="zoom:50%;" />
+
+
+
+### 在Clab云虚拟机（内存32GB，虚拟CPU32）运行
+
+结果如下：
+
+```
+/home/rocky/AI_literacy/.venv/bin/python /home/rocky/AI_literacy/CIFAR-10_nn.py 
+100%|██████████| 170M/170M [00:15<00:00, 11.1MB/s]
+/usr/lib64/python3.9/tarfile.py:2288: RuntimeWarning: The default behavior of tarfile extraction has been changed to disallow common exploits (including CVE-2007-4559). By default, absolute/parent paths are disallowed and some mode bits are cleared. See https://access.redhat.com/articles/7004769 for more details.
+  warnings.warn(
+Using device: cpu
+Starting training with early stopping...
+/home/rocky/AI_literacy/.venv/lib64/python3.9/site-packages/torch/utils/data/dataloader.py:666: UserWarning: 'pin_memory' argument is set as true but no accelerator is found, then device pinned memory won't be used.
+  warnings.warn(warn_msg)
+[1,   100] loss: 1.893
+[1,   200] loss: 1.658
+[1,   300] loss: 1.698
+[1] Avg Loss: 1.804
+[2,   100] loss: 1.399
+[2,   200] loss: 1.580
+[2,   300] loss: 1.407
+[2] Avg Loss: 1.517
+[3,   100] loss: 1.346
+[3,   200] loss: 1.492
+[3,   300] loss: 1.097
+[3] Avg Loss: 1.373
+[4,   100] loss: 1.309
+[4,   200] loss: 1.182
+[4,   300] loss: 1.187
+[4] Avg Loss: 1.244
+[5,   100] loss: 1.104
+[5,   200] loss: 1.084
+[5,   300] loss: 1.081
+[5] Avg Loss: 1.151
+......
+[267,   100] loss: 0.278
+[267,   200] loss: 0.226
+[267,   300] loss: 0.188
+[267] Avg Loss: 0.249
+[268,   100] loss: 0.218
+[268,   200] loss: 0.220
+[268,   300] loss: 0.206
+[268] Avg Loss: 0.256
+No improvement. Patience: 1/10
+[269,   100] loss: 0.200
+[269,   200] loss: 0.175
+[269,   300] loss: 0.298
+[269] Avg Loss: 0.256
+No improvement. Patience: 2/10
+[270,   100] loss: 0.325
+[270,   200] loss: 0.265
+[270,   300] loss: 0.319
+[270] Avg Loss: 0.258
+No improvement. Patience: 3/10
+[271,   100] loss: 0.316
+[271,   200] loss: 0.139
+[271,   300] loss: 0.263
+[271] Avg Loss: 0.251
+No improvement. Patience: 4/10
+[272,   100] loss: 0.260
+[272,   200] loss: 0.184
+[272,   300] loss: 0.141
+[272] Avg Loss: 0.256
+No improvement. Patience: 5/10
+[273,   100] loss: 0.263
+[273,   200] loss: 0.327
+[273,   300] loss: 0.246
+[273] Avg Loss: 0.250
+No improvement. Patience: 6/10
+[274,   100] loss: 0.193
+[274,   200] loss: 0.221
+[274,   300] loss: 0.227
+[274] Avg Loss: 0.250
+No improvement. Patience: 7/10
+[275,   100] loss: 0.185
+[275,   200] loss: 0.354
+[275,   300] loss: 0.254
+[275] Avg Loss: 0.258
+No improvement. Patience: 8/10
+[276,   100] loss: 0.354
+[276,   200] loss: 0.326
+[276,   300] loss: 0.246
+[276] Avg Loss: 0.250
+No improvement. Patience: 9/10
+[277,   100] loss: 0.183
+[277,   200] loss: 0.383
+[277,   300] loss: 0.295
+[277] Avg Loss: 0.256
+No improvement. Patience: 10/10
+Early stopping triggered.
+✅ Training completed in 636.54 minutes.
+Accuracy on test images: 83.67%
+Accuracy of plane: 84.70%
+Accuracy of car  : 91.90%
+Accuracy of bird : 84.00%
+Accuracy of cat  : 65.90%
+Accuracy of deer : 81.10%
+Accuracy of dog  : 77.60%
+Accuracy of frog : 89.40%
+Accuracy of horse: 85.00%
+Accuracy of ship : 91.70%
+Accuracy of truck: 85.40%
+
+Process finished with exit code 0
+
+```
+
+
+
+![f44849630ac92c19ff8f0b2e922801ab](https://raw.githubusercontent.com/GMyhf/img/main/img/f44849630ac92c19ff8f0b2e922801ab.png)
+
+
+
+<img src="https://raw.githubusercontent.com/GMyhf/img/main/img/b353056ebdc1085718fc43ab6d2a1316.png" alt="b353056ebdc1085718fc43ab6d2a1316" style="zoom: 50%;" />
 
 
 
