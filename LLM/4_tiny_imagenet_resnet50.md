@@ -55,6 +55,16 @@ Tiny ImageNet。它包含 200 个类别，每个类别 500 张训练图片，总
 >
 > **ImageNet**：包含超过 1400 万张图像，用于图像分类和物体检测等任务。
 
+
+
+可以用下面方法下载及预处理，或者直接下载预处理好的数据。
+
+> tiny-imagenet-200.zip, https://disk.pku.edu.cn/link/AA068C93E37D564808A74B8F282DCE0F11
+> Name: tiny-imagenet-200.zip
+> Expires: Never
+
+
+
 下载 `wget http://cs231n.stanford.edu/tiny-imagenet-200.zip`，记237MB。
 
 验证集通常解压后所有图片会在同一个文件夹中，而 ImageFolder 要求每个类别有独立子文件夹。你需要根据官方提供的 验证集标签文件，如 val_annotations.txt，对图片进行分类整理。常见的做法是编写一个脚本，根据文件中的类别信息将图片移动到对应的子文件夹中。
@@ -843,7 +853,7 @@ https://github.com/GMyhf/2025spring-cs201/blob/main/LLM/nn_4_tiny_imagenet_class
 
 GIL 的全称是 **Global Interpreter Lock**（全局解释器锁）。这是 Python 解释器（CPython）中的一个机制，用于确保同一时间只有一个线程执行 Python 字节码，即便在多核 CPU 上，也无法实现真正的并行计算。
 
-不过，**Torch 的多近程计算** 通常 **不受 GIL 限制**，原因如下：
+不过，**Torch 的多进程计算** 通常 **不受 GIL 限制**，原因如下：
 
 1. **计算密集型任务在 C/C++ 后端执行**  
    PyTorch 的底层计算是基于 C++ 和 CUDA 实现的。一旦计算任务进入底层库（如调用 `torch.matmul()`、`torch.nn` 等操作），它就脱离了 Python 的解释层，因此不会被 GIL 锁住。计算主要在 C++ 层面并行执行，或者交给 GPU 加速。
