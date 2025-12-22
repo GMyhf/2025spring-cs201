@@ -1,4 +1,4 @@
-## 数算B必会简单题
+## 其他平行班：数算B必会简单题
 
 Updated 0020 GMT+8 Jun 4, 2024
 
@@ -10,22 +10,22 @@ Updated 0020 GMT+8 Jun 4, 2024
 
 
 
-| 题目                                  | tags             |
-| ------------------------------------- | ---------------- |
-| 22782: PKU版爱消除                    | stack            |
-| 26590: 检测括号嵌套                   | stack            |
-| 26571: 我想完成数算作业：代码         | disjoint set     |
-| 20169: 排队                           | disjoint set     |
-| 24744: 想要插队的Y君                  | Linked List      |
-| 25143/27638: 求二叉树的高度和叶子数目 | tree             |
-| 25155: 深度优先遍历一个无向图         | dfs              |
-| 22508: 最小奖金方案                   | topological sort |
+| 题目                            | tags             |
+| ------------------------------- | ---------------- |
+| 001: PKU版爱消除                | stack            |
+| 002: 检测括号嵌套               | stack            |
+| 003: 我想完成数算作业：代码     | disjoint set     |
+| 20169: 排队                     | disjoint set     |
+| 24744: 想要插队的Y君            | Linked List      |
+| 27638: 求二叉树的高度和叶子数目 | tree             |
+| 007: 深度优先遍历一个无向图     | dfs              |
+| 22508: 最小奖金方案             | topological sort |
 
 
 
 ## 001: PKU版爱消除
 
-http://dsbpython.openjudge.cn/easyprbs/001/
+stack, http://dsbpython.openjudge.cn/easyprbs/001/
 
 你有⼀个字符串S，⼤小写区分，⼀旦⾥⾯出现连续的PKU三个字符，就会消除。问最终稳定下来以后，这个字符串是什么样的？
 
@@ -81,7 +81,7 @@ print("".join(stack))
 
 ## 002: 检测括号嵌套
 
-http://dsbpython.openjudge.cn/easyprbs/002/
+stack, http://dsbpython.openjudge.cn/easyprbs/002/
 
 字符串中可能有3种成对的括号，"( )"、"[ ]"、"{}"。请判断字符串的括号是否都正确配对以及有无括号嵌套。无括号也算正确配对。括号交叉算不正确配对，例如"1234[78)ab]"就不算正确配对。一对括号被包含在另一对括号里面，例如"12(ab[8])"就算括号嵌套。括号嵌套不影响配对的正确性。 给定一个字符串: 如果括号没有正确配对，则输出 "ERROR" 如果正确配对了，且有括号嵌套现象，则输出"YES" 如果正确配对了，但是没有括号嵌套现象，则输出"NO"   
 
@@ -146,15 +146,17 @@ print(check_brackets(s))
 
 ## 003: 我想完成数算作业：代码
 
+dsu, http://dsbpython.openjudge.cn/easyprbs/003/
+
 当卷王小D睡前意识到室友们每天熬夜吐槽的是自己也选了的课时，他距离早八随堂交的ddl只剩下了不到4小时。已经debug一晚上无果的小D有心要分无力做题，于是决定直接抄一份室友的作业完事。万万没想到，他们作业里完全一致的错误，引发了一场全面的作业查重……
 
 假设a和b作业雷同，b和c作业雷同，则a和c作业雷同。所有抄袭现象都会被发现，且雷同的作业只有一份独立完成的原版，请输出独立完成作业的人数
 
-输入
+**输入**
 
 第一行输入两个正整数表示班上的人数n与总比对数m，接下来m行每行均为两个1-n中的整数i和j，表明第i个同学与第j个同学的作业雷同。
 
-输出
+**输出**
 
 独立完成作业的人数
 
@@ -209,9 +211,9 @@ print(count)
 
 
 
-## 004: 排队
+## 20169: 排队（简单dsu）
 
-http://cs101.openjudge.cn/practice/20169/
+dsu, http://cs101.openjudge.cn/practice/20169/
 
 操场上有好多好多同学在玩耍，体育老师冲了过来，要求他们排队。同学们纪律实在太散漫了，老师不得不来手动整队：
 "A，你站在B的后面。" 
@@ -220,12 +222,12 @@ http://cs101.openjudge.cn/practice/20169/
 
 更形式化地，初始时刻，操场上有 n 位同学，自成一列。每次操作，老师的指令是 "x y"，表示 x 所在的队列排到 y 所在的队列的后面，即 x 的队首排在 y 的队尾的后面。（如果 x 与 y 已经在同一队列，请忽略该指令） 最终的队列数量远远小于 n，老师很满意。请你输出最终时刻每位同学所在队列的队首（排头），老师想记录每位同学的排头，方便找人。
 
-输入
+**输入**
 
 第一行一个整数 T (T≤5)，表示测试数据组数。 接下来 T 组测试数据，对于每组数据，第一行两个整数 n 和 m (n,m≤30000)，紧跟着 m 行每行两个整数 
 x 和 y (1≤x,y≤n)。
 
-输出
+**输出**
 
 共 T 行。 每行 n 个整数，表示每位同学的排头。
 
@@ -288,7 +290,7 @@ for i in range(t):
 
 ## 005: 想要插队的Y君
 
-http://dsbpython.openjudge.cn/easyprbs/005/
+linked list, http://dsbpython.openjudge.cn/easyprbs/005/
 
 很遗憾，一意孤行的Y君没有理会你告诉他的饮食计划并很快吃完了他的粮食储备。
 但好在他捡到了一张校园卡，凭这个他可以偷偷混入领取物资的队伍。
@@ -415,6 +417,157 @@ lkList.printLk()
 
 
 
+## 27638:求二叉树的高度和叶子数目
+
+tree, http://cs101.openjudge.cn/practice/27638/
+
+给定一棵二叉树，求该二叉树的高度和叶子数目
+
+二叉树高度定义：从根结点到叶结点依次经过的结点（含根、叶结点）形成树的一条路径，最长路径的结点数减1为树的高度。只有一个结点的二叉树，高度是0。
+
+**输入**
+
+第一行是一个整数 n，表示二叉树的结点个数。二叉树结点编号从 0 到 n-1。n ≤ 100。
+接下来有 n 行，依次对应二叉树的编号为 0,1,2....n-1 的节点。
+每行有两个整数，分别表示该节点的左儿子和右儿子的编号。如果第一个（第二个）数为-1则表示没有左（右）儿子
+
+**输出**
+
+在一行中输出2个整数，分别表示二叉树的高度和叶子结点个数。
+
+样例输入
+
+```
+3
+-1 -1
+0 2
+-1 -1
+```
+
+样例输出
+
+```
+1 2
+```
+
+来源
+
+Guo Wei
+
+
+
+<mark>由于输入无法分辨谁为根节点，所以写寻找根节点语句。</mark>
+
+```python
+class TreeNode:
+    def __init__(self):
+        self.left = None
+        self.right = None
+
+def tree_height(node):
+    if node is None:
+        return -1  # 根据定义，空树高度为-1
+    return max(tree_height(node.left), tree_height(node.right)) + 1
+
+def count_leaves(node):
+    if node is None:
+        return 0
+    if node.left is None and node.right is None:
+        return 1
+    return count_leaves(node.left) + count_leaves(node.right)
+
+n = int(input())  # 读取节点数量
+nodes = [TreeNode() for _ in range(n)]
+has_parent = [False] * n  # 用来标记节点是否有父节点
+
+for i in range(n):
+    left_index, right_index = map(int, input().split())
+    if left_index != -1:
+        nodes[i].left = nodes[left_index]
+        has_parent[left_index] = True
+    if right_index != -1:
+        #print(right_index)
+        nodes[i].right = nodes[right_index]
+        has_parent[right_index] = True
+
+# 寻找根节点，也就是没有父节点的节点
+root_index = has_parent.index(False)
+root = nodes[root_index]
+
+# 计算高度和叶子节点数
+height = tree_height(root)
+leaves = count_leaves(root)
+
+print(f"{height} {leaves}")
+```
+
+
+
+
+
+注意：需要找根节点
+
+```python
+class TreeNode:
+    def __init__(self, val):
+        self.val = val
+        self.left = None
+        self.right = None
+
+
+def build_tree(node_descriptions):
+    nodes = {i: TreeNode(i) for i in range(len(node_descriptions))}
+    child_set = set()
+
+    for i, (left, right) in enumerate(node_descriptions):
+        if left != -1:
+            nodes[i].left = nodes[left]
+            child_set.add(left)
+        if right != -1:
+            nodes[i].right = nodes[right]
+            child_set.add(right)
+
+    # Root is the node that is not anyone's child
+    root = next(node for node in nodes.values() if node.val not in child_set)
+    return root
+
+
+def tree_height_and_leaf_count(root):
+    if not root:
+        return 0, 0  # height is 0 for empty tree, no leaves
+
+    def dfs(node):
+        if not node:
+            return -1, 0
+
+        if not node.left and not node.right:
+            return 0, 1
+
+        left_height, left_leaves = dfs(node.left)
+        right_height, right_leaves = dfs(node.right)
+
+        current_height = 1 + max(left_height, right_height)
+        current_leaves = left_leaves + right_leaves
+
+        return current_height, current_leaves
+
+    height, leaf_count = dfs(root)
+    return height, leaf_count
+
+
+n = int(input())
+node_descriptions = [tuple(map(int, input().split())) for _ in range(n)]
+
+root = build_tree(node_descriptions)
+height, leaf_count = tree_height_and_leaf_count(root)
+
+print(height, leaf_count)
+```
+
+
+
+
+
 ```python
 # 求二叉树的高度和叶子数目	2022-09-06 20:36:28
 class BinaryTree:
@@ -529,178 +682,19 @@ print(tree.countLevels() - 1, tree.countLeaves())
 
 
 
-## 006: 求二叉树的高度和叶子数目
-
-http://cs101.openjudge.cn/dsapre/27638/
-
-http://dsbpython.openjudge.cn/easyprbs/006/
-
-给定一棵二叉树，求该二叉树的高度和叶子数目
-
-二叉树高度定义：从根结点到叶结点依次经过的结点（含根、叶结点）形成树的一条路径，最长路径的结点数减1为树的高度。只有一个结点的二叉树，高度是0。
-
-
-
-
-
-输入
-
-第一行是一个整数n，表示二叉树的结点个数。二叉树结点编号从0到n-1。n <= 100
-接下来有n行，依次对应二叉树的编号为0,1,2....n-1的节点。
-每行有两个整数，分别表示该节点的左儿子和右儿子的编号。如果第一个（第二个）数为-1则表示没有左（右）儿子
-
-输出
-
-在一行中输出2个整数，分别表示二叉树的高度和叶子结点个数
-
-样例输入
-
-```
-3
--1 -1
-0 2
--1 -1
-```
-
-样例输出
-
-```
-1 2
-```
-
-来源
-
-Guo Wei
-
-
-
-由于输入无法分辨谁为根节点，所以写寻找根节点语句。
-
-```python
-class TreeNode:
-    def __init__(self):
-        self.left = None
-        self.right = None
-
-def tree_height(node):
-    if node is None:
-        return -1  # 根据定义，空树高度为-1
-    return max(tree_height(node.left), tree_height(node.right)) + 1
-
-def count_leaves(node):
-    if node is None:
-        return 0
-    if node.left is None and node.right is None:
-        return 1
-    return count_leaves(node.left) + count_leaves(node.right)
-
-n = int(input())  # 读取节点数量
-nodes = [TreeNode() for _ in range(n)]
-has_parent = [False] * n  # 用来标记节点是否有父节点
-
-for i in range(n):
-    left_index, right_index = map(int, input().split())
-    if left_index != -1:
-        nodes[i].left = nodes[left_index]
-        has_parent[left_index] = True
-    if right_index != -1:
-        #print(right_index)
-        nodes[i].right = nodes[right_index]
-        has_parent[right_index] = True
-
-# 寻找根节点，也就是没有父节点的节点
-root_index = has_parent.index(False)
-root = nodes[root_index]
-
-# 计算高度和叶子节点数
-height = tree_height(root)
-leaves = count_leaves(root)
-
-print(f"{height} {leaves}")
-```
-
-
-
-
-
-注意：需要找根节点
-
-```python
-class TreeNode:
-    def __init__(self, val):
-        self.val = val
-        self.left = None
-        self.right = None
-
-
-def build_tree(node_descriptions):
-    nodes = {i: TreeNode(i) for i in range(len(node_descriptions))}
-    child_set = set()
-
-    for i, (left, right) in enumerate(node_descriptions):
-        if left != -1:
-            nodes[i].left = nodes[left]
-            child_set.add(left)
-        if right != -1:
-            nodes[i].right = nodes[right]
-            child_set.add(right)
-
-    # Root is the node that is not anyone's child
-    root = next(node for node in nodes.values() if node.val not in child_set)
-    return root
-
-
-def tree_height_and_leaf_count(root):
-    if not root:
-        return 0, 0  # height is 0 for empty tree, no leaves
-
-    def dfs(node):
-        if not node:
-            return -1, 0
-
-        if not node.left and not node.right:
-            return 0, 1
-
-        left_height, left_leaves = dfs(node.left)
-        right_height, right_leaves = dfs(node.right)
-
-        current_height = 1 + max(left_height, right_height)
-        current_leaves = left_leaves + right_leaves
-
-        return current_height, current_leaves
-
-    height, leaf_count = dfs(root)
-    return height, leaf_count
-
-
-n = int(input())
-node_descriptions = [tuple(map(int, input().split())) for _ in range(n)]
-
-root = build_tree(node_descriptions)
-height, leaf_count = tree_height_and_leaf_count(root)
-
-print(height, leaf_count)
-```
-
-
-
 
 
 ## 007: 深度优先遍历一个无向图
 
-http://dsbpython.openjudge.cn/easyprbs/007/
+dfs, http://dsbpython.openjudge.cn/easyprbs/007/
 
 输出无向图深度优先遍历序列
 
- 
+ **输入**
 
- 
+第一行是整数 n 和 m (0 < n ≤16)，表示无向图有 n 个顶点，m 条边，顶点编号 0 到 n-1。接下来 m 行，每行两个整数 a,b，表示顶点 a,b 之间有一条边。
 
-输入
-
-第一行是整数n和m(0 < n <=16)，表示无向图有n个顶点，m条边，顶点编号0到n-1。接下来m行，每行两个整数a,b，表示顶点a,b之间有一条边。
-
-输出
+**输出**
 
 任意一个深度优先遍历序列
 
@@ -791,18 +785,18 @@ dfsTravel(G,lambda x:print(x,end = " "))
 
 
 
-## 008: 最小奖金方案
+## 22508: 最小奖金方案
 
-http://dsbpython.openjudge.cn/easyprbs/008/
+toplogical order, http://cs101.openjudge.cn/practice/22508/
 
-现在有n个队伍参加了比赛，他们进行了m次PK。现在赛事方需要给他们颁奖（奖金为整数），已知参加比赛就可获得100元，由于比赛双方会比较自己的奖金，所以获胜方的奖金一定要比败方奖金高。请问赛事方要准备的最小奖金为多少？奖金数额一定是整数。
+现在有n个队伍参加了比赛，他们进行了 m 次 PK。现在赛事方需要给他们颁奖（奖金为整数），已知参加比赛就可获得 100 元，由于比赛双方会比较自己的奖金，所以获胜方的奖金一定要比败方奖金高。请问赛事方要准备的最小奖金为多少？奖金数额一定是整数。
 
-输入
+**输入**
 
-一组数据，第一行是两个整数n(1≤n≤1000)和m(0≤m≤2000)，分别代表n个队伍和m次pk，队伍编号从0到n-1。接下来m行是pk信息，具体信息a，b，代表编号为a的队伍打败了编号为b的队伍。
-输入保证队伍之间的pk战胜关系不会形成有向环
+一组数据，第一行是两个整数 n (1 ≤ n ≤ 1000) 和 m (0 ≤ m ≤ 2000)，分别代表 n 个队伍和 m 次pk，队伍编号从0 到 n-1。接下来 m 行是 pk 信息，具体信息 a, b，代表编号为 a 的队伍打败了编号为 b 的队伍。
+输入保证队伍之间的 pk 战胜关系不会形成有向环
 
-输出
+**输出**
 
 给出最小奖金w
 
