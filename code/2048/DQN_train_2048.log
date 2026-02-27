@@ -1,0 +1,1605 @@
+/Users/hfyan/MyPythonApp/.venv/bin/python /Users/hfyan/git/2025spring-cs201/code/2048/DQN_train_2048.py 
+开始训练...
+Episode 0, Reward: 508, Max Tile: 64, Epsilon: 0.400
+--------------------
+|   4|   2|   4|   2|
+|   2|  16|   8|   4|
+|  16|  64|  32|  16|
+|   2|   4|   8|   2|
+--------------------
+Episode 10, Reward: 572, Max Tile: 64, Epsilon: 0.396
+Episode 20, Reward: 636, Max Tile: 64, Epsilon: 0.392
+Episode 30, Reward: 948, Max Tile: 128, Epsilon: 0.388
+Episode 40, Reward: 594, Max Tile: 64, Epsilon: 0.384
+Episode 50, Reward: 644, Max Tile: 64, Epsilon: 0.380
+Episode 60, Reward: 494, Max Tile: 64, Epsilon: 0.376
+Episode 70, Reward: 1846, Max Tile: 256, Epsilon: 0.373
+Episode 80, Reward: 520, Max Tile: 64, Epsilon: 0.369
+Episode 90, Reward: 1158, Max Tile: 128, Epsilon: 0.365
+Episode 100, Reward: 2178, Max Tile: 256, Epsilon: 0.362
+--------------------
+|   2| 256|   2|   8|
+|   8|  64|  32|   4|
+|  16|   8|  16|   2|
+|   2|  32|   2|   8|
+--------------------
+Episode 110, Reward: 702, Max Tile: 64, Epsilon: 0.358
+Episode 120, Reward: 1140, Max Tile: 128, Epsilon: 0.354
+Episode 130, Reward: 940, Max Tile: 64, Epsilon: 0.351
+Episode 140, Reward: 858, Max Tile: 64, Epsilon: 0.347
+Episode 150, Reward: 784, Max Tile: 64, Epsilon: 0.344
+Episode 160, Reward: 740, Max Tile: 128, Epsilon: 0.340
+Episode 170, Reward: 1408, Max Tile: 128, Epsilon: 0.337
+Episode 180, Reward: 1052, Max Tile: 128, Epsilon: 0.334
+Episode 190, Reward: 1036, Max Tile: 128, Epsilon: 0.330
+Episode 200, Reward: 748, Max Tile: 64, Epsilon: 0.327
+--------------------
+|   2|   8|   2|   8|
+|   4|  32|  64|   2|
+|  64|  16|   4|   8|
+|   2|   4|   8|   2|
+--------------------
+Episode 210, Reward: 876, Max Tile: 128, Epsilon: 0.324
+Episode 220, Reward: 1028, Max Tile: 128, Epsilon: 0.321
+Episode 230, Reward: 808, Max Tile: 64, Epsilon: 0.317
+Episode 240, Reward: 712, Max Tile: 64, Epsilon: 0.314
+Episode 250, Reward: 1258, Max Tile: 128, Epsilon: 0.311
+Episode 260, Reward: 864, Max Tile: 128, Epsilon: 0.308
+Episode 270, Reward: 1198, Max Tile: 128, Epsilon: 0.305
+Episode 280, Reward: 858, Max Tile: 128, Epsilon: 0.302
+Episode 290, Reward: 1022, Max Tile: 128, Epsilon: 0.299
+Episode 300, Reward: 1036, Max Tile: 128, Epsilon: 0.296
+--------------------
+|   2|  16|   4|   2|
+|  32| 128|   2|   8|
+|  16|  32|  16|   4|
+|   4|   2|   8|   2|
+--------------------
+Episode 310, Reward: 1316, Max Tile: 128, Epsilon: 0.293
+Episode 320, Reward: 608, Max Tile: 64, Epsilon: 0.290
+Episode 330, Reward: 252, Max Tile: 32, Epsilon: 0.287
+Episode 340, Reward: 898, Max Tile: 128, Epsilon: 0.284
+Episode 350, Reward: 462, Max Tile: 64, Epsilon: 0.282
+Episode 360, Reward: 502, Max Tile: 64, Epsilon: 0.279
+Episode 370, Reward: 1892, Max Tile: 256, Epsilon: 0.276
+Episode 380, Reward: 880, Max Tile: 128, Epsilon: 0.273
+Episode 390, Reward: 900, Max Tile: 128, Epsilon: 0.270
+Episode 400, Reward: 1182, Max Tile: 128, Epsilon: 0.268
+--------------------
+|   8|   4|  16|   2|
+|  16|   8| 128|   8|
+|   2|  16|  32|   4|
+|   8|   2|  64|   2|
+--------------------
+Episode 410, Reward: 1764, Max Tile: 256, Epsilon: 0.265
+Episode 420, Reward: 654, Max Tile: 64, Epsilon: 0.263
+Episode 430, Reward: 770, Max Tile: 64, Epsilon: 0.260
+Episode 440, Reward: 1116, Max Tile: 128, Epsilon: 0.257
+Episode 450, Reward: 934, Max Tile: 128, Epsilon: 0.255
+Episode 460, Reward: 608, Max Tile: 64, Epsilon: 0.252
+Episode 470, Reward: 924, Max Tile: 128, Epsilon: 0.250
+Episode 480, Reward: 860, Max Tile: 64, Epsilon: 0.247
+Episode 490, Reward: 612, Max Tile: 64, Epsilon: 0.245
+Episode 500, Reward: 432, Max Tile: 64, Epsilon: 0.242
+--------------------
+|   2|   4|  16|   2|
+|  32|  16|   4|   8|
+|   8|  64|  16|   4|
+|   2|   8|   4|   2|
+--------------------
+Episode 510, Reward: 188, Max Tile: 32, Epsilon: 0.240
+Episode 520, Reward: 462, Max Tile: 64, Epsilon: 0.238
+Episode 530, Reward: 2436, Max Tile: 256, Epsilon: 0.235
+Episode 540, Reward: 1326, Max Tile: 128, Epsilon: 0.233
+Episode 550, Reward: 2014, Max Tile: 256, Epsilon: 0.230
+Episode 560, Reward: 1380, Max Tile: 128, Epsilon: 0.228
+Episode 570, Reward: 526, Max Tile: 64, Epsilon: 0.226
+Episode 580, Reward: 876, Max Tile: 128, Epsilon: 0.224
+Episode 590, Reward: 536, Max Tile: 64, Epsilon: 0.221
+Episode 600, Reward: 960, Max Tile: 128, Epsilon: 0.219
+--------------------
+|   2|   4|  32|   2|
+|   8|  64| 128|   4|
+|   4|   2|  32|  16|
+|   2|   8|   2|   8|
+--------------------
+Episode 610, Reward: 1030, Max Tile: 128, Epsilon: 0.217
+Episode 620, Reward: 88, Max Tile: 16, Epsilon: 0.215
+Episode 630, Reward: 860, Max Tile: 128, Epsilon: 0.213
+Episode 640, Reward: 1010, Max Tile: 128, Epsilon: 0.211
+Episode 650, Reward: 480, Max Tile: 64, Epsilon: 0.209
+Episode 660, Reward: 366, Max Tile: 32, Epsilon: 0.206
+Episode 670, Reward: 876, Max Tile: 128, Epsilon: 0.204
+Episode 680, Reward: 596, Max Tile: 64, Epsilon: 0.202
+Episode 690, Reward: 320, Max Tile: 64, Epsilon: 0.200
+Episode 700, Reward: 418, Max Tile: 64, Epsilon: 0.198
+--------------------
+|   8|   4|   2|   4|
+|   2|  64|   4|   2|
+|   4|  16|  32|   8|
+|  16|   2|   8|   2|
+--------------------
+Episode 710, Reward: 1106, Max Tile: 128, Epsilon: 0.196
+Episode 720, Reward: 448, Max Tile: 64, Epsilon: 0.194
+Episode 730, Reward: 466, Max Tile: 64, Epsilon: 0.193
+Episode 740, Reward: 814, Max Tile: 128, Epsilon: 0.191
+Episode 750, Reward: 592, Max Tile: 64, Epsilon: 0.189
+Episode 760, Reward: 926, Max Tile: 128, Epsilon: 0.187
+Episode 770, Reward: 832, Max Tile: 128, Epsilon: 0.185
+Episode 780, Reward: 682, Max Tile: 128, Epsilon: 0.183
+Episode 790, Reward: 1018, Max Tile: 128, Epsilon: 0.181
+Episode 800, Reward: 482, Max Tile: 64, Epsilon: 0.179
+--------------------
+|   2|   4|  16|   2|
+|   4|   8|  32|   8|
+|  16|  64|  16|   2|
+|   2|   8|  32|   4|
+--------------------
+Episode 810, Reward: 1978, Max Tile: 256, Epsilon: 0.178
+Episode 820, Reward: 1388, Max Tile: 128, Epsilon: 0.176
+Episode 830, Reward: 432, Max Tile: 64, Epsilon: 0.174
+Episode 840, Reward: 906, Max Tile: 128, Epsilon: 0.172
+Episode 850, Reward: 1626, Max Tile: 256, Epsilon: 0.171
+Episode 860, Reward: 120, Max Tile: 16, Epsilon: 0.169
+Episode 870, Reward: 660, Max Tile: 64, Epsilon: 0.167
+Episode 880, Reward: 786, Max Tile: 128, Epsilon: 0.166
+Episode 890, Reward: 660, Max Tile: 64, Epsilon: 0.164
+Episode 900, Reward: 708, Max Tile: 64, Epsilon: 0.162
+--------------------
+|   4|   8|   2|   4|
+|   8|  64|  16|   8|
+|   4|  16|  32|   2|
+|   2|   4|  64|   4|
+--------------------
+Episode 910, Reward: 938, Max Tile: 128, Epsilon: 0.161
+Episode 920, Reward: 1236, Max Tile: 128, Epsilon: 0.159
+Episode 930, Reward: 944, Max Tile: 128, Epsilon: 0.158
+Episode 940, Reward: 542, Max Tile: 64, Epsilon: 0.156
+Episode 950, Reward: 502, Max Tile: 64, Epsilon: 0.154
+Episode 960, Reward: 456, Max Tile: 64, Epsilon: 0.153
+Episode 970, Reward: 486, Max Tile: 64, Epsilon: 0.151
+Episode 980, Reward: 2188, Max Tile: 256, Epsilon: 0.150
+Episode 990, Reward: 268, Max Tile: 64, Epsilon: 0.148
+Episode 1000, Reward: 1072, Max Tile: 128, Epsilon: 0.147
+--------------------
+|   4|  16|   4|   2|
+|   8|  64|  16|   8|
+|   4| 128|   2|   4|
+|   2|   4|  16|   2|
+--------------------
+Episode 1010, Reward: 880, Max Tile: 128, Epsilon: 0.145
+Episode 1020, Reward: 972, Max Tile: 128, Epsilon: 0.144
+Episode 1030, Reward: 1004, Max Tile: 128, Epsilon: 0.143
+Episode 1040, Reward: 200, Max Tile: 32, Epsilon: 0.141
+Episode 1050, Reward: 514, Max Tile: 64, Epsilon: 0.140
+Episode 1060, Reward: 402, Max Tile: 64, Epsilon: 0.138
+Episode 1070, Reward: 474, Max Tile: 64, Epsilon: 0.137
+Episode 1080, Reward: 634, Max Tile: 64, Epsilon: 0.136
+Episode 1090, Reward: 1152, Max Tile: 128, Epsilon: 0.134
+Episode 1100, Reward: 276, Max Tile: 64, Epsilon: 0.133
+--------------------
+|   4|   2|   4|   2|
+|   2|   4|  32|   4|
+|   8|  16|   4|  16|
+|   4|  64|   8|   4|
+--------------------
+Episode 1110, Reward: 466, Max Tile: 64, Epsilon: 0.132
+Episode 1120, Reward: 2352, Max Tile: 256, Epsilon: 0.130
+Episode 1130, Reward: 1176, Max Tile: 128, Epsilon: 0.129
+Episode 1140, Reward: 636, Max Tile: 64, Epsilon: 0.128
+Episode 1150, Reward: 638, Max Tile: 64, Epsilon: 0.126
+Episode 1160, Reward: 844, Max Tile: 128, Epsilon: 0.125
+Episode 1170, Reward: 996, Max Tile: 128, Epsilon: 0.124
+Episode 1180, Reward: 758, Max Tile: 64, Epsilon: 0.123
+Episode 1190, Reward: 676, Max Tile: 64, Epsilon: 0.121
+Episode 1200, Reward: 870, Max Tile: 128, Epsilon: 0.120
+--------------------
+|   4|   8|   4|   2|
+|   8|  16|  32|   8|
+|   4|   2|  16|   2|
+|   2|   8| 128|  16|
+--------------------
+Episode 1210, Reward: 1742, Max Tile: 256, Epsilon: 0.119
+Episode 1220, Reward: 856, Max Tile: 64, Epsilon: 0.118
+Episode 1230, Reward: 380, Max Tile: 64, Epsilon: 0.117
+Episode 1240, Reward: 1938, Max Tile: 256, Epsilon: 0.116
+Episode 1250, Reward: 1082, Max Tile: 128, Epsilon: 0.114
+Episode 1260, Reward: 516, Max Tile: 64, Epsilon: 0.113
+Episode 1270, Reward: 720, Max Tile: 128, Epsilon: 0.112
+Episode 1280, Reward: 1870, Max Tile: 256, Epsilon: 0.111
+Episode 1290, Reward: 776, Max Tile: 128, Epsilon: 0.110
+Episode 1300, Reward: 688, Max Tile: 64, Epsilon: 0.109
+--------------------
+|   4|  64|   8|   2|
+|   2|  16|  64|  32|
+|   4|   8|   4|   2|
+|   2|   4|   2|   4|
+--------------------
+Episode 1310, Reward: 312, Max Tile: 32, Epsilon: 0.108
+Episode 1320, Reward: 660, Max Tile: 64, Epsilon: 0.107
+Episode 1330, Reward: 664, Max Tile: 64, Epsilon: 0.106
+Episode 1340, Reward: 1022, Max Tile: 128, Epsilon: 0.105
+Episode 1350, Reward: 928, Max Tile: 128, Epsilon: 0.104
+Episode 1360, Reward: 916, Max Tile: 128, Epsilon: 0.102
+Episode 1370, Reward: 204, Max Tile: 32, Epsilon: 0.101
+Episode 1380, Reward: 344, Max Tile: 64, Epsilon: 0.100
+Episode 1390, Reward: 1118, Max Tile: 128, Epsilon: 0.099
+Episode 1400, Reward: 878, Max Tile: 128, Epsilon: 0.098
+--------------------
+|   2|   4|   8|   2|
+|   4|   8|  64|  16|
+|  32| 128|   4|   8|
+|   2|  16|   2|   4|
+--------------------
+Episode 1410, Reward: 806, Max Tile: 128, Epsilon: 0.097
+Episode 1420, Reward: 1228, Max Tile: 128, Epsilon: 0.097
+Episode 1430, Reward: 434, Max Tile: 64, Epsilon: 0.096
+Episode 1440, Reward: 1134, Max Tile: 128, Epsilon: 0.095
+Episode 1450, Reward: 942, Max Tile: 128, Epsilon: 0.094
+Episode 1460, Reward: 224, Max Tile: 32, Epsilon: 0.093
+Episode 1470, Reward: 290, Max Tile: 32, Epsilon: 0.092
+Episode 1480, Reward: 1124, Max Tile: 128, Epsilon: 0.091
+Episode 1490, Reward: 538, Max Tile: 64, Epsilon: 0.090
+Episode 1500, Reward: 738, Max Tile: 64, Epsilon: 0.089
+--------------------
+|   8|   2|  16|   4|
+|   2|   8|  64|  16|
+|  16|  32|   8|   4|
+|   2|   4|  64|   2|
+--------------------
+Episode 1510, Reward: 248, Max Tile: 32, Epsilon: 0.088
+Episode 1520, Reward: 490, Max Tile: 64, Epsilon: 0.087
+Episode 1530, Reward: 558, Max Tile: 128, Epsilon: 0.086
+Episode 1540, Reward: 790, Max Tile: 128, Epsilon: 0.086
+Episode 1550, Reward: 806, Max Tile: 128, Epsilon: 0.085
+Episode 1560, Reward: 122, Max Tile: 128, Epsilon: 0.084
+Episode 1570, Reward: 364, Max Tile: 64, Epsilon: 0.083
+Episode 1580, Reward: 468, Max Tile: 128, Epsilon: 0.082
+Episode 1590, Reward: 650, Max Tile: 128, Epsilon: 0.081
+Episode 1600, Reward: 696, Max Tile: 64, Epsilon: 0.081
+--------------------
+|   4|   2|   4|   2|
+|   8|  64|  16|   4|
+|   4|  16|  32|   2|
+|   2|   4|  64|   4|
+--------------------
+Episode 1610, Reward: 410, Max Tile: 64, Epsilon: 0.080
+Episode 1620, Reward: 576, Max Tile: 64, Epsilon: 0.079
+Episode 1630, Reward: 122, Max Tile: 32, Epsilon: 0.078
+Episode 1640, Reward: 208, Max Tile: 64, Epsilon: 0.077
+Episode 1650, Reward: 852, Max Tile: 128, Epsilon: 0.077
+Episode 1660, Reward: 896, Max Tile: 128, Epsilon: 0.076
+Episode 1670, Reward: 144, Max Tile: 32, Epsilon: 0.075
+Episode 1680, Reward: 586, Max Tile: 128, Epsilon: 0.074
+Episode 1690, Reward: 732, Max Tile: 128, Epsilon: 0.074
+Episode 1700, Reward: 608, Max Tile: 64, Epsilon: 0.073
+--------------------
+|  16|   2|  64|   2|
+|   8|   4|   2|   4|
+|   2|  64|   4|   8|
+|   4|   2|   8|   4|
+--------------------
+Episode 1710, Reward: 926, Max Tile: 128, Epsilon: 0.072
+Episode 1720, Reward: 1530, Max Tile: 256, Epsilon: 0.071
+Episode 1730, Reward: 906, Max Tile: 128, Epsilon: 0.071
+Episode 1740, Reward: 116, Max Tile: 32, Epsilon: 0.070
+Episode 1750, Reward: 528, Max Tile: 64, Epsilon: 0.069
+Episode 1760, Reward: 676, Max Tile: 64, Epsilon: 0.069
+Episode 1770, Reward: 1162, Max Tile: 128, Epsilon: 0.068
+Episode 1780, Reward: 200, Max Tile: 32, Epsilon: 0.067
+Episode 1790, Reward: 362, Max Tile: 64, Epsilon: 0.067
+Episode 1800, Reward: 362, Max Tile: 32, Epsilon: 0.066
+--------------------
+|   2|   4|  32|   8|
+|  16|   2|  16|   4|
+|   8|  16|  32|   8|
+|   4|   8|   4|   2|
+--------------------
+Episode 1810, Reward: 736, Max Tile: 128, Epsilon: 0.065
+Episode 1820, Reward: 268, Max Tile: 64, Epsilon: 0.065
+Episode 1830, Reward: 986, Max Tile: 128, Epsilon: 0.064
+Episode 1840, Reward: -124, Max Tile: 32, Epsilon: 0.063
+Episode 1850, Reward: 702, Max Tile: 128, Epsilon: 0.063
+Episode 1860, Reward: 916, Max Tile: 128, Epsilon: 0.062
+Episode 1870, Reward: 250, Max Tile: 32, Epsilon: 0.062
+Episode 1880, Reward: 478, Max Tile: 64, Epsilon: 0.061
+Episode 1890, Reward: 924, Max Tile: 128, Epsilon: 0.060
+Episode 1900, Reward: 672, Max Tile: 128, Epsilon: 0.060
+--------------------
+|   2|   8|  32|   2|
+|  16|   4| 128|   8|
+|   4|  16|   2|   4|
+|   2|   4|   8|   2|
+--------------------
+Episode 1910, Reward: 840, Max Tile: 128, Epsilon: 0.059
+Episode 1920, Reward: 272, Max Tile: 64, Epsilon: 0.059
+Episode 1930, Reward: 574, Max Tile: 64, Epsilon: 0.058
+Episode 1940, Reward: 842, Max Tile: 128, Epsilon: 0.057
+Episode 1950, Reward: 46, Max Tile: 64, Epsilon: 0.057
+Episode 1960, Reward: 826, Max Tile: 128, Epsilon: 0.056
+Episode 1970, Reward: 962, Max Tile: 128, Epsilon: 0.056
+Episode 1980, Reward: 870, Max Tile: 128, Epsilon: 0.055
+Episode 1990, Reward: 316, Max Tile: 64, Epsilon: 0.055
+Episode 2000, Reward: 1326, Max Tile: 256, Epsilon: 0.054
+--------------------
+|   2|   4|   8|   2|
+|   8|  16| 256|   8|
+|  16|  32|  64|  16|
+|   2|  16|   4|   2|
+--------------------
+Episode 2010, Reward: 220, Max Tile: 64, Epsilon: 0.053
+Episode 2020, Reward: 350, Max Tile: 128, Epsilon: 0.053
+Episode 2030, Reward: 408, Max Tile: 64, Epsilon: 0.052
+Episode 2040, Reward: 364, Max Tile: 64, Epsilon: 0.052
+Episode 2050, Reward: 384, Max Tile: 128, Epsilon: 0.051
+Episode 2060, Reward: 720, Max Tile: 128, Epsilon: 0.051
+Episode 2070, Reward: 30, Max Tile: 64, Epsilon: 0.050
+Episode 2080, Reward: 450, Max Tile: 128, Epsilon: 0.050
+Episode 2090, Reward: 862, Max Tile: 128, Epsilon: 0.049
+Episode 2100, Reward: 530, Max Tile: 128, Epsilon: 0.049
+--------------------
+|   2|   4|   8|   2|
+|   4|   8|  16|   8|
+| 128|  64|   2|  16|
+|   4|  16|   4|   2|
+--------------------
+Episode 2110, Reward: 264, Max Tile: 64, Epsilon: 0.048
+Episode 2120, Reward: 242, Max Tile: 64, Epsilon: 0.048
+Episode 2130, Reward: 890, Max Tile: 256, Epsilon: 0.047
+Episode 2140, Reward: 380, Max Tile: 64, Epsilon: 0.047
+Episode 2150, Reward: 384, Max Tile: 64, Epsilon: 0.046
+Episode 2160, Reward: 306, Max Tile: 128, Epsilon: 0.046
+Episode 2170, Reward: 404, Max Tile: 64, Epsilon: 0.046
+Episode 2180, Reward: 954, Max Tile: 128, Epsilon: 0.045
+Episode 2190, Reward: -110, Max Tile: 32, Epsilon: 0.045
+Episode 2200, Reward: 144, Max Tile: 32, Epsilon: 0.044
+--------------------
+|   4|  16|   4|   2|
+|   2|   4|   2|   8|
+|   4|   2|   4|  16|
+|   2|   4|  32|   4|
+--------------------
+Episode 2210, Reward: 444, Max Tile: 128, Epsilon: 0.044
+Episode 2220, Reward: 286, Max Tile: 64, Epsilon: 0.043
+Episode 2230, Reward: 520, Max Tile: 64, Epsilon: 0.043
+Episode 2240, Reward: 1288, Max Tile: 128, Epsilon: 0.042
+Episode 2250, Reward: 322, Max Tile: 128, Epsilon: 0.042
+Episode 2260, Reward: 402, Max Tile: 64, Epsilon: 0.042
+Episode 2270, Reward: 648, Max Tile: 128, Epsilon: 0.041
+Episode 2280, Reward: 200, Max Tile: 64, Epsilon: 0.041
+Episode 2290, Reward: 332, Max Tile: 256, Epsilon: 0.040
+Episode 2300, Reward: 416, Max Tile: 64, Epsilon: 0.040
+--------------------
+|   2|   4|  16|   4|
+|   8|  16|  64|   8|
+|   4|   8|  16|   4|
+|   2|   4|  64|   2|
+--------------------
+Episode 2310, Reward: -534, Max Tile: 128, Epsilon: 0.040
+Episode 2320, Reward: 106, Max Tile: 32, Epsilon: 0.039
+Episode 2330, Reward: 448, Max Tile: 64, Epsilon: 0.039
+Episode 2340, Reward: -134, Max Tile: 64, Epsilon: 0.038
+Episode 2350, Reward: 556, Max Tile: 128, Epsilon: 0.038
+Episode 2360, Reward: 366, Max Tile: 64, Epsilon: 0.038
+Episode 2370, Reward: 332, Max Tile: 64, Epsilon: 0.037
+Episode 2380, Reward: 1492, Max Tile: 256, Epsilon: 0.037
+Episode 2390, Reward: 428, Max Tile: 64, Epsilon: 0.037
+Episode 2400, Reward: 372, Max Tile: 128, Epsilon: 0.036
+--------------------
+|   2|   4|  16|   2|
+|   8| 128|   8|   4|
+|  16|  32|  16|  32|
+|  32|   4|   8|   4|
+--------------------
+Episode 2410, Reward: 574, Max Tile: 64, Epsilon: 0.036
+Episode 2420, Reward: 406, Max Tile: 64, Epsilon: 0.035
+Episode 2430, Reward: 298, Max Tile: 128, Epsilon: 0.035
+Episode 2440, Reward: 1006, Max Tile: 256, Epsilon: 0.035
+Episode 2450, Reward: -416, Max Tile: 128, Epsilon: 0.034
+Episode 2460, Reward: -114, Max Tile: 128, Epsilon: 0.034
+Episode 2470, Reward: -334, Max Tile: 64, Epsilon: 0.034
+Episode 2480, Reward: 112, Max Tile: 64, Epsilon: 0.033
+Episode 2490, Reward: 66, Max Tile: 64, Epsilon: 0.033
+Episode 2500, Reward: 114, Max Tile: 64, Epsilon: 0.033
+--------------------
+|   4|  32|   4|   2|
+|   2|   4|   8|   4|
+|  64|   8|  32|   8|
+|   2|   4|   2|   4|
+--------------------
+Episode 2510, Reward: 146, Max Tile: 128, Epsilon: 0.032
+Episode 2520, Reward: 454, Max Tile: 64, Epsilon: 0.032
+Episode 2530, Reward: -84, Max Tile: 32, Epsilon: 0.032
+Episode 2540, Reward: 48, Max Tile: 64, Epsilon: 0.031
+Episode 2550, Reward: 902, Max Tile: 128, Epsilon: 0.031
+Episode 2560, Reward: -460, Max Tile: 128, Epsilon: 0.031
+Episode 2570, Reward: 48, Max Tile: 64, Epsilon: 0.031
+Episode 2580, Reward: 548, Max Tile: 64, Epsilon: 0.030
+Episode 2590, Reward: 14, Max Tile: 128, Epsilon: 0.030
+Episode 2600, Reward: 232, Max Tile: 128, Epsilon: 0.030
+--------------------
+|   4|   8|  16|   2|
+|   2|  64| 128|   4|
+|   8|  32|   2|   8|
+|   4|  16|   4|   2|
+--------------------
+Episode 2610, Reward: 490, Max Tile: 128, Epsilon: 0.029
+Episode 2620, Reward: 958, Max Tile: 128, Epsilon: 0.029
+Episode 2630, Reward: 654, Max Tile: 128, Epsilon: 0.029
+Episode 2640, Reward: 218, Max Tile: 64, Epsilon: 0.028
+Episode 2650, Reward: 668, Max Tile: 128, Epsilon: 0.028
+Episode 2660, Reward: 886, Max Tile: 128, Epsilon: 0.028
+Episode 2670, Reward: 432, Max Tile: 128, Epsilon: 0.028
+Episode 2680, Reward: -568, Max Tile: 128, Epsilon: 0.027
+Episode 2690, Reward: 8, Max Tile: 64, Epsilon: 0.027
+Episode 2700, Reward: -290, Max Tile: 64, Epsilon: 0.027
+--------------------
+|   2|  64|   8|   2|
+|   4|  32|   2|  32|
+|  16|   8|  16|   8|
+|   2|   4|   2|   4|
+--------------------
+Episode 2710, Reward: -202, Max Tile: 64, Epsilon: 0.027
+Episode 2720, Reward: 588, Max Tile: 128, Epsilon: 0.026
+Episode 2730, Reward: 432, Max Tile: 64, Epsilon: 0.026
+Episode 2740, Reward: -702, Max Tile: 128, Epsilon: 0.026
+Episode 2750, Reward: -60, Max Tile: 256, Epsilon: 0.026
+Episode 2760, Reward: 410, Max Tile: 128, Epsilon: 0.025
+Episode 2770, Reward: 56, Max Tile: 128, Epsilon: 0.025
+Episode 2780, Reward: -350, Max Tile: 64, Epsilon: 0.025
+Episode 2790, Reward: -530, Max Tile: 128, Epsilon: 0.025
+Episode 2800, Reward: -56, Max Tile: 32, Epsilon: 0.024
+--------------------
+|   2|   4|   8|   2|
+|   4|   8|  16|   8|
+|   8|   2|  32|   4|
+|   4|  16|   2|   8|
+--------------------
+Episode 2810, Reward: 308, Max Tile: 64, Epsilon: 0.024
+Episode 2820, Reward: -142, Max Tile: 128, Epsilon: 0.024
+Episode 2830, Reward: 80, Max Tile: 32, Epsilon: 0.024
+Episode 2840, Reward: 102, Max Tile: 128, Epsilon: 0.023
+Episode 2850, Reward: -168, Max Tile: 128, Epsilon: 0.023
+Episode 2860, Reward: -910, Max Tile: 128, Epsilon: 0.023
+Episode 2870, Reward: -358, Max Tile: 64, Epsilon: 0.023
+Episode 2880, Reward: 366, Max Tile: 64, Epsilon: 0.022
+Episode 2890, Reward: 340, Max Tile: 128, Epsilon: 0.022
+Episode 2900, Reward: -1296, Max Tile: 128, Epsilon: 0.022
+--------------------
+|   2|  64|   4|   8|
+|   4|   8|  32|  16|
+|  32| 128|  64|   4|
+|   4|   2|   4|   2|
+--------------------
+Episode 2910, Reward: 242, Max Tile: 128, Epsilon: 0.022
+Episode 2920, Reward: -142, Max Tile: 128, Epsilon: 0.022
+Episode 2930, Reward: -114, Max Tile: 64, Epsilon: 0.021
+Episode 2940, Reward: 152, Max Tile: 32, Epsilon: 0.021
+Episode 2950, Reward: 70, Max Tile: 64, Epsilon: 0.021
+Episode 2960, Reward: -320, Max Tile: 64, Epsilon: 0.021
+Episode 2970, Reward: 552, Max Tile: 128, Epsilon: 0.020
+Episode 2980, Reward: -8, Max Tile: 64, Epsilon: 0.020
+Episode 2990, Reward: 194, Max Tile: 64, Epsilon: 0.020
+Episode 3000, Reward: -218, Max Tile: 128, Epsilon: 0.020
+--------------------
+|   4|   2|   4|   2|
+|  16|   8|  16|   8|
+|   2|  64| 128|  16|
+|   4|   2|  16|   2|
+--------------------
+Episode 3010, Reward: -1550, Max Tile: 128, Epsilon: 0.020
+Episode 3020, Reward: -544, Max Tile: 64, Epsilon: 0.019
+Episode 3030, Reward: -58, Max Tile: 32, Epsilon: 0.019
+Episode 3040, Reward: 234, Max Tile: 64, Epsilon: 0.019
+Episode 3050, Reward: 4, Max Tile: 32, Epsilon: 0.019
+Episode 3060, Reward: -564, Max Tile: 64, Epsilon: 0.019
+Episode 3070, Reward: 426, Max Tile: 128, Epsilon: 0.019
+Episode 3080, Reward: 306, Max Tile: 128, Epsilon: 0.018
+Episode 3090, Reward: 260, Max Tile: 64, Epsilon: 0.018
+Episode 3100, Reward: -436, Max Tile: 32, Epsilon: 0.018
+--------------------
+|   2|   4|  16|   4|
+|   8|  32|   8|   2|
+|  16|   2|  32|   8|
+|   2|  16|   8|   4|
+--------------------
+Episode 3110, Reward: 454, Max Tile: 64, Epsilon: 0.018
+Episode 3120, Reward: -436, Max Tile: 32, Epsilon: 0.018
+Episode 3130, Reward: -130, Max Tile: 64, Epsilon: 0.017
+Episode 3140, Reward: -666, Max Tile: 64, Epsilon: 0.017
+Episode 3150, Reward: -238, Max Tile: 32, Epsilon: 0.017
+Episode 3160, Reward: 260, Max Tile: 64, Epsilon: 0.017
+Episode 3170, Reward: 612, Max Tile: 128, Epsilon: 0.017
+Episode 3180, Reward: 150, Max Tile: 64, Epsilon: 0.017
+Episode 3190, Reward: 446, Max Tile: 64, Epsilon: 0.016
+Episode 3200, Reward: 576, Max Tile: 128, Epsilon: 0.016
+--------------------
+|  16|   2|   8|   2|
+|   8|  64| 128|  16|
+|   4|  16|  32|   4|
+|   2|   8|   4|   2|
+--------------------
+Episode 3210, Reward: 272, Max Tile: 64, Epsilon: 0.016
+Episode 3220, Reward: -1686, Max Tile: 128, Epsilon: 0.016
+Episode 3230, Reward: -304, Max Tile: 64, Epsilon: 0.016
+Episode 3240, Reward: 282, Max Tile: 64, Epsilon: 0.016
+Episode 3250, Reward: 232, Max Tile: 64, Epsilon: 0.015
+Episode 3260, Reward: 64, Max Tile: 32, Epsilon: 0.015
+Episode 3270, Reward: 1374, Max Tile: 256, Epsilon: 0.015
+Episode 3280, Reward: -312, Max Tile: 64, Epsilon: 0.015
+Episode 3290, Reward: -1244, Max Tile: 64, Epsilon: 0.015
+Episode 3300, Reward: -702, Max Tile: 128, Epsilon: 0.015
+--------------------
+|   4|  16|   8|   2|
+|   8|  64| 128|  16|
+|   4|   8|   2|   4|
+|   2|  16|   4|   2|
+--------------------
+Episode 3310, Reward: 64, Max Tile: 64, Epsilon: 0.015
+Episode 3320, Reward: -150, Max Tile: 64, Epsilon: 0.014
+Episode 3330, Reward: -202, Max Tile: 64, Epsilon: 0.014
+Episode 3340, Reward: -456, Max Tile: 128, Epsilon: 0.014
+Episode 3350, Reward: 58, Max Tile: 128, Epsilon: 0.014
+Episode 3360, Reward: 164, Max Tile: 128, Epsilon: 0.014
+Episode 3370, Reward: 108, Max Tile: 128, Epsilon: 0.014
+Episode 3380, Reward: 156, Max Tile: 128, Epsilon: 0.014
+Episode 3390, Reward: 48, Max Tile: 64, Epsilon: 0.013
+Episode 3400, Reward: -80, Max Tile: 64, Epsilon: 0.013
+--------------------
+|   2|  16|   8|   4|
+|   8|  64|  32|  16|
+|   2|   4|  16|   4|
+|   8|   2|   4|   2|
+--------------------
+Episode 3410, Reward: 274, Max Tile: 64, Epsilon: 0.013
+Episode 3420, Reward: -178, Max Tile: 64, Epsilon: 0.013
+Episode 3430, Reward: 270, Max Tile: 64, Epsilon: 0.013
+Episode 3440, Reward: -26, Max Tile: 128, Epsilon: 0.013
+Episode 3450, Reward: 82, Max Tile: 32, Epsilon: 0.013
+Episode 3460, Reward: 82, Max Tile: 128, Epsilon: 0.013
+Episode 3470, Reward: 618, Max Tile: 128, Epsilon: 0.012
+Episode 3480, Reward: -1126, Max Tile: 128, Epsilon: 0.012
+Episode 3490, Reward: 162, Max Tile: 256, Epsilon: 0.012
+Episode 3500, Reward: 460, Max Tile: 64, Epsilon: 0.012
+--------------------
+|   4|  32|   4|   2|
+|   2|   4|  16|   4|
+|  16|  64|   4|   2|
+|   2|   8|   2|   8|
+--------------------
+Episode 3510, Reward: -40, Max Tile: 64, Epsilon: 0.012
+Episode 3520, Reward: 190, Max Tile: 32, Epsilon: 0.012
+Episode 3530, Reward: -58, Max Tile: 64, Epsilon: 0.012
+Episode 3540, Reward: 168, Max Tile: 64, Epsilon: 0.012
+Episode 3550, Reward: -912, Max Tile: 64, Epsilon: 0.011
+Episode 3560, Reward: -282, Max Tile: 64, Epsilon: 0.011
+Episode 3570, Reward: -2002, Max Tile: 64, Epsilon: 0.011
+Episode 3580, Reward: -336, Max Tile: 32, Epsilon: 0.011
+Episode 3590, Reward: -182, Max Tile: 128, Epsilon: 0.011
+Episode 3600, Reward: -656, Max Tile: 64, Epsilon: 0.011
+--------------------
+|   2|   4|   8|   2|
+|   8|  16|  64|   4|
+|   4|  32|   8|  32|
+|   2|   8|   2|   4|
+--------------------
+Episode 3610, Reward: -1198, Max Tile: 64, Epsilon: 0.011
+Episode 3620, Reward: -710, Max Tile: 64, Epsilon: 0.011
+Episode 3630, Reward: -208, Max Tile: 64, Epsilon: 0.011
+Episode 3640, Reward: -1172, Max Tile: 128, Epsilon: 0.010
+Episode 3650, Reward: -482, Max Tile: 128, Epsilon: 0.010
+Episode 3660, Reward: -228, Max Tile: 64, Epsilon: 0.010
+Episode 3670, Reward: -916, Max Tile: 64, Epsilon: 0.010
+Episode 3680, Reward: -608, Max Tile: 64, Epsilon: 0.010
+Episode 3690, Reward: -318, Max Tile: 128, Epsilon: 0.010
+Episode 3700, Reward: 6, Max Tile: 128, Epsilon: 0.010
+--------------------
+|   2|  16|   8|   2|
+|   8|   2|   4|  64|
+|   2|   8|  16|   2|
+|   4| 128|   8|   4|
+--------------------
+Episode 3710, Reward: -252, Max Tile: 64, Epsilon: 0.010
+Episode 3720, Reward: -442, Max Tile: 128, Epsilon: 0.010
+Episode 3730, Reward: 620, Max Tile: 128, Epsilon: 0.010
+Episode 3740, Reward: -484, Max Tile: 32, Epsilon: 0.010
+Episode 3750, Reward: -1542, Max Tile: 64, Epsilon: 0.010
+Episode 3760, Reward: -34, Max Tile: 64, Epsilon: 0.010
+Episode 3770, Reward: -500, Max Tile: 32, Epsilon: 0.010
+Episode 3780, Reward: 1302, Max Tile: 256, Epsilon: 0.010
+Episode 3790, Reward: 110, Max Tile: 32, Epsilon: 0.010
+Episode 3800, Reward: -34, Max Tile: 32, Epsilon: 0.010
+--------------------
+|   2|   4|   2|  16|
+|   8|   2|  16|   4|
+|  16|   8|   4|   2|
+|   4|  32|   2|   4|
+--------------------
+Episode 3810, Reward: -628, Max Tile: 32, Epsilon: 0.010
+Episode 3820, Reward: -3058, Max Tile: 128, Epsilon: 0.010
+Episode 3830, Reward: -1348, Max Tile: 256, Epsilon: 0.010
+Episode 3840, Reward: -2510, Max Tile: 128, Epsilon: 0.010
+Episode 3850, Reward: -124, Max Tile: 64, Epsilon: 0.010
+Episode 3860, Reward: -344, Max Tile: 128, Epsilon: 0.010
+Episode 3870, Reward: -534, Max Tile: 128, Epsilon: 0.010
+Episode 3880, Reward: -248, Max Tile: 128, Epsilon: 0.010
+Episode 3890, Reward: 130, Max Tile: 32, Epsilon: 0.010
+Episode 3900, Reward: 438, Max Tile: 64, Epsilon: 0.010
+--------------------
+|   2|   8|  16|   2|
+|   8|  32|  64|   8|
+|   2|   4|  16|   4|
+|   4|   8|   4|   2|
+--------------------
+Episode 3910, Reward: -798, Max Tile: 32, Epsilon: 0.010
+Episode 3920, Reward: -1412, Max Tile: 64, Epsilon: 0.010
+Episode 3930, Reward: -26, Max Tile: 64, Epsilon: 0.010
+Episode 3940, Reward: 254, Max Tile: 64, Epsilon: 0.010
+Episode 3950, Reward: -554, Max Tile: 64, Epsilon: 0.010
+Episode 3960, Reward: -4, Max Tile: 32, Epsilon: 0.010
+Episode 3970, Reward: -708, Max Tile: 64, Epsilon: 0.010
+Episode 3980, Reward: 102, Max Tile: 32, Epsilon: 0.010
+Episode 3990, Reward: 96, Max Tile: 64, Epsilon: 0.010
+Episode 4000, Reward: -934, Max Tile: 32, Epsilon: 0.010
+--------------------
+|   2|   4|   2|   8|
+|   8|  16|   8|   4|
+|  32|   8|  32|   8|
+|   8|   2|   8|   2|
+--------------------
+Episode 4010, Reward: 352, Max Tile: 64, Epsilon: 0.010
+Episode 4020, Reward: 216, Max Tile: 128, Epsilon: 0.010
+Episode 4030, Reward: 796, Max Tile: 128, Epsilon: 0.010
+Episode 4040, Reward: 432, Max Tile: 256, Epsilon: 0.010
+Episode 4050, Reward: 436, Max Tile: 64, Epsilon: 0.010
+Episode 4060, Reward: 200, Max Tile: 32, Epsilon: 0.010
+Episode 4070, Reward: -676, Max Tile: 64, Epsilon: 0.010
+Episode 4080, Reward: 126, Max Tile: 64, Epsilon: 0.010
+Episode 4090, Reward: -72, Max Tile: 128, Epsilon: 0.010
+Episode 4100, Reward: 430, Max Tile: 128, Epsilon: 0.010
+--------------------
+|  32|  64|  32|  16|
+|   8|  16| 128|   8|
+|   2|   8|  16|   4|
+|   4|  16|   4|   2|
+--------------------
+Episode 4110, Reward: -50, Max Tile: 64, Epsilon: 0.010
+Episode 4120, Reward: -1110, Max Tile: 64, Epsilon: 0.010
+Episode 4130, Reward: -1800, Max Tile: 64, Epsilon: 0.010
+Episode 4140, Reward: -10, Max Tile: 64, Epsilon: 0.010
+Episode 4150, Reward: -1656, Max Tile: 128, Epsilon: 0.010
+Episode 4160, Reward: -298, Max Tile: 64, Epsilon: 0.010
+Episode 4170, Reward: -104, Max Tile: 16, Epsilon: 0.010
+Episode 4180, Reward: -786, Max Tile: 64, Epsilon: 0.010
+Episode 4190, Reward: -392, Max Tile: 128, Epsilon: 0.010
+Episode 4200, Reward: -260, Max Tile: 128, Epsilon: 0.010
+--------------------
+|   2|   4|   8|   2|
+|   4|   8|  16|   4|
+|  16|  64| 128|  16|
+|   4|   8|  16|   2|
+--------------------
+Episode 4210, Reward: 112, Max Tile: 64, Epsilon: 0.010
+Episode 4220, Reward: -42, Max Tile: 64, Epsilon: 0.010
+Episode 4230, Reward: 280, Max Tile: 64, Epsilon: 0.010
+Episode 4240, Reward: -2560, Max Tile: 64, Epsilon: 0.010
+Episode 4250, Reward: -266, Max Tile: 64, Epsilon: 0.010
+Episode 4260, Reward: 96, Max Tile: 64, Epsilon: 0.010
+Episode 4270, Reward: 278, Max Tile: 32, Epsilon: 0.010
+Episode 4280, Reward: 470, Max Tile: 128, Epsilon: 0.010
+Episode 4290, Reward: -194, Max Tile: 64, Epsilon: 0.010
+Episode 4300, Reward: -46, Max Tile: 16, Epsilon: 0.010
+--------------------
+|   2|   8|  16|   2|
+|   4|   2|   8|   4|
+|   8|   4|   2|   8|
+|   4|   2|   4|   2|
+--------------------
+Episode 4310, Reward: -356, Max Tile: 64, Epsilon: 0.010
+Episode 4320, Reward: 270, Max Tile: 64, Epsilon: 0.010
+Episode 4330, Reward: 254, Max Tile: 64, Epsilon: 0.010
+Episode 4340, Reward: -768, Max Tile: 64, Epsilon: 0.010
+Episode 4350, Reward: 232, Max Tile: 128, Epsilon: 0.010
+Episode 4360, Reward: -34, Max Tile: 32, Epsilon: 0.010
+Episode 4370, Reward: -726, Max Tile: 64, Epsilon: 0.010
+Episode 4380, Reward: 508, Max Tile: 128, Epsilon: 0.010
+Episode 4390, Reward: -338, Max Tile: 64, Epsilon: 0.010
+Episode 4400, Reward: -718, Max Tile: 64, Epsilon: 0.010
+--------------------
+|   2|   4|  16|   2|
+|   4|   8|  32|   4|
+|   8|  64|   4|   8|
+|   2|   4|  32|   2|
+--------------------
+Episode 4410, Reward: 394, Max Tile: 128, Epsilon: 0.010
+Episode 4420, Reward: -384, Max Tile: 128, Epsilon: 0.010
+Episode 4430, Reward: -8, Max Tile: 32, Epsilon: 0.010
+Episode 4440, Reward: -726, Max Tile: 64, Epsilon: 0.010
+Episode 4450, Reward: -424, Max Tile: 64, Epsilon: 0.010
+Episode 4460, Reward: -306, Max Tile: 128, Epsilon: 0.010
+Episode 4470, Reward: -684, Max Tile: 128, Epsilon: 0.010
+Episode 4480, Reward: -802, Max Tile: 128, Epsilon: 0.010
+Episode 4490, Reward: 474, Max Tile: 64, Epsilon: 0.010
+Episode 4500, Reward: -384, Max Tile: 128, Epsilon: 0.010
+--------------------
+|   2|   4|  32|   2|
+|   4| 128|   8|  16|
+|   8|   2|  64|   4|
+|   4|  32|   8|   2|
+--------------------
+Episode 4510, Reward: 166, Max Tile: 32, Epsilon: 0.010
+Episode 4520, Reward: -1188, Max Tile: 128, Epsilon: 0.010
+Episode 4530, Reward: 608, Max Tile: 128, Epsilon: 0.010
+Episode 4540, Reward: 362, Max Tile: 32, Epsilon: 0.010
+Episode 4550, Reward: 520, Max Tile: 128, Epsilon: 0.010
+Episode 4560, Reward: 664, Max Tile: 128, Epsilon: 0.010
+Episode 4570, Reward: 136, Max Tile: 64, Epsilon: 0.010
+Episode 4580, Reward: 408, Max Tile: 64, Epsilon: 0.010
+Episode 4590, Reward: 170, Max Tile: 128, Epsilon: 0.010
+Episode 4600, Reward: 628, Max Tile: 128, Epsilon: 0.010
+--------------------
+|   2|  16|   4|   2|
+|   4| 128|   8|  16|
+|  16|   2|  32|   4|
+|   8|   4|  16|   2|
+--------------------
+Episode 4610, Reward: -70, Max Tile: 128, Epsilon: 0.010
+Episode 4620, Reward: -8, Max Tile: 16, Epsilon: 0.010
+Episode 4630, Reward: -76, Max Tile: 16, Epsilon: 0.010
+Episode 4640, Reward: 422, Max Tile: 64, Epsilon: 0.010
+Episode 4650, Reward: -46, Max Tile: 32, Epsilon: 0.010
+Episode 4660, Reward: 52, Max Tile: 32, Epsilon: 0.010
+Episode 4670, Reward: 296, Max Tile: 64, Epsilon: 0.010
+Episode 4680, Reward: -424, Max Tile: 64, Epsilon: 0.010
+Episode 4690, Reward: -1412, Max Tile: 128, Epsilon: 0.010
+Episode 4700, Reward: 200, Max Tile: 32, Epsilon: 0.010
+--------------------
+|   2|   4|   8|   2|
+|   8|  16|  32|   8|
+|   4|   8|   4|   2|
+|   2|   4|   2|   4|
+--------------------
+Episode 4710, Reward: 62, Max Tile: 64, Epsilon: 0.010
+Episode 4720, Reward: -1262, Max Tile: 128, Epsilon: 0.010
+Episode 4730, Reward: 340, Max Tile: 64, Epsilon: 0.010
+Episode 4740, Reward: -6, Max Tile: 32, Epsilon: 0.010
+Episode 4750, Reward: -48, Max Tile: 64, Epsilon: 0.010
+Episode 4760, Reward: 10, Max Tile: 128, Epsilon: 0.010
+Episode 4770, Reward: 248, Max Tile: 128, Epsilon: 0.010
+Episode 4780, Reward: -256, Max Tile: 128, Epsilon: 0.010
+Episode 4790, Reward: 612, Max Tile: 64, Epsilon: 0.010
+Episode 4800, Reward: 690, Max Tile: 128, Epsilon: 0.010
+--------------------
+|   2|   8|   2|   4|
+|  64|   2|  32| 128|
+|   4|  32|  16|   4|
+|   2|   8|   4|   2|
+--------------------
+Episode 4810, Reward: -136, Max Tile: 128, Epsilon: 0.010
+Episode 4820, Reward: -108, Max Tile: 64, Epsilon: 0.010
+Episode 4830, Reward: 188, Max Tile: 64, Epsilon: 0.010
+Episode 4840, Reward: 86, Max Tile: 128, Epsilon: 0.010
+Episode 4850, Reward: 386, Max Tile: 64, Epsilon: 0.010
+Episode 4860, Reward: -462, Max Tile: 64, Epsilon: 0.010
+Episode 4870, Reward: 88, Max Tile: 64, Epsilon: 0.010
+Episode 4880, Reward: -192, Max Tile: 64, Epsilon: 0.010
+Episode 4890, Reward: 14, Max Tile: 64, Epsilon: 0.010
+Episode 4900, Reward: -1026, Max Tile: 64, Epsilon: 0.010
+--------------------
+|   2|   4|   8|   2|
+|  16|  32|   2|  32|
+|   4|   8|  64|   2|
+|   2|   4|   8|  16|
+--------------------
+Episode 4910, Reward: -266, Max Tile: 128, Epsilon: 0.010
+Episode 4920, Reward: 70, Max Tile: 128, Epsilon: 0.010
+Episode 4930, Reward: 514, Max Tile: 64, Epsilon: 0.010
+Episode 4940, Reward: -14, Max Tile: 64, Epsilon: 0.010
+Episode 4950, Reward: 48, Max Tile: 64, Epsilon: 0.010
+Episode 4960, Reward: 304, Max Tile: 128, Epsilon: 0.010
+Episode 4970, Reward: 198, Max Tile: 32, Epsilon: 0.010
+Episode 4980, Reward: -526, Max Tile: 64, Epsilon: 0.010
+Episode 4990, Reward: -22, Max Tile: 32, Epsilon: 0.010
+Episode 5000, Reward: 252, Max Tile: 32, Epsilon: 0.010
+--------------------
+|   4|   2|  16|   4|
+|   2|   4|  32|  16|
+|   8|  16|   2|   8|
+|   2|   4|   8|   2|
+--------------------
+Episode 5010, Reward: 126, Max Tile: 128, Epsilon: 0.010
+Episode 5020, Reward: -1000, Max Tile: 128, Epsilon: 0.010
+Episode 5030, Reward: 848, Max Tile: 128, Epsilon: 0.010
+Episode 5040, Reward: 18, Max Tile: 128, Epsilon: 0.010
+Episode 5050, Reward: -32, Max Tile: 16, Epsilon: 0.010
+Episode 5060, Reward: -92, Max Tile: 128, Epsilon: 0.010
+Episode 5070, Reward: -502, Max Tile: 64, Epsilon: 0.010
+Episode 5080, Reward: -568, Max Tile: 64, Epsilon: 0.010
+Episode 5090, Reward: 46, Max Tile: 128, Epsilon: 0.010
+Episode 5100, Reward: 500, Max Tile: 128, Epsilon: 0.010
+--------------------
+|   2|  16|   8|   2|
+|   4|  32|  64|   8|
+|  16| 128|  16|   4|
+|   2|   8|   4|   2|
+--------------------
+Episode 5110, Reward: -140, Max Tile: 64, Epsilon: 0.010
+Episode 5120, Reward: 408, Max Tile: 128, Epsilon: 0.010
+Episode 5130, Reward: 388, Max Tile: 64, Epsilon: 0.010
+Episode 5140, Reward: 410, Max Tile: 128, Epsilon: 0.010
+Episode 5150, Reward: 500, Max Tile: 64, Epsilon: 0.010
+Episode 5160, Reward: 104, Max Tile: 128, Epsilon: 0.010
+Episode 5170, Reward: 452, Max Tile: 64, Epsilon: 0.010
+Episode 5180, Reward: -462, Max Tile: 128, Epsilon: 0.010
+Episode 5190, Reward: -762, Max Tile: 64, Epsilon: 0.010
+Episode 5200, Reward: -194, Max Tile: 64, Epsilon: 0.010
+--------------------
+|   2|  32|   4|   2|
+|   4|   8|  32|   4|
+|  32|  64|   8|  16|
+|   2|   8|   4|   2|
+--------------------
+Episode 5210, Reward: -584, Max Tile: 32, Epsilon: 0.010
+Episode 5220, Reward: 156, Max Tile: 32, Epsilon: 0.010
+Episode 5230, Reward: -422, Max Tile: 64, Epsilon: 0.010
+Episode 5240, Reward: -1370, Max Tile: 64, Epsilon: 0.010
+Episode 5250, Reward: 288, Max Tile: 64, Epsilon: 0.010
+Episode 5260, Reward: -32, Max Tile: 32, Epsilon: 0.010
+Episode 5270, Reward: 100, Max Tile: 32, Epsilon: 0.010
+Episode 5280, Reward: 248, Max Tile: 64, Epsilon: 0.010
+Episode 5290, Reward: -984, Max Tile: 64, Epsilon: 0.010
+Episode 5300, Reward: -244, Max Tile: 64, Epsilon: 0.010
+--------------------
+|   4|   2|  32|   4|
+|  32|   4|  64|   8|
+|   4|  32|   8|  16|
+|   2|  16|   4|   2|
+--------------------
+Episode 5310, Reward: 136, Max Tile: 64, Epsilon: 0.010
+Episode 5320, Reward: -330, Max Tile: 64, Epsilon: 0.010
+Episode 5330, Reward: 462, Max Tile: 128, Epsilon: 0.010
+Episode 5340, Reward: -1052, Max Tile: 64, Epsilon: 0.010
+Episode 5350, Reward: 190, Max Tile: 64, Epsilon: 0.010
+Episode 5360, Reward: -68, Max Tile: 64, Epsilon: 0.010
+Episode 5370, Reward: -480, Max Tile: 64, Epsilon: 0.010
+Episode 5380, Reward: 268, Max Tile: 32, Epsilon: 0.010
+Episode 5390, Reward: 172, Max Tile: 32, Epsilon: 0.010
+Episode 5400, Reward: 268, Max Tile: 64, Epsilon: 0.010
+--------------------
+|   2|  64|   4|   2|
+|  16|  32|  16|   4|
+|   4|  16|   8|   2|
+|   2|   8|   2|   4|
+--------------------
+Episode 5410, Reward: -1176, Max Tile: 128, Epsilon: 0.010
+Episode 5420, Reward: -306, Max Tile: 64, Epsilon: 0.010
+Episode 5430, Reward: 166, Max Tile: 64, Epsilon: 0.010
+Episode 5440, Reward: 620, Max Tile: 128, Epsilon: 0.010
+Episode 5450, Reward: -162, Max Tile: 64, Epsilon: 0.010
+Episode 5460, Reward: -974, Max Tile: 128, Epsilon: 0.010
+Episode 5470, Reward: 376, Max Tile: 128, Epsilon: 0.010
+Episode 5480, Reward: 342, Max Tile: 64, Epsilon: 0.010
+Episode 5490, Reward: -778, Max Tile: 128, Epsilon: 0.010
+Episode 5500, Reward: -264, Max Tile: 64, Epsilon: 0.010
+--------------------
+|   2|   8|   4|  16|
+|   4|  64|  16|   8|
+|  32|  16|   8|   4|
+|   2|   8|   4|   2|
+--------------------
+Episode 5510, Reward: -164, Max Tile: 32, Epsilon: 0.010
+Episode 5520, Reward: -1416, Max Tile: 64, Epsilon: 0.010
+Episode 5530, Reward: 350, Max Tile: 64, Epsilon: 0.010
+Episode 5540, Reward: 82, Max Tile: 32, Epsilon: 0.010
+Episode 5550, Reward: -516, Max Tile: 64, Epsilon: 0.010
+Episode 5560, Reward: -504, Max Tile: 64, Epsilon: 0.010
+Episode 5570, Reward: -572, Max Tile: 128, Epsilon: 0.010
+Episode 5580, Reward: -232, Max Tile: 64, Epsilon: 0.010
+Episode 5590, Reward: -304, Max Tile: 64, Epsilon: 0.010
+Episode 5600, Reward: -1160, Max Tile: 128, Epsilon: 0.010
+--------------------
+|   2|   4|  16|   8|
+|   4|  16|  32|  16|
+|   8|   4| 128|   4|
+|   4|   2|   8|   2|
+--------------------
+Episode 5610, Reward: 342, Max Tile: 128, Epsilon: 0.010
+Episode 5620, Reward: -400, Max Tile: 64, Epsilon: 0.010
+Episode 5630, Reward: -112, Max Tile: 64, Epsilon: 0.010
+Episode 5640, Reward: 90, Max Tile: 32, Epsilon: 0.010
+Episode 5650, Reward: -236, Max Tile: 64, Epsilon: 0.010
+Episode 5660, Reward: -92, Max Tile: 32, Epsilon: 0.010
+Episode 5670, Reward: 512, Max Tile: 64, Epsilon: 0.010
+Episode 5680, Reward: -126, Max Tile: 64, Epsilon: 0.010
+Episode 5690, Reward: -722, Max Tile: 128, Epsilon: 0.010
+Episode 5700, Reward: 92, Max Tile: 64, Epsilon: 0.010
+--------------------
+|   2|   8|   4|   2|
+|   8|  32|  64|  16|
+|   4|   2|  32|   2|
+|   2|   4|   2|   4|
+--------------------
+Episode 5710, Reward: 152, Max Tile: 64, Epsilon: 0.010
+Episode 5720, Reward: 50, Max Tile: 64, Epsilon: 0.010
+Episode 5730, Reward: -926, Max Tile: 64, Epsilon: 0.010
+Episode 5740, Reward: 32, Max Tile: 128, Epsilon: 0.010
+Episode 5750, Reward: 194, Max Tile: 64, Epsilon: 0.010
+Episode 5760, Reward: 18, Max Tile: 128, Epsilon: 0.010
+Episode 5770, Reward: -600, Max Tile: 64, Epsilon: 0.010
+Episode 5780, Reward: -30, Max Tile: 64, Epsilon: 0.010
+Episode 5790, Reward: -216, Max Tile: 64, Epsilon: 0.010
+Episode 5800, Reward: -854, Max Tile: 128, Epsilon: 0.010
+--------------------
+|   4|  16|   2|   4|
+|   8|   2| 128|  32|
+|   2|  64|   2|   4|
+|   4|  16|   4|  16|
+--------------------
+Episode 5810, Reward: -666, Max Tile: 128, Epsilon: 0.010
+Episode 5820, Reward: 138, Max Tile: 32, Epsilon: 0.010
+Episode 5830, Reward: 118, Max Tile: 256, Epsilon: 0.010
+Episode 5840, Reward: -1410, Max Tile: 128, Epsilon: 0.010
+Episode 5850, Reward: 112, Max Tile: 64, Epsilon: 0.010
+Episode 5860, Reward: 272, Max Tile: 64, Epsilon: 0.010
+Episode 5870, Reward: 342, Max Tile: 128, Epsilon: 0.010
+Episode 5880, Reward: 142, Max Tile: 64, Epsilon: 0.010
+Episode 5890, Reward: 294, Max Tile: 64, Epsilon: 0.010
+Episode 5900, Reward: 232, Max Tile: 64, Epsilon: 0.010
+--------------------
+|  16|  32|  64|  16|
+|   8|  16|   2|   8|
+|   4|  64|  16|   4|
+|   2|   4|   8|   2|
+--------------------
+Episode 5910, Reward: -570, Max Tile: 128, Epsilon: 0.010
+Episode 5920, Reward: -22, Max Tile: 32, Epsilon: 0.010
+Episode 5930, Reward: -252, Max Tile: 64, Epsilon: 0.010
+Episode 5940, Reward: 718, Max Tile: 128, Epsilon: 0.010
+Episode 5950, Reward: -1476, Max Tile: 128, Epsilon: 0.010
+Episode 5960, Reward: 224, Max Tile: 64, Epsilon: 0.010
+Episode 5970, Reward: -80, Max Tile: 128, Epsilon: 0.010
+Episode 5980, Reward: -800, Max Tile: 64, Epsilon: 0.010
+Episode 5990, Reward: 460, Max Tile: 128, Epsilon: 0.010
+Episode 6000, Reward: -532, Max Tile: 64, Epsilon: 0.010
+--------------------
+|   4|   2|   8|   2|
+|  16|   4|  16|   4|
+|   8|  32|   8|  64|
+|   4|   8|   4|   2|
+--------------------
+Episode 6010, Reward: 312, Max Tile: 64, Epsilon: 0.010
+Episode 6020, Reward: 764, Max Tile: 128, Epsilon: 0.010
+Episode 6030, Reward: 454, Max Tile: 128, Epsilon: 0.010
+Episode 6040, Reward: 164, Max Tile: 32, Epsilon: 0.010
+Episode 6050, Reward: 70, Max Tile: 16, Epsilon: 0.010
+Episode 6060, Reward: -132, Max Tile: 64, Epsilon: 0.010
+Episode 6070, Reward: 184, Max Tile: 32, Epsilon: 0.010
+Episode 6080, Reward: -110, Max Tile: 64, Epsilon: 0.010
+Episode 6090, Reward: 124, Max Tile: 64, Epsilon: 0.010
+Episode 6100, Reward: -98, Max Tile: 32, Epsilon: 0.010
+--------------------
+|  32|   2|   8|   2|
+|   2|   8|  16|   8|
+|  16|   2|   4|   2|
+|   2|   4|   8|   4|
+--------------------
+Episode 6110, Reward: -1718, Max Tile: 128, Epsilon: 0.010
+Episode 6120, Reward: -582, Max Tile: 128, Epsilon: 0.010
+Episode 6130, Reward: 44, Max Tile: 64, Epsilon: 0.010
+Episode 6140, Reward: 22, Max Tile: 128, Epsilon: 0.010
+Episode 6150, Reward: 340, Max Tile: 128, Epsilon: 0.010
+Episode 6160, Reward: 6, Max Tile: 16, Epsilon: 0.010
+Episode 6170, Reward: 358, Max Tile: 128, Epsilon: 0.010
+Episode 6180, Reward: 6, Max Tile: 64, Epsilon: 0.010
+Episode 6190, Reward: 680, Max Tile: 128, Epsilon: 0.010
+Episode 6200, Reward: -248, Max Tile: 64, Epsilon: 0.010
+--------------------
+|   4|   2|   4|   2|
+|   2|  16|   2|   8|
+|  16|  64|   4|  32|
+|   2|   4|  32|   4|
+--------------------
+Episode 6210, Reward: 408, Max Tile: 64, Epsilon: 0.010
+Episode 6220, Reward: -368, Max Tile: 32, Epsilon: 0.010
+Episode 6230, Reward: 850, Max Tile: 256, Epsilon: 0.010
+Episode 6240, Reward: 212, Max Tile: 64, Epsilon: 0.010
+Episode 6250, Reward: 996, Max Tile: 128, Epsilon: 0.010
+Episode 6260, Reward: 796, Max Tile: 128, Epsilon: 0.010
+Episode 6270, Reward: -196, Max Tile: 64, Epsilon: 0.010
+Episode 6280, Reward: -244, Max Tile: 64, Epsilon: 0.010
+Episode 6290, Reward: 40, Max Tile: 32, Epsilon: 0.010
+Episode 6300, Reward: 196, Max Tile: 128, Epsilon: 0.010
+--------------------
+|   2|   8| 128|   2|
+|  16| 128|   2|   4|
+|   4|   8|  32|   2|
+|   8|   4|   2|   4|
+--------------------
+Episode 6310, Reward: -432, Max Tile: 64, Epsilon: 0.010
+Episode 6320, Reward: 488, Max Tile: 64, Epsilon: 0.010
+Episode 6330, Reward: 730, Max Tile: 128, Epsilon: 0.010
+Episode 6340, Reward: 422, Max Tile: 128, Epsilon: 0.010
+Episode 6350, Reward: 298, Max Tile: 64, Epsilon: 0.010
+Episode 6360, Reward: -1132, Max Tile: 128, Epsilon: 0.010
+Episode 6370, Reward: 824, Max Tile: 128, Epsilon: 0.010
+Episode 6380, Reward: -410, Max Tile: 128, Epsilon: 0.010
+Episode 6390, Reward: -46, Max Tile: 64, Epsilon: 0.010
+Episode 6400, Reward: 112, Max Tile: 32, Epsilon: 0.010
+--------------------
+|   2|   4|   8|   2|
+|  16|  32|   2|   4|
+|   8|   4|  32|   8|
+|   2|   8|   4|   2|
+--------------------
+Episode 6410, Reward: -18, Max Tile: 32, Epsilon: 0.010
+Episode 6420, Reward: -2, Max Tile: 64, Epsilon: 0.010
+Episode 6430, Reward: 452, Max Tile: 128, Epsilon: 0.010
+Episode 6440, Reward: 652, Max Tile: 256, Epsilon: 0.010
+Episode 6450, Reward: 128, Max Tile: 64, Epsilon: 0.010
+Episode 6460, Reward: -1674, Max Tile: 128, Epsilon: 0.010
+Episode 6470, Reward: 290, Max Tile: 64, Epsilon: 0.010
+Episode 6480, Reward: 140, Max Tile: 64, Epsilon: 0.010
+Episode 6490, Reward: 486, Max Tile: 64, Epsilon: 0.010
+Episode 6500, Reward: 60, Max Tile: 64, Epsilon: 0.010
+--------------------
+|  16|  32|  64|   2|
+|   4|   8|   2|   4|
+|   2|  64|  16|  32|
+|   4|   8|   2|   4|
+--------------------
+Episode 6510, Reward: 506, Max Tile: 128, Epsilon: 0.010
+Episode 6520, Reward: -124, Max Tile: 64, Epsilon: 0.010
+Episode 6530, Reward: 500, Max Tile: 128, Epsilon: 0.010
+Episode 6540, Reward: 284, Max Tile: 64, Epsilon: 0.010
+Episode 6550, Reward: -154, Max Tile: 64, Epsilon: 0.010
+Episode 6560, Reward: -1166, Max Tile: 128, Epsilon: 0.010
+Episode 6570, Reward: -2842, Max Tile: 256, Epsilon: 0.010
+Episode 6580, Reward: 18, Max Tile: 32, Epsilon: 0.010
+Episode 6590, Reward: 144, Max Tile: 64, Epsilon: 0.010
+Episode 6600, Reward: 78, Max Tile: 64, Epsilon: 0.010
+--------------------
+|   2|   4|  16|   2|
+|  16|   8|   4|   8|
+|   8|   2|  64|   2|
+|   2|   4|   8|   4|
+--------------------
+Episode 6610, Reward: -636, Max Tile: 128, Epsilon: 0.010
+Episode 6620, Reward: 256, Max Tile: 64, Epsilon: 0.010
+Episode 6630, Reward: 166, Max Tile: 64, Epsilon: 0.010
+Episode 6640, Reward: 802, Max Tile: 128, Epsilon: 0.010
+Episode 6650, Reward: -174, Max Tile: 128, Epsilon: 0.010
+Episode 6660, Reward: -418, Max Tile: 64, Epsilon: 0.010
+Episode 6670, Reward: 568, Max Tile: 128, Epsilon: 0.010
+Episode 6680, Reward: 250, Max Tile: 64, Epsilon: 0.010
+Episode 6690, Reward: 156, Max Tile: 64, Epsilon: 0.010
+Episode 6700, Reward: -380, Max Tile: 64, Epsilon: 0.010
+--------------------
+|   4|   2|   8|   2|
+|   2|   8|  32|   4|
+|   4|  16|  64|  32|
+|  16|   4|  16|   2|
+--------------------
+Episode 6710, Reward: 172, Max Tile: 64, Epsilon: 0.010
+Episode 6720, Reward: 120, Max Tile: 32, Epsilon: 0.010
+Episode 6730, Reward: -324, Max Tile: 128, Epsilon: 0.010
+Episode 6740, Reward: -232, Max Tile: 32, Epsilon: 0.010
+Episode 6750, Reward: 594, Max Tile: 128, Epsilon: 0.010
+Episode 6760, Reward: 416, Max Tile: 128, Epsilon: 0.010
+Episode 6770, Reward: 134, Max Tile: 64, Epsilon: 0.010
+Episode 6780, Reward: 182, Max Tile: 128, Epsilon: 0.010
+Episode 6790, Reward: 176, Max Tile: 128, Epsilon: 0.010
+Episode 6800, Reward: 532, Max Tile: 128, Epsilon: 0.010
+--------------------
+|   8|   2|  32|   8|
+|  16| 128|  64|   4|
+|   4|  16|   4|   2|
+|   2|   8|   2|   4|
+--------------------
+Episode 6810, Reward: -856, Max Tile: 64, Epsilon: 0.010
+Episode 6820, Reward: 284, Max Tile: 64, Epsilon: 0.010
+Episode 6830, Reward: -570, Max Tile: 32, Epsilon: 0.010
+Episode 6840, Reward: -828, Max Tile: 128, Epsilon: 0.010
+Episode 6850, Reward: -42, Max Tile: 32, Epsilon: 0.010
+Episode 6860, Reward: -228, Max Tile: 64, Epsilon: 0.010
+Episode 6870, Reward: -38, Max Tile: 32, Epsilon: 0.010
+Episode 6880, Reward: -1432, Max Tile: 64, Epsilon: 0.010
+Episode 6890, Reward: -886, Max Tile: 64, Epsilon: 0.010
+Episode 6900, Reward: -322, Max Tile: 32, Epsilon: 0.010
+--------------------
+|   2|  16|  32|   4|
+|   4|  32|   2|   8|
+|   8|  16|   8|  16|
+|  16|   8|   4|   2|
+--------------------
+Episode 6910, Reward: -1200, Max Tile: 64, Epsilon: 0.010
+Episode 6920, Reward: 10, Max Tile: 16, Epsilon: 0.010
+Episode 6930, Reward: 194, Max Tile: 64, Epsilon: 0.010
+Episode 6940, Reward: 162, Max Tile: 128, Epsilon: 0.010
+Episode 6950, Reward: -688, Max Tile: 128, Epsilon: 0.010
+Episode 6960, Reward: 704, Max Tile: 128, Epsilon: 0.010
+Episode 6970, Reward: 302, Max Tile: 64, Epsilon: 0.010
+Episode 6980, Reward: 192, Max Tile: 64, Epsilon: 0.010
+Episode 6990, Reward: 758, Max Tile: 128, Epsilon: 0.010
+Episode 7000, Reward: 352, Max Tile: 64, Epsilon: 0.010
+--------------------
+|   2|   4|  16|   4|
+|   4|  16|  64|   2|
+|   8|   2|  32|   8|
+|   2|   4|  64|  16|
+--------------------
+Episode 7010, Reward: 136, Max Tile: 64, Epsilon: 0.010
+Episode 7020, Reward: -34, Max Tile: 64, Epsilon: 0.010
+Episode 7030, Reward: 60, Max Tile: 32, Epsilon: 0.010
+Episode 7040, Reward: 178, Max Tile: 128, Epsilon: 0.010
+Episode 7050, Reward: 130, Max Tile: 32, Epsilon: 0.010
+Episode 7060, Reward: 20, Max Tile: 32, Epsilon: 0.010
+Episode 7070, Reward: 162, Max Tile: 64, Epsilon: 0.010
+Episode 7080, Reward: 106, Max Tile: 64, Epsilon: 0.010
+Episode 7090, Reward: 412, Max Tile: 128, Epsilon: 0.010
+Episode 7100, Reward: 352, Max Tile: 32, Epsilon: 0.010
+--------------------
+|  16|   8|   4|   2|
+|   2|   4|  16|   8|
+|   4|   8|  32|   2|
+|  32|   4|   8|   4|
+--------------------
+Episode 7110, Reward: 468, Max Tile: 64, Epsilon: 0.010
+Episode 7120, Reward: 232, Max Tile: 64, Epsilon: 0.010
+Episode 7130, Reward: -400, Max Tile: 128, Epsilon: 0.010
+Episode 7140, Reward: -130, Max Tile: 128, Epsilon: 0.010
+Episode 7150, Reward: 324, Max Tile: 64, Epsilon: 0.010
+Episode 7160, Reward: 140, Max Tile: 64, Epsilon: 0.010
+Episode 7170, Reward: -206, Max Tile: 64, Epsilon: 0.010
+Episode 7180, Reward: -366, Max Tile: 32, Epsilon: 0.010
+Episode 7190, Reward: 232, Max Tile: 64, Epsilon: 0.010
+Episode 7200, Reward: -470, Max Tile: 128, Epsilon: 0.010
+--------------------
+|   2|   4|   8|  16|
+|   4|  16|  32|   2|
+|   8|   4|  64|   8|
+|   4| 128|  16|   2|
+--------------------
+Episode 7210, Reward: 82, Max Tile: 64, Epsilon: 0.010
+Episode 7220, Reward: -10, Max Tile: 32, Epsilon: 0.010
+Episode 7230, Reward: 390, Max Tile: 128, Epsilon: 0.010
+Episode 7240, Reward: 162, Max Tile: 64, Epsilon: 0.010
+Episode 7250, Reward: -1404, Max Tile: 128, Epsilon: 0.010
+Episode 7260, Reward: 232, Max Tile: 64, Epsilon: 0.010
+Episode 7270, Reward: -78, Max Tile: 64, Epsilon: 0.010
+Episode 7280, Reward: 450, Max Tile: 64, Epsilon: 0.010
+Episode 7290, Reward: -46, Max Tile: 64, Epsilon: 0.010
+Episode 7300, Reward: 98, Max Tile: 32, Epsilon: 0.010
+--------------------
+|   2|   4|   8|  16|
+|   4|   8|  16|   4|
+|   8|  32|   4|   8|
+|   2|   4|  16|   2|
+--------------------
+Episode 7310, Reward: 228, Max Tile: 128, Epsilon: 0.010
+Episode 7320, Reward: 86, Max Tile: 32, Epsilon: 0.010
+Episode 7330, Reward: 352, Max Tile: 128, Epsilon: 0.010
+Episode 7340, Reward: 398, Max Tile: 128, Epsilon: 0.010
+Episode 7350, Reward: 548, Max Tile: 64, Epsilon: 0.010
+Episode 7360, Reward: 182, Max Tile: 128, Epsilon: 0.010
+Episode 7370, Reward: -554, Max Tile: 256, Epsilon: 0.010
+Episode 7380, Reward: 326, Max Tile: 64, Epsilon: 0.010
+Episode 7390, Reward: 104, Max Tile: 64, Epsilon: 0.010
+Episode 7400, Reward: -38, Max Tile: 32, Epsilon: 0.010
+--------------------
+|   2|   4|   2|   8|
+|   8|  16|   8|   2|
+|   4|  32|   4|   8|
+|   2|   8|   2|   4|
+--------------------
+Episode 7410, Reward: 416, Max Tile: 128, Epsilon: 0.010
+Episode 7420, Reward: -132, Max Tile: 16, Epsilon: 0.010
+Episode 7430, Reward: -660, Max Tile: 128, Epsilon: 0.010
+Episode 7440, Reward: 470, Max Tile: 64, Epsilon: 0.010
+Episode 7450, Reward: 574, Max Tile: 128, Epsilon: 0.010
+Episode 7460, Reward: 808, Max Tile: 128, Epsilon: 0.010
+Episode 7470, Reward: 628, Max Tile: 64, Epsilon: 0.010
+Episode 7480, Reward: 518, Max Tile: 128, Epsilon: 0.010
+Episode 7490, Reward: 590, Max Tile: 128, Epsilon: 0.010
+Episode 7500, Reward: 54, Max Tile: 128, Epsilon: 0.010
+--------------------
+|   2|   4|   8|   2|
+|  64|   8|  32|   8|
+|   8|  32|   2|  16|
+|   2|   8| 128|   4|
+--------------------
+Episode 7510, Reward: 1194, Max Tile: 128, Epsilon: 0.010
+Episode 7520, Reward: -78, Max Tile: 32, Epsilon: 0.010
+Episode 7530, Reward: 244, Max Tile: 128, Epsilon: 0.010
+Episode 7540, Reward: 142, Max Tile: 32, Epsilon: 0.010
+Episode 7550, Reward: -738, Max Tile: 128, Epsilon: 0.010
+Episode 7560, Reward: -42, Max Tile: 32, Epsilon: 0.010
+Episode 7570, Reward: 176, Max Tile: 32, Epsilon: 0.010
+Episode 7580, Reward: 54, Max Tile: 32, Epsilon: 0.010
+Episode 7590, Reward: 628, Max Tile: 256, Epsilon: 0.010
+Episode 7600, Reward: 152, Max Tile: 64, Epsilon: 0.010
+--------------------
+|   2|  16|   4|   8|
+|  16|   8|  64|   2|
+|   4|  16|   8|   4|
+|   2|   8|   4|   2|
+--------------------
+Episode 7610, Reward: -1752, Max Tile: 128, Epsilon: 0.010
+Episode 7620, Reward: 176, Max Tile: 64, Epsilon: 0.010
+Episode 7630, Reward: -1272, Max Tile: 64, Epsilon: 0.010
+Episode 7640, Reward: -268, Max Tile: 64, Epsilon: 0.010
+Episode 7650, Reward: 618, Max Tile: 64, Epsilon: 0.010
+Episode 7660, Reward: 36, Max Tile: 32, Epsilon: 0.010
+Episode 7670, Reward: 166, Max Tile: 32, Epsilon: 0.010
+Episode 7680, Reward: 258, Max Tile: 64, Epsilon: 0.010
+Episode 7690, Reward: -182, Max Tile: 64, Epsilon: 0.010
+Episode 7700, Reward: -78, Max Tile: 64, Epsilon: 0.010
+--------------------
+|   8|  16|   2|   4|
+|  16|  64|   4|  16|
+|   4|   2|  16|   4|
+|   2|   4|   8|   2|
+--------------------
+Episode 7710, Reward: -706, Max Tile: 128, Epsilon: 0.010
+Episode 7720, Reward: -396, Max Tile: 64, Epsilon: 0.010
+Episode 7730, Reward: -866, Max Tile: 128, Epsilon: 0.010
+Episode 7740, Reward: -828, Max Tile: 64, Epsilon: 0.010
+Episode 7750, Reward: 62, Max Tile: 32, Epsilon: 0.010
+Episode 7760, Reward: -498, Max Tile: 128, Epsilon: 0.010
+Episode 7770, Reward: -424, Max Tile: 64, Epsilon: 0.010
+Episode 7780, Reward: 186, Max Tile: 64, Epsilon: 0.010
+Episode 7790, Reward: -682, Max Tile: 128, Epsilon: 0.010
+Episode 7800, Reward: 148, Max Tile: 32, Epsilon: 0.010
+--------------------
+|   4|   2|   4|   2|
+|   2|   4|   8|  16|
+|  16|  32|  16|   4|
+|   2|   4|   8|   2|
+--------------------
+Episode 7810, Reward: -828, Max Tile: 64, Epsilon: 0.010
+Episode 7820, Reward: 416, Max Tile: 128, Epsilon: 0.010
+Episode 7830, Reward: 166, Max Tile: 32, Epsilon: 0.010
+Episode 7840, Reward: -654, Max Tile: 128, Epsilon: 0.010
+Episode 7850, Reward: -386, Max Tile: 128, Epsilon: 0.010
+Episode 7860, Reward: -1180, Max Tile: 64, Epsilon: 0.010
+Episode 7870, Reward: -304, Max Tile: 32, Epsilon: 0.010
+Episode 7880, Reward: -112, Max Tile: 128, Epsilon: 0.010
+Episode 7890, Reward: 272, Max Tile: 128, Epsilon: 0.010
+Episode 7900, Reward: -266, Max Tile: 64, Epsilon: 0.010
+--------------------
+|   2|   4|   8|  16|
+|   8|  16|  32|   2|
+|   4|  32|  64|   8|
+|   2|   8|  16|   2|
+--------------------
+Episode 7910, Reward: 120, Max Tile: 64, Epsilon: 0.010
+Episode 7920, Reward: 776, Max Tile: 128, Epsilon: 0.010
+Episode 7930, Reward: 52, Max Tile: 32, Epsilon: 0.010
+Episode 7940, Reward: 250, Max Tile: 64, Epsilon: 0.010
+Episode 7950, Reward: 420, Max Tile: 64, Epsilon: 0.010
+Episode 7960, Reward: 238, Max Tile: 64, Epsilon: 0.010
+Episode 7970, Reward: 58, Max Tile: 16, Epsilon: 0.010
+Episode 7980, Reward: 250, Max Tile: 32, Epsilon: 0.010
+Episode 7990, Reward: -2, Max Tile: 32, Epsilon: 0.010
+Episode 8000, Reward: -640, Max Tile: 128, Epsilon: 0.010
+--------------------
+|   2|   8|   4|   8|
+|  32|   4|   2|  32|
+|   4| 128|  16|   4|
+|  16|   8|   4|   2|
+--------------------
+Episode 8010, Reward: -518, Max Tile: 64, Epsilon: 0.010
+Episode 8020, Reward: -294, Max Tile: 64, Epsilon: 0.010
+Episode 8030, Reward: 76, Max Tile: 64, Epsilon: 0.010
+Episode 8040, Reward: -266, Max Tile: 128, Epsilon: 0.010
+Episode 8050, Reward: 262, Max Tile: 64, Epsilon: 0.010
+Episode 8060, Reward: 228, Max Tile: 64, Epsilon: 0.010
+Episode 8070, Reward: 160, Max Tile: 32, Epsilon: 0.010
+Episode 8080, Reward: 510, Max Tile: 64, Epsilon: 0.010
+Episode 8090, Reward: -214, Max Tile: 64, Epsilon: 0.010
+Episode 8100, Reward: -146, Max Tile: 64, Epsilon: 0.010
+--------------------
+|   2|   8|   4|   2|
+|  16|  32|  16|   4|
+|  64|   4|  32|  64|
+|   4|   2|   4|   2|
+--------------------
+Episode 8110, Reward: 0, Max Tile: 32, Epsilon: 0.010
+Episode 8120, Reward: -14, Max Tile: 64, Epsilon: 0.010
+Episode 8130, Reward: -222, Max Tile: 64, Epsilon: 0.010
+Episode 8140, Reward: -1214, Max Tile: 32, Epsilon: 0.010
+Episode 8150, Reward: 432, Max Tile: 128, Epsilon: 0.010
+Episode 8160, Reward: 348, Max Tile: 128, Epsilon: 0.010
+Episode 8170, Reward: 28, Max Tile: 64, Epsilon: 0.010
+Episode 8180, Reward: 242, Max Tile: 128, Epsilon: 0.010
+Episode 8190, Reward: -232, Max Tile: 64, Epsilon: 0.010
+Episode 8200, Reward: -582, Max Tile: 32, Epsilon: 0.010
+--------------------
+|   2|   4|   2|   8|
+|   8|  32|   4|   2|
+|   4|   8|  32|   8|
+|   2|   4|   8|   2|
+--------------------
+Episode 8210, Reward: -404, Max Tile: 128, Epsilon: 0.010
+Episode 8220, Reward: 264, Max Tile: 128, Epsilon: 0.010
+Episode 8230, Reward: 198, Max Tile: 64, Epsilon: 0.010
+Episode 8240, Reward: -186, Max Tile: 64, Epsilon: 0.010
+Episode 8250, Reward: 296, Max Tile: 128, Epsilon: 0.010
+Episode 8260, Reward: -178, Max Tile: 128, Epsilon: 0.010
+Episode 8270, Reward: 788, Max Tile: 256, Epsilon: 0.010
+Episode 8280, Reward: -312, Max Tile: 32, Epsilon: 0.010
+Episode 8290, Reward: -734, Max Tile: 64, Epsilon: 0.010
+Episode 8300, Reward: 346, Max Tile: 128, Epsilon: 0.010
+--------------------
+|   2|   4|   8|  32|
+|   4|   8| 128|   4|
+|   8|  32|  16|   2|
+|  16|   4|   8|  16|
+--------------------
+Episode 8310, Reward: -560, Max Tile: 64, Epsilon: 0.010
+Episode 8320, Reward: -182, Max Tile: 128, Epsilon: 0.010
+Episode 8330, Reward: -990, Max Tile: 128, Epsilon: 0.010
+Episode 8340, Reward: -72, Max Tile: 32, Epsilon: 0.010
+Episode 8350, Reward: 132, Max Tile: 128, Epsilon: 0.010
+Episode 8360, Reward: -692, Max Tile: 32, Epsilon: 0.010
+Episode 8370, Reward: -18, Max Tile: 64, Epsilon: 0.010
+Episode 8380, Reward: 90, Max Tile: 128, Epsilon: 0.010
+Episode 8390, Reward: 352, Max Tile: 128, Epsilon: 0.010
+Episode 8400, Reward: 728, Max Tile: 128, Epsilon: 0.010
+--------------------
+|   4|   2|  32|   2|
+|   2|  64| 128|  16|
+|   8|  16|   2|   8|
+|   2|   4|   8|   4|
+--------------------
+Episode 8410, Reward: -1334, Max Tile: 128, Epsilon: 0.010
+Episode 8420, Reward: 326, Max Tile: 64, Epsilon: 0.010
+Episode 8430, Reward: -100, Max Tile: 64, Epsilon: 0.010
+Episode 8440, Reward: 140, Max Tile: 128, Epsilon: 0.010
+Episode 8450, Reward: -226, Max Tile: 64, Epsilon: 0.010
+Episode 8460, Reward: 116, Max Tile: 32, Epsilon: 0.010
+Episode 8470, Reward: -210, Max Tile: 64, Epsilon: 0.010
+Episode 8480, Reward: 38, Max Tile: 16, Epsilon: 0.010
+Episode 8490, Reward: 258, Max Tile: 64, Epsilon: 0.010
+Episode 8500, Reward: 824, Max Tile: 256, Epsilon: 0.010
+--------------------
+|   4|  32|   4|  16|
+|   2| 256|  16|   4|
+|   4|  32|   4|  32|
+|   2|   4|   8|  16|
+--------------------
+Episode 8510, Reward: 264, Max Tile: 128, Epsilon: 0.010
+Episode 8520, Reward: 484, Max Tile: 64, Epsilon: 0.010
+Episode 8530, Reward: 152, Max Tile: 64, Epsilon: 0.010
+Episode 8540, Reward: 190, Max Tile: 32, Epsilon: 0.010
+Episode 8550, Reward: 156, Max Tile: 16, Epsilon: 0.010
+Episode 8560, Reward: -40, Max Tile: 32, Epsilon: 0.010
+Episode 8570, Reward: -242, Max Tile: 32, Epsilon: 0.010
+Episode 8580, Reward: 336, Max Tile: 64, Epsilon: 0.010
+Episode 8590, Reward: -36, Max Tile: 64, Epsilon: 0.010
+Episode 8600, Reward: 302, Max Tile: 64, Epsilon: 0.010
+--------------------
+|   2|   8|   4|   2|
+|   4|   2|  64|   8|
+|   8|  16|   8|  16|
+|   2|   8|   4|   2|
+--------------------
+Episode 8610, Reward: 964, Max Tile: 256, Epsilon: 0.010
+Episode 8620, Reward: 252, Max Tile: 64, Epsilon: 0.010
+Episode 8630, Reward: 30, Max Tile: 32, Epsilon: 0.010
+Episode 8640, Reward: 148, Max Tile: 32, Epsilon: 0.010
+Episode 8650, Reward: -1076, Max Tile: 128, Epsilon: 0.010
+Episode 8660, Reward: 150, Max Tile: 32, Epsilon: 0.010
+Episode 8670, Reward: -10, Max Tile: 64, Epsilon: 0.010
+Episode 8680, Reward: -980, Max Tile: 128, Epsilon: 0.010
+Episode 8690, Reward: 6, Max Tile: 8, Epsilon: 0.010
+Episode 8700, Reward: -320, Max Tile: 32, Epsilon: 0.010
+--------------------
+|   2|   4|   8|   2|
+|  16|   8|  32|   4|
+|   8|   2|   4|  16|
+|   2|   4|  16|  32|
+--------------------
+Episode 8710, Reward: 166, Max Tile: 128, Epsilon: 0.010
+Episode 8720, Reward: -278, Max Tile: 128, Epsilon: 0.010
+Episode 8730, Reward: -920, Max Tile: 128, Epsilon: 0.010
+Episode 8740, Reward: 56, Max Tile: 32, Epsilon: 0.010
+Episode 8750, Reward: -114, Max Tile: 64, Epsilon: 0.010
+Episode 8760, Reward: -304, Max Tile: 128, Epsilon: 0.010
+Episode 8770, Reward: 120, Max Tile: 32, Epsilon: 0.010
+Episode 8780, Reward: -36, Max Tile: 256, Epsilon: 0.010
+Episode 8790, Reward: -324, Max Tile: 128, Epsilon: 0.010
+Episode 8800, Reward: 452, Max Tile: 128, Epsilon: 0.010
+--------------------
+|   2|  16|  32|   8|
+|   4|  32| 128|  16|
+|   8|   4|   8|   2|
+|   2|  16|   2|   4|
+--------------------
+Episode 8810, Reward: 222, Max Tile: 128, Epsilon: 0.010
+Episode 8820, Reward: -480, Max Tile: 64, Epsilon: 0.010
+Episode 8830, Reward: 334, Max Tile: 64, Epsilon: 0.010
+Episode 8840, Reward: -292, Max Tile: 128, Epsilon: 0.010
+Episode 8850, Reward: 102, Max Tile: 32, Epsilon: 0.010
+Episode 8860, Reward: -680, Max Tile: 64, Epsilon: 0.010
+Episode 8870, Reward: -690, Max Tile: 64, Epsilon: 0.010
+Episode 8880, Reward: -628, Max Tile: 128, Epsilon: 0.010
+Episode 8890, Reward: 132, Max Tile: 32, Epsilon: 0.010
+Episode 8900, Reward: -458, Max Tile: 64, Epsilon: 0.010
+--------------------
+|   8|   2|   8|   2|
+|   4|  64|   4|   8|
+|  16|  32|   8|   4|
+|   2|   8|   4|   2|
+--------------------
+Episode 8910, Reward: -1110, Max Tile: 128, Epsilon: 0.010
+Episode 8920, Reward: 302, Max Tile: 64, Epsilon: 0.010
+Episode 8930, Reward: -610, Max Tile: 32, Epsilon: 0.010
+Episode 8940, Reward: 448, Max Tile: 128, Epsilon: 0.010
+Episode 8950, Reward: -74, Max Tile: 128, Epsilon: 0.010
+Episode 8960, Reward: -514, Max Tile: 32, Epsilon: 0.010
+Episode 8970, Reward: -88, Max Tile: 64, Epsilon: 0.010
+Episode 8980, Reward: 242, Max Tile: 64, Epsilon: 0.010
+Episode 8990, Reward: -1176, Max Tile: 128, Epsilon: 0.010
+Episode 9000, Reward: -1094, Max Tile: 32, Epsilon: 0.010
+--------------------
+|   4|   2|   4|   2|
+|   2|   8|  32|   4|
+|   4|  32|  16|  32|
+|   8|  16|   2|   4|
+--------------------
+Episode 9010, Reward: -752, Max Tile: 128, Epsilon: 0.010
+Episode 9020, Reward: -1126, Max Tile: 64, Epsilon: 0.010
+Episode 9030, Reward: 56, Max Tile: 64, Epsilon: 0.010
+Episode 9040, Reward: -50, Max Tile: 64, Epsilon: 0.010
+Episode 9050, Reward: -144, Max Tile: 64, Epsilon: 0.010
+Episode 9060, Reward: -600, Max Tile: 64, Epsilon: 0.010
+Episode 9070, Reward: -82, Max Tile: 128, Epsilon: 0.010
+Episode 9080, Reward: -728, Max Tile: 128, Epsilon: 0.010
+Episode 9090, Reward: 128, Max Tile: 64, Epsilon: 0.010
+Episode 9100, Reward: -952, Max Tile: 128, Epsilon: 0.010
+--------------------
+|   2|   8|   4|   2|
+|  64| 128|  16|   8|
+|   8|  32|   8|   4|
+|   2|   4|  32|   2|
+--------------------
+Episode 9110, Reward: -226, Max Tile: 32, Epsilon: 0.010
+Episode 9120, Reward: 466, Max Tile: 128, Epsilon: 0.010
+Episode 9130, Reward: 290, Max Tile: 64, Epsilon: 0.010
+Episode 9140, Reward: 222, Max Tile: 32, Epsilon: 0.010
+Episode 9150, Reward: -160, Max Tile: 32, Epsilon: 0.010
+Episode 9160, Reward: -1820, Max Tile: 128, Epsilon: 0.010
+Episode 9170, Reward: 80, Max Tile: 128, Epsilon: 0.010
+Episode 9180, Reward: 168, Max Tile: 64, Epsilon: 0.010
+Episode 9190, Reward: -218, Max Tile: 128, Epsilon: 0.010
+Episode 9200, Reward: -328, Max Tile: 128, Epsilon: 0.010
+--------------------
+|   2|   4|   8|   2|
+|   4|  16|   2|   4|
+|   8|   4| 128|  32|
+|   2|  16|   2|   4|
+--------------------
+Episode 9210, Reward: -190, Max Tile: 128, Epsilon: 0.010
+Episode 9220, Reward: 14, Max Tile: 32, Epsilon: 0.010
+Episode 9230, Reward: -204, Max Tile: 64, Epsilon: 0.010
+Episode 9240, Reward: -242, Max Tile: 64, Epsilon: 0.010
+Episode 9250, Reward: -1370, Max Tile: 128, Epsilon: 0.010
+Episode 9260, Reward: -1114, Max Tile: 256, Epsilon: 0.010
+Episode 9270, Reward: 194, Max Tile: 64, Epsilon: 0.010
+Episode 9280, Reward: 274, Max Tile: 64, Epsilon: 0.010
+Episode 9290, Reward: 486, Max Tile: 128, Epsilon: 0.010
+Episode 9300, Reward: 316, Max Tile: 64, Epsilon: 0.010
+--------------------
+|   8|   2|  16|   2|
+|  64|   4|   8|   4|
+|  16|   2|  32|  16|
+|   2|   4|   8|   2|
+--------------------
+Episode 9310, Reward: 520, Max Tile: 128, Epsilon: 0.010
+Episode 9320, Reward: -598, Max Tile: 128, Epsilon: 0.010
+Episode 9330, Reward: 78, Max Tile: 64, Epsilon: 0.010
+Episode 9340, Reward: 62, Max Tile: 64, Epsilon: 0.010
+Episode 9350, Reward: 796, Max Tile: 128, Epsilon: 0.010
+Episode 9360, Reward: -10, Max Tile: 32, Epsilon: 0.010
+Episode 9370, Reward: -594, Max Tile: 128, Epsilon: 0.010
+Episode 9380, Reward: 224, Max Tile: 64, Epsilon: 0.010
+Episode 9390, Reward: -278, Max Tile: 32, Epsilon: 0.010
+Episode 9400, Reward: 298, Max Tile: 64, Epsilon: 0.010
+--------------------
+|   2|   4|   2|   4|
+|   8|   2|   4|   8|
+|   4|   8|  32|  16|
+|   2|   4|  64|   2|
+--------------------
+Episode 9410, Reward: 690, Max Tile: 128, Epsilon: 0.010
+Episode 9420, Reward: 388, Max Tile: 64, Epsilon: 0.010
+Episode 9430, Reward: 826, Max Tile: 128, Epsilon: 0.010
+Episode 9440, Reward: 206, Max Tile: 64, Epsilon: 0.010
+Episode 9450, Reward: -594, Max Tile: 128, Epsilon: 0.010
+Episode 9460, Reward: 170, Max Tile: 32, Epsilon: 0.010
+Episode 9470, Reward: -206, Max Tile: 64, Epsilon: 0.010
+Episode 9480, Reward: 542, Max Tile: 128, Epsilon: 0.010
+Episode 9490, Reward: 84, Max Tile: 32, Epsilon: 0.010
+Episode 9500, Reward: -58, Max Tile: 64, Epsilon: 0.010
+--------------------
+|   2|  16|   8|   2|
+|   4|  64|  16|   8|
+|  32|   8|   4|   2|
+|   2|   4|   8|  16|
+--------------------
+Episode 9510, Reward: -112, Max Tile: 128, Epsilon: 0.010
+Episode 9520, Reward: -392, Max Tile: 64, Epsilon: 0.010
+Episode 9530, Reward: -152, Max Tile: 64, Epsilon: 0.010
+Episode 9540, Reward: 144, Max Tile: 64, Epsilon: 0.010
+Episode 9550, Reward: 490, Max Tile: 128, Epsilon: 0.010
+Episode 9560, Reward: 280, Max Tile: 32, Epsilon: 0.010
+Episode 9570, Reward: 134, Max Tile: 64, Epsilon: 0.010
+Episode 9580, Reward: 1192, Max Tile: 128, Epsilon: 0.010
+Episode 9590, Reward: 446, Max Tile: 128, Epsilon: 0.010
+Episode 9600, Reward: 1596, Max Tile: 256, Epsilon: 0.010
+--------------------
+|   2|   8|   4|   2|
+|   4| 256|   2|   4|
+|   8|   4|  64|   2|
+|   4|   2|   8|  32|
+--------------------
+Episode 9610, Reward: -380, Max Tile: 64, Epsilon: 0.010
+Episode 9620, Reward: 302, Max Tile: 128, Epsilon: 0.010
+Episode 9630, Reward: 124, Max Tile: 32, Epsilon: 0.010
+Episode 9640, Reward: -1194, Max Tile: 64, Epsilon: 0.010
+Episode 9650, Reward: 310, Max Tile: 64, Epsilon: 0.010
+Episode 9660, Reward: 642, Max Tile: 128, Epsilon: 0.010
+Episode 9670, Reward: 480, Max Tile: 128, Epsilon: 0.010
+Episode 9680, Reward: 212, Max Tile: 128, Epsilon: 0.010
+Episode 9690, Reward: 342, Max Tile: 32, Epsilon: 0.010
+Episode 9700, Reward: -396, Max Tile: 32, Epsilon: 0.010
+--------------------
+|   2|   4|  16|   2|
+|  32|  16|  32|  16|
+|   4|   2|  16|   4|
+|   2|   4|  32|   2|
+--------------------
+Episode 9710, Reward: 194, Max Tile: 32, Epsilon: 0.010
+Episode 9720, Reward: 90, Max Tile: 64, Epsilon: 0.010
+Episode 9730, Reward: 412, Max Tile: 128, Epsilon: 0.010
+Episode 9740, Reward: -34, Max Tile: 64, Epsilon: 0.010
+Episode 9750, Reward: 404, Max Tile: 64, Epsilon: 0.010
+Episode 9760, Reward: -726, Max Tile: 64, Epsilon: 0.010
+Episode 9770, Reward: -280, Max Tile: 64, Epsilon: 0.010
+Episode 9780, Reward: 440, Max Tile: 128, Epsilon: 0.010
+Episode 9790, Reward: 846, Max Tile: 128, Epsilon: 0.010
+Episode 9800, Reward: -256, Max Tile: 64, Epsilon: 0.010
+--------------------
+|   8|   2|   8|   2|
+|   2|  64|   2|   8|
+|   4|   8|  64|   4|
+|   2|  64|   4|   2|
+--------------------
+Episode 9810, Reward: 670, Max Tile: 128, Epsilon: 0.010
+Episode 9820, Reward: 466, Max Tile: 64, Epsilon: 0.010
+Episode 9830, Reward: 226, Max Tile: 128, Epsilon: 0.010
+Episode 9840, Reward: -440, Max Tile: 32, Epsilon: 0.010
+Episode 9850, Reward: -18, Max Tile: 64, Epsilon: 0.010
+Episode 9860, Reward: 224, Max Tile: 64, Epsilon: 0.010
+Episode 9870, Reward: -54, Max Tile: 64, Epsilon: 0.010
+Episode 9880, Reward: 312, Max Tile: 64, Epsilon: 0.010
+Episode 9890, Reward: 114, Max Tile: 32, Epsilon: 0.010
+Episode 9900, Reward: 352, Max Tile: 128, Epsilon: 0.010
+--------------------
+|   4|   2|   4|   2|
+|  16| 128|  16|   4|
+|   4|   8|  32|   8|
+|   2|  16|   4|   2|
+--------------------
+Episode 9910, Reward: -58, Max Tile: 32, Epsilon: 0.010
+Episode 9920, Reward: -228, Max Tile: 32, Epsilon: 0.010
+Episode 9930, Reward: -76, Max Tile: 64, Epsilon: 0.010
+Episode 9940, Reward: -160, Max Tile: 128, Epsilon: 0.010
+Episode 9950, Reward: 50, Max Tile: 128, Epsilon: 0.010
+Episode 9960, Reward: -150, Max Tile: 256, Epsilon: 0.010
+Episode 9970, Reward: -602, Max Tile: 64, Epsilon: 0.010
+Episode 9980, Reward: 94, Max Tile: 64, Epsilon: 0.010
+Episode 9990, Reward: -432, Max Tile: 128, Epsilon: 0.010
+模型已保存为 2048_bot.pth
+
+Process finished with exit code 0
