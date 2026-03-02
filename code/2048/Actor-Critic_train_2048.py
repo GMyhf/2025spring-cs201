@@ -51,7 +51,7 @@ class Game2048Env:
             self.add_new_tile()
             reward = score + 1.0
         else:
-            reward = -10.0
+            reward = -2.0
 
         done = not self._can_move()
         return self.get_state(), reward, done
@@ -139,7 +139,7 @@ def train():
     model = ActorCritic().to(device)
     optimizer = optim.Adam(model.parameters(), lr=1e-4)
 
-    gamma = 0.99
+    gamma = 0.95
     total_episodes = 50000
 
     for ep in range(total_episodes):
@@ -179,8 +179,11 @@ def train():
             returns.insert(0, R)
 
         returns = torch.tensor(returns, dtype=torch.float32).to(device)
-        values = torch.cat(values).squeeze()
 
+        # ⭐ 关键：标准化
+        returns = (returns - returns.mean()) / (returns.std() + 1e-8)
+
+        values = torch.cat(values).squeeze()
         advantages = returns - values.detach()
 
         # ===== Loss =====
