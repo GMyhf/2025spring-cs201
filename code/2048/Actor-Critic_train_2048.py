@@ -143,49 +143,67 @@ def train():
     total_episodes = 50000
 
     for ep in range(total_episodes):
+
+        states = []
+        actions = []
+        rewards = []
+        values = []
+        dones = []
+
         state = env.reset()
-        total_reward = 0
         done = False
 
         while not done:
             state_tensor = torch.FloatTensor(state).unsqueeze(0).to(device)
-            
             logits, value = model(state_tensor)
             probs = torch.softmax(logits, dim=-1)
-            
+
             dist = torch.distributions.Categorical(probs)
             action = dist.sample()
-            
+
             next_state, reward, done = env.step(action.item())
-            
-            next_state_tensor = torch.FloatTensor(next_state).unsqueeze(0).to(device)
-            _, next_value = model(next_state_tensor)
 
-            reward_tensor = torch.tensor([reward], dtype=torch.float32).to(device)
-
-            # TD Target
-            target = reward_tensor + (0 if done else gamma * next_value.detach())
-            
-            # Advantage
-            advantage = target - value
-
-            # Actor Loss
-            actor_loss = -dist.log_prob(action) * advantage.detach()
-            
-            # Critic Loss
-            critic_loss = advantage.pow(2)
-
-            loss = actor_loss + critic_loss
-
-            optimizer.zero_grad()
-            loss.backward()
-            optimizer.step()
+            states.append(state_tensor)
+            actions.append(action)
+            rewards.append(reward)
+            values.append(value)
+            dones.append(done)
 
             state = next_state
-            total_reward += reward
+
+        # ===== 计算多步回报 =====
+        returns = []
+        R = 0
+        for r, d in zip(reversed(rewards), reversed(dones)):
+            R = r + gamma * R * (1 - d)
+            returns.insert(0, R)
+
+        returns = torch.tensor(returns, dtype=torch.float32).to(device)
+        values = torch.cat(values).squeeze()
+
+        advantages = returns - values.detach()
+
+        # ===== Loss =====
+        logits_batch, _ = model(torch.cat(states))
+        probs_batch = torch.softmax(logits_batch, dim=-1)
+        dist_batch = torch.distributions.Categorical(probs_batch)
+
+        log_probs = dist_batch.log_prob(torch.stack(actions))
+        entropy = dist_batch.entropy().mean()
+
+        actor_loss = -(log_probs * advantages).mean()
+        critic_loss = (returns - values).pow(2).mean()
+
+        loss = actor_loss + 0.5 * critic_loss - 0.01 * entropy
+
+        optimizer.zero_grad()
+        loss.backward()
+        torch.nn.utils.clip_grad_norm_(model.parameters(), 5.0)
+        optimizer.step()
 
         if ep % 100 == 0:
-            print(f"Ep: {ep}, MaxTile: {env.board.max()}, Reward: {total_reward:.1f}")
+            print(f"Ep {ep}, MaxTile {env.board.max()}, Reward {sum(rewards)}")
+
 
         if ep % 1000 == 0:
             torch.save(model.state_dict(), "2048_actor_critic.pth")
