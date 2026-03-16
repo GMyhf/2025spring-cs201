@@ -1,4 +1,4 @@
-class Trie:
+class Trie: #test
 
     def __init__(self):
         """
